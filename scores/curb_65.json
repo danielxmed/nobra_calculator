@@ -1,21 +1,21 @@
 {
   "id": "curb_65",
-  "title": "CURB-65 Score para Gravidade de Pneumonia",
-  "description": "Avalia a gravidade da pneumonia adquirida na comunidade (PAC) para determinar necessidade de internação hospitalar",
-  "category": "pneumologia",
+  "title": "CURB-65 Score for Pneumonia Severity",
+  "description": "Assesses the severity of community-acquired pneumonia (CAP) to determine the need for hospital admission",
+  "category": "pulmonology",
   "version": "2003",
   "parameters": [
     {
       "name": "confusion",
       "type": "boolean",
       "required": true,
-      "description": "Confusão mental de início recente (desorientação em tempo, espaço ou pessoa)"
+      "description": "Recent onset mental confusion (disorientation in time, place, or person)"
     },
     {
       "name": "urea",
       "type": "float",
       "required": true,
-      "description": "Ureia sérica",
+      "description": "Serum urea",
       "validation": {
         "min": 0,
         "max": 200
@@ -26,18 +26,18 @@
       "name": "respiratory_rate",
       "type": "integer",
       "required": true,
-      "description": "Frequência respiratória",
+      "description": "Respiratory rate",
       "validation": {
         "min": 0,
         "max": 60
       },
-      "unit": "respirações/min"
+      "unit": "breaths/min"
     },
     {
       "name": "systolic_bp",
       "type": "integer",
       "required": true,
-      "description": "Pressão arterial sistólica",
+      "description": "Systolic blood pressure",
       "validation": {
         "min": 0,
         "max": 300
@@ -48,7 +48,7 @@
       "name": "diastolic_bp",
       "type": "integer",
       "required": true,
-      "description": "Pressão arterial diastólica",
+      "description": "Diastolic blood pressure",
       "validation": {
         "min": 0,
         "max": 200
@@ -59,42 +59,42 @@
       "name": "age",
       "type": "integer",
       "required": true,
-      "description": "Idade do paciente",
+      "description": "Patient's age",
       "validation": {
         "min": 0,
         "max": 120
       },
-      "unit": "anos"
+      "unit": "years"
     }
   ],
   "result": {
     "name": "curb_65_score",
     "type": "integer",
-    "unit": "pontos",
-    "description": "Score CURB-65 total (0-5 pontos)"
+    "unit": "points",
+    "description": "Total CURB-65 score (0-5 points)"
   },
   "interpretation": {
     "ranges": [
       {
         "min": 0,
         "max": 1,
-        "stage": "Baixo Risco",
-        "description": "Mortalidade: 1.5%",
-        "interpretation": "Tratamento ambulatorial. Considerar antibioticoterapia oral e acompanhamento em 48-72 horas."
+        "stage": "Low Risk",
+        "description": "Mortality: 1.5%",
+        "interpretation": "Outpatient treatment. Consider oral antibiotic therapy and follow-up in 48-72 hours."
       },
       {
         "min": 2,
         "max": 2,
-        "stage": "Risco Intermediário",
-        "description": "Mortalidade: 9.2%",
-        "interpretation": "Considerar internação hospitalar vs. observação. Avaliar individualmente fatores sociais, comorbidades e resposta ao tratamento inicial."
+        "stage": "Intermediate Risk",
+        "description": "Mortality: 9.2%",
+        "interpretation": "Consider hospital admission vs. observation. Individually assess social factors, comorbidities, and response to initial treatment."
       },
       {
         "min": 3,
         "max": 5,
-        "stage": "Alto Risco",
-        "description": "Mortalidade: 22%",
-        "interpretation": "Internação hospitalar mandatória. Considerar admissão em UTI, especialmente se CURB-65 ≥ 4. Iniciar antibioticoterapia endovenosa imediatamente."
+        "stage": "High Risk",
+        "description": "Mortality: 22%",
+        "interpretation": "Mandatory hospital admission. Consider ICU admission, especially if CURB-65 ≥ 4. Start intravenous antibiotic therapy immediately."
       }
     ]
   },
@@ -105,13 +105,13 @@
   ],
   "formula": "CURB-65 = C + U + R + B + 65",
   "notes": [
-    "C = Confusion (confusão mental): 1 ponto",
-    "U = Urea (ureia > 19 mg/dL ou > 7 mmol/L): 1 ponto",
-    "R = Respiratory rate (FR ≥ 30/min): 1 ponto",
-    "B = Blood pressure (PAS < 90 mmHg ou PAD ≤ 60 mmHg): 1 ponto",
-    "65 = Age (idade ≥ 65 anos): 1 ponto",
-    "CURB-65 não pontua comorbidades ou residência em casa de repouso",
-    "Para pacientes < 65 anos, pode-se usar CRB-65 (sem dosagem de ureia)",
-    "Considerar fatores adicionais: saturação O2 < 90%, derrame pleural, infiltrado multilobar"
+    "C = Confusion (mental confusion): 1 point",
+    "U = Urea (> 19 mg/dL or > 7 mmol/L): 1 point",
+    "R = Respiratory rate (RR ≥ 30/min): 1 point",
+    "B = Blood pressure (SBP < 90 mmHg or DBP ≤ 60 mmHg): 1 point",
+    "65 = Age (age ≥ 65 years): 1 point",
+    "CURB-65 does not score comorbidities or nursing home residence",
+    "For patients < 65 years, CRB-65 can be used (without urea measurement)",
+    "Consider additional factors: O2 saturation < 90%, pleural effusion, multilobar infiltrate"
   ]
 }

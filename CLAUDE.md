@@ -1,125 +1,125 @@
-# Guia para Agentes de Programação: Implementando Novas Calculadoras na nobra_calculator
+# Guide for Programming Agents: Implementing New Calculators in nobra_calculator
 
-Este guia é destinado a agentes de programação (IA assistants) para implementar novas calculadoras médicas na estrutura modular da **nobra_calculator API**.
+This guide is intended for programming agents (AI assistants) to implement new medical calculators within the modular structure of the **nobra_calculator API**.
 
-## 🤖 Fluxo de Trabalho Automatizado
+## 🤖 Automated Workflow
 
-### Processo Contínuo de Implementação
+### Continuous Implementation Process
 
-Este documento define um fluxo automatizado onde o Claude Code trabalha de forma autônoma implementando calculadoras médicas progressivamente:
+This document defines an automated flow where Claude Code works autonomously implementing medical calculators progressively:
 
-1. **📋 Verificar Lista de Tarefas** - Consultar `@CALC_LIST.md` para identificar próxima calculadora a implementar
-2. **📖 Revisar Contexto** - Ler `@README.md` para entender aplicação e arquitetura atual
-2.5. **Pesquisar no MDCALC via Tavily MCP** - Usar o tavily search para encontrar informacoes sobre como calcular o score em questao, sua interpretacao e referencias citaveis. Preferencialmente no MDCALC. ETAPA CRÍTICA.
-3. **🏗️ Implementar Calculadora** - Seguir etapas descritas neste documento
-4. **✅ Marcar Conclusão** - Atualizar `@CALC_LIST.md` com check da calculadora implementada
-5. **🗜️ Compactar Conversa** - Usar comando `/compact` para otimizar contexto
-6. **🔄 Reiniciar Ciclo** - Retornar ao passo 1 para próxima implementação
+1. **📋 Check Task List** - Consult `@CALC_LIST.md` to identify the next calculator to implement
+2. **📖 Review Context** - Read `@README.md` to understand the current application and architecture
+2.5. **Search on MDCALC via Tavily MCP** - Use Tavily search to find information on how to calculate the score in question, its interpretation, and citeable references. Preferably on MDCALC. CRITICAL STEP.
+3. **🏗️ Implement Calculator** - Follow the steps described in this document
+4. **✅ Mark Completion** - Update `@CALC_LIST.md` with a check for the implemented calculator
+5. **🗜️ Compact Conversation** - Use the `/compact` command to optimize context
+6. **🔄 Restart Cycle** - Return to step 1 for the next implementation
 
-### Critérios para Seleção da Próxima Calculadora
+### Criteria for Selecting the Next Calculator
 
-Ao consultar `@CALC_LIST.md`, priorizar calculadoras que:
-- Não possuem ✅ (ainda não implementadas)
-- São de categorias médicas fundamentais (cardiologia, nefrologia, neurologia)
-- Têm fórmulas bem documentadas e padronizadas
-- São amplamente utilizadas na prática clínica
+When consulting `@CALC_LIST.md`, prioritize calculators that:
+- Do not have ✅ (not yet implemented)
+- Are from fundamental medical categories (cardiology, nephrology, neurology)
+- Have well-documented and standardized formulas
+- Are widely used in clinical practice
 
-### Automação do Processo
+### Process Automation
 
-O agente deve trabalhar de forma autônoma seguindo este fluxo:
-- **Não solicitar confirmações** para cada calculadora individual
-- **Implementar completamente** cada calculadora antes de prosseguir
-- **Testar funcionamento** via reload e verificações de API
-- **Documentar adequadamente** cada implementação
-- **Manter qualidade** e consistência em todas as implementações
+The agent must work autonomously following this flow:
+- **Do not request confirmations** for each individual calculator
+- **Completely implement** each calculator before proceeding
+- **Test functionality** via reload and API checks
+- **Adequately document** each implementation
+- **Maintain quality** and consistency across all implementations
 
-## 🏗️ Arquitetura da API
+## 🏗️ API Architecture
 
-### Estrutura de Diretórios
+### Directory Structure
 ```
 nobra_calculator/
 ├── app/
-│   ├── models/          # Modelos Pydantic (requests/responses)
-│   ├── routers/         # Endpoints da API
-│   └── services/        # Lógica de negócio (carregamento e execução)
-├── calculators/         # ⭐ Módulos Python com lógica de cálculo
-├── scores/              # ⭐ Metadados JSON dos scores
-├── main.py             # Aplicação FastAPI principal
-└── requirements.txt    # Dependências
+│   ├── models/          # Pydantic Models (requests/responses)
+│   ├── routers/         # API Endpoints
+│   └── services/        # Business Logic (loading and execution)
+├── calculators/         # ⭐ Python modules with calculation logic
+├── scores/              # ⭐ Score Metadata (JSON)
+├── main.py             # Main FastAPI application
+└── requirements.txt    # Dependencies
 ```
 
-### Fluxo de Funcionamento
-1. **ScoreService** carrega metadados dos JSONs em `/scores/`
-2. **CalculatorService** importa dinamicamente módulos de `/calculators/`
-3. **API Routes** expõem endpoints para cálculos e metadados
-4. **Sistema de Reload** permite adicionar scores sem reiniciar
+### Workflow
+1. **ScoreService** loads metadata from JSONs in `/scores/`
+2. **CalculatorService** dynamically imports modules from `/calculators/`
+3. **API Routes** expose endpoints for calculations and metadata
+4. **Reload System** allows adding scores without restarting
 
-## 📝 Implementando Uma Nova Calculadora
+## 📝 Implementing a New Calculator
 
-### PASSO 1: Criar o Arquivo de Metadados JSON
+### STEP 1: Create the JSON Metadata File
 
-Crie um arquivo em `/scores/{score_id}.json` seguindo esta estrutura:
+Create a file in `/scores/{score_id}.json` following this structure:
 
 ```json
 {
-  "id": "nome_do_score",
-  "title": "Título Completo do Score",
-  "description": "Descrição detalhada do que o score calcula",
-  "category": "categoria_medica",
-  "version": "ano_ou_versao",
+  "id": "score_name",
+  "title": "Full Score Title",
+  "description": "Detailed description of what the score calculates",
+  "category": "medical_category",
+  "version": "year_or_version",
   "parameters": [
     {
-      "name": "parametro1",
+      "name": "parameter1",
       "type": "string|integer|float",
       "required": true,
-      "description": "Descrição do parâmetro",
-      "options": ["opcao1", "opcao2"],  // Para strings com valores fixos
+      "description": "Parameter description",
+      "options": ["option1", "option2"],  // For strings with fixed values
       "validation": {
-        "min": 0,           // Para números
+        "min": 0,           // For numbers
         "max": 100,
-        "enum": ["val1", "val2"]  // Para strings
+        "enum": ["val1", "val2"]  // For strings
       },
-      "unit": "unidade"
+      "unit": "unit"
     }
   ],
   "result": {
-    "name": "nome_resultado",
+    "name": "result_name",
     "type": "float|integer|string",
-    "unit": "unidade_resultado",
-    "description": "Descrição do resultado"
+    "unit": "result_unit",
+    "description": "Result description"
   },
   "interpretation": {
     "ranges": [
       {
         "min": 0,
         "max": 10,
-        "stage": "Estágio1",
-        "description": "Descrição curta",
-        "interpretation": "Interpretação clínica detalhada"
+        "stage": "Stage1",
+        "description": "Short description",
+        "interpretation": "Detailed clinical interpretation"
       }
     ]
   },
   "references": [
-    "Referência bibliográfica 1",
-    "Referência bibliográfica 2"
+    "Bibliographic reference 1",
+    "Bibliographic reference 2"
   ],
-  "formula": "Fórmula matemática em texto",
+  "formula": "Mathematical formula in text",
   "notes": [
-    "Nota importante 1",
-    "Nota importante 2"
+    "Important note 1",
+    "Important note 2"
   ]
 }
 ```
 
-### PASSO 2: Implementar a Calculadora Python
+### STEP 2: Implement the Python Calculator
 
-Crie um arquivo em `/calculators/{score_id}.py` com esta estrutura:
+Create a file in `/calculators/{score_id}.py` with this structure:
 
 ```python
 """
 {Score Name} Calculator
 
-Breve descrição do que calcula e referências.
+Brief description of what it calculates and references.
 """
 
 import math
@@ -127,121 +127,121 @@ from typing import Dict, Any
 
 
 class {ScoreId}Calculator:
-    """Calculadora para {Score Name}"""
+    """Calculator for {Score Name}"""
     
     def __init__(self):
-        # Constantes da fórmula
-        self.CONSTANTE_1 = valor
-        self.CONSTANTE_2 = valor
+        # Formula constants
+        self.CONSTANT_1 = value
+        self.CONSTANT_2 = value
     
     def calculate(self, param1: type, param2: type, param3: type) -> Dict[str, Any]:
         """
-        Calcula o score usando os parâmetros fornecidos
+        Calculates the score using the provided parameters
         
         Args:
-            param1 (type): Descrição do parâmetro 1
-            param2 (type): Descrição do parâmetro 2
-            param3 (type): Descrição do parâmetro 3
+            param1 (type): Description of parameter 1
+            param2 (type): Description of parameter 2
+            param3 (type): Description of parameter 3
             
         Returns:
-            Dict com o resultado e interpretação
+            Dict with the result and interpretation
         """
         
-        # Validações
+        # Validations
         self._validate_inputs(param1, param2, param3)
         
-        # Lógica do cálculo
-        resultado = self._calcular_formula(param1, param2, param3)
+        # Calculation logic
+        result = self._calculate_formula(param1, param2, param3)
         
-        # Obter interpretação
-        interpretation = self._get_interpretation(resultado)
+        # Get interpretation
+        interpretation = self._get_interpretation(result)
         
         return {
-            "result": resultado,
-            "unit": "unidade",
+            "result": result,
+            "unit": "unit",
             "interpretation": interpretation["interpretation"],
             "stage": interpretation.get("stage", ""),
             "stage_description": interpretation.get("description", "")
         }
     
     def _validate_inputs(self, param1, param2, param3):
-        """Valida os parâmetros de entrada"""
+        """Validates input parameters"""
         
-        # Validações específicas para cada parâmetro
+        # Specific validations for each parameter
         if not isinstance(param1, expected_type):
-            raise ValueError("Param1 deve ser do tipo X")
+            raise ValueError("Param1 must be of type X")
         
         if param2 < min_value or param2 > max_value:
-            raise ValueError(f"Param2 deve estar entre {min_value} e {max_value}")
+            raise ValueError(f"Param2 must be between {min_value} and {max_value}")
     
-    def _calcular_formula(self, param1, param2, param3):
-        """Implementa a fórmula matemática do score"""
+    def _calculate_formula(self, param1, param2, param3):
+        """Implements the score's mathematical formula"""
         
-        # Implementar a lógica específica do cálculo
-        resultado = param1 * param2 + param3  # Exemplo
+        # Implement specific calculation logic
+        result = param1 * param2 + param3  # Example
         
-        # Arredondar se necessário
-        return round(resultado, 2)
+        # Round if necessary
+        return round(result, 2)
     
-    def _get_interpretation(self, resultado: float) -> Dict[str, str]:
+    def _get_interpretation(self, result: float) -> Dict[str, str]:
         """
-        Determina a interpretação baseada no resultado
+        Determines the interpretation based on the result
         
         Args:
-            resultado (float): Valor calculado
+            result (float): Calculated value
             
         Returns:
-            Dict com interpretação
+            Dict with interpretation
         """
         
-        # Lógica baseada nos ranges definidos no JSON
-        if resultado >= 90:
+        # Logic based on ranges defined in JSON
+        if result >= 90:
             return {
                 "stage": "Normal",
-                "description": "Resultado normal",
-                "interpretation": "Interpretação clínica detalhada"
+                "description": "Normal result",
+                "interpretation": "Detailed clinical interpretation"
             }
-        elif resultado >= 60:
+        elif result >= 60:
             return {
-                "stage": "Leve",
-                "description": "Alteração leve",
-                "interpretation": "Interpretação clínica detalhada"
+                "stage": "Mild",
+                "description": "Mild alteration",
+                "interpretation": "Detailed clinical interpretation"
             }
-        # ... mais condições
+        # ... more conditions
         
         else:
             return {
-                "stage": "Grave",
-                "description": "Alteração grave",
-                "interpretation": "Interpretação clínica detalhada"
+                "stage": "Severe",
+                "description": "Severe alteration",
+                "interpretation": "Detailed clinical interpretation"
             }
 
 
 def calculate_{score_id}(param1, param2, param3) -> Dict[str, Any]:
     """
-    Função de conveniência para o sistema de carregamento dinâmico
+    Convenience function for the dynamic loading system
     
-    IMPORTANTE: Esta função deve seguir o padrão calculate_{score_id}
+    IMPORTANT: This function must follow the calculate_{score_id} pattern
     """
     calculator = {ScoreId}Calculator()
     return calculator.calculate(param1, param2, param3)
 ```
 
-### PASSO 3: Criar Modelos Pydantic (Opcional)
+### STEP 3: Create Pydantic Models (Optional)
 
-Se quiser endpoints específicos, adicione em `/app/models/score_models.py`:
+If you want specific endpoints, add them to `/app/models/score_models.py`:
 
 ```python
 class {ScoreId}Request(BaseModel):
-    """Modelo de request para {Score Name}"""
-    param1: type = Field(..., description="Descrição")
-    param2: int = Field(..., ge=min_val, le=max_val, description="Descrição")
-    param3: float = Field(..., description="Descrição")
+    """Request model for {Score Name}"""
+    param1: type = Field(..., description="Description")
+    param2: int = Field(..., ge=min_val, le=max_val, description="Description")
+    param3: float = Field(..., description="Description")
     
     class Config:
         schema_extra = {
             "example": {
-                "param1": "valor_exemplo",
+                "param1": "example_value",
                 "param2": 50,
                 "param3": 1.5
             }
@@ -249,39 +249,39 @@ class {ScoreId}Request(BaseModel):
 
 
 class {ScoreId}Response(BaseModel):
-    """Modelo de response para {Score Name}"""
-    result: float = Field(..., description="Resultado do cálculo")
-    unit: str = Field(..., description="Unidade do resultado")
-    interpretation: str = Field(..., description="Interpretação clínica")
-    stage: str = Field(..., description="Estágio/classificação")
-    stage_description: str = Field(..., description="Descrição do estágio")
+    """Response model for {Score Name}"""
+    result: float = Field(..., description="Calculation result")
+    unit: str = Field(..., description="Result unit")
+    interpretation: str = Field(..., description="Clinical interpretation")
+    stage: str = Field(..., description="Stage/classification")
+    stage_description: str = Field(..., description="Stage description")
 ```
 
-### PASSO 4: Adicionar Endpoint Específico (Opcional)
+### STEP 4: Add Specific Endpoint (Optional)
 
-Em `/app/routers/scores.py`, adicione:
+In `/app/routers/scores.py`, add:
 
 ```python
 @router.post("/{score_id}", response_model={ScoreId}Response)
 async def calculate_{score_id}(request: {ScoreId}Request):
     """
-    Calcula {Score Name}
+    Calculates {Score Name}
     
     Args:
-        request: Parâmetros necessários para o cálculo
+        request: Parameters needed for calculation
         
     Returns:
-        {ScoreId}Response: Resultado com interpretação clínica
+        {ScoreId}Response: Result with clinical interpretation
     """
     try:
-        # Converte request para dicionário
+        # Convert request to dictionary
         parameters = {
             "param1": request.param1,
             "param2": request.param2,
             "param3": request.param3
         }
         
-        # Executa o cálculo
+        # Execute calculation
         result = calculator_service.calculate_score("{score_id}", parameters)
         
         if result is None:
@@ -289,7 +289,7 @@ async def calculate_{score_id}(request: {ScoreId}Request):
                 status_code=500,
                 detail={
                     "error": "CalculationError",
-                    "message": "Erro no cálculo do {Score Name}",
+                    "message": "Error calculating {Score Name}",
                     "details": {"parameters": parameters}
                 }
             )
@@ -301,7 +301,7 @@ async def calculate_{score_id}(request: {ScoreId}Request):
             status_code=422,
             detail={
                 "error": "ValidationError",
-                "message": "Parâmetros inválidos para {Score Name}",
+                "message": "Invalid parameters for {Score Name}",
                 "details": {"error": str(e)}
             }
         )
@@ -312,99 +312,99 @@ async def calculate_{score_id}(request: {ScoreId}Request):
             status_code=500,
             detail={
                 "error": "InternalServerError",
-                "message": "Erro interno no cálculo",
+                "message": "Internal error in calculation",
                 "details": {"error": str(e)}
             }
         )
 ```
 
-## 🧪 Testando a Implementação
+## 🧪 Testing the Implementation
 
-### 1. Recarregar Scores
+### 1. Reload Scores
 ```bash
 curl -X POST http://localhost:8000/api/reload
 ```
 
-### 2. Verificar se o Score Aparece na Lista
+### 2. Check if the Score Appears in the List
 ```bash
 curl http://localhost:8000/api/scores
 ```
 
-### 3. Testar o Cálculo
+### 3. Test the Calculation
 ```bash
 curl -X POST http://localhost:8000/api/{score_id} \
   -H "Content-Type: application/json" \
-  -d '{"param1": "valor", "param2": 50, "param3": 1.5}'
+  -d '{"param1": "value", "param2": 50, "param3": 1.5}'
 ```
 
-### 4. Verificar Metadados
+### 4. Check Metadata
 ```bash
 curl http://localhost:8000/api/scores/{score_id}
 ```
 
-## ⚠️ Pontos Importantes
+## ⚠️ Important Points
 
-### Convenções de Nomenclatura
-- **score_id**: snake_case (ex: `ckd_epi_2021`)
-- **Classe Calculator**: PascalCase + "Calculator" (ex: `CkdEpi2021Calculator`)  
-- **Função de conveniência**: `calculate_{score_id}` (ex: `calculate_ckd_epi_2021`)
+### Naming Conventions
+- **score_id**: snake_case (e.g., `ckd_epi_2021`)
+- **Calculator Class**: PascalCase + "Calculator" (e.g., `CkdEpi2021Calculator`)  
+- **Convenience Function**: `calculate_{score_id}` (e.g., `calculate_ckd_epi_2021`)
 
-### Validações Obrigatórias
-- ✅ Validar tipos de parâmetros
-- ✅ Validar ranges/limites dos valores
-- ✅ Tratar casos especiais (divisão por zero, valores negativos)
-- ✅ Retornar erros descritivos
+### Mandatory Validations
+- ✅ Validate parameter types
+- ✅ Validate value ranges/limits
+- ✅ Handle special cases (division by zero, negative values)
+- ✅ Return descriptive errors
 
-### Estrutura do Retorno
-O retorno **DEVE** sempre ter esta estrutura mínima:
+### Return Structure
+The return **MUST** always have this minimum structure:
 ```python
 {
-    "result": float|int,           # Valor calculado
-    "unit": str,                   # Unidade de medida
-    "interpretation": str,         # Interpretação clínica
-    "stage": str,                  # Classificação/estágio (opcional)
-    "stage_description": str       # Descrição da classificação (opcional)
+    "result": float|int,           # Calculated value
+    "unit": str,                   # Unit of measurement
+    "interpretation": str,         # Clinical interpretation
+    "stage": str,                  # Classification/stage (optional)
+    "stage_description": str       # Stage description (optional)
 }
 ```
 
-## 🐛 Troubleshooting Comum
+## 🐛 Common Troubleshooting
 
-### Erro: "Score não encontrado"
-- ✅ Verificar se o arquivo JSON existe em `/scores/`
-- ✅ Verificar se o `id` no JSON corresponde ao nome do arquivo
-- ✅ Executar reload: `POST /api/reload`
+### Error: "Score not found"
+- ✅ Check if the JSON file exists in `/scores/`
+- ✅ Check if the `id` in the JSON matches the file name
+- ✅ Execute reload: `POST /api/reload`
 
-### Erro: "Calculadora não encontrada"
-- ✅ Verificar se o arquivo Python existe em `/calculators/`
-- ✅ Verificar se a função `calculate_{score_id}` existe
-- ✅ Verificar imports e sintaxe do Python
+### Error: "Calculator not found"
+- ✅ Check if the Python file exists in `/calculators/`
+- ✅ Check if the `calculate_{score_id}` function exists
+- ✅ Check imports and Python syntax
 
-### Erro: "Parâmetros inválidos"
-- ✅ Verificar tipos de dados nos parâmetros
-- ✅ Verificar ranges de validação
-- ✅ Comparar com definições no JSON
+### Error: "Invalid parameters"
+- ✅ Check data types in parameters
+- ✅ Check validation ranges
+- ✅ Compare with JSON definitions
 
-### Erro: "JSON inválido"
-- ✅ Validar sintaxe JSON
-- ✅ Verificar campos obrigatórios: `id`, `title`, `description`, `category`, `parameters`, `result`
-- ✅ Verificar se `parameters` é array e `result` é object
+### Error: "Invalid JSON"
+- ✅ Validate JSON syntax
+- ✅ Check mandatory fields: `id`, `title`, `description`, `category`, `parameters`, `result`
+- ✅ Check if `parameters` is an array and `result` is an object
 
-## 📚 Exemplo Completo: Score APGAR
+## 📚 Complete Example: APGAR Score
 
 ### `/scores/apgar.json`
 ```json
 {
   "id": "apgar",
-  "title": "Escore de APGAR",
-  "description": "Avaliação da vitalidade do recém-nascido",
-  "category": "neonatologia",
+  "title": "APGAR Score",
+  "description": "Assessment of newborn vitality",
+  "category": "neonatology",
   "version": "1953",
   "parameters": [
     {
       "name": "heart_rate",
       "type": "integer",
       "required": true,
-      "description": "Frequência cardíaca (bpm)",
+      "description": "Heart rate (bpm)",
       "validation": {"min": 0, "max": 200},
       "unit": "bpm"
     },
@@ -412,16 +412,16 @@ O retorno **DEVE** sempre ter esta estrutura mínima:
       "name": "respiratory_effort",
       "type": "string",
       "required": true,
-      "description": "Esforço respiratório",
-      "options": ["ausente", "irregular", "regular"],
-      "validation": {"enum": ["ausente", "irregular", "regular"]}
+      "description": "Respiratory effort",
+      "options": ["absent", "irregular", "regular"],
+      "validation": {"enum": ["absent", "irregular", "regular"]}
     }
   ],
   "result": {
     "name": "apgar_score",
     "type": "integer",
-    "unit": "pontos",
-    "description": "Escore APGAR total"
+    "unit": "points",
+    "description": "Total APGAR score"
   },
   "interpretation": {
     "ranges": [
@@ -429,32 +429,32 @@ O retorno **DEVE** sempre ter esta estrutura mínima:
         "min": 8,
         "max": 10,
         "stage": "Normal",
-        "description": "Recém-nascido em boas condições",
-        "interpretation": "RN vigoroso, sem necessidade de intervenção."
+        "description": "Newborn in good condition",
+        "interpretation": "Vigorous newborn, no intervention needed."
       },
       {
         "min": 4,
         "max": 7,
-        "stage": "Moderado",
-        "description": "Depressão moderada",
-        "interpretation": "Necessita estimulação e possível ventilação."
+        "stage": "Moderate",
+        "description": "Moderate depression",
+        "interpretation": "Needs stimulation and possible ventilation."
       },
       {
         "min": 0,
         "max": 3,
-        "stage": "Grave",
-        "description": "Asfixia grave",
-        "interpretation": "Necessita reanimação imediata."
+        "stage": "Severe",
+        "description": "Severe asphyxia",
+        "interpretation": "Needs immediate resuscitation."
       }
     ]
   },
   "references": [
     "Apgar V. A proposal for a new method of evaluation of the newborn infant. Curr Res Anesth Analg. 1953;32(4):260-7."
   ],
-  "formula": "Soma dos 5 componentes: FC + Resp + Tônus + Reflexos + Cor",
+  "formula": "Sum of the 5 components: HR + Resp + Tone + Reflexes + Color",
   "notes": [
-    "Avaliação aos 1 e 5 minutos de vida",
-    "Cada componente vale 0-2 pontos"
+    "Assessment at 1 and 5 minutes of life",
+    "Each component is worth 0-2 points"
   ]
 }
 ```
@@ -462,71 +462,71 @@ O retorno **DEVE** sempre ter esta estrutura mínima:
 ### `/calculators/apgar.py`
 ```python
 """
-Escore de APGAR Calculator
+APGAR Score Calculator
 
-Avalia a vitalidade do recém-nascido através de 5 componentes.
+Assesses newborn vitality through 5 components.
 """
 
 from typing import Dict, Any
 
 
 class ApgarCalculator:
-    """Calculadora para Escore de APGAR"""
+    """Calculator for APGAR Score"""
     
     def calculate(self, heart_rate: int, respiratory_effort: str, 
                  muscle_tone: str, reflexes: str, color: str) -> Dict[str, Any]:
         """
-        Calcula o escore APGAR
+        Calculates the APGAR score
         
         Args:
-            heart_rate: Frequência cardíaca em bpm
-            respiratory_effort: "ausente", "irregular", "regular"
-            muscle_tone: "flácido", "flexão_leve", "movimento_ativo"
-            reflexes: "ausente", "careta", "choro_tosse"
-            color: "cianótico", "extremidades_azuis", "rosado"
+            heart_rate: Heart rate in bpm
+            respiratory_effort: "absent", "irregular", "regular"
+            muscle_tone: "flaccid", "mild_flexion", "active_movement"
+            reflexes: "absent", "grimace", "cry_cough"
+            color: "cyanotic", "blue_extremities", "pink"
             
         Returns:
-            Dict com resultado e interpretação
+            Dict with result and interpretation
         """
         
-        # Validações
+        # Validations
         self._validate_inputs(heart_rate, respiratory_effort, muscle_tone, reflexes, color)
         
-        # Calcular pontuação de cada componente
+        # Calculate score for each component
         hr_score = self._score_heart_rate(heart_rate)
         resp_score = self._score_respiratory(respiratory_effort)
         tone_score = self._score_muscle_tone(muscle_tone)
         reflex_score = self._score_reflexes(reflexes)
         color_score = self._score_color(color)
         
-        # Somar total
+        # Sum total
         total_score = hr_score + resp_score + tone_score + reflex_score + color_score
         
-        # Obter interpretação
+        # Get interpretation
         interpretation = self._get_interpretation(total_score)
         
         return {
             "result": total_score,
-            "unit": "pontos",
+            "unit": "points",
             "interpretation": interpretation["interpretation"],
             "stage": interpretation["stage"],
             "stage_description": interpretation["description"]
         }
     
     def _validate_inputs(self, heart_rate, respiratory_effort, muscle_tone, reflexes, color):
-        """Valida parâmetros de entrada"""
+        """Validates input parameters"""
         
         if not isinstance(heart_rate, int) or heart_rate < 0 or heart_rate > 200:
-            raise ValueError("Frequência cardíaca deve ser um inteiro entre 0 e 200")
+            raise ValueError("Heart rate must be an integer between 0 and 200")
         
-        valid_resp = ["ausente", "irregular", "regular"]
+        valid_resp = ["absent", "irregular", "regular"]
         if respiratory_effort not in valid_resp:
-            raise ValueError(f"Esforço respiratório deve ser: {', '.join(valid_resp)}")
+            raise ValueError(f"Respiratory effort must be: {', '.join(valid_resp)}")
         
-        # Mais validações...
+        # More validations...
     
     def _score_heart_rate(self, hr: int) -> int:
-        """Pontua frequência cardíaca"""
+        """Scores heart rate"""
         if hr == 0:
             return 0
         elif hr < 100:
@@ -535,114 +535,114 @@ class ApgarCalculator:
             return 2
     
     def _score_respiratory(self, effort: str) -> int:
-        """Pontua esforço respiratório"""
-        mapping = {"ausente": 0, "irregular": 1, "regular": 2}
+        """Scores respiratory effort"""
+        mapping = {"absent": 0, "irregular": 1, "regular": 2}
         return mapping[effort]
     
     def _get_interpretation(self, score: int) -> Dict[str, str]:
-        """Interpreta o escore APGAR"""
+        """Interprets the APGAR score"""
         
         if score >= 8:
             return {
                 "stage": "Normal",
-                "description": "Recém-nascido em boas condições",
-                "interpretation": "RN vigoroso, sem necessidade de intervenção."
+                "description": "Newborn in good condition",
+                "interpretation": "Vigorous newborn, no intervention needed."
             }
         elif score >= 4:
             return {
-                "stage": "Moderado", 
-                "description": "Depressão moderada",
-                "interpretation": "Necessita estimulação e possível ventilação."
+                "stage": "Moderate", 
+                "description": "Moderate depression",
+                "interpretation": "Needs stimulation and possible ventilation."
             }
         else:
             return {
-                "stage": "Grave",
-                "description": "Asfixia grave", 
-                "interpretation": "Necessita reanimação imediata."
+                "stage": "Severe",
+                "description": "Severe asphyxia", 
+                "interpretation": "Needs immediate resuscitation."
             }
 
 
 def calculate_apgar(heart_rate: int, respiratory_effort: str, muscle_tone: str, 
                    reflexes: str, color: str) -> Dict[str, Any]:
-    """Função de conveniência para o sistema de carregamento dinâmico"""
+    """Convenience function for the dynamic loading system"""
     calculator = ApgarCalculator()
     return calculator.calculate(heart_rate, respiratory_effort, muscle_tone, reflexes, color)
 ```
 
-## 🔄 Protocolo de Implementação Automatizada
+## 🔄 Automated Implementation Protocol
 
-### Fluxo Detalhado por Iteração
+### Detailed Flow per Iteration
 
-Para cada ciclo de implementação, seguir rigorosamente:
+For each implementation cycle, strictly follow:
 
-#### 1. **📋 Consultar CALC_LIST.md**
+#### 1. **📋 Consult CALC_LIST.md**
 ```
-- Ler arquivo @CALC_LIST.md
-- Identificar primeira calculadora sem ✅
-- Priorizar por relevância clínica e disponibilidade de fórmulas
-- Selecionar calculadora para implementação
-```
-
-#### 2. **📖 Revisar README.md** 
-```
-- Ler @README.md para contexto da aplicação
-- Verificar estrutura atual de diretórios
-- Confirmar padrões de nomenclatura
-- Entender arquitetura de endpoints
+- Read file @CALC_LIST.md
+- Identify first calculator without ✅
+- Prioritize by clinical relevance and formula availability
+- Select calculator for implementation
 ```
 
-#### 3. **🏗️ Implementação Completa**
+#### 2. **📖 Review README.md** 
 ```
-- Criar JSON em /scores/{score_id}.json
-- Implementar calculadora em /calculators/{score_id}.py
-- Testar com POST /api/reload
-- Verificar funcionamento via API
-- Validar todos os cenários de entrada
-```
-
-#### 4. **✅ Atualizar CALC_LIST.md**
-```
-- Adicionar ✅ na linha da calculadora implementada
-- Manter formatação original do arquivo
-- Confirmar que alteração foi salva
+- Read @README.md for application context
+- Check current directory structure
+- Confirm naming conventions
+- Understand endpoint architecture
 ```
 
-#### 5. **🗜️ Compactar Contexto**
+#### 3. **🏗️ Complete Implementation**
 ```
-- Executar comando /compact
-- Resumir implementações realizadas
-- Preparar contexto para próximo ciclo
-```
-
-#### 6. **🔄 Prosseguir Automaticamente**
-```
-- Retornar ao passo 1 sem interrupção
-- Continuar até esgotar lista ou receber instrução de parada
-- Manter qualidade e consistência em todas implementações
+- Create JSON in /scores/{score_id}.json
+- Implement calculator in /calculators/{score_id}.py
+- Test with POST /api/reload
+- Verify functionality via API
+- Validate all input scenarios
 ```
 
-### Diretrizes de Qualidade
+#### 4. **✅ Update CALC_LIST.md**
+```
+- Add ✅ to the line of the implemented calculator
+- Maintain original file formatting
+- Confirm that the change was saved
+```
 
-- **Validação Rigorosa**: Cada calculadora deve ter validações completas de entrada
-- **Testes Funcionais**: Sempre testar reload e endpoints após implementação  
-- **Documentação Completa**: Incluir referências bibliográficas e notas clínicas
-- **Nomenclatura Consistente**: Seguir padrões snake_case para IDs e PascalCase para classes
-- **Interpretação Clínica**: Fornecer interpretações médicas adequadas para cada resultado
+#### 5. **🗜️ Compact Context**
+```
+- Execute /compact command
+- Summarize implementations performed
+- Prepare context for next cycle
+```
 
-### Tratamento de Erros
+#### 6. **🔄 Proceed Automatically**
+```
+- Return to step 1 without interruption
+- Continue until list is exhausted or stop instruction is received
+- Maintain quality and consistency across all implementations
+```
 
-- **Erro de Implementação**: Corrigir e testar novamente antes de marcar como completo
-- **Fórmula Incompleta**: Buscar referências adicionais ou pular para próxima calculadora
-- **Conflito de Nomenclatura**: Adaptar nome seguindo convenções estabelecidas
+### Quality Guidelines
 
-## 🎯 Resumo dos Passos
+- **Rigorous Validation**: Each calculator must have complete input validations
+- **Functional Tests**: Always test reload and endpoints after implementation  
+- **Complete Documentation**: Include bibliographic references and clinical notes
+- **Consistent Naming**: Follow snake_case for IDs and PascalCase for classes
+- **Clinical Interpretation**: Provide appropriate medical interpretations for each result
 
-1. **Criar JSON** em `/scores/{score_id}.json` com metadados completos
-2. **Implementar calculadora** em `/calculators/{score_id}.py` com função `calculate_{score_id}`  
-3. **Testar** via reload e endpoints da API
-4. **Adicionar modelos Pydantic** (opcional) para endpoints específicos
-5. **Documentar** referências e fórmulas adequadamente
-6. **Marcar como concluído** em CALC_LIST.md
-7. **Compactar conversa** e reiniciar ciclo
+### Error Handling
 
-Seguindo este guia, qualquer agente de programação pode implementar novas calculadoras médicas na nobra_calculator de forma consistente, funcional e totalmente automatizada! 🚀
+- **Implementation Error**: Correct and retest before marking as complete
+- **Incomplete Formula**: Seek additional references or skip to the next calculator
+- **Naming Conflict**: Adapt name following established conventions
+
+## 🎯 Summary of Steps
+
+1. **Create JSON** in `/scores/{score_id}.json` with complete metadata
+2. **Implement calculator** in `/calculators/{score_id}.py` with `calculate_{score_id}` function  
+3. **Test** via reload and API endpoints
+4. **Add Pydantic models** (optional) for specific endpoints
+5. **Document** references and formulas appropriately
+6. **Mark as complete** in CALC_LIST.md
+7. **Compact conversation** and restart cycle
+
+By following this guide, any programming agent can implement new medical calculators in nobra_calculator consistently, functionally, and fully automated! 🚀

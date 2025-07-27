@@ -1,125 +1,125 @@
 {
   "id": "cha2ds2_vasc",
-  "title": "CHA₂DS₂-VASc Score para Risco de AVC na Fibrilação Atrial",
-  "description": "Calcula o risco de acidente vascular cerebral (AVC) em pacientes com fibrilação atrial não-valvar, auxiliando na decisão sobre anticoagulação oral",
-  "category": "cardiologia",
+  "title": "CHA₂DS₂-VASc Score for Atrial Fibrillation Stroke Risk",
+  "description": "Calculates the risk of stroke in patients with non-valvular atrial fibrillation, aiding in the decision regarding oral anticoagulation",
+  "category": "cardiology",
   "version": "2010",
   "parameters": [
     {
       "name": "age",
       "type": "integer",
       "required": true,
-      "description": "Idade do paciente em anos",
+      "description": "Patient's age in years",
       "validation": {
         "min": 18,
         "max": 120
       },
-      "unit": "anos"
+      "unit": "years"
     },
     {
       "name": "sex",
       "type": "string",
       "required": true,
-      "description": "Sexo biológico do paciente",
-      "options": ["masculino", "feminino"],
+      "description": "Patient's biological sex",
+      "options": ["male", "female"],
       "validation": {
-        "enum": ["masculino", "feminino"]
+        "enum": ["male", "female"]
       }
     },
     {
       "name": "congestive_heart_failure",
       "type": "boolean",
       "required": true,
-      "description": "História de insuficiência cardíaca congestiva ou disfunção ventricular esquerda (FEVE ≤40%)"
+      "description": "History of congestive heart failure or left ventricular dysfunction (LVEF ≤40%)"
     },
     {
       "name": "hypertension",
       "type": "boolean",
       "required": true,
-      "description": "História de hipertensão arterial"
+      "description": "History of arterial hypertension"
     },
     {
       "name": "stroke_tia_thromboembolism",
       "type": "boolean",
       "required": true,
-      "description": "História prévia de AVC, AIT (ataque isquêmico transitório) ou tromboembolismo"
+      "description": "Previous history of stroke, TIA (transient ischemic attack) or thromboembolism"
     },
     {
       "name": "vascular_disease",
       "type": "boolean",
       "required": true,
-      "description": "Doença vascular (infarto do miocárdio prévio, doença arterial periférica ou placa aórtica)"
+      "description": "Vascular disease (previous myocardial infarction, peripheral artery disease or aortic plaque)"
     },
     {
       "name": "diabetes",
       "type": "boolean",
       "required": true,
-      "description": "História de diabetes mellitus"
+      "description": "History of diabetes mellitus"
     }
   ],
   "result": {
     "name": "cha2ds2_vasc_score",
     "type": "integer",
-    "unit": "pontos",
-    "description": "Escore CHA₂DS₂-VASc total (0-9 pontos)"
+    "unit": "points",
+    "description": "Total CHA₂DS₂-VASc score (0-9 points)"
   },
   "interpretation": {
     "ranges": [
       {
         "min": 0,
         "max": 0,
-        "stage": "Muito Baixo Risco",
-        "description": "Risco anual de AVC: 0.3%",
-        "interpretation": "Pacientes masculinos com 0 pontos: anticoagulação não recomendada. Considerar aspirina ou nenhuma terapia antitrombótica."
+        "stage": "Very Low Risk",
+        "description": "Annual stroke risk: 0.3%",
+        "interpretation": "Male patients with 0 points: anticoagulation not recommended. Consider aspirin or no antithrombotic therapy."
       },
       {
         "min": 1,
         "max": 1,
-        "stage": "Baixo Risco",
-        "description": "Risco anual de AVC: 0.9%",
-        "interpretation": "Homens com 1 ponto: anticoagulação pode ser considerada. Mulheres com 1 ponto (apenas pelo sexo): anticoagulação não recomendada."
+        "stage": "Low Risk",
+        "description": "Annual stroke risk: 0.9%",
+        "interpretation": "Men with 1 point: anticoagulation may be considered. Women with 1 point (due to sex only): anticoagulation not recommended."
       },
       {
         "min": 2,
         "max": 2,
-        "stage": "Risco Moderado",
-        "description": "Risco anual de AVC: 2.9%",
-        "interpretation": "Anticoagulação oral recomendada (warfarina com INR 2-3 ou DOAC). Benefício supera o risco de sangramento na maioria dos pacientes."
+        "stage": "Moderate Risk",
+        "description": "Annual stroke risk: 2.9%",
+        "interpretation": "Oral anticoagulation recommended (warfarin with INR 2-3 or DOAC). Benefit outweighs bleeding risk in most patients."
       },
       {
         "min": 3,
         "max": 3,
-        "stage": "Risco Moderado-Alto",
-        "description": "Risco anual de AVC: 4.6%",
-        "interpretation": "Anticoagulação oral fortemente recomendada. Considerar DOACs como primeira escolha devido ao melhor perfil de segurança."
+        "stage": "Moderate-High Risk",
+        "description": "Annual stroke risk: 4.6%",
+        "interpretation": "Oral anticoagulation strongly recommended. Consider DOACs as first choice due to better safety profile."
       },
       {
         "min": 4,
         "max": 4,
-        "stage": "Alto Risco",
-        "description": "Risco anual de AVC: 6.7%",
-        "interpretation": "Anticoagulação oral essencial. Monitorar aderência e ajustar dose conforme função renal se usando DOACs."
+        "stage": "High Risk",
+        "description": "Annual stroke risk: 6.7%",
+        "interpretation": "Oral anticoagulation essential. Monitor adherence and adjust dose according to renal function if using DOACs."
       },
       {
         "min": 5,
         "max": 5,
-        "stage": "Alto Risco",
-        "description": "Risco anual de AVC: 10.0%",
-        "interpretation": "Anticoagulação oral mandatória. Considerar estratégias para melhorar aderência e minimizar risco de sangramento."
+        "stage": "High Risk",
+        "description": "Annual stroke risk: 10.0%",
+        "interpretation": "Oral anticoagulation mandatory. Consider strategies to improve adherence and minimize bleeding risk."
       },
       {
         "min": 6,
         "max": 6,
-        "stage": "Muito Alto Risco",
-        "description": "Risco anual de AVC: 13.6%",
-        "interpretation": "Anticoagulação oral imperativa. Avaliar e otimizar fatores de risco modificáveis. Monitoramento frequente."
+        "stage": "Very High Risk",
+        "description": "Annual stroke risk: 13.6%",
+        "interpretation": "Oral anticoagulation imperative. Evaluate and optimize modifiable risk factors. Frequent monitoring."
       },
       {
         "min": 7,
         "max": 9,
-        "stage": "Risco Extremo",
-        "description": "Risco anual de AVC: >15%",
-        "interpretation": "Anticoagulação oral crítica. Considerar oclusão de apêndice atrial esquerdo se contraindicação absoluta para anticoagulação."
+        "stage": "Extreme Risk",
+        "description": "Annual stroke risk: >15%",
+        "interpretation": "Critical oral anticoagulation. Consider left atrial appendage occlusion if absolute contraindication to anticoagulation."
       }
     ]
   },
@@ -130,15 +130,15 @@
   ],
   "formula": "CHA₂DS₂-VASc = C + H + A₂ + D + S₂ + V + A + Sc",
   "notes": [
-    "C = Congestive heart failure (1 ponto)",
-    "H = Hypertension (1 ponto)",
-    "A₂ = Age ≥75 anos (2 pontos), 65-74 anos (1 ponto)",
-    "D = Diabetes (1 ponto)",
-    "S₂ = Stroke/TIA/TE prévio (2 pontos)",
-    "V = Vascular disease (1 ponto)",
-    "A = Age 65-74 anos (1 ponto)",
-    "Sc = Sex category feminino (1 ponto)",
-    "DOACs incluem: dabigatrana, rivaroxabana, apixabana, edoxabana",
-    "Considerar HAS-BLED score para avaliar risco de sangramento antes de iniciar anticoagulação"
+    "C = Congestive heart failure (1 point)",
+    "H = Hypertension (1 point)",
+    "A₂ = Age ≥75 years (2 points), 65-74 years (1 point)",
+    "D = Diabetes (1 point)",
+    "S₂ = Previous Stroke/TIA/TE (2 points)",
+    "V = Vascular disease (1 point)",
+    "A = Age 65-74 years (1 point)",
+    "Sc = Sex category female (1 point)",
+    "DOACs include: dabigatran, rivaroxaban, apixaban, edoxaban",
+    "Consider HAS-BLED score to assess bleeding risk before initiating anticoagulation"
   ]
 }

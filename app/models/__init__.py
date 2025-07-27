@@ -1,5 +1,5 @@
 """
-Modelos Pydantic para a API nobra_calculator
+Pydantic models for the nobra_calculator API
 """
 
 from .score_models import (

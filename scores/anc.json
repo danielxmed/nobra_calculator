@@ -1,0 +1,91 @@
+{
+  "id": "anc",
+  "title": "Absolute Neutrophil Count (ANC)",
+  "description": "Frequently used to assess febrile neutropenia in chemotherapy patients, by calculating the total number of mature and immature neutrophils",
+  "category": "hematology",
+  "version": "Standard",
+  "parameters": [
+    {
+      "name": "wbc_count",
+      "type": "float",
+      "required": true,
+      "description": "White blood cell count (WBC)",
+      "validation": {
+        "min": 0.1,
+        "max": 100.0
+      },
+      "unit": "x 10³/mm³"
+    },
+    {
+      "name": "segmented_neutrophils",
+      "type": "float",
+      "required": true,
+      "description": "Percentage of segmented (mature) neutrophils",
+      "validation": {
+        "min": 0.0,
+        "max": 100.0
+      },
+      "unit": "%"
+    },
+    {
+      "name": "band_neutrophils",
+      "type": "float",
+      "required": true,
+      "description": "Percentage of band (immature) neutrophils",
+      "validation": {
+        "min": 0.0,
+        "max": 100.0
+      },
+      "unit": "%"
+    }
+  ],
+  "result": {
+    "name": "anc_count",
+    "type": "float",
+    "unit": "cells/mm³",
+    "description": "Absolute neutrophil count"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 500,
+        "stage": "Severe Neutropenia",
+        "description": "High infection risk",
+        "interpretation": "Severe neutropenia. Very high risk of severe bacterial infections and sepsis. Requires protective isolation, antimicrobial prophylaxis, and intensive monitoring."
+      },
+      {
+        "min": 500,
+        "max": 1000,
+        "stage": "Moderate Neutropenia",
+        "description": "Moderate infection risk",
+        "interpretation": "Moderate neutropenia. Increased risk of infections. Avoid unnecessary exposures, consider prophylaxis in some cases."
+      },
+      {
+        "min": 1000,
+        "max": 1500,
+        "stage": "Mild Neutropenia",
+        "description": "Mild infection risk",
+        "interpretation": "Mild neutropenia. Small increase in infection risk. Regular monitoring and basic hygiene precautions."
+      },
+      {
+        "min": 1500,
+        "max": 20000,
+        "stage": "Normal",
+        "description": "Normal count",
+        "interpretation": "Neutrophil count within normal range (1500-8000 cells/mm³). Infection risk not increased by neutropenia."
+      }
+    ]
+  },
+  "references": [
+    "Klastersky J, de Naurois J, Rolston K, et al. Management of febrile neutropaenia: ESMO Clinical Practice Guidelines. Ann Oncol. 2016;27(suppl 5):v111-v118.",
+    "Freifeld AG, Bow EJ, Sepkowitz KA, et al. Clinical practice guideline for the use of antimicrobial agents in neutropenic patients with cancer: 2010 update by the infectious diseases society of america. Clin Infect Dis. 2011;52(4):e56-93."
+  ],
+  "formula": "ANC = WBC × [(% Segmented Neutrophils + % Band Neutrophils) / 100]",
+  "notes": [
+    "Normal range: 1500-8000 cells/mm³",
+    "Neutropenia: ANC <1500 cells/mm³",
+    "Monitor before each chemotherapy cycle",
+    "Essential for decisions regarding antimicrobial prophylaxis"
+  ]
+}

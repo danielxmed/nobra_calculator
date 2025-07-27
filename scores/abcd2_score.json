@@ -1,0 +1,102 @@
+{
+  "id": "abcd2_score",
+  "title": "ABCD² Score for TIA",
+  "description": "Estimates stroke risk after a transient ischemic attack (TIA), based on patient risk factors",
+  "category": "neurology",
+  "version": "2007",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient's age",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "blood_pressure",
+      "type": "string",
+      "required": true,
+      "description": "Blood pressure at evaluation",
+      "options": ["normal", "elevated"],
+      "validation": {
+        "enum": ["normal", "elevated"]
+      }
+    },
+    {
+      "name": "clinical_features",
+      "type": "string",
+      "required": true,
+      "description": "Clinical features of the episode",
+      "options": ["unilateral_weakness", "speech_disturbance", "other"],
+      "validation": {
+        "enum": ["unilateral_weakness", "speech_disturbance", "other"]
+      }
+    },
+    {
+      "name": "duration",
+      "type": "string",
+      "required": true,
+      "description": "Duration of symptoms",
+      "options": ["less_10min", "10_59min", "60min_or_more"],
+      "validation": {
+        "enum": ["less_10min", "10_59min", "60min_or_more"]
+      }
+    },
+    {
+      "name": "diabetes",
+      "type": "string",
+      "required": true,
+      "description": "History of diabetes mellitus",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "abcd2_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total ABCD² score (0-7 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Low Risk",
+        "description": "Low stroke risk",
+        "interpretation": "Stroke risk in 2 days: 1.0%; in 7 days: 1.2%; in 90 days: 3.1%. Can be managed outpatient with scheduled diagnostic evaluation."
+      },
+      {
+        "min": 4,
+        "max": 5,
+        "stage": "Moderate Risk",
+        "description": "Moderate stroke risk",
+        "interpretation": "Stroke risk in 2 days: 4.1%; in 7 days: 5.9%; in 90 days: 9.8%. Consider hospitalization for urgent investigation and initiation of preventive measures."
+      },
+      {
+        "min": 6,
+        "max": 7,
+        "stage": "High Risk",
+        "description": "High stroke risk",
+        "interpretation": "Stroke risk in 2 days: 8.1%; in 7 days: 11.7%; in 90 days: 17.8%. Urgent hospitalization recommended for investigation and immediate initiation of preventive measures."
+      }
+    ]
+  },
+  "references": [
+    "Johnston SC, Rothwell PM, Nguyen-Huynh MN, et al. Validation and refinement of scores to predict very early stroke risk after transient ischaemic attack. Lancet. 2007;369(9558):283-92.",
+    "Rothwell PM, Giles MF, Flossmann E, et al. A simple score (ABCD) to identify individuals at high early risk of stroke after transient ischaemic attack. Lancet. 2005;366(9479):29-36."
+  ],
+  "formula": "A (Age ≥60) + B (BP ≥140/90) + C (Clinical features) + D (Duration) + D (Diabetes)",
+  "notes": [
+    "Validated for patients with TIA within 7 days of the event",
+    "Elevated blood pressure: ≥140/90 mmHg",
+    "Unilateral weakness is 2 points, isolated speech disturbance is 1 point",
+    "Not applicable for patients with established stroke"
+  ]
+}

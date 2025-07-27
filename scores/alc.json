@@ -1,0 +1,73 @@
+{
+  "id": "alc",
+  "title": "Absolute Lymphocyte Count (ALC)",
+  "description": "Assesses lymphocyte count and predicts CD4 count in HIV patients",
+  "category": "infectious_diseases",
+  "version": "1998",
+  "parameters": [
+    {
+      "name": "wbc_count",
+      "type": "float",
+      "required": true,
+      "description": "White blood cell count (WBC)",
+      "validation": {
+        "min": 0.5,
+        "max": 50.0
+      },
+      "unit": "x 10³/mm³"
+    },
+    {
+      "name": "lymphocyte_percent",
+      "type": "float",
+      "required": true,
+      "description": "Lymphocyte percentage in CBC",
+      "validation": {
+        "min": 1.0,
+        "max": 100.0
+      },
+      "unit": "%"
+    }
+  ],
+  "result": {
+    "name": "alc_count",
+    "type": "float",
+    "unit": "cells/mm³",
+    "description": "Absolute lymphocyte count"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1000,
+        "stage": "Low CD4",
+        "description": "CD4 likely <200 cells/mm³",
+        "interpretation": "High risk of opportunistic infections. CD4 very likely <200 cells/mm³. Requires specific CD4 count and consideration for opportunistic infection prophylaxis."
+      },
+      {
+        "min": 1000,
+        "max": 2000,
+        "stage": "Indeterminate Zone",
+        "description": "CD4 indeterminate",
+        "interpretation": "Indeterminate range for CD4 prediction. Specific CD4 count is necessary for accurate immunological status assessment."
+      },
+      {
+        "min": 2000,
+        "max": 10000,
+        "stage": "Adequate CD4",
+        "description": "CD4 likely ≥200 cells/mm³",
+        "interpretation": "CD4 very likely ≥200 cells/mm³. Lower risk of opportunistic infections. Continue regular monitoring."
+      }
+    ]
+  },
+  "references": [
+    "Shapiro NI, Karras DJ, Leech SH, Heilpern KL. Absolute lymphocyte count as a predictor of CD4 count. Ann Emerg Med. 1998;32(3 Pt 1):319-23.",
+    "Beck EJ, Kupek EJ, Gompels MM, Pinching AJ. Correlation between total and CD4 lymphocyte counts in HIV infection: not making the good an enemy of the not so perfect. Int J STD AIDS. 1996;7(6):422-8."
+  ],
+  "formula": "ALC = WBC count × 1000 × (% Lymphocytes / 100)",
+  "notes": [
+    "Normal ALC range: 1300-3500 cells/mm³",
+    "Correlation with CD4: r=0.69 (p<0.0001)",
+    "Useful as a screening tool when CD4 is not available",
+    "Does not replace specific CD4 count for HIV monitoring"
+  ]
+}

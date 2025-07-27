@@ -1,5 +1,5 @@
 """
-Routers da API nobra_calculator
+nobra_calculator API routers
 """
 
 from .scores import router as scores_router

@@ -1,18 +1,18 @@
 """
 6 Minute Walk Distance Calculator
 
-Calcula valores de referência para distância caminhada como medida de status funcional.
-Referência: Enright PL, Sherrill DL. Am J Respir Crit Care Med. 1998;158(5):1384-7.
+Calculates reference values for walk distance as a measure of functional status.
+Reference: Enright PL, Sherrill DL. Am J Respir Crit Care Med. 1998;158(5):1384-7.
 """
 
 from typing import Dict, Any, Optional
 
 
 class SixMinuteWalkDistanceCalculator:
-    """Calculadora para 6 Minute Walk Distance"""
+    """Calculator for 6 Minute Walk Distance"""
     
     def __init__(self):
-        # Constantes das equações de Enright-Sherrill
+        # Constants from Enright-Sherrill equations
         self.MALE_HEIGHT_COEFF = 7.57
         self.MALE_AGE_COEFF = -5.02
         self.MALE_WEIGHT_COEFF = -1.76
@@ -23,45 +23,46 @@ class SixMinuteWalkDistanceCalculator:
         self.FEMALE_WEIGHT_COEFF = -2.29
         self.FEMALE_CONSTANT = 667
         
-        # Limite inferior da normalidade
+        # Lower limit of normality
         self.LOWER_LIMIT_NORMAL = 153
     
     def calculate(self, age: int, sex: str, height: float, weight: float, 
                  observed_distance: Optional[float] = None) -> Dict[str, Any]:
         """
-        Calcula a distância predita para caminhada de 6 minutos
+        Calculates the predicted 6-minute walk distance
         
         Args:
-            age: Idade em anos
-            sex: "masculino" ou "feminino"
-            height: Altura em centímetros
-            weight: Peso em quilogramas
-            observed_distance: Distância observada (opcional)
+            age: Age in years
+            sex: "male" or "female"
+            height: Height in centimeters
+            weight: Weight in kilograms
+            observed_distance: Observed distance (optional)
             
         Returns:
-            Dict com resultado predito, interpretação e comparação
+            Dict with predicted result, interpretation, and comparison
         """
         
-        # Validações
+        # Validations
         self._validate_inputs(age, sex, height, weight, observed_distance)
         
-        # Calcular distância predita
+        # Calculate predicted distance
         predicted_distance = self._calculate_predicted_distance(age, sex, height, weight)
         
-        # Calcular limite inferior da normalidade
+        # Calculate lower limit of normality
         lower_limit = predicted_distance - self.LOWER_LIMIT_NORMAL
         
-        # Resultados base
+        # Base results
         result = {
             "result": round(predicted_distance, 1),
-            "unit": "metros",
+            "unit": "meters",
             "lower_limit_normal": round(lower_limit, 1),
-            "interpretation": f"Distância predita de {predicted_distance:.1f} metros para paciente {sex} de {age} anos, {height} cm e {weight} kg. Limite inferior da normalidade: {lower_limit:.1f} metros.",
-            "stage": "Predito",
-            "stage_description": "Valor de referência calculado"
+            "interpretation": f"Predicted distance of {predicted_distance:.1f} meters for a {sex} patient aged {age} years, {height} cm, and {weight} kg. Lower limit of normality: {lower_limit:.1f} meters.",
+            "stage": "Predicted",
+            "stage_description": "Calculated reference value",
+            "percentage_predicted": None
         }
         
-        # Se distância observada foi fornecida, adicionar análise comparativa
+        # If observed distance was provided, add comparative analysis
         if observed_distance is not None:
             percentage_predicted = (observed_distance / predicted_distance) * 100
             interpretation_observed = self._get_interpretation_observed(percentage_predicted, observed_distance, lower_limit)
@@ -78,90 +79,90 @@ class SixMinuteWalkDistanceCalculator:
     
     def _validate_inputs(self, age: int, sex: str, height: float, weight: float, 
                         observed_distance: Optional[float]):
-        """Valida os parâmetros de entrada"""
+        """Validates input parameters"""
         
         if not isinstance(age, int) or age < 18 or age > 100:
-            raise ValueError("Idade deve ser um inteiro entre 18 e 100 anos")
+            raise ValueError("Age must be an integer between 18 and 100 years")
         
-        if sex not in ["masculino", "feminino"]:
-            raise ValueError("Sexo deve ser 'masculino' ou 'feminino'")
+        if sex not in ["male", "female"]:
+            raise ValueError("Sex must be 'male' or 'female'")
         
         if not isinstance(height, (int, float)) or height < 120.0 or height > 220.0:
-            raise ValueError("Altura deve estar entre 120.0 e 220.0 cm")
+            raise ValueError("Height must be between 120.0 and 220.0 cm")
         
         if not isinstance(weight, (int, float)) or weight < 30.0 or weight > 200.0:
-            raise ValueError("Peso deve estar entre 30.0 e 200.0 kg")
+            raise ValueError("Weight must be between 30.0 and 200.0 kg")
         
         if observed_distance is not None:
             if not isinstance(observed_distance, (int, float)) or observed_distance < 0.0 or observed_distance > 1000.0:
-                raise ValueError("Distância observada deve estar entre 0.0 e 1000.0 metros")
+                raise ValueError("Observed distance must be between 0.0 and 1000.0 meters")
     
     def _calculate_predicted_distance(self, age: int, sex: str, height: float, weight: float) -> float:
-        """Calcula a distância predita usando equações de Enright-Sherrill"""
+        """Calculates predicted distance using Enright-Sherrill equations"""
         
-        if sex == "masculino":
-            # Equação para homens: 6MWD = (7.57 × altura) - (5.02 × idade) - (1.76 × peso) - 309
+        if sex == "male":
+            # Equation for men: 6MWD = (7.57 × height) - (5.02 × age) - (1.76 × weight) - 309
             predicted = (self.MALE_HEIGHT_COEFF * height + 
                         self.MALE_AGE_COEFF * age + 
                         self.MALE_WEIGHT_COEFF * weight + 
                         self.MALE_CONSTANT)
         else:
-            # Equação para mulheres: 6MWD = (2.11 × altura) - (2.29 × peso) - (5.78 × idade) + 667
+            # Equation for women: 6MWD = (2.11 × height) - (2.29 × weight) - (5.78 × age) + 667
             predicted = (self.FEMALE_HEIGHT_COEFF * height + 
                         self.FEMALE_WEIGHT_COEFF * weight + 
                         self.FEMALE_AGE_COEFF * age + 
                         self.FEMALE_CONSTANT)
         
-        # Garantir que não seja negativo
+        # Ensure it's not negative
         return max(predicted, 0.0)
     
     def _get_interpretation_observed(self, percentage_predicted: float, 
                                    observed_distance: float, lower_limit: float) -> Dict[str, str]:
         """
-        Interpreta a distância observada comparada com a predita
+        Interprets the observed distance compared to the predicted
         
         Args:
-            percentage_predicted: Porcentagem do valor predito
-            observed_distance: Distância observada
-            lower_limit: Limite inferior da normalidade
+            percentage_predicted: Percentage of predicted value
+            observed_distance: Observed distance
+            lower_limit: Lower limit of normality
             
         Returns:
-            Dict com interpretação
+            Dict with interpretation
         """
         
-        # Classificação baseada na porcentagem do predito e limite inferior
+        # Classification based on percentage of predicted and lower limit
         if observed_distance < lower_limit or percentage_predicted < 50:
             return {
-                "stage": "Severamente Reduzido",
-                "description": "Capacidade funcional severamente reduzida",
-                "interpretation": f"Distância observada de {observed_distance:.1f}m representa {percentage_predicted:.1f}% do predito. Valor muito abaixo do esperado, indicando limitação funcional grave que requer investigação e tratamento intensivos."
+                "stage": "Severely Reduced",
+                "description": "Severely reduced functional capacity",
+                "interpretation": f"Observed distance of {observed_distance:.1f}m represents {percentage_predicted:.1f}% of predicted. Value is much lower than expected, indicating severe functional limitation requiring intensive investigation and treatment."
             }
         elif percentage_predicted < 75:
             return {
-                "stage": "Moderadamente Reduzido",
-                "description": "Capacidade funcional moderadamente reduzida",
-                "interpretation": f"Distância observada de {observed_distance:.1f}m representa {percentage_predicted:.1f}% do predito. Valor abaixo do esperado, sugerindo limitação funcional moderada que pode se beneficiar de reabilitação."
+                "stage": "Moderately Reduced",
+                "description": "Moderately reduced functional capacity",
+                "interpretation": f"Observed distance of {observed_distance:.1f}m represents {percentage_predicted:.1f}% of predicted. Value is lower than expected, suggesting moderate functional limitation that may benefit from rehabilitation."
             }
         elif percentage_predicted < 90:
             return {
-                "stage": "Levemente Reduzido",
-                "description": "Capacidade funcional levemente reduzida",
-                "interpretation": f"Distância observada de {observed_distance:.1f}m representa {percentage_predicted:.1f}% do predito. Valor ligeiramente abaixo do esperado, podendo indicar limitação funcional leve ou início de declínio."
+                "stage": "Slightly Reduced",
+                "description": "Slightly reduced functional capacity",
+                "interpretation": f"Observed distance of {observed_distance:.1f}m represents {percentage_predicted:.1f}% of predicted. Value is slightly lower than expected, potentially indicating mild functional limitation or onset of decline."
             }
         else:
             return {
                 "stage": "Normal",
-                "description": "Capacidade funcional normal",
-                "interpretation": f"Distância observada de {observed_distance:.1f}m representa {percentage_predicted:.1f}% do predito. Valor dentro dos limites esperados, indicando capacidade funcional preservada."
+                "description": "Normal functional capacity",
+                "interpretation": f"Observed distance of {observed_distance:.1f}m represents {percentage_predicted:.1f}% of predicted. Value is within expected limits, indicating preserved functional capacity."
             }
 
 
 def calculate_6_minute_walk_distance(age: int, sex: str, height: float, weight: float, 
                                    observed_distance: Optional[float] = None) -> Dict[str, Any]:
     """
-    Função de conveniência para o sistema de carregamento dinâmico
+    Convenience function for the dynamic loading system
     
-    IMPORTANTE: Esta função deve seguir o padrão calculate_{score_id}
+    IMPORTANT: This function must follow the calculate_{score_id} pattern
     """
     calculator = SixMinuteWalkDistanceCalculator()
     return calculator.calculate(age, sex, height, weight, observed_distance)

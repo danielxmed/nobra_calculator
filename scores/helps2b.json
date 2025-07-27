@@ -1,0 +1,142 @@
+{
+  "id": "helps2b",
+  "title": "2HELPS2B Score",
+  "description": "Estimates seizure risk in acutely ill patients undergoing continuous EEG (cEEG). Combines clinical factors and EEG findings to guide appropriate monitoring duration.",
+  "category": "neurology",
+  "version": "2017",
+  "parameters": [
+    {
+      "name": "seizure_history",
+      "type": "string",
+      "required": true,
+      "description": "History of seizures (remote or recent acute suspected)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "epileptiform_discharges",
+      "type": "string",
+      "required": true,
+      "description": "Epileptiform discharges (spikes or sporadic sharp waves)",
+      "options": ["present", "absent"],
+      "validation": {
+        "enum": ["present", "absent"]
+      }
+    },
+    {
+      "name": "lateralized_periodic_discharges",
+      "type": "string",
+      "required": true,
+      "description": "Lateralized periodic discharges (LPDs)",
+      "options": ["present", "absent"],
+      "validation": {
+        "enum": ["present", "absent"]
+      }
+    },
+    {
+      "name": "bilateral_independent_periodic_discharges",
+      "type": "string",
+      "required": true,
+      "description": "Bilateral independent periodic discharges (BIPDs)",
+      "options": ["present", "absent"],
+      "validation": {
+        "enum": ["present", "absent"]
+      }
+    },
+    {
+      "name": "brief_potentially_ictal_rhythmic_discharges",
+      "type": "string",
+      "required": true,
+      "description": "Brief potentially ictal rhythmic discharges (BIRDs)",
+      "options": ["present", "absent"],
+      "validation": {
+        "enum": ["present", "absent"]
+      }
+    },
+    {
+      "name": "burst_suppression",
+      "type": "string",
+      "required": true,
+      "description": "Burst-suppression pattern on EEG",
+      "options": ["present", "absent"],
+      "validation": {
+        "enum": ["present", "absent"]
+      }
+    }
+  ],
+  "result": {
+    "name": "helps2b_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total 2HELPS2B Score (0-6 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "Very low seizure risk",
+        "interpretation": "Seizure risk in 72h: 5%. Only 1-hour screening EEG recommended. Additional monitoring generally not necessary."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Moderate Risk",
+        "description": "Moderate seizure risk",
+        "interpretation": "Seizure risk in 72h: 12%. 12-hour cEEG monitoring recommended to detect non-obvious seizures."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "High Risk",
+        "description": "High seizure risk",
+        "interpretation": "Seizure risk in 72h: 27%. At least 24-hour cEEG monitoring recommended. Intensive neurological vigilance necessary."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Very High Risk",
+        "description": "Very high seizure risk",
+        "interpretation": "Seizure risk in 72h: 50%. Prolonged continuous monitoring (≥24h) highly recommended. Consider prophylactic anticonvulsant treatment."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Extreme Risk",
+        "description": "Extremely high seizure risk",
+        "interpretation": "Seizure risk in 72h: 73%. Mandatory prolonged continuous monitoring. Anticonvulsant treatment should be considered. Intensive neurological care."
+      },
+      {
+        "min": 5,
+        "max": 5,
+        "stage": "Critical Risk",
+        "description": "Critical seizure risk",
+        "interpretation": "Seizure risk in 72h: 88%. Continuous monitoring in neurological ICU. Anticonvulsant treatment frequently indicated. Reserved prognosis."
+      },
+      {
+        "min": 6,
+        "max": 6,
+        "stage": "Maximum Risk",
+        "description": "Maximum seizure risk",
+        "interpretation": "Seizure risk in 72h: >95%. Mandatory continuous monitoring in ICU. Urgent anticonvulsant treatment and neuroprotective measures. Severe prognosis."
+      }
+    ]
+  },
+  "references": [
+    "Struck AF, Ustun B, Ruiz AR, et al. Association of an electroencephalography-based risk score with seizure probability in hospitalized patients. JAMA Neurol. 2017;74(12):1419-1424.",
+    "Struck AF, Osman G, Rampal N, et al. Time-dependent risk of seizures in critically ill patients on continuous electroencephalogram. Ann Neurol. 2017;82(4):177-185.",
+    "Gaspard N, Foreman BP, Judd LM, et al. Intravenous ketamine for the treatment of refractory status epilepticus: a retrospective multicenter study. Epilepsia. 2013;54(8):1498-1503."
+  ],
+  "formula": "2HELPS2B = (Seizure history: 1 point if present) + (Epileptiform discharges: 1 point if present) + (LPDs: 1 point if present) + (BIPDs: 1 point if present) + (BIRDs: 1 point if present) + (Burst-suppression: 1 point if present)",
+  "notes": [
+    "Score developed to optimize continuous EEG (cEEG) monitoring duration",
+    "Should be calculated after the first hour of EEG, when >68% of abnormalities are evident",
+    "Combines one clinical factor (seizure history) with 5 electroencephalographic findings",
+    "Validated in large multicenter cohorts with >2000 patients",
+    "Precision medicine tool to personalize cEEG duration",
+    "Does not replace specialized neurological clinical evaluation"
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "id": "abbey_pain_scale",
+  "title": "Abbey Pain Scale for Dementia Patients",
+  "description": "Assesses pain in patients with advanced dementia who cannot verbalize pain through behavioral observation",
+  "category": "geriatrics",
+  "version": "2004",
+  "parameters": [
+    {
+      "name": "vocalization",
+      "type": "integer",
+      "required": true,
+      "description": "Vocalization (moans, cries, wails)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      },
+      "options": ["0 - Absent", "1 - Mild", "2 - Moderate", "3 - Severe"],
+      "unit": "points"
+    },
+    {
+      "name": "facial_expression",
+      "type": "integer",
+      "required": true,
+      "description": "Facial expression (frown, grimaces, tense look)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      },
+      "options": ["0 - Absent", "1 - Mild", "2 - Moderate", "3 - Severe"],
+      "unit": "points"
+    },
+    {
+      "name": "body_language",
+      "type": "integer",
+      "required": true,
+      "description": "Change in body language (restlessness, rigidity, defensive posture)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      },
+      "options": ["0 - Absent", "1 - Mild", "2 - Moderate", "3 - Severe"],
+      "unit": "points"
+    },
+    {
+      "name": "behavioral_change",
+      "type": "integer",
+      "required": true,
+      "description": "Behavioral change (confusion, refusal to cooperate, aggression)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      },
+      "options": ["0 - Absent", "1 - Mild", "2 - Moderate", "3 - Severe"],
+      "unit": "points"
+    },
+    {
+      "name": "physiological_change",
+      "type": "integer",
+      "required": true,
+      "description": "Physiological change (change in temperature, pulse, blood pressure, sweating, pallor)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      },
+      "options": ["0 - Absent", "1 - Mild", "2 - Moderate", "3 - Severe"],
+      "unit": "points"
+    },
+    {
+      "name": "physical_change",
+      "type": "integer",
+      "required": true,
+      "description": "Physical change (tears, pressure areas, arthritis, contractures, previous injuries)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      },
+      "options": ["0 - Absent", "1 - Mild", "2 - Moderate", "3 - Severe"],
+      "unit": "points"
+    }
+  ],
+  "result": {
+    "name": "abbey_pain_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total Abbey Pain Scale score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "No Pain",
+        "description": "Absence of pain",
+        "interpretation": "No behavioral evidence of pain. Patient appears comfortable. Continue routine observation."
+      },
+      {
+        "min": 3,
+        "max": 7,
+        "stage": "Mild Pain",
+        "description": "Mild pain present",
+        "interpretation": "Evidence of mild pain. Consider non-pharmacological interventions (comfort, repositioning, relaxation). Monitor response and re-evaluate."
+      },
+      {
+        "min": 8,
+        "max": 13,
+        "stage": "Moderate Pain",
+        "description": "Moderate pain present",
+        "interpretation": "Clear evidence of moderate pain. Consider appropriate analgesia and non-pharmacological interventions. Re-evaluate after 30-60 minutes."
+      },
+      {
+        "min": 14,
+        "max": 18,
+        "stage": "Severe Pain",
+        "description": "Severe pain present",
+        "interpretation": "Evidence of severe pain. Immediate analgesia needed. Use WHO analgesic ladder. Re-evaluate frequently and adjust treatment as necessary."
+      }
+    ]
+  },
+  "references": [
+    "Abbey J, Piller N, De Bellis A, et al. The Abbey pain scale: a 1-minute numerical indicator for people with end-stage dementia. Int J Palliat Nurs. 2004;10(1):6-13.",
+    "Australian Pain Society. Pain in Residential Aged Care Facilities: Management Strategies. Sydney: Australian Pain Society; 2005.",
+    "Liu JY, Briggs M, Closs SJ. The psychometric qualities of four observational pain tools (OPTs) for the assessment of pain in elderly people with osteoarthritic pain. J Pain Symptom Manage. 2010;40(4):582-98."
+  ],
+  "formula": "Sum of the 6 domains: Vocalization + Facial Expression + Body Language + Behavioral Change + Physiological Change + Physical Change",
+  "notes": [
+    "Developed specifically for patients with end-stage dementia",
+    "Assessment takes less than 1 minute to complete",
+    "Does not require specific training for application",
+    "Does not differentiate between pain and distress - careful observation after pain relief is necessary",
+    "Should be applied before and after pain interventions",
+    "Observational tool based on behaviors indicative of pain",
+    "Recommended by the Australian Pain Society and British Geriatrics Society",
+    "Each domain is scored from 0 (absent) to 3 (severe)"
+  ]
+}

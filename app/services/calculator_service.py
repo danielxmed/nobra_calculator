@@ -1,5 +1,5 @@
 """
-Serviço para executar cálculos dos scores médicos
+Service to execute medical score calculations
 """
 
 import importlib
@@ -10,41 +10,41 @@ from app.services.score_service import score_service
 
 
 class CalculatorService:
-    """Serviço para executar cálculos dos scores"""
+    """Service to execute score calculations"""
     
     def __init__(self, calculators_directory: str = "calculators"):
         """
-        Inicializa o serviço de calculadora
+        Initializes the calculator service
         
         Args:
-            calculators_directory (str): Diretório contendo os módulos de cálculo
+            calculators_directory (str): Directory containing the calculation modules
         """
         self.calculators_directory = Path(calculators_directory)
         self._calculator_cache: Dict[str, Any] = {}
         
-        # Adiciona o diretório de calculadoras ao path do Python
+        # Add the calculators directory to Python's path
         if str(self.calculators_directory.absolute()) not in sys.path:
             sys.path.insert(0, str(self.calculators_directory.absolute().parent))
     
     def _load_calculator(self, score_id: str) -> Optional[Any]:
         """
-        Carrega dinamicamente o módulo de cálculo de um score
+        Dynamically loads a score's calculation module
         
         Args:
-            score_id (str): ID do score
+            score_id (str): ID of the score
             
         Returns:
-            Optional[Any]: Função de cálculo ou None se não encontrada
+            Optional[Any]: Calculation function or None if not found
         """
         if score_id in self._calculator_cache:
             return self._calculator_cache[score_id]
         
         try:
-            # Tenta importar o módulo do calculador
+            # Try to import the calculator module
             module_name = f"calculators.{score_id}"
             calculator_module = importlib.import_module(module_name)
             
-            # Procura pela função de cálculo (convenção: calculate_<score_id>)
+            # Look for the calculation function (convention: calculate_<score_id>)
             function_name = f"calculate_{score_id}"
             
             if hasattr(calculator_module, function_name):
@@ -52,8 +52,8 @@ class CalculatorService:
                 self._calculator_cache[score_id] = calculator_function
                 return calculator_function
             
-            # Se não encontrar a função com o padrão, procura por outras convenções
-            # Procura por uma classe Calculator
+            # If the function with the standard pattern is not found, look for other conventions
+            # Look for a Calculator class
             if hasattr(calculator_module, f"{score_id.replace('_', '').title()}Calculator"):
                 calculator_class_name = f"{score_id.replace('_', '').title()}Calculator"
                 calculator_class = getattr(calculator_module, calculator_class_name)
@@ -64,65 +64,65 @@ class CalculatorService:
                     self._calculator_cache[score_id] = calculator_function
                     return calculator_function
             
-            print(f"Função de cálculo não encontrada para {score_id}")
+            print(f"Calculation function not found for {score_id}")
             return None
             
         except ImportError as e:
-            print(f"Erro ao importar calculadora para {score_id}: {e}")
+            print(f"Error importing calculator for {score_id}: {e}")
             return None
         except Exception as e:
-            print(f"Erro inesperado ao carregar calculadora {score_id}: {e}")
+            print(f"Unexpected error loading calculator {score_id}: {e}")
             return None
     
     def calculate_score(self, score_id: str, parameters: Dict[str, Any]) -> Optional[Dict[str, Any]]:
         """
-        Executa o cálculo de um score com os parâmetros fornecidos
+        Executes a score's calculation with the provided parameters
         
         Args:
-            score_id (str): ID do score
-            parameters (dict): Parâmetros necessários para o cálculo
+            score_id (str): ID of the score
+            parameters (dict): Parameters required for calculation
             
         Returns:
-            Optional[Dict]: Resultado do cálculo ou None em caso de erro
+            Optional[Dict]: Calculation result or None in case of error
         """
-        # Verifica se o score existe
+        # Check if the score exists
         if not score_service.score_exists(score_id):
-            raise ValueError(f"Score '{score_id}' não encontrado")
+            raise ValueError(f"Score '{score_id}' not found")
         
-        # Carrega a calculadora
+        # Load the calculator
         calculator_function = self._load_calculator(score_id)
         if calculator_function is None:
-            raise ValueError(f"Calculadora para '{score_id}' não encontrada")
+            raise ValueError(f"Calculator for '{score_id}' not found")
         
         try:
-            # Executa o cálculo
+            # Execute the calculation
             result = calculator_function(**parameters)
             return result
             
         except TypeError as e:
-            # Erro de parâmetros (argumentos faltando ou inválidos)
-            raise ValueError(f"Parâmetros inválidos para {score_id}: {e}")
+            # Parameter error (missing or invalid arguments)
+            raise ValueError(f"Invalid parameters for {score_id}: {e}")
         except Exception as e:
-            # Outros erros de cálculo
-            raise ValueError(f"Erro no cálculo de {score_id}: {e}")
+            # Other calculation errors
+            raise ValueError(f"Error calculating {score_id}: {e}")
     
     def validate_parameters(self, score_id: str, parameters: Dict[str, Any]) -> bool:
         """
-        Valida se os parâmetros fornecidos são suficientes para o cálculo
+        Validates if the provided parameters are sufficient for the calculation
         
         Args:
-            score_id (str): ID do score
-            parameters (dict): Parâmetros para validar
+            score_id (str): ID of the score
+            parameters (dict): Parameters to validate
             
         Returns:
-            bool: True se os parâmetros são válidos, False caso contrário
+            bool: True if parameters are valid, False otherwise
         """
-        # Obtém os metadados do score
+        # Get score metadata
         metadata = score_service.get_score_metadata(score_id)
         if metadata is None:
             return False
         
-        # Verifica se todos os parâmetros obrigatórios estão presentes
+        # Check if all required parameters are present
         for param in metadata.parameters:
             if param.required and param.name not in parameters:
                 return False
@@ -131,23 +131,23 @@ class CalculatorService:
     
     def get_missing_parameters(self, score_id: str, parameters: Dict[str, Any]) -> list:
         """
-        Retorna a lista de parâmetros obrigatórios que estão faltando
+        Returns the list of missing required parameters
         
         Args:
-            score_id (str): ID do score
-            parameters (dict): Parâmetros fornecidos
+            score_id (str): ID of the score
+            parameters (dict): Provided parameters
             
         Returns:
-            list: Lista de parâmetros faltando
+            list: List of missing parameters
         """
         missing = []
         
-        # Obtém os metadados do score
+        # Get score metadata
         metadata = score_service.get_score_metadata(score_id)
         if metadata is None:
             return missing
         
-        # Verifica quais parâmetros obrigatórios estão faltando
+        # Check which required parameters are missing
         for param in metadata.parameters:
             if param.required and param.name not in parameters:
                 missing.append(param.name)
@@ -155,10 +155,10 @@ class CalculatorService:
         return missing
     
     def reload_calculators(self):
-        """Limpa o cache de calculadoras forçando o recarregamento"""
+        """Clears the calculator cache forcing reload"""
         self._calculator_cache.clear()
         
-        # Remove módulos de calculadoras do cache do Python
+        # Remove calculator modules from Python's cache
         modules_to_remove = []
         for module_name in sys.modules:
             if module_name.startswith("calculators."):
@@ -169,17 +169,17 @@ class CalculatorService:
     
     def is_calculator_available(self, score_id: str) -> bool:
         """
-        Verifica se existe uma calculadora disponível para o score
+        Checks if a calculator is available for the score
         
         Args:
-            score_id (str): ID do score
+            score_id (str): ID of the score
             
         Returns:
-            bool: True se a calculadora está disponível, False caso contrário
+            bool: True if the calculator is available, False otherwise
         """
         calculator_function = self._load_calculator(score_id)
         return calculator_function is not None
 
 
-# Instância global do serviço
+# Global service instance
 calculator_service = CalculatorService()

@@ -1,37 +1,37 @@
 {
   "id": "a_a_o2_gradient",
   "title": "A-a O₂ Gradient",
-  "description": "Avalia grau de shunt e incompatibilidade ventilação/perfusão (V/Q) através do gradiente alveolar-arterial de oxigênio",
-  "category": "pneumologia",
+  "description": "Assesses degree of shunt and ventilation/perfusion (V/Q) mismatch through the alveolar-arterial oxygen gradient",
+  "category": "pulmonology",
   "version": "2023",
   "parameters": [
     {
       "name": "age",
       "type": "integer",
       "required": true,
-      "description": "Idade do paciente em anos",
+      "description": "Patient's age in years",
       "validation": {
         "min": 1,
         "max": 120
       },
-      "unit": "anos"
+      "unit": "years"
     },
     {
       "name": "fio2",
       "type": "float",
       "required": true,
-      "description": "Fração inspirada de oxigênio (0.21 para ar ambiente)",
+      "description": "Inspired oxygen fraction (0.21 for room air)",
       "validation": {
         "min": 0.21,
         "max": 1.0
       },
-      "unit": "fração"
+      "unit": "fraction"
     },
     {
       "name": "paco2",
       "type": "float",
       "required": true,
-      "description": "Pressão parcial de CO₂ arterial",
+      "description": "Arterial CO₂ partial pressure",
       "validation": {
         "min": 10.0,
         "max": 100.0
@@ -42,7 +42,7 @@
       "name": "pao2",
       "type": "float",
       "required": true,
-      "description": "Pressão parcial de O₂ arterial",
+      "description": "Arterial O₂ partial pressure",
       "validation": {
         "min": 30.0,
         "max": 600.0
@@ -53,7 +53,7 @@
       "name": "patm",
       "type": "float",
       "required": false,
-      "description": "Pressão atmosférica (padrão: 760 mmHg ao nível do mar)",
+      "description": "Atmospheric pressure (default: 760 mmHg at sea level)",
       "validation": {
         "min": 500.0,
         "max": 800.0
@@ -64,7 +64,7 @@
       "name": "respiratory_quotient",
       "type": "float",
       "required": false,
-      "description": "Quociente respiratório (padrão: 0.8)",
+      "description": "Respiratory quotient (default: 0.8)",
       "validation": {
         "min": 0.7,
         "max": 1.0
@@ -76,7 +76,7 @@
     "name": "aa_gradient",
     "type": "float",
     "unit": "mmHg",
-    "description": "Gradiente alveolar-arterial de oxigênio"
+    "description": "Alveolar-arterial oxygen gradient"
   },
   "interpretation": {
     "ranges": [
@@ -84,29 +84,29 @@
         "min": 0,
         "max": 15,
         "stage": "Normal",
-        "description": "Gradiente A-a normal",
-        "interpretation": "Função alveolar preservada. Valores normais para adultos jovens são 5-10 mmHg, podendo aumentar com a idade."
+        "description": "Normal A-a gradient",
+        "interpretation": "Preserved alveolar function. Normal values for young adults are 5-10 mmHg, which may increase with age."
       },
       {
         "min": 16,
         "max": 25,
-        "stage": "Levemente Elevado",
-        "description": "Gradiente A-a levemente elevado",
-        "interpretation": "Leve incompatibilidade V/Q ou shunt mínimo. Considerar causas como atelectasia leve ou edema pulmonar inicial."
+        "stage": "Slightly Elevated",
+        "description": "Slightly elevated A-a gradient",
+        "interpretation": "Mild V/Q mismatch or minimal shunt. Consider causes such as mild atelectasis or early pulmonary edema."
       },
       {
         "min": 26,
         "max": 50,
-        "stage": "Moderadamente Elevado",
-        "description": "Gradiente A-a moderadamente elevado",
-        "interpretation": "Incompatibilidade V/Q moderada ou shunt. Sugere doença pulmonar significativa como pneumonia, edema pulmonar ou embolia pulmonar."
+        "stage": "Moderately Elevated",
+        "description": "Moderately elevated A-a gradient",
+        "interpretation": "Moderate V/Q mismatch or shunt. Suggests significant lung disease such as pneumonia, pulmonary edema, or pulmonary embolism."
       },
       {
         "min": 51,
         "max": 1000,
-        "stage": "Severamente Elevado",
-        "description": "Gradiente A-a severamente elevado",
-        "interpretation": "Incompatibilidade V/Q grave ou shunt significativo. Indica doença pulmonar severa como SDRA, pneumonia extensa ou shunt intracardíaco."
+        "stage": "Severely Elevated",
+        "description": "Severely elevated A-a gradient",
+        "interpretation": "Severe V/Q mismatch or significant shunt. Indicates severe lung disease such as ARDS, extensive pneumonia, or intracardiac shunt."
       }
     ]
   },
@@ -116,15 +116,15 @@
     "McFarlane MJ, Imperiale TF. Use of the alveolar-arterial oxygen gradient in the diagnosis of pulmonary embolism. Am J Med. 1994;96(1):57-62.",
     "Mellemgaard K. The alveolar-arterial oxygen difference: its size and components in normal man. Acta Physiol Scand. 1966;67(1):10-20."
   ],
-  "formula": "A-a = PAO₂ - PaO₂, onde PAO₂ = (Patm - PH₂O) × FiO₂ - PaCO₂/RQ. Patm = 760 mmHg, PH₂O = 47 mmHg, RQ = 0.8",
+  "formula": "A-a = PAO₂ - PaO₂, where PAO₂ = (Patm - PH₂O) × FiO₂ - PaCO₂/RQ. Patm = 760 mmHg, PH₂O = 47 mmHg, RQ = 0.8",
   "notes": [
-    "PAO₂ calculado pela equação do gás alveolar",
-    "PH₂O (pressão de vapor d'água) = 47 mmHg a 37°C",
-    "RQ (quociente respiratório) tipicamente 0.8",
-    "Valor normal ajustado para idade: < (idade/4) + 4 mmHg",
-    "Gradiente normal em jovens: 5-10 mmHg",
-    "Aumenta aproximadamente 1 mmHg por década após meia-idade",
-    "Útil para diferenciar hipoxemia por hipoventilação vs. doença pulmonar",
-    "Gradiente normal com hipoxemia sugere hipoventilação"
+    "PAO₂ calculated by the alveolar gas equation",
+    "PH₂O (water vapor pressure) = 47 mmHg at 37°C",
+    "RQ (respiratory quotient) typically 0.8",
+    "Age-adjusted normal value: < (age/4) + 4 mmHg",
+    "Normal gradient in young adults: 5-10 mmHg",
+    "Increases approximately 1 mmHg per decade after middle age",
+    "Useful for differentiating hypoxemia due to hypoventilation vs. lung disease",
+    "Normal gradient with hypoxemia suggests hypoventilation"
   ]
 }

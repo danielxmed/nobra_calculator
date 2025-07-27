@@ -1,0 +1,181 @@
+{
+  "id": "aims",
+  "title": "Abnormal Involuntary Movement Scale (AIMS)",
+  "description": "Measures involuntary movements of tardive dyskinesia (TD) in patients receiving neuroleptic medications",
+  "category": "neurology",
+  "version": "1976",
+  "parameters": [
+    {
+      "name": "facial_muscles",
+      "type": "integer",
+      "required": true,
+      "description": "Facial muscles and facial expression",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "lips_perioral",
+      "type": "integer",
+      "required": true,
+      "description": "Lips and perioral area",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "jaw",
+      "type": "integer",
+      "required": true,
+      "description": "Jaw",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "tongue",
+      "type": "integer",
+      "required": true,
+      "description": "Tongue",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "upper_extremities",
+      "type": "integer",
+      "required": true,
+      "description": "Upper extremities (arms, wrists, hands, fingers)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "lower_extremities",
+      "type": "integer",
+      "required": true,
+      "description": "Lower extremities (legs, knees, ankles, feet)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "trunk_movements",
+      "type": "integer",
+      "required": true,
+      "description": "Trunk movements (neck, shoulders, hips)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "global_severity",
+      "type": "integer",
+      "required": true,
+      "description": "Global severity of abnormal movements",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "incapacitation",
+      "type": "integer",
+      "required": true,
+      "description": "Incapacitation due to abnormal movements",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "patient_awareness",
+      "type": "integer",
+      "required": true,
+      "description": "Patient's awareness of abnormal movements",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "current_problems_teeth",
+      "type": "string",
+      "required": true,
+      "description": "Current problems with teeth/dentures",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "dental_problems_interfere",
+      "type": "string",
+      "required": true,
+      "description": "Do dental problems interfere with movements?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "aims_total_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total AIMS score (sum of items 1-7)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "No Dyskinesia",
+        "description": "Absent or questionable movements",
+        "interpretation": "No evidence of tardive dyskinesia. Continue regular monitoring."
+      },
+      {
+        "min": 2,
+        "max": 13,
+        "stage": "Mild to Moderate Dyskinesia",
+        "description": "Presence of tardive dyskinesia",
+        "interpretation": "Evidence of tardive dyskinesia. Re-evaluate need for neuroleptic medication, consider dose reduction or medication change."
+      },
+      {
+        "min": 14,
+        "max": 28,
+        "stage": "Severe Dyskinesia",
+        "description": "Significant tardive dyskinesia",
+        "interpretation": "Severe tardive dyskinesia. Consider discontinuation of neuroleptics if clinically possible, or use of specific medications for TD."
+      }
+    ]
+  },
+  "references": [
+    "Guy W. ECDEU Assessment Manual for Psychopharmacology. Rockville, MD: US Department of Health, Education, and Welfare; 1976.",
+    "National Institute of Mental Health. Abnormal Involuntary Movement Scale (AIMS). Psychopharmacology Research Branch, NIMH. 1976."
+  ],
+  "formula": "Sum of items 1-7 (involuntary movements), items 8-10 assess global severity, incapacitation, and awareness",
+  "notes": [
+    "Apply every 3-6 months in patients using neuroleptics",
+    "Rating ≥2 on any item is evidence of tardive dyskinesia",
+    "Examination should follow specific standardized procedures",
+    "Clinically important difference: 2 points in total score"
+  ]
+}

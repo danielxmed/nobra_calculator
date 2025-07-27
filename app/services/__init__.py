@@ -1,5 +1,5 @@
 """
-Serviços da API nobra_calculator
+nobra_calculator API services
 """
 
 from .score_service import ScoreService

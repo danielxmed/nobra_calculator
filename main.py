@@ -1,7 +1,7 @@
 """
-nobra_calculator - API Principal
+nobra_calculator - Main API
 
-API modular para cálculos e scores médicos desenvolvida com FastAPI.
+Modular API for medical calculations and scores developed with FastAPI.
 """
 
 from fastapi import FastAPI, Request
@@ -11,13 +11,13 @@ import uvicorn
 import sys
 from pathlib import Path
 
-# Adiciona o diretório raiz ao path para importações
+# Add the root directory to the path for imports
 sys.path.insert(0, str(Path(__file__).parent))
 
 from app import __version__, __description__
 from app.routers import scores_router, health_router
 
-# Configuração da aplicação FastAPI
+# FastAPI application configuration
 app = FastAPI(
     title="nobra_calculator",
     description=__description__,
@@ -27,46 +27,46 @@ app = FastAPI(
     openapi_url="/openapi.json"
 )
 
-# Configuração de CORS para permitir acesso do frontend
+# CORS configuration to allow frontend access
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Em produção, especificar domínios específicos
+    allow_origins=["*"],  # In production, specify specific domains
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Middleware para capturar erros não tratados
+# Middleware to catch unhandled errors
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
     """
-    Handler global para capturar exceções não tratadas
+    Global handler to catch unhandled exceptions
     """
     return JSONResponse(
         status_code=500,
         content={
             "error": "InternalServerError",
-            "message": "Erro interno do servidor",
+            "message": "Internal server error",
             "details": {
                 "path": str(request.url),
                 "method": request.method,
-                "error": str(exc) if app.debug else "Erro interno"
+                "error": str(exc) if app.debug else "Internal error"
             }
         }
     )
 
-# Registra os routers
+# Register routers
 app.include_router(health_router)
 app.include_router(scores_router)
 
-# Endpoint raiz
+# Root endpoint
 @app.get("/")
 async def root():
     """
-    Endpoint raiz da API
+    Root endpoint of the API
     
     Returns:
-        Dict: Informações básicas da API
+        Dict: Basic API information
     """
     return {
         "name": "nobra_calculator",
@@ -78,31 +78,31 @@ async def root():
         "api": "/api"
     }
 
-# Evento de inicialização
+# Startup event
 @app.on_event("startup")
 async def startup_event():
     """
-    Evento executado na inicialização da aplicação
+    Event executed on application startup
     """
-    print(f"🚀 nobra_calculator v{__version__} iniciada!")
-    print("📋 Documentação disponível em: /docs")
-    print("🔍 Redoc disponível em: /redoc")
-    print("❤️  Health check disponível em: /health")
+    print(f"🚀 nobra_calculator v{__version__} started!")
+    print("📋 Documentation available at: /docs")
+    print("🔍 Redoc available at: /redoc")
+    print("❤️  Health check available at: /health")
 
-# Evento de finalização
+# Shutdown event
 @app.on_event("shutdown")
 async def shutdown_event():
     """
-    Evento executado no shutdown da aplicação
+    Event executed on application shutdown
     """
-    print("👋 nobra_calculator finalizando...")
+    print("👋 nobra_calculator shutting down...")
 
 if __name__ == "__main__":
-    # Configuração para execução local
+    # Configuration for local execution
     uvicorn.run(
         "main:app",
         host="0.0.0.0",
         port=8000,
-        reload=True,  # Reload automático durante desenvolvimento
+        reload=True,  # Automatic reload during development
         log_level="info"
     )

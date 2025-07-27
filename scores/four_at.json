@@ -1,0 +1,95 @@
+{
+  "id": "four_at",
+  "title": "4AT (4 A's Test) for Delirium Screening",
+  "description": "Rapid clinical test for delirium detection in elderly patients. Includes cognitive test items, also suitable as a quick test for cognitive impairment.",
+  "category": "neurology",
+  "version": "2014",
+  "parameters": [
+    {
+      "name": "alertness",
+      "type": "string",
+      "required": true,
+      "description": "Patient's alertness level",
+      "options": ["normal", "altered"],
+      "validation": {
+        "enum": ["normal", "altered"]
+      }
+    },
+    {
+      "name": "amt4_errors",
+      "type": "integer",
+      "required": true,
+      "description": "Number of errors in AMT4 (age, date of birth, place, current year)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "errors"
+    },
+    {
+      "name": "attention_months",
+      "type": "string",
+      "required": true,
+      "description": "Performance on attention test (months in reverse order)",
+      "options": ["7_or_more", "starts_less_than_7", "refuses_untestable"],
+      "validation": {
+        "enum": ["7_or_more", "starts_less_than_7", "refuses_untestable"]
+      }
+    },
+    {
+      "name": "acute_change",
+      "type": "string",
+      "required": true,
+      "description": "Presence of acute change or fluctuating course",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      }
+    }
+  ],
+  "result": {
+    "name": "four_at_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total 4AT score (0-12 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Negative",
+        "description": "No delirium or moderate-severe cognitive impairment",
+        "interpretation": "Result suggests absence of delirium and absence of moderate to severe cognitive impairment. Continue clinical monitoring as indicated."
+      },
+      {
+        "min": 1,
+        "max": 3,
+        "stage": "Cognitive Impairment",
+        "description": "Possible cognitive impairment, but not delirium",
+        "interpretation": "Result suggests cognitive impairment but not delirium. Evaluate causes of cognitive impairment and consider more detailed neuropsychological assessment."
+      },
+      {
+        "min": 4,
+        "max": 12,
+        "stage": "Possible Delirium",
+        "description": "Result suggests delirium",
+        "interpretation": "Score ≥4 suggests possible delirium. This result is not diagnostic - the final diagnosis must be based on clinical judgment. Comprehensive mental assessment and investigation of reversible causes are recommended."
+      }
+    ]
+  },
+  "references": [
+    "Bellelli G, Morandi A, Davis DH, et al. Validation of the 4AT, a new instrument for rapid delirium screening: a study in 234 hospitalised older people. Age Ageing. 2014;43(4):496-502.",
+    "Shenkin SD, Fox C, Godfrey M, et al. Delirium detection in older acute medical inpatients: a multicentre prospective comparative diagnostic test accuracy study of the 4AT and the confusion assessment method. BMC Med. 2019;17(1):138.",
+    "De J, Wand AP. Delirium Screening: A Systematic Review of Delirium Screening Tools in Hospitalized Patients. Gerontologist. 2015;55(6):1079-99."
+  ],
+  "formula": "Sum of 4 components: Alertness (0 or 4) + AMT4 (0-2) + Attention (0-2) + Acute Change (0 or 4)",
+  "notes": [
+    "Test takes less than 2 minutes to perform",
+    "Does not require special training",
+    "Can be applied even when patients cannot fully participate in cognitive tests",
+    "Score ≥4 is suggestive but not diagnostic of delirium",
+    "Widely validated and recommended in international guidelines",
+    "Suitable for use in general wards, outside the ICU"
+  ]
+}

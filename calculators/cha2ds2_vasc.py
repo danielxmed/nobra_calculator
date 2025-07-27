@@ -1,18 +1,18 @@
 """
 CHA₂DS₂-VASc Score Calculator
 
-Calcula o risco de AVC em pacientes com fibrilação atrial não-valvar.
-Referência: Lip GY et al. Chest. 2010;137(2):263-72.
+Calculates stroke risk in patients with non-valvular atrial fibrillation.
+Reference: Lip GY et al. Chest. 2010;137(2):263-72.
 """
 
 from typing import Dict, Any
 
 
 class Cha2ds2VascCalculator:
-    """Calculadora para CHA₂DS₂-VASc Score"""
+    """Calculator for CHA₂DS₂-VASc Score"""
     
     def __init__(self):
-        # Riscos anuais de AVC por pontuação
+        # Annual stroke risks by score
         self.stroke_risk = {
             0: 0.3,
             1: 0.9,
@@ -30,64 +30,64 @@ class Cha2ds2VascCalculator:
                  hypertension: bool, stroke_tia_thromboembolism: bool,
                  vascular_disease: bool, diabetes: bool) -> Dict[str, Any]:
         """
-        Calcula o CHA₂DS₂-VASc score
+        Calculates the CHA₂DS₂-VASc score
         
         Args:
-            age: Idade em anos
-            sex: "masculino" ou "feminino"
-            congestive_heart_failure: História de ICC ou disfunção VE
-            hypertension: História de hipertensão
-            stroke_tia_thromboembolism: História de AVC/AIT/TE
-            vascular_disease: Doença vascular prévia
-            diabetes: História de diabetes
+            age: Age in years
+            sex: "male" or "female"
+            congestive_heart_failure: History of CHF or LV dysfunction
+            hypertension: History of hypertension
+            stroke_tia_thromboembolism: History of Stroke/TIA/TE
+            vascular_disease: Previous vascular disease
+            diabetes: History of diabetes
             
         Returns:
-            Dict com resultado, interpretação e risco anual
+            Dict with result, interpretation, and annual risk
         """
         
-        # Validações
+        # Validations
         self._validate_inputs(age, sex)
         
-        # Calcular pontuação
+        # Calculate score
         score = 0
         
-        # C - Congestive heart failure (1 ponto)
+        # C - Congestive heart failure (1 point)
         if congestive_heart_failure:
             score += 1
         
-        # H - Hypertension (1 ponto)
+        # H - Hypertension (1 point)
         if hypertension:
             score += 1
         
-        # A₂ - Age (0-2 pontos)
+        # A₂ - Age (0-2 points)
         if age >= 75:
             score += 2
         elif age >= 65:
             score += 1
         
-        # D - Diabetes (1 ponto)
+        # D - Diabetes (1 point)
         if diabetes:
             score += 1
         
-        # S₂ - Stroke/TIA/TE (2 pontos)
+        # S₂ - Stroke/TIA/TE (2 points)
         if stroke_tia_thromboembolism:
             score += 2
         
-        # V - Vascular disease (1 ponto)
+        # V - Vascular disease (1 point)
         if vascular_disease:
             score += 1
         
-        # Sc - Sex category (1 ponto se feminino)
-        if sex.lower() == "feminino":
+        # Sc - Sex category (1 point if female)
+        if sex.lower() == "female":
             score += 1
         
-        # Obter interpretação
+        # Get interpretation
         interpretation = self._get_interpretation(score, sex)
         annual_risk = self.stroke_risk.get(score, 17.4)
         
         return {
             "result": score,
-            "unit": "pontos",
+            "unit": "points",
             "interpretation": interpretation["interpretation"],
             "stage": interpretation["stage"],
             "stage_description": interpretation["description"],
@@ -99,95 +99,95 @@ class Cha2ds2VascCalculator:
                 "diabetes": 1 if diabetes else 0,
                 "stroke_tia": 2 if stroke_tia_thromboembolism else 0,
                 "vascular_disease": 1 if vascular_disease else 0,
-                "sex_category": 1 if sex.lower() == "feminino" else 0
+                "sex_category": 1 if sex.lower() == "female" else 0
             }
         }
     
     def _validate_inputs(self, age: int, sex: str):
-        """Valida os parâmetros de entrada"""
+        """Validates input parameters"""
         
         if not isinstance(age, int) or age < 18 or age > 120:
-            raise ValueError("Idade deve ser um inteiro entre 18 e 120 anos")
+            raise ValueError("Age must be an integer between 18 and 120 years")
         
-        if sex.lower() not in ["masculino", "feminino"]:
-            raise ValueError("Sexo deve ser 'masculino' ou 'feminino'")
+        if sex.lower() not in ["male", "female"]:
+            raise ValueError("Sex must be 'male' or 'female'")
     
     def _get_interpretation(self, score: int, sex: str) -> Dict[str, str]:
         """
-        Determina a interpretação baseada no score e sexo
+        Determines the interpretation based on the score and sex
         
         Args:
-            score: CHA₂DS₂-VASc score calculado
-            sex: Sexo do paciente
+            score: Calculated CHA₂DS₂-VASc score
+            sex: Patient's sex
             
         Returns:
-            Dict com interpretação clínica
+            Dict with clinical interpretation
         """
         
-        is_male = sex.lower() == "masculino"
+        is_male = sex.lower() == "male"
         annual_risk = self.stroke_risk.get(score, 17.4)
         
         if score == 0:
             return {
-                "stage": "Muito Baixo Risco",
-                "description": f"Risco anual de AVC: {annual_risk}%",
-                "interpretation": "Pacientes masculinos com 0 pontos: anticoagulação não recomendada. Considerar aspirina ou nenhuma terapia antitrombótica."
+                "stage": "Very Low Risk",
+                "description": f"Annual stroke risk: {annual_risk}%",
+                "interpretation": "Male patients with 0 points: anticoagulation not recommended. Consider aspirin or no antithrombotic therapy."
             }
         
         elif score == 1:
             if is_male:
                 return {
-                    "stage": "Baixo Risco",
-                    "description": f"Risco anual de AVC: {annual_risk}%",
-                    "interpretation": "Homens com 1 ponto: anticoagulação pode ser considerada após discussão risco-benefício com o paciente."
+                    "stage": "Low Risk",
+                    "description": f"Annual stroke risk: {annual_risk}%",
+                    "interpretation": "Men with 1 point: anticoagulation may be considered after risk-benefit discussion with the patient."
                 }
             else:
                 return {
-                    "stage": "Baixo Risco",
-                    "description": f"Risco anual de AVC: {annual_risk}%",
-                    "interpretation": "Mulheres com 1 ponto (apenas pelo sexo): anticoagulação não recomendada."
+                    "stage": "Low Risk",
+                    "description": f"Annual stroke risk: {annual_risk}%",
+                    "interpretation": "Women with 1 point (due to sex only): anticoagulation not recommended."
                 }
         
         elif score == 2:
             return {
-                "stage": "Risco Moderado",
-                "description": f"Risco anual de AVC: {annual_risk}%",
-                "interpretation": "Anticoagulação oral recomendada (warfarina com INR 2-3 ou DOAC). Benefício supera o risco de sangramento na maioria dos pacientes."
+                "stage": "Moderate Risk",
+                "description": f"Annual stroke risk: {annual_risk}%",
+                "interpretation": "Oral anticoagulation recommended (warfarin with INR 2-3 or DOAC). Benefit outweighs bleeding risk in most patients."
             }
         
         elif score == 3:
             return {
-                "stage": "Risco Moderado-Alto",
-                "description": f"Risco anual de AVC: {annual_risk}%",
-                "interpretation": "Anticoagulação oral fortemente recomendada. Considerar DOACs como primeira escolha devido ao melhor perfil de segurança."
+                "stage": "Moderate-High Risk",
+                "description": f"Annual stroke risk: {annual_risk}%",
+                "interpretation": "Oral anticoagulation strongly recommended. Consider DOACs as first choice due to better safety profile."
             }
         
         elif score == 4:
             return {
-                "stage": "Alto Risco",
-                "description": f"Risco anual de AVC: {annual_risk}%",
-                "interpretation": "Anticoagulação oral essencial. Monitorar aderência e ajustar dose conforme função renal se usando DOACs."
+                "stage": "High Risk",
+                "description": f"Annual stroke risk: {annual_risk}%",
+                "interpretation": "Oral anticoagulation essential. Monitor adherence and adjust dose according to renal function if using DOACs."
             }
         
         elif score == 5:
             return {
-                "stage": "Alto Risco",
-                "description": f"Risco anual de AVC: {annual_risk}%",
-                "interpretation": "Anticoagulação oral mandatória. Considerar estratégias para melhorar aderência e minimizar risco de sangramento."
+                "stage": "High Risk",
+                "description": f"Annual stroke risk: {annual_risk}%",
+                "interpretation": "Oral anticoagulation mandatory. Consider strategies to improve adherence and minimize bleeding risk."
             }
         
         elif score == 6:
             return {
-                "stage": "Muito Alto Risco",
-                "description": f"Risco anual de AVC: {annual_risk}%",
-                "interpretation": "Anticoagulação oral imperativa. Avaliar e otimizar fatores de risco modificáveis. Monitoramento frequente."
+                "stage": "Very High Risk",
+                "description": f"Annual stroke risk: {annual_risk}%",
+                "interpretation": "Oral anticoagulation imperative. Evaluate and optimize modifiable risk factors. Frequent monitoring."
             }
         
         else:  # score >= 7
             return {
-                "stage": "Risco Extremo",
-                "description": f"Risco anual de AVC: {annual_risk}%",
-                "interpretation": "Anticoagulação oral crítica. Considerar oclusão de apêndice atrial esquerdo se contraindicação absoluta para anticoagulação."
+                "stage": "Extreme Risk",
+                "description": f"Annual stroke risk: {annual_risk}%",
+                "interpretation": "Critical oral anticoagulation. Consider left atrial appendage occlusion if absolute contraindication to anticoagulation."
             }
 
 
@@ -195,9 +195,9 @@ def calculate_cha2ds2_vasc(age: int, sex: str, congestive_heart_failure: bool,
                           hypertension: bool, stroke_tia_thromboembolism: bool,
                           vascular_disease: bool, diabetes: bool) -> Dict[str, Any]:
     """
-    Função de conveniência para o sistema de carregamento dinâmico
+    Convenience function for the dynamic loading system
     
-    IMPORTANTE: Esta função deve seguir o padrão calculate_cha2ds2_vasc
+    IMPORTANT: This function must follow the calculate_cha2ds2_vasc pattern
     """
     calculator = Cha2ds2VascCalculator()
     return calculator.calculate(age, sex, congestive_heart_failure,

@@ -1,6 +1,6 @@
-# Lista Completa de Scores Médicos do MDCalc
+# Complete List of Medical Scores from MDCalc
 
-## Índice por Letras
+## Index by Letters
 - [0-9](#0-9)
 - [A](#a)
 - [B](#b)
@@ -22,1740 +22,1740 @@
 ## 0-9
 
 ### ✅ 2012 EULAR/ACR Classification Criteria for Polymyalgia Rheumatica
-**Descrição:** Classifica polimialgia reumática por recomendações de consenso de especialistas.
+**Description:** Classifies polymyalgia rheumatica by expert consensus recommendations.
 
 ### 2018 Leibovich Model for Renal Cell Carcinoma (RCC) - NEW
-**Descrição:** Prediz sobrevida livre de progressão e específica do câncer em pacientes com carcinoma de células renais (CCR).
+**Description:** Predicts progression-free and cancer-specific survival in patients with renal cell carcinoma (RCC).
 
 ### 2023 Duke-International Society for Cardiovascular Infectious Diseases (ISCVID) Criteria - NEW
-**Descrição:** Critérios diagnósticos para endocardite infecciosa.
+**Description:** Diagnostic criteria for infective endocarditis.
 
 ### 2023 Emergency Medicine Coding Guide
-**Descrição:** Avalia o nível de serviço necessário em medicina de emergência.
+**Description:** Assesses the level of service needed in emergency medicine.
 
-### 2HELPS2B Score
-**Descrição:** Estima o risco de convulsão em pacientes agudamente doentes submetidos a EEG contínuo (cEEG).
+### ✅ 2HELPS2B Score
+**Description:** Estimates seizure risk in acutely ill patients undergoing continuous EEG (cEEG).
 
-### 4 A's Test for Delirium Screening
-**Descrição:** Diagnostica delirium em pacientes idosos.
+### ✅ 4 A's Test for Delirium Screening
+**Description:** Diagnoses delirium in elderly patients.
 
 ### 4-Level Pulmonary Embolism Clinical Probability Score (4PEPS)
-**Descrição:** Exclui EP baseado em critérios clínicos.
+**Description:** Rules out PE based on clinical criteria.
 
 ### ✅ 4C Mortality Score for COVID-19
-**Descrição:** Prediz mortalidade hospitalar em pacientes internados com COVID-19.
+**Description:** Predicts in-hospital mortality in patients admitted with COVID-19.
 
 ### ✅ 4Ts Score for Heparin-Induced Thrombocytopenia
-**Descrição:** Diferencia pacientes com TIH daqueles com outras causas de trombocitopenia.
+**Description:** Differentiates patients with HIT from those with other causes of thrombocytopenia.
 
 ### ✅ 6 Minute Walk Distance
-**Descrição:** Calcula valores de referência para distância caminhada, como medida de status funcional.
+**Description:** Calculates reference values for walk distance, as a measure of functional status.
 
 ---
 
 ## A
 
 ### ✅ A-a O₂ Gradient
-**Descrição:** Avalia grau de shunt e incompatibilidade V/Q.
+**Description:** Assesses degree of shunt and V/Q mismatch.
 
 ### ✅ AAP Pediatric Hypertension Guidelines
-**Descrição:** Diagnostica hipertensão em pacientes pediátricos; diretriz oficial da Academia Americana de Pediatria.
+**Description:** Diagnoses hypertension in pediatric patients; official guideline from the American Academy of Pediatrics.
 
-### Abbey Pain Scale for Dementia Patients
-**Descrição:** Avalia dor em pacientes com demência avançada.
+### ✅ Abbey Pain Scale for Dementia Patients
+**Description:** Assesses pain in patients with advanced dementia.
 
 ### Abbreviated Injury Score (AIS) for Inhalation Injury
-**Descrição:** Classifica severidade de lesão inalatória baseada em achados broncoscópicos.
+**Description:** Classifies severity of inhalation injury based on bronchoscopic findings.
 
 ### Abbreviated Mental Test (AMT-10) - NEW
-**Descrição:** Avalia comprometimento mental em pacientes idosos.
+**Description:** Assesses mental impairment in elderly patients.
 
 ### Abbreviated Mental Test 4 (AMT-4)
-**Descrição:** Avalia comprometimento mental em pacientes idosos.
+**Description:** Assesses mental impairment in elderly patients.
 
 ### ABC Score for Massive Transfusion
-**Descrição:** Prediz necessidade de transfusão maciça em pacientes com trauma.
+**Description:** Predicts need for massive transfusion in trauma patients.
 
 ### ABC/2 Formula for Intracerebral Hemorrhage Volume
-**Descrição:** Prediz volume de hemorragia intracraniana a partir de medições de TC.
+**Description:** Predicts intracerebral hemorrhage volume from CT measurements.
 
-### ABCD² Score for TIA
-**Descrição:** Estima o risco de AVC após um ataque isquêmico transitório suspeito (AIT).
+### ✅ ABCD² Score for TIA
+**Description:** Estimates stroke risk after a suspected transient ischemic attack (TIA).
 
-### ABIC Score for Alcoholic Hepatitis
-**Descrição:** Prediz sobrevida em hepatite alcoólica.
+### ✅ ABIC Score for Alcoholic Hepatitis
+**Description:** Predicts survival in alcoholic hepatitis.
 
-### Abnormal Involuntary Movement Scale (AIMS)
-**Descrição:** Mede movimentos involuntários de discinesia tardia (DT).
+### ✅ Abnormal Involuntary Movement Scale (AIMS)
+**Description:** Measures involuntary movements of tardive dyskinesia (TD).
 
-### Absolute Lymphocyte Count (ALC)
-**Descrição:** Avalia número de linfócitos e prediz contagem de CD4.
+### ✅ Absolute Lymphocyte Count (ALC)
+**Description:** Assesses lymphocyte count and predicts CD4 count.
 
-### Absolute Neutrophil Count (ANC)
-**Descrição:** Frequentemente usado para avaliar febre neutropênica em pacientes em quimioterapia.
+### ✅ Absolute Neutrophil Count (ANC)
+**Description:** Frequently used to assess neutropenic fever in chemotherapy patients.
 
-### Abuse Assessment Screen (AAS)
-**Descrição:** Detecta abuso doméstico (violência por parceiro íntimo) em mulheres grávidas e não grávidas em ambientes de saúde.
+### ✅ Abuse Assessment Screen (AAS)
+**Description:** Detects domestic abuse (intimate partner violence) in pregnant and non-pregnant women in healthcare settings.
 
-### ACC/AHA Heart Failure Staging
-**Descrição:** Descreve estágios de insuficiência cardíaca e fornece recomendações de terapia por estágio.
+### ✅ ACC/AHA Heart Failure Staging
+**Description:** Describes heart failure stages and provides stage-specific therapy recommendations.
 
 ### ACEF II Risk Score for Cardiac Surgery
-**Descrição:** Prediz mortalidade em 30 dias após cirurgia cardíaca eletiva ou de emergência.
+**Description:** Predicts 30-day mortality after elective or emergency cardiac surgery.
 
 ### ACEP ED COVID-19 Management Tool
-**Descrição:** Ferramenta de classificação e manejo do departamento de emergência para pacientes adultos (maiores de 18 anos) com SARS-CoV-2 suspeito ou confirmado.
+**Description:** Emergency department triage and management tool for adult (age >18) patients with suspected or confirmed SARS-CoV-2.
 
 ### Acetaminophen Overdose and NAC Dosing
-**Descrição:** Calcula dosagem PO/IV de NAC para overdose de acetaminofeno (e nomograma para determinar nível tóxico de 4 horas).
+**Description:** Calculates PO/IV NAC dosing for acetaminophen overdose (and nomogram to determine toxic 4-hour level).
 
 ### ACR/EULAR 2010 Rheumatoid Arthritis Classification Criteria
-**Descrição:** Diagnostica artrite reumatoide (AR) em pacientes com sinovite inflamatória indiferenciada.
+**Description:** Diagnoses rheumatoid arthritis (RA) in patients with undifferentiated inflammatory synovitis.
 
 ### ACR/EULAR Gout Classification Criteria
-**Descrição:** Fornece critérios diagnósticos formais para gota.
+**Description:** Provides formal diagnostic criteria for gout.
 
 ### ACTION ICU Score for Intensive Care in NSTEMI
-**Descrição:** Prediz risco de complicações de NSTEMI que requerem cuidados de UTI.
+**Description:** Predicts risk of NSTEMI complications requiring ICU care.
 
 ### Acute Decompensated Heart Failure National Registry (ADHERE) Algorithm
-**Descrição:** Prediz mortalidade hospitalar em pacientes com insuficiência cardíaca (IC).
+**Description:** Predicts in-hospital mortality in heart failure (HF) patients.
 
 ### Acute Gout Diagnosis Rule
-**Descrição:** Estratifica risco para artrite gotosa vs não gotosa e ajuda a determinar quais pacientes se beneficiam mais da aspiração articular.
+**Description:** Stratifies risk for gouty vs. non-gouty arthritis and helps determine which patients most benefit from joint aspiration.
 
 ### Acute Interstitial Nephritis (AIN) Risk Calculator - NEW
-**Descrição:** Identifica a probabilidade de nefrite intersticial aguda em pacientes de risco.
+**Description:** Identifies the likelihood of acute interstitial nephritis in at-risk patients.
 
 ### Acute Renal Failure after Cardiac Surgery (Thakar Score)
-**Descrição:** Prediz risco de insuficiência renal aguda (IRA) requerendo diálise após cirurgia cardíaca.
+**Description:** Predicts risk of acute kidney injury (AKI) requiring dialysis after cardiac surgery.
 
 ### ADAPT Protocol for Cardiac Event Risk
-**Descrição:** Avalia pacientes com dor torácica às 2 horas para risco de evento cardíaco.
+**Description:** Assesses patients with chest pain at 2 hours for cardiac event risk.
 
 ### Additional Nodal Metastasis Nomogram
-**Descrição:** Prediz probabilidade de câncer de mama com metástase do linfonodo sentinela ter se espalhado também para linfonodos adicionais.
+**Description:** Predicts probability of breast cancer with sentinel lymph node metastasis having also spread to additional lymph nodes.
 
 ### Adult Self-Report Scale (ASRS v1.1) for ADHD
-**Descrição:** Diagnostica TDAH em adultos.
+**Description:** Diagnoses ADHD in adults.
 
 ### Adverse Childhood Experiences (ACE) Score
-**Descrição:** Rastreia experiências adversas na infância.
+**Description:** Screens for adverse childhood experiences.
 
 ### Age-Adjusted D-dimer for Venous Thromboembolism (VTE)
-**Descrição:** Ajusta pontos de corte do D-dímero para ajudar a excluir TEV em pacientes ≥50 anos.
+**Description:** Adjusts D-dimer cutoffs to help rule out VTE in patients ≥50 years old.
 
 ### Age-Adjusted ESR/CRP for Rheumatoid Arthritis
-**Descrição:** Calcula ESR e CRP ajustados por idade em pacientes adultos com artrite reumatoide.
+**Description:** Calculates age-adjusted ESR and CRP in adult rheumatoid arthritis patients.
 
 ### AIMS65 Score for Upper GI Bleeding Mortality
-**Descrição:** Determina risco de mortalidade hospitalar por sangramento GI superior.
+**Description:** Determines risk of in-hospital mortality from upper GI bleeding.
 
 ### AKIN Classification for Acute Kidney Injury (AKI)
-**Descrição:** Classifica severidade de lesão renal aguda, similar aos Critérios RIFLE.
+**Description:** Classifies severity of acute kidney injury, similar to RIFLE Criteria.
 
 ### Alberta Stroke Program Early CT Score (ASPECTS)
-**Descrição:** Determina severidade do AVC ACM usando dados de TC disponíveis.
+**Description:** Determines severity of MCA stroke using available CT data.
 
 ### ALBI (Albumin-Bilirubin) Grade for Hepatocellular Carcinoma (HCC)
-**Descrição:** Prediz sobrevida em pacientes com CHC.
+**Description:** Predicts survival in HCC patients.
 
 ### ALT-70 Score for Cellulitis
-**Descrição:** Prediz probabilidade de celulite de extremidade inferior sobre outros diagnósticos.
+**Description:** Predicts likelihood of lower extremity cellulitis over other diagnoses.
 
 ### Altitude-Adjusted PERC Rule
-**Descrição:** Exclui EP se nenhum critério estiver presente; inclui ajuste de SaO2 para altitude.
+**Description:** Rules out PE if no criteria are present; includes SaO2 adjustment for altitude.
 
 ### Alvarado Score for Acute Appendicitis
-**Descrição:** Prediz probabilidade de diagnóstico de apendicite.
+**Description:** Predicts likelihood of appendicitis diagnosis.
 
 ### American Diabetes Association (ADA) Risk Calculator
-**Descrição:** Prediz risco de diabetes não diagnosticado para determinar quem deve ser rastreado.
+**Description:** Predicts risk of undiagnosed diabetes to determine who should be screened.
 
 ### American University of Beirut (AUB)-HAS2 Cardiovascular Risk Index
-**Descrição:** Estratifica risco cardiovascular de pacientes submetidos a cirurgia não cardíaca.
+**Description:** Stratifies cardiovascular risk of patients undergoing non-cardiac surgery.
 
 ### American Urological Association Symptom Index (AUA-SI)/International Prostate Symptom Score (IPSS)
-**Descrição:** Mede severidade dos sintomas de hiperplasia prostática benigna (HPB).
+**Description:** Measures severity of benign prostatic hyperplasia (BPH) symptoms.
 
 ### Ankylosing Spondylitis Disease Activity Score with CRP (ASDAS-CRP)
-**Descrição:** Estratifica severidade da espondilite anquilosante (EA) usando dados clínicos e laboratoriais, especificamente PCR.
+**Description:** Stratifies severity of ankylosing spondylitis (AS) using clinical and laboratory data, specifically CRP.
 
 ### Ankylosing Spondylitis Disease Activity Score with ESR (ASDAS-ESR)
-**Descrição:** Estratifica severidade da espondilite anquilosante (EA) usando dados clínicos e laboratoriais, especificamente VHS.
+**Description:** Stratifies severity of ankylosing spondylitis (AS) using clinical and laboratory data, specifically ESR.
 
 ### Antivenom Dosing Algorithm
-**Descrição:** Dosa antiveneno (apenas CroFab, não Anavip) para mordidas de cobra víbora.
+**Description:** Doses antivenom (CroFab only, not Anavip) for pit viper snakebites.
 
 ### Aortic Dissection Detection Risk Score (ADD-RS)
-**Descrição:** Exclui dissecção aórtica.
+**Description:** Rules out aortic dissection.
 
 ### APACHE II Score
-**Descrição:** Estima mortalidade em UTI.
+**Description:** Estimates ICU mortality.
 
 ### Apfel Score for Postoperative Nausea and Vomiting
-**Descrição:** Prediz risco de náusea e vômito pós-operatórios (NVPO).
+**Description:** Predicts risk of postoperative nausea and vomiting (PONV).
 
 ### APGAR Score
-**Descrição:** Avalia neonatos 1 e 5 minutos após o nascimento.
+**Description:** Assesses neonates 1 and 5 minutes after birth.
 
 ### Appendicitis Inflammatory Response (AIR) Score
-**Descrição:** Diagnostica apendicite baseado em achados clínicos e laboratoriais.
+**Description:** Diagnoses appendicitis based on clinical and laboratory findings.
 
 ### ARISCAT Score for Postoperative Pulmonary Complications
-**Descrição:** Prediz risco de complicações pulmonares após cirurgia, incluindo insuficiência respiratória.
+**Description:** Predicts risk of pulmonary complications after surgery, including respiratory failure.
 
 ### Arterial Blood Gas (ABG) Analyzer
-**Descrição:** Interpreta gasometria arterial.
+**Description:** Interprets arterial blood gas.
 
 ### ASA Physical Status/ASA Classification
-**Descrição:** Classifica saúde de pacientes antes da cirurgia.
+**Description:** Classifies health of patients prior to surgery.
 
 ### ASAS Criteria for Axial Spondyloarthritis (SpA)
-**Descrição:** Classifica espondiloartrite axial de acordo com os critérios da Assessment of Spondyloarthritis International Society (ASAS).
+**Description:** Classifies axial spondyloarthritis according to the Assessment of Spondyloarthritis International Society (ASAS) criteria.
 
 ### ASAS Criteria for Peripheral SpondyloArthritis (SpA)
-**Descrição:** Classifica espondiloartrite periférica de acordo com os critérios da Assessment of SpondyloArthritis International Society (ASAS).
+**Description:** Classifies peripheral spondyloarthritis according to the Assessment of SpondyloArthritis International Society (ASAS) criteria.
 
 ### ASCOD Algorithm for Ischemic Stroke
-**Descrição:** Atribui fenótipo em pacientes com AVC isquêmico de causas incertas.
+**Description:** Assigns phenotype in patients with ischemic stroke of uncertain causes.
 
 ### ASCVD (Atherosclerotic Cardiovascular Disease) 2013 Risk Calculator from AHA/ACC
-**Descrição:** Determina risco de 10 anos de ASCVD grave, i.e. infarto do miocárdio, AVC, ou morte devido a doença cardíaca coronária ou AVC.
+**Description:** Determines 10-year risk of major ASCVD, i.e. myocardial infarction, stroke, or death due to coronary heart disease or stroke.
 
 ### ASCVD (Atherosclerotic Cardiovascular Disease) Risk Algorithm including Known ASCVD from AHA/ACC
-**Descrição:** Determina risco de 10 anos de ASCVD grave e fornece recomendações de estatina.
+**Description:** Determines 10-year risk of major ASCVD and provides statin recommendations.
 
 ### AST to Platelet Ratio Index (APRI)
-**Descrição:** Determina a probabilidade de fibrose hepática e cirrose em pacientes com hepatite C.
+**Description:** Determines the likelihood of liver fibrosis and cirrhosis in patients with hepatitis C.
 
 ### Asthma Impairment and Risk Questionnaire (AIRQ)
-**Descrição:** Mede comprometimento e risco da asma.
+**Description:** Measures asthma impairment and risk.
 
 ### Asthma Predictive Index (API)
-**Descrição:** Determina probabilidade de pacientes pediátricos desenvolverem asma infantil.
+**Description:** Determines likelihood of pediatric patients developing childhood asthma.
 
 ### ASTRAL Score for Ischemic Stroke
-**Descrição:** Prediz resultado ruim em 90 dias em pacientes com AVC isquêmico agudo.
+**Description:** Predicts poor 90-day outcome in patients with acute ischemic stroke.
 
 ### Asymptomatic Myeloma Prognosis
-**Descrição:** Prediz risco de progressão de mieloma múltiplo assintomático (latente) para mieloma ativo ou amiloidose.
+**Description:** Predicts risk of progression from asymptomatic (smoldering) multiple myeloma to active myeloma or amyloidosis.
 
 ### ATLAS Score for Clostridium Difficile Infection
-**Descrição:** Prediz resposta à terapia em pacientes com C. diff.
+**Description:** Predicts response to therapy in C. diff patients.
 
 ### ATRIA Bleeding Risk Score
-**Descrição:** Determina risco de sangramento para pacientes em varfarina.
+**Description:** Determines bleeding risk for patients on warfarin.
 
 ### ATRIA Stroke Risk Score
-**Descrição:** Determina risco de AVC em pacientes com fibrilação atrial.
+**Description:** Determines stroke risk in patients with atrial fibrillation.
 
 ### Atropine Dosing for Cholinesterase Inhibitor Toxicity
-**Descrição:** Dosa atropina para toxicidade por inibidor de colinesterase (medicamentos prescritos, gás nervoso, inseticidas).
+**Description:** Doses atropine for cholinesterase inhibitor toxicity (prescription drugs, nerve gas, insecticides).
 
 ### AUDIT-C for Alcohol Use
-**Descrição:** Identifica bebedores de risco (i.e., binge drinking) que podem não ser dependentes de álcool.
+**Description:** Identifies at-risk drinkers (i.e., binge drinking) who may not be alcohol dependent.
 
 ### Australian Type 2 Diabetes Risk (AUSDRISK) Assessment Tool
-**Descrição:** Estima risco de desenvolver diabetes tipo 2, principalmente em pacientes australianos.
+**Description:** Estimates risk of developing type 2 diabetes, primarily in Australian patients.
 
 ### AWOL Score for Delirium
-**Descrição:** Prediz risco de delirium durante hospitalização.
+**Description:** Predicts risk of delirium during hospitalization.
 
 ---
 
 ## B
 
 ### Bacterial Meningitis Score for Children
-**Descrição:** Exclui meningite bacteriana.
+**Description:** Rules out bacterial meningitis.
 
 ### BALL Score for Relapsed/Refractory CLL - NEW
-**Descrição:** Avalia prognóstico de pacientes com leucemia linfocítica crônica recidivada/refratária (LLC R/R) em terapias direcionadas.
+**Description:** Assesses prognosis of patients with relapsed/refractory chronic lymphocytic leukemia (R/R CLL) on targeted therapies.
 
 ### BAP-65 Score for Acute Exacerbation of COPD
-**Descrição:** Prediz mortalidade em exacerbação aguda de DPOC.
+**Description:** Predicts mortality in acute COPD exacerbation.
 
 ### Barcelona-Clinic Liver Cancer (BCLC) Staging Classification and Treatment Guidelines
-**Descrição:** Determina progressão da doença e curso de tratamento adequado para pacientes com CHC.
+**Description:** Determines disease progression and appropriate treatment course for HCC patients.
 
 ### BARD Score for NAFLD Fibrosis
-**Descrição:** Prediz risco de fibrose avançada em pacientes com DHGNA.
+**Description:** Predicts risk of advanced fibrosis in NAFLD patients.
 
 ### Barnes Jewish Hospital Stroke Dysphagia Screen
-**Descrição:** Avalia capacidade de deglutir sem aspiração após AVC.
+**Description:** Assesses ability to swallow without aspiration after stroke.
 
 ### Barthel Index for Activities of Daily Living (ADL)
-**Descrição:** Avalia independência funcional, geralmente em pacientes com AVC.
+**Description:** Assesses functional independence, usually in stroke patients.
 
 ### Basal Energy Expenditure
-**Descrição:** Calcula gasto energético diário.
+**Description:** Calculates daily energy expenditure.
 
 ### Basic Statistics Calc
-**Descrição:** Calcula valores epidemiológicos comuns para testes diagnósticos e tratamentos.
+**Description:** Calculates common epidemiological values for diagnostic tests and treatments.
 
 ### Bastion Classification of Lower Limb Blast Injuries
-**Descrição:** Estratifica lesões por explosão de membros inferiores para orientar tratamento.
+**Description:** Stratifies lower limb blast injuries to guide treatment.
 
 ### BeAM Value
-**Descrição:** Calcula a diferença entre as glicemias de deitar e em jejum matinal.
+**Description:** Calculates the difference between bedtime and morning fasting blood glucose.
 
 ### Behavioral Activity Rating Scale (BARS) - NEW
-**Descrição:** Rastreia pacientes com agitação em cuidados de emergência e ambientes psiquiátricos.
+**Description:** Screens patients for agitation in emergency care and psychiatric settings.
 
 ### Behavioral Observational Pain Scale (BOPS) for Post-Op Pediatric Pain
-**Descrição:** Quantifica dor pós-operatória para crianças de 1-7 anos.
+**Description:** Quantifies post-operative pain for children aged 1-7.
 
 ### Behavioral Pain Scale (BPS) for Pain Assessment in Intubated Patients
-**Descrição:** Quantifica dor em pacientes intubados.
+**Description:** Quantifies pain in intubated patients.
 
 ### Benzodiazepine Conversion Calculator
-**Descrição:** Fornece equivalentes entre diferentes benzodiazepínicos.
+**Description:** Provides equivalents between different benzodiazepines.
 
 ### Berg Balance Scale (BBS) - NEW
-**Descrição:** Avalia equilíbrio e risco de quedas em adultos idosos residentes na comunidade.
+**Description:** Assesses balance and fall risk in community-dwelling older adults.
 
 ### Berlin Criteria for Acute Respiratory Distress Syndrome
-**Descrição:** Fornece critérios diagnósticos para síndrome do desconforto respiratório agudo (SDRA).
+**Description:** Provides diagnostic criteria for acute respiratory distress syndrome (ARDS).
 
 ### Bicarbonate Deficit
-**Descrição:** Calcula o déficit total de bicarbonato corporal.
+**Description:** Calculates total body bicarbonate deficit.
 
 ### Binet Staging System for Chronic Lymphocytic Leukemia (CLL)
-**Descrição:** Estadifica leucemia linfocítica crônica, similar ao Sistema de Estadiamento Rai.
+**Description:** Stages chronic lymphocytic leukemia, similar to Rai Staging System.
 
 ### BISAP Score for Pancreatitis Mortality
-**Descrição:** Prediz risco de mortalidade em pancreatite com menos variáveis que o Ranson's.
+**Description:** Predicts mortality risk in pancreatitis with fewer variables than Ranson's.
 
 ### Bishop Score for Vaginal Delivery and Induction of Labor
-**Descrição:** Prediz probabilidade de parto vaginal bem-sucedido.
+**Description:** Predicts likelihood of successful vaginal delivery.
 
 ### Blast Lung Injury Severity Score
-**Descrição:** Estratifica lesões pulmonares primárias por explosão em três categorias para orientar tratamento ventilatório.
+**Description:** Stratifies primary blast lung injuries into three categories to guide ventilatory treatment.
 
 ### Blood Volume Calculation
-**Descrição:** Calcula volume sanguíneo total, volume de glóbulos vermelhos e volume plasmático.
+**Description:** Calculates total blood volume, red blood cell volume, and plasma volume.
 
 ### BMI Calculator (Body Mass Index and BSA)
-**Descrição:** Calcula índice de massa corporal e área de superfície corporal.
+**Description:** Calculates body mass index and body surface area.
 
 ### BODE Index for COPD Survival
-**Descrição:** Prediz sobrevida em pacientes com DPOC.
+**Description:** Predicts survival in COPD patients.
 
 ### Body Fluid Balance Calculator by Inputs and Outputs
-**Descrição:** Calcula balanço hídrico a partir de concentrações de sódio que indicam solução salina 0,9% líquida, e perdas de água livre (GI, urina, etc) e ganhos (fluidos IV, VO, etc).
+**Description:** Calculates fluid balance from sodium concentrations indicating 0.9% saline fluid, and free water losses (GI, urine, etc) and gains (IV fluids, PO, etc).
 
 ### Body Roundness Index (BRI) - NEW
-**Descrição:** Estima % de gordura corporal e % de tecido adiposo visceral (TAV).
+**Description:** Estimates % body fat and % visceral adipose tissue (VAT).
 
 ### Bova Score for Pulmonary Embolism Complications
-**Descrição:** Prediz risco de 30 dias de complicações relacionadas a EP em pacientes hemodinamicamente estáveis.
+**Description:** Predicts 30-day risk of PE-related complications in hemodynamically stable patients.
 
 ### Braden Score for Pressure Ulcers
-**Descrição:** Identifica pacientes em risco de úlceras de pressão.
+**Description:** Identifies patients at risk for pressure ulcers.
 
 ### Brain Metastasis Velocity (BMV) Model
-**Descrição:** Calcula taxa de falha cerebral distante após radiocirurgia estereotáxica para metástase cerebral.
+**Description:** Calculates rate of distant brain failure after stereotactic radiosurgery for brain metastasis.
 
 ### Brescia-COVID Respiratory Severity Scale (BCRSS)/Algorithm
-**Descrição:** Abordagem de manejo passo a passo para pacientes COVID-19 baseada na severidade clínica a partir de 2 de junho de 2020.
+**Description:** Step-by-step management approach for COVID-19 patients based on clinical severity as of June 2, 2020.
 
 ### Brief Addiction Monitor (BAM)
-**Descrição:** Avalia comportamentos relacionados ao uso de substâncias.
+**Description:** Assesses substance use-related behaviors.
 
 ### Brief Alcohol Withdrawal Scale (BAWS)
-**Descrição:** Avalia sintomas de abstinência alcoólica.
+**Description:** Assesses alcohol withdrawal symptoms.
 
 ### Brief Resolved Unexplained Events (BRUE) Criteria for Infants
-**Descrição:** Classifica eventos inexplicados e substitui a classificação de Eventos Aparentemente Ameaçadores à Vida (ALTE).
+**Description:** Classifies unexplained events and replaces the Apparent Life-Threatening Events (ALTE) classification.
 
 ### Brief Resolved Unexplained Events 2.0 (BRUE 2.0) Criteria for Infants
-**Descrição:** Classifica eventos inexplicados, melhora os Critérios BRUE.
+**Description:** Classifies unexplained events, improves BRUE Criteria.
 
 ### Bristol Stool Form Scale
-**Descrição:** Classifica fezes (correlaciona com tempo de trânsito intestinal).
+**Description:** Classifies stool (correlates with intestinal transit time).
 
 ### Brugada Criteria for Ventricular Tachycardia
-**Descrição:** Distingue taquicardia ventricular de taquicardia supraventricular.
+**Description:** Distinguishes ventricular tachycardia from supraventricular tachycardia.
 
 ### BUN Creatinine Ratio
-**Descrição:** Mede função renal.
+**Description:** Measures kidney function.
 
 ### Burch-Wartofsky Point Scale (BWPS) for Thyrotoxicosis
-**Descrição:** Prediz probabilidade de que tireotoxicose bioquímica seja tempestade tireoidiana.
+**Description:** Predicts likelihood that biochemical thyrotoxicosis is thyroid storm.
 
 ### Bush-Francis Catatonia Rating Scale
-**Descrição:** Avalia severidade de catatonia e rastreia catatonia em condições psiquiátricas e neurológicas.
+**Description:** Assesses severity of catatonia and screens for catatonia in psychiatric and neurological conditions.
 
 ### BWH Egg Freezing Counseling Tool (EFCT)
-**Descrição:** Prediz probabilidade de nascido vivo para congelamento eletivo de óvulos em mulheres.
+**Description:** Predicts likelihood of live birth for elective egg freezing in women.
 
 ---
 
 ## C
 
 ### C-Peptide to Glucose Ratio
-**Descrição:** Avalia função secretória de células beta em pacientes com diabetes/pré-diabetes.
+**Description:** Assesses beta cell secretory function in patients with diabetes/pre-diabetes.
 
 ### CAGE Questions for Alcohol Use
-**Descrição:** Rastreia bebedeira excessiva e alcoolismo.
+**Description:** Screens for excessive drinking and alcoholism.
 
 ### CAHP (Cardiac Arrest Hospital Prognosis) Score
-**Descrição:** Prediz prognóstico ruim após parada cardíaca extra-hospitalar e orienta utilidade do cateterismo cardíaco.
+**Description:** Predicts poor prognosis after out-of-hospital cardiac arrest and guides utility of cardiac catheterization.
 
 ### Calcium Correction for Hypoalbuminemia and Hyperalbuminemia
-**Descrição:** Calcula nível de cálcio corrigido para pacientes com hipoalbuminemia ou hiperalbuminemia.
+**Description:** Calculates corrected calcium level for patients with hypoalbuminemia or hyperalbuminemia.
 
 ### Cambridge Diabetes Risk Score
-**Descrição:** Prediz risco de ter diabetes tipo 2 não diagnosticado anteriormente.
+**Description:** Predicts risk of having previously undiagnosed type 2 diabetes.
 
 ### Canadian Association of Radiologists and Osteoporosis Canada (CAROC) System
-**Descrição:** Avalia risco absoluto de fratura em 10 anos.
+**Description:** Assesses 10-year absolute fracture risk.
 
 ### Canadian C-Spine Rule
-**Descrição:** Limpa clinicamente fratura de coluna cervical sem imagem em pacientes de trauma alerta e estáveis.
+**Description:** Clinically clears cervical spine fracture without imaging in alert, stable trauma patients.
 
 ### Canadian Cardiovascular Society (CCS) Angina Grade
-**Descrição:** Classifica severidade da angina.
+**Description:** Classifies angina severity.
 
 ### Canadian CT Head Injury/Trauma Rule
-**Descrição:** Exclui necessidade de TC de crânio em trauma craniano menor.
+**Description:** Rules out need for head CT in minor head trauma.
 
 ### Canadian Diabetes Risk Assessment Questionnaire (CANRISK)
-**Descrição:** Rastreia diabetes mellitus tipo 2 não diagnosticado e pré-diabetes.
+**Description:** Screens for undiagnosed type 2 diabetes mellitus and pre-diabetes.
 
 ### Canadian Syncope Risk Score
-**Descrição:** Prediz eventos adversos graves em 30 dias em pacientes apresentando síncope.
+**Description:** Predicts 30-day serious adverse events in patients presenting with syncope.
 
 ### Canadian Transient Ischemic Attack (TIA) Score
-**Descrição:** Identifica risco de AVC nos próximos 7 dias em pacientes que experimentaram sintomas de AIT.
+**Description:** Identifies stroke risk in the next 7 days in patients who experienced TIA symptoms.
 
 ### Cancer and Aging Research Group Chemotherapy Toxicity Tool (CARG-TT)
-**Descrição:** Estima o risco de efeitos colaterais graves relacionados à quimioterapia (toxicidade Grau 3 ou maior) em pacientes oncológicos idosos.
+**Description:** Estimates the risk of severe chemotherapy-related side effects (Grade 3 or greater toxicity) in older oncology patients.
 
 ### Caprini Score for Venous Thromboembolism (2005)
-**Descrição:** Estratifica risco de TEV em pacientes cirúrgicos, orientando decisões de profilaxia.
+**Description:** Stratifies VTE risk in surgical patients, guiding prophylaxis decisions.
 
 ### Cardiac Anesthesia Risk Evaluation Score (CARE)
-**Descrição:** Prediz mortalidade e morbidade após cirurgia cardíaca.
+**Description:** Predicts mortality and morbidity after cardiac surgery.
 
 ### Cardiac Output (Fick's Formula)
-**Descrição:** Calcula débito cardíaco, índice cardíaco e volume sistólico.
+**Description:** Calculates cardiac output, cardiac index, and stroke volume.
 
 ### Cardiac Power Output (CPO)
-**Descrição:** Calcula taxa de produção de energia do coração.
+**Description:** Calculates the heart's rate of energy production.
 
 ### Cardiovascular Risk in Orthotopic Liver Transplantation (CAR-OLT) - NEW
-**Descrição:** Prediz risco cardiovascular em transplante hepático ortotópico (THO).
+**Description:** Predicts cardiovascular risk in orthotopic liver transplantation (OLT).
 
 ### CART (Cardiac Arrest Risk Triage) Score
-**Descrição:** Prediz risco de parada cardíaca hospitalar.
+**Description:** Predicts risk of in-hospital cardiac arrest.
 
 ### CASPAR Criteria for Psoriatic Arthritis
-**Descrição:** Fornece critérios de classificação para artrite psoriásica.
+**Description:** Provides classification criteria for psoriatic arthritis.
 
 ### CATCH (Canadian Assessment of Tomography for Childhood Head injury) Rule
-**Descrição:** Prediz lesões cranioencefálicas clinicamente significativas em crianças.
+**Description:** Predicts clinically significant brain injuries in children.
 
 ### CEDOCS Score for Emergency Department Overcrowding
-**Descrição:** Estima severidade de superlotação em departamentos de emergência comunitários.
+**Description:** Estimates severity of overcrowding in community emergency departments.
 
 ### Centor Score (Modified/McIsaac) for Strep Pharyngitis
-**Descrição:** Estima probabilidade de que faringite seja estreptocócica e sugere curso de manejo.
+**Description:** Estimates likelihood that pharyngitis is streptococcal and suggests management course.
 
 ### Central Nervous System International Prognostic Index (CNS-IPI)
-**Descrição:** Prediz recidiva no SNC em pacientes com linfoma difuso de grandes células B (LDGCB).
+**Description:** Predicts CNS relapse in patients with diffuse large B-cell lymphoma (DLBCL).
 
 ### Cerebral Perfusion Pressure
-**Descrição:** Calcula fluxo sanguíneo para o cérebro.
+**Description:** Calculates blood flow to the brain.
 
 ### CHADS-65 (Canadian Society of Cardiology Guideline)
-**Descrição:** Orienta terapia antitrombótica para pacientes com fibrilação atrial não valvular ou flutter atrial.
+**Description:** Guides antithrombotic therapy for patients with non-valvular atrial fibrillation or atrial flutter.
 
 ### CHADS₂ Score for Atrial Fibrillation Stroke Risk
-**Descrição:** Estima risco de AVC em pacientes com fibrilação atrial.
+**Description:** Estimates stroke risk in patients with atrial fibrillation.
 
 ### CHALICE (Children's Head injury ALgorithm for the prediction of Important Clinical Events) Rule
-**Descrição:** Prediz morte, necessidade de intervenção neurocirúrgica ou anormalidade na TC em crianças com trauma craniano.
+**Description:** Predicts death, need for neurosurgical intervention, or CT abnormality in children with head trauma.
 
 ### Charlson Comorbidity Index (CCI)
-**Descrição:** Prediz sobrevida em 10 anos em pacientes com múltiplas comorbidades.
+**Description:** Predicts 10-year survival in patients with multiple comorbidities.
 
 ### CHA₂DS₂-VA Score for Atrial Fibrillation Stroke Risk - -> CHECK (IMPLEMENTED)
-**Descrição:** Calcula risco de AVC para pacientes com fibrilação atrial; similar ao CHA₂DS₂-VASc Score mas sem considerar sexo.
+**Description:** Calculates stroke risk for patients with atrial fibrillation; similar to CHA₂DS₂-VASc Score but without considering sex.
 
 ### CHA₂DS₂-VASc Score for Atrial Fibrillation Stroke Risk ✅
-**Descrição:** Calcula risco de AVC para pacientes com fibrilação atrial.
+**Description:** Calculates stroke risk for patients with atrial fibrillation.
 
 ### Chemotherapy Risk Assessment Scale for High-Age Patients (CRASH) Score
-**Descrição:** Avalia o risco individual de toxicidade grave da quimioterapia em pacientes idosos.
+**Description:** Assesses the individual risk of severe chemotherapy toxicity in older cancer patients.
 
 ### Child-Pugh Score for Cirrhosis Mortality
-**Descrição:** Estima severidade da cirrose.
+**Description:** Estimates severity of cirrhosis.
 
 ### Children's Hospital of Eastern Ontario Pain Scale (CHEOPS) for Post-Op Pediatric Pain
-**Descrição:** Quantifica dor pós-operatória em pacientes pediátricos de 1-5 anos.
+**Description:** Quantifies post-operative pain in pediatric patients aged 1-5.
 
 ### CHIP (CT in Head Injury Patients) Prediction Rule
-**Descrição:** Prediz achados de TC traumática intracraniana em pacientes com trauma craniano menor.
+**Description:** Predicts traumatic intracranial CT findings in patients with minor head trauma.
 
 ### CholeS Score for Duration of Laparoscopic Cholecystectomy
-**Descrição:** Prediz tempo operatório de colecistectomia laparoscópica.
+**Description:** Predicts operative time of laparoscopic cholecystectomy.
 
 ### Chronic Kidney Disease in Children (CKiD) U25 eGFR Calculator - NEW
-**Descrição:** Estima taxa de filtração glomerular baseada em creatinina e características do paciente em pacientes de 1 a 25 anos.
+**Description:** Estimates glomerular filtration rate based on creatinine and patient characteristics in patients aged 1 to 25.
 
 ### Cincinnati Prehospital Stroke Severity Scale (CP-SSS)
-**Descrição:** Prediz oclusão de vaso grande (OVG) e AVC grave em pacientes com sintomas de AVC.
+**Description:** Predicts large vessel occlusion (LVO) and severe stroke in patients with stroke symptoms.
 
 ### Cisplatin-Associated Acute Kidney Injury (CP-AKI) Risk Calculator - NEW
-**Descrição:** Prediz o risco de lesão renal aguda em pacientes tratados com cisplatina intravenosa.
+**Description:** Predicts the risk of acute kidney injury in patients treated with intravenous cisplatin.
 
 ### CIWA-Ar for Alcohol Withdrawal
-**Descrição:** O CIWA-Ar objetifica severidade da abstinência alcoólica.
+**Description:** The CIWA-Ar objectifies severity of alcohol withdrawal.
 
 ### CKD Prediction in HIV+ Patients
-**Descrição:** Determina probabilidade de pacientes HIV desenvolverem DRC nos próximos 5 anos, se tomam tenofovir ou não.
+**Description:** Determines likelihood of HIV patients developing CKD in the next 5 years, whether they take tenofovir or not.
 
 ### CKD-EPI Equations for Glomerular Filtration Rate (GFR) --> (IMPLEMENTED - 2021 - CHECK) ✅
-**Descrição:** Estima TFG em pacientes com DRC usando creatinina sérica, cistatina C, ou ambos.
+**Description:** Estimates GFR in CKD patients using serum creatinine, cystatin C, or both.
 
 ### CLIF-C ACLF (Acute-on-Chronic Liver Failure)
-**Descrição:** Prediz mortalidade em insuficiência hepática aguda sobre crônica.
+**Description:** Predicts mortality in acute-on-chronic liver failure.
 
 ### Clinical Dementia Rating (CDR) Scale
-**Descrição:** Estadifica demência, incluindo doença de Alzheimer, em pacientes idosos.
+**Description:** Stages dementia, including Alzheimer's disease, in elderly patients.
 
 ### Clinical Disease Activity Index (CDAI) for Rheumatoid Arthritis
-**Descrição:** Determina severidade da artrite reumatoide usando apenas dados clínicos.
+**Description:** Determines severity of rheumatoid arthritis using only clinical data.
 
 ### Clinical Index of Stable Febrile Neutropenia (CISNE)
-**Descrição:** Identifica pacientes com neutropenia febril em baixo risco de complicações graves.
+**Description:** Identifies febrile neutropenia patients at low risk for serious complications.
 
 ### Clinical Pulmonary Infection Score (CPIS) for Ventilator-Associated Pneumonia (VAP)
-**Descrição:** Auxilia no diagnóstico de pneumonia associada a ventilador predizendo benefício de culturas pulmonares.
+**Description:** Aids in diagnosis of ventilator-associated pneumonia by predicting benefit of pulmonary cultures.
 
 ### Color Vision Screening (Ishihara Test)
-**Descrição:** Avalia daltonismo vermelho-verde.
+**Description:** Assesses red-green color blindness.
 
 ### Columbia Suicide Severity Rating Scale (C-SSRS Screener)
-**Descrição:** Rastreia ideação e comportamento suicida.
+**Description:** Screens for suicidal ideation and behavior.
 
 ### Common Terminology Criteria for Adverse Events (CTCAE) - NEW
-**Descrição:** Descreve a severidade de eventos adversos hematológicos e linfáticos do tratamento do câncer.
+**Description:** Describes the severity of hematologic and lymphatic adverse events from cancer treatment.
 
 ### Confusion Assessment Method for the ICU (CAM-ICU)
-**Descrição:** Estabelece capacidade de detectar delirium em ambientes de alto risco.
+**Description:** Establishes ability to detect delirium in high-risk settings.
 
 ### COPD Assessment Test (CAT)
-**Descrição:** Quantifica impacto dos sintomas de DPOC na saúde geral dos pacientes.
+**Description:** Quantifies impact of COPD symptoms on patients' overall health.
 
 ### Cornell Assessment of Pediatric Delirium (CAPD)
-**Descrição:** Rastreia delirium pediátrico.
+**Description:** Screens for pediatric delirium.
 
 ### Coronavirus Anxiety Scale (CAS)
-**Descrição:** Avalia ansiedade disfuncional associada à crise do COVID-19.
+**Description:** Assesses dysfunctional anxiety associated with the COVID-19 crisis.
 
 ### Corrected Count Increment (CCI) for Platelet Transfusion
-**Descrição:** Avalia adequação da resposta à transfusão de plaquetas.
+**Description:** Assesses adequacy of response to platelet transfusion.
 
 ### Corrected QT Interval (QTc)
-**Descrição:** Corrige o intervalo QT para extremos de frequência cardíaca (escolha entre fórmulas de Bazett, Fridericia, Framingham, Hodges ou Rautaharju).
+**Description:** Corrects QT interval for heart rate extremes (choose from Bazett, Fridericia, Framingham, Hodges, or Rautaharju formulas).
 
 ### Corrected Reticulocyte Percentage/Reticulocyte Production Index (RPI)
-**Descrição:** Avalia resposta da medula óssea à anemia, frequentemente em pacientes com anemia falciforme.
+**Description:** Assesses bone marrow response to anemia, often in sickle cell patients.
 
 ### COVID Home Safely Now (CHOSEN) Risk Score for COVID-19
-**Descrição:** Prediz adequação para alta em pacientes COVID-19.
+**Description:** Predicts suitability for discharge in COVID-19 patients.
 
 ### COVID-19 Inpatient Risk Calculator (CIRC)
-**Descrição:** Prediz probabilidade de mortalidade hospitalar ou progressão severa da doença em pacientes COVID.
+**Description:** Predicts likelihood of in-hospital mortality or severe disease progression in COVID patients.
 
 ### COVID-GRAM Critical Illness Risk Score
-**Descrição:** Prediz risco de doença crítica em pacientes COVID-19 hospitalizados.
+**Description:** Predicts risk of critical illness in hospitalized COVID-19 patients.
 
 ### COWS Score for Opiate Withdrawal
-**Descrição:** Quantifica severidade da abstinência de opiáceos.
+**Description:** Quantifies severity of opiate withdrawal.
 
 ### CRB-65 Score for Pneumonia Severity - NEW
-**Descrição:** Estratifica severidade de pneumonia adquirida na comunidade (PAC) para determinar tratamento ambulatorial versus hospitalar.
+**Description:** Stratifies severity of community-acquired pneumonia (CAP) to determine outpatient versus inpatient treatment.
 
 ### Creatinine Clearance (Cockcroft-Gault Equation)
-**Descrição:** Calcula ClCr de acordo com a equação de Cockcroft-Gault.
+**Description:** Calculates CrCl according to the Cockcroft-Gault equation.
 
 ### Critical Care Pain Observation Tool (CPOT)
-**Descrição:** Avalia dor de pacientes críticos baseada na observação clínica.
+**Description:** Assesses pain of critically ill patients based on clinical observation.
 
 ### Crohn's Disease Activity Index (CDAI)
-**Descrição:** Determina a severidade atual da doença de Crohn.
+**Description:** Determines the current severity of Crohn's disease.
 
 ### CRUSADE Score for Post-MI Bleeding Risk
-**Descrição:** Estratifica risco de sangramento após IAMSSST.
+**Description:** Stratifies bleeding risk after NSTEMI.
 
 ### Cryoprecipitate Dosing for Fibrinogen Replacement
-**Descrição:** Estima volume de crioprecipitado recomendado para reposição de fibrinogênio.
+**Description:** Estimates recommended cryoprecipitate volume for fibrinogen replacement.
 
 ### CSHA Clinical Frailty Scale (CFS)
-**Descrição:** Mede fragilidade para predizer sobrevida.
+**Description:** Measures frailty to predict survival.
 
 ### Cumulative Illness Rating Scale-Geriatric (CIRS-G)
-**Descrição:** Quantifica carga de doenças em pacientes idosos (escala de comorbidade).
+**Description:** Quantifies burden of illness in elderly patients (comorbidity scale).
 
 ### CURB-65 Score for Pneumonia Severity -> (CHECK) IMPLEMENTED
-**Descrição:** Estima mortalidade da pneumonia adquirida na comunidade para ajudar a determinar tratamento ambulatorial vs. hospitalar.
+**Description:** Estimates mortality of community-acquired pneumonia to help determine outpatient vs. inpatient treatment.
 
 ### Current Opioid Misuse Measure (COMM)
-**Descrição:** Identifica potencial uso inadequado de medicação em pacientes que estão em terapia de opiáceos de longo prazo.
+**Description:** Identifies potential inappropriate medication use in patients who are on long-term opioid therapy.
 
 ### Cytokine Release Syndrome (CRS) Grading
-**Descrição:** Avalia severidade de SRC em pacientes em imunoterapia.
+**Description:** Assesses severity of CRS in immunotherapy patients.
 
 ---
 
 ## D
 
 ### D'Amico Risk Classification for Prostate Cancer
-**Descrição:** Avalia risco de 5 anos de falha do tratamento baseado em fatores clínicos.
+**Description:** Assesses 5-year risk of treatment failure based on clinical factors.
 
 ### Danger Assessment Tool for Domestic Abuse
-**Descrição:** Prediz risco de morte por parceiro íntimo (PI) em relacionamento íntimo violento.
+**Description:** Predicts risk of death by intimate partner (IP) in violent intimate relationship.
 
 ### DASH Prediction Score for Recurrent VTE
-**Descrição:** Prediz probabilidade de recorrência de primeiro TEV.
+**Description:** Predicts likelihood of recurrence of first VTE.
 
 ### DECAF Score for Acute Exacerbation of COPD
-**Descrição:** Prediz mortalidade hospitalar em exacerbação aguda de DPOC.
+**Description:** Predicts in-hospital mortality in acute COPD exacerbation.
 
 ### Dehydration: Assessing Kids Accurately (DHAKA) Score - NEW
-**Descrição:** Classifica desidratação em crianças <5 anos com diarreia aguda.
+**Description:** Classifies dehydration in children <5 years with acute diarrhea.
 
 ### Denver HIV Risk Score
-**Descrição:** Prediz probabilidade de infecção por HIV não diagnosticada.
+**Description:** Predicts likelihood of undiagnosed HIV infection.
 
 ### Diabetes Distress Scale (DDS17)
-**Descrição:** Avalia distresse emocional relacionado ao diabetes.
+**Description:** Assesses emotional distress related to diabetes.
 
 ### Diabetic Ketoacidosis Mortality Prediction Model (DKA MPM) Score
-**Descrição:** Prediz mortalidade hospitalar em CAD.
+**Description:** Predicts in-hospital mortality in DKA.
 
 ### DigiFab (Digibind) Dosing for Digoxin Poisoning
-**Descrição:** Dosa DigiFab em pacientes com intoxicação por digoxina confirmada ou overdose.
+**Description:** Doses DigiFab in patients with confirmed digoxin toxicity or overdose.
 
 ### DIPSS/DIPSS Plus (Dynamic International Prognostic Scoring System) for Myelofibrosis
-**Descrição:** Estima sobrevida em pacientes com mielofibrose primária.
+**Description:** Estimates survival in patients with primary myelofibrosis.
 
 ### DIRE Score for Opioid Treatment
-**Descrição:** Prediz compliance com tratamento de opiáceos para dor crônica não neoplásica.
+**Description:** Predicts compliance with opioid treatment for chronic non-cancer pain.
 
 ### Direct-Acting Oral Anticoagulants (DOAC) Score - NEW
-**Descrição:** Prediz risco de sangramento em pacientes com fibrilação atrial em DOAC.
+**Description:** Predicts bleeding risk in patients with atrial fibrillation on DOAC.
 
 ### Disease Activity Score-28 for Rheumatoid Arthritis with CRP (DAS28-CRP)
-**Descrição:** Descreve severidade da artrite reumatoide usando dados clínicos e laboratoriais, especificamente PCR.
+**Description:** Describes severity of rheumatoid arthritis using clinical and laboratory data, specifically CRP.
 
 ### Disease Activity Score-28 for Rheumatoid Arthritis with ESR (DAS28-ESR)
-**Descrição:** Descreve severidade da artrite reumatoide usando dados clínicos e laboratoriais, especificamente VHS.
+**Description:** Describes severity of rheumatoid arthritis using clinical and laboratory data, specifically ESR.
 
 ### Disease Steps for Multiple Sclerosis
-**Descrição:** Avalia progressão da doença de EM baseada na capacidade ambulatória do paciente.
+**Description:** Assesses MS disease progression based on patient's ambulatory ability.
 
 ### Donor Lymphocyte Infusion (DLI) Volume
-**Descrição:** Estima volume de sangue total para processar por aférese para produzir dosagem de ILD apropriada.
+**Description:** Estimates total blood volume to process by apheresis to produce appropriate DLI dosage.
 
 ### DRAGON Score for Post-TPA Stroke Outcome
-**Descrição:** Prediz resultado em 3 meses em pacientes com AVC isquêmico recebendo TPA.
+**Description:** Predicts 3-month outcome in ischemic stroke patients receiving TPA.
 
 ### Drug Abuse Screening Test-10 (DAST-10)
-**Descrição:** Avalia uso de drogas ilícitas no último ano.
+**Description:** Assesses illicit drug use in the past year.
 
 ### Drug Resistance in Pneumonia (DRIP) Score
-**Descrição:** Prediz risco para pneumonia adquirida na comunidade devido a patógenos resistentes a drogas.
+**Description:** Predicts risk for community-acquired pneumonia due to drug-resistant pathogens.
 
 ### DSM-5 Criteria for Binge Eating Disorder
-**Descrição:** Critérios diagnósticos para transtorno de compulsão alimentar (TCA).
+**Description:** Diagnostic criteria for binge eating disorder (BED).
 
 ### DSM-5 Criteria for Bipolar Disorder
-**Descrição:** Critérios diagnósticos para transtorno bipolar (TB).
+**Description:** Diagnostic criteria for bipolar disorder (BD).
 
 ### DSM-5 Criteria for Major Depressive Disorder
-**Descrição:** Critérios diagnósticos para transtorno depressivo maior (TDM).
+**Description:** Diagnostic criteria for major depressive disorder (MDD).
 
 ### DSM-5 Criteria for Posttraumatic Stress Disorder
-**Descrição:** Critérios diagnósticos para transtorno de estresse pós-traumático (TEPT).
+**Description:** Diagnostic criteria for posttraumatic stress disorder (PTSD).
 
 ### du Bois Score for Idiopathic Pulmonary Fibrosis (IPF) Mortality
-**Descrição:** Determina mortalidade em 1 ano em pacientes com FPI usando PFT e indicadores clínicos.
+**Description:** Determines 1-year mortality in IPF patients using PFT and clinical indicators.
 
 ### Dual Antiplatelet Therapy (DAPT) Score
-**Descrição:** Prediz quais pacientes se beneficiarão de DAPT prolongada após colocação de stent coronário.
+**Description:** Predicts which patients will benefit from prolonged DAPT after coronary stent placement.
 
 ### Duke Activity Status Index (DASI)
-**Descrição:** Estima capacidade funcional.
+**Description:** Estimates functional capacity.
 
 ### Duke Criteria for Infective Endocarditis
-**Descrição:** Critérios diagnósticos para endocardite.
+**Description:** Diagnostic criteria for endocarditis.
 
 ### Duke Treadmill Score
-**Descrição:** Diagnostica e prognóstica DAC suspeita baseada no teste de exercício em esteira.
+**Description:** Diagnoses and prognoses suspected CAD based on treadmill exercise test.
 
 ### Dutch Criteria for Familial Hypercholesterolemia (FH)
-**Descrição:** Diagnostica hipercolesterolemia familiar (HF) baseada em história clínica, genética e familiar.
+**Description:** Diagnoses familial hypercholesterolemia (FH) based on clinical, genetic, and family history.
 
 ### Dutch-English LEMS Tumor Association Prediction (DELTA-P) Score - NEW
-**Descrição:** Prediz câncer de pulmão de pequenas células em pacientes com síndrome miastênica de Lambert-Eaton.
+**Description:** Predicts small cell lung cancer in patients with Lambert-Eaton myasthenic syndrome.
 
 ### Duval/CIBMTR Score for Acute Myelogenous Leukemia (AML) Survival
-**Descrição:** Prediz sobrevida global em pacientes com LMA com doença recidivada/refratária submetidos a transplante mieloablativo.
+**Description:** Predicts overall survival in AML patients with relapsed/refractory disease undergoing myeloablative transplant.
 
 ---
 
 ## E
 
 ### Eastern Cooperative Oncology Group (ECOG) Performance Status
-**Descrição:** Determina capacidade do paciente de tolerar terapias em doença grave, especificamente para quimioterapia, mais simples que a Escala Karnofsky.
+**Description:** Determines patient's ability to tolerate therapies in severe illness, specifically for chemotherapy, simpler than Karnofsky Scale.
 
 ### Eat, Sleep, Console (ESC)
-**Descrição:** Auxilia no manejo de bebês com síndrome de abstinência neonatal (SAN).
+**Description:** Aids in management of infants with neonatal abstinence syndrome (NAS).
 
 ### Eczema Area and Severity Index (EASI)
-**Descrição:** Estratifica severidade do eczema.
+**Description:** Stratifies eczema severity.
 
 ### ED-SAFE Patient Safety Screener 3 (PSS-3)
-**Descrição:** Rastreia suicidalidade em pacientes de emergência.
+**Description:** Screens for suicidality in emergency patients.
 
 ### Edinburgh Postnatal Depression Scale (EPDS)
-**Descrição:** Rastreia depressão no período pós-natal.
+**Description:** Screens for depression in the postnatal period.
 
 ### Edmonton Obesity Staging System (EOSS)
-**Descrição:** Estratifica a presença e severidade de comprometimentos de saúde relacionados à obesidade.
+**Description:** Stratifies the presence and severity of obesity-related health impairments.
 
 ### Edmonton Symptom Assessment System-revised (ESAS-r)
-**Descrição:** Avalia sintomas de pacientes recebendo cuidados paliativos.
+**Description:** Assesses symptoms of patients receiving palliative care.
 
 ### EGSYS (Evaluation of Guidelines in SYncope Study) Score for Syncope
-**Descrição:** Prediz probabilidade de que síncope seja de causa cardíaca.
+**Description:** Predicts likelihood that syncope is of cardiac cause.
 
 ### El-Ganzouri Risk Index (EGRI) for Difficult Airway
-**Descrição:** Prediz risco de via aérea difícil.
+**Description:** Predicts risk of difficult airway.
 
 ### Embolic Stroke of Undetermined Source (ESUS) Criteria
-**Descrição:** Diagnostica AVC embólico de fonte indeterminada.
+**Description:** Diagnoses embolic stroke of undetermined source.
 
 ### Emergency Department Assessment of Chest Pain Score (EDACS)
-**Descrição:** Identifica pacientes com dor torácica com baixo risco de evento cardíaco adverso maior.
+**Description:** Identifies chest pain patients at low risk for major adverse cardiac event.
 
 ### Emergency Department-Initiated Buprenorphine for Opioid Use Disorder (EMBED)
-**Descrição:** Avalia TUO, abstinência de opiáceos e prontidão para tratamento para buprenorfina iniciada no DE.
+**Description:** Assesses OUD, opioid withdrawal, and readiness for ED-initiated buprenorphine treatment.
 
 ### Emergency Heart Failure Mortality Risk Grade (EHMRG)
-**Descrição:** Estima mortalidade em 7 dias de pacientes com IC de emergência.
+**Description:** Estimates 7-day mortality of emergency HF patients.
 
 ### Endotracheal Tube (ETT) Depth and Tidal Volume Calculator
-**Descrição:** Estima profundidade de colocação ótima de TOT e volume corrente alvo por altura.
+**Description:** Estimates optimal ETT placement depth and target tidal volume by height.
 
 ### Eosinophilic Esophagitis Endoscopic Reference Score (EREFS) - NEW
-**Descrição:** Avalia severidade de achados endoscópicos em pacientes com esofagite eosinofílica (EEo).
+**Description:** Assesses severity of endoscopic findings in patients with eosinophilic esophagitis (EoE).
 
 ### Estimated Average Glucose (eAG) From HbA1C
-**Descrição:** Estima nível médio de glicose a partir do valor de Hemoglobina A1C.
+**Description:** Estimates average glucose level from Hemoglobin A1C value.
 
 ### Estimated Ethanol (and Toxic Alcohol) Serum Concentration Based on Ingestion
-**Descrição:** Prediz concentração de etanol baseada na ingestão de álcool.
+**Description:** Predicts ethanol concentration based on alcohol ingestion.
 
 ### Estimated/Expected Peak Expiratory Flow (Peak Flow)
-**Descrição:** Quantifica severidade da exacerbação da asma.
+**Description:** Quantifies severity of asthma exacerbation.
 
 ### EUROMACS-RHF Score
-**Descrição:** Determina risco de IC ventricular direita em pacientes após implante de DAVS.
+**Description:** Determines risk of right ventricular HF in patients after LVAD implantation.
 
 ### European System for Cardiac Operative Risk Evaluation (EuroSCORE) II
-**Descrição:** Prediz risco de mortalidade hospitalar após cirurgia cardíaca maior.
+**Description:** Predicts risk of in-hospital mortality after major cardiac surgery.
 
 ### EUTOS Score for Chronic Myelogenous Leukemia (CML)
-**Descrição:** Prediz resultados após tratamentos de LMC, especificamente ajustado para tratamentos com inibidor de tirosina quinase.
+**Description:** Predicts outcomes after CML treatments, specifically adjusted for tyrosine kinase inhibitor treatments.
 
 ### EVendo Score for Esophageal Varices
-**Descrição:** Prediz presença e tamanho de varizes esofágicas antes da endoscopia de rastreamento.
+**Description:** Predicts presence and size of esophageal varices prior to screening endoscopy.
 
 ### Expanded Disability Status Scale (EDSS) / Functional Systems Score (FSS)
-**Descrição:** Descreve severidade da incapacidade em pacientes com EM.
+**Description:** Describes severity of disability in MS patients.
 
 ---
 
 ## F
 
 ### Fat Free Mass (FFM) - NEW
-**Descrição:** Calcula o valor preditivo da massa livre de gordura a partir do peso corporal e índice de massa corporal (IMC).
+**Description:** Calculates the predictive value of fat-free mass from body weight and body mass index (BMI).
 
 ### Fatty Liver Index
-**Descrição:** Diagnostica fígado gorduroso usando laboratório e achados do exame.
+**Description:** Diagnoses fatty liver using lab and exam findings.
 
 ### Fetal Biophysical Profile (BPP) Score
-**Descrição:** Prediz necessidade de parto urgente baseado em teste sonográfico e não estressante.
+**Description:** Predicts need for urgent delivery based on sonographic and non-stress test.
 
 ### FeverPAIN Score for Strep Pharyngitis
-**Descrição:** Prediz probabilidade de faringite estreptocócica.
+**Description:** Predicts likelihood of streptococcal pharyngitis.
 
 ### Fibrosis-4 (FIB-4) Index for Liver Fibrosis
-**Descrição:** Estimativa não invasiva de cicatrização hepática em pacientes com VHC e VHB, para avaliar necessidade de biópsia.
+**Description:** Non-invasive estimate of liver scarring in HCV and HBV patients, to assess need for biopsy.
 
 ### Fibrotic NASH Index (FNI)
-**Descrição:** Rastreia NASH fibrótica em indivíduos com alto risco para DHGNA.
+**Description:** Screens for fibrotic NASH in individuals at high risk for NAFLD.
 
 ### FIGO Staging for Ovarian Cancer (2014)
-**Descrição:** Estadifica câncer do ovário, tuba uterina e peritônio.
+**Description:** Stages ovarian, fallopian tube, and peritoneal cancer.
 
 ### FINDRISC (Finnish Diabetes Risk Score)
-**Descrição:** Identifica pacientes com alto risco para diabetes tipo 2.
+**Description:** Identifies patients at high risk for type 2 diabetes.
 
 ### Fisher Grading Scale for Subarachnoid Hemorrhage (SAH)
-**Descrição:** Avalia risco de vasoespasmo em HSA baseado na quantidade e distribuição de sangue na TC.
+**Description:** Assesses risk of vasospasm in SAH based on amount and distribution of blood on CT.
 
 ### Fleischner Society Guidelines for Incidental Pulmonary Nodules
-**Descrição:** Fornece diretrizes para manejo de nódulos pulmonares sólidos e subsólidos.
+**Description:** Provides guidelines for management of solid and subsolid pulmonary nodules.
 
 ### Focused Assessment with Sonography for Trauma (FAST)
-**Descrição:** Prediz presença de lesão pericárdica ou intra-abdominal após trauma penetrante ou contuso.
+**Description:** Predicts presence of pericardial or intra-abdominal injury after penetrating or blunt trauma.
 
 ### Follicular Lymphoma International Prognostic Index (FLIPI)
-**Descrição:** Estima sobrevida global baseada em informações clínicas.
+**Description:** Estimates overall survival based on clinical information.
 
 ### Fomepizole Dosing
-**Descrição:** Dosa fomepiazol para reversão de metanol e etilenoglicol.
+**Description:** Doses fomepizole for methanol and ethylene glycol reversal.
 
 ### Fong Clinical Risk Score for Colorectal Cancer Recurrence
-**Descrição:** Prediz recorrência para pacientes com câncer colorretal com metástase hepática após ressecção hepática.
+**Description:** Predicts recurrence for colorectal cancer patients with liver metastasis after liver resection.
 
 ### For Patients: VACO Index COVID-19 Mortality Risk
-**Descrição:** Para uso por não clínicos. Calcule seu risco ou de um ente querido de morrer dentro de 30 dias de contrair COVID-19.
+**Description:** For use by non-clinicians. Calculate your or a loved one's risk of dying within 30 days of contracting COVID-19.
 
 ### Forrest Classification of Upper GI Bleeding
-**Descrição:** Estratifica severidade do sangramento GI superior de acordo com achados endoscópicos.
+**Description:** Stratifies severity of upper GI bleeding according to endoscopic findings.
 
 ### FOUR (Full Outline of UnResponsiveness) Score
-**Descrição:** Gradua severidade do coma; pode ser mais preciso que a Escala de Coma de Glasgow.
+**Description:** Grades severity of coma; may be more accurate than Glasgow Coma Scale.
 
 ### Fractional Excretion of Sodium (FENa)
-**Descrição:** Determina se insuficiência renal é devido a patologia pré-renal ou intrínseca.
+**Description:** Determines if renal failure is due to pre-renal or intrinsic pathology.
 
 ### Fractional Excretion of Urea (FEUrea)
-**Descrição:** Determina a causa da insuficiência renal. Similar ao FENa, mas pode ser usado em pacientes em diuréticos.
+**Description:** Determines the cause of renal failure. Similar to FENa, but can be used in patients on diuretics.
 
 ### FRACTURE Index
-**Descrição:** Prediz risco de fratura em mulheres pós-menopáusicas.
+**Description:** Predicts fracture risk in postmenopausal women.
 
 ### Framingham Heart Failure Diagnostic Criteria
-**Descrição:** Diagnostica insuficiência cardíaca baseada em critérios maiores e menores.
+**Description:** Diagnoses heart failure based on major and minor criteria.
 
 ### Framingham Risk Score for Hard Coronary Heart Disease
-**Descrição:** Estima risco de 10 anos de infarto em pacientes de 30-79 anos sem história de DCC ou diabetes.
+**Description:** Estimates 10-year risk of MI in patients aged 30-79 with no history of CHD or diabetes.
 
 ### Free Water Deficit in Hypernatremia
-**Descrição:** Calcula déficit de água livre por água corporal total estimada em paciente com hipernatremia ou desidratação.
+**Description:** Calculates free water deficit by estimated total body water in patient with hypernatremia or dehydration.
 
 ### Fuhrman Nuclear Grade for Clear Cell Renal Carcinoma
-**Descrição:** Fornece sistema de gradação prognóstica para células tumorais baseado na aparência celular física.
+**Description:** Provides prognostic grading system for tumor cells based on physical cellular appearance.
 
 ### Functional Outcome in Patients With Primary Intracerebral Hemorrhage (FUNC) Score
-**Descrição:** Identifica pacientes com HIC que atingirão independência funcional e auxilia na tomada de decisão clínica.
+**Description:** Identifies ICH patients who will achieve functional independence and aids in clinical decision-making.
 
 ---
 
 ## G
 
 ### G8 Geriatric Screening Tool
-**Descrição:** Identifica pacientes oncológicos idosos que poderiam se beneficiar de avaliação geriátrica abrangente (AGA).
+**Description:** Identifies older cancer patients who could benefit from comprehensive geriatric assessment (CGA).
 
 ### GAD-7 (General Anxiety Disorder-7)
-**Descrição:** Mede severidade da ansiedade.
+**Description:** Measures anxiety severity.
 
 ### Gail Model for Breast Cancer Risk
-**Descrição:** Estima risco para câncer de mama baseado em dados demográficos e clínicos.
+**Description:** Estimates risk for breast cancer based on demographic and clinical data.
 
 ### GALAD Model for Hepatocellular Carcinoma (HCC)
-**Descrição:** Diagnostica CHC baseado em biomarcadores séricos em pacientes com doença hepática crônica (DHC).
+**Description:** Diagnoses HCC based on serum biomarkers in patients with chronic liver disease (CLD).
 
 ### Ganzoni Equation for Iron Deficiency Anemia
-**Descrição:** Avalia déficit total de ferro corporal para terapia de reposição de ferro.
+**Description:** Assesses total body iron deficit for iron replacement therapy.
 
 ### GAP Index for Idiopathic Pulmonary Fibrosis (IPF) Mortality
-**Descrição:** Fornece estimativas de mortalidade de 1, 2 e 3 anos para pacientes com FPI.
+**Description:** Provides 1, 2, and 3-year mortality estimates for IPF patients.
 
 ### GARFIELD-AF
-**Descrição:** Prediz mortalidade, AVC e sangramento em pacientes com e sem anticoagulação.
+**Description:** Predicts mortality, stroke, and bleeding in patients with and without anticoagulation.
 
 ### GCS-Pupils Score
-**Descrição:** Combina ECG e reatividade pupilar para maior precisão em ECG baixo.
+**Description:** Combines GCS and pupillary reactivity for increased accuracy in low GCS.
 
 ### Genetically Inspired Prognostic Scoring System (GIPSS) for Primary Myelofibrosis (PMF) - NEW
-**Descrição:** Avalia o prognóstico da mielofibrose primária baseado exclusivamente em marcadores genômicos.
+**Description:** Assesses the prognosis of primary myelofibrosis based exclusively on genomic markers.
 
 ### Geneva Risk Score for Venous Thromboembolism (VTE) Prophylaxis
-**Descrição:** Prediz necessidade de profilaxia de TEV em pacientes internados.
+**Description:** Predicts need for VTE prophylaxis in hospitalized patients.
 
 ### Geneva Score (Revised) for Pulmonary Embolism
-**Descrição:** Objetifica risco de EP, como o score de Wells.
+**Description:** Objectifies PE risk, like Wells score.
 
 ### Geriatric Depression Scale (GDS-15) - NEW
-**Descrição:** Identifica possível depressão em adultos idosos.
+**Description:** Identifies possible depression in older adults.
 
 ### Gillmore Staging System for Transthyretin Amyloid Cardiomyopathy (ATTR-CM) - NEW
-**Descrição:** Classifica prognóstico de pacientes com cardiomiopatia amiloide de transtirretina.
+**Description:** Classifies prognosis of patients with transthyretin amyloid cardiomyopathy.
 
 ### Glasgow Alcoholic Hepatitis Score
-**Descrição:** Prediz mortalidade em pacientes com hepatite alcoólica por resultados laboratoriais e idade.
+**Description:** Predicts mortality in alcoholic hepatitis patients by lab results and age.
 
 ### Glasgow Coma Scale (GCS)
-**Descrição:** Severidade do coma baseada em critérios Ocular (4), Verbal (5) e Motor (6).
+**Description:** Coma severity based on Eye (4), Verbal (5), and Motor (6) criteria.
 
 ### Glasgow Modified Alcohol Withdrawal Scale (GMAWS) - NEW
-**Descrição:** Avalia e monitora severidade dos sintomas de abstinência alcoólica (SAA).
+**Description:** Scores symptoms for patients with alcohol withdrawal syndrome (AWS).
 
 ### Glasgow Prognostic Score (GPS) for Cancer Outcomes
-**Descrição:** Fornece prognóstico de câncer baseado em biomarcadores séricos.
+**Description:** Provides cancer prognosis based on serum biomarkers.
 
 ### Glasgow-Blatchford Bleeding Score (GBS)
-**Descrição:** Estratifica pacientes com sangramento GI superior que são "baixo risco" e candidatos para manejo ambulatorial.
+**Description:** Stratifies upper GI bleeding patients who are "low risk" and candidates for outpatient management.
 
 ### Glasgow-Imrie Criteria for Severity of Acute Pancreatitis
-**Descrição:** Determina severidade da pancreatite baseada em 8 valores laboratoriais.
+**Description:** Determines severity of pancreatitis based on 8 lab values.
 
 ### Gleason Score for Prostate Cancer
-**Descrição:** Prognóstica câncer de próstata baseado na aparência microscópica do tumor.
+**Description:** Prognoses prostate cancer based on microscopic appearance of tumor.
 
 ### Global Initiative for Obstructive Lung Disease (GOLD) Criteria for COPD
-**Descrição:** Avalia diferentes estágios de DPOC e fornece recomendações de tratamento.
+**Description:** Assesses different stages of COPD and provides treatment recommendations.
 
 ### Glucose Infusion Rate (GIR)
-**Descrição:** Quantifica a taxa na qual glicose é administrada intravenosamente.
+**Description:** Quantifies the rate at which glucose is administered intravenously.
 
 ### GO-FAR (Good Outcome Following Attempted Resuscitation) Score
-**Descrição:** Prediz sobrevida à alta com bom resultado após parada cardíaca hospitalar.
+**Description:** Predicts survival to discharge with good outcome after in-hospital cardiac arrest.
 
 ### GRACE ACS Risk and Mortality Calculator
-**Descrição:** Estima mortalidade da admissão a 6 meses para pacientes com síndrome coronariana aguda.
+**Description:** Estimates mortality from admission to 6 months for acute coronary syndrome patients.
 
 ### Graded Prognostic Assessment for Gastrointestinal Cancer (GI-GPA)
-**Descrição:** Estima sobrevida em pacientes com cânceres gastrointestinais e metástases cerebrais.
+**Description:** Estimates survival in patients with gastrointestinal cancers and brain metastases.
 
 ### Grogan Staging System for Transthyretin Amyloid Cardiomyopathy (ATTR-CM) - NEW
-**Descrição:** Classifica prognóstico de pacientes com cardiomiopatia amiloide de transtirretina tipo selvagem.
+**Description:** Classifies prognosis of patients with wild-type transthyretin amyloid cardiomyopathy.
 
 ### Groupe d'Etude des Lymphomes Folliculaires (GELF) Criteria
-**Descrição:** Determina se terapia imediata para linfoma folicular é necessária.
+**Description:** Determines if immediate therapy for follicular lymphoma is needed.
 
 ### Gupta Perioperative Risk for Myocardial Infarction or Cardiac Arrest (MICA)
-**Descrição:** Prediz risco de IM ou parada cardíaca após cirurgia.
+**Description:** Predicts risk of MI or cardiac arrest after surgery.
 
 ### Gupta Postoperative Pneumonia Risk
-**Descrição:** Prediz risco de pneumonia após cirurgia.
+**Description:** Predicts risk of pneumonia after surgery.
 
 ### Gupta Postoperative Respiratory Failure Risk
-**Descrição:** Prediz risco de ventilação mecânica por mais de 48 hrs pós-op ou reintubação dentro de 30 dias.
+**Description:** Predicts risk of mechanical ventilation for >48 hrs post-op or reintubation within 30 days.
 
 ### GWTG-Heart Failure Risk Score
-**Descrição:** Prediz mortalidade hospitalar por todas as causas de insuficiência cardíaca.
+**Description:** Predicts all-cause in-hospital mortality from heart failure.
 
 ---
 
 ## H
 
 ### H2FPEF Score for Heart Failure with Preserved Ejection Fraction
-**Descrição:** Estima probabilidade de insuficiência cardíaca subjacente em pacientes com fração de ejeção preservada no eco.
+**Description:** Estimates likelihood of underlying heart failure in patients with preserved ejection fraction on echo.
 
 ### Hack's Impairment Index (HII)
-**Descrição:** Fornece avaliação quantitativa e padronizada do grau de comprometimento induzido por álcool em pacientes do departamento de emergência.
+**Description:** Provides quantitative, standardized assessment of the degree of alcohol-induced impairment in emergency department patients.
 
 ### HACOR Score
-**Descrição:** Prediz falha de ventilação não invasiva (VNI) em pacientes hipoxêmicos.
+**Description:** Predicts non-invasive ventilation (NIV) failure in hypoxemic patients.
 
 ### Hamilton Anxiety Scale
-**Descrição:** Avalia nível de ansiedade baseado em questões clínicas.
+**Description:** Assesses anxiety level based on clinical questions.
 
 ### Hamilton Depression Rating Scale (HAM-D)
-**Descrição:** Estratifica severidade da depressão, similar ao PHQ-9.
+**Description:** Stratifies depression severity, similar to PHQ-9.
 
 ### Harmless Acute Pancreatitis Score (HAPS)
-**Descrição:** Identifica pacientes que não requerem cuidados intensivos para seu primeiro episódio de pancreatite aguda.
+**Description:** Identifies patients who do not require intensive care for their first episode of acute pancreatitis.
 
 ### Harvey-Bradshaw Index (HBI) for Crohn's Disease
-**Descrição:** Estratifica severidade da doença de Crohn.
+**Description:** Stratifies severity of Crohn's disease.
 
 ### HAS-BLED Score for Major Bleeding Risk
-**Descrição:** Estima risco de sangramento maior para pacientes em anticoagulação para avaliar risco-benefício no cuidado da fibrilação atrial.
+**Description:** Estimates risk of major bleeding for patients on anticoagulation to assess risk-benefit in atrial fibrillation care.
 
 ### HAT (Hemorrhage After Thrombolysis) Score for Predicting Post-tPA Hemorrhage
-**Descrição:** Avalia risco de hemorragia após tPA.
+**Description:** Assesses risk of hemorrhage after tPA.
 
 ### HCM Risk-SCD
-**Descrição:** Estima risco de morte cardíaca súbita em pacientes com cardiomiopatia hipertrófica.
+**Description:** Estimates risk of sudden cardiac death in patients with hypertrophic cardiomyopathy.
 
 ### HEADS-ED
-**Descrição:** Rastreia necessidades de saúde mental pediátrica.
+**Description:** Screens for pediatric mental health needs.
 
 ### HEART Pathway for Early Discharge in Acute Chest Pain
-**Descrição:** Identifica pacientes do departamento de emergência com dor torácica aguda para alta precoce.
+**Description:** Identifies emergency department patients with acute chest pain for early discharge.
 
 ### HEART Score for Major Cardiac Events
-**Descrição:** Prediz risco de 6 semanas de eventos cardíacos adversos maiores em pacientes com dor torácica.
+**Description:** Predicts 6-week risk of major adverse cardiac events in chest pain patients.
 
 ### Hematopoietic Cell Transplantation-specific Comorbidity Index (HCT-CI)
-**Descrição:** Prediz sobrevida após TCH em pacientes com malignidades hematológicas, incluindo ajuste opcional por idade.
+**Description:** Predicts survival after HCT in patients with hematologic malignancies, including optional age adjustment.
 
 ### HEMORR₂HAGES Score for Major Bleeding Risk
-**Descrição:** Quantifica risco de hemorragia em pacientes idosos com FA.
+**Description:** Quantifies hemorrhage risk in elderly AF patients.
 
 ### Hepatic Encephalopathy Grades/Stages
-**Descrição:** Critérios West Haven. Define critérios para os estágios da encefalopatia hepática.
+**Description:** West Haven Criteria. Defines criteria for the stages of hepatic encephalopathy.
 
 ### HERDOO2 Rule for Discontinuing Anticoagulation in Unprovoked VTE
-**Descrição:** Identifica mulheres de baixo risco que podem descontinuar com segurança o tratamento de TEV.
+**Description:** Identifies low-risk women who can safely discontinue VTE treatment.
 
 ### Hestia Criteria for Outpatient Pulmonary Embolism Treatment
-**Descrição:** Identifica pacientes com EP de baixo risco seguros para tratamento ambulatorial.
+**Description:** Identifies low-risk PE patients safe for outpatient treatment.
 
 ### High-dose Insulin Euglycemia Therapy (HIET)
-**Descrição:** Dosa insulina para overdose de bloqueador de canal de cálcio ou beta bloqueador.
+**Description:** Doses insulin for calcium channel blocker or beta blocker overdose.
 
 ### HINTS for Stroke in Acute Vestibular Syndrome
-**Descrição:** Identifica potencial AVC em pacientes com síndrome vestibular aguda (SVA).
+**Description:** Identifies potential stroke in patients with acute vestibular syndrome (AVS).
 
 ### History and Electrocardiogram-only Manchester Acute Coronary Syndromes (HE-MACS)
-**Descrição:** Estratifica risco de SCA apenas com história e ECG (ainda não validado externamente).
+**Description:** Stratifies ACS risk with history and ECG only (not yet externally validated).
 
 ### HIT Expert Probability (HEP) Score for Heparin-Induced Thrombocytopenia
-**Descrição:** Modelo de pontuação clínica pré-teste para TIH baseado em ampla opinião de especialistas.
+**Description:** Pre-test clinical scoring model for HIT based on broad expert opinion.
 
 ### HIV Incidence Risk Index for MSM (HIRI-MSM)
-**Descrição:** Identifica HSH em risco de infecção por HIV.
+**Description:** Identifies MSM at risk for HIV infection.
 
 ### HIV Needle Stick Risk Assessment Stratification Protocol (RASP)
-**Descrição:** Quantifica risco de exposição ao HIV por fonte e tipo de exposição e necessidade de profilaxia.
+**Description:** Quantifies HIV exposure risk by source and exposure type and need for prophylaxis.
 
 ### Ho Index
-**Descrição:** Prediz resultado da terapia médica em colite ulcerativa grave.
+**Description:** Predicts outcome of medical therapy in severe ulcerative colitis.
 
 ### HOMA-IR (Homeostatic Model Assessment for Insulin Resistance)
-**Descrição:** Aproxima resistência à insulina.
+**Description:** Approximates insulin resistance.
 
 ### Horowitz Index for Lung Function (P/F Ratio)
-**Descrição:** Avalia função pulmonar, particularmente em pacientes intubados.
+**Description:** Assesses lung function, particularly in intubated patients.
 
 ### HOSPITAL Score for Readmissions
-**Descrição:** Prediz readmissões hospitalares potencialmente evitáveis em 30 dias.
+**Description:** Predicts potentially avoidable 30-day hospital readmissions.
 
 ### Hour-Specific Risk for Neonatal Hyperbilirubinemia
-**Descrição:** Prediz risco de hiperbilirrubinemia em neonatos.
+**Description:** Predicts risk of hyperbilirubinemia in neonates.
 
 ### HScore for Reactive Hemophagocytic Syndrome
-**Descrição:** Diagnostica síndrome hemofagocítica reativa.
+**Description:** Diagnoses reactive hemophagocytic syndrome.
 
 ### Humiliation, Afraid, Rape, Kick (HARK)
-**Descrição:** Detecta abuso doméstico (violência por parceiro íntimo) em mulheres em ambientes de cuidados primários.
+**Description:** Detects domestic abuse (intimate partner violence) in women in primary care settings.
 
 ### Hunt & Hess Classification of Subarachnoid Hemorrhage
-**Descrição:** Classifica severidade da hemorragia subaracnóidea para predizer mortalidade.
+**Description:** Classifies severity of subarachnoid hemorrhage to predict mortality.
 
 ### Hurt, Insult, Threaten, Scream (HITS) Score
-**Descrição:** Detecta abuso doméstico (violência por parceiro íntimo) em mulheres e homens em ambientes de saúde.
+**Description:** Detects domestic abuse (intimate partner violence) in women and men in healthcare settings.
 
 ### Hydroxychloroquine (Plaquenil) Dosing Calculator
-**Descrição:** Calcula dose diária máxima de hidroxicloroquina para reduzir retinopatia.
+**Description:** Calculates maximum daily hydroxychloroquine dose to reduce retinopathy.
 
 ### Hypoglycemia Risk Score
-**Descrição:** Prediz risco de 12 meses de episódios hipoglicêmicos em pacientes com DM2.
+**Description:** Predicts 12-month risk of hypoglycemic episodes in T2DM patients.
 
 ### Hypothermia Outcome Prediction after ECLS (HOPE) Score
-**Descrição:** Prediz sobrevida após reaquecimento de pacientes com parada cardíaca hipotérmica.
+**Description:** Predicts survival after rewarming of hypothermic cardiac arrest patients.
 
 ---
 
 ## I
 
 ### Ideal Body Weight and Adjusted Body Weight
-**Descrição:** Calcula peso corporal ideal (fórmula Devine) e peso corporal ajustado.
+**Description:** Calculates ideal body weight (Devine formula) and adjusted body weight.
 
 ### IMDC (International Metastatic RCC Database Consortium) Risk Model for Metastatic Renal Cell Carcinoma
-**Descrição:** Prediz sobrevida em pacientes com carcinoma de células renais metastático tratado com terapia sistêmica (também conhecido como critérios Heng).
+**Description:** Predicts survival in metastatic renal cell carcinoma patients treated with systemic therapy (also known as Heng criteria).
 
 ### Immune-Related Adverse Events for Endocrine Toxicities - Diabetes Mellitus
-**Descrição:** Gradua severidade da hiperglicemia secundária à terapia com inibidor de checkpoint imune.
+**Description:** Grades severity of hyperglycemia secondary to immune checkpoint inhibitor therapy.
 
 ### Immune-Related Adverse Events for Endocrine Toxicities - Hypothyroidism
-**Descrição:** Gradua severidade do hipotireoidismo secundário à terapia com inibidor de checkpoint imune.
+**Description:** Grades severity of hypothyroidism secondary to immune checkpoint inhibitor therapy.
 
 ### Immune-Related Adverse Events for GI Toxicity - Colitis
-**Descrição:** Gradua severidade da colite secundária à terapia com inibidor de checkpoint imune.
+**Description:** Grades severity of colitis secondary to immune checkpoint inhibitor therapy.
 
 ### Immune-Related Adverse Events for GI Toxicity - Hepatitis
-**Descrição:** Gradua severidade da hepatite secundária à terapia com inibidor de checkpoint imune.
+**Description:** Grades severity of hepatitis secondary to immune checkpoint inhibitor therapy.
 
 ### Immune-Related Adverse Events for Lung Toxicity - Pneumonitis
-**Descrição:** Gradua severidade da pneumonite secundária à terapia com inibidor de checkpoint imune.
+**Description:** Grades severity of pneumonitis secondary to immune checkpoint inhibitor therapy.
 
 ### Immune-Related Adverse Events for Renal Toxicities - Nephritis
-**Descrição:** Gradua severidade da nefrite secundária à terapia com inibidor de checkpoint imune.
+**Description:** Grades severity of nephritis secondary to immune checkpoint inhibitor therapy.
 
 ### Immunization Schedule Calculator
-**Descrição:** Determina quais imunizações/vacinações são devidas baseadas na idade do paciente.
+**Description:** Determines which immunizations/vaccinations are due based on patient's age.
 
 ### IMPACT Score for Outcomes in Head Injury
-**Descrição:** Prediz mortalidade em 6 meses e resultados desfavoráveis após lesão cerebral traumática moderada a grave (LCT).
+**Description:** Predicts 6-month mortality and unfavorable outcomes after moderate to severe traumatic brain injury (TBI).
 
 ### IMPEDE-VTE
-**Descrição:** Prediz risco de tromboembolismo venoso em mieloma múltiplo.
+**Description:** Predicts risk of venous thromboembolism in multiple myeloma.
 
 ### IMPROVE Bleeding Risk Score
-**Descrição:** Avalia risco de sangramento na admissão hospitalar.
+**Description:** Assesses bleeding risk at hospital admission.
 
 ### IMPROVE Risk Score for Venous Thromboembolism (VTE)
-**Descrição:** Prediz risco de 3 meses de TEV em pacientes hospitalizados.
+**Description:** Predicts 3-month risk of VTE in hospitalized patients.
 
 ### IMPROVEDD Risk Score for Venous Thromboembolism (VTE)
-**Descrição:** Prediz risco de TEV em pacientes hospitalizados, adicionando D-dímero ao IMPROVE Risk Score.
+**Description:** Predicts VTE risk in hospitalized patients, adding D-dimer to IMPROVE Risk Score.
 
 ### Index of Severity for Eosinophilic Esophagitis (I-SEE)
-**Descrição:** Classifica severidade da esofagite eosinofílica (EEo).
+**Description:** Classifies severity of eosinophilic esophagitis (EoE).
 
 ### Indian Takayasu Clinical Activity Score (ITAS2010)
-**Descrição:** Diferencia entre doença ativa e inativa na arterite de Takayasu (TAK).
+**Description:** Differentiates between active and inactive disease in Takayasu arteritis (TAK).
 
 ### Indications for Paxlovid
-**Descrição:** Auxilia na determinação se Paxlovid (nirmatrelvir potencializado com ritonavir) é terapia apropriada em um paciente adulto COVID positivo.
+**Description:** Aids in determining if Paxlovid (nirmatrelvir boosted with ritonavir) is appropriate therapy in an adult COVID positive patient.
 
 ### Infant Scalp Score - NEW
-**Descrição:** Avalia risco de lesão cerebral traumática em bebês com lesão craniana assintomática.
+**Description:** Assesses risk of traumatic brain injury in infants with asymptomatic head injury.
 
 ### Infective Endocarditis (IE) Mortality Risk Score
-**Descrição:** Prediz mortalidade em 6 meses em pacientes com endocardite infecciosa.
+**Description:** Predicts 6-month mortality in patients with infective endocarditis.
 
 ### Injury Severity Score (ISS)
-**Descrição:** Padroniza severidade de lesão traumática baseada na pior lesão de 6 sistemas corporais.
+**Description:** Standardizes traumatic injury severity based on worst injury from 6 body systems.
 
 ### INTERCHEST Clinical Prediction Rule for Chest Pain in Primary Care
-**Descrição:** Exclui doença arterial coronariana (DAC) em pacientes de cuidados primários com dor torácica.
+**Description:** Rules out coronary artery disease (CAD) in primary care patients with chest pain.
 
 ### International Consensus Classification (ICC) Diagnostic Criteria for Primary Myelofibrosis (PMF) - NEW
-**Descrição:** Diagnostica mielofibrose primária de acordo com a Classificação de Consenso Internacional (ICC).
+**Description:** Diagnoses primary myelofibrosis according to the International Consensus Classification (ICC).
 
 ### International Consensus Classification (ICC) Diagnostic Criteria for Systemic Mastocytosis - NEW
-**Descrição:** Diagnostica mastocitose sistêmica de acordo com a Classificação de Consenso Internacional (ICC).
+**Description:** Diagnoses systemic mastocytosis according to the International Consensus Classification (ICC).
 
 ### International Diabetes Federation-Diabetes and Ramadan Alliance (IDF-DAR) Fasting Risk Assessment
-**Descrição:** Estratifica risco de jejum durante o Ramadã em pacientes diabéticos.
+**Description:** Stratifies risk of fasting during Ramadan in diabetic patients.
 
 ### International IgA Nephropathy Prediction Tool
-**Descrição:** Prediz risco de declínio de 50% na TFGe ou doença renal terminal em pacientes com nefropatia por IgA.
+**Description:** Predicts risk of 50% eGFR decline or end-stage renal disease in IgA nephropathy patients.
 
 ### International Ovarian Tumor Analysis (IOTA) Simple Rules Risk Assessment
-**Descrição:** Prediz risco de malignidade em massas anexiais usando características ultrassonográficas.
+**Description:** Predicts risk of malignancy in adnexal masses using ultrasonographic features.
 
 ### International Prognostic Index for Chronic Lymphocytic Leukemia (CLL-IPI)
-**Descrição:** Estratifica pacientes com leucemia linfocítica crônica em quatro categorias de risco.
+**Description:** Stratifies chronic lymphocytic leukemia patients into four risk categories.
 
 ### International Prognostic Index for Diffuse Large B-cell Lymphoma (IPI and R-IPI)
-**Descrição:** Prediz sobrevida global e livre de progressão em LDGCB baseado em fatores de risco.
+**Description:** Predicts overall and progression-free survival in DLBCL based on risk factors.
 
 ### International Prognostic Score for Asymptomatic Early-stage CLL (IPS-E) - NEW
-**Descrição:** Avalia prognóstico da leucemia linfocítica crônica assintomática em estágio inicial.
+**Description:** Assesses prognosis of asymptomatic early-stage chronic lymphocytic leukemia.
 
 ### International Working Group (IWG) 2 Criteria for Alzheimer's Disease Diagnosis
-**Descrição:** Diagnostica doença de Alzheimer (DA), mais novo que os Critérios NINCDS-ADRDA.
+**Description:** Diagnoses Alzheimer's disease (AD), newer than NINCDS-ADRDA Criteria.
 
 ### Intracerebral Hemorrhage (ICH) Score
-**Descrição:** Estima mortalidade em HIC baseada na idade e achados de TC.
+**Description:** Estimates ICH mortality based on age and CT findings.
 
 ### Intraoperative Fluid Dosing in Adult Patients
-**Descrição:** Dosa fluidos IV intraoperatoriamente.
+**Description:** Doses intraoperative IV fluids.
 
 ### Intrauterine RBC Transfusion Dosage
-**Descrição:** Estima volume de hemácias de doador necessárias para transfusão intrauterina (TIU).
+**Description:** Estimates donor RBC volume needed for intrauterine transfusion (IUT).
 
 ### ISTH Criteria for Disseminated Intravascular Coagulation (DIC)
-**Descrição:** Diagnostica coagulação intravascular disseminada (CID) manifesta.
+**Description:** Diagnoses overt disseminated intravascular coagulation (DIC).
 
 ### ISTH-SCC Bleeding Assessment Tool - NEW
-**Descrição:** Avalia sintomas de sangramento em pacientes com distúrbios hemorrágicos hereditários.
+**Description:** Assesses bleeding symptoms in patients with inherited bleeding disorders.
 
 ### IV Drip Rate Calculator
-**Descrição:** Calcula taxa de infusão IV usando contagem de gotas quando bombas IV não estão disponíveis.
+**Description:** Calculates IV infusion rate using drip count when IV pumps are unavailable.
 
 ---
 
 ## J
 
 ### Jones Criteria for Acute Rheumatic Fever Diagnosis
-**Descrição:** Diagnostica febre reumática aguda baseada em critérios maiores e menores.
+**Description:** Diagnoses acute rheumatic fever based on major and minor criteria.
 
 ---
 
 ## K
 
 ### Karnofsky Performance Status Scale
-**Descrição:** Determina capacidade do paciente de tolerar quimioterapia.
+**Description:** Determines patient's ability to tolerate chemotherapy.
 
 ### Kawasaki Disease Diagnostic Criteria
-**Descrição:** Diagnostica Doença de Kawasaki.
+**Description:** Diagnoses Kawasaki Disease.
 
 ### Khorana Risk Score for Venous Thromboembolism in Cancer Patients
-**Descrição:** Prediz risco de TEV para pacientes oncológicos dependendo do tipo de câncer e outros fatores.
+**Description:** Predicts VTE risk for cancer patients depending on cancer type and other factors.
 
 ### Kidney Failure Risk Calculator
-**Descrição:** Prediz progressão para insuficiência renal em pacientes com doença renal crônica (DRC).
+**Description:** Predicts progression to kidney failure in patients with chronic kidney disease (CKD).
 
 ### Killip Classification for Heart Failure
-**Descrição:** Quantifica severidade da insuficiência cardíaca em SCA e prediz mortalidade em 30 dias.
+**Description:** Quantifies heart failure severity in ACS and predicts 30-day mortality.
 
 ### Kinetic Estimated Glomerular Filtration Rate (keGFR)
-**Descrição:** Estima TFG em pacientes com creatinina mudando agudamente.
+**Description:** Estimates GFR in patients with acutely changing creatinine.
 
 ### King's College Criteria for Acetaminophen Toxicity
-**Descrição:** Recomenda quem deve ser imediatamente encaminhado para transplante hepático.
+**Description:** Recommends who should be immediately referred for liver transplant.
 
 ### Kocher Criteria for Septic Arthritis
-**Descrição:** Distingue artrite séptica de sinovite transitória em uma criança com quadril inflamado.
+**Description:** Distinguishes septic arthritis from transient synovitis in a child with an inflamed hip.
 
 ### Kruis Score for Diagnosis of Irritable Bowel Syndrome (IBS)
-**Descrição:** Determina presença de SII usando critérios ponderados clinicamente significativos.
+**Description:** Determines presence of IBS using clinically significant weighted criteria.
 
 ### Kt/V for Dialysis Adequacy
-**Descrição:** Quantifica adequação do tratamento tanto de hemodiálise quanto de diálise peritoneal.
+**Description:** Quantifies adequacy of both hemodialysis and peritoneal dialysis treatment.
 
 ---
 
 ## L
 
 ### LACE Index for Readmission
-**Descrição:** Prediz readmissão ou morte em 30 dias em pacientes em enfermarias médicas e cirúrgicas.
+**Description:** Predicts 30-day readmission or death in medical and surgical ward patients.
 
 ### Lansky Play-Performance Scale for Pediatric Functional Status
-**Descrição:** Usa descrição dos pais da atividade da criança para avaliar capacidade e resposta ao tratamento.
+**Description:** Uses parent description of child's activity to assess ability and treatment response.
 
 ### LDL Calculated
-**Descrição:** Calcula LDL baseado no colesterol total e HDL e triglicérides.
+**Description:** Calculates LDL based on total and HDL cholesterol and triglycerides.
 
 ### Leiden Clinical Prediction Rule for Undifferentiated Arthritis
-**Descrição:** Diagnostica artrite reumatoide em pacientes com artrite indiferenciada de início recente.
+**Description:** Diagnoses rheumatoid arthritis in patients with recent-onset undifferentiated arthritis.
 
 ### LENT Prognostic Score for Malignant Pleural Effusion
-**Descrição:** Prediz sobrevida em pacientes com efusão pleural maligna.
+**Description:** Predicts survival in patients with malignant pleural effusion.
 
 ### Licurse Score for Renal Ultrasound
-**Descrição:** Prediz probabilidade de hidronefrose na ultrassonografia renal (USR) requerendo intervenção urológica em pacientes adultos com lesão renal aguda.
+**Description:** Predicts likelihood of hydronephrosis on renal ultrasound (RUS) requiring urological intervention in adult patients with acute kidney injury.
 
 ### Light's Criteria for Exudative Effusions
-**Descrição:** Determina se fluido pleural é exsudativo ou transsudativo.
+**Description:** Determines if pleural fluid is exudative or transudative.
 
 ### Lille Model for Alcoholic Hepatitis
-**Descrição:** Prediz mortalidade em pacientes com hepatite alcoólica não respondendo à terapia com esteroides.
+**Description:** Predicts mortality in alcoholic hepatitis patients not responding to steroid therapy.
 
 ### Liver Decompensation Risk after Hepatectomy for Hepatocellular Carcinoma (HCC)
-**Descrição:** Prediz risco de descompensação hepática após hepatectomia para carcinoma hepatocelular (CHC).
+**Description:** Predicts risk of liver decompensation after hepatectomy for hepatocellular carcinoma (HCC).
 
 ### Local Anesthetic Dosing Calculator
-**Descrição:** Dosa anestésicos locais para ajudar a evitar doses tóxicas.
+**Description:** Doses local anesthetics to help avoid toxic doses.
 
 ### Los Angeles (LA) Grading of Esophagitis
-**Descrição:** Estratifica severidade da esofagite baseada em achados endoscópicos, recomendado pelas diretrizes ACG.
+**Description:** Stratifies severity of esophagitis based on endoscopic findings, recommended by ACG guidelines.
 
 ### Los Angeles Motor Scale (LAMS)
-**Descrição:** Estratifica severidade do AVC no campo.
+**Description:** Stratifies stroke severity in the field.
 
 ### LRINEC Score for Necrotizing Soft Tissue Infection
-**Descrição:** Rastreia infecções necrosantes de tecidos moles.
+**Description:** Screens for necrotizing soft tissue infections.
 
 ### Lung Injury Prediction Score (LIPS)
-**Descrição:** Identifica pacientes com alto risco de desenvolver lesão pulmonar aguda (LPA).
+**Description:** Identifies patients at high risk for developing acute lung injury (ALI).
 
 ---
 
 ## M
 
 ### MACOCHA Score
-**Descrição:** Prediz intubação difícil em pacientes de UTI.
+**Description:** Predicts difficult intubation in ICU patients.
 
 ### Maddrey's Discriminant Function for Alcoholic Hepatitis
-**Descrição:** Prediz prognóstico e benefício de esteroides na hepatite alcoólica.
+**Description:** Predicts prognosis and steroid benefit in alcoholic hepatitis.
 
 ### MAGGIC Risk Calculator for Heart Failure
-**Descrição:** Estima mortalidade de 1 e 3 anos em insuficiência cardíaca.
+**Description:** Estimates 1- and 3-year mortality in heart failure.
 
 ### Maintenance Fluids Calculations
-**Descrição:** Calcula necessidades de fluidos de manutenção por peso.
+**Description:** Calculates maintenance fluid needs by weight.
 
 ### Major Depression Index (MDI)
-**Descrição:** Rastreia depressão baseada em questões clinicamente significativas.
+**Description:** Screens for depression based on clinically significant questions.
 
 ### Malnutrition Universal Screening Tool (MUST)
-**Descrição:** Identifica pacientes que estão desnutridos ou em risco de desnutrição.
+**Description:** Identifies patients who are malnourished or at risk of malnutrition.
 
 ### MALT Lymphoma Prognostic Index (MALT-IPI)
-**Descrição:** Identifica pacientes com linfoma MALT em risco de resultados ruins.
+**Description:** Identifies MALT lymphoma patients at risk for poor outcomes.
 
 ### Manchester Score for Prognosis in Small Cell Lung Cancer
-**Descrição:** Prediz sobrevida de 2 anos do câncer de pulmão de pequenas células.
+**Description:** Predicts 2-year survival of small cell lung cancer.
 
 ### Mangled Extremity Severity Score (MESS)
-**Descrição:** Estima viabilidade de uma extremidade após trauma, para determinar necessidade de salvamento vs amputação empírica.
+**Description:** Estimates viability of an extremity after trauma, to determine need for salvage vs. empirical amputation.
 
 ### Manning Criteria for Diagnosis of Irritable Bowel Syndrome (IBS)
-**Descrição:** Determina probabilidade de diagnóstico de síndrome do intestino irritável baseada em critérios clinicamente significativos.
+**Description:** Determines likelihood of irritable bowel syndrome diagnosis based on clinically significant criteria.
 
 ### Mantle Cell Lymphoma International Prognostic Index (MIPI)
-**Descrição:** Prediz sobrevida em pacientes com linfoma de células do manto.
+**Description:** Predicts survival in mantle cell lymphoma patients.
 
 ### Marburg Heart Score (MHS)
-**Descrição:** Exclui doença arterial coronariana em pacientes de cuidados primários com dor torácica.
+**Description:** Rules out coronary artery disease in primary care patients with chest pain.
 
 ### MASCC Risk Index for Febrile Neutropenia
-**Descrição:** Identifica pacientes com baixo risco de resultado ruim com neutropenia febril.
+**Description:** Identifies febrile neutropenia patients at low risk for poor outcome.
 
 ### Maternal-Fetal Hemorrhage Rh(D) Immune Globulin Dosage
-**Descrição:** Calcula quantidade de RhIG a ser administrada à mãe, no momento do parto, para prevenir doença hemolítica do feto e recém-nascido (DHFRN).
+**Description:** Calculates amount of RhIG to be administered to mother, at time of delivery, to prevent hemolytic disease of the fetus and newborn (HDFN).
 
 ### Maximum Allowable Blood Loss (ABL) Without Transfusion
-**Descrição:** Estima a perda sanguínea máxima permitida intraoperatoriamente antes que a transfusão deva ser considerada.
+**Description:** Estimates maximum allowable blood loss intraoperatively before transfusion should be considered.
 
 ### Mayo Alliance Prognostic System (MAPS) Score - NEW
-**Descrição:** Avalia prognóstico da mastocitose sistêmica.
+**Description:** Assesses prognosis of systemic mastocytosis.
 
 ### Mayo Score/Disease Activity Index (DAI) for Ulcerative Colitis
-**Descrição:** Avalia severidade da colite ulcerativa.
+**Description:** Assesses severity of ulcerative colitis.
 
 ### McDonald Criteria for Multiple Sclerosis (2017 Revision)
-**Descrição:** Diagnostica esclerose múltipla.
+**Description:** Diagnoses multiple sclerosis.
 
 ### McMahon Score for Rhabdomyolysis
-**Descrição:** Prediz mortalidade ou lesão renal aguda (LRA) em pacientes com rabdomiólise.
+**Description:** Predicts mortality or acute kidney injury (AKI) in rhabdomyolysis patients.
 
 ### MDRD GFR Equation
-**Descrição:** Estima TFG em pacientes com DRC usando creatinina e características do paciente.
+**Description:** Estimates GFR in CKD patients using creatinine and patient characteristics.
 
 ### Mean Arterial Pressure (MAP)
-**Descrição:** Calcula pressão arterial média.
+**Description:** Calculates mean arterial pressure.
 
 ### Medication Regimen Complexity-Intensive Care Unit (MRC-ICU) Score - NEW
-**Descrição:** Prediz resultados do paciente (mortalidade, tempo de internação), complicações de UTI (sobrecarga de fluidos) e carga de trabalho do farmacêutico (quantidade e intensidade de intervenção) na UTI.
+**Description:** Predicts patient outcomes (mortality, length of stay), ICU complications (fluid overload), and pharmacist workload (amount and intensity of intervention) in the ICU.
 
 ### Mehran Score for Post-PCI Contrast Nephropathy
-**Descrição:** Prediz risco de nefropatia induzida por contraste (NIC) após intervenção coronária percutânea (ICP).
+**Description:** Predicts risk of contrast-induced nephropathy (CIN) after percutaneous coronary intervention (PCI).
 
 ### Mekhail Extension of the Motzer Score
-**Descrição:** Prediz sobrevida do carcinoma de células renais metastático, mais precisamente que o Motzer Score.
+**Description:** Predicts survival of metastatic renal cell carcinoma, more accurately than Motzer Score.
 
 ### MELD Na (UNOS/OPTN)
-**Descrição:** Quantifica doença hepática terminal para planejamento de transplante com sódio.
+**Description:** Quantifies end-stage liver disease for transplant planning with sodium.
 
 ### MELD Score (Original, Pre-2016, Model for End-Stage Liver Disease)
-**Descrição:** Quantifica doença hepática terminal para planejamento de transplante.
+**Description:** Quantifies end-stage liver disease for transplant planning.
 
 ### MELDNa/MELD-Na Score for Liver Cirrhosis
-**Descrição:** Adiciona sódio ao modelo MELD para cirrose hepática.
+**Description:** Adds sodium to the MELD model for liver cirrhosis.
 
 ### Memorial Sloan-Kettering Cancer Center (MSKCC/Motzer) Score for Metastatic Renal Cell Carcinoma (RCC)
-**Descrição:** Prediz sobrevida baseada em dados clínicos e laboratoriais em pacientes com CCR metastático.
+**Description:** Predicts survival based on clinical and laboratory data in metastatic RCC patients.
 
 ### Mentzer Index
-**Descrição:** Diferencia beta talassemia de anemia por deficiência de ferro.
+**Description:** Differentiates beta thalassemia from iron deficiency anemia.
 
 ### Menza Score
-**Descrição:** Prediz risco de 4 anos de HIV para HSH.
+**Description:** Predicts 4-year HIV risk for MSM.
 
 ### Metabolic Score for Insulin Resistance (METS-IR)
-**Descrição:** Prediz risco de diabetes tipo 2 em pacientes não diagnosticados anteriormente.
+**Description:** Predicts risk of type 2 diabetes in previously undiagnosed patients.
 
 ### Metroticket Calculator for Hepatocellular Carcinoma (HCC) Survival
-**Descrição:** Prediz sobrevida para pacientes com CHC.
+**Description:** Predicts survival for HCC patients.
 
 ### Michigan Risk Score for PICC-Related Thrombosis
-**Descrição:** Prediz risco de TVP em pacientes com cateter central de inserção periférica (PICC).
+**Description:** Predicts risk of DVT in patients with peripherally inserted central catheter (PICC).
 
 ### Migraine Disability Assessment (MIDAS)
-**Descrição:** Quantifica a quantidade de incapacidade devido a sintomas relacionados à cefaleia.
+**Description:** Quantifies the amount of disability due to headache-related symptoms.
 
 ### Migraine Treatment Optimization Questionnaire-4 (mTOQ-4)
-**Descrição:** Determina eficácia do plano atual de tratamento de enxaqueca.
+**Description:** Determines effectiveness of current migraine treatment plan.
 
 ### Milan Criteria for Liver Transplantation
-**Descrição:** Avalia adequação de pacientes para transplante hepático com cirrose e carcinoma hepatocelular, recomendado pelas diretrizes AASLD.
+**Description:** Assesses suitability of patients for liver transplant with cirrhosis and hepatocellular carcinoma, recommended by AASLD guidelines.
 
 ### Mirels' Criteria for Prophylactic Fixation
-**Descrição:** Prediz risco de fratura patológica em pacientes com metástase óssea longa.
+**Description:** Predicts risk of pathologic fracture in patients with long bone metastasis.
 
 ### mMRC (Modified Medical Research Council) Dyspnea Scale
-**Descrição:** Estratifica severidade da dispneia em doenças respiratórias, particularmente DPOC.
+**Description:** Stratifies severity of dyspnea in respiratory diseases, particularly COPD.
 
 ### Model for End-Stage Liver Disease (Combined MELD)
-**Descrição:** Oferece múltiplas versões do MELD para planejamento de transplante hepático.
+**Description:** Offers multiple versions of MELD for liver transplant planning.
 
 ### Modified Asthma Predictive Index (mAPI)
-**Descrição:** Prediz asma futura em pacientes pediátricos.
+**Description:** Predicts future asthma in pediatric patients.
 
 ### Modified Bishop Score for Vaginal Delivery and Induction of Labor
-**Descrição:** Prediz probabilidade de parto vaginal bem-sucedido com parâmetros adicionais ao score Bishop original.
+**Description:** Predicts likelihood of successful vaginal delivery with additional parameters to the original Bishop score.
 
 ### Modified Brain Injury Guideline (mBIG)
-**Descrição:** Define o manejo de lesão cerebral traumática.
+**Description:** Defines management of traumatic brain injury.
 
 ### Modified Early Warning Score (MEWS) for Clinical Deterioration
-**Descrição:** Determina o grau de doença de um paciente.
+**Description:** Determines the degree of illness of a patient.
 
 ### Modified Fatigue Impact Scale (MFIS)
-**Descrição:** Mede o impacto que a fadiga tem na vida diária do paciente.
+**Description:** Measures the impact that fatigue has on patient's daily life.
 
 ### Modified Finnegan Neonatal Abstinence Score (NAS)
-**Descrição:** Estratifica severidade da abstinência de opiáceos em recém-nascidos.
+**Description:** Stratifies severity of opioid withdrawal in neonates.
 
 ### Modified Fisher Grading Scale for Subarachnoid Hemorrhage (SAH)
-**Descrição:** Declara severidade da HSA baseada na quantidade e tipo de sangue na TC com risco associado de vasoespasmo.
+**Description:** States severity of SAH based on amount and type of blood on CT with associated risk of vasospasm.
 
 ### Modified Glasgow Prognostic Score (mGPS) for Cancer Outcomes
-**Descrição:** Fornece prognóstico de câncer melhorado sobre o score original, baseado em biomarcadores séricos.
+**Description:** Provides improved cancer prognosis over the original score, based on serum biomarkers.
 
 ### Modified Hoehn and Yahr Scale for Parkinson's Disease
-**Descrição:** Gradua severidade dos sintomas na doença de Parkinson.
+**Description:** Grades severity of symptoms in Parkinson's disease.
 
 ### Modified Mallampati Classification
-**Descrição:** Estratifica dificuldade prevista de intubação endotraqueal baseada em características anatômicas.
+**Description:** Stratifies predicted difficulty of endotracheal intubation based on anatomical features.
 
 ### Modified Minnesota Detoxification Scale (mMINDS) - NEW
-**Descrição:** Pontua sintomas para pacientes com abstinência alcoólica.
+**Description:** Scores symptoms for patients with alcohol withdrawal syndrome.
 
 ### Modified NIH Stroke Scale/Score (mNIHSS)
-**Descrição:** Versão encurtada e validada do NIHSS.
+**Description:** Shortened, validated version of NIHSS.
 
 ### Modified Rankin Scale for Neurologic Disability
-**Descrição:** Mede o grau de incapacidade ou dependência nas atividades diárias de pessoas que sofreram AVC ou outras causas de incapacidade neurológica.
+**Description:** Measures the degree of disability or dependence in daily activities of people who have suffered a stroke or other causes of neurological disability.
 
 ### Modified Rankin Score-9Q (mRS-9Q)
-**Descrição:** Avalia nível de função em doença neurológica.
+**Description:** Assesses level of function in neurological disease.
 
 ### Modified Response Evaluation Criteria in Solid Tumors (mRECIST)
-**Descrição:** Mede resposta ao tratamento, especificamente a drogas citotóxicas, baseada na redução do tumor.
+**Description:** Measures response to treatment, specifically cytotoxic drugs, based on tumor reduction.
 
 ### Modified Sequential Organ Failure Assessment (mSOFA) Score
-**Descrição:** Prediz mortalidade em UTI usando principalmente variáveis clínicas e menos laboratórios (similar ao SOFA Score).
+**Description:** Predicts ICU mortality using mostly clinical variables and fewer labs (similar to SOFA Score).
 
 ### Modified Sgarbossa's Criteria for MI in Left Bundle Branch Block
-**Descrição:** Diagnostica IM agudo em pacientes com BRE prévio.
+**Description:** Diagnoses acute MI in patients with prior LBBB.
 
 ### Modified SOAR Score for Stroke
-**Descrição:** Prediz mortalidade a curto prazo em AVC isquêmico agudo.
+**Description:** Predicts short-term mortality in acute ischemic stroke.
 
 ### Montgomery-Asberg Depression Rating Scale (MADRS)
-**Descrição:** Estratifica severidade de episódios depressivos em adultos.
+**Description:** Stratifies severity of depressive episodes in adults.
 
 ### Montreal Classification for Inflammatory Bowel Disease (IBD)
-**Descrição:** Classifica severidade da doença de Crohn e colite ulcerativa.
+**Description:** Classifies severity of Crohn's disease and ulcerative colitis.
 
 ### Montreal Cognitive Assessment (MoCA)
-**Descrição:** Rastreia comprometimento cognitivo leve.
+**Description:** Screens for mild cognitive impairment.
 
 ### Morphine Milligram Equivalents (MME) Calculator
-**Descrição:** Calcula equivalentes totais diários de miligramas de morfina.
+**Description:** Calculates total daily morphine milligram equivalents.
 
 ### MuLBSTA Score for Viral Pneumonia Mortality
-**Descrição:** Prediz mortalidade em 90 dias em pacientes com pneumonia viral.
+**Description:** Predicts 90-day mortality in patients with viral pneumonia.
 
 ### Multiple Myeloma Diagnostic Criteria
-**Descrição:** Diagnostica mieloma múltiplo, de acordo com o International Myeloma Working Group (IMWG).
+**Description:** Diagnoses multiple myeloma, according to the International Myeloma Working Group (IMWG).
 
 ### Multiple Myeloma International Staging System (ISS)
-**Descrição:** Prognostica a severidade do mieloma múltiplo baseado em valores laboratoriais obtidos rotineiramente.
+**Description:** Prognoses severity of multiple myeloma based on routinely obtained lab values.
 
 ### Multiple Myeloma Response Criteria
-**Descrição:** Prediz resposta da doença no mieloma múltiplo, do International Myeloma Working Group (IMWG).
+**Description:** Predicts disease response in multiple myeloma, from the International Myeloma Working Group (IMWG).
 
 ### Mumtaz Score for Readmission in Cirrhosis
-**Descrição:** Prediz risco de readmissão em 30 dias em pacientes com cirrose.
+**Description:** Predicts 30-day readmission risk in cirrhosis patients.
 
 ### Murray Score for Acute Lung Injury
-**Descrição:** Estratifica severidade da lesão pulmonar aguda, e também é usado para seleção de pacientes para ECMO.
+**Description:** Stratifies severity of acute lung injury, and is also used for patient selection for ECMO.
 
 ### Mutation-Enhanced International Prognostic Score System (MIPSS70/MIPSS70+) - NEW
-**Descrição:** Estratifica risco para pacientes com mielofibrose primária (MFP) manifesta.
+**Description:** Stratifies risk for patients with overt primary myelofibrosis (PMF).
 
 ### Myasthenia Gravis Activities of Daily Living (MG-ADL) - NEW
-**Descrição:** Avalia severidade da doença em pacientes com miastenia gravis (MG).
+**Description:** Assesses disease severity in patients with myasthenia gravis (MG).
 
 ### Myelofibrosis Secondary to Polycythemia Vera (PV) and Essential Thrombocythemia (ET) Prognostic Model - NEW
-**Descrição:** Prediz sobrevida em pacientes pós-PV e pós-TE com mielofibrose secundária.
+**Description:** Predicts survival in post-PV and post-ET patients with secondary myelofibrosis.
 
 ### Myxedema Coma Diagnostic Score - NEW
-**Descrição:** Sistema de pontuação diagnóstica para coma mixedematoso (CM).
+**Description:** Diagnostic scoring system for myxedema coma (MC).
 
 ---
 
 ## N
 
 ### NAFLD (Non-Alcoholic Fatty Liver Disease) Activity Score
-**Descrição:** Diagnostica esteato-hepatite, baseada na histologia, em pacientes com DHGNA.
+**Description:** Diagnoses steatohepatitis, based on histology, in NAFLD patients.
 
 ### NAFLD (Non-Alcoholic Fatty Liver Disease) Fibrosis Score
-**Descrição:** Estima quantidade de cicatrização no fígado baseada em vários testes laboratoriais.
+**Description:** Estimates amount of scarring in the liver based on various lab tests.
 
 ### Naloxone Drip Dosing
-**Descrição:** Dosa naloxona para overdose aguda de opiáceos.
+**Description:** Doses naloxone for acute opioid overdose.
 
 ### National Comprehensive Cancer Network International Prognostic Index (NCCN-IPI)
-**Descrição:** Prediz sobrevida em pacientes com linfoma difuso de grandes células B (LDGCB).
+**Description:** Predicts survival in diffuse large B-cell lymphoma (DLBCL) patients.
 
 ### National Early Warning Score (NEWS)
-**Descrição:** Determina o grau de doença de um paciente e promove intervenção de cuidados críticos.
+**Description:** Determines the degree of illness of a patient and promotes critical care intervention.
 
 ### National Early Warning Score (NEWS) 2
-**Descrição:** Determina o grau de doença de um paciente e promove intervenção de cuidados críticos (recomendado pelo NHS sobre o NEWS original).
+**Description:** Determines the degree of illness of a patient and promotes critical care intervention (recommended by NHS over original NEWS).
 
 ### Neck Disability Index (NDI)
-**Descrição:** Avalia incapacidade em pacientes com dor no pescoço.
+**Description:** Assesses disability in patients with neck pain.
 
 ### NEDOCS Score for Emergency Department Overcrowding
-**Descrição:** Estima severidade de superlotação em departamentos de emergência.
+**Description:** Estimates severity of overcrowding in emergency departments.
 
 ### Neonatal Early-Onset Sepsis Calculator
-**Descrição:** Calcula risco de sepse neonatal de início precoce baseado em fatores de risco intraparto maternos.
+**Description:** Calculates risk of early-onset neonatal sepsis based on maternal intrapartum risk factors.
 
 ### Neonatal Partial Exchange for Polycythemia
-**Descrição:** Estima o volume de sangue total para remover e volume de cristaloide para infundir na policitemia neonatal.
+**Description:** Estimates total blood volume to remove and crystalloid volume to infuse in neonatal polycythemia.
 
 ### Neuropathic Pain Scale (NPS)
-**Descrição:** Quantifica severidade da dor neuropática.
+**Description:** Quantifies severity of neuropathic pain.
 
 ### Neutrophil-Lymphocyte Ratio (NLR) Calculator
-**Descrição:** Calcula razão neutrófilo-linfócito.
+**Description:** Calculates neutrophil-lymphocyte ratio.
 
 ### New Orleans/Charity Head Trauma/Injury Rule
-**Descrição:** Critérios para quais pacientes provavelmente não requerem imagem após trauma craniano.
+**Description:** Criteria for which patients likely do not require imaging after head trauma.
 
 ### New York Heart Association (NYHA) Functional Classification for Heart Failure
-**Descrição:** Estratifica severidade da insuficiência cardíaca por sintomas.
+**Description:** Stratifies heart failure severity by symptoms.
 
 ### Newsom Score for Non-traumatic Chest Pain
-**Descrição:** Exclui necessidade de raio-X de tórax em pacientes com dor torácica (não traumática).
+**Description:** Rules out need for chest X-ray in patients with chest pain (non-traumatic).
 
 ### NEXUS Chest CT Decision Instrument for CT Imaging
-**Descrição:** Identifica pacientes de trauma contuso com lesões torácicas clinicamente significativas.
+**Description:** Identifies blunt trauma patients with clinically significant chest injuries.
 
 ### NEXUS Chest Decision Instrument for Blunt Chest Trauma
-**Descrição:** Determina necessidade de imagem torácica em pacientes com trauma contuso.
+**Description:** Determines need for chest imaging in blunt trauma patients.
 
 ### NEXUS Criteria for C-Spine Imaging
-**Descrição:** Libera pacientes de fratura de coluna cervical clinicamente, sem imagem.
+**Description:** Clinically clears cervical spine fracture patients, without imaging.
 
 ### Osteoporosis Risk Assessment Instrument (ORAI)
-**Descrição:** Identifica mulheres sob risco de osteoporose e recomenda densitometria óssea.
+**Description:** Identifies women at risk for osteoporosis and recommends bone densitometry.
 
 ### Osteoporosis Self Assessment Tool (OST)
-**Descrição:** Classifica o risco de osteoporose em mulheres e homens.
+**Description:** Classifies osteoporosis risk in women and men.
 
 ### Ottawa Ankle Rule
-**Descrição:** Exclui fraturas clinicamente significativas no pé e tornozelo para reduzir uso de radiografia.
+**Description:** Rules out clinically significant foot and ankle fractures to reduce radiography use.
 
 ### Ottawa COPD Risk Scale
-**Descrição:** Prediz mortalidade em 30 dias ou eventos adversos graves (IAM, intubação, etc) em pacientes com DPOC no PS.
+**Description:** Predicts 30-day mortality or serious adverse events (MI, intubation, etc) in ED COPD patients.
 
 ### Ottawa Heart Failure Risk Scale (OHFRS)
-**Descrição:** Identifica pacientes com insuficiência cardíaca no PS com alto risco de eventos adversos graves.
+**Description:** Identifies ED heart failure patients at high risk for serious adverse events.
 
 ### Ottawa Knee Rule
-**Descrição:** Descreve critérios para pacientes com trauma de joelho de baixo risco, não justificando imagem.
+**Description:** Describes criteria for low-risk knee trauma patients, not warranting imaging.
 
 ### Ottawa Subarachnoid Hemorrhage (SAH) Rule for Headache Evaluation
-**Descrição:** Exclui HSA em pacientes com cefaleia.
+**Description:** Rules out SAH in headache patients.
 
 ### Overall Neuropathy Limitations Scale (ONLS)
-**Descrição:** Quantifica a gravidade da neuropatia periférica.
+**Description:** Quantifies the severity of peripheral neuropathy.
 
 ### Oxygenation Index
-**Descrição:** Prediz desfechos, especialmente em pacientes pediátricos; auxilia na decisão de ECMO.
+**Description:** Predicts outcomes, especially in pediatric patients; aids in ECMO decision.
 
 ### Prognostic Index for Cancer Outcomes
-**Descrição:** Prediz mortalidade por câncer a partir de biomarcadores séricos.
+**Description:** Predicts cancer mortality from serum biomarkers.
 
 ### PROMISE Score for Malignant Pleural Effusion
-**Descrição:** Prediz mortalidade em 3 meses em pacientes com derrame pleural maligno.
+**Description:** Predicts 3-month mortality in patients with malignant pleural effusion.
 
 ### Prostate Tumor Volume & Density
-**Descrição:** Mede o volume do tumor de próstata e a densidade do PSA.
+**Description:** Measures prostate tumor volume and PSA density.
 
 ### PSA Doubling Time (PSADT) Calculator
-**Descrição:** Calcula a taxa de duplicação do PSA no câncer de próstata (correlaciona-se com sobrevida).
+**Description:** Calculates PSA doubling rate in prostate cancer (correlates with survival).
 
 ### PSI/PORT Score: Pneumonia Severity Index for CAP
-**Descrição:** Estima mortalidade em pacientes adultos com pneumonia adquirida na comunidade.
+**Description:** Estimates mortality in adult patients with community-acquired pneumonia.
 
 ### Psoriasis Area and Severity Index (PASI)
-**Descrição:** Quantifica a gravidade da psoríase.
+**Description:** Quantifies the severity of psoriasis.
 
 ### Pulmonary Embolism Severity Index (PESI)
-**Descrição:** Prediz desfecho em 30 dias de pacientes com embolia pulmonar.
+**Description:** Predicts 30-day outcome of pulmonary embolism patients.
 
 ### Pulmonary Embolism Syncope-Anemia-Renal Dysfunction (PE-SARD) Score
-**Descrição:** (NOVO) Estima risco de sangramento maior precoce em pacientes com embolia pulmonar aguda (EP).
+**Description:** (NEW) Estimates risk of early major bleeding in patients with acute pulmonary embolism (PE).
 
 ### qSOFA (Quick SOFA) Score for Sepsis
-**Descrição:** Identifica pacientes de alto risco para mortalidade intra-hospitalar com suspeita de infecção fora da UTI.
+**Description:** Identifies high-risk patients for in-hospital mortality with suspected infection outside the ICU.
 
 ### Quick COVID-19 Severity Index (qCSI)
-**Descrição:** Prediz risco em 24h de insuficiência respiratória crítica em pacientes admitidos no PS com COVID-19.
+**Description:** Predicts 24h risk of critical respiratory failure in ED admitted COVID-19 patients.
 
 ### Quick Inventory of Depressive Symptomatology (QIDS)
-**Descrição:** Avalia sintomas depressivos por autoaplicação, também conhecido como QIDS-SR-16.
+**Description:** Assesses depressive symptoms by self-report, also known as QIDS-SR-16.
 
 ### Rome IV Diagnostic Criteria for Proctalgia Fugax
-**Descrição:** Critérios oficiais de Roma IV para diagnóstico de proctalgia fugaz.
+**Description:** Official Rome IV criteria for diagnosis of proctalgia fugax.
 
 ### Rome IV Diagnostic Criteria for Reflux Hypersensitivity
-**Descrição:** Critérios oficiais de Roma IV para diagnóstico de hipersensibilidade ao refluxo.
+**Description:** Official Rome IV criteria for diagnosis of reflux hypersensitivity.
 
 ### Rome IV Diagnostic Criteria for Rumination Syndrome
-**Descrição:** Critérios oficiais de Roma IV para diagnóstico de síndrome de ruminação.
+**Description:** Official Rome IV criteria for diagnosis of rumination syndrome.
 
 ### Rome IV Diagnostic Criteria for Unspecified Functional Bowel Disorder
-**Descrição:** Critérios oficiais de Roma IV para diagnóstico de distúrbio funcional intestinal não especificado.
+**Description:** Official Rome IV criteria for diagnosis of unspecified functional bowel disorder.
 
 ### ROSE (Risk Stratification of Syncope in the Emergency Department) Rule
-**Descrição:** Prediz desfecho grave ou morte em 1 mês em pacientes com síncope no PS.
+**Description:** Predicts serious outcome or death in 1 month in ED syncope patients.
 
 ### Roth Score for Hypoxia Screening
-**Descrição:** Rastreia hipóxia em pacientes dispneicos.
+**Description:** Screens for hypoxia in dyspneic patients.
 
 ### ROX Index for Intubation after HFNC
-**Descrição:** Prediz falha da cânula nasal de alto fluxo (CNAF) e necessidade de intubação.
+**Description:** Predicts high-flow nasal cannula (HFNC) failure and need for intubation.
 
 ### Rule of 7s for Lyme Meningitis
-**Descrição:** Distingue meningite de Lyme de meningite asséptica.
+**Description:** Distinguishes Lyme meningitis from aseptic meningitis.
 
 ### Rule of Nines
-**Descrição:** (NOVO) Calcula a superfície corporal total acometida por queimaduras.
+**Description:** (NEW) Calculates total body surface area affected by burns.
 
 ### Subtle Anterior STEMI Calculator (4-Variable)
-**Descrição:** Diferencia elevação do ST variante normal (repolarização precoce benigna) de STEMI anterior, mais sensível que a versão de 3 variáveis.
+**Description:** Differentiates normal variant ST elevation (benign early repolarization) from anterior STEMI, more sensitive than 3-variable version.
 
 ### Sudbury Vertigo Risk Score
-**Descrição:** (NOVO) Identifica pacientes com vertigem sob maior risco de diagnóstico central grave.
+**Description:** (NEW) Identifies vertigo patients at higher risk for serious central diagnosis.
 
 ### Surgical Apgar Score (SAS) for Postoperative Risk
-**Descrição:** Prediz risco de complicação maior pós-operatória, incluindo óbito.
+**Description:** Predicts risk of major postoperative complication, including death.
 
 ### Swede Score
-**Descrição:** Prediz colposcopicamente lesões de alto grau (HGL) na histologia.
+**Description:** Predicts colposcopically high-grade lesions (HGL) on histology.
 
 ### Systematic Coronary Risk Evaluation 2 (SCORE2)
-**Descrição:** Prediz risco cardiovascular em 10 anos em pacientes sem DAC prévia ou diabetes.
+**Description:** Predicts 10-year cardiovascular risk in patients without prior CAD or diabetes.
 
 ### Systematic Coronary Risk Evaluation 2-Diabetes (SCORE2-Diabetes)
-**Descrição:** Prediz risco cardiovascular em 10 anos em pacientes com diabetes tipo 2.
+**Description:** Predicts 10-year cardiovascular risk in patients with type 2 diabetes.
 
 ### Systematic Coronary Risk Evaluation 2-Older Persons (SCORE2-OP)
-**Descrição:** Prediz risco cardiovascular em 10 anos em pacientes idosos.
+**Description:** Predicts 10-year cardiovascular risk in older patients.
 
 ### Systemic Lupus Erythematosus Disease Activity Index 2000 (SLEDAI-2K)
-**Descrição:** Estratifica gravidade do lúpus eritematoso sistêmico (LES).
+**Description:** Stratifies severity of systemic lupus erythematosus (SLE).
 
 ### Tokyo Guidelines for Acute Cholecystitis 2018
-**Descrição:** Fornece critérios diagnósticos e classificação de gravidade para colecistite aguda.
+**Description:** Provides diagnostic criteria and severity classification for acute cholecystitis.
 
 ### tPA (Alteplase) Dosing for Ischemic Stroke Calculator
-**Descrição:** Calcula dose de alteplase para AVC isquêmico.
+**Description:** Calculates alteplase dose for ischemic stroke.
 
 ### tPA Contraindications for Ischemic Stroke
-**Descrição:** Avalia critérios de inclusão/exclusão para tPA em pacientes com AVC isquêmico agudo.
+**Description:** Assesses inclusion/exclusion criteria for tPA in acute ischemic stroke patients.
 
 ### Transtubular Potassium Gradient (TTKG)
-**Descrição:** Pode auxiliar na avaliação de hiper ou hipocalemia.
+**Description:** Can aid in evaluation of hyper or hypokalemia.
 
 ### Trauma Score and Injury Severity Score (TRISS)
-**Descrição:** Estima a probabilidade de sobrevida em pacientes politraumatizados.
+**Description:** Estimates probability of survival in polytrauma patients.
 
 ### Travis Criteria
-**Descrição:** Prediz risco de necessidade de colectomia em colite ulcerativa grave.
+**Description:** Predicts risk of colectomy need in severe ulcerative colitis.
 
 ### Troponin-only Manchester Acute Coronary Syndromes (T-MACS) Decision Aid
-**Descrição:** Exclui síndrome coronariana aguda.
+**Description:** Rules out acute coronary syndrome.
 
 ### Truelove and Witts Severity Index for Ulcerative Colitis
-**Descrição:** Estratifica gravidade da colite ulcerativa.
+**Description:** Stratifies severity of ulcerative colitis.
 
 ### Trunk Impairment Scale
-**Descrição:** Quantifica incapacidade após AVC; também validado em doença de Parkinson.
+**Description:** Quantifies disability after stroke; also validated in Parkinson's disease.
 
 ### United Kingdom Model for End-Stage Liver Disease (UKELD)
-**Descrição:** Prediz mortalidade em pacientes com doença hepática terminal para planejamento de transplante (Reino Unido).
+**Description:** Predicts mortality in end-stage liver disease patients for transplant planning (UK).
 
 ### Urinary Protein Excretion Estimation
-**Descrição:** Quantifica proteinúria de 24h com relação proteína/creatinina em amostra isolada de urina.
+**Description:** Quantifies 24h proteinuria with protein/creatinine ratio in single urine sample.
 
 ### Urine Anion Gap
-**Descrição:** Detecta acidose urinária para avaliação de acidose metabólica sem ânion gap.
+**Description:** Detects urinary acidosis for evaluation of non-anion gap metabolic acidosis.
 
 ### Urine Output and Fluid Balance
-**Descrição:** Calcula diurese em 24h.
+**Description:** Calculates 24h urine output.
 
 ### Urticaria Activity Score (UAS)
-**Descrição:** Estratifica gravidade da urticária.
+**Description:** Stratifies severity of urticaria.
 
 ### US (MEDPED) Diagnostic Criteria for Familial Hypercholesterolemia (FH)
-**Descrição:** Diagnostica hipercolesterolemia familiar usando idade, história familiar e colesterol total.
+**Description:** Diagnoses familial hypercholesterolemia using age, family history, and total cholesterol.
 
 ### Utah COVID-19 Risk Score
-**Descrição:** Identifica indivíduos de alto risco para tratamento de COVID-19 (atualizado em fevereiro de 2022).
+**Description:** Identifies high-risk individuals for COVID-19 treatment (updated February 2022).
 
 ### Veterans Aging Cohort Study (VACS) 1.0 Index
-**Descrição:** Estima risco de mortalidade em 5 anos em pacientes com HIV e/ou HCV.
+**Description:** Estimates 5-year mortality risk in HIV and/or HCV patients.
 
 ### Veterans Aging Cohort Study (VACS) 2.0 Index
-**Descrição:** Estima risco de mortalidade em 5 anos em pacientes com HIV, atualização do VACS 1.0.
+**Description:** Estimates 5-year mortality risk in HIV patients, update of VACS 1.0.
 
 ### Veterans Aging Cohort Study-Charlson Comorbidity Index (VACS-CCI)
-**Descrição:** Estima risco de mortalidade em pacientes com comorbidades, incluindo câncer de próstata não metastático.
+**Description:** Estimates mortality risk in patients with comorbidities, including non-metastatic prostate cancer.
 
 ### Veterans Health Administration COVID-19 (VACO) Index for COVID-19 Mortality
-**Descrição:** Estima risco de mortalidade em 30 dias após infecção por COVID-19, considerando saúde prévia.
+**Description:** Estimates 30-day mortality risk after COVID-19 infection, considering prior health.
 
 ### Villalta Score for Post-thrombotic Syndrome (PTS)
-**Descrição:** Estratifica gravidade da síndrome pós-trombótica em TVP de membros inferiores.
+**Description:** Stratifies severity of post-thrombotic syndrome in lower limb DVT.
 
 ### VIRSTA Score
-**Descrição:** Estima risco de endocardite infecciosa (EI) e prioriza ecocardiografia.
+**Description:** Estimates risk of infective endocarditis (IE) and prioritizes echocardiography.
 
 ### Visual Acuity Testing (Snellen Chart)
-**Descrição:** Avalia acuidade visual binocular e monocular.
+**Description:** Assesses binocular and monocular visual acuity.
 
 ### VTE-BLEED Score
-**Descrição:** Avalia risco de sangramento em uso de anticoagulação.
+**Description:** Assesses bleeding risk on anticoagulation.
 
 ### Wexner Score for Obstructed Defecation Syndrome (ODS)
-**Descrição:** Estratifica gravidade da incontinência fecal.
+**Description:** Stratifies severity of fecal incontinence.
 
 ### Winters' Formula for Metabolic Acidosis Compensation
-**Descrição:** Calcula a compensação esperada do pCO₂ em acidose metabólica pura.
+**Description:** Calculates expected pCO₂ compensation in pure metabolic acidosis.
 
 ### Wisconsin Criteria
-**Descrição:** (NOVO) Prediz necessidade de TC após trauma maxilofacial.
+**Description:** (NEW) Predicts need for CT after maxillofacial trauma.
 
 ### Withdrawal Assessment Tool (WAT-1) for Pediatric Withdrawal
-**Descrição:** Estima gravidade da abstinência de opioides e benzodiazepínicos em crianças.
+**Description:** Estimates severity of opioid and benzodiazepine withdrawal in children.
 
 ### Woman Abuse Screening Tool (WAST)
-**Descrição:** Detecta violência doméstica (violência por parceiro íntimo) em mulheres no contexto de saúde.
+**Description:** Detects domestic violence (intimate partner violence) in women in healthcare settings.
 
 ### World Health Organization (WHO) Diagnostic Criteria for Polycythemia Vera
-**Descrição:** (NOVO) Diagnostica policitemia vera segundo critérios da OMS.
+**Description:** (NEW) Diagnoses polycythemia vera according to WHO criteria.
 
 ### World Health Organization (WHO) Diagnostic Criteria for Systemic Mastocytosis
-**Descrição:** (NOVO) Diagnostica mastocitose sistêmica segundo critérios da OMS.
+**Description:** (NEW) Diagnoses systemic mastocytosis according to WHO criteria.
 
 ### Wound Closure Classification
-**Descrição:** Classifica tipos de fechamento de feridas.
+**Description:** Classifies wound closure types.
 
 ### WPSS (WHO classification-based Prognostic Scoring System) for Myelodysplastic Syndrome
-**Descrição:** Avalia prognóstico de pacientes com síndrome mielodisplásica (SMD).
+**Description:** Assesses prognosis of patients with myelodysplastic syndrome (MDS).
 
 ### YEARS Algorithm for Pulmonary Embolism (PE)
-**Descrição:** Auxilia na exclusão de embolia pulmonar; também validado em gestantes com suspeita clínica de EP.
+**Description:** Aids in ruling out pulmonary embolism; also validated in pregnant patients with suspected PE.
 
 ---
 
-*Esta lista foi extraída do MDCalc.com e contém os scores médicos mais utilizados na prática clínica, organizados alfabeticamente para facilitar a consulta.*
+*This list was extracted from MDCalc.com and contains the most commonly used medical scores in clinical practice, organized alphabetically for easy reference.*
 
-**Observação:** Alguns scores marcados como "NOVO" são adições recentes ao MDCalc. Para informações mais detalhadas sobre cada score, incluindo cálculos específicos e critérios diagnósticos, recomenda-se consultar diretamente o MDCalc.com.
+**Note:** Some scores marked as "NEW" are recent additions to MDCalc. For more detailed information on each score, including specific calculations and diagnostic criteria, it is recommended to consult MDCalc.com directly.

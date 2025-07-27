@@ -1,76 +1,76 @@
 """
 2012 EULAR/ACR Classification Criteria for Polymyalgia Rheumatica Calculator
 
-Classifica polimialgia reumática usando critérios clínicos e ultrassonográficos.
-Referência: Dasgupta et al., Ann Rheum Dis 2012;71(4):484-92
+Classifies polymyalgia rheumatica using clinical and ultrasonographic criteria.
+Reference: Dasgupta et al., Ann Rheum Dis 2012;71(4):484-92
 """
 
 from typing import Dict, Any
 
 
 class EularAcr2012PmrCalculator:
-    """Calculadora para critérios de classificação EULAR/ACR 2012 para PMR"""
+    """Calculator for EULAR/ACR 2012 PMR classification criteria"""
     
     def calculate(self, morning_stiffness: str, hip_pain_limited_rom: str,
                  rf_or_acpa: str, other_joint_pain: str,
                  ultrasound_shoulder_hip: str = "not_performed",
                  ultrasound_both_shoulders: str = "not_performed") -> Dict[str, Any]:
         """
-        Calcula o escore EULAR/ACR 2012 para polimialgia reumática
+        Calculates the EULAR/ACR 2012 score for polymyalgia rheumatica
         
         Args:
-            morning_stiffness: "<=45min" ou ">45min" - duração da rigidez matinal
-            hip_pain_limited_rom: "no" ou "yes" - dor no quadril ou ROM limitada
-            rf_or_acpa: "present" ou "absent" - FR ou ACPA presente
-            other_joint_pain: "present" ou "absent" - dor em outras articulações
-            ultrasound_shoulder_hip: "no", "yes", "not_performed" - US ombro/quadril
-            ultrasound_both_shoulders: "no", "yes", "not_performed" - US ambos ombros
+            morning_stiffness: "<=45min" or ">45min" - duration of morning stiffness
+            hip_pain_limited_rom: "no" or "yes" - hip pain or limited ROM
+            rf_or_acpa: "present" or "absent" - RF or ACPA present
+            other_joint_pain: "present" or "absent" - pain in other joints
+            ultrasound_shoulder_hip: "no", "yes", "not_performed" - shoulder/hip US
+            ultrasound_both_shoulders: "no", "yes", "not_performed" - both shoulders US
             
         Returns:
-            Dict com resultado, interpretação e classificação
+            Dict with result, interpretation, and classification
         """
         
-        # Validações
+        # Validations
         self._validate_inputs(morning_stiffness, hip_pain_limited_rom, rf_or_acpa,
                             other_joint_pain, ultrasound_shoulder_hip,
                             ultrasound_both_shoulders)
         
-        # Calcular pontuação
+        # Calculate score
         score = 0
         
-        # Rigidez matinal >45min: 2 pontos
+        # Morning stiffness >45min: 2 points
         if morning_stiffness == ">45min":
             score += 2
         
-        # Dor no quadril ou ROM limitada: 1 ponto
+        # Hip pain or limited ROM: 1 point
         if hip_pain_limited_rom == "yes":
             score += 1
         
-        # Ausência de FR ou ACPA: 2 pontos
+        # Absence of RF or ACPA: 2 points
         if rf_or_acpa == "absent":
             score += 2
         
-        # Ausência de dor em outras articulações: 1 ponto
+        # Absence of pain in other joints: 1 point
         if other_joint_pain == "absent":
             score += 1
         
-        # Determinar se ultrassom foi realizado
+        # Determine if ultrasound was performed
         us_performed = (ultrasound_shoulder_hip != "not_performed" or 
                        ultrasound_both_shoulders != "not_performed")
         
-        # Adicionar pontos do ultrassom se realizado
+        # Add ultrasound points if performed
         if us_performed:
             if ultrasound_shoulder_hip == "yes":
                 score += 1
             if ultrasound_both_shoulders == "yes":
                 score += 1
         
-        # Obter interpretação baseada no escore e se US foi realizado
+        # Get interpretation based on score and if US was performed
         interpretation = self._get_interpretation(score, us_performed)
         
         return {
             "result": score,
-            "unit": "pontos",
+            "unit": "points",
             "interpretation": interpretation["interpretation"],
             "stage": interpretation["stage"],
             "stage_description": interpretation["description"]
@@ -79,73 +79,73 @@ class EularAcr2012PmrCalculator:
     def _validate_inputs(self, morning_stiffness: str, hip_pain_limited_rom: str,
                         rf_or_acpa: str, other_joint_pain: str,
                         ultrasound_shoulder_hip: str, ultrasound_both_shoulders: str):
-        """Valida os parâmetros de entrada"""
+        """Validates input parameters"""
         
         if morning_stiffness not in ["<=45min", ">45min"]:
-            raise ValueError("Rigidez matinal deve ser '<=45min' ou '>45min'")
+            raise ValueError("Morning stiffness must be '<=45min' or '>45min'")
         
         if hip_pain_limited_rom not in ["no", "yes"]:
-            raise ValueError("Dor no quadril/ROM limitada deve ser 'no' ou 'yes'")
+            raise ValueError("Hip pain/limited ROM must be 'no' or 'yes'")
         
         if rf_or_acpa not in ["present", "absent"]:
-            raise ValueError("FR ou ACPA deve ser 'present' ou 'absent'")
+            raise ValueError("RF or ACPA must be 'present' or 'absent'")
         
         if other_joint_pain not in ["present", "absent"]:
-            raise ValueError("Dor em outras articulações deve ser 'present' ou 'absent'")
+            raise ValueError("Pain in other joints must be 'present' or 'absent'")
         
         valid_us_options = ["no", "yes", "not_performed"]
         if ultrasound_shoulder_hip not in valid_us_options:
-            raise ValueError(f"Ultrassom ombro/quadril deve ser: {', '.join(valid_us_options)}")
+            raise ValueError(f"Shoulder/hip ultrasound must be: {', '.join(valid_us_options)}")
         
         if ultrasound_both_shoulders not in valid_us_options:
-            raise ValueError(f"Ultrassom ambos ombros deve ser: {', '.join(valid_us_options)}")
+            raise ValueError(f"Both shoulders ultrasound must be: {', '.join(valid_us_options)}")
         
-        # Validar consistência do ultrassom
+        # Validate ultrasound consistency
         if ((ultrasound_shoulder_hip == "not_performed" and 
              ultrasound_both_shoulders != "not_performed") or
             (ultrasound_shoulder_hip != "not_performed" and 
              ultrasound_both_shoulders == "not_performed")):
-            raise ValueError("Se ultrassom foi realizado, ambos os parâmetros de US devem ser fornecidos")
+            raise ValueError("If ultrasound was performed, both US parameters must be provided")
     
     def _get_interpretation(self, score: int, us_performed: bool) -> Dict[str, str]:
         """
-        Determina a interpretação baseada no escore e se US foi realizado
+        Determines the interpretation based on the score and if US was performed
         
         Args:
-            score: Escore calculado
-            us_performed: Se ultrassom foi realizado
+            score: Calculated score
+            us_performed: Whether ultrasound was performed
             
         Returns:
-            Dict com interpretação
+            Dict with interpretation
         """
         
         if not us_performed:
-            # Sem ultrassom: ponto de corte ≥4
+            # Without ultrasound: cutoff point ≥4
             if score >= 4:
                 return {
                     "stage": "PMR",
-                    "description": "Classifica como PMR (sem ultrassom)",
-                    "interpretation": f"Escore de {score} pontos (≥4) classifica como polimialgia reumática pelos critérios EULAR/ACR 2012. Sensibilidade 72%, especificidade 65%."
+                    "description": "Classifies as PMR (without ultrasound)",
+                    "interpretation": f"Score of {score} points (≥4) classifies as polymyalgia rheumatica by EULAR/ACR 2012 criteria. Sensitivity 72%, specificity 65%."
                 }
             else:
                 return {
-                    "stage": "Não-PMR",
-                    "description": "Não classifica como PMR (sem ultrassom)",
-                    "interpretation": f"Escore de {score} pontos (<4) não classifica como polimialgia reumática. Considere diagnósticos alternativos."
+                    "stage": "Non-PMR",
+                    "description": "Does not classify as PMR (without ultrasound)",
+                    "interpretation": f"Score of {score} points (<4) does not classify as polymyalgia rheumatica. Consider alternative diagnoses."
                 }
         else:
-            # Com ultrassom: ponto de corte ≥5
+            # With ultrasound: cutoff point ≥5
             if score >= 5:
                 return {
                     "stage": "PMR (US)",
-                    "description": "Classifica como PMR (com ultrassom)",
-                    "interpretation": f"Escore de {score} pontos (≥5) classifica como polimialgia reumática pelos critérios EULAR/ACR 2012 com ultrassom. Sensibilidade 71%, especificidade 70%."
+                    "description": "Classifies as PMR (with ultrasound)",
+                    "interpretation": f"Score of {score} points (≥5) classifies as polymyalgia rheumatica by EULAR/ACR 2012 criteria with ultrasound. Sensitivity 71%, specificity 70%."
                 }
             else:
                 return {
-                    "stage": "Não-PMR (US)",
-                    "description": "Não classifica como PMR (com ultrassom)",
-                    "interpretation": f"Escore de {score} pontos (<5) não classifica como polimialgia reumática com ultrassonografia. Considere diagnósticos alternativos."
+                    "stage": "Non-PMR (US)",
+                    "description": "Does not classify as PMR (with ultrasound)",
+                    "interpretation": f"Score of {score} points (<5) does not classify as polymyalgia rheumatica with ultrasonography. Consider alternative diagnoses."
                 }
 
 
@@ -154,9 +154,9 @@ def calculate_eular_acr_2012_pmr(morning_stiffness: str, hip_pain_limited_rom: s
                                  ultrasound_shoulder_hip: str = "not_performed",
                                  ultrasound_both_shoulders: str = "not_performed") -> Dict[str, Any]:
     """
-    Função de conveniência para o sistema de carregamento dinâmico
+    Convenience function for the dynamic loading system
     
-    IMPORTANTE: Esta função deve seguir o padrão calculate_{score_id}
+    IMPORTANT: This function must follow the calculate_{score_id} pattern
     """
     calculator = EularAcr2012PmrCalculator()
     return calculator.calculate(morning_stiffness, hip_pain_limited_rom,

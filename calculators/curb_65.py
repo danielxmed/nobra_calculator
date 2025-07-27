@@ -1,19 +1,19 @@
 """
 CURB-65 Score Calculator
 
-Avalia a gravidade da pneumonia adquirida na comunidade para determinar 
-necessidade de internação hospitalar.
-Referência: Lim WS et al. Thorax. 2003;58(5):377-82.
+Assesses the severity of community-acquired pneumonia to determine
+the need for hospital admission.
+Reference: Lim WS et al. Thorax. 2003;58(5):377-82.
 """
 
 from typing import Dict, Any
 
 
 class Curb65Calculator:
-    """Calculadora para CURB-65 Score"""
+    """Calculator for CURB-65 Score"""
     
     def __init__(self):
-        # Riscos de mortalidade por pontuação
+        # Mortality risks by score
         self.mortality_risk = {
             0: 1.5,
             1: 1.5,
@@ -26,53 +26,53 @@ class Curb65Calculator:
     def calculate(self, confusion: bool, urea: float, respiratory_rate: int,
                  systolic_bp: int, diastolic_bp: int, age: int) -> Dict[str, Any]:
         """
-        Calcula o CURB-65 score
+        Calculates the CURB-65 score
         
         Args:
-            confusion: Confusão mental de início recente
-            urea: Ureia sérica em mg/dL
-            respiratory_rate: Frequência respiratória (respirações/min)
-            systolic_bp: Pressão arterial sistólica (mmHg)
-            diastolic_bp: Pressão arterial diastólica (mmHg)
-            age: Idade em anos
+            confusion: Recent onset mental confusion
+            urea: Serum urea in mg/dL
+            respiratory_rate: Respiratory rate (breaths/min)
+            systolic_bp: Systolic blood pressure (mmHg)
+            diastolic_bp: Diastolic blood pressure (mmHg)
+            age: Age in years
             
         Returns:
-            Dict com resultado, interpretação e risco de mortalidade
+            Dict with result, interpretation, and mortality risk
         """
         
-        # Validações
+        # Validations
         self._validate_inputs(confusion, urea, respiratory_rate, systolic_bp, diastolic_bp, age)
         
-        # Calcular pontuação
+        # Calculate score
         score = 0
         
-        # C - Confusion (1 ponto se presente)
+        # C - Confusion (1 point if present)
         if confusion:
             score += 1
         
-        # U - Urea > 19 mg/dL (1 ponto)
+        # U - Urea > 19 mg/dL (1 point)
         if urea > 19.0:
             score += 1
         
-        # R - Respiratory rate ≥ 30/min (1 ponto)
+        # R - Respiratory rate ≥ 30/min (1 point)
         if respiratory_rate >= 30:
             score += 1
         
-        # B - Blood pressure: PAS < 90 mmHg OU PAD ≤ 60 mmHg (1 ponto)
+        # B - Blood pressure: SBP < 90 mmHg OR DBP ≤ 60 mmHg (1 point)
         if systolic_bp < 90 or diastolic_bp <= 60:
             score += 1
         
-        # 65 - Age ≥ 65 anos (1 ponto)
+        # 65 - Age ≥ 65 years (1 point)
         if age >= 65:
             score += 1
         
-        # Obter interpretação
+        # Get interpretation
         interpretation = self._get_interpretation(score)
         mortality_risk = self.mortality_risk.get(score, 22.0)
         
         return {
             "result": score,
-            "unit": "pontos",
+            "unit": "points",
             "interpretation": interpretation["interpretation"],
             "stage": interpretation["stage"],
             "stage_description": interpretation["description"],
@@ -88,69 +88,69 @@ class Curb65Calculator:
     
     def _validate_inputs(self, confusion: bool, urea: float, respiratory_rate: int,
                         systolic_bp: int, diastolic_bp: int, age: int):
-        """Valida os parâmetros de entrada"""
+        """Validates input parameters"""
         
         if not isinstance(confusion, bool):
-            raise ValueError("Confusão deve ser um valor booleano (True/False)")
+            raise ValueError("Confusion must be a boolean value (True/False)")
         
         if not isinstance(urea, (int, float)) or urea < 0 or urea > 200:
-            raise ValueError("Ureia deve ser um número entre 0 e 200 mg/dL")
+            raise ValueError("Urea must be a number between 0 and 200 mg/dL")
         
         if not isinstance(respiratory_rate, int) or respiratory_rate < 0 or respiratory_rate > 60:
-            raise ValueError("Frequência respiratória deve ser um inteiro entre 0 e 60")
+            raise ValueError("Respiratory rate must be an integer between 0 and 60")
         
         if not isinstance(systolic_bp, int) or systolic_bp < 0 or systolic_bp > 300:
-            raise ValueError("Pressão sistólica deve ser um inteiro entre 0 e 300 mmHg")
+            raise ValueError("Systolic pressure must be an integer between 0 and 300 mmHg")
         
         if not isinstance(diastolic_bp, int) or diastolic_bp < 0 or diastolic_bp > 200:
-            raise ValueError("Pressão diastólica deve ser um inteiro entre 0 e 200 mmHg")
+            raise ValueError("Diastolic pressure must be an integer between 0 and 200 mmHg")
         
         if not isinstance(age, int) or age < 0 or age > 120:
-            raise ValueError("Idade deve ser um inteiro entre 0 e 120 anos")
+            raise ValueError("Age must be an integer between 0 and 120 years")
         
-        # Validação lógica adicional
+        # Additional logical validation
         if systolic_bp < diastolic_bp:
-            raise ValueError("Pressão sistólica não pode ser menor que a diastólica")
+            raise ValueError("Systolic pressure cannot be less than diastolic pressure")
     
     def _get_interpretation(self, score: int) -> Dict[str, str]:
         """
-        Determina a interpretação baseada no score
+        Determines the interpretation based on the score
         
         Args:
-            score: CURB-65 score calculado
+            score: Calculated CURB-65 score
             
         Returns:
-            Dict com interpretação clínica
+            Dict with clinical interpretation
         """
         
         if score <= 1:
             return {
-                "stage": "Baixo Risco",
-                "description": "Mortalidade: 1.5%",
-                "interpretation": "Tratamento ambulatorial. Considerar antibioticoterapia oral e acompanhamento em 48-72 horas."
+                "stage": "Low Risk",
+                "description": "Mortality: 1.5%",
+                "interpretation": "Outpatient treatment. Consider oral antibiotic therapy and follow-up in 48-72 hours."
             }
         
         elif score == 2:
             return {
-                "stage": "Risco Intermediário",
-                "description": "Mortalidade: 9.2%",
-                "interpretation": "Considerar internação hospitalar vs. observação. Avaliar individualmente fatores sociais, comorbidades e resposta ao tratamento inicial."
+                "stage": "Intermediate Risk",
+                "description": "Mortality: 9.2%",
+                "interpretation": "Consider hospital admission vs. observation. Individually assess social factors, comorbidities, and response to initial treatment."
             }
         
         else:  # score >= 3
             return {
-                "stage": "Alto Risco",
-                "description": "Mortalidade: 22%",
-                "interpretation": "Internação hospitalar mandatória. Considerar admissão em UTI, especialmente se CURB-65 ≥ 4. Iniciar antibioticoterapia endovenosa imediatamente."
+                "stage": "High Risk",
+                "description": "Mortality: 22%",
+                "interpretation": "Mandatory hospital admission. Consider ICU admission, especially if CURB-65 ≥ 4. Start intravenous antibiotic therapy immediately."
             }
 
 
 def calculate_curb_65(confusion: bool, urea: float, respiratory_rate: int,
                      systolic_bp: int, diastolic_bp: int, age: int) -> Dict[str, Any]:
     """
-    Função de conveniência para o sistema de carregamento dinâmico
+    Convenience function for the dynamic loading system
     
-    IMPORTANTE: Esta função deve seguir o padrão calculate_curb_65
+    IMPORTANT: This function must follow the calculate_curb_65 pattern
     """
     calculator = Curb65Calculator()
     return calculator.calculate(confusion, urea, respiratory_rate,

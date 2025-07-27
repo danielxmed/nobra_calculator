@@ -1,115 +1,116 @@
 """
 4C Mortality Score for COVID-19 Calculator
 
-Prediz mortalidade hospitalar em pacientes internados com COVID-19.
-Referência: Knight SR et al., BMJ 2020;370:m3339
+Predicts in-hospital mortality in patients admitted with COVID-19.
+Reference: Knight SR et al., BMJ 2020;370:m3339
 """
 
 from typing import Dict, Any
 
 
 class FourCMortalityCovid19Calculator:
-    """Calculadora para o 4C Mortality Score para COVID-19"""
+    """Calculator for the 4C Mortality Score for COVID-19"""
     
     def calculate(self, age: int, sex: str, comorbidities: int, respiratory_rate: int,
                  oxygen_saturation: float, glasgow_coma_scale: int, urea_unit: str,
                  urea_value: float, crp: float) -> Dict[str, Any]:
         """
-        Calcula o 4C Mortality Score para COVID-19
+        Calculates the 4C Mortality Score for COVID-19
         
         Args:
-            age: Idade em anos
-            sex: "masculino" ou "feminino"
-            comorbidities: Número de comorbidades (0-20)
-            respiratory_rate: Frequência respiratória (irpm)
-            oxygen_saturation: Saturação de O2 (%)
-            glasgow_coma_scale: Escala de Coma de Glasgow (3-15)
-            urea_unit: "mmol_L" ou "mg_dL"
-            urea_value: Valor da ureia sérica
-            crp: Proteína C-reativa (mg/L)
+            age: Age in years
+            sex: "male" or "female"
+            comorbidities: Number of comorbidities (0-20)
+            respiratory_rate: Respiratory rate (breaths/min)
+            oxygen_saturation: O2 saturation (%)
+            glasgow_coma_scale: Glasgow Coma Scale (3-15)
+            urea_unit: "mmol_L" or "mg_dL"
+            urea_value: Serum urea value
+            crp: C-reactive protein (mg/L)
             
         Returns:
-            Dict com resultado, interpretação e classificação de risco
+            Dict with result, interpretation, and risk classification
         """
         
-        # Validações
+        # Validations
         self._validate_inputs(age, sex, comorbidities, respiratory_rate,
                             oxygen_saturation, glasgow_coma_scale, urea_unit,
                             urea_value, crp)
         
-        # Calcular pontuação
+        # Calculate score
         score = 0
         
-        # Idade (0-7 pontos)
+        # Age (0-7 points)
         score += self._score_age(age)
         
-        # Sexo (0-1 ponto)
+        # Sex (0-1 point)
         score += self._score_sex(sex)
         
-        # Comorbidades (0-2 pontos)
+        # Comorbidities (0-2 points)
         score += self._score_comorbidities(comorbidities)
         
-        # Frequência respiratória (0-2 pontos)
+        # Respiratory rate (0-2 points)
         score += self._score_respiratory_rate(respiratory_rate)
         
-        # Saturação de oxigênio (0-2 pontos)
+        # Oxygen saturation (0-2 points)
         score += self._score_oxygen_saturation(oxygen_saturation)
         
-        # Escala de Coma de Glasgow (0-2 pontos)
+        # Glasgow Coma Scale (0-2 points)
         score += self._score_glasgow_coma_scale(glasgow_coma_scale)
         
-        # Ureia (0-3 pontos)
+        # Urea (0-3 points)
         score += self._score_urea(urea_value, urea_unit)
         
-        # PCR (0-2 pontos)
+        # CRP (0-2 points)
         score += self._score_crp(crp)
         
-        # Obter interpretação
+        # Get interpretation
         interpretation = self._get_interpretation(score)
         
         return {
             "result": score,
-            "unit": "pontos",
+            "unit": "points",
             "interpretation": interpretation["interpretation"],
             "stage": interpretation["stage"],
-            "stage_description": interpretation["description"]
+            "stage_description": interpretation["description"],
+            "mortality_risk": interpretation["mortality_risk"]
         }
     
     def _validate_inputs(self, age: int, sex: str, comorbidities: int,
                         respiratory_rate: int, oxygen_saturation: float,
-                        glasgow_coma_scale: int, urea_unit: str,
-                        urea_value: float, crp: float):
-        """Valida os parâmetros de entrada"""
+                        glasgow_coma_scale: int, urea_value: float, urea_unit: str,
+                        crp: float):
+        """Validates input parameters"""
         
         if not isinstance(age, int) or age < 0 or age > 120:
-            raise ValueError("Idade deve ser um inteiro entre 0 e 120 anos")
+            raise ValueError("Age must be an integer between 0 and 120 years")
         
-        if sex not in ["masculino", "feminino"]:
-            raise ValueError("Sexo deve ser 'masculino' ou 'feminino'")
+        if sex not in ["male", "female"]:
+            raise ValueError("Sex must be 'male' or 'female'")
         
         if not isinstance(comorbidities, int) or comorbidities < 0 or comorbidities > 20:
-            raise ValueError("Número de comorbidades deve ser um inteiro entre 0 e 20")
+            raise ValueError("Number of comorbidities must be an integer between 0 and 20")
         
         if not isinstance(respiratory_rate, int) or respiratory_rate < 5 or respiratory_rate > 60:
-            raise ValueError("Frequência respiratória deve ser um inteiro entre 5 e 60 irpm")
+            raise ValueError("Respiratory rate must be an integer between 5 and 60 breaths/min")
         
         if not isinstance(oxygen_saturation, (int, float)) or oxygen_saturation < 50.0 or oxygen_saturation > 100.0:
-            raise ValueError("Saturação de oxigênio deve estar entre 50.0 e 100.0%")
+            raise ValueError("Oxygen saturation must be between 50.0 and 100.0%")
         
         if not isinstance(glasgow_coma_scale, int) or glasgow_coma_scale < 3 or glasgow_coma_scale > 15:
-            raise ValueError("Escala de Coma de Glasgow deve ser um inteiro entre 3 e 15")
+            raise ValueError("Glasgow Coma Scale must be an integer between 3 and 15")
         
         if urea_unit not in ["mmol_L", "mg_dL"]:
-            raise ValueError("Unidade da ureia deve ser 'mmol_L' ou 'mg_dL'")
+            raise ValueError("Urea unit must be 'mmol_L' or 'mg_dL'")
         
         if not isinstance(urea_value, (int, float)) or urea_value < 0.1 or urea_value > 300.0:
-            raise ValueError("Valor da ureia deve estar entre 0.1 e 300.0")
+            raise ValueError("Urea value must be between 0.1 and 300.0")
         
         if not isinstance(crp, (int, float)) or crp < 0.0 or crp > 1000.0:
-            raise ValueError("PCR deve estar entre 0.0 e 1000.0 mg/L")
+            raise ValueError("CRP must be between 0.0 and 1000.0 mg/L")
     
     def _score_age(self, age: int) -> int:
-        """Calcula pontos para idade"""
+        """Calculates points for age"""
         if age < 50:
             return 0
         elif age < 60:
@@ -122,11 +123,11 @@ class FourCMortalityCovid19Calculator:
             return 7
     
     def _score_sex(self, sex: str) -> int:
-        """Calcula pontos para sexo"""
-        return 1 if sex == "masculino" else 0
+        """Calculates points for sex"""
+        return 1 if sex == "male" else 0
     
     def _score_comorbidities(self, comorbidities: int) -> int:
-        """Calcula pontos para comorbidades"""
+        """Calculates points for comorbidities"""
         if comorbidities == 0:
             return 0
         elif comorbidities == 1:
@@ -135,7 +136,7 @@ class FourCMortalityCovid19Calculator:
             return 2
     
     def _score_respiratory_rate(self, respiratory_rate: int) -> int:
-        """Calcula pontos para frequência respiratória"""
+        """Calculates points for respiratory rate"""
         if respiratory_rate < 20:
             return 0
         elif respiratory_rate < 30:
@@ -144,17 +145,17 @@ class FourCMortalityCovid19Calculator:
             return 2
     
     def _score_oxygen_saturation(self, oxygen_saturation: float) -> int:
-        """Calcula pontos para saturação de oxigênio"""
+        """Calculates points for oxygen saturation"""
         return 0 if oxygen_saturation >= 92.0 else 2
     
     def _score_glasgow_coma_scale(self, glasgow_coma_scale: int) -> int:
-        """Calcula pontos para Escala de Coma de Glasgow"""
+        """Calculates points for Glasgow Coma Scale"""
         return 0 if glasgow_coma_scale == 15 else 2
     
     def _score_urea(self, urea_value: float, urea_unit: str) -> int:
-        """Calcula pontos para ureia"""
+        """Calculates points for urea"""
         if urea_unit == "mmol_L":
-            # Conversão para mmol/L
+            # Conversion to mmol/L
             if urea_value < 7.0:
                 return 0
             elif urea_value <= 14.0:
@@ -162,7 +163,7 @@ class FourCMortalityCovid19Calculator:
             else:  # >14
                 return 3
         else:  # mg_dL (BUN)
-            # Conversão para mg/dL
+            # Conversion to mg/dL
             if urea_value < 19.6:
                 return 0
             elif urea_value <= 39.2:
@@ -171,7 +172,7 @@ class FourCMortalityCovid19Calculator:
                 return 3
     
     def _score_crp(self, crp: float) -> int:
-        """Calcula pontos para PCR"""
+        """Calculates points for CRP"""
         if crp < 50.0:
             return 0
         elif crp < 100.0:
@@ -181,38 +182,42 @@ class FourCMortalityCovid19Calculator:
     
     def _get_interpretation(self, score: int) -> Dict[str, str]:
         """
-        Determina a interpretação baseada no escore
+        Determines the interpretation based on the score
         
         Args:
-            score: Escore calculado (0-21)
+            score: Calculated score (0-21)
             
         Returns:
-            Dict com interpretação
+            Dict with interpretation
         """
         
         if score <= 3:
             return {
-                "stage": "Baixo Risco",
-                "description": "Risco baixo de mortalidade",
-                "interpretation": f"Escore de {score} pontos indica baixo risco com mortalidade hospitalar de 1.2-1.7%. Pacientes podem ser considerados para alta precoce ou manejo ambulatorial se clinicamente estáveis."
+                "stage": "Low Risk",
+                "description": "Low mortality risk",
+                "interpretation": f"Score of {score} points indicates low risk with in-hospital mortality of 1.2-1.7%. Patients may be considered for early discharge or outpatient management if clinically stable.",
+                "mortality_risk": "1.2-1.7%"
             }
         elif score <= 8:
             return {
-                "stage": "Risco Intermediário",
-                "description": "Risco intermediário de mortalidade",
-                "interpretation": f"Escore de {score} pontos indica risco intermediário com mortalidade hospitalar de 9.1-9.9%. Pacientes requerem monitorização hospitalar padrão com vigilância para deterioração clínica."
+                "stage": "Intermediate Risk",
+                "description": "Intermediate mortality risk",
+                "interpretation": f"Score of {score} points indicates intermediate risk with in-hospital mortality of 9.1-9.9%. Patients require standard hospital monitoring with vigilance for clinical deterioration.",
+                "mortality_risk": "9.1-9.9%"
             }
         elif score <= 14:
             return {
-                "stage": "Alto Risco",
-                "description": "Alto risco de mortalidade",
-                "interpretation": f"Escore de {score} pontos indica alto risco com mortalidade hospitalar de 31.4-34.9%. Pacientes requerem cuidados intensivos ou monitorização em unidade de alta dependência."
+                "stage": "High Risk",
+                "description": "High mortality risk",
+                "interpretation": f"Score of {score} points indicates high risk with in-hospital mortality of 31.4-34.9%. Patients require intensive care or high-dependency unit monitoring.",
+                "mortality_risk": "31.4-34.9%"
             }
         else:  # ≥15
             return {
-                "stage": "Risco Muito Alto",
-                "description": "Risco muito alto de mortalidade",
-                "interpretation": f"Escore de {score} pontos indica risco muito alto com mortalidade hospitalar de 61.5-66.2%. Pacientes requerem cuidados intensivos imediatos e consideração de limitação de suporte se apropriado."
+                "stage": "Very High Risk",
+                "description": "Very high mortality risk",
+                "interpretation": f"Score of {score} points indicates very high risk with in-hospital mortality of 61.5-66.2%. Patients require immediate intensive care and consideration of support limitation if appropriate.",
+                "mortality_risk": "61.5-66.2%"
             }
 
 
@@ -221,9 +226,9 @@ def calculate_4c_mortality_covid19(age: int, sex: str, comorbidities: int,
                                    glasgow_coma_scale: int, urea_unit: str,
                                    urea_value: float, crp: float) -> Dict[str, Any]:
     """
-    Função de conveniência para o sistema de carregamento dinâmico
+    Convenience function for the dynamic loading system
     
-    IMPORTANTE: Esta função deve seguir o padrão calculate_{score_id}
+    IMPORTANT: This function must follow the calculate_{score_id} pattern
     """
     calculator = FourCMortalityCovid19Calculator()
     return calculator.calculate(age, sex, comorbidities, respiratory_rate,

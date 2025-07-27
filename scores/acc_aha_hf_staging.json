@@ -1,0 +1,119 @@
+{
+  "id": "acc_aha_hf_staging",
+  "title": "ACC/AHA Heart Failure Staging",
+  "description": "Describes heart failure stages and provides stage-specific therapy recommendations, based on ACC/AHA/HFSA guidelines",
+  "category": "cardiology",
+  "version": "2022",
+  "parameters": [
+    {
+      "name": "risk_factors",
+      "type": "string",
+      "required": true,
+      "description": "Presence of risk factors for heart failure",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "structural_disease",
+      "type": "string",
+      "required": true,
+      "description": "Evidence of structural heart disease or elevated biomarkers",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "current_symptoms",
+      "type": "string",
+      "required": true,
+      "description": "Current or previous symptoms of heart failure",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "advanced_symptoms",
+      "type": "string",
+      "required": true,
+      "description": "Severe symptoms refractory to optimized treatment",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hospitalization_frequency",
+      "type": "string",
+      "required": true,
+      "description": "Recurrent hospitalizations for heart failure",
+      "options": ["frequent", "rare", "none"],
+      "validation": {
+        "enum": ["frequent", "rare", "none"]
+      }
+    },
+    {
+      "name": "ejection_fraction",
+      "type": "float",
+      "required": false,
+      "description": "Left ventricular ejection fraction (%)",
+      "validation": {
+        "min": 0.0,
+        "max": 100.0
+      },
+      "unit": "%"
+    }
+  ],
+  "result": {
+    "name": "hf_stage",
+    "type": "string",
+    "unit": "stage",
+    "description": "ACC/AHA heart failure stage (A, B, C or D)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Stage A",
+        "description": "At risk for heart failure",
+        "interpretation": "Patients with risk factors but no structural disease or symptoms. Recommendations: hypertension and dyslipidemia control, ACEI/ARB, lifestyle modifications, SGLT2i in diabetics. Goal: prevent HF development."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Stage B",
+        "description": "Pre-heart failure",
+        "interpretation": "Structural disease without symptoms. Recommendations: ACEI/ARB, beta-blockers, statins, ICD if indicated (LVEF ≤30% post-MI). Goal: prevent progression to symptomatic HF."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Stage C",
+        "description": "Symptomatic heart failure",
+        "interpretation": "Structural disease with current/previous symptoms. Recommendations: ACEI/ARB, beta-blockers, diuretics, aldosterone antagonists (LVEF ≤35%), supervised exercise, sodium restriction. Goal: symptom control and hospitalization prevention."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Stage D",
+        "description": "Advanced heart failure",
+        "interpretation": "Refractory severe symptoms. Recommendations: specialized HF team, evaluation for advanced therapies (VAD, transplant), palliative care, palliative inotropes. Goal: symptom improvement and quality of life."
+      }
+    ]
+  },
+  "references": [
+    "Heidenreich PA, Bozkurt B, Aguilar D, et al. 2022 AHA/ACC/HFSA Guideline for the Management of Heart Failure: A Report of the American College of Cardiology/American Heart Association Joint Committee on Clinical Practice Guidelines. Circulation. 2022;145(18):e895-e1032.",
+    "Hunt SA, Abraham WT, Chin MH, et al. ACC/AHA 2005 Guideline Update for the Diagnosis and Management of Chronic Heart Failure in the Adult. Circulation. 2005;112(12):e154-235."
+  ],
+  "formula": "Classification based on presence of risk factors, structural disease, symptoms, and severity",
+  "notes": [
+    "Unidirectional progression - patients cannot regress to previous stages",
+    "Different from NYHA functional classification",
+    "Stage C uses additional NYHA classification for symptoms",
+    "Based on ACC/AHA/HFSA 2022 guidelines"
+  ]
+}

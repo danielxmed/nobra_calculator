@@ -1,0 +1,94 @@
+{
+  "id": "aas",
+  "title": "Abuse Assessment Screen (AAS)",
+  "description": "Detects domestic abuse (intimate partner violence) in pregnant and non-pregnant women in healthcare settings",
+  "category": "psychiatry",
+  "version": "1989",
+  "parameters": [
+    {
+      "name": "emotional_physical_abuse",
+      "type": "string",
+      "required": true,
+      "description": "Have you ever been emotionally or physically abused by your partner or someone important to you?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "physical_hurt_recently",
+      "type": "string",
+      "required": true,
+      "description": "Since your last visit, have you been hit, slapped, kicked, or physically hurt by anyone?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "physical_hurt_pregnancy",
+      "type": "string",
+      "required": true,
+      "description": "Since you became pregnant, have you been hit, slapped, kicked, or physically hurt by anyone?",
+      "options": ["yes", "no", "not_applicable"],
+      "validation": {
+        "enum": ["yes", "no", "not_applicable"]
+      }
+    },
+    {
+      "name": "sexual_abuse",
+      "type": "string",
+      "required": true,
+      "description": "In the last year, has anyone forced you to do something sexual you didn't want to do?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "afraid_of_partner",
+      "type": "string",
+      "required": true,
+      "description": "Are you afraid of your partner or someone close to you?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "aas_positive",
+    "type": "string",
+    "unit": "result",
+    "description": "AAS screening result (positive/negative)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Negative Screening",
+        "description": "No indication of domestic abuse",
+        "interpretation": "Negative result for domestic violence. Continue to offer support and information about available resources. Re-evaluate in future consultations."
+      },
+      {
+        "min": 1,
+        "max": 5,
+        "stage": "Positive Screening",
+        "description": "Indication of possible domestic abuse",
+        "interpretation": "Positive result for domestic violence. Requires more detailed assessment, offering support, and referral to specialized resources. Document appropriately and follow institutional protocols."
+      }
+    ]
+  },
+  "references": [
+    "McFarlane J, Parker B, Soeken K, Bullock L. Assessing for abuse during pregnancy. Severity and frequency of injuries and associated entry into prenatal care. JAMA. 1992;267(23):3176-8.",
+    "Norton LB, Peipert JF, Zierler S, Lima B, Hume L. Battering in pregnancy: an assessment of two screening methods. Obstet Gynecol. 1995;85(3):321-5."
+  ],
+  "formula": "Any 'yes' answer results in positive screening",
+  "notes": [
+    "Apply at first prenatal visit, at least once per trimester, and postpartum",
+    "Must be applied in a private setting, without the partner present",
+    "Requires institutional protocol for positive cases",
+    "Can be used in pregnant and non-pregnant women"
+  ]
+}

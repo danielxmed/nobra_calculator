@@ -1,5 +1,5 @@
 """
-Router para endpoints de health check
+Router for health check endpoints
 """
 
 from fastapi import APIRouter
@@ -15,14 +15,14 @@ router = APIRouter(
 @router.get("/", response_model=HealthResponse)
 async def health_check():
     """
-    Endpoint para verificar o status da API
+    Endpoint to check API status
     
     Returns:
-        HealthResponse: Status da API
+        HealthResponse: API status
     """
     return HealthResponse(
         status="healthy",
-        message="nobra_calculator API está funcionando corretamente",
+        message="nobra_calculator API is running correctly",
         version="1.0.0"
     )
 
@@ -30,9 +30,9 @@ async def health_check():
 @router.get("/status", response_model=HealthResponse)
 async def get_status():
     """
-    Alias para o endpoint de health check
+    Alias for the health check endpoint
     
     Returns:
-        HealthResponse: Status da API
+        HealthResponse: API status
     """
     return await health_check()

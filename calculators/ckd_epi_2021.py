@@ -1,14 +1,14 @@
 """
 CKD-EPI 2021 Calculator
 
-Implementa a equação CKD-EPI 2021 para estimar a taxa de filtração glomerular (TFGe)
-baseada em creatinina sérica, idade e sexo.
+Implements the CKD-EPI 2021 equation to estimate glomerular filtration rate (eGFR)
+based on serum creatinine, age, and sex.
 
-Fórmula: eGFR = 142 × min(SCr/κ,1)^α × max(SCr/κ,1)^(-1.200) × 0.9938^Age × 1.012 [se feminino]
+Formula: eGFR = 142 × min(SCr/κ,1)^α × max(SCr/κ,1)^(-1.200) × 0.9938^Age × 1.012 [if female]
 
-Onde:
-- κ = 0.7 para mulheres, 0.9 para homens
-- α = -0.241 para mulheres, -0.302 para homens
+Where:
+- κ = 0.7 for females, 0.9 for males
+- α = -0.241 for females, -0.302 for males
 """
 
 import math
@@ -16,10 +16,10 @@ from typing import Dict, Any
 
 
 class CKDEpi2021Calculator:
-    """Calculadora para CKD-EPI 2021"""
+    """Calculator for CKD-EPI 2021"""
     
     def __init__(self):
-        # Constantes da fórmula
+        # Formula constants
         self.KAPPA_FEMALE = 0.7
         self.KAPPA_MALE = 0.9
         self.ALPHA_FEMALE = -0.241
@@ -31,22 +31,22 @@ class CKDEpi2021Calculator:
     
     def calculate(self, sex: str, age: int, serum_creatinine: float) -> Dict[str, Any]:
         """
-        Calcula a TFGe usando a equação CKD-EPI 2021
+        Calculates eGFR using the CKD-EPI 2021 equation
         
         Args:
-            sex (str): "masculino" ou "feminino"
-            age (int): Idade em anos
-            serum_creatinine (float): Creatinina sérica em mg/dL
+            sex (str): "male" or "female"
+            age (int): Age in years
+            serum_creatinine (float): Serum creatinine in mg/dL
             
         Returns:
-            Dict com o resultado e interpretação
+            Dict with the result and interpretation
         """
         
-        # Validações
+        # Validations
         self._validate_inputs(sex, age, serum_creatinine)
         
-        # Determinar constantes baseadas no sexo
-        if sex.lower() == "feminino":
+        # Determine constants based on sex
+        if sex.lower() == "female":
             kappa = self.KAPPA_FEMALE
             alpha = self.ALPHA_FEMALE
             sex_multiplier = self.FEMALE_MULTIPLIER
@@ -55,29 +55,29 @@ class CKDEpi2021Calculator:
             alpha = self.ALPHA_MALE
             sex_multiplier = 1.0
         
-        # Calcular a razão creatinina/kappa
+        # Calculate creatinine/kappa ratio
         scr_kappa_ratio = serum_creatinine / kappa
         
-        # Aplicar as funções min e max
+        # Apply min and max functions
         min_term = min(scr_kappa_ratio, 1.0)
         max_term = max(scr_kappa_ratio, 1.0)
         
-        # Calcular cada componente da fórmula
+        # Calculate each component of the formula
         min_component = math.pow(min_term, alpha)
         max_component = math.pow(max_term, self.CREATININE_EXPONENT)
         age_component = math.pow(self.AGE_FACTOR, age)
         
-        # Calcular eGFR final
+        # Calculate final eGFR
         egfr = (self.BASE_MULTIPLIER * 
                 min_component * 
                 max_component * 
                 age_component * 
                 sex_multiplier)
         
-        # Arredondar para 1 casa decimal
+        # Round to 1 decimal place
         egfr = round(egfr, 1)
         
-        # Obter interpretação
+        # Get interpretation
         interpretation = self._get_interpretation(egfr)
         
         return {
@@ -89,80 +89,80 @@ class CKDEpi2021Calculator:
         }
     
     def _validate_inputs(self, sex: str, age: int, serum_creatinine: float):
-        """Valida os parâmetros de entrada"""
+        """Validates input parameters"""
         
-        if sex.lower() not in ["masculino", "feminino"]:
-            raise ValueError("Sexo deve ser 'masculino' ou 'feminino'")
+        if sex.lower() not in ["male", "female"]:
+            raise ValueError("Sex must be 'male' or 'female'")
         
         if not isinstance(age, int) or age < 18 or age > 120:
-            raise ValueError("Idade deve ser um número inteiro entre 18 e 120 anos")
+            raise ValueError("Age must be an integer between 18 and 120 years")
         
         if not isinstance(serum_creatinine, (int, float)) or serum_creatinine <= 0:
-            raise ValueError("Creatinina sérica deve ser um valor positivo")
+            raise ValueError("Serum creatinine must be a positive value")
         
         if serum_creatinine < 0.1 or serum_creatinine > 20.0:
-            raise ValueError("Creatinina sérica deve estar entre 0.1 e 20.0 mg/dL")
+            raise ValueError("Serum creatinine must be between 0.1 and 20.0 mg/dL")
     
     def _get_interpretation(self, egfr: float) -> Dict[str, str]:
         """
-        Determina a interpretação baseada no valor da TFGe
+        Determines the interpretation based on the eGFR value
         
         Args:
-            egfr (float): Taxa de filtração glomerular estimada
+            egfr (float): Estimated glomerular filtration rate
             
         Returns:
-            Dict com stage, description e interpretation
+            Dict with stage, description, and interpretation
         """
         
         if egfr >= 90:
             return {
                 "stage": "G1",
-                "description": "Função renal normal ou elevada",
-                "interpretation": "TFG normal ou elevada. Investigar presença de lesão renal para definir se há DRC."
+                "description": "Normal or high kidney function",
+                "interpretation": "Normal or high GFR. Investigate presence of kidney damage to determine if CKD is present."
             }
         elif egfr >= 60:
             return {
                 "stage": "G2",
-                "description": "Diminuição leve da TFG",
-                "interpretation": "Diminuição leve da TFG. Investigar presença de lesão renal para definir se há DRC."
+                "description": "Mild decrease in GFR",
+                "interpretation": "Mild decrease in GFR. Investigate presence of kidney damage to determine if CKD is present."
             }
         elif egfr >= 45:
             return {
                 "stage": "G3a",
-                "description": "Diminuição leve a moderada da TFG",
-                "interpretation": "Estágio 3a de Doença Renal Crônica. Acompanhamento nefrológico recomendado."
+                "description": "Mild to moderate decrease in GFR",
+                "interpretation": "Stage 3a Chronic Kidney Disease. Nephrology follow-up recommended."
             }
         elif egfr >= 30:
             return {
                 "stage": "G3b",
-                "description": "Diminuição moderada a grave da TFG",
-                "interpretation": "Estágio 3b de Doença Renal Crônica. Encaminhamento ao nefrologista necessário."
+                "description": "Moderate to severe decrease in GFR",
+                "interpretation": "Stage 3b Chronic Kidney Disease. Nephrologist referral necessary."
             }
         elif egfr >= 15:
             return {
                 "stage": "G4",
-                "description": "Diminuição grave da TFG",
-                "interpretation": "Estágio 4 de Doença Renal Crônica. Acompanhamento nefrológico especializado e preparação para terapia renal substitutiva."
+                "description": "Severe decrease in GFR",
+                "interpretation": "Stage 4 Chronic Kidney Disease. Specialized nephrology follow-up and preparation for kidney replacement therapy."
             }
         else:
             return {
                 "stage": "G5",
-                "description": "Falência renal",
-                "interpretation": "Estágio 5 de Doença Renal Crônica (falência renal). Necessária terapia renal substitutiva (diálise ou transplante)."
+                "description": "Kidney failure",
+                "interpretation": "Stage 5 Chronic Kidney Disease (kidney failure). Kidney replacement therapy (dialysis or transplant) is necessary."
             }
 
 
 def calculate_ckd_epi_2021(sex: str, age: int, serum_creatinine: float) -> Dict[str, Any]:
     """
-    Função de conveniência para calcular CKD-EPI 2021
+    Convenience function to calculate CKD-EPI 2021
     
     Args:
-        sex (str): "masculino" ou "feminino"
-        age (int): Idade em anos
-        serum_creatinine (float): Creatinina sérica em mg/dL
+        sex (str): "male" or "female"
+        age (int): Age in years
+        serum_creatinine (float): Serum creatinine in mg/dL
         
     Returns:
-        Dict com o resultado e interpretação
+        Dict with the result and interpretation
     """
     calculator = CKDEpi2021Calculator()
     return calculator.calculate(sex, age, serum_creatinine)

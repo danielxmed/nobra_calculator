@@ -1,5 +1,5 @@
 """
-Serviço para gerenciar metadados dos scores médicos
+Service to manage medical score metadata
 """
 
 import json
@@ -10,54 +10,54 @@ from app.models.score_models import ScoreInfo, ScoreMetadataResponse
 
 
 class ScoreService:
-    """Serviço para gerenciar scores médicos"""
+    """Service to manage medical scores"""
     
     def __init__(self, scores_directory: str = "scores"):
         """
-        Inicializa o serviço de scores
+        Initializes the scores service
         
         Args:
-            scores_directory (str): Diretório contendo os arquivos JSON dos scores
+            scores_directory (str): Directory containing the score JSON files
         """
         self.scores_directory = Path(scores_directory)
         self._scores_cache: Dict[str, Dict[str, Any]] = {}
         self._load_scores()
     
     def _load_scores(self):
-        """Carrega todos os scores do diretório"""
+        """Loads all scores from the directory"""
         if not self.scores_directory.exists():
-            raise FileNotFoundError(f"Diretório de scores não encontrado: {self.scores_directory}")
+            raise FileNotFoundError(f"Scores directory not found: {self.scores_directory}")
         
         self._scores_cache = {}
         
-        # Procura por arquivos JSON no diretório
+        # Search for JSON files in the directory
         for json_file in self.scores_directory.glob("*.json"):
             try:
                 with open(json_file, 'r', encoding='utf-8') as f:
                     score_data = json.load(f)
                     
-                # Valida se o JSON tem os campos obrigatórios
+                # Validate if the JSON has the required fields
                 if not self._validate_score_json(score_data):
-                    print(f"Aviso: Score inválido encontrado em {json_file}")
+                    print(f"Warning: Invalid score found in {json_file}")
                     continue
                 
                 score_id = score_data.get("id")
                 self._scores_cache[score_id] = score_data
                 
             except json.JSONDecodeError as e:
-                print(f"Erro ao carregar JSON {json_file}: {e}")
+                print(f"Error loading JSON {json_file}: {e}")
             except Exception as e:
-                print(f"Erro inesperado ao carregar {json_file}: {e}")
+                print(f"Unexpected error loading {json_file}: {e}")
     
     def _validate_score_json(self, score_data: Dict[str, Any]) -> bool:
         """
-        Valida se um JSON de score tem a estrutura mínima necessária
+        Validates if a score JSON has the minimum required structure
         
         Args:
-            score_data (dict): Dados do score carregados do JSON
+            score_data (dict): Score data loaded from JSON
             
         Returns:
-            bool: True se válido, False caso contrário
+            bool: True if valid, False otherwise
         """
         required_fields = ["id", "title", "description", "category", "parameters", "result"]
         
@@ -65,11 +65,11 @@ class ScoreService:
             if field not in score_data:
                 return False
         
-        # Valida se parameters é uma lista
+        # Validate if parameters is a list
         if not isinstance(score_data.get("parameters"), list):
             return False
         
-        # Valida se result é um dict com campos necessários
+        # Validate if result is a dict with necessary fields
         result = score_data.get("result", {})
         if not isinstance(result, dict) or "name" not in result or "unit" not in result:
             return False
@@ -78,10 +78,10 @@ class ScoreService:
     
     def get_available_scores(self) -> List[ScoreInfo]:
         """
-        Retorna a lista de scores disponíveis
+        Returns the list of available scores
         
         Returns:
-            List[ScoreInfo]: Lista com informações básicas dos scores
+            List[ScoreInfo]: List with basic score information
         """
         scores = []
         
@@ -99,13 +99,13 @@ class ScoreService:
     
     def get_score_metadata(self, score_id: str) -> Optional[ScoreMetadataResponse]:
         """
-        Retorna os metadados completos de um score específico
+        Returns the complete metadata of a specific score
         
         Args:
-            score_id (str): ID do score
+            score_id (str): ID of the score
             
         Returns:
-            Optional[ScoreMetadataResponse]: Metadados do score ou None se não encontrado
+            Optional[ScoreMetadataResponse]: Score metadata or None if not found
         """
         if score_id not in self._scores_cache:
             return None
@@ -113,50 +113,50 @@ class ScoreService:
         score_data = self._scores_cache[score_id]
         
         try:
-            # Converter os dados para o modelo Pydantic
+            # Convert data to Pydantic model
             metadata = ScoreMetadataResponse(**score_data)
             return metadata
         except Exception as e:
-            print(f"Erro ao converter metadados do score {score_id}: {e}")
+            print(f"Error converting score metadata {score_id}: {e}")
             return None
     
     def score_exists(self, score_id: str) -> bool:
         """
-        Verifica se um score existe
+        Checks if a score exists
         
         Args:
-            score_id (str): ID do score
+            score_id (str): ID of the score
             
         Returns:
-            bool: True se o score existe, False caso contrário
+            bool: True if the score exists, False otherwise
         """
         return score_id in self._scores_cache
     
     def get_score_raw_data(self, score_id: str) -> Optional[Dict[str, Any]]:
         """
-        Retorna os dados brutos de um score
+        Returns the raw data of a score
         
         Args:
-            score_id (str): ID do score
+            score_id (str): ID of the score
             
         Returns:
-            Optional[Dict]: Dados brutos do score ou None se não encontrado
+            Optional[Dict]: Raw score data or None if not found
         """
         return self._scores_cache.get(score_id)
     
     def reload_scores(self):
-        """Recarrega todos os scores do diretório"""
+        """Reloads all scores from the directory"""
         self._load_scores()
     
     def get_scores_by_category(self, category: str) -> List[ScoreInfo]:
         """
-        Retorna scores filtrados por categoria
+        Returns scores filtered by category
         
         Args:
-            category (str): Categoria médica
+            category (str): Medical category
             
         Returns:
-            List[ScoreInfo]: Lista de scores da categoria especificada
+            List[ScoreInfo]: List of scores in the specified category
         """
         scores = []
         
@@ -175,13 +175,13 @@ class ScoreService:
     
     def search_scores(self, query: str) -> List[ScoreInfo]:
         """
-        Busca scores por texto no título ou descrição
+        Searches for scores by text in title or description
         
         Args:
-            query (str): Termo de busca
+            query (str): Search term
             
         Returns:
-            List[ScoreInfo]: Lista de scores que correspondem à busca
+            List[ScoreInfo]: List of scores matching the search
         """
         query_lower = query.lower()
         scores = []
@@ -203,5 +203,5 @@ class ScoreService:
         return scores
 
 
-# Instância global do serviço
+# Global service instance
 score_service = ScoreService()

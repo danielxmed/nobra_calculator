@@ -1,0 +1,95 @@
+{
+  "id": "abic_score",
+  "title": "ABIC Score for Alcoholic Hepatitis",
+  "description": "Predicts survival in patients with alcoholic hepatitis at 90 days and 1 year, based on age, bilirubin, creatinine, and INR",
+  "category": "hepatology",
+  "version": "2008",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient's age",
+      "validation": {
+        "min": 18,
+        "max": 100
+      },
+      "unit": "years"
+    },
+    {
+      "name": "serum_bilirubin",
+      "type": "float",
+      "required": true,
+      "description": "Total serum bilirubin",
+      "validation": {
+        "min": 0.1,
+        "max": 50.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "serum_creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Serum creatinine",
+      "validation": {
+        "min": 0.1,
+        "max": 20.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "inr",
+      "type": "float",
+      "required": true,
+      "description": "International Normalized Ratio (INR)",
+      "validation": {
+        "min": 0.5,
+        "max": 10.0
+      },
+      "unit": "ratio"
+    }
+  ],
+  "result": {
+    "name": "abic_score",
+    "type": "float",
+    "unit": "points",
+    "description": "Total ABIC score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0.0,
+        "max": 6.71,
+        "stage": "Low Risk",
+        "description": "Excellent survival",
+        "interpretation": "90-day survival: 100%. 1-year survival: 97.1%. Excellent prognosis with appropriate conservative treatment."
+      },
+      {
+        "min": 6.71,
+        "max": 9.0,
+        "stage": "Intermediate Risk",
+        "description": "Moderate survival",
+        "interpretation": "90-day survival: 70%. 1-year survival: 64.3%. Consider more aggressive treatment and intensive monitoring."
+      },
+      {
+        "min": 9.0,
+        "max": 50.0,
+        "stage": "High Risk",
+        "description": "Low survival",
+        "interpretation": "90-day survival: 25%. 1-year survival: 33.6%. Reserved prognosis. Consider corticosteroid therapy, intensive care, and evaluation for liver transplant."
+      }
+    ]
+  },
+  "references": [
+    "Dominguez M, Rincón D, Abraldes JG, et al. A new scoring system for prognostic stratification of patients with alcoholic hepatitis. Am J Gastroenterol. 2008;103(11):2747-56.",
+    "García-Saenz-de-Sicilia M, Duvoor C, Altamirano J, et al. A day-4 Lille model predicts response to corticosteroids and mortality in severe alcoholic hepatitis. Am J Gastroenterol. 2017;112(2):306-315."
+  ],
+  "formula": "(Age × 0.1) + (Bilirubin × 0.08) + (Creatinine × 0.3) + (INR × 0.8)",
+  "notes": [
+    "Validated for patients with acute alcoholic hepatitis",
+    "AUC of 0.82 for 90-day mortality prediction",
+    "Better accuracy when used in conjunction with other scores",
+    "Not validated for patients with chronic kidney disease"
+  ]
+}

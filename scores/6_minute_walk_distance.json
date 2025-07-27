@@ -1,36 +1,36 @@
 {
   "id": "6_minute_walk_distance",
   "title": "6 Minute Walk Distance",
-  "description": "Calcula valores de referência para distância caminhada como medida de status funcional em doenças cardiopulmonares",
-  "category": "cardiologia",
+  "description": "Calculates reference values for walk distance as a measure of functional status in cardiopulmonary diseases",
+  "category": "cardiology",
   "version": "1998",
   "parameters": [
     {
       "name": "age",
       "type": "integer",
       "required": true,
-      "description": "Idade do paciente em anos",
+      "description": "Patient's age in years",
       "validation": {
         "min": 18,
         "max": 100
       },
-      "unit": "anos"
+      "unit": "years"
     },
     {
       "name": "sex",
       "type": "string",
       "required": true,
-      "description": "Sexo do paciente",
-      "options": ["masculino", "feminino"],
+      "description": "Patient's sex",
+      "options": ["male", "female"],
       "validation": {
-        "enum": ["masculino", "feminino"]
+        "enum": ["male", "female"]
       }
     },
     {
       "name": "height",
       "type": "float",
       "required": true,
-      "description": "Altura do paciente",
+      "description": "Patient's height",
       "validation": {
         "min": 120.0,
         "max": 220.0
@@ -41,7 +41,7 @@
       "name": "weight",
       "type": "float",
       "required": true,
-      "description": "Peso do paciente",
+      "description": "Patient's weight",
       "validation": {
         "min": 30.0,
         "max": 200.0
@@ -52,49 +52,49 @@
       "name": "observed_distance",
       "type": "float",
       "required": false,
-      "description": "Distância caminhada observada (opcional, para comparação)",
+      "description": "Observed walk distance (optional, for comparison)",
       "validation": {
         "min": 0.0,
         "max": 1000.0
       },
-      "unit": "metros"
+      "unit": "meters"
     }
   ],
   "result": {
     "name": "6mwd_predicted",
     "type": "float",
-    "unit": "metros",
-    "description": "Distância predita para caminhada de 6 minutos"
+    "unit": "meters",
+    "description": "Predicted 6-minute walk distance"
   },
   "interpretation": {
     "ranges": [
       {
         "min": 0,
         "max": 50,
-        "stage": "Severamente Reduzido",
-        "description": "Capacidade funcional severamente reduzida",
-        "interpretation": "Distância muito abaixo do esperado. Indica limitação funcional grave que requer investigação e tratamento intensivos."
+        "stage": "Severely Reduced",
+        "description": "Severely reduced functional capacity",
+        "interpretation": "Distance much lower than expected. Indicates severe functional limitation requiring intensive investigation and treatment."
       },
       {
         "min": 51,
         "max": 75,
-        "stage": "Moderadamente Reduzido",
-        "description": "Capacidade funcional moderadamente reduzida",
-        "interpretation": "Distância abaixo do esperado. Sugere limitação funcional moderada que pode se beneficiar de reabilitação."
+        "stage": "Moderately Reduced",
+        "description": "Moderately reduced functional capacity",
+        "interpretation": "Distance lower than expected. Suggests moderate functional limitation that may benefit from rehabilitation."
       },
       {
         "min": 76,
         "max": 90,
-        "stage": "Levemente Reduzido",
-        "description": "Capacidade funcional levemente reduzida",
-        "interpretation": "Distância ligeiramente abaixo do esperado. Pode indicar limitação funcional leve ou início de declínio."
+        "stage": "Slightly Reduced",
+        "description": "Slightly reduced functional capacity",
+        "interpretation": "Distance slightly lower than expected. May indicate mild functional limitation or onset of decline."
       },
       {
         "min": 91,
         "max": 150,
         "stage": "Normal",
-        "description": "Capacidade funcional normal",
-        "interpretation": "Distância dentro dos valores esperados para idade, sexo, altura e peso. Indica capacidade funcional preservada."
+        "description": "Normal functional capacity",
+        "interpretation": "Distance within expected values for age, sex, height, and weight. Indicates preserved functional capacity."
       }
     ]
   },
@@ -103,14 +103,14 @@
     "ATS Committee on Proficiency Standards for Clinical Pulmonary Function Laboratories. ATS statement: guidelines for the six-minute walk test. Am J Respir Crit Care Med. 2002;166(1):111-7.",
     "Casanova C, Celli BR, Barria P, et al. The 6-min walk distance in healthy subjects: reference standards from seven countries. Eur Respir J. 2011;37(1):150-6."
   ],
-  "formula": "Homens: 6MWD = (7.57 × altura_cm) - (5.02 × idade) - (1.76 × peso_kg) - 309. Mulheres: 6MWD = (2.11 × altura_cm) - (2.29 × peso_kg) - (5.78 × idade) + 667",
+  "formula": "Men: 6MWD = (7.57 × height_cm) - (5.02 × age) - (1.76 × weight_kg) - 309. Women: 6MWD = (2.11 × height_cm) - (2.29 × weight_kg) - (5.78 × age) + 667",
   "notes": [
-    "Aplicar em adultos saudáveis de 40-80 anos (equações de Enright-Sherrill)",
-    "Limite inferior da normalidade = valor predito - 153 metros",
-    "Existe efeito de aprendizado: melhora média de 15% quando repetido",
-    "Teste simples, barato e não-invasivo para avaliar capacidade funcional",
-    "Útil em insuficiência cardíaca, DPOC, hipertensão pulmonar e outras condições",
-    "Não é diagnóstico isoladamente - deve acompanhar outros testes",
-    "Valores normais geralmente entre 400-700 metros em adultos saudáveis"
+    "Apply to healthy adults aged 40-80 years (Enright-Sherrill equations)",
+    "Lower limit of normality = predicted value - 153 meters",
+    "Learning effect exists: average 15% improvement when repeated",
+    "Simple, inexpensive, and non-invasive test to assess functional capacity",
+    "Useful in heart failure, COPD, pulmonary hypertension, and other conditions",
+    "Not diagnostic alone - should accompany other tests",
+    "Normal values generally between 400-700 meters in healthy adults"
   ]
 }

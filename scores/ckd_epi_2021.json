@@ -1,36 +1,36 @@
 {
   "id": "ckd_epi_2021",
-  "title": "CKD-EPI 2021 - Taxa de Filtração Glomerular Estimada",
-  "description": "Equação CKD-EPI 2021 para estimar a taxa de filtração glomerular (TFGe) baseada em creatinina sérica, idade e sexo. Esta versão de 2021 removeu o componente racial da equação original.",
-  "category": "nefrologia",
+  "title": "CKD-EPI 2021 - Estimated Glomerular Filtration Rate",
+  "description": "CKD-EPI 2021 equation to estimate glomerular filtration rate (eGFR) based on serum creatinine, age, and sex. This 2021 version removed the race component from the original equation.",
+  "category": "nephrology",
   "version": "2021",
   "parameters": [
     {
       "name": "sex",
       "type": "string",
       "required": true,
-      "description": "Sexo do paciente",
-      "options": ["masculino", "feminino"],
+      "description": "Patient's sex",
+      "options": ["male", "female"],
       "validation": {
-        "enum": ["masculino", "feminino"]
+        "enum": ["male", "female"]
       }
     },
     {
       "name": "age",
       "type": "integer",
       "required": true,
-      "description": "Idade do paciente em anos",
+      "description": "Patient's age in years",
       "validation": {
         "min": 18,
         "max": 120
       },
-      "unit": "anos"
+      "unit": "years"
     },
     {
       "name": "serum_creatinine",
       "type": "float",
       "required": true,
-      "description": "Creatinina sérica padronizada",
+      "description": "Standardized serum creatinine",
       "validation": {
         "min": 0.1,
         "max": 20.0
@@ -42,7 +42,7 @@
     "name": "egfr",
     "type": "float",
     "unit": "mL/min/1.73 m²",
-    "description": "Taxa de filtração glomerular estimada"
+    "description": "Estimated glomerular filtration rate"
   },
   "interpretation": {
     "ranges": [
@@ -50,43 +50,43 @@
         "min": 90,
         "max": null,
         "stage": "G1",
-        "description": "Função renal normal ou elevada",
-        "interpretation": "TFG normal ou elevada. Investigar presença de lesão renal para definir se há DRC."
+        "description": "Normal or high kidney function",
+        "interpretation": "Normal or high GFR. Investigate presence of kidney damage to determine if CKD is present."
       },
       {
         "min": 60,
         "max": 89,
         "stage": "G2", 
-        "description": "Diminuição leve da TFG",
-        "interpretation": "Diminuição leve da TFG. Investigar presença de lesão renal para definir se há DRC."
+        "description": "Mild decrease in GFR",
+        "interpretation": "Mild decrease in GFR. Investigate presence of kidney damage to determine if CKD is present."
       },
       {
         "min": 45,
         "max": 59,
         "stage": "G3a",
-        "description": "Diminuição leve a moderada da TFG",
-        "interpretation": "Estágio 3a de Doença Renal Crônica. Acompanhamento nefrológico recomendado."
+        "description": "Mild to moderate decrease in GFR",
+        "interpretation": "Stage 3a Chronic Kidney Disease. Nephrology follow-up recommended."
       },
       {
         "min": 30,
         "max": 44,
         "stage": "G3b",
-        "description": "Diminuição moderada a grave da TFG",
-        "interpretation": "Estágio 3b de Doença Renal Crônica. Encaminhamento ao nefrologista necessário."
+        "description": "Moderate to severe decrease in GFR",
+        "interpretation": "Stage 3b Chronic Kidney Disease. Nephrologist referral necessary."
       },
       {
         "min": 15,
         "max": 29,
         "stage": "G4",
-        "description": "Diminuição grave da TFG",
-        "interpretation": "Estágio 4 de Doença Renal Crônica. Acompanhamento nefrológico especializado e preparação para terapia renal substitutiva."
+        "description": "Severe decrease in GFR",
+        "interpretation": "Stage 4 Chronic Kidney Disease. Specialized nephrology follow-up and preparation for kidney replacement therapy."
       },
       {
         "min": 0,
         "max": 14,
         "stage": "G5",
-        "description": "Falência renal",
-        "interpretation": "Estágio 5 de Doença Renal Crônica (falência renal). Necessária terapia renal substitutiva (diálise ou transplante)."
+        "description": "Kidney failure",
+        "interpretation": "Stage 5 Chronic Kidney Disease (kidney failure). Kidney replacement therapy (dialysis or transplant) is necessary."
       }
     ]
   },
@@ -94,11 +94,11 @@
     "Inker LA, Eneanya ND, Coresh J, et al. New creatinine- and cystatin C-based equations to estimate GFR without race. N Engl J Med. 2021;385(19):1737-1749.",
     "National Kidney Foundation. CKD-EPI Creatinine Equation (2021). https://www.kidney.org/ckd-epi-creatinine-equation-2021-0"
   ],
-  "formula": "eGFR = 142 × min(SCr/κ,1)^α × max(SCr/κ,1)^(-1.200) × 0.9938^Age × 1.012 [se feminino]",
+  "formula": "eGFR = 142 × min(SCr/κ,1)^α × max(SCr/κ,1)^(-1.200) × 0.9938^Age × 1.012 [if female]",
   "notes": [
-    "κ = 0.7 para mulheres, 0.9 para homens",
-    "α = -0.241 para mulheres, -0.302 para homens", 
-    "Equação válida apenas para adultos (≥18 anos)",
-    "Requer creatinina sérica padronizada (IDMS)"
+    "κ = 0.7 for females, 0.9 for males",
+    "α = -0.241 for females, -0.302 for males", 
+    "Equation valid only for adults (≥18 years)",
+    "Requires standardized serum creatinine (IDMS)"
   ]
 }
