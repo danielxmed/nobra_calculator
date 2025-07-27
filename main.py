@@ -6,6 +6,7 @@ Modular API for medical calculations and scores developed with FastAPI.
 
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import sys
@@ -55,6 +56,9 @@ async def global_exception_handler(request: Request, exc: Exception):
         }
     )
 
+# Mount static files for interactive documentation
+app.mount("/docs-interactive", StaticFiles(directory="docs"), name="docs-interactive")
+
 # Register routers
 app.include_router(health_router)
 app.include_router(scores_router)
@@ -74,6 +78,7 @@ async def root():
         "version": __version__,
         "docs": "/docs",
         "redoc": "/redoc",
+        "interactive_docs": "/docs-interactive",
         "health": "/health",
         "api": "/api"
     }

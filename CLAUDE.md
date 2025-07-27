@@ -1,6 +1,25 @@
 # Guide for Programming Agents: Implementing New Calculators in nobra_calculator
 
-This guide is intended for programming agents (AI assistants) to implement new medical calculators within the modular structure of the **nobra_calculator API**.
+This guide is intended for programming agents (AI assistants) to implement new medical calculators within the modular structure of the **nobra_calculator API**. 
+
+## 🎯 Interactive Documentation Standards
+
+The nobra_calculator now features a comprehensive interactive documentation system at `/docs-interactive` that provides:
+
+- **Didactic Learning**: Each score includes detailed parameter explanations, validation rules, and clinical context
+- **Interactive Calculators**: Real-time calculation with immediate result interpretation
+- **Visual Interpretation Guides**: Color-coded severity levels and comprehensive range explanations
+- **Complete Clinical Context**: References, formulas, notes, and clinical guidance
+
+### Documentation Quality Requirements
+
+When implementing new calculators, ensure they meet these enhanced standards:
+
+1. **Complete Parameter Documentation**: Every parameter must have clear descriptions, units, validation rules, and clinical significance
+2. **Comprehensive Interpretation Ranges**: All possible result ranges with detailed clinical interpretations and recommended actions
+3. **Educational Content**: Include formulas, references, clinical notes, and context for medical education
+4. **Robust Validation**: Implement thorough input validation with descriptive error messages
+5. **Interactive Compatibility**: Ensure all metadata works seamlessly with the interactive documentation system
 
 ## 🤖 Automated Workflow
 
@@ -63,8 +82,8 @@ Create a file in `/scores/{score_id}.json` following this structure:
 ```json
 {
   "id": "score_name",
-  "title": "Full Score Title",
-  "description": "Detailed description of what the score calculates",
+  "title": "Full Score Title (include year if applicable)",
+  "description": "Comprehensive description explaining what the score calculates, its clinical purpose, target population, and when it should be used. Include context about why this score was developed and its clinical significance.",
   "category": "medical_category",
   "version": "year_or_version",
   "parameters": [
@@ -72,42 +91,53 @@ Create a file in `/scores/{score_id}.json` following this structure:
       "name": "parameter1",
       "type": "string|integer|float",
       "required": true,
-      "description": "Parameter description",
-      "options": ["option1", "option2"],  // For strings with fixed values
+      "description": "Detailed parameter description explaining clinical significance, how it's measured, and any important considerations for accurate input",
+      "options": ["option1", "option2"],  // For strings with fixed values - include all possible options
       "validation": {
-        "min": 0,           // For numbers
+        "min": 0,           // For numbers - set realistic clinical ranges
         "max": 100,
-        "enum": ["val1", "val2"]  // For strings
+        "enum": ["val1", "val2"]  // For strings - must match options array
       },
-      "unit": "unit"
+      "unit": "unit (be specific, e.g., 'mg/dL', 'years', 'mmHg')",
+      "clinical_context": "Additional context about this parameter's clinical significance and measurement considerations"
     }
   ],
   "result": {
     "name": "result_name",
     "type": "float|integer|string",
-    "unit": "result_unit",
-    "description": "Result description"
+    "unit": "result_unit (be specific)",
+    "description": "Clear description of what the result represents and how it should be interpreted"
   },
   "interpretation": {
     "ranges": [
       {
         "min": 0,
         "max": 10,
-        "stage": "Stage1",
-        "description": "Short description",
-        "interpretation": "Detailed clinical interpretation"
+        "stage": "Stage1/Normal/Mild/Moderate/Severe",
+        "description": "Concise clinical description of this range",
+        "interpretation": "Detailed clinical interpretation including recommended actions, follow-up, referrals, monitoring, and clinical significance. Be specific about next steps and clinical decision-making."
       }
     ]
   },
   "references": [
-    "Bibliographic reference 1",
-    "Bibliographic reference 2"
+    "Complete bibliographic reference with authors, title, journal, year, volume, pages",
+    "Include original validation studies and major clinical guidelines",
+    "Add URLs for guidelines when available (e.g., professional society recommendations)"
   ],
-  "formula": "Mathematical formula in text",
+  "formula": "Complete mathematical formula with all variables defined. Use clear notation and explain any constants or special functions.",
   "notes": [
-    "Important note 1",
-    "Important note 2"
-  ]
+    "Important clinical limitations and contraindications",
+    "Population-specific considerations (age, gender, ethnicity)",
+    "Measurement requirements and standardization notes",
+    "Clinical pearls and common pitfalls to avoid",
+    "Validation study populations and external validation data"
+  ],
+  "clinical_use": {
+    "indications": ["Primary clinical indication 1", "Secondary use case 2"],
+    "contraindications": ["When not to use this score"],
+    "limitations": ["Known limitations and edge cases"],
+    "population": "Target population description (age ranges, clinical settings, etc.)"
+  }
 }
 ```
 
@@ -320,27 +350,78 @@ async def calculate_{score_id}(request: {ScoreId}Request):
 
 ## 🧪 Testing the Implementation
 
-### 1. Reload Scores
+### Comprehensive Testing Protocol
+
+Every implementation must pass this complete testing protocol:
+
+### 1. Reload Scores and Verify Loading
 ```bash
 curl -X POST http://localhost:8000/api/reload
 ```
 
-### 2. Check if the Score Appears in the List
+### 2. Verify Score Appears in List
 ```bash
-curl http://localhost:8000/api/scores
+curl http://localhost:8000/api/scores | grep "score_id"
 ```
 
-### 3. Test the Calculation
+### 3. Check Complete Metadata
 ```bash
+curl http://localhost:8000/api/scores/{score_id} | jq '.'
+```
+
+### 4. Test Valid Calculations (Multiple Test Cases)
+```bash
+# Test case 1: Normal values
 curl -X POST http://localhost:8000/api/{score_id} \
   -H "Content-Type: application/json" \
-  -d '{"param1": "value", "param2": 50, "param3": 1.5}'
+  -d '{"param1": "normal_value", "param2": 50, "param3": 1.5}'
+
+# Test case 2: Edge case - minimum values
+curl -X POST http://localhost:8000/api/{score_id} \
+  -H "Content-Type: application/json" \
+  -d '{"param1": "min_value", "param2": 18, "param3": 0.1}'
+
+# Test case 3: Edge case - maximum values
+curl -X POST http://localhost:8000/api/{score_id} \
+  -H "Content-Type: application/json" \
+  -d '{"param1": "max_value", "param2": 120, "param3": 20.0}'
 ```
 
-### 4. Check Metadata
+### 5. Test Input Validation (Error Cases)
 ```bash
-curl http://localhost:8000/api/scores/{score_id}
+# Test missing required parameter
+curl -X POST http://localhost:8000/api/{score_id} \
+  -H "Content-Type: application/json" \
+  -d '{"param1": "value"}'
+
+# Test invalid parameter type
+curl -X POST http://localhost:8000/api/{score_id} \
+  -H "Content-Type: application/json" \
+  -d '{"param1": "value", "param2": "invalid", "param3": 1.5}'
+
+# Test out-of-range values
+curl -X POST http://localhost:8000/api/{score_id} \
+  -H "Content-Type: application/json" \
+  -d '{"param1": "value", "param2": -10, "param3": 1.5}'
 ```
+
+### 6. Verify Interactive Documentation
+```bash
+# Check that the score appears in interactive docs
+curl http://localhost:8000/docs-interactive/ | grep "score_id"
+```
+
+### 7. Test All Interpretation Ranges
+Create test cases that produce results in each interpretation range to verify:
+- Correct stage assignment
+- Appropriate clinical interpretation
+- Proper severity classification for UI color coding
+
+### 8. Validate Clinical Accuracy
+- Cross-reference calculations with published examples
+- Verify formulas against original references
+- Test edge cases mentioned in clinical literature
+- Ensure interpretations match clinical guidelines
 
 ## ⚠️ Important Points
 
@@ -645,4 +726,95 @@ For each implementation cycle, strictly follow:
 6. **Mark as complete** in CALC_LIST.md
 7. **Compact conversation** and restart cycle
 
-By following this guide, any programming agent can implement new medical calculators in nobra_calculator consistently, functionally, and fully automated! 🚀
+## 🔄 Enhancing Existing Scores
+
+### Upgrading Legacy Implementations
+
+When enhancing existing scores to meet the new interactive documentation standards:
+
+#### 1. **Audit Current Implementation**
+```bash
+# Check current metadata completeness
+curl http://localhost:8000/api/scores/{score_id} | jq '.clinical_use // "missing"'
+curl http://localhost:8000/api/scores/{score_id} | jq '.parameters[].clinical_context // "missing"'
+```
+
+#### 2. **Research Enhancement Requirements**
+- Review original clinical literature for missing context
+- Check for updated guidelines or validation studies
+- Identify gaps in parameter descriptions or interpretation ranges
+- Look for clinical pearls and common pitfalls
+
+#### 3. **Update JSON Metadata**
+- Add missing `clinical_use` section
+- Enhance parameter descriptions with clinical context
+- Expand interpretation ranges with specific clinical actions
+- Add comprehensive references and clinical notes
+- Include formula explanations and variable definitions
+
+#### 4. **Enhance Calculator Logic**
+- Improve error messages for better user guidance
+- Add validation for clinical edge cases
+- Ensure robust handling of boundary conditions
+- Verify calculation accuracy against multiple test cases
+
+#### 5. **Validate Enhanced Implementation**
+- Test all new interpretation ranges
+- Verify enhanced error messages
+- Check interactive documentation display
+- Validate clinical accuracy with published examples
+
+### Priority Enhancement List
+
+Focus on enhancing these commonly used scores first:
+1. **CKD-EPI 2021** - Add clinical context for creatinine standardization
+2. **CHA₂DS₂-VASc** - Enhance stroke risk interpretations with specific recommendations
+3. **CURB-65** - Add detailed admission criteria and treatment guidance
+4. **4C COVID-19** - Include updated mortality risk interpretations
+
+### Quality Assurance Checklist
+
+Before marking any score as "enhanced":
+- [ ] All parameters have clinical context explanations
+- [ ] Interpretation ranges include specific clinical actions
+- [ ] References include original validation studies
+- [ ] Clinical use section is complete
+- [ ] Formula is fully explained with variable definitions
+- [ ] Notes include limitations and clinical pearls
+- [ ] Interactive documentation displays correctly
+- [ ] All test cases pass validation
+- [ ] Clinical accuracy verified against literature
+
+## 🎓 Educational Implementation Guidelines
+
+### Making Scores Didactic
+
+Each implementation should serve as a learning tool:
+
+#### Parameter Education
+- Explain why each parameter is clinically relevant
+- Describe how parameters are typically measured
+- Include normal ranges and clinical significance
+- Note measurement standardization requirements
+
+#### Result Interpretation Education
+- Explain the clinical reasoning behind score ranges
+- Describe the evidence base for interpretations
+- Include specific next steps for each result level
+- Note limitations and when to use clinical judgment
+
+#### Clinical Context Education
+- Explain when and why the score was developed
+- Describe the target population and clinical setting
+- Include validation study details and external validation
+- Note updates or modifications to original score
+
+### Interactive Learning Features
+
+The interactive documentation should enable:
+- **Progressive Disclosure**: Basic info → detailed explanations → clinical pearls
+- **Contextual Help**: Parameter tooltips with clinical significance
+- **Visual Learning**: Color-coded severity levels and range visualization
+- **Practical Application**: Real-time calculation with immediate interpretation
+
+By following this enhanced guide, any programming agent can implement new medical calculators in nobra_calculator that are not only functionally correct but also educationally valuable and clinically robust! 🚀
