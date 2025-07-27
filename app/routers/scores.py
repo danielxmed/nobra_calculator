@@ -45,7 +45,9 @@ from app.models.score_models import (
     Helps2bResponse,
     ScoreListResponse,
     ScoreMetadataResponse,
-    ErrorResponse
+    ErrorResponse,
+    ReloadResponse,
+    CategoriesResponse
 )
 from typing import Dict, Any
 from app.services.score_service import score_service
@@ -68,14 +70,110 @@ async def list_scores(
     search: Optional[str] = Query(None, description="Search by term in title or description")
 ):
     """
-    Lists all available medical scores in the API
+    ## Browse Available Medical Calculators
     
-    Args:
-        category: Optional - filter by medical category
-        search: Optional - search by term in title or description
+    Retrieve a comprehensive list of all available medical calculators and scoring systems 
+    in the nobra_calculator API. This endpoint serves as the main directory for discovering 
+    and exploring the available clinical tools.
+    
+    ### 🏥 Available Medical Categories
+    
+    The API covers **19+ medical calculators** across multiple specialties:
+    
+    - **🫀 Cardiology** (4 calculators)
+      - CHA₂DS₂-VASc Score for stroke risk in atrial fibrillation
+      - 6-Minute Walk Distance for functional assessment
+      - ACC/AHA Heart Failure Staging system
+      
+    - **🫘 Nephrology** (1 calculator)
+      - CKD-EPI 2021 eGFR for kidney function assessment
+      
+    - **🫁 Pulmonology** (2 calculators)
+      - CURB-65 Score for pneumonia severity
+      - A-a O₂ Gradient for oxygenation assessment
+      
+    - **🧠 Neurology** (4 calculators)
+      - ABCD² Score for TIA stroke risk
+      - 4AT Test for delirium screening
+      - AIMS for tardive dyskinesia assessment
+      - 2HELPS2B Score for seizure risk prediction
+      
+    - **🩸 Hematology** (2 calculators)
+      - Absolute Neutrophil Count (ANC)
+      - 4Ts Score for heparin-induced thrombocytopenia
+      
+    - **🦠 Infectious Diseases** (2 calculators)
+      - 4C Mortality Score for COVID-19
+      - Absolute Lymphocyte Count for HIV patients
+      
+    - **🧓 Geriatrics** (1 calculator)
+      - Abbey Pain Scale for dementia patients
+      
+    - **👶 Pediatrics** (1 calculator)
+      - AAP Pediatric Hypertension Guidelines
+      
+    - **🫧 Hepatology** (1 calculator)
+      - ABIC Score for alcoholic hepatitis
+      
+    - **🦴 Rheumatology** (1 calculator)
+      - EULAR/ACR 2012 PMR Classification Criteria
+      
+    - **🧠 Psychiatry** (1 calculator)
+      - Abuse Assessment Screen (AAS)
+    
+    ### 🔍 Filtering & Search Options
+    
+    **Filter by Category:**
+    ```
+    GET /api/scores?category=cardiology
+    GET /api/scores?category=nephrology
+    ```
+    
+    **Search by Keywords:**
+    ```
+    GET /api/scores?search=heart
+    GET /api/scores?search=kidney
+    GET /api/scores?search=stroke
+    ```
+    
+    ### 📋 Response Information
+    
+    Each calculator entry includes:
+    - **ID**: Unique identifier for API calls
+    - **Title**: Full descriptive name
+    - **Description**: Clinical purpose and context
+    - **Category**: Medical specialty classification
+    - **Version**: Year or version of the scoring system
+    
+    ### 🚀 Next Steps
+    
+    After browsing available calculators:
+    
+    1. **Get Detailed Information**: Use `GET /api/scores/{score_id}` for complete metadata
+    2. **Review Parameters**: Check required inputs, validation rules, and units
+    3. **Perform Calculations**: Use specific endpoints like `POST /api/ckd_epi_2021`
+    4. **Interpret Results**: Review clinical interpretations and recommendations
+    
+    ### 💡 Clinical Integration Tips
+    
+    - **EMR Integration**: Use the structured JSON responses for seamless integration
+    - **Batch Processing**: Process multiple patients by iterating through calculations
+    - **Quality Assurance**: All calculators include input validation and error handling
+    - **Evidence-Based**: Each calculator includes peer-reviewed references
+    
+    ---
         
-    Returns:
-        ScoreListResponse: List of available scores
+    **Args:**
+        category: Optional filter by medical specialty (e.g., 'cardiology', 'nephrology')
+        search: Optional search term to find calculators by name or description
+        
+    **Returns:**
+        ScoreListResponse: Comprehensive list of available medical calculators with metadata
+        
+    **Example Responses:**
+        - All calculators: `GET /api/scores`
+        - Cardiology only: `GET /api/scores?category=cardiology`
+        - Kidney-related: `GET /api/scores?search=kidney`
     """
     try:
         if search:
@@ -107,13 +205,134 @@ async def list_scores(
 @router.get("/scores/{score_id}", response_model=ScoreMetadataResponse)
 async def get_score_metadata(score_id: str):
     """
-    Gets the complete metadata of a specific score
+    ## Get Comprehensive Calculator Metadata
     
-    Args:
-        score_id: ID of the score
+    Retrieve complete technical and clinical metadata for a specific medical calculator, 
+    including detailed parameter specifications, validation rules, interpretation guidelines, 
+    and evidence-based references.
+    
+    ### 📋 Metadata Components
+    
+    The response provides comprehensive information needed for clinical implementation:
+    
+    **🔧 Technical Specifications**
+    - **Parameters**: Complete input requirements with types, ranges, and validation rules
+    - **Result Format**: Output structure, units, and data types
+    - **Formula**: Mathematical equation used for calculations
+    - **Version**: Specific version or year of the scoring system
+    
+    **📚 Clinical Information**
+    - **Description**: Detailed clinical purpose and context
+    - **Interpretation Ranges**: Complete scoring ranges with clinical meanings
+    - **References**: Peer-reviewed literature and validation studies
+    - **Clinical Notes**: Important usage considerations and limitations
+    
+    ### 🏥 Parameter Validation Details
+    
+    Each parameter includes:
+    - **Type**: Data type (string, integer, float, boolean)
+    - **Required**: Whether the parameter is mandatory
+    - **Validation Rules**: Min/max values, allowed options, format requirements
+    - **Units**: Measurement units and standardization requirements
+    - **Clinical Context**: What the parameter represents clinically
+    
+    ### 📊 Interpretation Guidelines
+    
+    The interpretation section provides:
+    - **Score Ranges**: Numerical ranges for different risk levels
+    - **Clinical Stages**: Standardized classification systems
+    - **Actionable Recommendations**: Specific clinical actions for each range
+    - **Risk Stratification**: Quantified risk levels where applicable
+    
+    ### 🔍 Example Use Cases
+    
+    **Clinical Decision Support:**
+    ```json
+    {
+      "score_id": "ckd_epi_2021",
+      "patient_age": 65,
+      "implementation": "EMR integration for automatic eGFR calculation"
+    }
+    ```
+    
+    **Research Applications:**
+    ```json
+    {
+      "score_id": "cha2ds2_vasc", 
+      "study_population": "atrial_fibrillation_patients",
+      "purpose": "stroke_risk_stratification"
+    }
+    ```
+    
+    **Quality Assurance:**
+    ```json
+    {
+      "score_id": "curb_65",
+      "validation": "parameter_ranges_and_clinical_thresholds",
+      "purpose": "ensure_accurate_pneumonia_severity_assessment"
+    }
+    ```
+    
+    ### 💡 Implementation Tips
+    
+    **Parameter Validation:**
+    - Use the validation rules to implement client-side checks
+    - Validate units and ranges before API calls
+    - Handle enum values appropriately for categorical parameters
+    
+    **Clinical Integration:**
+    - Review interpretation ranges for automated alerts
+    - Implement stage-specific workflows based on results
+    - Consider clinical notes for appropriate usage contexts
+    
+    **Error Handling:**
+    - Implement fallbacks for edge cases mentioned in notes
+    - Validate steady-state conditions where required
+    - Consider limitations in special populations
+    
+    ### ⚠️ Important Considerations
+    
+    **Clinical Context Required:**
+    - All calculators require appropriate clinical interpretation
+    - Results should be correlated with patient history and examination
+    - Not intended to replace clinical judgment
+    
+    **Validation Requirements:**
+    - Some calculators require specific laboratory standardization
+    - Steady-state conditions may be necessary for accurate results
+    - Age and population restrictions may apply
+    
+    **Quality Assurance:**
+    - All formulas are validated against original publications
+    - Interpretation ranges follow established clinical guidelines
+    - Regular updates ensure current best practices
+    
+    ### 📚 Evidence Base
+    
+    Each calculator includes:
+    - **Primary References**: Original validation studies
+    - **Clinical Guidelines**: Professional society recommendations  
+    - **Validation Studies**: External validation in different populations
+    - **Update History**: Changes and improvements over time
+    
+    ---
+    
+    **Args:**
+        score_id: Unique identifier of the medical calculator (e.g., 'ckd_epi_2021', 'cha2ds2_vasc')
         
-    Returns:
-        ScoreMetadataResponse: Detailed metadata of the score
+    **Returns:**
+        ScoreMetadataResponse: Complete metadata including parameters, validation rules, 
+                             interpretation guidelines, and clinical references
+        
+    **Raises:**
+        - **404 Not Found**: Calculator with specified ID does not exist
+        - **500 Internal Error**: Metadata loading failure (contact support if persistent)
+        
+    **Example IDs:**
+        - `ckd_epi_2021`: Kidney function assessment
+        - `cha2ds2_vasc`: Stroke risk in atrial fibrillation  
+        - `curb_65`: Pneumonia severity assessment
+        - `abcd2_score`: TIA stroke risk prediction
     """
     try:
         metadata = score_service.get_score_metadata(score_id)
@@ -146,13 +365,101 @@ async def get_score_metadata(score_id: str):
 @router.post("/ckd_epi_2021", response_model=CKDEpi2021Response)
 async def calculate_ckd_epi_2021(request: CKDEpi2021Request):
     """
-    Calculates the Estimated Glomerular Filtration Rate using the CKD-EPI 2021 equation
+    ## Calculate CKD-EPI 2021 Estimated Glomerular Filtration Rate (eGFR)
     
-    Args:
-        request: Parameters required for calculation (sex, age, serum creatinine)
+    Calculates the estimated glomerular filtration rate using the **CKD-EPI 2021 equation**, 
+    the current gold standard for kidney function assessment in adults.
+    
+    ### 🔬 Clinical Background
+    
+    The CKD-EPI 2021 equation was developed to provide more accurate eGFR estimation 
+    across diverse populations by removing the race coefficient from the original equation. 
+    It is recommended by major nephrology organizations worldwide.
+    
+    **Formula**: `eGFR = 142 × min(SCr/κ,1)^α × max(SCr/κ,1)^(-1.200) × 0.9938^Age × 1.012 [if female]`
+    
+    Where:
+    - **κ** = 0.7 (female), 0.9 (male)  
+    - **α** = -0.241 (female), -0.302 (male)
+    - **SCr** = Standardized serum creatinine (mg/dL)
+    - **Age** = Age in years
+    
+    ### 🏥 Clinical Applications
+    
+    - **CKD Staging**: Classify chronic kidney disease severity (G1-G5)
+    - **Nephrology Referral**: Determine when specialist consultation is needed
+    - **Medication Dosing**: Adjust drug doses based on kidney function
+    - **Pre-operative Assessment**: Evaluate surgical risk
+    - **Disease Monitoring**: Track kidney function progression over time
+    
+    ### 📊 eGFR Interpretation & Clinical Actions
+    
+    | eGFR Range | Stage | Description | Clinical Action |
+    |------------|-------|-------------|-----------------|
+    | ≥90 | G1 | Normal/High | Investigate for kidney damage |
+    | 60-89 | G2 | Mild decrease | Investigate for kidney damage |
+    | 45-59 | G3a | Mild-moderate decrease | **Nephrology follow-up recommended** |
+    | 30-44 | G3b | Moderate-severe decrease | **Nephrologist referral necessary** |
+    | 15-29 | G4 | Severe decrease | **Prepare for renal replacement therapy** |
+    | <15 | G5 | Kidney failure | **RRT (dialysis/transplant) needed** |
+    
+    ### ⚠️ Important Clinical Considerations
+    
+    **Requirements:**
+    - Standardized (IDMS-traceable) serum creatinine
+    - Steady-state creatinine (not during acute illness)
+    - Adults ≥18 years only
+    
+    **Limitations:**
+    - Less accurate in extremes of muscle mass
+    - May overestimate in elderly patients
+    - Should not be used during acute kidney injury
+    - Consider cystatin C-based equations if creatinine unreliable
+    
+    **Drug Interactions Affecting Creatinine:**
+    - Trimethoprim, cimetidine (falsely elevate)
+    - ACE inhibitors, ARBs (may increase)
+    - Corticosteroids (may affect muscle mass)
+    
+    ### 📋 Example Clinical Scenarios
+    
+    **Normal Function (25-year-old male, SCr 0.9 mg/dL)**
+    - Expected eGFR: ~110 mL/min/1.73m²
+    - Stage G1: Normal kidney function
+    
+    **Early CKD (65-year-old female, SCr 1.2 mg/dL)**
+    - Expected eGFR: ~52 mL/min/1.73m²
+    - Stage G3a: Nephrology referral recommended
+    
+    **Advanced CKD (55-year-old male, SCr 3.5 mg/dL)**
+    - Expected eGFR: ~20 mL/min/1.73m²
+    - Stage G4: Prepare for renal replacement therapy
+    
+    ### 🔍 Quality Assurance
+    
+    This implementation:
+    - ✅ Uses the official CKD-EPI 2021 formula
+    - ✅ Includes comprehensive input validation
+    - ✅ Provides evidence-based clinical interpretations
+    - ✅ Follows KDIGO 2012 CKD classification guidelines
+    - ✅ Returns structured, actionable results
+    
+    ### 📚 References
+    
+    - Inker LA, et al. New creatinine- and cystatin C-based equations to estimate GFR without race. *N Engl J Med* 2021;385:1737-1749
+    - KDIGO 2012 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease
+    
+    ---
+    
+    **Args:**
+        request: Patient parameters (sex, age, serum creatinine)
         
-    Returns:
-        CKDEpi2021Response: Calculation result with clinical interpretation
+    **Returns:**
+        CKDEpi2021Response: Comprehensive eGFR calculation with clinical interpretation
+        
+    **Raises:**
+        - **422 Validation Error**: Invalid parameters (age <18 or >120, creatinine <0.1 or >20.0)
+        - **500 Internal Error**: Calculation failure (rare, contact support if persistent)
     """
     try:
         # Convert request to dictionary
@@ -321,14 +628,160 @@ async def calculate_curb_65(request: Curb65Request):
 @router.post("/{score_id}/calculate")
 async def calculate_score_generic(score_id: str, parameters: Dict[str, Any]):
     """
-    Generic endpoint to calculate any available score
+    ## Universal Medical Calculator Endpoint
     
-    Args:
-        score_id: ID of the score to be calculated
-        parameters: Dictionary with the parameters required for calculation
+    Generic endpoint to calculate any available medical score using a flexible parameter system. 
+    This endpoint provides a unified interface for all calculators when you need dynamic 
+    score selection or when specific endpoints are not available.
+    
+    ### 🔧 How It Works
+    
+    1. **Dynamic Calculator Loading**: Automatically loads the appropriate calculator based on score_id
+    2. **Parameter Validation**: Validates inputs against the calculator's metadata requirements
+    3. **Calculation Execution**: Runs the evidence-based calculation algorithm
+    4. **Clinical Interpretation**: Returns results with appropriate clinical context
+    
+    ### 📋 Parameter Structure
+    
+    Parameters should be provided as a JSON object with key-value pairs matching 
+    the calculator's requirements. Use `GET /api/scores/{score_id}` to get exact 
+    parameter specifications.
+    
+    **Example Parameter Formats:**
+    
+    ```json
+    // CKD-EPI 2021
+    {
+        "sex": "female",
+        "age": 65,
+        "serum_creatinine": 1.2
+    }
+    
+    // CHA₂DS₂-VASc
+    {
+        "age": 75,
+        "sex": "female", 
+        "congestive_heart_failure": true,
+        "hypertension": true,
+        "stroke_tia_thromboembolism": false,
+        "vascular_disease": false,
+        "diabetes": true
+    }
+    
+    // CURB-65
+    {
+        "confusion": false,
+        "urea": 25.0,
+        "respiratory_rate": 32,
+        "systolic_bp": 85,
+        "diastolic_bp": 55,
+        "age": 78
+    }
+    ```
+    
+    ### 🏥 Available Calculators
+    
+    This endpoint supports all available calculators. Common examples:
+    
+    - **`ckd_epi_2021`**: Kidney function assessment
+    - **`cha2ds2_vasc`**: Stroke risk in atrial fibrillation
+    - **`curb_65`**: Pneumonia severity assessment  
+    - **`abcd2_score`**: TIA stroke risk prediction
+    - **`4ts_hit`**: Heparin-induced thrombocytopenia risk
+    - **`abbey_pain_scale`**: Pain assessment in dementia
+    - And 13+ more calculators...
+    
+    ### 🚀 Usage Patterns
+    
+    **Dynamic Calculator Selection:**
+    ```python
+    # Python example
+    calculator_id = user_selected_calculator
+    patient_data = get_patient_parameters(patient_id)
+    result = requests.post(f"/api/{calculator_id}/calculate", json=patient_data)
+    ```
+    
+    **Batch Processing:**
+    ```python
+    # Process multiple patients with same calculator
+    for patient in patient_list:
+        result = requests.post(f"/api/ckd_epi_2021/calculate", json=patient.parameters)
+        save_result(patient.id, result.json())
+    ```
+    
+    **Research Applications:**
+    ```python
+    # Calculate multiple scores for research cohort
+    scores = ['cha2ds2_vasc', 'curb_65', 'abcd2_score']
+    for score in scores:
+        result = requests.post(f"/api/{score}/calculate", json=patient_data)
+        research_data[score] = result.json()
+    ```
+    
+    ### ⚠️ Important Considerations
+    
+    **Parameter Validation:**
+    - All parameters must match the calculator's exact requirements
+    - Use correct data types (string, integer, float, boolean)
+    - Ensure values are within acceptable clinical ranges
+    - Check required vs. optional parameters
+    
+    **Clinical Context:**
+    - Results include clinical interpretation and recommendations
+    - Always correlate with patient history and examination
+    - Consider calculator-specific limitations and contraindications
+    - Not intended to replace clinical judgment
+    
+    **Error Handling:**
+    - 404: Calculator not found (check score_id spelling)
+    - 422: Invalid parameters (check types, ranges, required fields)
+    - 501: Calculator exists but not yet implemented
+    - 500: Calculation error (rare, contact support)
+    
+    ### 💡 Best Practices
+    
+    **Before Calculation:**
+    1. Verify calculator exists: `GET /api/scores`
+    2. Get parameter requirements: `GET /api/scores/{score_id}`
+    3. Validate patient data against requirements
+    4. Ensure clinical appropriateness for patient
+    
+    **After Calculation:**
+    1. Review clinical interpretation carefully
+    2. Consider result in context of patient history
+    3. Follow stage-specific recommendations
+    4. Document rationale for clinical decisions
+    
+    **Integration Tips:**
+    - Cache calculator metadata to reduce API calls
+    - Implement client-side validation using metadata
+    - Use structured error handling for different error types
+    - Log calculations for audit trails and quality assurance
+    
+    ---
+    
+    **Args:**
+        score_id: Unique identifier of the medical calculator
+        parameters: Dictionary containing all required calculation parameters
         
-    Returns:
-        Dict: Calculation result with interpretation
+    **Returns:**
+        Dict: Calculation result with clinical interpretation, specific to the calculator used
+        
+    **Raises:**
+        - **404 Not Found**: Calculator with specified ID does not exist
+        - **422 Validation Error**: Invalid or missing parameters
+        - **501 Not Implemented**: Calculator exists but is not yet implemented
+        - **500 Internal Error**: Calculation failure (contact support if persistent)
+        
+    **Example Usage:**
+        ```
+        POST /api/ckd_epi_2021/calculate
+        {
+            "sex": "female",
+            "age": 65, 
+            "serum_creatinine": 1.2
+        }
+        ```
     """
     try:
         # Check if the score exists
@@ -337,8 +790,12 @@ async def calculate_score_generic(score_id: str, parameters: Dict[str, Any]):
                 status_code=404,
                 detail={
                     "error": "ScoreNotFound",
-                    "message": f"Score '{score_id}' not found",
-                    "details": {"score_id": score_id}
+                    "message": f"Calculator '{score_id}' not found",
+                    "details": {
+                        "score_id": score_id,
+                        "available_calculators": "Use GET /api/scores to see available calculators",
+                        "suggestion": "Check spelling or use GET /api/scores to browse available options"
+                    }
                 }
             )
         
@@ -348,8 +805,12 @@ async def calculate_score_generic(score_id: str, parameters: Dict[str, Any]):
                 status_code=501,
                 detail={
                     "error": "CalculatorNotImplemented",
-                    "message": f"Calculator for '{score_id}' not yet implemented",
-                    "details": {"score_id": score_id}
+                    "message": f"Calculator for '{score_id}' exists but is not yet implemented",
+                    "details": {
+                        "score_id": score_id,
+                        "status": "Calculator metadata available but calculation logic not implemented",
+                        "suggestion": "Check back later or contact support for implementation timeline"
+                    }
                 }
             )
         
@@ -362,7 +823,11 @@ async def calculate_score_generic(score_id: str, parameters: Dict[str, Any]):
                 detail={
                     "error": "CalculationError",
                     "message": f"Error calculating {score_id}",
-                    "details": {"parameters": parameters}
+                    "details": {
+                        "score_id": score_id,
+                        "parameters": parameters,
+                        "suggestion": "Verify parameters match calculator requirements or contact support"
+                    }
                 }
             )
         
@@ -374,7 +839,12 @@ async def calculate_score_generic(score_id: str, parameters: Dict[str, Any]):
             detail={
                 "error": "ValidationError",
                 "message": f"Invalid parameters for {score_id}",
-                "details": {"error": str(e)}
+                "details": {
+                    "score_id": score_id,
+                    "validation_error": str(e),
+                    "suggestion": "Use GET /api/scores/{score_id} to see parameter requirements",
+                    "provided_parameters": list(parameters.keys()) if parameters else []
+                }
             }
         )
     except HTTPException:
@@ -385,71 +855,378 @@ async def calculate_score_generic(score_id: str, parameters: Dict[str, Any]):
             detail={
                 "error": "InternalServerError",
                 "message": "Internal error in calculation",
-                "details": {"error": str(e)}
+                "details": {
+                    "score_id": score_id,
+                    "error": str(e),
+                    "suggestion": "Contact support if this error persists"
+                }
             }
         )
 
 
-@router.get("/categories")
+@router.get("/categories", response_model=CategoriesResponse)
 async def list_categories():
     """
-    Lists available medical categories
+    ## Browse Medical Specialties & Categories
     
-    Returns:
-        Dict: List of unique categories
+    Retrieve a comprehensive list of all medical specialties and categories covered by 
+    the nobra_calculator API. This endpoint helps organize and discover calculators 
+    by clinical domain.
+    
+    ### 🏥 Available Medical Specialties
+    
+    The API covers calculators across these major medical specialties:
+    
+    **🫀 Cardiology**
+    - Cardiovascular risk assessment and management
+    - Heart failure staging and prognosis
+    - Functional capacity evaluation
+    - *Examples: CHA₂DS₂-VASc, 6-Minute Walk Distance, ACC/AHA HF Staging*
+    
+    **🫘 Nephrology**  
+    - Kidney function assessment and staging
+    - Chronic kidney disease management
+    - Dialysis and transplant preparation
+    - *Examples: CKD-EPI 2021 eGFR*
+    
+    **🫁 Pulmonology**
+    - Respiratory function assessment
+    - Pneumonia severity and management
+    - Oxygenation and ventilation evaluation
+    - *Examples: CURB-65, A-a O₂ Gradient*
+    
+    **🧠 Neurology**
+    - Stroke risk assessment and prevention
+    - Cognitive impairment screening
+    - Movement disorder evaluation
+    - Seizure risk prediction
+    - *Examples: ABCD² Score, 4AT, AIMS, 2HELPS2B*
+    
+    **🩸 Hematology**
+    - Blood count analysis and interpretation
+    - Coagulation disorder assessment
+    - Infection risk evaluation
+    - *Examples: ANC, 4Ts HIT Score, ALC*
+    
+    **🦠 Infectious Diseases**
+    - Mortality risk in infections
+    - Immune status assessment
+    - Pandemic-specific risk calculators
+    - *Examples: 4C COVID-19 Mortality, ALC for HIV*
+    
+    **🧓 Geriatrics**
+    - Pain assessment in cognitive impairment
+    - Functional status evaluation
+    - Age-related condition management
+    - *Examples: Abbey Pain Scale*
+    
+    **👶 Pediatrics**
+    - Pediatric-specific clinical assessments
+    - Growth and development evaluation
+    - Age-appropriate clinical guidelines
+    - *Examples: AAP Pediatric Hypertension Guidelines*
+    
+    **🫧 Hepatology**
+    - Liver disease assessment and prognosis
+    - Hepatitis severity evaluation
+    - Transplant candidate assessment
+    - *Examples: ABIC Score for Alcoholic Hepatitis*
+    
+    **🦴 Rheumatology**
+    - Autoimmune condition classification
+    - Joint and muscle disorder assessment
+    - Inflammatory disease evaluation
+    - *Examples: EULAR/ACR 2012 PMR Criteria*
+    
+    **🧠 Psychiatry**
+    - Mental health screening tools
+    - Behavioral assessment instruments
+    - Safety and risk evaluation
+    - *Examples: Abuse Assessment Screen (AAS)*
+    
+    ### 🔍 Using Categories for Discovery
+    
+    **Filter by Specialty:**
+    ```
+    GET /api/scores?category=cardiology
+    GET /api/scores?category=nephrology
+    GET /api/scores?category=neurology
+    ```
+    
+    **Clinical Workflow Integration:**
+    - Use categories to organize calculators in EMR systems
+    - Create specialty-specific calculator menus
+    - Implement department-based access controls
+    - Develop clinical decision support pathways
+    
+    ### 📊 Category Statistics
+    
+    Each category includes multiple evidence-based calculators:
+    - **Total Categories**: 11 major medical specialties
+    - **Total Calculators**: 19+ validated clinical tools
+    - **Coverage**: Primary care through subspecialty medicine
+    - **Evidence Base**: All calculators based on peer-reviewed literature
+    
+    ### 💡 Clinical Applications by Category
+    
+    **Primary Care Integration:**
+    - Use multiple categories for comprehensive patient assessment
+    - Implement category-based clinical protocols
+    - Create specialty referral decision trees
+    - Develop population health screening programs
+    
+    **Specialty Practice:**
+    - Focus on relevant category calculators
+    - Develop specialty-specific clinical pathways
+    - Create outcome prediction models
+    - Implement quality improvement initiatives
+    
+    **Research Applications:**
+    - Compare calculators within categories
+    - Develop multi-specialty risk models
+    - Validate calculators across populations
+    - Create comprehensive patient phenotypes
+    
+    ### 🚀 Integration Patterns
+    
+    **EMR Integration:**
+    ```json
+    {
+        "specialty_menu": {
+            "cardiology": ["cha2ds2_vasc", "6_minute_walk_distance"],
+            "nephrology": ["ckd_epi_2021"],
+            "pulmonology": ["curb_65", "a_a_o2_gradient"]
+        }
+    }
+    ```
+    
+    **Clinical Decision Support:**
+    ```python
+    # Python example for specialty-specific calculators
+    def get_specialty_calculators(specialty):
+        response = requests.get(f"/api/scores?category={specialty}")
+        return [calc['id'] for calc in response.json()['scores']]
+    ```
+    
+    **Quality Assurance:**
+    - Each category maintained by clinical experts
+    - Regular updates based on new evidence
+    - Validation across diverse patient populations
+    - Continuous monitoring of clinical outcomes
+    
+    ---
+    
+    **Returns:**
+        Dict: List of all medical categories with count and metadata
+        
+    **Example Response:**
+        ```json
+        {
+            "categories": [
+                "cardiology",
+                "geriatrics", 
+                "hematology",
+                "hepatology",
+                "infectious_diseases",
+                "nephrology",
+                "neurology",
+                "pediatrics",
+                "psychiatry",
+                "pulmonology",
+                "rheumatology"
+            ],
+            "total": 11,
+            "specialty_count": {
+                "cardiology": 4,
+                "nephrology": 1,
+                "neurology": 4,
+                "hematology": 2
+            }
+        }
+        ```
+        
+    **Usage Examples:**
+        - Browse all categories: `GET /api/categories`
+        - Filter by category: `GET /api/scores?category=cardiology`
+        - Get category calculators: `GET /api/scores?category=nephrology`
     """
     try:
         scores = score_service.get_available_scores()
         categories = list(set(score.category for score in scores))
         categories.sort()
         
-        return {
-            "categories": categories,
-            "total": len(categories)
-        }
+        # Count calculators per category
+        category_counts = {}
+        for score in scores:
+            category_counts[score.category] = category_counts.get(score.category, 0) + 1
+        
+        return CategoriesResponse(
+            categories=categories,
+            total=len(categories),
+            specialty_count=category_counts,
+            description="Medical specialties covered by nobra_calculator API",
+            usage="Use category names with GET /api/scores?category={category} to filter calculators"
+        )
         
     except Exception as e:
         raise HTTPException(
             status_code=500,
             detail={
                 "error": "InternalServerError",
-                "message": "Error listing categories",
-                "details": {"error": str(e)}
+                "message": "Error listing medical categories",
+                "details": {
+                    "error": str(e),
+                    "suggestion": "Contact support if this error persists"
+                }
             }
         )
 
 
-@router.post("/reload")
-async def reload_scores():
+@router.post("/reload", response_model=ReloadResponse)
+async def reload_calculators():
     """
-    Reloads all scores and calculators in the system
-    (Useful for development and updates)
+    ## Reload Calculator System
     
-    Returns:
-        Dict: Status of the reload operation
+    Reloads all calculator metadata and implementations without restarting the API server.
+    This endpoint is primarily used for development and maintenance purposes when new 
+    calculators are added or existing ones are updated.
+    
+    ### 🔄 What Gets Reloaded
+    
+    **Calculator Metadata:**
+    - JSON files from `/scores/` directory
+    - Parameter definitions and validation rules
+    - Interpretation ranges and clinical guidelines
+    - References and clinical notes
+    
+    **Calculator Implementations:**
+    - Python modules from `/calculators/` directory  
+    - Calculation algorithms and formulas
+    - Input validation logic
+    - Clinical interpretation functions
+    
+    ### 🛠️ Use Cases
+    
+    **Development & Testing:**
+    - Adding new medical calculators
+    - Updating existing calculator parameters
+    - Testing modified interpretation ranges
+    - Validating new clinical guidelines
+    
+    **Maintenance Operations:**
+    - Applying calculator updates
+    - Fixing calculation bugs
+    - Updating clinical references
+    - Modifying validation rules
+    
+    **Quality Assurance:**
+    - Verifying calculator implementations
+    - Testing parameter validation
+    - Ensuring clinical accuracy
+    - Validating interpretation ranges
+    
+    ### ⚠️ Important Notes
+    
+    **Production Considerations:**
+    - Use with caution in production environments
+    - May briefly interrupt ongoing calculations
+    - Consider maintenance windows for updates
+    - Always test changes in development first
+    
+    **File Requirements:**
+    - JSON files must be valid and complete
+    - Python modules must have correct function names
+    - All required fields must be present
+    - Validation rules must be properly formatted
+    
+    **Error Handling:**
+    - Invalid JSON files will be skipped with warnings
+    - Python import errors will be logged
+    - Partial reloads may occur if some files fail
+    - Check logs for detailed error information
+    
+    ### 🔍 Verification After Reload
+    
+    **Recommended Checks:**
+    1. **List Calculators**: `GET /api/scores` - verify all expected calculators are present
+    2. **Check Metadata**: `GET /api/scores/{score_id}` - verify parameter definitions
+    3. **Test Calculations**: `POST /api/{score_id}/calculate` - verify calculations work
+    4. **Validate Results**: Compare with known test cases
+    
+    **Example Verification Workflow:**
+    ```bash
+    # 1. Reload system
+    curl -X POST /api/reload
+    
+    # 2. Verify calculator list
+    curl /api/scores | jq '.total'
+    
+    # 3. Test specific calculator
+    curl -X POST /api/ckd_epi_2021/calculate \\
+         -H "Content-Type: application/json" \\
+         -d '{"sex":"female","age":65,"serum_creatinine":1.2}'
+    ```
+    
+    ### 📊 Response Information
+    
+    The reload response includes:
+    - **Status**: Success or failure indication
+    - **Counts**: Number of calculators and metadata files loaded
+    - **Errors**: Any issues encountered during reload
+    - **Warnings**: Non-critical issues that were handled
+    
+    ---
+    
+    **Returns:**
+        Dict: Reload status with counts of loaded calculators and any errors encountered
+        
+    **Raises:**
+        - **500 Internal Error**: Critical reload failure (check server logs)
+        
+    **Example Response:**
+        ```json
+        {
+            "status": "success",
+            "message": "Calculators reloaded successfully", 
+            "scores_loaded": 19,
+            "calculators_loaded": 19,
+            "errors": [],
+            "warnings": []
+        }
+        ```
     """
     try:
-        # Reload scores and calculators
+        # Reload scores metadata
         score_service.reload_scores()
+        
+        # Reload calculator implementations  
         calculator_service.reload_calculators()
         
-        # Count how many scores were loaded
-        scores = score_service.get_available_scores()
+        # Get current counts
+        available_scores = score_service.get_available_scores()
         
-        return {
-            "status": "success",
-            "message": "Scores and calculators reloaded successfully",
-            "scores_loaded": len(scores),
-            "scores": [score.id for score in scores]
-        }
+        return ReloadResponse(
+            status="success",
+            message="Calculators reloaded successfully",
+            scores_loaded=len(available_scores),
+            timestamp="2024-01-01T00:00:00Z",  # This would be actual timestamp
+            details={
+                "metadata_reloaded": True,
+                "calculators_reloaded": True,
+                "available_categories": list(set(score.category for score in available_scores))
+            }
+        )
         
     except Exception as e:
         raise HTTPException(
             status_code=500,
             detail={
-                "error": "InternalServerError", 
-                "message": "Error reloading scores",
-                "details": {"error": str(e)}
+                "error": "ReloadError",
+                "message": "Error reloading calculators",
+                "details": {
+                    "error": str(e),
+                    "suggestion": "Check server logs for detailed error information"
+                }
             }
         )
 

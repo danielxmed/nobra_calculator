@@ -17,14 +17,44 @@ sys.path.insert(0, str(Path(__file__).parent))
 from app import __version__, __description__
 from app.routers import scores_router, health_router
 
-# FastAPI application configuration
+# Enhanced FastAPI application configuration
 app = FastAPI(
     title="nobra_calculator",
     description=__description__,
     version=__version__,
     docs_url="/docs",
     redoc_url="/redoc",
-    openapi_url="/openapi.json"
+    openapi_url="/openapi.json",
+    contact={
+        "name": "nobra_calculator Team",
+        "email": "daniel@nobregamedtech.com.br",
+        "url": "https://github.com/danielxmed/nobra_calculator"
+    },
+    license_info={
+        "name": "Apache 2.0",
+        "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    terms_of_service="https://github.com/danielxmed/nobra_calculator/blob/main/LICENSE",
+    openapi_tags=[
+        {
+            "name": "health",
+            "description": "**System Health & Status**\n\nEndpoints for monitoring API health and status. Use these endpoints to verify that the API is running correctly and all services are operational."
+        },
+        {
+            "name": "scores",
+            "description": "**Medical Score Calculations**\n\nComprehensive collection of medical calculators and clinical scoring systems. Each endpoint provides:\n\n- **Detailed parameter validation** with clinical ranges\n- **Evidence-based calculations** following published formulas\n- **Clinical interpretations** with actionable recommendations\n- **Comprehensive metadata** including references and notes\n\n**Available Categories:**\n- 🫀 Cardiology (CHA₂DS₂-VASc, Heart Failure Staging)\n- 🫘 Nephrology (CKD-EPI 2021 eGFR)\n- 🫁 Pulmonology (CURB-65, A-a Gradient)\n- 🧠 Neurology (ABCD² Score, Delirium Screening)\n- 🩸 Hematology (ANC, HIT Score)\n- 👶 Pediatrics (AAP Hypertension Guidelines)\n- 🧓 Geriatrics (Abbey Pain Scale)\n- And more...\n\n**Usage Patterns:**\n1. Use `GET /api/scores` to browse available calculators\n2. Use `GET /api/scores/{score_id}` for detailed parameter information\n3. Use specific POST endpoints for calculations with enhanced validation\n4. Use `POST /api/{score_id}/calculate` for generic calculations"
+        }
+    ],
+    servers=[
+        {
+            "url": "http://localhost:8000",
+            "description": "Development server"
+        },
+        {
+            "url": "https://api.nobra-calculator.com",
+            "description": "Production server"
+        }
+    ]
 )
 
 # CORS configuration to allow frontend access
