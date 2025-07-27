@@ -3,7 +3,21 @@ Aas calculation models
 """
 
 from pydantic import BaseModel, Field
-from app.models.shared import YesNoType
+from enum import Enum
+
+
+class YesNoType(str, Enum):
+    """Enum for yes/no responses"""
+    YES = "yes"
+    NO = "no"
+
+
+class YesNoNAType(str, Enum):
+    """Enum for yes/no/not applicable responses"""
+    YES = "yes"
+    NO = "no"
+    NOT_APPLICABLE = "not_applicable"
+
 
 class AasRequest(BaseModel):
     """

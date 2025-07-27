@@ -3,7 +3,20 @@ FourCMortality calculation models
 """
 
 from pydantic import BaseModel, Field
-from app.models.shared import SexType
+from enum import Enum
+
+
+class SexType(str, Enum):
+    """Enum for biological sex"""
+    MALE = "male"
+    FEMALE = "female"
+
+
+class UreaUnitType(str, Enum):
+    """Enum for urea measurement units"""
+    MMOL_L = "mmol_L"
+    MG_DL = "mg_dL"
+
 
 class FourCMortalityRequest(BaseModel):
     """

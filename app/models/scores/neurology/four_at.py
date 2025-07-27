@@ -3,12 +3,26 @@ FourAt calculation models
 """
 
 from pydantic import BaseModel, Field
+from enum import Enum
 
-class EegFindingType(str, Enum):
-    """Enum for EEG findings"""
+
+class AlertnessType(str, Enum):
+    """Enum for alertness level in 4AT"""
+    NORMAL = "normal"
+    ALTERED = "altered"
+
+
+class AttentionMonthsType(str, Enum):
+    """Enum for attention test performance in 4AT"""
+    SEVEN_OR_MORE = "7_or_more"
+    STARTS_BUT_LESS_7 = "starts_but_less_7"
+    REFUSES_UNTESTABLE = "refuses_untestable"
+
+
+class AcuteChangeType(str, Enum):
+    """Enum for acute change presence in 4AT"""
     PRESENT = "present"
     ABSENT = "absent"
-
 
 
 class FourAtRequest(BaseModel):
@@ -138,10 +152,3 @@ class FourAtResponse(BaseModel):
                 "stage_description": "Result suggests delirium"
             }
         }
-
-
-# HElPS2B Models
-class EegFindingType(str, Enum):
-    """Enum for EEG findings"""
-    PRESENT = "present"
-    ABSENT = "absent"

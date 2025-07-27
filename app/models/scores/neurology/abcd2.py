@@ -3,37 +3,33 @@ Abcd2 calculation models
 """
 
 from pydantic import BaseModel, Field
-
-class ThrombocytopeniaSeverityType(str, Enum):
-    """Enum for thrombocytopenia severity in 4Ts score"""
-    FALL_GREATER_50_NADIR_GREATER_20 = "fall_greater_50_nadir_greater_20"
-    FALL_30_50_OR_NADIR_10_19 = "fall_30_50_or_nadir_10_19"
-    FALL_LESS_30_OR_NADIR_LESS_10 = "fall_less_30_or_nadir_less_10"
+from enum import Enum
 
 
-
-class TimingOnsetType(str, Enum):
-    """Enum for timing of thrombocytopenia onset in 4Ts score"""
-    ONSET_5_10_DAYS_OR_FALL_1_DAY_HEPARIN_30_DAYS = "onset_5_10_days_or_fall_1_day_heparin_30_days"
-    POSSIBLE_5_10_DAYS_OR_ONSET_AFTER_10_DAYS_OR_HEPARIN_30_100_DAYS = "possible_5_10_days_or_onset_after_10_days_or_heparin_30_100_days"
-    FALL_LESS_4_DAYS_NO_RECENT_EXPOSURE = "fall_less_4_days_no_recent_exposure"
+class BloodPressureType(str, Enum):
+    """Enum for blood pressure classification in ABCD² score"""
+    ELEVATED = "elevated"  # ≥140/90 mmHg
+    NORMAL = "normal"      # <140/90 mmHg
 
 
-
-class ThrombosisSequelaeType(str, Enum):
-    """Enum for thrombosis/sequelae in 4Ts score"""
-    NEW_THROMBOSIS_OR_SKIN_NECROSIS_OR_SYSTEMIC_REACTION = "new_thrombosis_or_skin_necrosis_or_systemic_reaction"
-    PROGRESSIVE_THROMBOSIS_OR_SKIN_LESIONS_OR_SUSPECTED_THROMBOSIS = "progressive_thrombosis_or_skin_lesions_or_suspected_thrombosis"
-    NO_THROMBOSIS_OR_SEQUELAE = "no_thrombosis_or_sequelae"
-
+class ClinicalFeaturesType(str, Enum):
+    """Enum for clinical features in ABCD² score"""
+    UNILATERAL_WEAKNESS = "unilateral_weakness"  # 2 points
+    SPEECH_DISTURBANCE = "speech_disturbance"    # 1 point
+    OTHER = "other"                              # 0 points
 
 
-class OtherCausesType(str, Enum):
-    """Enum for other causes of thrombocytopenia in 4Ts score"""
-    NO_OTHER_APPARENT_CAUSE = "no_other_apparent_cause"
-    OTHER_POSSIBLE_CAUSES = "other_possible_causes"
-    OTHER_DEFINITIVE_CAUSES = "other_definitive_causes"
+class DurationType(str, Enum):
+    """Enum for symptom duration in ABCD² score"""
+    SIXTY_MIN_OR_MORE = "60min_or_more"    # ≥60 min (2 points)
+    TEN_TO_FIFTY_NINE_MIN = "10_59min"     # 10-59 min (1 point)
+    LESS_THAN_TEN_MIN = "less_10min"       # <10 min (0 points)
 
+
+class DiabetesType(str, Enum):
+    """Enum for diabetes history in ABCD² score"""
+    YES = "yes"
+    NO = "no"
 
 
 class Abcd2Request(BaseModel):
@@ -171,32 +167,3 @@ class Abcd2Response(BaseModel):
                 "stroke_risk_90days": "17.8%"
             }
         }
-
-
-# 4Ts Score Models  
-class ThrombocytopeniaSeverityType(str, Enum):
-    """Enum for thrombocytopenia severity in 4Ts score"""
-    FALL_GREATER_50_NADIR_GREATER_20 = "fall_greater_50_nadir_greater_20"
-    FALL_30_50_OR_NADIR_10_19 = "fall_30_50_or_nadir_10_19"
-    FALL_LESS_30_OR_NADIR_LESS_10 = "fall_less_30_or_nadir_less_10"
-
-
-class TimingOnsetType(str, Enum):
-    """Enum for timing of thrombocytopenia onset in 4Ts score"""
-    ONSET_5_10_DAYS_OR_FALL_1_DAY_HEPARIN_30_DAYS = "onset_5_10_days_or_fall_1_day_heparin_30_days"
-    POSSIBLE_5_10_DAYS_OR_ONSET_AFTER_10_DAYS_OR_HEPARIN_30_100_DAYS = "possible_5_10_days_or_onset_after_10_days_or_heparin_30_100_days"
-    FALL_LESS_4_DAYS_NO_RECENT_EXPOSURE = "fall_less_4_days_no_recent_exposure"
-
-
-class ThrombosisSequelaeType(str, Enum):
-    """Enum for thrombosis/sequelae in 4Ts score"""
-    NEW_THROMBOSIS_OR_SKIN_NECROSIS_OR_SYSTEMIC_REACTION = "new_thrombosis_or_skin_necrosis_or_systemic_reaction"
-    PROGRESSIVE_THROMBOSIS_OR_SKIN_LESIONS_OR_SUSPECTED_THROMBOSIS = "progressive_thrombosis_or_skin_lesions_or_suspected_thrombosis"
-    NO_THROMBOSIS_OR_SEQUELAE = "no_thrombosis_or_sequelae"
-
-
-class OtherCausesType(str, Enum):
-    """Enum for other causes of thrombocytopenia in 4Ts score"""
-    NO_OTHER_APPARENT_CAUSE = "no_other_apparent_cause"
-    OTHER_POSSIBLE_CAUSES = "other_possible_causes"
-    OTHER_DEFINITIVE_CAUSES = "other_definitive_causes"

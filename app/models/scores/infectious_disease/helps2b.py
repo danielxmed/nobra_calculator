@@ -4,7 +4,20 @@ Helps2b calculation models
 
 from pydantic import BaseModel, Field
 from typing import Any
-from app.models.shared import YesNoType
+from enum import Enum
+
+
+class YesNoType(str, Enum):
+    """Enum for yes/no responses"""
+    YES = "yes"
+    NO = "no"
+
+
+class EegFindingType(str, Enum):
+    """Enum for EEG findings"""
+    PRESENT = "present"
+    ABSENT = "absent"
+
 
 class Helps2bRequest(BaseModel):
     """

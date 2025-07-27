@@ -2,7 +2,7 @@
 Rheumatology score models
 """
 
-from .eularacrpmr import EularAcrPmrRequest, EularAcrPmrResponse
+from .eular_acr_pmr import EularAcrPmrRequest, EularAcrPmrResponse
 
 __all__ = [
     "EularAcrPmrRequest",

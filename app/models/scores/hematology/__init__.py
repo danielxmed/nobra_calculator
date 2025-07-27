@@ -2,7 +2,7 @@
 Hematology score models
 """
 
-from .fourts import FourTsRequest, FourTsResponse
+from .four_ts import FourTsRequest, FourTsResponse
 from .alc import AlcRequest, AlcResponse
 from .anc import AncRequest, AncResponse
 

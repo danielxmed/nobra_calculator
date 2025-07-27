@@ -1,6 +1,6 @@
 # Guide for Programming Agents: Implementing New Calculators in nobra_calculator
 
-This guide is intended for programming agents (AI assistants) to implement new medical calculators within the modular structure of the **nobra_calculator API**.
+This guide is intended for programming agents (AI assistants) to implement new medical calculators within the modular, specialty-organized structure of the **nobra_calculator API**.
 
 ## 🤖 Automated Workflow
 
@@ -33,19 +33,39 @@ The agent must work autonomously following this flow:
 - **Adequately document** each implementation
 - **Maintain quality** and consistency across all implementations
 
-## 🏗️ API Architecture
+## 🏗️ API Architecture (Post-Refactoring)
 
 ### Directory Structure
 ```
 nobra_calculator/
 ├── app/
-│   ├── models/          # Pydantic Models (requests/responses)
-│   ├── routers/         # API Endpoints
-│   └── services/        # Business Logic (loading and execution)
-├── calculators/         # ⭐ Python modules with calculation logic
-├── scores/              # ⭐ Score Metadata (JSON)
-├── main.py             # Main FastAPI application
-└── requirements.txt    # Dependencies
+│   ├── models/
+│   │   ├── shared.py            # Common models, enums, base classes
+│   │   └── scores/              # Score models organized by specialty
+│   │       ├── __init__.py      # Main import aggregator
+│   │       ├── cardiology/
+│   │       │   ├── __init__.py
+│   │       │   ├── cha2ds2_vasc.py
+│   │       │   └── acc_aha_hf_staging.py
+│   │       ├── nephrology/
+│   │       │   ├── __init__.py
+│   │       │   ├── ckd_epi_2021.py
+│   │       │   └── abic_score.py
+│   │       └── ... (other specialties)
+│   ├── routers/
+│   │   ├── scores.py            # Main router with common endpoints
+│   │   └── scores/              # Score endpoints organized by specialty
+│   │       ├── __init__.py      # Router aggregator
+│   │       ├── cardiology/
+│   │       │   ├── __init__.py
+│   │       │   ├── cha2ds2_vasc.py
+│   │       │   └── acc_aha_hf_staging.py
+│   │       └── ... (other specialties)
+│   └── services/                # Business Logic (loading and execution)
+├── calculators/                 # ⭐ Python modules with calculation logic
+├── scores/                      # ⭐ Score Metadata (JSON)
+├── main.py                     # Main FastAPI application
+└── requirements.txt            # Dependencies
 ```
 
 ### Workflow
@@ -53,6 +73,20 @@ nobra_calculator/
 2. **CalculatorService** dynamically imports modules from `/calculators/`
 3. **API Routes** expose endpoints for calculations and metadata
 4. **Reload System** allows adding scores without restarting
+
+### Medical Specialties
+The following specialties are currently organized in the system:
+- `cardiology`
+- `nephrology`
+- `pulmonology`
+- `neurology`
+- `hematology`
+- `emergency`
+- `psychiatry`
+- `pediatrics`
+- `geriatrics`
+- `rheumatology`
+- `infectious_disease`
 
 ## 📝 Implementing a New Calculator
 
@@ -65,7 +99,7 @@ Create a file in `/scores/{score_id}.json` following this structure:
   "id": "score_name",
   "title": "Full Score Title",
   "description": "Detailed description of what the score calculates",
-  "category": "medical_category",
+  "category": "medical_specialty",
   "version": "year_or_version",
   "parameters": [
     {
@@ -227,16 +261,40 @@ def calculate_{score_id}(param1, param2, param3) -> Dict[str, Any]:
     return calculator.calculate(param1, param2, param3)
 ```
 
-### STEP 3: Create Pydantic Models 
+### STEP 3: Create Pydantic Models
 
-If you want specific endpoints, add them to `/app/models/score_models.py`:
+Create a file in `/app/models/scores/{specialty}/{score_id}.py`:
 
 ```python
+"""
+{Score Name} Models
+
+Request and response models for {Score Name} calculation.
+"""
+
+from pydantic import BaseModel, Field
+from typing import Optional, Literal
+
+
 class {ScoreId}Request(BaseModel):
     """Request model for {Score Name}"""
-    param1: type = Field(..., description="Description")
-    param2: int = Field(..., ge=min_val, le=max_val, description="Description")
-    param3: float = Field(..., description="Description")
+    param1: type = Field(
+        ..., 
+        description="Detailed parameter description",
+        example=example_value
+    )
+    param2: int = Field(
+        ..., 
+        ge=min_val, 
+        le=max_val, 
+        description="Detailed parameter description",
+        example=50
+    )
+    param3: float = Field(
+        ..., 
+        description="Detailed parameter description",
+        example=1.5
+    )
     
     class Config:
         schema_extra = {
@@ -250,22 +308,87 @@ class {ScoreId}Request(BaseModel):
 
 class {ScoreId}Response(BaseModel):
     """Response model for {Score Name}"""
-    result: float = Field(..., description="Calculation result")
-    unit: str = Field(..., description="Result unit")
-    interpretation: str = Field(..., description="Clinical interpretation")
-    stage: str = Field(..., description="Stage/classification")
-    stage_description: str = Field(..., description="Stage description")
+    result: float = Field(
+        ..., 
+        description="Calculation result",
+        example=75.5
+    )
+    unit: str = Field(
+        ..., 
+        description="Result unit",
+        example="mL/min/1.73 m²"
+    )
+    interpretation: str = Field(
+        ..., 
+        description="Clinical interpretation",
+        example="Stage 2 chronic kidney disease"
+    )
+    stage: Optional[str] = Field(
+        None,
+        description="Stage/classification",
+        example="G2"
+    )
+    stage_description: Optional[str] = Field(
+        None,
+        description="Stage description",
+        example="Mild decrease in GFR"
+    )
+    
+    class Config:
+        schema_extra = {
+            "example": {
+                "result": 75.5,
+                "unit": "mL/min/1.73 m²",
+                "interpretation": "Stage 2 chronic kidney disease. Monitor annually.",
+                "stage": "G2",
+                "stage_description": "Mild decrease in GFR"
+            }
+        }
 ```
 
-### STEP 4: Add Specific Endpoint
+### STEP 4: Update Specialty Model Imports
 
-In `/app/routers/scores.py`, add:
+Add to `/app/models/scores/{specialty}/__init__.py`:
 
 ```python
+# Import the new score models
+from .{score_id} import {ScoreId}Request, {ScoreId}Response
+
+# Add to __all__ export list
+__all__ = [
+    # ... existing exports ...
+    "{ScoreId}Request",
+    "{ScoreId}Response",
+]
+```
+
+### STEP 5: Create Router Endpoint
+
+Create a file in `/app/routers/scores/{specialty}/{score_id}.py`:
+
+```python
+"""
+{Score Name} Router
+
+Endpoint for calculating {Score Name}.
+"""
+
+from fastapi import APIRouter, HTTPException
+from app.models.scores.{specialty}.{score_id} import (
+    {ScoreId}Request,
+    {ScoreId}Response
+)
+from app.services.calculator_service import calculator_service
+
+router = APIRouter()
+
+
 @router.post("/{score_id}", response_model={ScoreId}Response)
 async def calculate_{score_id}(request: {ScoreId}Request):
     """
     Calculates {Score Name}
+    
+    {Brief description of what this score is used for}
     
     Args:
         request: Parameters needed for calculation
@@ -274,12 +397,8 @@ async def calculate_{score_id}(request: {ScoreId}Request):
         {ScoreId}Response: Result with clinical interpretation
     """
     try:
-        # Convert request to dictionary
-        parameters = {
-            "param1": request.param1,
-            "param2": request.param2,
-            "param3": request.param3
-        }
+        # Convert request to dictionary for calculator service
+        parameters = request.dict()
         
         # Execute calculation
         result = calculator_service.calculate_score("{score_id}", parameters)
@@ -318,6 +437,37 @@ async def calculate_{score_id}(request: {ScoreId}Request):
         )
 ```
 
+### STEP 6: Update Specialty Router Imports
+
+Add to `/app/routers/scores/{specialty}/__init__.py`:
+
+```python
+from fastapi import APIRouter
+from .{score_id} import router as {score_id}_router
+
+# Create the specialty router if it doesn't exist
+router = APIRouter()
+
+# Include the new score router
+router.include_router({score_id}_router)
+```
+
+### STEP 7: Update Main Score Model Exports (if needed)
+
+If the score should be importable from the main scores module, add to `/app/models/scores/__init__.py`:
+
+```python
+# Add the import
+from .{specialty}.{score_id} import {ScoreId}Request, {ScoreId}Response
+
+# Add to __all__ if maintaining backward compatibility
+__all__ = [
+    # ... existing exports ...
+    "{ScoreId}Request",
+    "{ScoreId}Response",
+]
+```
+
 ## 🧪 Testing the Implementation
 
 ### 1. Reload Scores
@@ -348,6 +498,14 @@ curl http://localhost:8000/api/scores/{score_id}
 - **score_id**: snake_case (e.g., `ckd_epi_2021`)
 - **Calculator Class**: PascalCase + "Calculator" (e.g., `CkdEpi2021Calculator`)  
 - **Convenience Function**: `calculate_{score_id}` (e.g., `calculate_ckd_epi_2021`)
+- **Model Classes**: PascalCase + "Request/Response" (e.g., `CkdEpi2021Request`)
+- **Specialty folders**: lowercase with underscores (e.g., `infectious_disease`)
+
+### File Organization
+- Models go in `/app/models/scores/{specialty}/{score_id}.py`
+- Routers go in `/app/routers/scores/{specialty}/{score_id}.py`
+- Each specialty has its own `__init__.py` files for aggregation
+- Maintain the hierarchical import structure
 
 ### Mandatory Validations
 - ✅ Validate parameter types
@@ -389,6 +547,11 @@ The return **MUST** always have this minimum structure:
 - ✅ Check mandatory fields: `id`, `title`, `description`, `category`, `parameters`, `result`
 - ✅ Check if `parameters` is an array and `result` is an object
 
+### Error: "Module import failed"
+- ✅ Check if specialty `__init__.py` files are updated
+- ✅ Verify model class names match imports
+- ✅ Ensure proper indentation in Python files
+
 ## 🔄 Automated Implementation Protocol
 
 ### Detailed Flow per Iteration
@@ -415,8 +578,9 @@ For each implementation cycle, strictly follow:
 ```
 - Create JSON in /scores/{score_id}.json
 - Implement calculator in /calculators/{score_id}.py
-- Implement pydantic models
-- Implements specific endopoint for the score
+- Create Pydantic models in /app/models/scores/{specialty}/{score_id}.py
+- Create router in /app/routers/scores/{specialty}/{score_id}.py
+- Update specialty __init__.py files (models and routers)
 - Test with POST /api/reload
 - Verify functionality via API
 - Validate all input scenarios
@@ -450,21 +614,32 @@ For each implementation cycle, strictly follow:
 - **Complete Documentation**: Include bibliographic references and clinical notes
 - **Consistent Naming**: Follow snake_case for IDs and PascalCase for classes
 - **Clinical Interpretation**: Provide appropriate medical interpretations for each result
+- **Specialty Organization**: Place files in correct specialty folders
 
 ### Error Handling
 
 - **Implementation Error**: Correct and retest before marking as complete
 - **Incomplete Formula**: Seek additional references or skip to the next calculator
 - **Naming Conflict**: Adapt name following established conventions
+- **Missing Specialty**: Create new specialty folder structure if needed
 
 ## 🎯 Summary of Steps
 
 1. **Create JSON** in `/scores/{score_id}.json` with complete metadata
 2. **Implement calculator** in `/calculators/{score_id}.py` with `calculate_{score_id}` function  
-3. **Test** via reload and API endpoints
-4. **Add Pydantic models** for specific endpoints
-5. **Document** references and formulas appropriately
-6. **Mark as complete** in CALC_LIST.md
-7. **Compact conversation** and restart cycle
+3. **Create Pydantic models** in `/app/models/scores/{specialty}/{score_id}.py`
+4. **Update specialty model imports** in `/app/models/scores/{specialty}/__init__.py`
+5. **Create router endpoint** in `/app/routers/scores/{specialty}/{score_id}.py`
+6. **Update specialty router imports** in `/app/routers/scores/{specialty}/__init__.py`
+7. **Test** via reload and API endpoints
+8. **Document** references and formulas appropriately
+9. **Mark as complete** in CALC_LIST.md
+10. **Compact conversation** and restart cycle
 
-By following this guide, any programming agent can implement new medical calculators in nobra_calculator consistently, functionally, and fully automated! 🚀
+By following this guide, any programming agent can implement new medical calculators in nobra_calculator's modular architecture consistently, functionally, and fully automated! 🚀
+
+# important-instruction-reminders
+Do what has been asked; nothing more, nothing less.
+NEVER create files unless they're absolutely necessary for achieving your goal.
+ALWAYS prefer editing an existing file to creating a new one.
+NEVER proactively create documentation files (*.md) or README files. Only create documentation files if explicitly requested by the User.

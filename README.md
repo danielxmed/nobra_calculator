@@ -4,12 +4,12 @@ Modular API for medical calculations and scores developed with FastAPI.
 
 ## 📋 Description
 
-nobra_calculator is a scalable REST API that allows the calculation of various medical scores and indices. Its modular architecture facilitates the progressive addition of new calculations.
+nobra_calculator is a scalable REST API that allows the calculation of various medical scores and indices. Its modular architecture, organized by medical specialties, facilitates the progressive addition of new calculations.
 
 ### Features
 
-- **Modular**: Easy addition of new medical scores
-- **Scalable**: Organized structure for growth
+- **Modular**: Specialty-organized structure for easy addition of new medical scores
+- **Scalable**: Clean architecture designed for growth
 - **Documented**: Automatic documentation with Swagger/OpenAPI
 - **Validated**: Robust parameter validation with Pydantic
 - **Interpreted**: Returns not only the result but also the clinical interpretation
@@ -55,35 +55,48 @@ The API will be available at `http://localhost:8000`
 
 ## 🩺 Available Scores
 
-### CKD-EPI 2021
-Calculates the Estimated Glomerular Filtration Rate (eGFR) using the CKD-EPI 2021 equation.
+The API currently supports 19 medical scores organized by specialty:
 
-**Endpoint**: `POST /api/ckd_epi_2021`
+### Nephrology
+- **CKD-EPI 2021**: Estimated Glomerular Filtration Rate
+- **ABIC Score**: Alcoholic Hepatitis Severity
 
-**Parameters**:
-- `sex`: "male" or "female"
-- `age`: Age in years (18-120)
-- `serum_creatinine`: Serum creatinine in mg/dL (0.1-20.0)
+### Cardiology
+- **CHA₂DS₂-VASc**: Stroke Risk in Atrial Fibrillation
+- **ACC/AHA HF Staging**: Heart Failure Classification
 
-**Example Request**:
-```json
-{
-  "sex": "female",
-  "age": 65,
-  "serum_creatinine": 1.2
-}
-```
+### Pulmonology
+- **CURB-65**: Pneumonia Severity
+- **6-Minute Walk Distance**: Functional Capacity
+- **A-a O2 Gradient**: Alveolar-arterial Oxygen Gradient
 
-**Example Response**:
-```json
-{
-  "result": 52.3,
-  "unit": "mL/min/1.73 m²",
-  "interpretation": "Stage 3a Chronic Kidney Disease. Nephrology follow-up recommended.",
-  "stage": "G3a",
-  "stage_description": "Mild to moderate decrease in GFR"
-}
-```
+### Neurology
+- **ABCD2**: Stroke Risk After TIA
+- **4AT**: Delirium Detection
+
+### Hematology
+- **4Ts HIT**: Heparin-Induced Thrombocytopenia
+- **ALC**: Absolute Lymphocyte Count
+- **ANC**: Absolute Neutrophil Count
+
+### Emergency Medicine
+- **4C Mortality**: COVID-19 Mortality Risk
+
+### Psychiatry
+- **AAS**: Anxiety Assessment Scale
+- **AIMS**: Abnormal Involuntary Movement Scale
+
+### Pediatrics
+- **AAP Pediatric Hypertension**: Blood Pressure Classification
+
+### Geriatrics
+- **Abbey Pain Scale**: Pain Assessment in Dementia
+
+### Rheumatology
+- **2012 EULAR/ACR PMR**: Polymyalgia Rheumatica Classification
+
+### Infectious Disease
+- **HELPS2B**: COVID-19 Diagnosis Aid
 
 ## 🛠️ API Endpoints
 
@@ -93,8 +106,14 @@ Calculates the Estimated Glomerular Filtration Rate (eGFR) using the CKD-EPI 202
 - `GET /api/categories` - Lists medical categories
 - `POST /api/reload` - Reloads scores and calculators
 
-### Calculations
-- `POST /api/ckd_epi_2021` - Calculates CKD-EPI 2021
+### Generic Calculation
+- `POST /api/{score_id}/calculate` - Calculate any score with dynamic parameters
+
+### Specific Score Endpoints
+Each score also has its dedicated endpoint:
+- `POST /api/ckd_epi_2021` - CKD-EPI 2021
+- `POST /api/cha2ds2_vasc` - CHA₂DS₂-VASc
+- And 17 more specific endpoints...
 
 ### System
 - `GET /health` - API health check
@@ -105,33 +124,46 @@ Calculates the Estimated Glomerular Filtration Rate (eGFR) using the CKD-EPI 202
 ```
 nobra_calculator/
 ├── app/
-│   ├── models/          # Pydantic Models
-│   ├── routers/         # API Routes
-│   └── services/        # Business Logic
-├── calculators/         # Calculation Modules
-├── scores/              # Score Metadata (JSON)
-├── main.py             # Main application
-└── requirements.txt    # Dependencies
+│   ├── models/
+│   │   ├── shared.py           # Common models and enums
+│   │   └── scores/             # Score models by specialty
+│   │       ├── cardiology/
+│   │       ├── nephrology/
+│   │       ├── pulmonology/
+│   │       └── ...
+│   ├── routers/
+│   │   ├── scores.py           # Main router with common endpoints
+│   │   └── scores/             # Score endpoints by specialty
+│   │       ├── cardiology/
+│   │       ├── nephrology/
+│   │       └── ...
+│   └── services/               # Business Logic
+├── calculators/                # Calculation Modules
+├── scores/                     # Score Metadata (JSON)
+├── main.py                     # Main application
+└── requirements.txt            # Dependencies
 ```
 
 ## 🔧 Adding New Scores
 
 To add a new score:
 
-1. **Create the JSON file** in `/scores/` with the metadata:
+### 1. Create the JSON metadata file
+Create `/scores/{score_id}.json` with the score metadata:
 ```json
 {
   "id": "new_score",
   "title": "Score Title",
   "description": "Detailed description",
-  "category": "medical_category",
+  "category": "medical_specialty",
   "parameters": [...],
   "result": {...},
   "interpretation": {...}
 }
 ```
 
-2. **Create the calculation module** in `/calculators/`:
+### 2. Create the calculation module
+Create `/calculators/{score_id}.py`:
 ```python
 def calculate_new_score(param1, param2):
     # Calculation logic
@@ -143,9 +175,50 @@ def calculate_new_score(param1, param2):
     }
 ```
 
-3. **Add the endpoint** (optional) or use the generic system
+### 3. Create the Pydantic models
+Create `/app/models/scores/{specialty}/{score_id}.py`:
+```python
+from pydantic import BaseModel, Field
 
-4. **Reload**: `POST /api/reload`
+class NewScoreRequest(BaseModel):
+    """Request model for New Score"""
+    param1: str = Field(..., description="Parameter 1")
+    param2: float = Field(..., description="Parameter 2")
+
+class NewScoreResponse(BaseModel):
+    """Response model for New Score"""
+    result: float = Field(..., description="Calculation result")
+    unit: str = Field(..., description="Result unit")
+    interpretation: str = Field(..., description="Clinical interpretation")
+```
+
+### 4. Create the router endpoint
+Create `/app/routers/scores/{specialty}/{score_id}.py`:
+```python
+from fastapi import APIRouter, HTTPException
+from app.models.scores.{specialty}.{score_id} import NewScoreRequest, NewScoreResponse
+from app.services.calculator_service import calculator_service
+
+router = APIRouter()
+
+@router.post("/new_score", response_model=NewScoreResponse)
+async def calculate_new_score(request: NewScoreRequest):
+    """Calculate New Score"""
+    try:
+        result = calculator_service.calculate_score("new_score", request.dict())
+        return NewScoreResponse(**result)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+```
+
+### 5. Update the specialty __init__.py files
+- Add imports to `/app/models/scores/{specialty}/__init__.py`
+- Add router to `/app/routers/scores/{specialty}/__init__.py`
+
+### 6. Reload the scores
+```bash
+curl -X POST http://localhost:8000/api/reload
+```
 
 ## 🧪 Testing
 

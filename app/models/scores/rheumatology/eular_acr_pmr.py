@@ -4,27 +4,38 @@ EularAcrPmr calculation models
 
 from pydantic import BaseModel, Field
 from typing import Optional
-
-class AlertnessType(str, Enum):
-    """Enum for alertness level"""
-    NORMAL = "normal"
-    ALTERED = "altered"
+from enum import Enum
 
 
-
-class AttentionMonthsType(str, Enum):
-    """Enum for attention test with months"""
-    SEVEN_OR_MORE = "7_or_more"
-    STARTS_LESS_THAN_7 = "starts_less_than_7"
-    REFUSES_UNTESTABLE = "refuses_untestable"
+class MorningStiffnessType(str, Enum):
+    """Enum for morning stiffness duration"""
+    GREATER_45MIN = ">45min"
+    LESS_EQUAL_45MIN = "≤45min"
 
 
+class HipPainRomType(str, Enum):
+    """Enum for hip pain or limited range of motion"""
+    YES = "yes"
+    NO = "no"
 
-class AcuteChangeType(str, Enum):
-    """Enum for acute change or fluctuating course"""
-    ABSENT = "absent"
+
+class RfAcpaType(str, Enum):
+    """Enum for RF or ACPA presence"""
     PRESENT = "present"
+    ABSENT = "absent"
 
+
+class OtherJointPainType(str, Enum):
+    """Enum for other joint pain"""
+    PRESENT = "present"
+    ABSENT = "absent"
+
+
+class UltrasoundType(str, Enum):
+    """Enum for ultrasound findings"""
+    PRESENT = "present"
+    ABSENT = "absent"
+    NOT_PERFORMED = "not_performed"
 
 
 class EularAcrPmrRequest(BaseModel):
@@ -161,24 +172,3 @@ class EularAcrPmrResponse(BaseModel):
                 "stage_description": "Classifies as PMR (without ultrasound)"
             }
         }
-
-
-# Four AT Models
-# 4AT Enums
-class AlertnessType(str, Enum):
-    """Enum for alertness level"""
-    NORMAL = "normal"
-    ALTERED = "altered"
-
-
-class AttentionMonthsType(str, Enum):
-    """Enum for attention test with months"""
-    SEVEN_OR_MORE = "7_or_more"
-    STARTS_LESS_THAN_7 = "starts_less_than_7"
-    REFUSES_UNTESTABLE = "refuses_untestable"
-
-
-class AcuteChangeType(str, Enum):
-    """Enum for acute change or fluctuating course"""
-    ABSENT = "absent"
-    PRESENT = "present"

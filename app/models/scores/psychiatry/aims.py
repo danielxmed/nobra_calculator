@@ -4,8 +4,15 @@ Aims calculation models
 
 from pydantic import BaseModel, Field
 from typing import Any
+from enum import Enum
 
-# AIMS Models
+
+class YesNoType(str, Enum):
+    """Enum for yes/no responses"""
+    YES = "yes"
+    NO = "no"
+
+
 class AimsRequest(BaseModel):
     """
     Request model for Abnormal Involuntary Movement Scale (AIMS)
@@ -110,11 +117,11 @@ class AimsRequest(BaseModel):
         le=4, 
         description="Patient's awareness of abnormal movements: 0=no awareness, 1=aware/no distress, 2=mild distress, 3=moderate distress, 4=severe distress."
     )
-    current_problems_teeth: DiabetesType = Field(
+    current_problems_teeth: YesNoType = Field(
         ..., 
         description="Current problems with teeth and/or dentures that might affect oral movement assessment or be affected by oral dyskinesia."
     )
-    dental_problems_interfere: DiabetesType = Field(
+    dental_problems_interfere: YesNoType = Field(
         ..., 
         description="Whether dental problems interfere with the assessment of oral movements or are exacerbated by tardive dyskinesia."
     )

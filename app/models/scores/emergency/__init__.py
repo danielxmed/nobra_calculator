@@ -2,7 +2,7 @@
 Emergency score models
 """
 
-from .fourcmortality import FourCMortalityRequest, FourCMortalityResponse
+from .four_c_mortality import FourCMortalityRequest, FourCMortalityResponse
 
 __all__ = [
     "FourCMortalityRequest",

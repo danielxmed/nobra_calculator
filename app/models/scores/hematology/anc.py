@@ -4,17 +4,9 @@ Anc calculation models
 
 from pydantic import BaseModel, Field
 from typing import Optional
-from app.models.shared import HospitalizationFrequencyType
-
-class HospitalizationFrequencyType(str, Enum):
-    """Enum for hospitalization frequency"""
-    FREQUENT = "frequent"
-    RARE = "rare"
-    NONE = "none"
+from enum import Enum
 
 
-
-# ANC Models  
 class AncRequest(BaseModel):
     """
     Request model for Absolute Neutrophil Count (ANC) calculation
@@ -140,11 +132,3 @@ class AncResponse(BaseModel):
                 "infection_risk": "normal"
             }
         }
-
-
-# ACC/AHA HF Staging Models
-class HospitalizationFrequencyType(str, Enum):
-    """Enum for hospitalization frequency"""
-    FREQUENT = "frequent"
-    RARE = "rare"
-    NONE = "none"

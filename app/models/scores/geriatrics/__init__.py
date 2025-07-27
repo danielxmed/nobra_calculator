@@ -2,7 +2,7 @@
 Geriatrics score models
 """
 
-from .abbeypain import AbbeyPainRequest, AbbeyPainResponse
+from .abbey_pain import AbbeyPainRequest, AbbeyPainResponse
 
 __all__ = [
     "AbbeyPainRequest",

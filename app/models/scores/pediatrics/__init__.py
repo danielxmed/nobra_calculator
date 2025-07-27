@@ -2,7 +2,7 @@
 Pediatrics score models
 """
 
-from .aappediatrichypertension import AapPediatricHypertensionRequest, AapPediatricHypertensionResponse
+from .aap_pediatric_hypertension import AapPediatricHypertensionRequest, AapPediatricHypertensionResponse
 
 __all__ = [
     "AapPediatricHypertensionRequest",

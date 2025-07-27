@@ -4,20 +4,7 @@ AAO2Gradient calculation models
 
 from pydantic import BaseModel, Field
 from typing import Optional
-from app.models.shared import YesNoType
-
-class YesNoType(str, Enum):
-    """Enum for yes/no responses"""
-    YES = "yes"
-    NO = "no"
-
-
-
-class YesNoNAType(str, Enum):
-    """Enum for yes/no/not applicable responses"""
-    YES = "yes"
-    NO = "no"
-    NOT_APPLICABLE = "not_applicable"
+from enum import Enum
 
 
 
@@ -166,17 +153,3 @@ class AAO2GradientResponse(BaseModel):
                 "age_adjusted_normal": 15.25
             }
         }
-
-
-# AAS Models
-class YesNoType(str, Enum):
-    """Enum for yes/no responses"""
-    YES = "yes"
-    NO = "no"
-
-
-class YesNoNAType(str, Enum):
-    """Enum for yes/no/not applicable responses"""
-    YES = "yes"
-    NO = "no"
-    NOT_APPLICABLE = "not_applicable"
