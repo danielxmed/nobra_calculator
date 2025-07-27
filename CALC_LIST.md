@@ -24,10 +24,10 @@
 ### ✅ 2012 EULAR/ACR Classification Criteria for Polymyalgia Rheumatica
 **Description:** Classifies polymyalgia rheumatica by expert consensus recommendations.
 
-### 2018 Leibovich Model for Renal Cell Carcinoma (RCC) - NEW
+### ✅ 2018 Leibovich Model for Renal Cell Carcinoma (RCC) - NEW
 **Description:** Predicts progression-free and cancer-specific survival in patients with renal cell carcinoma (RCC).
 
-### 2023 Duke-International Society for Cardiovascular Infectious Diseases (ISCVID) Criteria - NEW
+### ✅ 2023 Duke-International Society for Cardiovascular Infectious Diseases (ISCVID) Criteria - NEW
 **Description:** Diagnostic criteria for infective endocarditis.
 
 ### 2023 Emergency Medicine Coding Guide

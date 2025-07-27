@@ -1,0 +1,160 @@
+{
+  "id": "leibovich_2018_rcc",
+  "title": "2018 Leibovich Model for Renal Cell Carcinoma (RCC)",
+  "description": "Predicts progression-free and cancer-specific survival in patients with renal cell carcinoma (RCC) using clinical, surgical, and pathologic factors",
+  "category": "oncology",
+  "version": "2018",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient's age at surgery in years",
+      "validation": {
+        "min": 18,
+        "max": 100
+      },
+      "unit": "years"
+    },
+    {
+      "name": "ecog_status",
+      "type": "string",
+      "required": true,
+      "description": "ECOG Performance Status",
+      "options": ["0", "≥1"],
+      "validation": {
+        "enum": ["0", "≥1"]
+      }
+    },
+    {
+      "name": "constitutional_symptoms",
+      "type": "boolean",
+      "required": true,
+      "description": "Presence of constitutional symptoms (fever, night sweats, weight loss)"
+    },
+    {
+      "name": "adrenalectomy",
+      "type": "boolean",
+      "required": true,
+      "description": "Adrenalectomy performed during surgery"
+    },
+    {
+      "name": "surgical_margins",
+      "type": "string",
+      "required": true,
+      "description": "Surgical margin status",
+      "options": ["negative", "positive"],
+      "validation": {
+        "enum": ["negative", "positive"]
+      }
+    },
+    {
+      "name": "tumor_grade",
+      "type": "string",
+      "required": true,
+      "description": "Tumor grade (Fuhrman/WHO-ISUP grading)",
+      "options": ["1", "2", "3", "4"],
+      "validation": {
+        "enum": ["1", "2", "3", "4"]
+      }
+    },
+    {
+      "name": "coagulative_necrosis",
+      "type": "boolean",
+      "required": true,
+      "description": "Presence of coagulative tumor necrosis"
+    },
+    {
+      "name": "sarcomatoid_differentiation",
+      "type": "boolean",
+      "required": true,
+      "description": "Presence of sarcomatoid differentiation"
+    },
+    {
+      "name": "tumor_size",
+      "type": "float",
+      "required": true,
+      "description": "Maximum tumor diameter in centimeters",
+      "validation": {
+        "min": 0.5,
+        "max": 25.0
+      },
+      "unit": "cm"
+    },
+    {
+      "name": "perinephric_invasion",
+      "type": "boolean",
+      "required": true,
+      "description": "Invasion of perinephric fat or renal sinus fat"
+    },
+    {
+      "name": "tumor_thrombus",
+      "type": "string",
+      "required": true,
+      "description": "Presence and level of tumor thrombus",
+      "options": ["none", "level_0", "level_1_4"],
+      "validation": {
+        "enum": ["none", "level_0", "level_1_4"]
+      }
+    },
+    {
+      "name": "extension_beyond_kidney",
+      "type": "boolean",
+      "required": true,
+      "description": "Extension beyond kidney capsule"
+    }
+  ],
+  "result": {
+    "name": "leibovich_score",
+    "type": "object",
+    "unit": "points",
+    "description": "Leibovich 2018 prognostic scores for progression-free survival and cancer-specific survival"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 4,
+        "stage": "Low Risk",
+        "description": "Excellent prognosis",
+        "interpretation": "Low risk of progression and cancer-specific death. Standard surveillance protocols recommended."
+      },
+      {
+        "min": 5,
+        "max": 9,
+        "stage": "Intermediate Risk",
+        "description": "Good prognosis",
+        "interpretation": "Intermediate risk of progression and cancer-specific death. Consider enhanced surveillance and discuss adjuvant therapy options."
+      },
+      {
+        "min": 10,
+        "max": 14,
+        "stage": "High Risk",
+        "description": "Poor prognosis",
+        "interpretation": "High risk of progression and cancer-specific death. Intensive surveillance and consideration of adjuvant therapy recommended."
+      },
+      {
+        "min": 15,
+        "max": 20,
+        "stage": "Very High Risk",
+        "description": "Very poor prognosis",
+        "interpretation": "Very high risk of progression and cancer-specific death. Aggressive management and clinical trial consideration warranted."
+      }
+    ]
+  },
+  "references": [
+    "Thompson RH, Leibovich BC, Cheville JC, et al. Negative impact of sarcomatoid differentiation on the outcome of clear cell renal cell carcinoma. Am J Surg Pathol. 2018;42(4):474-481.",
+    "Leibovich BC, Blute ML, Cheville JC, et al. Prediction of progression after radical nephrectomy for patients with clear cell renal cell carcinoma: a stratification tool for prospective clinical trials. Cancer. 2003;97(7):1663-71.",
+    "Thompson RH, Cheville JC, Lohse CM, et al. Reclassification of patients with pT3 and pT4 renal cell carcinoma improves prognostic accuracy. Cancer. 2005;104(1):53-60."
+  ],
+  "formula": "Scoring based on clinical, surgical, and pathologic factors with separate models for progression-free survival (PFS) and cancer-specific survival (CSS)",
+  "notes": [
+    "This model applies specifically to clear cell renal cell carcinoma (ccRCC)",
+    "Separate scoring algorithms exist for progression-free survival and cancer-specific survival",
+    "The model was developed for non-metastatic RCC patients",
+    "Age scoring: <60 years = 0 points, ≥60 years = 1 point (CSS only)",
+    "Tumor size scoring varies by outcome (PFS vs CSS) and specific size ranges",
+    "Constitutional symptoms include fever, night sweats, and weight loss",
+    "ECOG 0 = fully active, ≥1 = restricted in activity"
+  ]
+}

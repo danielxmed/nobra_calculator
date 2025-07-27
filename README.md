@@ -53,50 +53,6 @@ The API will be available at `http://localhost:8000`
 - **ReDoc**: `http://localhost:8000/redoc`
 - **Health Check**: `http://localhost:8000/health`
 
-## 🩺 Available Scores
-
-The API currently supports 19 medical scores organized by specialty:
-
-### Nephrology
-- **CKD-EPI 2021**: Estimated Glomerular Filtration Rate
-- **ABIC Score**: Alcoholic Hepatitis Severity
-
-### Cardiology
-- **CHA₂DS₂-VASc**: Stroke Risk in Atrial Fibrillation
-- **ACC/AHA HF Staging**: Heart Failure Classification
-
-### Pulmonology
-- **CURB-65**: Pneumonia Severity
-- **6-Minute Walk Distance**: Functional Capacity
-- **A-a O2 Gradient**: Alveolar-arterial Oxygen Gradient
-
-### Neurology
-- **ABCD2**: Stroke Risk After TIA
-- **4AT**: Delirium Detection
-
-### Hematology
-- **4Ts HIT**: Heparin-Induced Thrombocytopenia
-- **ALC**: Absolute Lymphocyte Count
-- **ANC**: Absolute Neutrophil Count
-
-### Emergency Medicine
-- **4C Mortality**: COVID-19 Mortality Risk
-
-### Psychiatry
-- **AAS**: Anxiety Assessment Scale
-- **AIMS**: Abnormal Involuntary Movement Scale
-
-### Pediatrics
-- **AAP Pediatric Hypertension**: Blood Pressure Classification
-
-### Geriatrics
-- **Abbey Pain Scale**: Pain Assessment in Dementia
-
-### Rheumatology
-- **2012 EULAR/ACR PMR**: Polymyalgia Rheumatica Classification
-
-### Infectious Disease
-- **HELPS2B**: COVID-19 Diagnosis Aid
 
 ## 🛠️ API Endpoints
 
@@ -106,14 +62,12 @@ The API currently supports 19 medical scores organized by specialty:
 - `GET /api/categories` - Lists medical categories
 - `POST /api/reload` - Reloads scores and calculators
 
-### Generic Calculation
-- `POST /api/{score_id}/calculate` - Calculate any score with dynamic parameters
 
 ### Specific Score Endpoints
 Each score also has its dedicated endpoint:
-- `POST /api/ckd_epi_2021` - CKD-EPI 2021
-- `POST /api/cha2ds2_vasc` - CHA₂DS₂-VASc
-- And 17 more specific endpoints...
+- `POST /ckd_epi_2021` - CKD-EPI 2021
+- `POST /cha2ds2_vasc` - CHA₂DS₂-VASc
+...
 
 ### System
 - `GET /health` - API health check

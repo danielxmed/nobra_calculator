@@ -16,6 +16,7 @@ from .pediatrics import router as pediatrics_router
 from .geriatrics import router as geriatrics_router
 from .rheumatology import router as rheumatology_router
 from .infectious_disease import router as infectious_disease_router
+from .oncology import router as oncology_router
 
 # Create main scores router
 router = APIRouter()
@@ -32,3 +33,4 @@ router.include_router(pediatrics_router, tags=["pediatrics"])
 router.include_router(geriatrics_router, tags=["geriatrics"])
 router.include_router(rheumatology_router, tags=["rheumatology"])
 router.include_router(infectious_disease_router, tags=["infectious_disease"])
+router.include_router(oncology_router, tags=["oncology"])

@@ -14,6 +14,7 @@ from .pediatrics import *
 from .geriatrics import *
 from .rheumatology import *
 from .infectious_disease import *
+from .oncology import *
 
 # Import shared models
 from ..shared import (
@@ -87,6 +88,10 @@ __all__ = [
     # Infectious Disease
     "Helps2bRequest",
     "Helps2bResponse",
+    
+    # Oncology
+    "Leibovich2018RccRequest",
+    "Leibovich2018RccResponse",
     
     # Shared/Common
     "ScoreListResponse",

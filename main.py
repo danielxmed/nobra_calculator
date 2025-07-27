@@ -16,6 +16,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from app import __version__, __description__
 from app.routers import scores_router, health_router
+from app.routers.api_routes import router as api_router
 
 # FastAPI application configuration
 app = FastAPI(
@@ -28,38 +29,25 @@ app = FastAPI(
 
     ### 🚀 Key Features
 
-    - **19+ Medical Scores**: Covering cardiology, nephrology, pulmonology, neurology, and more
+    - **Medical Scores**: Covering cardiology, nephrology, pulmonology, neurology, and more
     - **Clinical Interpretations**: Evidence-based recommendations for each calculation
     - **Robust Validation**: Comprehensive input validation with clinical ranges
     - **Production Ready**: Scalable architecture with comprehensive error handling
     - **Standards Compliant**: Following medical guidelines and best practices
 
-    ### 📊 Available Categories
-
-    | Category | Scores | Examples |
-    |----------|--------|----------|
-    | **Cardiology** | 2+ | CHA₂DS₂-VASc, ACC/AHA HF Staging |
-    | **Nephrology** | 2+ | CKD-EPI 2021, ABIC Score |
-    | **Pulmonology** | 3+ | CURB-65, 6MWT, A-a O₂ Gradient |
-    | **Neurology** | 3+ | ABCD² Score, 4AT, 2HELPS2B |
-    | **Hematology** | 1+ | 4Ts HIT Score |
-    | **Emergency** | 1+ | 4C COVID-19 Mortality |
-    | **Pediatrics** | 1+ | AAP Hypertension Guidelines |
-    | **Geriatrics** | 1+ | Abbey Pain Scale |
-    | **Psychiatry** | 1+ | AIMS Tardive Dyskinesia |
-
     ### 🔗 Quick Start
 
     1. **Browse Available Scores**: `GET /api/scores`
     2. **Get Score Details**: `GET /api/scores/{score_id}`
-    3. **Calculate Score**: `POST /api/{score_id}`
-    4. **Health Check**: `GET /health`
+    3. **Health Check**: `GET /health`
+    4. **Get scores list**: `GET /api/scores`
+    5. **Get scores categories**: `GET /api/categories`
+    6. **Reload scores**: 'POST /api/reload'
 
     ### 📚 Documentation
 
     - **Interactive API Docs**: [/docs](/docs) (Swagger UI)
-    - **Alternative Docs**: [/redoc](/redoc) (ReDoc)
-    - **OpenAPI Spec**: [/openapi.json](/openapi.json)
+
 
     ### ⚠️ Clinical Disclaimer
 
@@ -129,6 +117,7 @@ async def global_exception_handler(request: Request, exc: Exception):
 # Register routers
 app.include_router(health_router)
 app.include_router(scores_router)
+app.include_router(api_router)
 
 # Root endpoint
 @app.get("/")

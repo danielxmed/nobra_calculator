@@ -13,7 +13,8 @@ from app.services.score_service import score_service
 from app.services.calculator_service import calculator_service
 
 # Import the specialty scores router
-from .scores import router as specialty_scores_router
+# NOTE: Temporarily commenting to fix API routes conflict
+# from .scores import router as specialty_scores_router
 
 router = APIRouter(
     prefix="/api",
@@ -25,8 +26,9 @@ router = APIRouter(
     }
 )
 
-# Include all specialty score endpoints
-router.include_router(specialty_scores_router)
+# NOTE: Individual score endpoints are available at root level
+# Individual calculator endpoints like /duke_iscvid_2023 continue to work
+# Main API management routes are available here with /api prefix
 
 
 @router.get("/scores", 

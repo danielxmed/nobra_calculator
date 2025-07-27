@@ -1,0 +1,323 @@
+{
+  "id": "duke_iscvid_2023",
+  "title": "2023 Duke-International Society for Cardiovascular Infectious Diseases (ISCVID) Criteria",
+  "description": "Diagnostic criteria for infective endocarditis, updated from the original Duke criteria with improved sensitivity and specificity.",
+  "category": "infectious_disease",
+  "version": "2023",
+  "parameters": [
+    {
+      "name": "microbiologic_major_typical",
+      "type": "string",
+      "required": false,
+      "description": "Microorganisms that commonly cause IE isolated from 2 or more separate blood culture sets",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "microbiologic_major_nontypical",
+      "type": "string",
+      "required": false,
+      "description": "Microorganisms that occasionally or rarely cause IE isolated from 3 or more separate blood culture sets",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "pcr_positive_coxiella_bartonella_tropheryma",
+      "type": "string",
+      "required": false,
+      "description": "Positive PCR or nucleic acid-based technique for Coxiella burnetii, Bartonella species, or Tropheryma whipplei from blood",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "coxiella_antibody_titer",
+      "type": "string",
+      "required": false,
+      "description": "Coxiella burnetii antiphase I IgG antibody titer >1:800, or isolated from single blood culture",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "bartonella_antibody_titer",
+      "type": "string",
+      "required": false,
+      "description": "Indirect IFA for Bartonella henselae or quintana with IgG titer ≥1:800",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "imaging_major_echo_ct",
+      "type": "string",
+      "required": false,
+      "description": "Echocardiography/cardiac CT showing vegetation, perforation, aneurysm, abscess, pseudoaneurysm, or fistula",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "new_valvular_regurgitation",
+      "type": "string",
+      "required": false,
+      "description": "Significant new valvular regurgitation on echocardiography compared with previous imaging",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "prosthetic_valve_dehiscence",
+      "type": "string",
+      "required": false,
+      "description": "New partial dehiscence of prosthetic valve compared with previous imaging",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "pet_ct_abnormal_activity",
+      "type": "string",
+      "required": false,
+      "description": "[18F]FDG PET/CT abnormal metabolic activity involving valve, graft, device leads, or prosthetic material",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "surgical_evidence",
+      "type": "string",
+      "required": false,
+      "description": "Evidence of IE documented by direct inspection during heart surgery",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "previous_ie",
+      "type": "string",
+      "required": false,
+      "description": "Previous history of infective endocarditis",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "prosthetic_valve",
+      "type": "string",
+      "required": false,
+      "description": "Prosthetic valve present",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "previous_valve_repair",
+      "type": "string",
+      "required": false,
+      "description": "Previous valve repair",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "congenital_heart_disease",
+      "type": "string",
+      "required": false,
+      "description": "Congenital heart disease",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "significant_regurgitation_stenosis",
+      "type": "string",
+      "required": false,
+      "description": "More than mild regurgitation or stenosis of any etiology",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "endovascular_cied",
+      "type": "string",
+      "required": false,
+      "description": "Endovascular cardiac implantable electronic device (CIED)",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "hypertrophic_cardiomyopathy",
+      "type": "string",
+      "required": false,
+      "description": "Hypertrophic obstructive cardiomyopathy",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "injection_drug_use",
+      "type": "string",
+      "required": false,
+      "description": "Injection drug use",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "fever",
+      "type": "string",
+      "required": false,
+      "description": "Fever with documented temperature >38.0°C (100.4°F)",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "vascular_phenomena",
+      "type": "string",
+      "required": false,
+      "description": "Vascular phenomena (emboli, septic infarcts, mycotic aneurysm, hemorrhage, Janeway lesions)",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "immunologic_phenomena",
+      "type": "string",
+      "required": false,
+      "description": "Immunologic phenomena (RF+, Osler nodes, Roth spots, glomerulonephritis)",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "positive_blood_cultures_minor",
+      "type": "string",
+      "required": false,
+      "description": "Positive blood cultures for microorganism consistent with IE but not meeting major criterion",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "positive_sterile_site_culture",
+      "type": "string",
+      "required": false,
+      "description": "Positive culture/PCR from sterile body site other than cardiac tissue or arterial embolus",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "pet_ct_within_3_months",
+      "type": "string",
+      "required": false,
+      "description": "Abnormal [18F]FDG PET/CT activity within 3 months of prosthetic material implantation",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "new_regurgitation_auscultation",
+      "type": "string",
+      "required": false,
+      "description": "New valvular regurgitation on auscultation (if echo not available)",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "pathologic_microorganisms",
+      "type": "string",
+      "required": false,
+      "description": "Microorganisms identified in vegetation with clinical signs of active endocarditis",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "pathologic_active_endocarditis",
+      "type": "string",
+      "required": false,
+      "description": "Active endocarditis identified in or on vegetation histologically",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    }
+  ],
+  "result": {
+    "name": "diagnosis",
+    "type": "string",
+    "unit": "diagnosis",
+    "description": "Duke-ISCVID diagnosis result for infective endocarditis"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 2,
+        "max": 99,
+        "stage": "Definite IE",
+        "description": "Meets criteria for definite infective endocarditis",
+        "interpretation": "Patient meets Duke-ISCVID criteria for definite infective endocarditis. Appropriate antimicrobial therapy and cardiology/infectious disease consultation recommended."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Possible IE",
+        "description": "Meets criteria for possible infective endocarditis",
+        "interpretation": "Patient meets Duke-ISCVID criteria for possible infective endocarditis. Further diagnostic workup including repeat echocardiography, blood cultures, and specialist consultation recommended."
+      },
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Rejected",
+        "description": "Does not meet criteria for infective endocarditis",
+        "interpretation": "Patient does not meet Duke-ISCVID criteria for infective endocarditis. Consider alternative diagnoses. Clinical correlation and specialist consultation if high clinical suspicion persists."
+      }
+    ]
+  },
+  "references": [
+    "Fowler VG Jr, Durack DT, Selton-Suty C, et al. The 2023 Duke-International Society for Cardiovascular Infectious Diseases Criteria for Infective Endocarditis: Updating the Modified Duke Criteria. Clin Infect Dis. 2023;77(4):518-526.",
+    "Cahill TJ, Baddour LM, Habib G, et al. Challenges in Infective Endocarditis. J Am Coll Cardiol. 2017;69(3):325-344.",
+    "Habib G, Lancellotti P, Antunes MJ, et al. 2015 ESC Guidelines for the management of infective endocarditis. Eur Heart J. 2015;36(44):3075-3128."
+  ],
+  "formula": "Diagnostic algorithm based on pathologic criteria (definite if present), major criteria (microbiologic, imaging, surgical), and minor criteria (predisposing conditions, clinical manifestations). Definite IE: 2 major criteria OR 1 major + 3 minor criteria OR 5 minor criteria. Possible IE: 1 major + 1 minor criteria OR 3 minor criteria.",
+  "notes": [
+    "Updated in 2023 to improve diagnostic accuracy over original Duke criteria",
+    "Incorporates modern diagnostic techniques including PET/CT imaging and molecular diagnostics",
+    "CIED = Cardiac Implantable Electronic Device",
+    "IE = Infective Endocarditis",
+    "Consider alternative diagnoses if criteria not met but clinical suspicion remains high"
+  ]
+}
