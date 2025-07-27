@@ -1,0 +1,130 @@
+{
+  "id": "a_a_o2_gradient",
+  "title": "A-a O₂ Gradient",
+  "description": "Avalia grau de shunt e incompatibilidade ventilação/perfusão (V/Q) através do gradiente alveolar-arterial de oxigênio",
+  "category": "pneumologia",
+  "version": "2023",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Idade do paciente em anos",
+      "validation": {
+        "min": 1,
+        "max": 120
+      },
+      "unit": "anos"
+    },
+    {
+      "name": "fio2",
+      "type": "float",
+      "required": true,
+      "description": "Fração inspirada de oxigênio (0.21 para ar ambiente)",
+      "validation": {
+        "min": 0.21,
+        "max": 1.0
+      },
+      "unit": "fração"
+    },
+    {
+      "name": "paco2",
+      "type": "float",
+      "required": true,
+      "description": "Pressão parcial de CO₂ arterial",
+      "validation": {
+        "min": 10.0,
+        "max": 100.0
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "pao2",
+      "type": "float",
+      "required": true,
+      "description": "Pressão parcial de O₂ arterial",
+      "validation": {
+        "min": 30.0,
+        "max": 600.0
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "patm",
+      "type": "float",
+      "required": false,
+      "description": "Pressão atmosférica (padrão: 760 mmHg ao nível do mar)",
+      "validation": {
+        "min": 500.0,
+        "max": 800.0
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "respiratory_quotient",
+      "type": "float",
+      "required": false,
+      "description": "Quociente respiratório (padrão: 0.8)",
+      "validation": {
+        "min": 0.7,
+        "max": 1.0
+      },
+      "unit": "ratio"
+    }
+  ],
+  "result": {
+    "name": "aa_gradient",
+    "type": "float",
+    "unit": "mmHg",
+    "description": "Gradiente alveolar-arterial de oxigênio"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 15,
+        "stage": "Normal",
+        "description": "Gradiente A-a normal",
+        "interpretation": "Função alveolar preservada. Valores normais para adultos jovens são 5-10 mmHg, podendo aumentar com a idade."
+      },
+      {
+        "min": 16,
+        "max": 25,
+        "stage": "Levemente Elevado",
+        "description": "Gradiente A-a levemente elevado",
+        "interpretation": "Leve incompatibilidade V/Q ou shunt mínimo. Considerar causas como atelectasia leve ou edema pulmonar inicial."
+      },
+      {
+        "min": 26,
+        "max": 50,
+        "stage": "Moderadamente Elevado",
+        "description": "Gradiente A-a moderadamente elevado",
+        "interpretation": "Incompatibilidade V/Q moderada ou shunt. Sugere doença pulmonar significativa como pneumonia, edema pulmonar ou embolia pulmonar."
+      },
+      {
+        "min": 51,
+        "max": 1000,
+        "stage": "Severamente Elevado",
+        "description": "Gradiente A-a severamente elevado",
+        "interpretation": "Incompatibilidade V/Q grave ou shunt significativo. Indica doença pulmonar severa como SDRA, pneumonia extensa ou shunt intracardíaco."
+      }
+    ]
+  },
+  "references": [
+    "Helmholz HF Jr. The abbreviated alveolar air equation. Chest. 1979;75(6):748.",
+    "Story DA. Alveolar oxygen partial pressure, alveolar carbon dioxide partial pressure, and the alveolar gas equation. Anesthesiology. 1996;84(4):1011.",
+    "McFarlane MJ, Imperiale TF. Use of the alveolar-arterial oxygen gradient in the diagnosis of pulmonary embolism. Am J Med. 1994;96(1):57-62.",
+    "Mellemgaard K. The alveolar-arterial oxygen difference: its size and components in normal man. Acta Physiol Scand. 1966;67(1):10-20."
+  ],
+  "formula": "A-a = PAO₂ - PaO₂, onde PAO₂ = (Patm - PH₂O) × FiO₂ - PaCO₂/RQ. Patm = 760 mmHg, PH₂O = 47 mmHg, RQ = 0.8",
+  "notes": [
+    "PAO₂ calculado pela equação do gás alveolar",
+    "PH₂O (pressão de vapor d'água) = 47 mmHg a 37°C",
+    "RQ (quociente respiratório) tipicamente 0.8",
+    "Valor normal ajustado para idade: < (idade/4) + 4 mmHg",
+    "Gradiente normal em jovens: 5-10 mmHg",
+    "Aumenta aproximadamente 1 mmHg por década após meia-idade",
+    "Útil para diferenciar hipoxemia por hipoventilação vs. doença pulmonar",
+    "Gradiente normal com hipoxemia sugere hipoventilação"
+  ]
+}

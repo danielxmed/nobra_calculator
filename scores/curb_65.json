@@ -1,0 +1,117 @@
+{
+  "id": "curb_65",
+  "title": "CURB-65 Score para Gravidade de Pneumonia",
+  "description": "Avalia a gravidade da pneumonia adquirida na comunidade (PAC) para determinar necessidade de internação hospitalar",
+  "category": "pneumologia",
+  "version": "2003",
+  "parameters": [
+    {
+      "name": "confusion",
+      "type": "boolean",
+      "required": true,
+      "description": "Confusão mental de início recente (desorientação em tempo, espaço ou pessoa)"
+    },
+    {
+      "name": "urea",
+      "type": "float",
+      "required": true,
+      "description": "Ureia sérica",
+      "validation": {
+        "min": 0,
+        "max": 200
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "respiratory_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Frequência respiratória",
+      "validation": {
+        "min": 0,
+        "max": 60
+      },
+      "unit": "respirações/min"
+    },
+    {
+      "name": "systolic_bp",
+      "type": "integer",
+      "required": true,
+      "description": "Pressão arterial sistólica",
+      "validation": {
+        "min": 0,
+        "max": 300
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "diastolic_bp",
+      "type": "integer",
+      "required": true,
+      "description": "Pressão arterial diastólica",
+      "validation": {
+        "min": 0,
+        "max": 200
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Idade do paciente",
+      "validation": {
+        "min": 0,
+        "max": 120
+      },
+      "unit": "anos"
+    }
+  ],
+  "result": {
+    "name": "curb_65_score",
+    "type": "integer",
+    "unit": "pontos",
+    "description": "Score CURB-65 total (0-5 pontos)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Baixo Risco",
+        "description": "Mortalidade: 1.5%",
+        "interpretation": "Tratamento ambulatorial. Considerar antibioticoterapia oral e acompanhamento em 48-72 horas."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Risco Intermediário",
+        "description": "Mortalidade: 9.2%",
+        "interpretation": "Considerar internação hospitalar vs. observação. Avaliar individualmente fatores sociais, comorbidades e resposta ao tratamento inicial."
+      },
+      {
+        "min": 3,
+        "max": 5,
+        "stage": "Alto Risco",
+        "description": "Mortalidade: 22%",
+        "interpretation": "Internação hospitalar mandatória. Considerar admissão em UTI, especialmente se CURB-65 ≥ 4. Iniciar antibioticoterapia endovenosa imediatamente."
+      }
+    ]
+  },
+  "references": [
+    "Lim WS, van der Eerden MM, Laing R, et al. Defining community acquired pneumonia severity on presentation to hospital: an international derivation and validation study. Thorax. 2003;58(5):377-82.",
+    "British Thoracic Society Standards of Care Committee. BTS Guidelines for the Management of Community Acquired Pneumonia in Adults. Thorax. 2009;64 Suppl 3:iii1-55.",
+    "Mandell LA, Wunderink RG, Anzueto A, et al. Infectious Diseases Society of America/American Thoracic Society consensus guidelines on the management of community-acquired pneumonia in adults. Clin Infect Dis. 2007;44 Suppl 2:S27-72."
+  ],
+  "formula": "CURB-65 = C + U + R + B + 65",
+  "notes": [
+    "C = Confusion (confusão mental): 1 ponto",
+    "U = Urea (ureia > 19 mg/dL ou > 7 mmol/L): 1 ponto",
+    "R = Respiratory rate (FR ≥ 30/min): 1 ponto",
+    "B = Blood pressure (PAS < 90 mmHg ou PAD ≤ 60 mmHg): 1 ponto",
+    "65 = Age (idade ≥ 65 anos): 1 ponto",
+    "CURB-65 não pontua comorbidades ou residência em casa de repouso",
+    "Para pacientes < 65 anos, pode-se usar CRB-65 (sem dosagem de ureia)",
+    "Considerar fatores adicionais: saturação O2 < 90%, derrame pleural, infiltrado multilobar"
+  ]
+}

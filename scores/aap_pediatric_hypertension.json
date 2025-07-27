@@ -1,0 +1,117 @@
+{
+  "id": "aap_pediatric_hypertension",
+  "title": "AAP Pediatric Hypertension Guidelines",
+  "description": "Diagnostica hipertensão em pacientes pediátricos baseado nas diretrizes de 2017 da Academia Americana de Pediatria",
+  "category": "pediatria",
+  "version": "2017",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Idade do paciente em anos",
+      "validation": {
+        "min": 1,
+        "max": 17
+      },
+      "unit": "anos"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Sexo do paciente",
+      "options": ["masculino", "feminino"],
+      "validation": {
+        "enum": ["masculino", "feminino"]
+      }
+    },
+    {
+      "name": "height",
+      "type": "float",
+      "required": true,
+      "description": "Altura do paciente em centímetros",
+      "validation": {
+        "min": 70.0,
+        "max": 200.0
+      },
+      "unit": "cm"
+    },
+    {
+      "name": "systolic_bp",
+      "type": "integer",
+      "required": true,
+      "description": "Pressão arterial sistólica",
+      "validation": {
+        "min": 60,
+        "max": 200
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "diastolic_bp",
+      "type": "integer",
+      "required": true,
+      "description": "Pressão arterial diastólica",
+      "validation": {
+        "min": 30,
+        "max": 150
+      },
+      "unit": "mmHg"
+    }
+  ],
+  "result": {
+    "name": "bp_classification",
+    "type": "string",
+    "unit": "classificação",
+    "description": "Classificação da pressão arterial pediátrica"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 89,
+        "stage": "Normal",
+        "description": "Pressão arterial normal",
+        "interpretation": "PA abaixo do percentil 90 para idade, sexo e altura. Não requer intervenção específica. Recomenda-se estilo de vida saudável e reavaliação anual."
+      },
+      {
+        "min": 90,
+        "max": 94,
+        "stage": "Elevada",
+        "description": "Pressão arterial elevada",
+        "interpretation": "PA entre percentis 90-94 para idade, sexo e altura (ou ≥120/80 se maior). Requer modificações do estilo de vida e acompanhamento em 6 meses. Avaliar fatores de risco."
+      },
+      {
+        "min": 95,
+        "max": 98,
+        "stage": "Hipertensão Estágio 1",
+        "description": "Hipertensão arterial estágio 1",
+        "interpretation": "PA entre percentis 95-98 para idade, sexo e altura (ou 130-139/80-89 se ≥13 anos). Confirmar em 3 visitas. Modificações do estilo de vida ± medicação se fatores de risco."
+      },
+      {
+        "min": 99,
+        "max": 100,
+        "stage": "Hipertensão Estágio 2",
+        "description": "Hipertensão arterial estágio 2",
+        "interpretation": "PA ≥percentil 99 para idade, sexo e altura (ou ≥140/90 se ≥13 anos). Confirmar em 1-2 semanas. Requer tratamento medicamentoso e modificações do estilo de vida."
+      }
+    ]
+  },
+  "references": [
+    "Flynn JT, Kaelber DC, Baker-Smith CM, et al. Clinical Practice Guideline for Screening and Management of High Blood Pressure in Children and Adolescents. Pediatrics. 2017;140(3):e20171904.",
+    "National High Blood Pressure Education Program Working Group on High Blood Pressure in Children and Adolescents. The fourth report on the diagnosis, evaluation, and treatment of high blood pressure in children and adolescents. Pediatrics. 2004;114(2):555-76.",
+    "Lurbe E, Agabiti-Rosei E, Cruickshank JK, et al. 2016 European Society of Hypertension guidelines for the management of high blood pressure in children and adolescents. J Hypertens. 2016;34(10):1887-920."
+  ],
+  "formula": "Classificação baseada em tabelas normativas de percentis de PA por idade, sexo e percentil de altura, conforme diretrizes AAP 2017",
+  "notes": [
+    "Baseado em tabelas normativas AAP 2017 para crianças com peso normal",
+    "Para adolescentes ≥13 anos, usa definições adultas se maiores que percentis pediátricos",
+    "PA normal: <percentil 90; Elevada: percentil 90-94; HAS 1: percentil 95-98; HAS 2: ≥percentil 99",
+    "Confirmar hipertensão em 3 visitas diferentes com método auscultatório",
+    "Percentil de altura deve ser calculado usando tabelas de crescimento WHO/CDC",
+    "Considera fatores de risco: obesidade, diabetes, doença renal, histórico familiar",
+    "Excluir hipertensão do avental branco com MAPA quando apropriado",
+    "Buscar causas secundárias em hipertensão severa ou refratária"
+  ]
+}

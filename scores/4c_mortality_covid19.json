@@ -1,0 +1,156 @@
+{
+  "id": "4c_mortality_covid19",
+  "title": "4C Mortality Score for COVID-19",
+  "description": "Prediz mortalidade hospitalar em pacientes internados com COVID-19",
+  "category": "infectologia",
+  "version": "2020",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Idade do paciente em anos",
+      "validation": {
+        "min": 0,
+        "max": 120
+      },
+      "unit": "anos"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Sexo do paciente",
+      "options": ["masculino", "feminino"],
+      "validation": {
+        "enum": ["masculino", "feminino"]
+      }
+    },
+    {
+      "name": "comorbidities",
+      "type": "integer",
+      "required": true,
+      "description": "Número de comorbidades (cardiopatia crônica, pneumopatia crônica exceto asma, DRC com TFG ≤30, hepatopatia leve-grave, demência, doenças neurológicas crônicas, doenças do tecido conjuntivo, diabetes, HIV/AIDS, malignidade)",
+      "validation": {
+        "min": 0,
+        "max": 20
+      },
+      "unit": "comorbidades"
+    },
+    {
+      "name": "respiratory_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Frequência respiratória",
+      "validation": {
+        "min": 5,
+        "max": 60
+      },
+      "unit": "irpm"
+    },
+    {
+      "name": "oxygen_saturation",
+      "type": "float",
+      "required": true,
+      "description": "Saturação periférica de oxigênio",
+      "validation": {
+        "min": 50.0,
+        "max": 100.0
+      },
+      "unit": "%"
+    },
+    {
+      "name": "glasgow_coma_scale",
+      "type": "integer",
+      "required": true,
+      "description": "Escala de Coma de Glasgow",
+      "validation": {
+        "min": 3,
+        "max": 15
+      },
+      "unit": "pontos"
+    },
+    {
+      "name": "urea_unit",
+      "type": "string",
+      "required": true,
+      "description": "Unidade de medida da ureia",
+      "options": ["mmol_L", "mg_dL"],
+      "validation": {
+        "enum": ["mmol_L", "mg_dL"]
+      }
+    },
+    {
+      "name": "urea_value",
+      "type": "float",
+      "required": true,
+      "description": "Valor da ureia sérica",
+      "validation": {
+        "min": 0.1,
+        "max": 300.0
+      },
+      "unit": "variável"
+    },
+    {
+      "name": "crp",
+      "type": "float",
+      "required": true,
+      "description": "Proteína C-reativa",
+      "validation": {
+        "min": 0.0,
+        "max": 1000.0
+      },
+      "unit": "mg/L"
+    }
+  ],
+  "result": {
+    "name": "4c_score",
+    "type": "integer",
+    "unit": "pontos",
+    "description": "Escore 4C de mortalidade para COVID-19"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Baixo Risco",
+        "description": "Risco baixo de mortalidade",
+        "interpretation": "Mortalidade hospitalar de 1.2-1.7%. Pacientes com baixo risco podem ser considerados para alta precoce ou manejo ambulatorial se clinicamente estáveis."
+      },
+      {
+        "min": 4,
+        "max": 8,
+        "stage": "Risco Intermediário",
+        "description": "Risco intermediário de mortalidade",
+        "interpretation": "Mortalidade hospitalar de 9.1-9.9%. Pacientes requerem monitorização hospitalar padrão com vigilância para deterioração clínica."
+      },
+      {
+        "min": 9,
+        "max": 14,
+        "stage": "Alto Risco",
+        "description": "Alto risco de mortalidade",
+        "interpretation": "Mortalidade hospitalar de 31.4-34.9%. Pacientes requerem cuidados intensivos ou monitorização em unidade de alta dependência."
+      },
+      {
+        "min": 15,
+        "max": 21,
+        "stage": "Risco Muito Alto",
+        "description": "Risco muito alto de mortalidade",
+        "interpretation": "Mortalidade hospitalar de 61.5-66.2%. Pacientes requerem cuidados intensivos imediatos e consideração de limitação de suporte se apropriado."
+      }
+    ]
+  },
+  "references": [
+    "Knight SR, Ho A, Pius R, et al. Risk stratification of patients admitted to hospital with covid-19 using the ISARIC WHO Clinical Characterisation Protocol: development and validation of the 4C Mortality Score. BMJ. 2020;370:m3339.",
+    "Gupta RK, Marks M, Samuels THA, et al. Systematic evaluation and external validation of 22 prognostic models among hospitalised adults with COVID-19: an observational cohort study. Eur Respir J. 2020;56(6):2003498."
+  ],
+  "formula": "Pontos = Idade (0-7) + Sexo (0-1) + Comorbidades (0-2) + FR (0-2) + SatO2 (0-2) + Glasgow (0-2) + Ureia (0-3) + PCR (0-2)",
+  "notes": [
+    "Aplicar apenas para pacientes hospitalizados com COVID-19 confirmado",
+    "Comorbidades incluem: cardiopatia crônica, pneumopatia crônica (exceto asma), DRC (TFG ≤30), hepatopatia leve-grave, demência, doenças neurológicas crônicas, doenças do tecido conjuntivo, diabetes, HIV/AIDS, malignidade",
+    "Desenvolvido usando dados do consórcio ISARIC4C de pacientes do Reino Unido",
+    "Validado em múltiplas populações internacionais",
+    "Não se aplica a pacientes ambulatoriais ou de pronto-socorro"
+  ]
+}

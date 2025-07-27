@@ -1,0 +1,125 @@
+{
+  "id": "4ts_hit",
+  "title": "4Ts Score for Heparin-Induced Thrombocytopenia",
+  "description": "Diferencia pacientes com trombocitopenia induzida por heparina (TIH) daqueles com outras causas de trombocitopenia",
+  "category": "hematologia",
+  "version": "2006",
+  "parameters": [
+    {
+      "name": "thrombocytopenia_severity",
+      "type": "string",
+      "required": true,
+      "description": "Trombocitopenia: Magnitude da queda das plaquetas",
+      "options": [
+        "queda_maior_50_nadir_maior_20",
+        "queda_30_50_ou_nadir_10_19", 
+        "queda_menor_30_ou_nadir_menor_10"
+      ],
+      "validation": {
+        "enum": [
+          "queda_maior_50_nadir_maior_20",
+          "queda_30_50_ou_nadir_10_19", 
+          "queda_menor_30_ou_nadir_menor_10"
+        ]
+      }
+    },
+    {
+      "name": "timing_onset",
+      "type": "string",
+      "required": true,
+      "description": "Timing: Tempo de início da queda das plaquetas",
+      "options": [
+        "inicio_5_10_dias_ou_queda_1_dia_heparina_30_dias",
+        "possivel_5_10_dias_ou_inicio_apos_10_dias_ou_heparina_30_100_dias",
+        "queda_menor_4_dias_sem_exposicao_recente"
+      ],
+      "validation": {
+        "enum": [
+          "inicio_5_10_dias_ou_queda_1_dia_heparina_30_dias",
+          "possivel_5_10_dias_ou_inicio_apos_10_dias_ou_heparina_30_100_dias",
+          "queda_menor_4_dias_sem_exposicao_recente"
+        ]
+      }
+    },
+    {
+      "name": "thrombosis_sequelae",
+      "type": "string",
+      "required": true,
+      "description": "Trombose: Presença de trombose ou outras sequelas",
+      "options": [
+        "nova_trombose_ou_necrose_cutanea_ou_reacao_sistemica",
+        "trombose_progressiva_ou_lesoes_cutaneas_ou_suspeita_trombose",
+        "nenhuma_trombose_ou_sequela"
+      ],
+      "validation": {
+        "enum": [
+          "nova_trombose_ou_necrose_cutanea_ou_reacao_sistemica",
+          "trombose_progressiva_ou_lesoes_cutaneas_ou_suspeita_trombose",
+          "nenhuma_trombose_ou_sequela"
+        ]
+      }
+    },
+    {
+      "name": "other_causes",
+      "type": "string",
+      "required": true,
+      "description": "oTher causes: Outras causas de trombocitopenia",
+      "options": [
+        "nenhuma_outra_causa_aparente",
+        "outras_causas_possiveis",
+        "outras_causas_definitivas"
+      ],
+      "validation": {
+        "enum": [
+          "nenhuma_outra_causa_aparente",
+          "outras_causas_possiveis", 
+          "outras_causas_definitivas"
+        ]
+      }
+    }
+  ],
+  "result": {
+    "name": "4ts_score",
+    "type": "integer",
+    "unit": "pontos",
+    "description": "Escore 4Ts para probabilidade de TIH"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Baixa Probabilidade",
+        "description": "Baixa probabilidade de TIH",
+        "interpretation": "Probabilidade de TIH <5%. Valor preditivo negativo de 99.8%. TIH improvável - considere outras causas de trombocitopenia. Pode dispensar testes adicionais para TIH."
+      },
+      {
+        "min": 4,
+        "max": 5,
+        "stage": "Probabilidade Intermediária",
+        "description": "Probabilidade intermediária de TIH",
+        "interpretation": "Probabilidade de TIH ~14%. Necessário investigação adicional com testes laboratoriais para TIH (ensaio funcional ou imunológico). Considere suspender heparina até resultado."
+      },
+      {
+        "min": 6,
+        "max": 8,
+        "stage": "Alta Probabilidade",
+        "description": "Alta probabilidade de TIH",
+        "interpretation": "Probabilidade de TIH ~64%. Suspender imediatamente toda heparina. Iniciar anticoagulante não-heparina. Realizar testes confirmatórios para TIH."
+      }
+    ]
+  },
+  "references": [
+    "Lo GK, Juhl D, Warkentin TE, Sigouin CS, Eichler P, Greinacher A. Evaluation of pretest clinical score (4 T's) for the diagnosis of heparin-induced thrombocytopenia in two clinical settings. J Thromb Haemost. 2006;4(4):759-65.",
+    "Cuker A, Gimotty PA, Crowther MA, Warkentin TE. Predictive value of the 4Ts scoring system for heparin-induced thrombocytopenia: a systematic review and meta-analysis. Blood. 2012;120(20):4160-7."
+  ],
+  "formula": "Soma dos 4 componentes: Trombocitopenia (0-2) + Tempo de início (0-2) + Trombose/sequelas (0-2) + Outras causas (0-2)",
+  "notes": [
+    "Aplicar apenas em pacientes expostos à heparina com queda de plaquetas",
+    "TIH tipo II é uma complicação grave que pode levar à trombose paradoxal",
+    "Escore baixo (0-3) tem alto valor preditivo negativo (99.8%)",
+    "Escore alto (6-8) requer ação imediata: suspender heparina e iniciar anticoagulante alternativo",
+    "Testes confirmatórios incluem ensaios funcionais (SRA) e imunológicos (PF4/heparina)",
+    "Componentes: Thrombocytopenia, Timing, Thrombosis, oTher causes"
+  ]
+}

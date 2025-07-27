@@ -1,0 +1,118 @@
+{
+  "id": "eular_acr_2012_pmr",
+  "title": "2012 EULAR/ACR Classification Criteria for Polymyalgia Rheumatica",
+  "description": "Classifica polimialgia reumática por recomendações de consenso de especialistas usando critérios clínicos e opcionalmente ultrassonográficos",
+  "category": "reumatologia",
+  "version": "2012",
+  "parameters": [
+    {
+      "name": "morning_stiffness",
+      "type": "string",
+      "required": true,
+      "description": "Duração da rigidez matinal",
+      "options": ["<=45min", ">45min"],
+      "validation": {
+        "enum": ["<=45min", ">45min"]
+      }
+    },
+    {
+      "name": "hip_pain_limited_rom",
+      "type": "string",
+      "required": true,
+      "description": "Dor no quadril ou amplitude de movimento limitada",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "rf_or_acpa",
+      "type": "string",
+      "required": true,
+      "description": "Fator reumatoide (FR) ou anticorpo antipeptídeo citrulinado (ACPA)",
+      "options": ["present", "absent"],
+      "validation": {
+        "enum": ["present", "absent"]
+      }
+    },
+    {
+      "name": "other_joint_pain",
+      "type": "string",
+      "required": true,
+      "description": "Dor em outras articulações",
+      "options": ["present", "absent"],
+      "validation": {
+        "enum": ["present", "absent"]
+      }
+    },
+    {
+      "name": "ultrasound_shoulder_hip",
+      "type": "string",
+      "required": false,
+      "description": "Pelo menos um ombro com achados específicos e um quadril com sinovite (ultrassom)",
+      "options": ["no", "yes", "not_performed"],
+      "validation": {
+        "enum": ["no", "yes", "not_performed"]
+      }
+    },
+    {
+      "name": "ultrasound_both_shoulders",
+      "type": "string",
+      "required": false,
+      "description": "Ambos os ombros com achados específicos (ultrassom)",
+      "options": ["no", "yes", "not_performed"],
+      "validation": {
+        "enum": ["no", "yes", "not_performed"]
+      }
+    }
+  ],
+  "result": {
+    "name": "pmr_score",
+    "type": "integer",
+    "unit": "pontos",
+    "description": "Escore de classificação para polimialgia reumática"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Não-PMR",
+        "description": "Não classifica como PMR (sem ultrassom)",
+        "interpretation": "Escore abaixo do ponto de corte para classificação como polimialgia reumática. Considere diagnósticos alternativos."
+      },
+      {
+        "min": 4,
+        "max": 6,
+        "stage": "PMR",
+        "description": "Classifica como PMR (sem ultrassom)",
+        "interpretation": "Escore ≥4 pontos classifica como polimialgia reumática pelos critérios EULAR/ACR 2012. Sensibilidade 72%, especificidade 65%."
+      },
+      {
+        "min": 0,
+        "max": 4,
+        "stage": "Não-PMR (US)",
+        "description": "Não classifica como PMR (com ultrassom)",
+        "interpretation": "Escore abaixo do ponto de corte para classificação como polimialgia reumática com ultrassonografia. Considere diagnósticos alternativos."
+      },
+      {
+        "min": 5,
+        "max": 8,
+        "stage": "PMR (US)",
+        "description": "Classifica como PMR (com ultrassom)",
+        "interpretation": "Escore ≥5 pontos classifica como polimialgia reumática pelos critérios EULAR/ACR 2012 com ultrassom. Sensibilidade 71%, especificidade 70%."
+      }
+    ]
+  },
+  "references": [
+    "Dasgupta B, Cimmino MA, Maradit-Kremers H, et al. 2012 provisional classification criteria for polymyalgia rheumatica: a European League Against Rheumatism/American College of Rheumatology collaborative initiative. Ann Rheum Dis. 2012;71(4):484-92.",
+    "Mackie SL, Koduri G, Hill CL, et al. Accuracy of musculoskeletal imaging for the diagnosis of polymyalgia rheumatica: systematic review. RMD Open. 2015;1(1):e000100."
+  ],
+  "formula": "Escore = Rigidez matinal (0-2) + Dor quadril/ROM limitada (0-1) + Ausência FR/ACPA (0-2) + Ausência dor outras articulações (0-1) + Ultrassom ombro/quadril (0-1) + Ultrassom ambos ombros (0-1)",
+  "notes": [
+    "Aplicar apenas em pacientes ≥50 anos com dor bilateral nos ombros e VHS e/ou PCR anormais",
+    "Estes critérios são para classificação em pesquisa, não para diagnóstico individual",
+    "Especificidade menor para distinguir PMR de artrite reumatoide soronegativa",
+    "Achados ultrassonográficos específicos incluem bursite subdeltoidea e/ou bicipital e/ou sinovite glenoumeral"
+  ]
+}
