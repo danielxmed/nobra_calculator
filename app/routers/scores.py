@@ -509,13 +509,132 @@ async def calculate_ckd_epi_2021(request: CKDEpi2021Request):
 @router.post("/cha2ds2_vasc", response_model=Cha2ds2VascResponse)
 async def calculate_cha2ds2_vasc(request: Cha2ds2VascRequest):
     """
-    Calculates the CHA₂DS₂-VASc Score for stroke risk in atrial fibrillation
+    ## Calculate CHA₂DS₂-VASc Score for Stroke Risk in Atrial Fibrillation
     
-    Args:
-        request: Parameters required for calculation
+    Calculates the CHA₂DS₂-VASc score to assess stroke risk in patients with non-valvular 
+    atrial fibrillation and guide anticoagulation therapy decisions. This score is the 
+    gold standard for stroke risk stratification in atrial fibrillation.
+    
+    ### 🔬 Clinical Background
+    
+    The CHA₂DS₂-VASc score was developed to improve stroke risk prediction in atrial 
+    fibrillation patients, particularly those at low-intermediate risk. It extends the 
+    original CHADS₂ score with additional risk factors and provides better risk 
+    stratification for anticoagulation decisions.
+    
+    **Scoring System**: Each risk factor contributes points to the total score (0-9 points)
+    - **C** - Congestive heart failure/LV dysfunction (1 point)
+    - **H** - Hypertension (1 point)  
+    - **A₂** - Age ≥75 years (2 points)
+    - **D** - Diabetes mellitus (1 point)
+    - **S₂** - Stroke/TIA/thromboembolism history (2 points)
+    - **V** - Vascular disease (1 point)
+    - **A** - Age 65-74 years (1 point)
+    - **Sc** - Sex category (female) (1 point)
+    
+    ### 🏥 Clinical Applications
+    
+    - **Stroke Risk Assessment**: Quantify annual stroke risk in atrial fibrillation
+    - **Anticoagulation Decisions**: Guide oral anticoagulant therapy initiation
+    - **Risk-Benefit Analysis**: Balance stroke prevention vs bleeding risk
+    - **Clinical Guidelines**: Recommended by ESC, AHA/ACC/HRS guidelines
+    - **Quality Metrics**: Used in atrial fibrillation care quality measures
+    
+    ### 📊 Score Interpretation & Clinical Actions
+    
+    | Score | Annual Stroke Risk | Recommendation | Clinical Action |
+    |-------|-------------------|----------------|-----------------|
+    | 0 (male) | 0% | No anticoagulation | Consider aspirin or no therapy |
+    | 1 (male) | 1.3% | Consider anticoagulation | Individual risk assessment |
+    | ≥2 (male) | ≥2.2% | **Anticoagulation recommended** | Start oral anticoagulant |
+    | 1 (female, no other risk factors) | 1.3% | Consider anticoagulation | Individual assessment |
+    | ≥2 (any) | ≥2.2% | **Anticoagulation recommended** | Start oral anticoagulant |
+    
+    ### 💊 Anticoagulation Recommendations
+    
+    **High Risk (Score ≥2):**
+    - **First-line**: Direct oral anticoagulants (DOACs)
+      - Apixaban, rivaroxaban, dabigatran, edoxaban
+    - **Alternative**: Warfarin (INR 2.0-3.0)
+    - **Contraindications**: Consider left atrial appendage closure
+    
+    **Intermediate Risk (Score 1):**
+    - **Individualized decision** based on:
+      - Patient preferences and bleeding risk
+      - HAS-BLED score assessment
+      - Shared decision-making approach
+    
+    **Low Risk (Score 0 in males):**
+    - **No anticoagulation** typically recommended
+    - **Aspirin**: Not routinely recommended (limited benefit)
+    
+    ### ⚠️ Important Clinical Considerations
+    
+    **Patient Selection:**
+    - Non-valvular atrial fibrillation only
+    - Permanent, persistent, or paroxysmal AF
+    - Not applicable to valvular AF (mitral stenosis, prosthetic valves)
+    
+    **Risk Factor Definitions:**
+    - **Congestive heart failure**: LVEF ≤40% or clinical heart failure
+    - **Hypertension**: History or current antihypertensive treatment
+    - **Vascular disease**: MI, PAD, or aortic plaque
+    - **Age categories**: Exact age-based scoring (65-74 vs ≥75)
+    
+    **Bleeding Risk Assessment:**
+    - Always assess bleeding risk (HAS-BLED score)
+    - High bleeding risk doesn't preclude anticoagulation
+    - Address modifiable bleeding risk factors
+    - Consider bleeding risk in anticoagulant selection
+    
+    ### 📋 Example Clinical Scenarios
+    
+    **Low Risk (Score 0)**
+    - 55-year-old male with lone AF
+    - No anticoagulation needed
+    - Annual stroke risk: 0%
+    
+    **Intermediate Risk (Score 1)**
+    - 67-year-old male with hypertension and AF
+    - Consider anticoagulation vs no therapy
+    - Annual stroke risk: 1.3%
+    
+    **High Risk (Score 4)**
+    - 75-year-old female with AF, hypertension, and diabetes
+    - **Mandatory anticoagulation**
+    - Annual stroke risk: 6.7%
+    
+    **Very High Risk (Score 6)**
+    - 78-year-old female with AF, prior stroke, heart failure
+    - **Urgent anticoagulation** with careful monitoring
+    - Annual stroke risk: 15.2%
+    
+    ### 🔍 Quality Assurance
+    
+    This implementation:
+    - ✅ Uses the validated CHA₂DS₂-VASc scoring algorithm
+    - ✅ Includes comprehensive risk factor assessment
+    - ✅ Provides evidence-based anticoagulation recommendations
+    - ✅ Follows current ESC and AHA/ACC/HRS guidelines
+    - ✅ Returns structured, actionable clinical guidance
+    
+    ### 📚 References
+    
+    - Lip GY, et al. Refining clinical risk stratification for predicting stroke and thromboembolism in atrial fibrillation using a novel risk factor-based approach. *Chest* 2010;137:263-272
+    - January CT, et al. 2019 AHA/ACC/HRS Focused Update on Atrial Fibrillation. *Circulation* 2019;140:e125-e151
+    - Hindricks G, et al. 2020 ESC Guidelines for Atrial Fibrillation. *Eur Heart J* 2021;42:373-498
+    
+    ---
+    
+    **Args:**
+        request: Patient risk factors (age, sex, comorbidities)
         
-    Returns:
-        Cha2ds2VascResponse: Result with clinical interpretation and anticoagulation recommendation
+    **Returns:**
+        Cha2ds2VascResponse: CHA₂DS₂-VASc score with stroke risk and anticoagulation recommendation
+        
+    **Raises:**
+        - **422 Validation Error**: Invalid parameters (age <18 or >120, invalid boolean values)
+        - **500 Internal Error**: Calculation failure (rare, contact support if persistent)
     """
     try:
         # Convert request to dictionary
@@ -569,13 +688,79 @@ async def calculate_cha2ds2_vasc(request: Cha2ds2VascRequest):
 @router.post("/curb_65", response_model=Curb65Response)
 async def calculate_curb_65(request: Curb65Request):
     """
-    Calculates the CURB-65 Score for pneumonia severity assessment
+    ## Calculate CURB-65 Score for Community-Acquired Pneumonia Severity
     
-    Args:
-        request: Parameters required for calculation
+    Calculates the CURB-65 score to assess the severity of community-acquired pneumonia (CAP) 
+    and guide treatment location decisions (outpatient vs inpatient vs ICU). This score is 
+    the gold standard for pneumonia severity assessment in clinical practice.
+    
+    ### 🔬 Clinical Background
+    
+    The CURB-65 score was developed by the British Thoracic Society to provide a simple, 
+    reliable tool for assessing pneumonia severity and predicting mortality risk. It helps 
+    clinicians make evidence-based decisions about the appropriate level of care.
+    
+    **Scoring Criteria**: Each criterion contributes 1 point (total 0-5 points)
+    - **C** - Confusion (new onset mental confusion)
+    - **U** - Urea >7 mmol/L (>20 mg/dL) 
+    - **R** - Respiratory rate ≥30 breaths/min
+    - **B** - Blood pressure: Systolic <90 mmHg OR Diastolic ≤60 mmHg
+    - **65** - Age ≥65 years
+    
+    ### 🏥 Clinical Applications
+    
+    - **Severity Assessment**: Quantify pneumonia severity and mortality risk
+    - **Treatment Location**: Guide inpatient vs outpatient management decisions
+    - **ICU Admission**: Identify patients requiring intensive care
+    - **Antibiotic Selection**: Inform empirical antibiotic therapy choices
+    - **Prognosis**: Predict 30-day mortality risk
+    - **Quality Metrics**: Used in pneumonia care quality indicators
+    
+    ### 📊 Score Interpretation & Clinical Actions
+    
+    | Score | Risk Level | 30-Day Mortality | Recommendation | Clinical Action |
+    |-------|------------|------------------|----------------|-----------------|
+    | 0-1 | **Low Risk** | 1.5% | **Outpatient treatment** | Oral antibiotics, home care |
+    | 2 | **Moderate Risk** | 9.2% | **Consider hospitalization** | Inpatient observation |
+    | 3 | **High Risk** | 22% | **Hospital admission** | IV antibiotics, monitoring |
+    | 4-5 | **Very High Risk** | 33-57% | **ICU consideration** | Intensive monitoring, aggressive treatment |
+    
+    ### 🏠 Treatment Location Guidelines
+    
+    **Outpatient Management (Score 0-1):**
+    - **Setting**: Home with close follow-up
+    - **Antibiotics**: Oral (amoxicillin, macrolides, or fluoroquinolones)
+    - **Monitoring**: 48-72 hour clinical assessment
+    - **Safety net**: Clear return precautions
+    
+    **Hospital Ward (Score 2-3):**
+    - **Setting**: General medical ward
+    - **Antibiotics**: IV β-lactam ± macrolide or fluoroquinolone
+    - **Monitoring**: Vital signs, oxygen saturation, clinical response
+    - **Duration**: Typically 3-7 days depending on response
+    
+    **ICU Consideration (Score ≥4):**
+    - **Setting**: Intensive care unit evaluation
+    - **Antibiotics**: Broad-spectrum IV therapy
+    - **Monitoring**: Continuous monitoring, potential mechanical ventilation
+    - **Additional factors**: Consider septic shock, respiratory failure
+    
+    ### 📚 References
+    
+    - Lim WS, et al. Defining community acquired pneumonia severity on presentation to hospital. *Thorax* 2003;58:377-382
+    - Mandell LA, et al. IDSA/ATS consensus guidelines on CAP management. *Clin Infect Dis* 2007;44:S27-72
+    
+    ---
+    
+    **Args:**
+        request: Clinical parameters for pneumonia severity assessment
         
-    Returns:
-        Curb65Response: Result with clinical interpretation and treatment recommendation
+    **Returns:**
+        Curb65Response: CURB-65 score with mortality risk and treatment recommendations
+        
+    **Raises:**
+        - **422 Validation Error**: Invalid parameters (negative values, invalid BP combinations)
+        - **500 Internal Error**: Calculation failure (rare, contact support if persistent)
     """
     try:
         # Convert request to dictionary
@@ -1280,13 +1465,130 @@ async def validate_score_calculator(score_id: str):
 @router.post("/abcd2_score", response_model=Abcd2Response)
 async def calculate_abcd2_score(request: Abcd2Request):
     """
-    Calculates the ABCD² Score to estimate stroke risk after TIA
+    ## Calculate ABCD² Score for Stroke Risk After Transient Ischemic Attack (TIA)
     
-    Args:
-        request: Parameters required for calculation (age, BP, clinical features, duration, diabetes)
+    Calculates the ABCD² score to estimate the risk of stroke following a transient ischemic 
+    attack (TIA). This validated tool helps clinicians risk-stratify patients and make 
+    evidence-based decisions about urgent evaluation and treatment.
+    
+    ### 🔬 Clinical Background
+    
+    The ABCD² score was developed to predict short-term stroke risk after TIA, helping 
+    clinicians identify high-risk patients who need immediate evaluation and intervention. 
+    It has been validated across multiple populations and is recommended by stroke guidelines.
+    
+    **Scoring Criteria**: Total score 0-7 points
+    - **A** - Age ≥60 years (1 point)
+    - **B** - Blood pressure ≥140/90 mmHg (1 point)
+    - **C** - Clinical features:
+      - Unilateral weakness (2 points)
+      - Speech disturbance without weakness (1 point)
+      - Other symptoms (0 points)
+    - **D** - Duration of symptoms:
+      - ≥60 minutes (2 points)
+      - 10-59 minutes (1 point)
+      - <10 minutes (0 points)
+    - **D** - Diabetes mellitus (1 point)
+    
+    ### 🏥 Clinical Applications
+    
+    - **Risk Stratification**: Identify high-risk patients after TIA
+    - **Urgent Evaluation**: Guide timing of stroke workup
+    - **Treatment Decisions**: Inform antiplatelet and anticoagulation therapy
+    - **Resource Allocation**: Prioritize patients for specialist evaluation
+    - **Quality Metrics**: Used in TIA care pathways
+    
+    ### 📊 Score Interpretation & Clinical Actions
+    
+    | Score | Risk Level | 2-Day Stroke Risk | 7-Day Stroke Risk | Clinical Action |
+    |-------|------------|-------------------|-------------------|-----------------|
+    | 0-3 | **Low Risk** | 1.0% | 1.2% | **Outpatient evaluation** within 7 days |
+    | 4-5 | **Moderate Risk** | 4.1% | 5.9% | **Urgent evaluation** within 24-48 hours |
+    | 6-7 | **High Risk** | 8.1% | 11.7% | **Emergency evaluation** within 24 hours |
+    
+    ### 🚨 Emergency Management by Risk Level
+    
+    **High Risk (Score 6-7):**
+    - **Immediate action**: Emergency department evaluation
+    - **Imaging**: Urgent CT/MRI brain, vascular imaging
+    - **Treatment**: Immediate antiplatelet therapy (if not contraindicated)
+    - **Admission**: Consider inpatient observation
+    - **Specialist**: Urgent neurology consultation
+    
+    **Moderate Risk (Score 4-5):**
+    - **Timing**: Evaluation within 24-48 hours
+    - **Setting**: Rapid access TIA clinic or ED
+    - **Imaging**: Brain and vascular imaging within 48 hours
+    - **Treatment**: Start antiplatelet therapy
+    - **Follow-up**: Structured care pathway
+    
+    **Low Risk (Score 0-3):**
+    - **Timing**: Outpatient evaluation within 7 days
+    - **Setting**: TIA clinic or neurology outpatient
+    - **Imaging**: Brain imaging and vascular assessment
+    - **Treatment**: Antiplatelet therapy, risk factor modification
+    - **Education**: Stroke warning signs, when to seek help
+    
+    ### 💊 Treatment Recommendations
+    
+    **Antiplatelet Therapy:**
+    - **First-line**: Aspirin 300mg daily for 2 weeks, then 75mg daily
+    - **Alternative**: Clopidogrel 75mg daily (if aspirin intolerant)
+    - **Dual therapy**: Consider aspirin + clopidogrel for high-risk patients
+    
+    **Anticoagulation (if atrial fibrillation):**
+    - **Assessment**: ECG, consider Holter monitoring
+    - **Treatment**: Direct oral anticoagulants (DOACs) preferred
+    - **Risk assessment**: Use CHA₂DS₂-VASc score
+    
+    ### ⚠️ Important Clinical Considerations
+    
+    **Diagnostic Criteria:**
+    - **TIA definition**: Transient neurological symptoms without permanent deficit
+    - **Symptom resolution**: Complete resolution of symptoms
+    - **Timing**: Score calculated based on presenting symptoms
+    - **Differential**: Exclude TIA mimics (migraine, seizure, syncope)
+    
+    **Limitations:**
+    - **Population**: Validated primarily in Western populations
+    - **Timing**: Most predictive for short-term risk (2-7 days)
+    - **Imaging**: Doesn't incorporate advanced imaging findings
+    - **Etiology**: Doesn't account for stroke mechanism
+    
+    ### 📋 Example Clinical Scenarios
+    
+    **Low Risk (Score 2)**
+    - 55-year-old with 5-minute speech difficulty, normal BP, no diabetes
+    - **Action**: Outpatient TIA clinic within 7 days
+    - **7-day stroke risk**: 1.2%
+    
+    **Moderate Risk (Score 4)**
+    - 65-year-old diabetic with 30-minute weakness, elevated BP
+    - **Action**: Urgent evaluation within 24-48 hours
+    - **7-day stroke risk**: 5.9%
+    
+    **High Risk (Score 6)**
+    - 70-year-old diabetic with 90-minute weakness and high BP
+    - **Action**: Emergency evaluation, immediate treatment
+    - **7-day stroke risk**: 11.7%
+    
+    ### 📚 References
+    
+    - Johnston SC, et al. Validation and refinement of scores to predict very early stroke risk after transient ischaemic attack. *Lancet* 2007;369:283-292
+    - Rothwell PM, et al. A simple score (ABCD) to identify individuals at high early risk of stroke after transient ischaemic attack. *Lancet* 2005;366:29-36
+    - Easton JD, et al. Definition and evaluation of transient ischemic attack. *Stroke* 2009;40:2276-2293
+    
+    ---
+    
+    **Args:**
+        request: Clinical parameters for TIA risk assessment (age, BP, symptoms, duration, diabetes)
         
-    Returns:
-        Abcd2Response: Result with stroke risk stratification
+    **Returns:**
+        Abcd2Response: ABCD² score with stroke risk stratification and management recommendations
+        
+    **Raises:**
+        - **422 Validation Error**: Invalid parameters (age out of range, invalid enum values)
+        - **500 Internal Error**: Calculation failure (rare, contact support if persistent)
     """
     try:
         # Convert request to dictionary

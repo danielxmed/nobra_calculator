@@ -451,14 +451,54 @@ class CategoriesResponse(BaseModel):
 
 
 class Cha2ds2VascRequest(BaseModel):
-    """Request model for CHA₂DS₂-VASc Score"""
-    age: int = Field(..., ge=18, le=120, description="Patient's age in years")
-    sex: SexType = Field(..., description="Patient's biological sex")
-    congestive_heart_failure: bool = Field(..., description="History of congestive heart failure or LV dysfunction (LVEF ≤40%)")
-    hypertension: bool = Field(..., description="History of arterial hypertension")
-    stroke_tia_thromboembolism: bool = Field(..., description="Previous history of stroke, TIA, or thromboembolism")
-    vascular_disease: bool = Field(..., description="Vascular disease (previous MI, PAD, or aortic plaque)")
-    diabetes: bool = Field(..., description="History of diabetes mellitus")
+    """
+    Request model for CHA₂DS₂-VASc Score calculation
+    
+    The CHA₂DS₂-VASc score is the gold standard for stroke risk assessment in patients 
+    with non-valvular atrial fibrillation. It guides anticoagulation therapy decisions 
+    and is recommended by major cardiology guidelines worldwide.
+    
+    **Clinical Context:**
+    - Used for stroke risk stratification in atrial fibrillation
+    - Guides oral anticoagulation therapy decisions  
+    - Balances stroke prevention vs bleeding risk
+    - Essential for quality metrics in AF care
+    
+    **Important Notes:**
+    - Applicable only to non-valvular atrial fibrillation
+    - Consider bleeding risk assessment (HAS-BLED score)
+    - Individual patient preferences important for shared decision-making
+    """
+    age: int = Field(
+        ..., 
+        ge=18, 
+        le=120, 
+        description="**Patient's age in years**\n\nAge contributes to stroke risk in two categories:\n- **65-74 years**: 1 point\n- **≥75 years**: 2 points\n\n**Clinical Notes**:\n- Age is the strongest predictor of stroke risk\n- Risk increases exponentially with age\n- Consider life expectancy and quality of life in very elderly"
+    )
+    sex: SexType = Field(
+        ..., 
+        description="**Patient's biological sex**\n\n**Female patients**: Receive 1 point if other risk factors present\n**Male patients**: No points for sex alone\n\n**Clinical Context**:\n- Female sex is a risk modifier, not independent risk factor\n- Only contributes to score if other risk factors present\n- Based on biological sex, not gender identity"
+    )
+    congestive_heart_failure: bool = Field(
+        ..., 
+        description="**History of congestive heart failure or left ventricular dysfunction**\n\n**Criteria for 1 point**:\n- Clinical heart failure (any NYHA class)\n- LVEF ≤40% (regardless of symptoms)\n- Documented LV systolic dysfunction\n\n**Clinical Evidence**:\n- Echocardiography showing reduced ejection fraction\n- Clinical signs/symptoms of heart failure\n- Heart failure hospitalization history\n- BNP/NT-proBNP elevation with clinical context"
+    )
+    hypertension: bool = Field(
+        ..., 
+        description="**History of arterial hypertension**\n\n**Criteria for 1 point**:\n- Documented hypertension diagnosis\n- Current antihypertensive medication use\n- BP ≥140/90 mmHg on multiple occasions\n\n**Clinical Notes**:\n- Most common risk factor in AF patients\n- Include controlled hypertension on medications\n- Consider white coat vs sustained hypertension\n- Target BP <130/80 mmHg in AF patients"
+    )
+    stroke_tia_thromboembolism: bool = Field(
+        ..., 
+        description="**Previous history of stroke, TIA, or systemic thromboembolism**\n\n**Criteria for 2 points** (highest individual risk factor):\n- Ischemic stroke (any severity)\n- Transient ischemic attack (TIA)\n- Systemic arterial embolism\n- Intracranial hemorrhage (relative contraindication to anticoagulation)\n\n**Clinical Impact**:\n- Strongest predictor of future stroke\n- Mandates anticoagulation unless contraindicated\n- Consider imaging evidence and clinical documentation"
+    )
+    vascular_disease: bool = Field(
+        ..., 
+        description="**Vascular disease history**\n\n**Criteria for 1 point**:\n- **Coronary artery disease**: MI, PCI, CABG, significant CAD on angiography\n- **Peripheral artery disease**: Claudication, revascularization, ABI <0.9\n- **Aortic disease**: Aortic plaque >4mm, aortic atherosclerosis\n\n**Clinical Evidence**:\n- Documented myocardial infarction\n- Coronary revascularization procedures\n- Peripheral artery interventions\n- Imaging showing significant atherosclerosis"
+    )
+    diabetes: bool = Field(
+        ..., 
+        description="**History of diabetes mellitus**\n\n**Criteria for 1 point**:\n- Type 1 or Type 2 diabetes mellitus\n- Current antidiabetic medication use\n- HbA1c ≥6.5% (48 mmol/mol) on multiple occasions\n- Fasting glucose ≥126 mg/dL (7.0 mmol/L)\n\n**Clinical Context**:\n- Include diet-controlled diabetes\n- Consider prediabetes as borderline risk\n- Target HbA1c <7% in most AF patients\n- Monitor for diabetic complications affecting bleeding risk"
+    )
     
     class Config:
         schema_extra = {
@@ -470,6 +510,60 @@ class Cha2ds2VascRequest(BaseModel):
                 "stroke_tia_thromboembolism": False,
                 "vascular_disease": False,
                 "diabetes": True
+            },
+            "examples": {
+                "low_risk_male": {
+                    "summary": "Low risk - Young male with lone AF",
+                    "description": "55-year-old male with isolated atrial fibrillation",
+                    "value": {
+                        "age": 55,
+                        "sex": "male",
+                        "congestive_heart_failure": False,
+                        "hypertension": False,
+                        "stroke_tia_thromboembolism": False,
+                        "vascular_disease": False,
+                        "diabetes": False
+                    }
+                },
+                "moderate_risk": {
+                    "summary": "Moderate risk - Elderly male with hypertension",
+                    "description": "67-year-old male with AF and hypertension",
+                    "value": {
+                        "age": 67,
+                        "sex": "male",
+                        "congestive_heart_failure": False,
+                        "hypertension": True,
+                        "stroke_tia_thromboembolism": False,
+                        "vascular_disease": False,
+                        "diabetes": False
+                    }
+                },
+                "high_risk_female": {
+                    "summary": "High risk - Elderly female with multiple comorbidities",
+                    "description": "75-year-old female with heart failure, hypertension, and diabetes",
+                    "value": {
+                        "age": 75,
+                        "sex": "female",
+                        "congestive_heart_failure": True,
+                        "hypertension": True,
+                        "stroke_tia_thromboembolism": False,
+                        "vascular_disease": False,
+                        "diabetes": True
+                    }
+                },
+                "very_high_risk": {
+                    "summary": "Very high risk - Prior stroke patient",
+                    "description": "78-year-old female with prior stroke and multiple risk factors",
+                    "value": {
+                        "age": 78,
+                        "sex": "female",
+                        "congestive_heart_failure": True,
+                        "hypertension": True,
+                        "stroke_tia_thromboembolism": True,
+                        "vascular_disease": True,
+                        "diabetes": True
+                    }
+                }
             }
         }
 

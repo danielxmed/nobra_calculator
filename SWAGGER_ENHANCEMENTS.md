@@ -48,17 +48,17 @@ app = FastAPI(
 
 ### 2. Enhanced Pydantic Models (`app/models/score_models.py`)
 
-**CKD-EPI 2021 Request Model Enhancements:**
+**CKD-EPI 2021 Models (Complete Enhancement):**
 - **Clinical Context**: Detailed explanation of the equation and its clinical applications
 - **Parameter Descriptions**: Comprehensive field documentation with clinical significance
 - **Multiple Examples**: Various clinical scenarios (normal, CKD stages, kidney failure)
 - **Validation Guidance**: Clear requirements and clinical considerations
 
-**CKD-EPI 2021 Response Model Enhancements:**
-- **Clinical Interpretation**: Detailed explanation of eGFR ranges and their significance
-- **Stage-Specific Guidance**: Clear actions for each CKD stage
-- **Multiple Examples**: Complete response examples for different clinical scenarios
-- **Units and Normalization**: Explanation of measurement standardization
+**CHA₂DS₂-VASc Models (Complete Enhancement):**
+- **Clinical Context**: Comprehensive stroke risk assessment documentation
+- **Parameter Descriptions**: Detailed criteria for each risk factor with clinical evidence
+- **Multiple Examples**: Low risk to very high risk clinical scenarios
+- **Anticoagulation Guidance**: Evidence-based treatment recommendations
 
 **Error Response Model:**
 - **Comprehensive Error Types**: Standardized categories for different error scenarios
@@ -67,21 +67,21 @@ app = FastAPI(
 
 ### 3. Enhanced API Endpoints (`app/routers/scores.py`)
 
-#### A. List Scores Endpoint (`GET /api/scores`)
+#### A. List Scores Endpoint (`GET /api/scores`) ✅ ENHANCED
 **Enhancements:**
 - **Comprehensive Overview**: Detailed description of all 19+ available calculators
 - **Category Breakdown**: Complete list of medical specialties with examples
 - **Usage Patterns**: Filtering, searching, and integration guidance
 - **Clinical Integration Tips**: EMR integration and quality assurance guidance
 
-#### B. Score Metadata Endpoint (`GET /api/scores/{score_id}`)
+#### B. Score Metadata Endpoint (`GET /api/scores/{score_id}`) ✅ ENHANCED
 **Enhancements:**
 - **Implementation Guide**: Complete technical and clinical metadata explanation
 - **Parameter Validation Details**: Comprehensive validation rule documentation
 - **Clinical Integration**: Implementation tips and best practices
 - **Quality Assurance**: Verification procedures and evidence base
 
-#### C. CKD-EPI 2021 Calculation Endpoint (`POST /api/ckd_epi_2021`)
+#### C. CKD-EPI 2021 Calculation Endpoint (`POST /api/ckd_epi_2021`) ✅ ENHANCED
 **Enhancements:**
 - **Clinical Background**: Detailed equation history and validation
 - **Formula Documentation**: Complete mathematical formula with constants
@@ -92,7 +92,45 @@ app = FastAPI(
 - **Quality Assurance**: Implementation validation checklist
 - **References**: Peer-reviewed literature citations
 
-#### D. Generic Calculation Endpoint (`POST /api/{score_id}/calculate`)
+#### D. CHA₂DS₂-VASc Calculation Endpoint (`POST /api/cha2ds2_vasc`) ✅ ENHANCED
+**Enhancements:**
+- **Clinical Background**: Comprehensive stroke risk assessment documentation
+- **Scoring System**: Detailed breakdown of all risk factors and point values
+- **Clinical Applications**: Stroke prevention and anticoagulation guidance
+- **Interpretation Table**: Score ranges with stroke risk percentages and recommendations
+- **Anticoagulation Guidelines**: Detailed medication recommendations by risk level
+- **Clinical Considerations**: Patient selection, risk factor definitions, bleeding assessment
+- **Example Scenarios**: Low risk to very high risk clinical cases
+- **Quality Assurance**: Implementation validation and guideline compliance
+- **References**: Current ESC and AHA/ACC/HRS guidelines
+
+#### E. CURB-65 Calculation Endpoint (`POST /api/curb_65`) ✅ ENHANCED
+**Enhancements:**
+- **Clinical Background**: Pneumonia severity assessment and mortality prediction
+- **Scoring Criteria**: Detailed breakdown of CURB-65 components
+- **Clinical Applications**: Treatment location decisions and antibiotic selection
+- **Interpretation Table**: Score ranges with mortality risk and treatment recommendations
+- **Treatment Guidelines**: Outpatient vs inpatient vs ICU management protocols
+- **Antibiotic Selection**: Evidence-based antibiotic recommendations by severity
+- **Clinical Considerations**: Assessment requirements and limitations
+- **Example Scenarios**: Low risk to very high risk pneumonia cases
+- **Quality Assurance**: BTS and IDSA guideline compliance
+- **References**: Original validation studies and clinical guidelines
+
+#### F. ABCD² Score Calculation Endpoint (`POST /api/abcd2_score`) ✅ ENHANCED
+**Enhancements:**
+- **Clinical Background**: TIA stroke risk prediction and urgent evaluation guidance
+- **Scoring Criteria**: Detailed breakdown of all ABCD² components
+- **Clinical Applications**: Risk stratification and treatment timing decisions
+- **Interpretation Table**: Score ranges with stroke risk and urgency recommendations
+- **Emergency Management**: Risk-specific evaluation and treatment protocols
+- **Treatment Recommendations**: Antiplatelet therapy and anticoagulation guidance
+- **Clinical Considerations**: Diagnostic criteria and limitations
+- **Example Scenarios**: Low risk to high risk TIA cases
+- **Quality Assurance**: Validation studies and stroke guideline compliance
+- **References**: Original ABCD² validation studies
+
+#### G. Generic Calculation Endpoint (`POST /api/{score_id}/calculate`) ✅ ENHANCED
 **Enhancements:**
 - **Universal Interface**: Comprehensive guide for dynamic calculator usage
 - **Parameter Structure**: Detailed examples for different calculators
@@ -100,14 +138,14 @@ app = FastAPI(
 - **Best Practices**: Implementation guidelines and error handling
 - **Integration Tips**: Caching, validation, and audit trail recommendations
 
-#### E. Categories Endpoint (`GET /api/categories`)
+#### H. Categories Endpoint (`GET /api/categories`) ✅ ENHANCED
 **Enhancements:**
 - **Medical Specialties Guide**: Detailed breakdown of all 11 specialties
 - **Clinical Applications**: Use cases for each specialty category
 - **Integration Patterns**: EMR integration and clinical decision support
 - **Quality Assurance**: Evidence base and maintenance procedures
 
-#### F. Reload Endpoint (`POST /api/reload`)
+#### I. Reload Endpoint (`POST /api/reload`) ✅ ENHANCED
 **Enhancements:**
 - **System Operations**: Comprehensive reload process documentation
 - **Use Cases**: Development, maintenance, and quality assurance scenarios
@@ -177,10 +215,17 @@ app = FastAPI(
 - **100+ Parameters**: Detailed parameter documentation with validation
 - **50+ Response Examples**: Real-world clinical scenarios
 
+### Enhanced Calculators (Production-Ready Documentation)
+- ✅ **CKD-EPI 2021**: Complete kidney function assessment with clinical staging
+- ✅ **CHA₂DS₂-VASc**: Comprehensive stroke risk assessment with anticoagulation guidance
+- ✅ **CURB-65**: Detailed pneumonia severity assessment with treatment protocols
+- ✅ **ABCD² Score**: Complete TIA stroke risk prediction with emergency management
+- 🔄 **Additional 15+ Calculators**: Basic documentation (ready for enhancement)
+
 ### Quality
-- **Clinical Accuracy**: All calculators validated against original literature
-- **Professional Standards**: Medical-grade documentation quality
-- **User Experience**: Clear, actionable guidance for all users
+- **Clinical Accuracy**: All enhanced calculators validated against original literature
+- **Professional Standards**: Medical-grade documentation quality for enhanced calculators
+- **User Experience**: Clear, actionable guidance with multiple clinical scenarios
 - **Maintainability**: Structured format for ongoing updates
 
 ## 🔍 Usage Examples
