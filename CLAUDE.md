@@ -257,7 +257,7 @@ class {ScoreId}Response(BaseModel):
     stage_description: str = Field(..., description="Stage description")
 ```
 
-### STEP 4: Add Specific Endpoint (Optional)
+### STEP 4: Add Specific Endpoint
 
 In `/app/routers/scores.py`, add:
 
