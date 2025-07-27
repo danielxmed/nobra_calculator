@@ -20,11 +20,82 @@ from app.routers import scores_router, health_router
 # FastAPI application configuration
 app = FastAPI(
     title="nobra_calculator",
-    description=__description__,
+    description="""
+    ## 🩺 Medical Scores & Calculators API
+
+    **nobra_calculator** is a comprehensive, production-ready API for medical calculations and clinical scores. 
+    Built with FastAPI, it provides validated, evidence-based medical calculators with detailed clinical interpretations.
+
+    ### 🚀 Key Features
+
+    - **19+ Medical Scores**: Covering cardiology, nephrology, pulmonology, neurology, and more
+    - **Clinical Interpretations**: Evidence-based recommendations for each calculation
+    - **Robust Validation**: Comprehensive input validation with clinical ranges
+    - **Production Ready**: Scalable architecture with comprehensive error handling
+    - **Standards Compliant**: Following medical guidelines and best practices
+
+    ### 📊 Available Categories
+
+    | Category | Scores | Examples |
+    |----------|--------|----------|
+    | **Cardiology** | 2+ | CHA₂DS₂-VASc, ACC/AHA HF Staging |
+    | **Nephrology** | 2+ | CKD-EPI 2021, ABIC Score |
+    | **Pulmonology** | 3+ | CURB-65, 6MWT, A-a O₂ Gradient |
+    | **Neurology** | 3+ | ABCD² Score, 4AT, 2HELPS2B |
+    | **Hematology** | 1+ | 4Ts HIT Score |
+    | **Emergency** | 1+ | 4C COVID-19 Mortality |
+    | **Pediatrics** | 1+ | AAP Hypertension Guidelines |
+    | **Geriatrics** | 1+ | Abbey Pain Scale |
+    | **Psychiatry** | 1+ | AIMS Tardive Dyskinesia |
+
+    ### 🔗 Quick Start
+
+    1. **Browse Available Scores**: `GET /api/scores`
+    2. **Get Score Details**: `GET /api/scores/{score_id}`
+    3. **Calculate Score**: `POST /api/{score_id}`
+    4. **Health Check**: `GET /health`
+
+    ### 📚 Documentation
+
+    - **Interactive API Docs**: [/docs](/docs) (Swagger UI)
+    - **Alternative Docs**: [/redoc](/redoc) (ReDoc)
+    - **OpenAPI Spec**: [/openapi.json](/openapi.json)
+
+    ### ⚠️ Clinical Disclaimer
+
+    This API is intended for educational and research purposes. Results should not replace 
+    professional clinical judgment. Always consult qualified healthcare professionals for 
+    medical diagnosis and treatment decisions.
+
+    ### 🏥 Clinical Validation
+
+    All scores are implemented according to peer-reviewed literature and established 
+    clinical guidelines. Each calculation includes comprehensive references and 
+    evidence-based interpretations.
+    """,
     version=__version__,
     docs_url="/docs",
     redoc_url="/redoc",
-    openapi_url="/openapi.json"
+    openapi_url="/openapi.json",
+    contact={
+        "name": "Daniel Nobrega Medeiros",
+        "email": "daniel@nobregamedtech.com.br",
+        "url": "https://github.com/danielxmed/nobra_calculator"
+    },
+    license_info={
+        "name": "Apache 2.0",
+        "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    openapi_tags=[
+        {
+            "name": "scores",
+            "description": "Medical scores and calculators with clinical interpretations"
+        },
+        {
+            "name": "health",
+            "description": "API health and status monitoring"
+        }
+    ]
 )
 
 # CORS configuration to allow frontend access

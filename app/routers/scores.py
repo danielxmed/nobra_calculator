@@ -62,20 +62,56 @@ router = APIRouter(
 )
 
 
-@router.get("/scores", response_model=ScoreListResponse)
+@router.get("/scores", 
+           response_model=ScoreListResponse,
+           summary="List Available Medical Scores",
+           description="Retrieve all available medical calculators and scores with optional filtering",
+           response_description="Comprehensive list of available medical scores and calculators")
 async def list_scores(
-    category: Optional[str] = Query(None, description="Filter by medical category"),
-    search: Optional[str] = Query(None, description="Search by term in title or description")
+    category: Optional[str] = Query(
+        None, 
+        description="Filter by medical specialty (e.g., 'cardiology', 'nephrology', 'neurology')",
+        example="cardiology"
+    ),
+    search: Optional[str] = Query(
+        None, 
+        description="Search scores by keywords in title or description",
+        example="stroke risk"
+    )
 ):
     """
-    Lists all available medical scores in the API
+    **List All Available Medical Scores and Calculators**
     
-    Args:
-        category: Optional - filter by medical category
-        search: Optional - search by term in title or description
-        
-    Returns:
-        ScoreListResponse: List of available scores
+    Comprehensive catalog of medical scores, calculators, and assessment tools 
+    available in the nobra_calculator API.
+    
+    **Available Categories:**
+    - **Cardiology**: CHA₂DS₂-VASc, heart failure staging
+    - **Nephrology**: CKD-EPI 2021, ABIC score
+    - **Pulmonology**: CURB-65, 6-minute walk test, A-a gradient
+    - **Neurology**: ABCD² score, 4AT delirium screen
+    - **Hematology**: 4Ts HIT score
+    - **Emergency Medicine**: COVID-19 4C mortality
+    - **Pediatrics**: AAP hypertension guidelines
+    - **Geriatrics**: Abbey pain scale
+    - **Psychiatry**: AIMS tardive dyskinesia
+    - **General Medicine**: AAS abuse screening
+    
+    **Search Functionality:**
+    - Search by score name or abbreviation
+    - Search by clinical condition
+    - Search by medical specialty
+    - Search by keywords in descriptions
+    
+    **Usage Examples:**
+    - `/api/scores` - List all available scores
+    - `/api/scores?category=cardiology` - Cardiology scores only
+    - `/api/scores?search=stroke` - All stroke-related scores
+    - `/api/scores?search=risk` - All risk assessment tools
+    
+    **Response Information:**
+    Each score includes ID, title, description, category, and version information
+    for easy identification and selection.
     """
     try:
         if search:
@@ -104,16 +140,43 @@ async def list_scores(
         )
 
 
-@router.get("/scores/{score_id}", response_model=ScoreMetadataResponse)
+@router.get("/scores/{score_id}", 
+           response_model=ScoreMetadataResponse,
+           summary="Get Score Metadata",
+           description="Retrieve comprehensive metadata for a specific medical score",
+           response_description="Complete score information including parameters, interpretation ranges, and references")
 async def get_score_metadata(score_id: str):
     """
-    Gets the complete metadata of a specific score
+    **Get Comprehensive Metadata for a Specific Medical Score**
     
-    Args:
-        score_id: ID of the score
-        
-    Returns:
-        ScoreMetadataResponse: Detailed metadata of the score
+    Retrieves detailed information about a medical score including parameters,
+    validation rules, interpretation ranges, clinical references, and usage notes.
+    
+    **Metadata Components:**
+    - **Basic Information**: ID, title, description, category, version
+    - **Parameters**: Required inputs with validation rules and units
+    - **Result Information**: Output format and measurement units
+    - **Interpretation Ranges**: Clinical thresholds and recommendations
+    - **Scientific References**: Peer-reviewed citations and guidelines
+    - **Mathematical Formula**: Calculation algorithm description
+    - **Clinical Notes**: Important usage considerations and limitations
+    
+    **Use Cases:**
+    - Understanding score requirements before calculation
+    - Validating input parameters and ranges
+    - Interpreting calculation results clinically
+    - Implementing scores in other systems
+    - Academic research and citation purposes
+    - Quality assurance and validation
+    
+    **Parameter Information:**
+    Each parameter includes data type, validation rules, clinical significance,
+    measurement units, and example values for proper implementation.
+    
+    **Interpretation Guidance:**
+    Detailed clinical interpretation ranges with specific recommendations
+    for each score level, helping translate numerical results into
+    actionable clinical decisions.
     """
     try:
         metadata = score_service.get_score_metadata(score_id)
@@ -143,16 +206,43 @@ async def get_score_metadata(score_id: str):
         )
 
 
-@router.post("/ckd_epi_2021", response_model=CKDEpi2021Response)
+@router.post("/ckd_epi_2021", 
+             response_model=CKDEpi2021Response,
+             summary="Calculate CKD-EPI 2021 eGFR",
+             description="Estimates glomerular filtration rate using the race-free CKD-EPI 2021 equation",
+             response_description="eGFR result with CKD staging and clinical recommendations")
 async def calculate_ckd_epi_2021(request: CKDEpi2021Request):
     """
-    Calculates the Estimated Glomerular Filtration Rate using the CKD-EPI 2021 equation
+    **Calculate CKD-EPI 2021 Estimated Glomerular Filtration Rate**
     
-    Args:
-        request: Parameters required for calculation (sex, age, serum creatinine)
-        
-    Returns:
-        CKDEpi2021Response: Calculation result with clinical interpretation
+    The CKD-EPI 2021 equation provides a race-free estimation of kidney function, 
+    offering more equitable assessment across all populations.
+    
+    **Clinical Applications:**
+    - Chronic kidney disease staging (G1-G5)
+    - Medication dosing adjustments
+    - Nephrology referral decisions
+    - Cardiovascular risk stratification
+    - Monitoring kidney function over time
+    
+    **Key Features:**
+    - Race-free equation (2021 update)
+    - Age, sex, and creatinine-based calculation
+    - KDIGO CKD staging interpretation
+    - Specific clinical recommendations per stage
+    
+    **Input Requirements:**
+    - Standardized serum creatinine (IDMS-traceable)
+    - Patient age ≥18 years
+    - Biological sex (male/female)
+    
+    **Output Interpretation:**
+    - G1 (≥90): Normal/high - investigate for kidney damage
+    - G2 (60-89): Mild decrease - investigate for kidney damage
+    - G3a (45-59): Mild-moderate decrease - nephrology follow-up
+    - G3b (30-44): Moderate-severe decrease - nephrologist referral
+    - G4 (15-29): Severe decrease - prepare for replacement therapy
+    - G5 (<15): Kidney failure - dialysis/transplant needed
     """
     try:
         # Convert request to dictionary
@@ -199,16 +289,45 @@ async def calculate_ckd_epi_2021(request: CKDEpi2021Request):
         )
 
 
-@router.post("/cha2ds2_vasc", response_model=Cha2ds2VascResponse)
+@router.post("/cha2ds2_vasc", 
+             response_model=Cha2ds2VascResponse,
+             summary="Calculate CHA₂DS₂-VASc Score",
+             description="Assesses stroke risk in atrial fibrillation patients for anticoagulation decisions",
+             response_description="Stroke risk assessment with anticoagulation recommendations")
 async def calculate_cha2ds2_vasc(request: Cha2ds2VascRequest):
     """
-    Calculates the CHA₂DS₂-VASc Score for stroke risk in atrial fibrillation
+    **Calculate CHA₂DS₂-VASc Score for Atrial Fibrillation Stroke Risk**
     
-    Args:
-        request: Parameters required for calculation
-        
-    Returns:
-        Cha2ds2VascResponse: Result with clinical interpretation and anticoagulation recommendation
+    Evidence-based stroke risk stratification tool for patients with non-valvular 
+    atrial fibrillation, essential for anticoagulation decision-making.
+    
+    **Clinical Applications:**
+    - Stroke risk stratification in AF patients
+    - Anticoagulation therapy decisions
+    - Risk-benefit analysis (thrombotic vs bleeding risk)
+    - Patient counseling and shared decision-making
+    - Quality metrics and guideline compliance
+    
+    **Score Components (0-9 points):**
+    - **C**ongestive heart failure (1 point)
+    - **H**ypertension (1 point)  
+    - **A**ge ≥75 years (2 points)
+    - **D**iabetes (1 point)
+    - **S**troke/TIA/thromboembolism history (2 points)
+    - **V**ascular disease (1 point)
+    - **A**ge 65-74 years (1 point)
+    - **S**ex category female (1 point)
+    
+    **Management Guidelines:**
+    - Score 0 (men): No anticoagulation recommended
+    - Score 1 (men): Consider anticoagulation
+    - Score ≥2: Oral anticoagulation recommended
+    - Women with score 1 (sex only): No anticoagulation
+    
+    **Anticoagulation Options:**
+    - DOACs preferred: dabigatran, rivaroxaban, apixaban, edoxaban
+    - Warfarin (INR 2-3) if DOACs contraindicated
+    - Consider HAS-BLED score for bleeding risk assessment
     """
     try:
         # Convert request to dictionary
