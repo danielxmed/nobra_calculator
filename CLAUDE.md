@@ -227,7 +227,7 @@ def calculate_{score_id}(param1, param2, param3) -> Dict[str, Any]:
     return calculator.calculate(param1, param2, param3)
 ```
 
-### STEP 3: Create Pydantic Models (Optional)
+### STEP 3: Create Pydantic Models 
 
 If you want specific endpoints, add them to `/app/models/score_models.py`:
 
@@ -389,186 +389,6 @@ The return **MUST** always have this minimum structure:
 - ✅ Check mandatory fields: `id`, `title`, `description`, `category`, `parameters`, `result`
 - ✅ Check if `parameters` is an array and `result` is an object
 
-## 📚 Complete Example: APGAR Score
-
-### `/scores/apgar.json`
-```json
-{
-  "id": "apgar",
-  "title": "APGAR Score",
-  "description": "Assessment of newborn vitality",
-  "category": "neonatology",
-  "version": "1953",
-  "parameters": [
-    {
-      "name": "heart_rate",
-      "type": "integer",
-      "required": true,
-      "description": "Heart rate (bpm)",
-      "validation": {"min": 0, "max": 200},
-      "unit": "bpm"
-    },
-    {
-      "name": "respiratory_effort",
-      "type": "string",
-      "required": true,
-      "description": "Respiratory effort",
-      "options": ["absent", "irregular", "regular"],
-      "validation": {"enum": ["absent", "irregular", "regular"]}
-    }
-  ],
-  "result": {
-    "name": "apgar_score",
-    "type": "integer",
-    "unit": "points",
-    "description": "Total APGAR score"
-  },
-  "interpretation": {
-    "ranges": [
-      {
-        "min": 8,
-        "max": 10,
-        "stage": "Normal",
-        "description": "Newborn in good condition",
-        "interpretation": "Vigorous newborn, no intervention needed."
-      },
-      {
-        "min": 4,
-        "max": 7,
-        "stage": "Moderate",
-        "description": "Moderate depression",
-        "interpretation": "Needs stimulation and possible ventilation."
-      },
-      {
-        "min": 0,
-        "max": 3,
-        "stage": "Severe",
-        "description": "Severe asphyxia",
-        "interpretation": "Needs immediate resuscitation."
-      }
-    ]
-  },
-  "references": [
-    "Apgar V. A proposal for a new method of evaluation of the newborn infant. Curr Res Anesth Analg. 1953;32(4):260-7."
-  ],
-  "formula": "Sum of the 5 components: HR + Resp + Tone + Reflexes + Color",
-  "notes": [
-    "Assessment at 1 and 5 minutes of life",
-    "Each component is worth 0-2 points"
-  ]
-}
-```
-
-### `/calculators/apgar.py`
-```python
-"""
-APGAR Score Calculator
-
-Assesses newborn vitality through 5 components.
-"""
-
-from typing import Dict, Any
-
-
-class ApgarCalculator:
-    """Calculator for APGAR Score"""
-    
-    def calculate(self, heart_rate: int, respiratory_effort: str, 
-                 muscle_tone: str, reflexes: str, color: str) -> Dict[str, Any]:
-        """
-        Calculates the APGAR score
-        
-        Args:
-            heart_rate: Heart rate in bpm
-            respiratory_effort: "absent", "irregular", "regular"
-            muscle_tone: "flaccid", "mild_flexion", "active_movement"
-            reflexes: "absent", "grimace", "cry_cough"
-            color: "cyanotic", "blue_extremities", "pink"
-            
-        Returns:
-            Dict with result and interpretation
-        """
-        
-        # Validations
-        self._validate_inputs(heart_rate, respiratory_effort, muscle_tone, reflexes, color)
-        
-        # Calculate score for each component
-        hr_score = self._score_heart_rate(heart_rate)
-        resp_score = self._score_respiratory(respiratory_effort)
-        tone_score = self._score_muscle_tone(muscle_tone)
-        reflex_score = self._score_reflexes(reflexes)
-        color_score = self._score_color(color)
-        
-        # Sum total
-        total_score = hr_score + resp_score + tone_score + reflex_score + color_score
-        
-        # Get interpretation
-        interpretation = self._get_interpretation(total_score)
-        
-        return {
-            "result": total_score,
-            "unit": "points",
-            "interpretation": interpretation["interpretation"],
-            "stage": interpretation["stage"],
-            "stage_description": interpretation["description"]
-        }
-    
-    def _validate_inputs(self, heart_rate, respiratory_effort, muscle_tone, reflexes, color):
-        """Validates input parameters"""
-        
-        if not isinstance(heart_rate, int) or heart_rate < 0 or heart_rate > 200:
-            raise ValueError("Heart rate must be an integer between 0 and 200")
-        
-        valid_resp = ["absent", "irregular", "regular"]
-        if respiratory_effort not in valid_resp:
-            raise ValueError(f"Respiratory effort must be: {', '.join(valid_resp)}")
-        
-        # More validations...
-    
-    def _score_heart_rate(self, hr: int) -> int:
-        """Scores heart rate"""
-        if hr == 0:
-            return 0
-        elif hr < 100:
-            return 1
-        else:
-            return 2
-    
-    def _score_respiratory(self, effort: str) -> int:
-        """Scores respiratory effort"""
-        mapping = {"absent": 0, "irregular": 1, "regular": 2}
-        return mapping[effort]
-    
-    def _get_interpretation(self, score: int) -> Dict[str, str]:
-        """Interprets the APGAR score"""
-        
-        if score >= 8:
-            return {
-                "stage": "Normal",
-                "description": "Newborn in good condition",
-                "interpretation": "Vigorous newborn, no intervention needed."
-            }
-        elif score >= 4:
-            return {
-                "stage": "Moderate", 
-                "description": "Moderate depression",
-                "interpretation": "Needs stimulation and possible ventilation."
-            }
-        else:
-            return {
-                "stage": "Severe",
-                "description": "Severe asphyxia", 
-                "interpretation": "Needs immediate resuscitation."
-            }
-
-
-def calculate_apgar(heart_rate: int, respiratory_effort: str, muscle_tone: str, 
-                   reflexes: str, color: str) -> Dict[str, Any]:
-    """Convenience function for the dynamic loading system"""
-    calculator = ApgarCalculator()
-    return calculator.calculate(heart_rate, respiratory_effort, muscle_tone, reflexes, color)
-```
-
 ## 🔄 Automated Implementation Protocol
 
 ### Detailed Flow per Iteration
@@ -595,6 +415,8 @@ For each implementation cycle, strictly follow:
 ```
 - Create JSON in /scores/{score_id}.json
 - Implement calculator in /calculators/{score_id}.py
+- Implement pydantic models
+- Implements specific endopoint for the score
 - Test with POST /api/reload
 - Verify functionality via API
 - Validate all input scenarios
@@ -640,7 +462,7 @@ For each implementation cycle, strictly follow:
 1. **Create JSON** in `/scores/{score_id}.json` with complete metadata
 2. **Implement calculator** in `/calculators/{score_id}.py` with `calculate_{score_id}` function  
 3. **Test** via reload and API endpoints
-4. **Add Pydantic models** (optional) for specific endpoints
+4. **Add Pydantic models** for specific endpoints
 5. **Document** references and formulas appropriately
 6. **Mark as complete** in CALC_LIST.md
 7. **Compact conversation** and restart cycle
