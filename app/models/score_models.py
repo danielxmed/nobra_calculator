@@ -15,10 +15,41 @@ class SexType(str, Enum):
 
 # Request Models
 class CKDEpi2021Request(BaseModel):
-    """Request model for CKD-EPI 2021"""
-    sex: SexType = Field(..., description="Patient's sex")
-    age: int = Field(..., ge=18, le=120, description="Patient's age in years")
-    serum_creatinine: float = Field(..., ge=0.1, le=20.0, description="Serum creatinine in mg/dL")
+    """
+    Request model for CKD-EPI 2021 eGFR calculation
+    
+    The CKD-EPI 2021 equation is the current gold standard for estimating glomerular 
+    filtration rate (eGFR) in adults. This race-free equation was developed to provide 
+    more accurate kidney function assessment across diverse populations.
+    
+    **Clinical Context:**
+    - Used for CKD staging and monitoring
+    - Guides nephrology referral decisions  
+    - Assists in medication dosing adjustments
+    - Essential for pre-operative risk assessment
+    
+    **Important Notes:**
+    - Requires standardized (IDMS-traceable) serum creatinine
+    - Valid only for adults ≥18 years
+    - Less accurate in extremes of muscle mass
+    - Should be interpreted with clinical context
+    """
+    sex: SexType = Field(
+        ..., 
+        description="**Patient's biological sex**\n\nUsed to determine sex-specific constants in the eGFR calculation:\n- **Female**: κ=0.7, α=-0.241, multiplier=1.012\n- **Male**: κ=0.9, α=-0.302, multiplier=1.0\n\n*Note: Based on biological sex, not gender identity*"
+    )
+    age: int = Field(
+        ..., 
+        ge=18, 
+        le=120, 
+        description="**Patient's age in years**\n\nAge is incorporated as an exponential factor (0.9938^age) in the equation.\n\n**Valid Range**: 18-120 years\n**Clinical Notes**:\n- Equation validated primarily in adults 18-70 years\n- Use with caution in very elderly patients (>90 years)\n- Consider functional assessment in addition to eGFR in elderly"
+    )
+    serum_creatinine: float = Field(
+        ..., 
+        ge=0.1, 
+        le=20.0, 
+        description="**Standardized serum creatinine concentration in mg/dL**\n\n**Critical Requirements**:\n- Must be IDMS-traceable (standardized)\n- Steady-state creatinine (not acute changes)\n- Fasting not required\n\n**Valid Range**: 0.1-20.0 mg/dL\n**Clinical Context**:\n- Normal ranges: ~0.6-1.2 mg/dL (varies by lab)\n- Values >2.0 mg/dL suggest significant kidney impairment\n- Very high values (>10 mg/dL) may indicate kidney failure\n\n**Important Notes**:\n- Affected by muscle mass, diet, and medications\n- May be falsely elevated by some drugs (trimethoprim, cimetidine)\n- Consider cystatin C-based equations if creatinine unreliable"
+    )
     
     class Config:
         schema_extra = {
@@ -26,18 +57,84 @@ class CKDEpi2021Request(BaseModel):
                 "sex": "female",
                 "age": 65,
                 "serum_creatinine": 1.2
+            },
+            "examples": {
+                "normal_young_male": {
+                    "summary": "Normal kidney function - Young male",
+                    "description": "25-year-old male with normal creatinine",
+                    "value": {
+                        "sex": "male",
+                        "age": 25,
+                        "serum_creatinine": 0.9
+                    }
+                },
+                "ckd_stage3_female": {
+                    "summary": "CKD Stage 3a - Elderly female",
+                    "description": "65-year-old female with mild-moderate kidney impairment",
+                    "value": {
+                        "sex": "female",
+                        "age": 65,
+                        "serum_creatinine": 1.2
+                    }
+                },
+                "severe_ckd_male": {
+                    "summary": "CKD Stage 4 - Middle-aged male",
+                    "description": "55-year-old male with severe kidney impairment",
+                    "value": {
+                        "sex": "male",
+                        "age": 55,
+                        "serum_creatinine": 3.5
+                    }
+                },
+                "kidney_failure": {
+                    "summary": "CKD Stage 5 - Kidney failure",
+                    "description": "45-year-old female with kidney failure",
+                    "value": {
+                        "sex": "female",
+                        "age": 45,
+                        "serum_creatinine": 6.8
+                    }
+                }
             }
         }
 
 
 # Response Models
 class CKDEpi2021Response(BaseModel):
-    """Response model for CKD-EPI 2021"""
-    result: float = Field(..., description="Estimated glomerular filtration rate")
-    unit: str = Field(..., description="Unit of the result")
-    interpretation: str = Field(..., description="Clinical interpretation of the result")
-    stage: str = Field(..., description="Stage of chronic kidney disease")
-    stage_description: str = Field(..., description="Description of the stage")
+    """
+    Response model for CKD-EPI 2021 eGFR calculation
+    
+    Provides comprehensive kidney function assessment including eGFR value, 
+    CKD staging, and clinical interpretation with actionable recommendations.
+    
+    **Clinical Significance:**
+    - eGFR ≥90: Normal or high (investigate for kidney damage)
+    - eGFR 60-89: Mild decrease (investigate for kidney damage)  
+    - eGFR 45-59: Stage 3a CKD (nephrology follow-up recommended)
+    - eGFR 30-44: Stage 3b CKD (nephrologist referral necessary)
+    - eGFR 15-29: Stage 4 CKD (prepare for renal replacement therapy)
+    - eGFR <15: Stage 5 CKD (kidney failure - RRT needed)
+    """
+    result: float = Field(
+        ..., 
+        description="**Estimated Glomerular Filtration Rate (eGFR)**\n\nCalculated using the CKD-EPI 2021 equation. Represents the volume of plasma filtered by the kidneys per minute, normalized to 1.73 m² body surface area.\n\n**Clinical Interpretation**:\n- **>90**: Normal or high kidney function\n- **60-89**: Mild decrease in kidney function\n- **45-59**: Mild to moderate decrease (Stage 3a CKD)\n- **30-44**: Moderate to severe decrease (Stage 3b CKD)\n- **15-29**: Severe decrease (Stage 4 CKD)\n- **<15**: Kidney failure (Stage 5 CKD)\n\n**Units**: mL/min/1.73 m²"
+    )
+    unit: str = Field(
+        ..., 
+        description="**Unit of measurement for eGFR**\n\nStandardized as mL/min/1.73 m² (milliliters per minute per 1.73 square meters of body surface area)\n\nThis normalization allows comparison across patients of different sizes."
+    )
+    interpretation: str = Field(
+        ..., 
+        description="**Clinical interpretation and recommendations**\n\nProvides stage-specific clinical guidance including:\n- **Risk assessment**: Current kidney function status\n- **Follow-up recommendations**: When to refer to nephrology\n- **Monitoring guidance**: Frequency of reassessment\n- **Treatment considerations**: When to prepare for renal replacement therapy\n\n*Always correlate with clinical context and other laboratory values*"
+    )
+    stage: str = Field(
+        ..., 
+        description="**CKD Stage Classification**\n\nBased on KDIGO 2012 CKD guidelines:\n- **G1**: Normal or high (≥90 mL/min/1.73 m²)\n- **G2**: Mild decrease (60-89 mL/min/1.73 m²)\n- **G3a**: Mild to moderate decrease (45-59 mL/min/1.73 m²)\n- **G3b**: Moderate to severe decrease (30-44 mL/min/1.73 m²)\n- **G4**: Severe decrease (15-29 mL/min/1.73 m²)\n- **G5**: Kidney failure (<15 mL/min/1.73 m²)\n\n*Note: CKD diagnosis requires evidence of kidney damage for stages G1-G2*"
+    )
+    stage_description: str = Field(
+        ..., 
+        description="**Detailed description of the CKD stage**\n\nProvides plain-language explanation of the kidney function level and its clinical significance."
+    )
     
     class Config:
         schema_extra = {
@@ -47,6 +144,63 @@ class CKDEpi2021Response(BaseModel):
                 "interpretation": "Stage 3a Chronic Kidney Disease. Nephrology follow-up recommended.",
                 "stage": "G3a",
                 "stage_description": "Mild to moderate decrease in GFR"
+            },
+            "examples": {
+                "normal_function": {
+                    "summary": "Normal kidney function (G1)",
+                    "description": "Young adult with normal eGFR",
+                    "value": {
+                        "result": 105.2,
+                        "unit": "mL/min/1.73 m²",
+                        "interpretation": "Normal or high GFR. Investigate presence of kidney damage to determine if CKD is present.",
+                        "stage": "G1",
+                        "stage_description": "Normal or high kidney function"
+                    }
+                },
+                "mild_decrease": {
+                    "summary": "Mild decrease in kidney function (G2)",
+                    "description": "Mild reduction in eGFR, investigate for kidney damage",
+                    "value": {
+                        "result": 75.8,
+                        "unit": "mL/min/1.73 m²",
+                        "interpretation": "Mild decrease in GFR. Investigate presence of kidney damage to determine if CKD is present.",
+                        "stage": "G2",
+                        "stage_description": "Mild decrease in GFR"
+                    }
+                },
+                "stage_3a_ckd": {
+                    "summary": "Stage 3a CKD",
+                    "description": "Mild to moderate CKD requiring nephrology follow-up",
+                    "value": {
+                        "result": 52.3,
+                        "unit": "mL/min/1.73 m²",
+                        "interpretation": "Stage 3a Chronic Kidney Disease. Nephrology follow-up recommended.",
+                        "stage": "G3a",
+                        "stage_description": "Mild to moderate decrease in GFR"
+                    }
+                },
+                "stage_4_ckd": {
+                    "summary": "Stage 4 CKD",
+                    "description": "Severe CKD requiring preparation for renal replacement therapy",
+                    "value": {
+                        "result": 22.1,
+                        "unit": "mL/min/1.73 m²",
+                        "interpretation": "Stage 4 Chronic Kidney Disease. Specialized nephrology follow-up and preparation for kidney replacement therapy.",
+                        "stage": "G4",
+                        "stage_description": "Severe decrease in GFR"
+                    }
+                },
+                "kidney_failure": {
+                    "summary": "Kidney failure (G5)",
+                    "description": "End-stage kidney disease requiring immediate RRT",
+                    "value": {
+                        "result": 8.5,
+                        "unit": "mL/min/1.73 m²",
+                        "interpretation": "Stage 5 Chronic Kidney Disease (kidney failure). Kidney replacement therapy (dialysis or transplant) is necessary.",
+                        "stage": "G5",
+                        "stage_description": "Kidney failure"
+                    }
+                }
             }
         }
 
@@ -131,20 +285,101 @@ class ScoreMetadataResponse(BaseModel):
 
 
 class ErrorResponse(BaseModel):
-    """Model for error responses"""
-    error: str = Field(..., description="Type of error")
-    message: str = Field(..., description="Error message")
-    details: Optional[Dict[str, Any]] = Field(None, description="Additional error details")
+    """
+    Standardized error response model for all API endpoints
+    
+    Provides consistent error information across all endpoints to facilitate
+    proper error handling and debugging in client applications.
+    
+    **Error Types:**
+    - **ValidationError**: Invalid input parameters (422)
+    - **ScoreNotFound**: Calculator ID not found (404)
+    - **CalculatorNotImplemented**: Calculator exists but not implemented (501)
+    - **CalculationError**: Calculation execution failure (500)
+    - **InternalServerError**: General server errors (500)
+    - **ReloadError**: System reload failures (500)
+    """
+    error: str = Field(
+        ..., 
+        description="**Error type classification**\n\nStandardized error categories for programmatic handling:\n- `ValidationError`: Invalid parameters\n- `ScoreNotFound`: Calculator not found\n- `CalculatorNotImplemented`: Not yet implemented\n- `CalculationError`: Calculation failure\n- `InternalServerError`: Server error\n- `ReloadError`: System reload failure"
+    )
+    message: str = Field(
+        ..., 
+        description="**Human-readable error message**\n\nClear, descriptive message explaining what went wrong and providing context for the error."
+    )
+    details: Optional[Dict[str, Any]] = Field(
+        None, 
+        description="**Additional error details and suggestions**\n\nStructured information including:\n- Specific validation failures\n- Parameter requirements\n- Suggested corrective actions\n- Available alternatives\n- Contact information for support"
+    )
     
     class Config:
         schema_extra = {
-            "example": {
-                "error": "ValidationError",
-                "message": "Invalid parameters provided",
-                "details": {
-                    "field": "age",
-                    "value": 15,
-                    "constraint": "must be >= 18"
+            "examples": {
+                "validation_error": {
+                    "summary": "Parameter validation failure",
+                    "description": "Invalid input parameters provided",
+                    "value": {
+                        "error": "ValidationError",
+                        "message": "Invalid parameters for ckd_epi_2021",
+                        "details": {
+                            "score_id": "ckd_epi_2021",
+                            "validation_error": "Age must be an integer between 18 and 120 years",
+                            "suggestion": "Use GET /api/scores/ckd_epi_2021 to see parameter requirements",
+                            "provided_parameters": ["sex", "age", "serum_creatinine"]
+                        }
+                    }
+                },
+                "calculator_not_found": {
+                    "summary": "Calculator not found",
+                    "description": "Requested calculator ID does not exist",
+                    "value": {
+                        "error": "ScoreNotFound",
+                        "message": "Calculator 'unknown_score' not found",
+                        "details": {
+                            "score_id": "unknown_score",
+                            "available_calculators": "Use GET /api/scores to see available calculators",
+                            "suggestion": "Check spelling or use GET /api/scores to browse available options"
+                        }
+                    }
+                },
+                "not_implemented": {
+                    "summary": "Calculator not implemented",
+                    "description": "Calculator exists but implementation is pending",
+                    "value": {
+                        "error": "CalculatorNotImplemented",
+                        "message": "Calculator for 'future_score' exists but is not yet implemented",
+                        "details": {
+                            "score_id": "future_score",
+                            "status": "Calculator metadata available but calculation logic not implemented",
+                            "suggestion": "Check back later or contact support for implementation timeline"
+                        }
+                    }
+                },
+                "calculation_error": {
+                    "summary": "Calculation execution failure",
+                    "description": "Error occurred during calculation process",
+                    "value": {
+                        "error": "CalculationError",
+                        "message": "Error calculating ckd_epi_2021",
+                        "details": {
+                            "score_id": "ckd_epi_2021",
+                            "parameters": {"sex": "female", "age": 65, "serum_creatinine": 1.2},
+                            "suggestion": "Verify parameters match calculator requirements or contact support"
+                        }
+                    }
+                },
+                "internal_server_error": {
+                    "summary": "Internal server error",
+                    "description": "Unexpected server-side error occurred",
+                    "value": {
+                        "error": "InternalServerError",
+                        "message": "Internal error in calculation",
+                        "details": {
+                            "score_id": "ckd_epi_2021",
+                            "error": "Database connection failed",
+                            "suggestion": "Contact support if this error persists"
+                        }
+                    }
                 }
             }
         }
@@ -166,15 +401,104 @@ class HealthResponse(BaseModel):
         }
 
 
+class ReloadResponse(BaseModel):
+    """Response model for system reload operations"""
+    status: str = Field(..., description="Reload operation status (success/error)")
+    message: str = Field(..., description="Descriptive message about the reload operation")
+    scores_loaded: int = Field(..., description="Number of calculator metadata files loaded")
+    timestamp: str = Field(..., description="ISO timestamp of the reload operation")
+    details: Dict[str, Any] = Field(..., description="Additional reload operation details")
+    
+    class Config:
+        schema_extra = {
+            "example": {
+                "status": "success",
+                "message": "Calculators reloaded successfully",
+                "scores_loaded": 19,
+                "timestamp": "2024-01-01T12:00:00Z",
+                "details": {
+                    "metadata_reloaded": True,
+                    "calculators_reloaded": True,
+                    "available_categories": ["cardiology", "nephrology", "neurology"]
+                }
+            }
+        }
+
+
+class CategoriesResponse(BaseModel):
+    """Response model for medical categories listing"""
+    categories: List[str] = Field(..., description="List of available medical specialty categories")
+    total: int = Field(..., description="Total number of medical categories")
+    specialty_count: Dict[str, int] = Field(..., description="Number of calculators per specialty")
+    description: str = Field(..., description="Description of the categories system")
+    usage: str = Field(..., description="Usage instructions for filtering by category")
+    
+    class Config:
+        schema_extra = {
+            "example": {
+                "categories": ["cardiology", "nephrology", "neurology", "pulmonology"],
+                "total": 11,
+                "specialty_count": {
+                    "cardiology": 3,
+                    "nephrology": 1,
+                    "neurology": 4,
+                    "pulmonology": 2
+                },
+                "description": "Medical specialties covered by nobra_calculator API",
+                "usage": "Use category names with GET /api/scores?category={category} to filter calculators"
+            }
+        }
+
+
 class Cha2ds2VascRequest(BaseModel):
-    """Request model for CHA₂DS₂-VASc Score"""
-    age: int = Field(..., ge=18, le=120, description="Patient's age in years")
-    sex: SexType = Field(..., description="Patient's biological sex")
-    congestive_heart_failure: bool = Field(..., description="History of congestive heart failure or LV dysfunction (LVEF ≤40%)")
-    hypertension: bool = Field(..., description="History of arterial hypertension")
-    stroke_tia_thromboembolism: bool = Field(..., description="Previous history of stroke, TIA, or thromboembolism")
-    vascular_disease: bool = Field(..., description="Vascular disease (previous MI, PAD, or aortic plaque)")
-    diabetes: bool = Field(..., description="History of diabetes mellitus")
+    """
+    Request model for CHA₂DS₂-VASc Score calculation
+    
+    The CHA₂DS₂-VASc score is the gold standard for stroke risk assessment in patients 
+    with non-valvular atrial fibrillation. It guides anticoagulation therapy decisions 
+    and is recommended by major cardiology guidelines worldwide.
+    
+    **Clinical Context:**
+    - Used for stroke risk stratification in atrial fibrillation
+    - Guides oral anticoagulation therapy decisions  
+    - Balances stroke prevention vs bleeding risk
+    - Essential for quality metrics in AF care
+    
+    **Important Notes:**
+    - Applicable only to non-valvular atrial fibrillation
+    - Consider bleeding risk assessment (HAS-BLED score)
+    - Individual patient preferences important for shared decision-making
+    """
+    age: int = Field(
+        ..., 
+        ge=18, 
+        le=120, 
+        description="**Patient's age in years**\n\nAge contributes to stroke risk in two categories:\n- **65-74 years**: 1 point\n- **≥75 years**: 2 points\n\n**Clinical Notes**:\n- Age is the strongest predictor of stroke risk\n- Risk increases exponentially with age\n- Consider life expectancy and quality of life in very elderly"
+    )
+    sex: SexType = Field(
+        ..., 
+        description="**Patient's biological sex**\n\n**Female patients**: Receive 1 point if other risk factors present\n**Male patients**: No points for sex alone\n\n**Clinical Context**:\n- Female sex is a risk modifier, not independent risk factor\n- Only contributes to score if other risk factors present\n- Based on biological sex, not gender identity"
+    )
+    congestive_heart_failure: bool = Field(
+        ..., 
+        description="**History of congestive heart failure or left ventricular dysfunction**\n\n**Criteria for 1 point**:\n- Clinical heart failure (any NYHA class)\n- LVEF ≤40% (regardless of symptoms)\n- Documented LV systolic dysfunction\n\n**Clinical Evidence**:\n- Echocardiography showing reduced ejection fraction\n- Clinical signs/symptoms of heart failure\n- Heart failure hospitalization history\n- BNP/NT-proBNP elevation with clinical context"
+    )
+    hypertension: bool = Field(
+        ..., 
+        description="**History of arterial hypertension**\n\n**Criteria for 1 point**:\n- Documented hypertension diagnosis\n- Current antihypertensive medication use\n- BP ≥140/90 mmHg on multiple occasions\n\n**Clinical Notes**:\n- Most common risk factor in AF patients\n- Include controlled hypertension on medications\n- Consider white coat vs sustained hypertension\n- Target BP <130/80 mmHg in AF patients"
+    )
+    stroke_tia_thromboembolism: bool = Field(
+        ..., 
+        description="**Previous history of stroke, TIA, or systemic thromboembolism**\n\n**Criteria for 2 points** (highest individual risk factor):\n- Ischemic stroke (any severity)\n- Transient ischemic attack (TIA)\n- Systemic arterial embolism\n- Intracranial hemorrhage (relative contraindication to anticoagulation)\n\n**Clinical Impact**:\n- Strongest predictor of future stroke\n- Mandates anticoagulation unless contraindicated\n- Consider imaging evidence and clinical documentation"
+    )
+    vascular_disease: bool = Field(
+        ..., 
+        description="**Vascular disease history**\n\n**Criteria for 1 point**:\n- **Coronary artery disease**: MI, PCI, CABG, significant CAD on angiography\n- **Peripheral artery disease**: Claudication, revascularization, ABI <0.9\n- **Aortic disease**: Aortic plaque >4mm, aortic atherosclerosis\n\n**Clinical Evidence**:\n- Documented myocardial infarction\n- Coronary revascularization procedures\n- Peripheral artery interventions\n- Imaging showing significant atherosclerosis"
+    )
+    diabetes: bool = Field(
+        ..., 
+        description="**History of diabetes mellitus**\n\n**Criteria for 1 point**:\n- Type 1 or Type 2 diabetes mellitus\n- Current antidiabetic medication use\n- HbA1c ≥6.5% (48 mmol/mol) on multiple occasions\n- Fasting glucose ≥126 mg/dL (7.0 mmol/L)\n\n**Clinical Context**:\n- Include diet-controlled diabetes\n- Consider prediabetes as borderline risk\n- Target HbA1c <7% in most AF patients\n- Monitor for diabetic complications affecting bleeding risk"
+    )
     
     class Config:
         schema_extra = {
@@ -186,6 +510,60 @@ class Cha2ds2VascRequest(BaseModel):
                 "stroke_tia_thromboembolism": False,
                 "vascular_disease": False,
                 "diabetes": True
+            },
+            "examples": {
+                "low_risk_male": {
+                    "summary": "Low risk - Young male with lone AF",
+                    "description": "55-year-old male with isolated atrial fibrillation",
+                    "value": {
+                        "age": 55,
+                        "sex": "male",
+                        "congestive_heart_failure": False,
+                        "hypertension": False,
+                        "stroke_tia_thromboembolism": False,
+                        "vascular_disease": False,
+                        "diabetes": False
+                    }
+                },
+                "moderate_risk": {
+                    "summary": "Moderate risk - Elderly male with hypertension",
+                    "description": "67-year-old male with AF and hypertension",
+                    "value": {
+                        "age": 67,
+                        "sex": "male",
+                        "congestive_heart_failure": False,
+                        "hypertension": True,
+                        "stroke_tia_thromboembolism": False,
+                        "vascular_disease": False,
+                        "diabetes": False
+                    }
+                },
+                "high_risk_female": {
+                    "summary": "High risk - Elderly female with multiple comorbidities",
+                    "description": "75-year-old female with heart failure, hypertension, and diabetes",
+                    "value": {
+                        "age": 75,
+                        "sex": "female",
+                        "congestive_heart_failure": True,
+                        "hypertension": True,
+                        "stroke_tia_thromboembolism": False,
+                        "vascular_disease": False,
+                        "diabetes": True
+                    }
+                },
+                "very_high_risk": {
+                    "summary": "Very high risk - Prior stroke patient",
+                    "description": "78-year-old female with prior stroke and multiple risk factors",
+                    "value": {
+                        "age": 78,
+                        "sex": "female",
+                        "congestive_heart_failure": True,
+                        "hypertension": True,
+                        "stroke_tia_thromboembolism": True,
+                        "vascular_disease": True,
+                        "diabetes": True
+                    }
+                }
             }
         }
 
