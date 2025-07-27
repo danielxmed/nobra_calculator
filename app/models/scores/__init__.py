@@ -1,10 +1,32 @@
 """
-Pydantic models for the nobra_calculator API
+Medical score models organized by specialty
 """
 
-# Import all models from the refactored scores structure
-from .scores import *
+# Import all models from each specialty
+from .nephrology import *
+from .cardiology import *
+from .pulmonology import *
+from .neurology import *
+from .hematology import *
+from .emergency import *
+from .psychiatry import *
+from .pediatrics import *
+from .geriatrics import *
+from .rheumatology import *
+from .infectious_disease import *
 
+# Import shared models
+from ..shared import (
+    ScoreListResponse,
+    ScoreMetadataResponse,
+    ErrorResponse,
+    HealthResponse,
+    SexType,
+    YesNoType,
+    HospitalizationFrequencyType
+)
+
+# Re-export everything
 __all__ = [
     # Nephrology
     "CKDEpi2021Request",
