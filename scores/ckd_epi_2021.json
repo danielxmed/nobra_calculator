@@ -9,33 +9,36 @@
       "name": "sex",
       "type": "string",
       "required": true,
-      "description": "Patient's sex",
+      "description": "Patient's biological sex, used to determine sex-specific constants in the eGFR calculation",
       "options": ["male", "female"],
       "validation": {
         "enum": ["male", "female"]
-      }
+      },
+      "clinical_context": "Sex affects muscle mass and creatinine production. The 2021 equation uses sex-specific coefficients: κ=0.7 and α=-0.241 for females, κ=0.9 and α=-0.302 for males."
     },
     {
       "name": "age",
       "type": "integer",
       "required": true,
-      "description": "Patient's age in years",
+      "description": "Patient's age in complete years, reflecting the age-related decline in kidney function",
       "validation": {
         "min": 18,
         "max": 120
       },
-      "unit": "years"
+      "unit": "years",
+      "clinical_context": "GFR naturally declines with age at approximately 0.75-1 mL/min/1.73m² per year after age 30. This equation is validated only for adults ≥18 years."
     },
     {
       "name": "serum_creatinine",
       "type": "float",
       "required": true,
-      "description": "Standardized serum creatinine",
+      "description": "Standardized serum creatinine measured using IDMS-traceable methods",
       "validation": {
         "min": 0.1,
         "max": 20.0
       },
-      "unit": "mg/dL"
+      "unit": "mg/dL",
+      "clinical_context": "Must be standardized to IDMS (Isotope Dilution Mass Spectrometry) reference method. Non-standardized creatinine values will produce inaccurate eGFR estimates. Normal ranges: 0.6-1.2 mg/dL (females), 0.7-1.3 mg/dL (males)."
     }
   ],
   "result": {
@@ -51,42 +54,42 @@
         "max": null,
         "stage": "G1",
         "description": "Normal or high kidney function",
-        "interpretation": "Normal or high GFR. Investigate presence of kidney damage to determine if CKD is present."
+        "interpretation": "Normal or high GFR. Investigate for presence of kidney damage (proteinuria, hematuria, structural abnormalities) to determine if CKD is present. If no kidney damage, no CKD diagnosis. Continue routine health maintenance."
       },
       {
         "min": 60,
         "max": 89,
         "stage": "G2", 
         "description": "Mild decrease in GFR",
-        "interpretation": "Mild decrease in GFR. Investigate presence of kidney damage to determine if CKD is present."
+        "interpretation": "Mild decrease in GFR. Investigate for presence of kidney damage (proteinuria, hematuria, structural abnormalities) to determine if CKD is present. If no kidney damage and age >65, may be normal aging. Monitor annually."
       },
       {
         "min": 45,
         "max": 59,
         "stage": "G3a",
         "description": "Mild to moderate decrease in GFR",
-        "interpretation": "Stage 3a Chronic Kidney Disease. Nephrology follow-up recommended."
+        "interpretation": "Stage 3a Chronic Kidney Disease. Nephrology referral recommended within 6 months. Evaluate and treat complications (anemia, bone disease, acidosis). Monitor every 6 months. Blood pressure target <130/80. Consider ACE inhibitor/ARB if proteinuria present."
       },
       {
         "min": 30,
         "max": 44,
         "stage": "G3b",
         "description": "Moderate to severe decrease in GFR",
-        "interpretation": "Stage 3b Chronic Kidney Disease. Nephrologist referral necessary."
+        "interpretation": "Stage 3b Chronic Kidney Disease. Urgent nephrology referral within 1-3 months. Actively manage complications (anemia, mineral bone disorder, acidosis, hyperkalemia). Monitor every 3-6 months. Optimize blood pressure control. Prepare for renal replacement therapy education."
       },
       {
         "min": 15,
         "max": 29,
         "stage": "G4",
         "description": "Severe decrease in GFR",
-        "interpretation": "Stage 4 Chronic Kidney Disease. Specialized nephrology follow-up and preparation for kidney replacement therapy."
+        "interpretation": "Stage 4 Chronic Kidney Disease. Immediate nephrology referral within 2-4 weeks. Intensive management of complications. Monitor monthly to every 3 months. Begin renal replacement therapy preparation: patient education, access planning, transplant evaluation. Consider palliative care consultation if appropriate."
       },
       {
         "min": 0,
         "max": 14,
         "stage": "G5",
         "description": "Kidney failure",
-        "interpretation": "Stage 5 Chronic Kidney Disease (kidney failure). Kidney replacement therapy (dialysis or transplant) is necessary."
+        "interpretation": "Stage 5 Chronic Kidney Disease (kidney failure). Immediate nephrology referral within 1-2 weeks. Kidney replacement therapy (dialysis or transplant) is necessary. Urgent dialysis access creation if not already present. Expedite transplant evaluation if candidate. Manage uremic symptoms and complications."
       }
     ]
   },
@@ -99,6 +102,32 @@
     "κ = 0.7 for females, 0.9 for males",
     "α = -0.241 for females, -0.302 for males", 
     "Equation valid only for adults (≥18 years)",
-    "Requires standardized serum creatinine (IDMS)"
-  ]
+    "Requires standardized serum creatinine (IDMS)",
+    "Race coefficient removed in 2021 version to address health equity concerns",
+    "Less accurate at GFR >60 mL/min/1.73m² - consider confirmatory testing",
+    "Pregnancy, extremes of muscle mass, and acute kidney injury affect accuracy",
+    "Use with caution in hospitalized patients due to non-steady state conditions"
+  ],
+  "clinical_use": {
+    "indications": [
+      "Screening for chronic kidney disease in adults",
+      "Monitoring kidney function progression",
+      "Drug dosing adjustments based on kidney function",
+      "Pre-operative risk assessment",
+      "Cardiovascular risk stratification"
+    ],
+    "contraindications": [
+      "Children under 18 years (use pediatric equations)",
+      "Pregnancy (use pregnancy-specific equations)",
+      "Acute kidney injury (creatinine not in steady state)",
+      "Extreme muscle mass conditions (bodybuilders, amputees, malnutrition)"
+    ],
+    "limitations": [
+      "Less accurate when actual GFR >60 mL/min/1.73m²",
+      "Overestimates GFR in elderly patients",
+      "Affected by non-creatinine chromogens and medications",
+      "Does not replace measured GFR when precise assessment needed"
+    ],
+    "population": "Adults ≥18 years with stable kidney function, validated in diverse populations but primarily developed in patients with CKD"
+  }
 }

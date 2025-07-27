@@ -118,37 +118,37 @@ class CKDEpi2021Calculator:
             return {
                 "stage": "G1",
                 "description": "Normal or high kidney function",
-                "interpretation": "Normal or high GFR. Investigate presence of kidney damage to determine if CKD is present."
+                "interpretation": "Normal or high GFR. Investigate for presence of kidney damage (proteinuria, hematuria, structural abnormalities) to determine if CKD is present. If no kidney damage, no CKD diagnosis. Continue routine health maintenance."
             }
         elif egfr >= 60:
             return {
                 "stage": "G2",
                 "description": "Mild decrease in GFR",
-                "interpretation": "Mild decrease in GFR. Investigate presence of kidney damage to determine if CKD is present."
+                "interpretation": "Mild decrease in GFR. Investigate for presence of kidney damage (proteinuria, hematuria, structural abnormalities) to determine if CKD is present. If no kidney damage and age >65, may be normal aging. Monitor annually."
             }
         elif egfr >= 45:
             return {
                 "stage": "G3a",
                 "description": "Mild to moderate decrease in GFR",
-                "interpretation": "Stage 3a Chronic Kidney Disease. Nephrology follow-up recommended."
+                "interpretation": "Stage 3a Chronic Kidney Disease. Nephrology referral recommended within 6 months. Evaluate and treat complications (anemia, bone disease, acidosis). Monitor every 6 months. Blood pressure target <130/80. Consider ACE inhibitor/ARB if proteinuria present."
             }
         elif egfr >= 30:
             return {
                 "stage": "G3b",
                 "description": "Moderate to severe decrease in GFR",
-                "interpretation": "Stage 3b Chronic Kidney Disease. Nephrologist referral necessary."
+                "interpretation": "Stage 3b Chronic Kidney Disease. Urgent nephrology referral within 1-3 months. Actively manage complications (anemia, mineral bone disorder, acidosis, hyperkalemia). Monitor every 3-6 months. Optimize blood pressure control. Prepare for renal replacement therapy education."
             }
         elif egfr >= 15:
             return {
                 "stage": "G4",
                 "description": "Severe decrease in GFR",
-                "interpretation": "Stage 4 Chronic Kidney Disease. Specialized nephrology follow-up and preparation for kidney replacement therapy."
+                "interpretation": "Stage 4 Chronic Kidney Disease. Immediate nephrology referral within 2-4 weeks. Intensive management of complications. Monitor monthly to every 3 months. Begin renal replacement therapy preparation: patient education, access planning, transplant evaluation. Consider palliative care consultation if appropriate."
             }
         else:
             return {
                 "stage": "G5",
                 "description": "Kidney failure",
-                "interpretation": "Stage 5 Chronic Kidney Disease (kidney failure). Kidney replacement therapy (dialysis or transplant) is necessary."
+                "interpretation": "Stage 5 Chronic Kidney Disease (kidney failure). Immediate nephrology referral within 1-2 weeks. Kidney replacement therapy (dialysis or transplant) is necessary. Urgent dialysis access creation if not already present. Expedite transplant evaluation if candidate. Manage uremic symptoms and complications."
             }
 
 
