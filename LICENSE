@@ -1,0 +1,129 @@
+# LICENSE — nobra\_calculator
+
+**Primary license:** Apache License, Version 2.0 ("Apache-2.0").
+**Additional terms:** *Clinical Use Addendum* (binding for any use in healthcare/clinical contexts).
+**Copyright (c)** 2025 Daniel Nobrega Medeiros and contributors.
+
+> Para cumprir a Apache-2.0, inclua no repositório uma cópia **integral e não modificada** do texto oficial em `APACHE-2.0.txt`. Este arquivo consolida o *notice* e o **Clinical Use Addendum** que complementa os termos quando houver uso clínico/saúde.
+
+Contato: **[daniel@nobregamedtech.com.br](mailto:daniel@nobregamedtech.com.br)**
+Projeto: **nobra\_calculator** — [https://github.com/danielxmed/nobra\_calculator](https://github.com/danielxmed/nobra_calculator)
+
+---
+
+## 1) License Notice / Aviso de Licença
+
+This project is licensed under the **Apache License, Version 2.0**. You may use, reproduce, modify, and distribute this software under the terms of Apache-2.0. See `APACHE-2.0.txt` included with this distribution.
+
+Este projeto é licenciado sob a **Apache License, Version 2.0**. Você pode usar, reproduzir, modificar e distribuir este software conforme os termos da Apache-2.0. Consulte o arquivo `APACHE-2.0.txt` incluído nesta distribuição.
+
+**Trademarks / Marcas**: *NOBRA*, *nobra\_calculator* e *Nobrega Medtech* não são licenciadas como marcas. O uso de nomes, logotipos ou marcas requer autorização prévia e por escrito do titular.
+
+---
+
+## 2) Clinical Use Addendum / Adendo de Uso Clínico
+
+> **Purpose / Finalidade.** This addendum clarifies conditions and restrictions for **healthcare, clinical, or biomedical** use of this software, in addition to Apache-2.0. In case of conflict, this addendum governs such clinical/healthcare use. For all other uses, Apache-2.0 alone applies.
+>
+> Este adendo esclarece condições e restrições para o **uso em saúde, clínico ou biomédico** deste software, em complemento à Apache-2.0. Em caso de conflito, este adendo prevalece para esse uso clínico/assistencial. Para demais usos, aplica-se apenas a Apache-2.0.
+
+### 2.1. Intended Use / Intenção de Uso
+
+* **Research & Education.** The software is provided primarily for **research, development, validation, and educational** purposes. It is **not intended** to independently diagnose, treat, cure, mitigate, or prevent diseases, nor to replace professional clinical judgment.
+* **Pesquisa & Educação.** O software é fornecido primordialmente para **pesquisa, desenvolvimento, validação e educação**. **Não se destina** a diagnosticar, tratar, curar, mitigar ou prevenir doenças de forma independente, nem a substituir o julgamento clínico profissional.
+
+### 2.2. Clinical Deployment Conditions / Condições para Uso Clínico
+
+If you deploy, integrate, or use the software in any **clinical workflow, healthcare service, or product** that may influence patient care or clinical decisions, you **must** comply with **all** conditions below:
+
+Se você implantar, integrar ou usar o software em **fluxos assistenciais, serviços de saúde ou produtos** que possam influenciar o cuidado ao paciente ou decisões clínicas, **deverá** cumprir **todas** as condições abaixo:
+
+1. **Qualified Oversight / Supervisão Qualificada.** Use only under the supervision of **licensed healthcare professionals** with expertise appropriate to the context of use, who retain full responsibility for all clinical decisions.
+2. **Validation / Validação.** Perform and document **local clinical validation** demonstrating safety, performance, accuracy, and fitness for the intended use, including limitations across relevant populations and settings.
+3. **Regulatory Compliance / Conformidade Regulatória.** Determine whether your intended use renders the software a **regulated medical device** (e.g., SaMD/CDS). If so, you must obtain and maintain **all applicable authorizations** and comply with all regulatory requirements in each jurisdiction (e.g., **ANVISA** no Brasil, **FDA** nos EUA, **EU MDR** na União Europeia), including **quality management**, **risk management**, **post-market surveillance**, and **reporting** obligations.
+4. **Risk Management / Gestão de Risco.** Establish a documented **risk management process** (por exemplo, conforme normas reconhecidas) cobrindo identificação de perigos, análise/avaliação de riscos, mitigação, monitoramento e planos de contingência.
+5. **Human Factors & Disclosures / Fatores Humanos & Avisos.** Provide clear **user-facing notices** describing intended use, limitations, contraindications, data requirements, uncertainty, and failure modes. Interfaces must avoid automation bias and support clinician review.
+6. **Auditability / Rastreabilidade.** Maintain **audit logs** of inputs, model versions, parameters, and outputs used in clinical contexts, allowing reconstruction and review of decisions.
+7. **Data Protection / Proteção de Dados.** Comply with all applicable **data protection and privacy laws** (e.g., **LGPD** no Brasil) and implement appropriate **security controls**, including encryption, access control, and data minimization.
+8. **No Emergency Reliance / Proibição de Dependência em Emergências.** Do **not** rely solely on this software for **time-critical or life-sustaining** decisions or emergency care without validated redundancies and fail‑safes.
+9. **Attribution & Notices / Atribuição & Avisos.** Preserve **NOTICE** and license headers in all copies, include a link to the project, and state prominently that the software is used **with professional oversight** and is **not a substitute for clinical judgment**.
+
+### 2.3. No Warranties; Limitation of Liability / Ausência de Garantias; Limitação de Responsabilidade
+
+This software is provided **“AS IS”**, without warranties or conditions of any kind, express or implied, including without limitation merchantability, fitness for a particular purpose, accuracy, non-infringement, or error-free operation. **To the maximum extent permitted by law**, the authors, copyright holders, and contributors shall **not be liable** for any claim, damages, losses, or costs arising from or related to the software or its use, whether in contract, tort, or otherwise, even if advised of the possibility of such damages.
+
+Este software é fornecido **“NO ESTADO EM QUE SE ENCONTRA”**, sem garantias de qualquer natureza, expressas ou implícitas, incluindo, sem limitação, comercialidade, adequação a um propósito específico, exatidão, não infração ou operação livre de erros. **Até o máximo permitido por lei**, os autores, titulares de direitos autorais e contribuidores **não responderão** por quaisquer reclamações, danos, perdas ou custos decorrentes de ou relacionados ao software ou ao seu uso, seja com base contratual, extracontratual ou de outra natureza, ainda que advertidos sobre a possibilidade de tais danos.
+
+> **Additional Healthcare Limitation / Limitação Adicional para Saúde.** Without limiting the foregoing, in no event shall the authors, copyright holders, or contributors be liable for **clinical outcomes**, **diagnostic or therapeutic decisions**, **adverse events**, **loss of data**, or **regulatory non-compliance** resulting from deployment of the software in healthcare contexts.
+>
+> **Sem prejuízo do acima**, em nenhuma hipótese os autores, titulares de direitos autorais ou contribuidores responderão por **desfechos clínicos**, **decisões diagnósticas ou terapêuticas**, **eventos adversos**, **perda de dados** ou **descumprimento regulatório** resultantes da utilização do software em contextos de saúde.
+
+### 2.4. Indemnification / Indenização
+
+You agree to **defend, indemnify, and hold harmless** the authors, copyright holders, and contributors from and against any claims, liabilities, damages, losses, and expenses (including reasonable attorneys’ fees) arising out of or related to your clinical/healthcare use, deployment, or distribution of the software, including any claim of regulatory violation, product liability, malpractice, privacy or data protection breach, or third-party claims.
+
+Você concorda em **defender, indenizar e isentar** os autores, titulares de direitos autorais e contribuidores de quaisquer reclamações, responsabilidades, danos, perdas e despesas (incluindo honorários advocatícios razoáveis) decorrentes de ou relacionados ao seu uso, implantação ou distribuição do software em contexto clínico/assistencial, incluindo alegações de violação regulatória, responsabilidade por produto, imperícia, violação de privacidade ou proteção de dados, ou reclamações de terceiros.
+
+### 2.5. Updates; Model Drift / Atualizações; Deriva de Modelo
+
+Clinical users are responsible for monitoring **updates, configuration changes, and model drift**, re‑validating performance when versions, parameters, data sources, or environments change in ways that may impact safety or effectiveness.
+
+Usuários clínicos são responsáveis por monitorar **atualizações, alterações de configuração e deriva de modelo**, revalidando o desempenho quando versões, parâmetros, fontes de dados ou ambientes se alterarem de modo que possa impactar segurança ou efetividade.
+
+### 2.6. Governing Law & Venue / Lei Aplicável e Foro
+
+Except where prohibited by local law, this addendum and any dispute arising from clinical/healthcare use shall be governed by the **laws of Brazil**, and the parties elect the **Foro da Comarca da Capital do Estado do Rio de Janeiro, Brasil**, with express waiver of any other, however privileged it may be. The **Portuguese** version of this addendum shall prevail over translations.
+
+Salvo onde proibido por lei local, este adendo e quaisquer controvérsias decorrentes do uso clínico/assistencial serão regidos pelas **leis do Brasil**, elegendo as partes o **Foro da Comarca da Capital do Estado do Rio de Janeiro, Brasil**, com **renúncia expressa a qualquer outro**, por mais privilegiado que seja. A versão em **português** deste adendo prevalece sobre traduções.
+
+### 2.7. Severability / Autonomia das Cláusulas
+
+If any provision of this addendum is held unenforceable, that provision shall be severed or reformed to the minimum extent necessary to make it enforceable, and the remaining provisions shall remain in full force and effect.
+
+Se qualquer disposição deste adendo for considerada inexequível, tal disposição será separada ou reformada na medida mínima necessária para torná‑la exequível, permanecendo as demais em pleno vigor e efeito.
+
+---
+
+## 3) NOTICE file template / Modelo de arquivo NOTICE
+
+Create a `NOTICE` file in your distribution containing at least the following:
+
+Crie um arquivo `NOTICE` na sua distribuição contendo ao menos o seguinte:
+
+```
+NOBRA CALCULATOR — NOTICE
+
+Copyright (c) 2025 Daniel Nobrega Medeiros and contributors.
+
+This product includes software developed by Daniel Nobrega Medeiros and the
+Nobrega Medtech community (https://github.com/danielxmed/nobra_calculator).
+
+Licensed under the Apache License, Version 2.0. See APACHE-2.0.txt.
+Clinical/healthcare use is additionally subject to the Clinical Use Addendum
+included in the LICENSE file.
+
+No clinical decision should be made based solely on this software. Use only
+with oversight by licensed healthcare professionals and after local validation.
+```
+
+---
+
+## 4) How to use these files / Como usar estes arquivos
+
+1. **Include files / Incluir arquivos**
+
+   * Add **`APACHE-2.0.txt`** (texto oficial completo, não modificado).
+   * Keep this **`LICENSE`** file with the **Clinical Use Addendum**.
+   * Add the **`NOTICE`** file using the template above.
+
+2. **Headers / Cabeçalhos**
+
+   * Add short license headers to source files pointing to Apache-2.0 and to this addendum.
+
+3. **Distribute / Distribuir**
+
+   * Always ship `APACHE-2.0.txt`, `LICENSE`, and `NOTICE` with binaries, containers, or SDKs.
+
+---
+
+*End of LICENSE*
