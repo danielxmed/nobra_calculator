@@ -1,201 +1,129 @@
-                                 Apache License
-                           Version 2.0, January 2004
-                        http://www.apache.org/licenses/
+# LICENSE — nobra\_calculator
 
-   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+**Primary license:** Apache License, Version 2.0 ("Apache-2.0").
+**Additional terms:** *Clinical Use Addendum* (binding for any use in healthcare/clinical contexts).
+**Copyright (c)** 2025 Daniel Nobrega Medeiros and contributors.
 
-   1. Definitions.
+> Para cumprir a Apache-2.0, inclua no repositório uma cópia **integral e não modificada** do texto oficial em `APACHE-2.0.txt`. Este arquivo consolida o *notice* e o **Clinical Use Addendum** que complementa os termos quando houver uso clínico/saúde.
 
-      "License" shall mean the terms and conditions for use, reproduction,
-      and distribution as defined by Sections 1 through 9 of this document.
+Contato: **[daniel@nobregamedtech.com.br](mailto:daniel@nobregamedtech.com.br)**
+Projeto: **nobra\_calculator** — [https://github.com/danielxmed/nobra\_calculator](https://github.com/danielxmed/nobra_calculator)
 
-      "Licensor" shall mean the copyright owner or entity authorized by
-      the copyright owner that is granting the License.
+---
 
-      "Legal Entity" shall mean the union of the acting entity and all
-      other entities that control, are controlled by, or are under common
-      control with that entity. For the purposes of this definition,
-      "control" means (i) the power, direct or indirect, to cause the
-      direction or management of such entity, whether by contract or
-      otherwise, or (ii) ownership of fifty percent (50%) or more of the
-      outstanding shares, or (iii) beneficial ownership of such entity.
+## 1) License Notice / Aviso de Licença
 
-      "You" (or "Your") shall mean an individual or Legal Entity
-      exercising permissions granted by this License.
+This project is licensed under the **Apache License, Version 2.0**. You may use, reproduce, modify, and distribute this software under the terms of Apache-2.0. See `APACHE-2.0.txt` included with this distribution.
 
-      "Source" form shall mean the preferred form for making modifications,
-      including but not limited to software source code, documentation
-      source, and configuration files.
+Este projeto é licenciado sob a **Apache License, Version 2.0**. Você pode usar, reproduzir, modificar e distribuir este software conforme os termos da Apache-2.0. Consulte o arquivo `APACHE-2.0.txt` incluído nesta distribuição.
 
-      "Object" form shall mean any form resulting from mechanical
-      transformation or translation of a Source form, including but
-      not limited to compiled object code, generated documentation,
-      and conversions to other media types.
+**Trademarks / Marcas**: *NOBRA*, *nobra\_calculator* e *Nobrega Medtech* não são licenciadas como marcas. O uso de nomes, logotipos ou marcas requer autorização prévia e por escrito do titular.
 
-      "Work" shall mean the work of authorship, whether in Source or
-      Object form, made available under the License, as indicated by a
-      copyright notice that is included in or attached to the work
-      (an example is provided in the Appendix below).
+---
 
-      "Derivative Works" shall mean any work, whether in Source or Object
-      form, that is based on (or derived from) the Work and for which the
-      editorial revisions, annotations, elaborations, or other modifications
-      represent, as a whole, an original work of authorship. For the purposes
-      of this License, Derivative Works shall not include works that remain
-      separable from, or merely link (or bind by name) to the interfaces of,
-      the Work and Derivative Works thereof.
+## 2) Clinical Use Addendum / Adendo de Uso Clínico
 
-      "Contribution" shall mean any work of authorship, including
-      the original version of the Work and any modifications or additions
-      to that Work or Derivative Works thereof, that is intentionally
-      submitted to Licensor for inclusion in the Work by the copyright owner
-      or by an individual or Legal Entity authorized to submit on behalf of
-      the copyright owner. For the purposes of this definition, "submitted"
-      means any form of electronic, verbal, or written communication sent
-      to the Licensor or its representatives, including but not limited to
-      communication on electronic mailing lists, source code control systems,
-      and issue tracking systems that are managed by, or on behalf of, the
-      Licensor for the purpose of discussing and improving the Work, but
-      excluding communication that is conspicuously marked or otherwise
-      designated in writing by the copyright owner as "Not a Contribution."
+> **Purpose / Finalidade.** This addendum clarifies conditions and restrictions for **healthcare, clinical, or biomedical** use of this software, in addition to Apache-2.0. In case of conflict, this addendum governs such clinical/healthcare use. For all other uses, Apache-2.0 alone applies.
+>
+> Este adendo esclarece condições e restrições para o **uso em saúde, clínico ou biomédico** deste software, em complemento à Apache-2.0. Em caso de conflito, este adendo prevalece para esse uso clínico/assistencial. Para demais usos, aplica-se apenas a Apache-2.0.
 
-      "Contributor" shall mean Licensor and any individual or Legal Entity
-      on behalf of whom a Contribution has been received by Licensor and
-      subsequently incorporated within the Work.
+### 2.1. Intended Use / Intenção de Uso
 
-   2. Grant of Copyright License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      copyright license to reproduce, prepare Derivative Works of,
-      publicly display, publicly perform, sublicense, and distribute the
-      Work and such Derivative Works in Source or Object form.
+* **Research & Education.** The software is provided primarily for **research, development, validation, and educational** purposes. It is **not intended** to independently diagnose, treat, cure, mitigate, or prevent diseases, nor to replace professional clinical judgment.
+* **Pesquisa & Educação.** O software é fornecido primordialmente para **pesquisa, desenvolvimento, validação e educação**. **Não se destina** a diagnosticar, tratar, curar, mitigar ou prevenir doenças de forma independente, nem a substituir o julgamento clínico profissional.
 
-   3. Grant of Patent License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      (except as stated in this section) patent license to make, have made,
-      use, offer to sell, sell, import, and otherwise transfer the Work,
-      where such license applies only to those patent claims licensable
-      by such Contributor that are necessarily infringed by their
-      Contribution(s) alone or by combination of their Contribution(s)
-      with the Work to which such Contribution(s) was submitted. If You
-      institute patent litigation against any entity (including a
-      cross-claim or counterclaim in a lawsuit) alleging that the Work
-      or a Contribution incorporated within the Work constitutes direct
-      or contributory patent infringement, then any patent licenses
-      granted to You under this License for that Work shall terminate
-      as of the date such litigation is filed.
+### 2.2. Clinical Deployment Conditions / Condições para Uso Clínico
 
-   4. Redistribution. You may reproduce and distribute copies of the
-      Work or Derivative Works thereof in any medium, with or without
-      modifications, and in Source or Object form, provided that You
-      meet the following conditions:
+If you deploy, integrate, or use the software in any **clinical workflow, healthcare service, or product** that may influence patient care or clinical decisions, you **must** comply with **all** conditions below:
 
-      (a) You must give any other recipients of the Work or
-          Derivative Works a copy of this License; and
+Se você implantar, integrar ou usar o software em **fluxos assistenciais, serviços de saúde ou produtos** que possam influenciar o cuidado ao paciente ou decisões clínicas, **deverá** cumprir **todas** as condições abaixo:
 
-      (b) You must cause any modified files to carry prominent notices
-          stating that You changed the files; and
+1. **Qualified Oversight / Supervisão Qualificada.** Use only under the supervision of **licensed healthcare professionals** with expertise appropriate to the context of use, who retain full responsibility for all clinical decisions.
+2. **Validation / Validação.** Perform and document **local clinical validation** demonstrating safety, performance, accuracy, and fitness for the intended use, including limitations across relevant populations and settings.
+3. **Regulatory Compliance / Conformidade Regulatória.** Determine whether your intended use renders the software a **regulated medical device** (e.g., SaMD/CDS). If so, you must obtain and maintain **all applicable authorizations** and comply with all regulatory requirements in each jurisdiction (e.g., **ANVISA** no Brasil, **FDA** nos EUA, **EU MDR** na União Europeia), including **quality management**, **risk management**, **post-market surveillance**, and **reporting** obligations.
+4. **Risk Management / Gestão de Risco.** Establish a documented **risk management process** (por exemplo, conforme normas reconhecidas) cobrindo identificação de perigos, análise/avaliação de riscos, mitigação, monitoramento e planos de contingência.
+5. **Human Factors & Disclosures / Fatores Humanos & Avisos.** Provide clear **user-facing notices** describing intended use, limitations, contraindications, data requirements, uncertainty, and failure modes. Interfaces must avoid automation bias and support clinician review.
+6. **Auditability / Rastreabilidade.** Maintain **audit logs** of inputs, model versions, parameters, and outputs used in clinical contexts, allowing reconstruction and review of decisions.
+7. **Data Protection / Proteção de Dados.** Comply with all applicable **data protection and privacy laws** (e.g., **LGPD** no Brasil) and implement appropriate **security controls**, including encryption, access control, and data minimization.
+8. **No Emergency Reliance / Proibição de Dependência em Emergências.** Do **not** rely solely on this software for **time-critical or life-sustaining** decisions or emergency care without validated redundancies and fail‑safes.
+9. **Attribution & Notices / Atribuição & Avisos.** Preserve **NOTICE** and license headers in all copies, include a link to the project, and state prominently that the software is used **with professional oversight** and is **not a substitute for clinical judgment**.
 
-      (c) You must retain, in the Source form of any Derivative Works
-          that You distribute, all copyright, patent, trademark, and
-          attribution notices from the Source form of the Work,
-          excluding those notices that do not pertain to any part of
-          the Derivative Works; and
+### 2.3. No Warranties; Limitation of Liability / Ausência de Garantias; Limitação de Responsabilidade
 
-      (d) If the Work includes a "NOTICE" text file as part of its
-          distribution, then any Derivative Works that You distribute must
-          include a readable copy of the attribution notices contained
-          within such NOTICE file, excluding those notices that do not
-          pertain to any part of the Derivative Works, in at least one
-          of the following places: within a NOTICE text file distributed
-          as part of the Derivative Works; within the Source form or
-          documentation, if provided along with the Derivative Works; or,
-          within a display generated by the Derivative Works, if and
-          wherever such third-party notices normally appear. The contents
-          of the NOTICE file are for informational purposes only and
-          do not modify the License. You may add Your own attribution
-          notices within Derivative Works that You distribute, alongside
-          or as an addendum to the NOTICE text from the Work, provided
-          that such additional attribution notices cannot be construed
-          as modifying the License.
+This software is provided **“AS IS”**, without warranties or conditions of any kind, express or implied, including without limitation merchantability, fitness for a particular purpose, accuracy, non-infringement, or error-free operation. **To the maximum extent permitted by law**, the authors, copyright holders, and contributors shall **not be liable** for any claim, damages, losses, or costs arising from or related to the software or its use, whether in contract, tort, or otherwise, even if advised of the possibility of such damages.
 
-      You may add Your own copyright statement to Your modifications and
-      may provide additional or different license terms and conditions
-      for use, reproduction, or distribution of Your modifications, or
-      for any such Derivative Works as a whole, provided Your use,
-      reproduction, and distribution of the Work otherwise complies with
-      the conditions stated in this License.
+Este software é fornecido **“NO ESTADO EM QUE SE ENCONTRA”**, sem garantias de qualquer natureza, expressas ou implícitas, incluindo, sem limitação, comercialidade, adequação a um propósito específico, exatidão, não infração ou operação livre de erros. **Até o máximo permitido por lei**, os autores, titulares de direitos autorais e contribuidores **não responderão** por quaisquer reclamações, danos, perdas ou custos decorrentes de ou relacionados ao software ou ao seu uso, seja com base contratual, extracontratual ou de outra natureza, ainda que advertidos sobre a possibilidade de tais danos.
 
-   5. Submission of Contributions. Unless You explicitly state otherwise,
-      any Contribution intentionally submitted for inclusion in the Work
-      by You to the Licensor shall be under the terms and conditions of
-      this License, without any additional terms or conditions.
-      Notwithstanding the above, nothing herein shall supersede or modify
-      the terms of any separate license agreement you may have executed
-      with Licensor regarding such Contributions.
+> **Additional Healthcare Limitation / Limitação Adicional para Saúde.** Without limiting the foregoing, in no event shall the authors, copyright holders, or contributors be liable for **clinical outcomes**, **diagnostic or therapeutic decisions**, **adverse events**, **loss of data**, or **regulatory non-compliance** resulting from deployment of the software in healthcare contexts.
+>
+> **Sem prejuízo do acima**, em nenhuma hipótese os autores, titulares de direitos autorais ou contribuidores responderão por **desfechos clínicos**, **decisões diagnósticas ou terapêuticas**, **eventos adversos**, **perda de dados** ou **descumprimento regulatório** resultantes da utilização do software em contextos de saúde.
 
-   6. Trademarks. This License does not grant permission to use the trade
-      names, trademarks, service marks, or product names of the Licensor,
-      except as required for reasonable and customary use in describing the
-      origin of the Work and reproducing the content of the NOTICE file.
+### 2.4. Indemnification / Indenização
 
-   7. Disclaimer of Warranty. Unless required by applicable law or
-      agreed to in writing, Licensor provides the Work (and each
-      Contributor provides its Contributions) on an "AS IS" BASIS,
-      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-      implied, including, without limitation, any warranties or conditions
-      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
-      PARTICULAR PURPOSE. You are solely responsible for determining the
-      appropriateness of using or redistributing the Work and assume any
-      risks associated with Your exercise of permissions under this License.
+You agree to **defend, indemnify, and hold harmless** the authors, copyright holders, and contributors from and against any claims, liabilities, damages, losses, and expenses (including reasonable attorneys’ fees) arising out of or related to your clinical/healthcare use, deployment, or distribution of the software, including any claim of regulatory violation, product liability, malpractice, privacy or data protection breach, or third-party claims.
 
-   8. Limitation of Liability. In no event and under no legal theory,
-      whether in tort (including negligence), contract, or otherwise,
-      unless required by applicable law (such as deliberate and grossly
-      negligent acts) or agreed to in writing, shall any Contributor be
-      liable to You for damages, including any direct, indirect, special,
-      incidental, or consequential damages of any character arising as a
-      result of this License or out of the use or inability to use the
-      Work (including but not limited to damages for loss of goodwill,
-      work stoppage, computer failure or malfunction, or any and all
-      other commercial damages or losses), even if such Contributor
-      has been advised of the possibility of such damages.
+Você concorda em **defender, indenizar e isentar** os autores, titulares de direitos autorais e contribuidores de quaisquer reclamações, responsabilidades, danos, perdas e despesas (incluindo honorários advocatícios razoáveis) decorrentes de ou relacionados ao seu uso, implantação ou distribuição do software em contexto clínico/assistencial, incluindo alegações de violação regulatória, responsabilidade por produto, imperícia, violação de privacidade ou proteção de dados, ou reclamações de terceiros.
 
-   9. Accepting Warranty or Additional Liability. While redistributing
-      the Work or Derivative Works thereof, You may choose to offer,
-      and charge a fee for, acceptance of support, warranty, indemnity,
-      or other liability obligations and/or rights consistent with this
-      License. However, in accepting such obligations, You may act only
-      on Your own behalf and on Your sole responsibility, not on behalf
-      of any other Contributor, and only if You agree to indemnify,
-      defend, and hold each Contributor harmless for any liability
-      incurred by, or claims asserted against, such Contributor by reason
-      of your accepting any such warranty or additional liability.
+### 2.5. Updates; Model Drift / Atualizações; Deriva de Modelo
 
-   END OF TERMS AND CONDITIONS
+Clinical users are responsible for monitoring **updates, configuration changes, and model drift**, re‑validating performance when versions, parameters, data sources, or environments change in ways that may impact safety or effectiveness.
 
-   APPENDIX: How to apply the Apache License to your work.
+Usuários clínicos são responsáveis por monitorar **atualizações, alterações de configuração e deriva de modelo**, revalidando o desempenho quando versões, parâmetros, fontes de dados ou ambientes se alterarem de modo que possa impactar segurança ou efetividade.
 
-      To apply the Apache License to your work, attach the following
-      boilerplate notice, with the fields enclosed by brackets "[]"
-      replaced with your own identifying information. (Don't include
-      the brackets!)  The text should be enclosed in the appropriate
-      comment syntax for the file format. We also recommend that a
-      file or class name and description of purpose be included on the
-      same "printed page" as the copyright notice for easier
-      identification within third-party archives.
+### 2.6. Governing Law & Venue / Lei Aplicável e Foro
 
-   Copyright [yyyy] [name of copyright owner]
+Except where prohibited by local law, this addendum and any dispute arising from clinical/healthcare use shall be governed by the **laws of Brazil**, and the parties elect the **Foro da Comarca da Capital do Estado do Rio de Janeiro, Brasil**, with express waiver of any other, however privileged it may be. The **Portuguese** version of this addendum shall prevail over translations.
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
+Salvo onde proibido por lei local, este adendo e quaisquer controvérsias decorrentes do uso clínico/assistencial serão regidos pelas **leis do Brasil**, elegendo as partes o **Foro da Comarca da Capital do Estado do Rio de Janeiro, Brasil**, com **renúncia expressa a qualquer outro**, por mais privilegiado que seja. A versão em **português** deste adendo prevalece sobre traduções.
 
-       http://www.apache.org/licenses/LICENSE-2.0
+### 2.7. Severability / Autonomia das Cláusulas
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+If any provision of this addendum is held unenforceable, that provision shall be severed or reformed to the minimum extent necessary to make it enforceable, and the remaining provisions shall remain in full force and effect.
+
+Se qualquer disposição deste adendo for considerada inexequível, tal disposição será separada ou reformada na medida mínima necessária para torná‑la exequível, permanecendo as demais em pleno vigor e efeito.
+
+---
+
+## 3) NOTICE file template / Modelo de arquivo NOTICE
+
+Create a `NOTICE` file in your distribution containing at least the following:
+
+Crie um arquivo `NOTICE` na sua distribuição contendo ao menos o seguinte:
+
+```
+NOBRA CALCULATOR — NOTICE
+
+Copyright (c) 2025 Daniel Nobrega Medeiros and contributors.
+
+This product includes software developed by Daniel Nobrega Medeiros and the
+Nobrega Medtech community (https://github.com/danielxmed/nobra_calculator).
+
+Licensed under the Apache License, Version 2.0. See APACHE-2.0.txt.
+Clinical/healthcare use is additionally subject to the Clinical Use Addendum
+included in the LICENSE file.
+
+No clinical decision should be made based solely on this software. Use only
+with oversight by licensed healthcare professionals and after local validation.
+```
+
+---
+
+## 4) How to use these files / Como usar estes arquivos
+
+1. **Include files / Incluir arquivos**
+
+   * Add **`APACHE-2.0.txt`** (texto oficial completo, não modificado).
+   * Keep this **`LICENSE`** file with the **Clinical Use Addendum**.
+   * Add the **`NOTICE`** file using the template above.
+
+2. **Headers / Cabeçalhos**
+
+   * Add short license headers to source files pointing to Apache-2.0 and to this addendum.
+
+3. **Distribute / Distribuir**
+
+   * Always ship `APACHE-2.0.txt`, `LICENSE`, and `NOTICE` with binaries, containers, or SDKs.
+
+---
+
+*End of LICENSE*
