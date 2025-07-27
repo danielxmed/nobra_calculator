@@ -1,0 +1,115 @@
+{
+  "id": "abc2_ich_volume",
+  "title": "ABC/2 Formula for Intracerebral Hemorrhage Volume",
+  "description": "Predicts volume of intracranial hemorrhage from CT measurements using a simplified ellipsoid formula. Widely used bedside method for rapid ICH volume estimation.",
+  "category": "neurology",
+  "version": "1996",
+  "parameters": [
+    {
+      "name": "hemorrhage_shape",
+      "type": "string",
+      "required": true,
+      "description": "Shape of the hemorrhage on CT scan",
+      "options": ["round_ellipsoid", "irregular_multinodular"],
+      "validation": {
+        "enum": ["round_ellipsoid", "irregular_multinodular"]
+      },
+      "unit": null
+    },
+    {
+      "name": "length_a",
+      "type": "float",
+      "required": true,
+      "description": "Greatest hemorrhage diameter (A) on CT slice with largest area",
+      "validation": {
+        "min": 0.1,
+        "max": 20.0
+      },
+      "unit": "cm"
+    },
+    {
+      "name": "width_b",
+      "type": "float",
+      "required": true,
+      "description": "Diameter 90 degrees to A on the same CT slice (B)",
+      "validation": {
+        "min": 0.1,
+        "max": 20.0
+      },
+      "unit": "cm"
+    },
+    {
+      "name": "weighted_slices",
+      "type": "float",
+      "required": true,
+      "description": "Number of CT slices weighted by hemorrhage area (C): >75% area = 1 slice, 25-75% = 0.5 slice, <25% = 0 slice",
+      "validation": {
+        "min": 0.5,
+        "max": 50.0
+      },
+      "unit": "slices"
+    },
+    {
+      "name": "slice_thickness",
+      "type": "float",
+      "required": true,
+      "description": "CT slice thickness",
+      "validation": {
+        "min": 1.0,
+        "max": 15.0
+      },
+      "unit": "mm"
+    }
+  ],
+  "result": {
+    "name": "hemorrhage_volume",
+    "type": "float",
+    "unit": "cm³",
+    "description": "Estimated intracerebral hemorrhage volume"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 10,
+        "stage": "Small",
+        "description": "Small volume hemorrhage",
+        "interpretation": "Small ICH volume associated with better prognosis. Consider conservative management unless neurological deterioration occurs."
+      },
+      {
+        "min": 10,
+        "max": 30,
+        "stage": "Moderate",
+        "description": "Moderate volume hemorrhage",
+        "interpretation": "Moderate ICH volume. Monitor closely for expansion and neurological changes. Consider surgical evaluation based on clinical condition."
+      },
+      {
+        "min": 30,
+        "max": 60,
+        "stage": "Large",
+        "description": "Large volume hemorrhage",
+        "interpretation": "Large ICH volume associated with increased mortality risk. Surgical intervention may be considered based on location and clinical condition."
+      },
+      {
+        "min": 60,
+        "max": 150,
+        "stage": "Very Large",
+        "description": "Very large volume hemorrhage",
+        "interpretation": "Very large ICH volume with high mortality risk. Aggressive management and surgical consultation recommended. Consider goals of care discussion."
+      }
+    ]
+  },
+  "references": [
+    "Kothari RU, Brott T, Broderick JP, et al. The ABCs of measuring intracerebral hemorrhage volumes. Stroke. 1996;27:1304-1305.",
+    "Broderick JP, Brott TG, Duldner JE, et al. Volume of intracerebral hemorrhage. A powerful and easy-to-use predictor of 30-day mortality. Stroke. 1993;24:987-993.",
+    "Lee VH, Conners JJ, John S, et al. Comparison of ABC/2 with the Simplified ABC/2 Formula in Calculating Intracerebral Hemorrhage Volume. J Neurol Disord Stroke. 2016;4(1):1111."
+  ],
+  "formula": "Volume = (A × B × C) / 2, where A = longest diameter, B = perpendicular diameter, C = weighted number of slices × slice thickness (cm)",
+  "notes": [
+    "The ABC/2 method correlates well with planimetric measurements (R² = 0.96)",
+    "Measurement time averages 38 seconds, making it ideal for bedside use",
+    "Hemorrhage shape affects accuracy - works best for elliptical hemorrhages",
+    "For slice weighting: >75% of largest slice area = 1.0, 25-75% = 0.5, <25% = 0.0",
+    "Formula assumes π ≈ 3 in the ellipsoid volume equation: 4/3π(A/2)(B/2)(C/2) = ABC/2"
+  ]
+}

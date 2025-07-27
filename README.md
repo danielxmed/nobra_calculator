@@ -186,7 +186,7 @@ curl http://localhost:8000/health
 curl http://localhost:8000/api/scores
 
 # Calculate CKD-EPI 2021
-curl -X POST http://localhost:8000/api/ckd_epi_2021 \
+curl -X POST http://localhost:8000/ckd_epi_2021 \
   -H "Content-Type: application/json" \
   -d '{"sex": "female", "age": 65, "serum_creatinine": 1.2}'
 ```

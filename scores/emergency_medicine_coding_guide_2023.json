@@ -1,0 +1,151 @@
+{
+  "id": "emergency_medicine_coding_guide_2023",
+  "title": "2023 Emergency Medicine Coding Guide",
+  "description": "Rates the level of service required in emergency medicine based on 2023 AMA CPT Evaluation and Management (E/M) coding changes. Determines appropriate emergency department service level (99281-99285) based on medical decision making components.",
+  "category": "emergency",
+  "version": "2023",
+  "parameters": [
+    {
+      "name": "number_complexity_problems",
+      "type": "integer",
+      "required": true,
+      "description": "Number and complexity of problems addressed during the encounter",
+      "validation": {
+        "min": 2,
+        "max": 5
+      },
+      "unit": "points",
+      "options": [
+        "2: 1 minor problem",
+        "3: 2 minor problems OR 1 stable chronic illness OR acute uncomplicated illness/injury OR stable acute illness OR uncomplicated illness requiring hospitalization",
+        "4: 2+ stable chronic illnesses OR undiagnosed new problem uncertain outcome OR acute illness with systemic symptoms OR acute complicated injury",
+        "5: chronic illness with severe exacerbation OR illness/injury with life or body threat"
+      ]
+    },
+    {
+      "name": "tests_ordered",
+      "type": "integer",
+      "required": true,
+      "description": "Number of unique tests ordered (CBC, troponin, CT scan, EKG, etc.)",
+      "validation": {
+        "min": 0,
+        "max": 20
+      },
+      "unit": "tests"
+    },
+    {
+      "name": "tests_reviewed",
+      "type": "integer",
+      "required": true,
+      "description": "Number of test results reviewed (excluding labs) - imaging, EKGs, etc.",
+      "validation": {
+        "min": 0,
+        "max": 20
+      },
+      "unit": "tests"
+    },
+    {
+      "name": "prior_notes_reviewed",
+      "type": "integer",
+      "required": true,
+      "description": "Number of prior external notes reviewed (outside ED/hospital or specialty)",
+      "validation": {
+        "min": 0,
+        "max": 20
+      },
+      "unit": "notes"
+    },
+    {
+      "name": "independent_historian",
+      "type": "string",
+      "required": true,
+      "description": "Assessment requiring independent historian (anyone providing additional information patient can't provide)",
+      "options": ["no", "yes"]
+    },
+    {
+      "name": "independent_interpretation",
+      "type": "string",
+      "required": true,
+      "description": "Independent interpretation of tests (test interpreted by ER doctor but formal read will be done by another HCP)",
+      "options": ["no", "yes"]
+    },
+    {
+      "name": "external_discussion",
+      "type": "string",
+      "required": true,
+      "description": "Discussed management/test interpretation with external professional",
+      "options": ["no", "yes"]
+    },
+    {
+      "name": "risk_level",
+      "type": "string",
+      "required": true,
+      "description": "Risk of morbidity, mortality, or complications",
+      "options": [
+        "minimal",
+        "low",
+        "moderate",
+        "high"
+      ]
+    }
+  ],
+  "result": {
+    "name": "ed_service_level",
+    "type": "string",
+    "unit": "CPT code",
+    "description": "Emergency Department service level and corresponding CPT code"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "99281",
+        "description": "Level 1 ED Visit",
+        "interpretation": "Emergency department visit that may not require the presence of a physician or other qualified health care professional. Straightforward medical decision making or no MDM required."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "99282",
+        "description": "Level 2 ED Visit",
+        "interpretation": "Emergency department visit requiring straightforward medical decision making. Simple, routine case with minimal complexity."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "99283",
+        "description": "Level 3 ED Visit",
+        "interpretation": "Emergency department visit requiring low level of medical decision making. Limited complexity with some data review or minimal risk."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "99284",
+        "description": "Level 4 ED Visit",
+        "interpretation": "Emergency department visit requiring moderate level of medical decision making. Moderate complexity with multiple problems, data analysis, or moderate risk."
+      },
+      {
+        "min": 4,
+        "max": 5,
+        "stage": "99285",
+        "description": "Level 5 ED Visit",
+        "interpretation": "Emergency department visit requiring high level of medical decision making. High complexity with extensive problems, significant data analysis, or high risk of complications."
+      }
+    ]
+  },
+  "references": [
+    "American Medical Association. CPT® Evaluation and Management (E/M) Code and Guideline Changes. 2023.",
+    "2023 AMA CPT Evaluation and Management (E/M) coding changes for Emergency Medicine",
+    "MDCalc: 2023 Emergency Medicine Coding Guide. Available at: https://www.mdcalc.com/calc/10454/2023-emergency-medicine-coding-guide"
+  ],
+  "formula": "Based on Medical Decision Making (MDM) components: (1) Number and complexity of problems, (2) Amount/complexity of data reviewed, and (3) Risk of complications. Two of three elements must be met for each level.",
+  "notes": [
+    "Reflects 2023 AMA CPT Evaluation and Management (E/M) coding changes",
+    "Time is not a factor in emergency department coding due to variable intensity",
+    "No distinction between new and established patients in ED",
+    "Two of three MDM elements must be met or exceeded for each level",
+    "Data elements can be combined (tests + notes + historian = combination)",
+    "Risk assessment is based on consequences when appropriately treated"
+  ]
+}

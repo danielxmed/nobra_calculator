@@ -1,0 +1,86 @@
+{
+  "id": "abc_score",
+  "title": "ABC Score for Massive Transfusion",
+  "description": "Predicts the necessity for massive transfusion in trauma patients using clinical variables available at initial assessment",
+  "category": "emergency",
+  "version": "2009",
+  "parameters": [
+    {
+      "name": "penetrating_mechanism",
+      "type": "string",
+      "required": true,
+      "description": "Presence of penetrating mechanism of injury (gunshot wound, stab wound, etc.)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "systolic_bp_90_or_less",
+      "type": "string",
+      "required": true,
+      "description": "Systolic blood pressure ≤90 mmHg in the Emergency Department",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "heart_rate_120_or_more",
+      "type": "string",
+      "required": true,
+      "description": "Heart rate ≥120 beats per minute in the Emergency Department",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "positive_fast",
+      "type": "string",
+      "required": true,
+      "description": "Positive FAST (Focused Assessment with Sonography in Trauma) ultrasound examination",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "abc_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "ABC Score for predicting massive transfusion requirement"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "Less likely to require massive transfusion",
+        "interpretation": "Patient is less likely to require massive transfusion, defined as ≥10 units of packed red blood cells in the first 24 hours of resuscitation. Standard trauma resuscitation protocols should be followed."
+      },
+      {
+        "min": 2,
+        "max": 4,
+        "stage": "High Risk",
+        "description": "Likely to require massive transfusion",
+        "interpretation": "Patient is likely to require massive transfusion, defined as ≥10 units of packed red blood cells in the first 24 hours of resuscitation. Immediate activation of massive transfusion protocol (MTP) is recommended."
+      }
+    ]
+  },
+  "references": [
+    "Nunez TC, Voskresensky IV, Dossett LA, et al. Early prediction of massive transfusion in trauma: simple as ABC (assessment of blood consumption)? J Trauma. 2009;66(2):346-52. doi: 10.1097/TA.0b013e3181961c35.",
+    "Cotton BA, Dossett LA, Haut ER, et al. Multicenter validation of a simplified score to predict massive transfusion in trauma. J Trauma. 2010;69 Suppl 1:S33-9. doi: 10.1097/TA.0b013e3181e42411."
+  ],
+  "formula": "ABC Score = (Penetrating mechanism: 1 if yes, 0 if no) + (Systolic BP ≤90 mmHg: 1 if yes, 0 if no) + (Heart rate ≥120 bpm: 1 if yes, 0 if no) + (Positive FAST: 1 if yes, 0 if no)",
+  "notes": [
+    "ABC stands for Assessment of Blood Consumption",
+    "A score of ≥2 has sensitivity of 75% and specificity of 86% for predicting massive transfusion",
+    "Negative predictive value is 97% and positive predictive value is 55%",
+    "Massive transfusion is defined as ≥10 units of packed red blood cells in first 24 hours",
+    "The score uses only clinical variables available at initial assessment, no laboratory values required",
+    "Designed for use in early trauma resuscitation to activate massive transfusion protocols"
+  ]
+}

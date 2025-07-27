@@ -30,7 +30,7 @@
 ### ✅ 2023 Duke-International Society for Cardiovascular Infectious Diseases (ISCVID) Criteria - NEW
 **Description:** Diagnostic criteria for infective endocarditis.
 
-### 2023 Emergency Medicine Coding Guide
+### ✅ 2023 Emergency Medicine Coding Guide
 **Description:** Assesses the level of service needed in emergency medicine.
 
 ### ✅ 2HELPS2B Score
@@ -39,7 +39,7 @@
 ### ✅ 4 A's Test for Delirium Screening
 **Description:** Diagnoses delirium in elderly patients.
 
-### 4-Level Pulmonary Embolism Clinical Probability Score (4PEPS)
+### ✅ 4-Level Pulmonary Embolism Clinical Probability Score (4PEPS)
 **Description:** Rules out PE based on clinical criteria.
 
 ### ✅ 4C Mortality Score for COVID-19
@@ -64,19 +64,19 @@
 ### ✅ Abbey Pain Scale for Dementia Patients
 **Description:** Assesses pain in patients with advanced dementia.
 
-### Abbreviated Injury Score (AIS) for Inhalation Injury
+### ✅ Abbreviated Injury Score (AIS) for Inhalation Injury
 **Description:** Classifies severity of inhalation injury based on bronchoscopic findings.
 
-### Abbreviated Mental Test (AMT-10) - NEW
+### ✅ Abbreviated Mental Test (AMT-10) - NEW
 **Description:** Assesses mental impairment in elderly patients.
 
-### Abbreviated Mental Test 4 (AMT-4)
+### ✅ Abbreviated Mental Test 4 (AMT-4)
 **Description:** Assesses mental impairment in elderly patients.
 
-### ABC Score for Massive Transfusion
+### ✅ ABC Score for Massive Transfusion
 **Description:** Predicts need for massive transfusion in trauma patients.
 
-### ABC/2 Formula for Intracerebral Hemorrhage Volume
+### ✅ ABC/2 Formula for Intracerebral Hemorrhage Volume
 **Description:** Predicts intracerebral hemorrhage volume from CT measurements.
 
 ### ✅ ABCD² Score for TIA

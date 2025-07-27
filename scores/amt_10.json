@@ -1,0 +1,165 @@
+{
+  "id": "amt_10",
+  "title": "Abbreviated Mental Test (AMT-10)",
+  "description": "Assesses mental impairment in elderly patients through 10 questions evaluating various aspects of cognitive function including memory, attention, and orientation",
+  "category": "geriatrics",
+  "version": "1972",
+  "parameters": [
+    {
+      "name": "age_correct",
+      "type": "string",
+      "required": true,
+      "description": "Patient correctly states their age",
+      "options": ["correct", "incorrect"],
+      "validation": {
+        "enum": ["correct", "incorrect"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "time_correct",
+      "type": "string",
+      "required": true,
+      "description": "Patient correctly states the time to the nearest hour",
+      "options": ["correct", "incorrect"],
+      "validation": {
+        "enum": ["correct", "incorrect"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "year_correct",
+      "type": "string",
+      "required": true,
+      "description": "Patient correctly states the current year",
+      "options": ["correct", "incorrect"],
+      "validation": {
+        "enum": ["correct", "incorrect"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "address_correct",
+      "type": "string",
+      "required": true,
+      "description": "Patient correctly states their home address or current location",
+      "options": ["correct", "incorrect"],
+      "validation": {
+        "enum": ["correct", "incorrect"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "recognition_correct",
+      "type": "string",
+      "required": true,
+      "description": "Patient correctly recognizes two people (doctor, nurse, family member, etc.)",
+      "options": ["correct", "incorrect"],
+      "validation": {
+        "enum": ["correct", "incorrect"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "dob_correct",
+      "type": "string",
+      "required": true,
+      "description": "Patient correctly states their date of birth (day and month sufficient)",
+      "options": ["correct", "incorrect"],
+      "validation": {
+        "enum": ["correct", "incorrect"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "wwi_correct",
+      "type": "string",
+      "required": true,
+      "description": "Patient correctly states the year World War I started (1914)",
+      "options": ["correct", "incorrect"],
+      "validation": {
+        "enum": ["correct", "incorrect"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "leader_correct",
+      "type": "string",
+      "required": true,
+      "description": "Patient correctly names the current monarch/president/prime minister",
+      "options": ["correct", "incorrect"],
+      "validation": {
+        "enum": ["correct", "incorrect"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "counting_correct",
+      "type": "string",
+      "required": true,
+      "description": "Patient correctly counts backwards from 20 to 1",
+      "options": ["correct", "incorrect"],
+      "validation": {
+        "enum": ["correct", "incorrect"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "recall_correct",
+      "type": "string",
+      "required": true,
+      "description": "Patient correctly recalls the address given earlier (e.g., '42 West Street')",
+      "options": ["correct", "incorrect"],
+      "validation": {
+        "enum": ["correct", "incorrect"]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "amt_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "AMT-10 total score out of 10 points"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 8,
+        "max": 10,
+        "stage": "Normal",
+        "description": "No cognitive impairment",
+        "interpretation": "Score of 8-10 points indicates normal cognitive function. No significant cognitive impairment detected."
+      },
+      {
+        "min": 6,
+        "max": 7,
+        "stage": "Mild impairment",
+        "description": "Mild cognitive impairment",
+        "interpretation": "Score of 6-7 points suggests mild cognitive impairment. Further assessment may be warranted to determine underlying causes."
+      },
+      {
+        "min": 0,
+        "max": 5,
+        "stage": "Significant impairment",
+        "description": "Significant cognitive impairment",
+        "interpretation": "Score of 5 or less suggests significant cognitive impairment, including possible delirium or dementia. Further comprehensive assessment and workup are recommended."
+      }
+    ]
+  },
+  "references": [
+    "Hodkinson HM. Evaluation of a mental test score for assessment of mental impairment in the elderly. Age Ageing. 1972;1(4):233-238.",
+    "Pendlebury ST, Klaus SP, Mather M, de Brito M, Wharton RM. Routine cognitive screening in older patients admitted to acute medicine: abbreviated mental test score (AMTS) and subjective memory complaint versus Montreal Cognitive Assessment and IQCODE. Age and Ageing. 2015;44(6):1000-1005.",
+    "Jackson TA, Naqvi SH, Sheehan B. Screening for dementia in general hospital inpatients: a systematic review and meta-analysis of available instruments. Age and Ageing. 2013;42(6):689-695."
+  ],
+  "formula": "AMT-10 Score = Sum of correct answers (0-10 points)",
+  "notes": [
+    "Originally designed for use in elderly patients for rapid cognitive assessment",
+    "Score <8 suggests cognitive impairment; score <6 suggests delirium or dementia",
+    "Cultural and language adaptations may be necessary in diverse populations",
+    "Some questions may need updating for contemporary relevance (e.g., WWI dates, monarch names)",
+    "Used as part of the Nottingham Hip Fracture Score for prognostic assessment",
+    "Should be interpreted alongside clinical history and other assessments",
+    "Not suitable for patients with severe hearing, speech impairments, or language barriers"
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "id": "four_peps",
+  "title": "4-Level Pulmonary Embolism Clinical Probability Score (4PEPS)",
+  "description": "Clinical probability score for suspected pulmonary embolism using 13 clinical variables to safely decrease imaging testing needs",
+  "category": "pulmonology",
+  "version": "2021",
+  "parameters": [
+    {
+      "name": "age_category",
+      "type": "string",
+      "required": true,
+      "description": "Patient age category",
+      "options": ["under_50", "50_to_64", "65_or_over"],
+      "validation": {
+        "enum": ["under_50", "50_to_64", "65_or_over"]
+      }
+    },
+    {
+      "name": "chronic_respiratory_disease",
+      "type": "string",
+      "required": true,
+      "description": "Presence of chronic respiratory disease (COPD, asthma, pulmonary fibrosis, etc.)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "heart_rate_under_80",
+      "type": "string",
+      "required": true,
+      "description": "Heart rate less than 80 beats per minute",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "chest_pain_dyspnea",
+      "type": "string",
+      "required": true,
+      "description": "Presence of both chest pain and acute dyspnea",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "male_gender",
+      "type": "string",
+      "required": true,
+      "description": "Patient is male",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hormonal_treatment",
+      "type": "string",
+      "required": true,
+      "description": "Hormonal estrogenic treatment (oral contraceptives, hormone replacement therapy)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "personal_history_vte",
+      "type": "string",
+      "required": true,
+      "description": "Personal history of venous thromboembolism (DVT or PE)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "syncope",
+      "type": "string",
+      "required": true,
+      "description": "Syncope (fainting episode)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "immobility_4_weeks",
+      "type": "string",
+      "required": true,
+      "description": "Immobility within the last 4 weeks (bed rest, wheelchair, cast, etc.)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "oxygen_saturation_under_95",
+      "type": "string",
+      "required": true,
+      "description": "Pulse oxygen saturation less than 95%",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "calf_pain_edema",
+      "type": "string",
+      "required": true,
+      "description": "Calf pain and/or unilateral lower limb edema",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "pe_most_likely",
+      "type": "string",
+      "required": true,
+      "description": "PE is the most likely diagnosis (clinician's judgment)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "four_peps_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "4PEPS score ranging from -5 to +20 points"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": -5,
+        "max": -1,
+        "stage": "Very Low",
+        "description": "Very low clinical probability",
+        "interpretation": "PE ruled out - no testing needed. Risk of PE <1%. No D-dimer or imaging required."
+      },
+      {
+        "min": 0,
+        "max": 5,
+        "stage": "Low",
+        "description": "Low clinical probability",
+        "interpretation": "Low probability of PE. Use D-dimer with 1000 μg/L cut-off. If D-dimer <1000 μg/L, PE is ruled out."
+      },
+      {
+        "min": 6,
+        "max": 12,
+        "stage": "Moderate",
+        "description": "Moderate clinical probability",
+        "interpretation": "Moderate probability of PE. Use age-adjusted D-dimer cut-off (age × 10 μg/L for patients >50 years). If below threshold, PE is ruled out."
+      },
+      {
+        "min": 13,
+        "max": 20,
+        "stage": "High",
+        "description": "High clinical probability",
+        "interpretation": "High probability of PE. Proceed directly to imaging (CTPA or V/Q scan). D-dimer not recommended."
+      }
+    ]
+  },
+  "references": [
+    "Roy PM, Friou E, Germeau B, Douillet D, Kline JA, Righini M, et al. Derivation and Validation of a 4-Level Clinical Pretest Probability Score for Suspected Pulmonary Embolism to Safely Decrease Imaging Testing. JAMA Cardiol. 2021 Jun 1;6(6):669-677. doi: 10.1001/jamacardio.2021.0064.",
+    "Stals MAM, Beenen LFM, Coppens M, Faber LM, Hofstee HMA, Hovens MMC, et al. Performance of the 4-Level Pulmonary Embolism Clinical Probability Score (4PEPS) in the diagnostic management of pulmonary embolism: An external validation study. Thromb Res. 2023 Nov;231:65-75. doi: 10.1016/j.thromres.2023.09.010.",
+    "Chiang P, Robert-Ebadi H, Perrier A, Roy PM, Sanchez O, Righini M, et al. Pulmonary embolism risk stratification: external validation of the 4-level Clinical Pretest Probability Score (4PEPS). Res Pract Thromb Haemost. 2024 Feb 15;8(1):102348. doi: 10.1016/j.rpth.2024.102348."
+  ],
+  "formula": "Sum of weighted clinical variables: Age <50 (-2), Age 50-64 (-1), Chronic respiratory disease (-1), Heart rate <80 (-1), Chest pain + dyspnea (+1), Male (+2), Hormonal treatment (+2), Personal history VTE (+2), Syncope (+2), Immobility 4 weeks (+2), O2 sat <95% (+3), Calf pain/edema (+3), PE most likely (+5)",
+  "notes": [
+    "The 4PEPS score can safely rule out PE in 58% of patients without imaging",
+    "Score comprises 13 criteria that may be difficult to memorize - recommend using electronic calculator",
+    "Timing of vital signs should be assessed using clinician judgment",
+    "This score was designed specifically to reduce unnecessary imaging in suspected PE",
+    "Age-adjusted D-dimer for moderate probability: age × 10 μg/L for patients >50 years"
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "id": "ais_inhalation_injury",
+  "title": "Abbreviated Injury Score (AIS) for Inhalation Injury",
+  "description": "Classifies inhalation injury severity based on bronchoscopic findings in adult patients with suspected inhalation injury undergoing flexible bronchoscopy",
+  "category": "emergency",
+  "version": "2007",
+  "parameters": [
+    {
+      "name": "bronchoscopic_findings",
+      "type": "string",
+      "required": true,
+      "description": "Bronchoscopic findings observed during flexible bronchoscopy",
+      "options": [
+        "grade_0",
+        "grade_1", 
+        "grade_2",
+        "grade_3",
+        "grade_4"
+      ],
+      "validation": {
+        "enum": ["grade_0", "grade_1", "grade_2", "grade_3", "grade_4"]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "ais_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "AIS score for inhalation injury severity"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Grade 0",
+        "description": "No inhalation injury",
+        "interpretation": "No carbonaceous deposits, erythema, edema, bronchorrhea, or obstruction. Normal bronchoscopic findings."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Grade 1",
+        "description": "Mild inhalation injury",
+        "interpretation": "Minor or patchy areas of erythema, carbonaceous deposits, bronchorrhea, or bronchial obstruction present. Minimal inhalation injury with generally good prognosis."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Grade 2",
+        "description": "Moderate inhalation injury",
+        "interpretation": "Moderate erythema, carbonaceous deposits, bronchorrhea, or bronchial obstruction present. Moderate inhalation injury requiring close monitoring and supportive care."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Grade 3",
+        "description": "Severe inhalation injury",
+        "interpretation": "Severe inflammation with friability, copious carbonaceous deposits, bronchorrhea, or obstruction present. Severe inhalation injury with increased risk of ARDS, prolonged mechanical ventilation, and ICU stay."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Grade 4",
+        "description": "Very severe inhalation injury",
+        "interpretation": "Mucosal sloughing, necrosis, or endoluminal obstruction present. Very severe inhalation injury with high morbidity and mortality risk requiring intensive support and possible referral to burn center."
+      }
+    ]
+  },
+  "references": [
+    "Endorf FW, Gamelli RL. Inhalation injury, pulmonary perturbations, and fluid resuscitation. J Burn Care Res. 2007;28(1):80-83.",
+    "Albright JM, Davis CS, Bird MD, et al. The acute pulmonary inflammatory response to the graded severity of smoke inhalation injury. Crit Care Med. 2012;40(4):1113-1121.",
+    "Mosier MJ, Pham TN, Park DR, et al. Predictive value of bronchoscopy in assessing the severity of inhalation injury. J Burn Care Res. 2012;33(1):65-73."
+  ],
+  "formula": "AIS Score = Grade based on bronchoscopic findings (0-4 scale)",
+  "notes": [
+    "The AIS may predict development of ARDS, length of mechanical ventilation, and prolonged ICU stay",
+    "AIS severity has not been consistently associated with mortality",
+    "High AIS severity alone should not dictate management decisions",
+    "Bronchoscopic findings cannot reliably reflect overall severity of airway inhalation injury",
+    "Macroscopic manifestations of airway abnormalities may be delayed",
+    "Consider referring patients to designated burn centers for any inhalation injury"
+  ]
+}

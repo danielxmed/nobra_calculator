@@ -1,0 +1,87 @@
+{
+  "id": "amt_4",
+  "title": "Abbreviated Mental Test 4 (AMT-4)",
+  "description": "Assesses mental impairment and cognitive function in elderly patients using four simple questions",
+  "category": "geriatrics",
+  "version": "1995",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "string",
+      "required": true,
+      "description": "Patient correctly states their age",
+      "options": ["correct", "incorrect"],
+      "validation": {
+        "enum": ["correct", "incorrect"]
+      }
+    },
+    {
+      "name": "date_of_birth",
+      "type": "string",
+      "required": true,
+      "description": "Patient correctly states their date of birth",
+      "options": ["correct", "incorrect"],
+      "validation": {
+        "enum": ["correct", "incorrect"]
+      }
+    },
+    {
+      "name": "place",
+      "type": "string",
+      "required": true,
+      "description": "Patient correctly identifies their current place/location",
+      "options": ["correct", "incorrect"],
+      "validation": {
+        "enum": ["correct", "incorrect"]
+      }
+    },
+    {
+      "name": "year",
+      "type": "string",
+      "required": true,
+      "description": "Patient correctly states the current year",
+      "options": ["correct", "incorrect"],
+      "validation": {
+        "enum": ["correct", "incorrect"]
+      }
+    }
+  ],
+  "result": {
+    "name": "amt_4_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "AMT-4 score ranging from 0 to 4 points"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Cognitive Impairment",
+        "description": "Significant cognitive impairment likely",
+        "interpretation": "Score <4 suggests significant cognitive impairment. Further detailed cognitive assessment recommended. Consider underlying causes such as delirium, dementia, or depression."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Normal Cognition",
+        "description": "Normal cognitive function",
+        "interpretation": "Score of 4/4 suggests normal cognitive function. No cognitive impairment detected on this brief screening test."
+      }
+    ]
+  },
+  "references": [
+    "Swain DG, Nightingale PG. Evaluation of a shortened version of the Abbreviated Mental Test in a series of elderly patients. Clin Rehabil. 1997 Aug;11(3):243-8. doi: 10.1177/026921559701100308.",
+    "Hodkinson HM. Evaluation of a mental test score for assessment of mental impairment in the elderly. Age Ageing. 1972 Nov;1(4):233-8. doi: 10.1093/ageing/1.4.233.",
+    "Brooke P, Bullock R. Validation of a 6 item cognitive impairment test with a view to primary care usage. Int J Geriatr Psychiatry. 1999 Nov;14(11):936-40."
+  ],
+  "formula": "Simple addition: 1 point for each correct answer (age + date_of_birth + place + year). Maximum score is 4 points.",
+  "notes": [
+    "The AMT-4 is a shortened version of the original 10-item Abbreviated Mental Test (AMT-10)",
+    "Developed by Dr. David G. Swain as a quick cognitive screening tool for elderly patients",
+    "Particularly useful in emergency departments and acute care settings for rapid assessment",
+    "Score of 4/4 indicates normal cognitive function; score <4 suggests cognitive impairment",
+    "Should not be used as the sole diagnostic tool for dementia or other cognitive disorders",
+    "False positives may occur in patients with sensory impairments, language barriers, or severe illness"
+  ]
+}
