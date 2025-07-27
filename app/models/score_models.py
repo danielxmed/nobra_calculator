@@ -1865,9 +1865,53 @@ class AbicScoreResponse(BaseModel):
 
 # ALC Models
 class AlcRequest(BaseModel):
-    """Request model for ALC (Absolute Lymphocyte Count)"""
-    white_blood_cells: float = Field(..., ge=0.1, le=500.0, description="White blood cell count (x10³/μL)")
-    lymphocyte_percentage: float = Field(..., ge=0.0, le=100.0, description="Lymphocyte percentage (%)")
+    """
+    Request model for Absolute Lymphocyte Count (ALC) calculation
+    
+    The Absolute Lymphocyte Count (ALC) is a critical hematological parameter used primarily 
+    in HIV medicine to predict CD4+ T-cell count and assess immunological status. It serves 
+    as a surrogate marker for immune function, particularly in resource-limited settings.
+    
+    **Clinical Applications**:
+    - HIV disease monitoring and staging
+    - Opportunistic infection risk assessment  
+    - Immune reconstitution evaluation
+    - Resource-limited settings where CD4 testing unavailable
+    - Hematological malignancy monitoring
+    - Immunodeficiency evaluation
+    
+    **Calculation Formula**:
+    ALC = WBC count (cells/mm³) × (Lymphocyte percentage / 100)
+    
+    **Normal Range**: 1,300-3,500 cells/mm³
+    
+    **CD4 Prediction Utility**:
+    - ALC <1,000: High likelihood CD4 <200 cells/mm³
+    - ALC ≥2,000: High likelihood CD4 ≥200 cells/mm³  
+    - ALC 1,000-2,000: Indeterminate zone, direct CD4 needed
+    
+    **Clinical Significance**:
+    - Strong predictor of opportunistic infections in HIV
+    - Guides timing of prophylaxis initiation
+    - Monitoring response to antiretroviral therapy
+    - Assessment of immune recovery
+    
+    **References**:
+    - Spacek LA, et al. Diagnostic accuracy of the absolute lymphocyte count in predicting CD4 count. J Acquir Immune Defic Syndr. 2006;42(5):595-601.
+    - Balakrishnan P, et al. An inexpensive, simple, and manual method of CD4 T-cell quantitation in HIV-infected individuals for use in developing countries. J Acquir Immune Defic Syndr. 2004;36(5):1006-10.
+    """
+    white_blood_cells: float = Field(
+        ..., 
+        ge=0.1, 
+        le=500.0, 
+        description="White blood cell count in × 10³/μL. Normal range: 4.0-11.0 × 10³/μL. Values outside this range may indicate infection, hematological disorders, or medication effects."
+    )
+    lymphocyte_percentage: float = Field(
+        ..., 
+        ge=0.0, 
+        le=100.0, 
+        description="Lymphocyte percentage from complete blood count differential. Normal range: 20-40%. Low percentages may indicate immunosuppression, viral infections, or steroid use."
+    )
     
     class Config:
         schema_extra = {
@@ -1879,31 +1923,111 @@ class AlcRequest(BaseModel):
 
 
 class AlcResponse(BaseModel):
-    """Response model for ALC"""
-    result: float = Field(..., description="Absolute lymphocyte count (x10³/μL)")
-    unit: str = Field(..., description="Unit of the result")
-    interpretation: str = Field(..., description="Clinical interpretation")
-    stage: str = Field(..., description="Count classification")
-    stage_description: str = Field(..., description="Status description")
+    """
+    Response model for Absolute Lymphocyte Count (ALC) calculation
+    
+    Provides comprehensive lymphocyte count assessment with CD4 prediction utility
+    for HIV monitoring and immunological status evaluation.
+    
+    **Interpretation Ranges**:
+    - <1,000 cells/mm³: Low CD4 likely (<200), high infection risk
+    - 1,000-2,000 cells/mm³: Indeterminate zone, direct CD4 needed
+    - ≥2,000 cells/mm³: Adequate CD4 likely (≥200), lower infection risk
+    - Normal range: 1,300-3,500 cells/mm³
+    
+    **Clinical Decision Points**:
+    - ALC <1,000: Consider opportunistic infection prophylaxis
+    - ALC 1,000-2,000: Obtain direct CD4 count for accurate assessment
+    - ALC ≥2,000: Continue routine HIV monitoring
+    """
+    result: float = Field(
+        ..., 
+        description="Calculated absolute lymphocyte count in cells/mm³ (× 10³/μL). Used as surrogate marker for CD4+ T-cell count in HIV patients."
+    )
+    unit: str = Field(
+        ..., 
+        description="Unit of measurement for the lymphocyte count"
+    )
+    interpretation: str = Field(
+        ..., 
+        description="Evidence-based clinical interpretation with CD4 prediction and infection risk assessment. Includes recommendations for monitoring and prophylaxis."
+    )
+    stage: str = Field(
+        ..., 
+        description="Classification category based on CD4 prediction utility (Low CD4, Indeterminate Zone, Adequate CD4, Normal)"
+    )
+    stage_description: str = Field(
+        ..., 
+        description="Detailed description of the lymphocyte count status with CD4 correlation"
+    )
     
     class Config:
         schema_extra = {
             "example": {
-                "result": 1.625,
-                "unit": "x10³/μL",
-                "interpretation": "Normal lymphocyte count. Immune system functioning adequately.",
-                "stage": "Normal",
-                "stage_description": "Normal lymphocyte count"
+                "result": 1625,
+                "unit": "cells/mm³",
+                "interpretation": "Indeterminate range for CD4 prediction. Specific CD4 count is necessary for accurate immunological status assessment.",
+                "stage": "Indeterminate Zone", 
+                "stage_description": "CD4 indeterminate"
             }
         }
 
 
 # ANC Models  
 class AncRequest(BaseModel):
-    """Request model for ANC (Absolute Neutrophil Count)"""
-    white_blood_cells: float = Field(..., ge=0.1, le=500.0, description="White blood cell count (x10³/μL)")
-    neutrophil_percentage: float = Field(..., ge=0.0, le=100.0, description="Neutrophil percentage (%)")
-    band_percentage: Optional[float] = Field(0.0, ge=0.0, le=100.0, description="Band percentage (%) - optional")
+    """
+    Request model for Absolute Neutrophil Count (ANC) calculation
+    
+    The Absolute Neutrophil Count (ANC) is a critical hematological parameter used to assess 
+    neutropenia and infection risk, particularly in oncology, hematology, and immunocompromised 
+    patients. It is essential for determining chemotherapy safety and infection prophylaxis needs.
+    
+    **Clinical Applications**:
+    - Neutropenia classification and grading
+    - Chemotherapy safety assessment
+    - Febrile neutropenia risk stratification
+    - Infection prophylaxis decision-making
+    - Bone marrow function evaluation
+    - Drug-induced neutropenia monitoring
+    
+    **Calculation Formula**:
+    ANC = WBC count × [(% Segmented Neutrophils + % Band Neutrophils) / 100]
+    
+    **Normal Range**: 1,500-8,000 cells/mm³
+    
+    **Neutropenia Classification**:
+    - Mild: 1,000-1,500 cells/mm³ (Grade 2)
+    - Moderate: 500-1,000 cells/mm³ (Grade 3)  
+    - Severe: <500 cells/mm³ (Grade 4)
+    
+    **Clinical Significance**:
+    - ANC <500: Very high infection risk, protective isolation
+    - ANC 500-1,000: High infection risk, strict precautions
+    - ANC 1,000-1,500: Moderate risk, basic precautions
+    - ANC >1,500: Normal infection risk
+    
+    **References**:
+    - National Cancer Institute. Common Terminology Criteria for Adverse Events (CTCAE) v5.0.
+    - Crawford J, et al. Hematopoietic growth factors: ESMO Clinical Practice Guidelines. Ann Oncol. 2010;21(Suppl 5):v248-51.
+    """
+    white_blood_cells: float = Field(
+        ..., 
+        ge=0.1, 
+        le=500.0, 
+        description="White blood cell count in × 10³/μL. Normal range: 4.0-11.0 × 10³/μL. Critical for calculating absolute neutrophil count."
+    )
+    neutrophil_percentage: float = Field(
+        ..., 
+        ge=0.0, 
+        le=100.0, 
+        description="Segmented neutrophil percentage from CBC differential. Normal range: 50-70%. Mature neutrophils that provide primary bacterial defense."
+    )
+    band_percentage: Optional[float] = Field(
+        0.0, 
+        ge=0.0, 
+        le=100.0, 
+        description="Band neutrophil percentage (immature neutrophils). Normal range: 0-5%. Elevated bands may indicate bacterial infection or left shift."
+    )
     
     class Config:
         schema_extra = {
@@ -1916,23 +2040,63 @@ class AncRequest(BaseModel):
 
 
 class AncResponse(BaseModel):
-    """Response model for ANC"""
-    result: float = Field(..., description="Absolute neutrophil count (x10³/μL)")
-    unit: str = Field(..., description="Unit of the result")
-    interpretation: str = Field(..., description="Clinical interpretation")
-    stage: str = Field(..., description="Neutropenia classification")
-    stage_description: str = Field(..., description="Description of neutropenia degree")
-    infection_risk: str = Field(..., description="Infection risk")
+    """
+    Response model for Absolute Neutrophil Count (ANC) calculation
+    
+    Provides comprehensive neutropenia assessment with infection risk stratification
+    and clinical management recommendations based on current oncology guidelines.
+    
+    **Neutropenia Grading (CTCAE v5.0)**:
+    - Grade 1: 1,500-2,000 cells/mm³ (Lower limit of normal)
+    - Grade 2: 1,000-1,500 cells/mm³ (Mild neutropenia)
+    - Grade 3: 500-1,000 cells/mm³ (Moderate neutropenia)
+    - Grade 4: <500 cells/mm³ (Severe neutropenia)
+    
+    **Infection Risk Stratification**:
+    - ANC <500: Very high risk (protective isolation, G-CSF, prophylaxis)
+    - ANC 500-1,000: High risk (strict precautions, consider prophylaxis)
+    - ANC 1,000-1,500: Moderate risk (basic precautions, monitoring)
+    - ANC >1,500: Low risk (routine care)
+    
+    **Clinical Management**:
+    - Severe neutropenia: Consider G-CSF, antimicrobial prophylaxis
+    - Febrile neutropenia: Medical emergency requiring immediate antibiotics
+    - Chemotherapy modification: Dose reduction or delay if ANC <1,000
+    """
+    result: float = Field(
+        ..., 
+        description="Calculated absolute neutrophil count in cells/mm³. Critical parameter for infection risk assessment and chemotherapy safety."
+    )
+    unit: str = Field(
+        ..., 
+        description="Unit of measurement for neutrophil count"
+    )
+    interpretation: str = Field(
+        ..., 
+        description="Evidence-based clinical interpretation with neutropenia grading, infection risk assessment, and management recommendations."
+    )
+    stage: str = Field(
+        ..., 
+        description="Neutropenia classification (Normal, Mild, Moderate, Severe) based on CTCAE criteria"
+    )
+    stage_description: str = Field(
+        ..., 
+        description="Detailed description of neutropenia severity with clinical implications"
+    )
+    infection_risk: str = Field(
+        ..., 
+        description="Infection risk level (Normal, Moderate, High, Very High) with corresponding precautions"
+    )
     
     class Config:
         schema_extra = {
             "example": {
-                "result": 4.225,
-                "unit": "x10³/μL",
-                "interpretation": "Normal neutrophil count. Low infection risk.",
+                "result": 4225,
+                "unit": "cells/mm³",
+                "interpretation": "Neutrophil count within normal range (1500-8000 cells/mm³). Infection risk not increased by neutropenia.",
                 "stage": "Normal",
                 "stage_description": "Normal count",
-                "infection_risk": "Low"
+                "infection_risk": "normal"
             }
         }
 
@@ -1946,13 +2110,68 @@ class HospitalizationFrequencyType(str, Enum):
 
 
 class AccAhaHfStagingRequest(BaseModel):
-    """Request model for ACC/AHA HF Staging"""
-    risk_factors: YesNoType = Field(..., description="Presence of risk factors for heart failure")
-    structural_disease: YesNoType = Field(..., description="Evidence of structural heart disease or elevated biomarkers")
-    current_symptoms: YesNoType = Field(..., description="Current or previous symptoms of heart failure")
-    advanced_symptoms: YesNoType = Field(..., description="Severe symptoms refractory to optimized treatment")
-    hospitalization_frequency: HospitalizationFrequencyType = Field(..., description="Recurrent hospitalizations for heart failure")
-    ejection_fraction: Optional[float] = Field(None, ge=0.0, le=100.0, description="Left ventricular ejection fraction (%)")
+    """
+    Request model for ACC/AHA Heart Failure Staging System
+    
+    The ACC/AHA Heart Failure Staging System provides a comprehensive framework for 
+    classifying heart failure progression and guiding evidence-based therapy at each stage.
+    This system emphasizes prevention and early intervention to prevent disease progression.
+    
+    **Clinical Applications**:
+    - Heart failure risk stratification and staging
+    - Evidence-based therapy selection
+    - Prognosis assessment and patient counseling
+    - Healthcare resource allocation
+    - Clinical trial enrollment criteria
+    - Quality improvement initiatives
+    
+    **Staging Philosophy**:
+    - Stage A: At risk for HF (prevention focus)
+    - Stage B: Pre-HF with structural disease (progression prevention)
+    - Stage C: Symptomatic HF (symptom and hospitalization control)
+    - Stage D: Advanced HF (specialized care and advanced therapies)
+    
+    **Key Features**:
+    - Hierarchical progression (no regression between stages)
+    - Evidence-based therapy recommendations for each stage
+    - Integration with ejection fraction classification (HFrEF, HFmrEF, HFpEF)
+    - Emphasis on guideline-directed medical therapy (GDMT)
+    
+    **Clinical Decision Points**:
+    - Stage A→B: Development of structural disease
+    - Stage B→C: Onset of HF symptoms
+    - Stage C→D: Refractory symptoms despite optimal therapy
+    
+    **References**:
+    - Heidenreich PA, et al. 2022 AHA/ACC/HFSA Guideline for the Management of Heart Failure. Circulation. 2022;145(18):e895-e1032.
+    - Yancy CW, et al. 2017 ACC/AHA/HFSA Focused Update of the 2013 ACCF/AHA Guideline for the Management of Heart Failure. Circulation. 2017;136(6):e137-e161.
+    """
+    risk_factors: YesNoType = Field(
+        ..., 
+        description="Presence of risk factors for heart failure including hypertension, diabetes, metabolic syndrome, cardiotoxic drug therapy, family history of cardiomyopathy, or coronary artery disease."
+    )
+    structural_disease: YesNoType = Field(
+        ..., 
+        description="Evidence of structural heart disease (LV hypertrophy, reduced LVEF, valvular disease, previous MI) or elevated natriuretic peptides without current HF symptoms."
+    )
+    current_symptoms: YesNoType = Field(
+        ..., 
+        description="Current or previous symptoms of heart failure including dyspnea, fatigue, reduced exercise tolerance, or fluid retention with structural heart disease."
+    )
+    advanced_symptoms: YesNoType = Field(
+        ..., 
+        description="Severe symptoms refractory to optimized guideline-directed medical therapy, requiring specialized interventions or advanced heart failure care."
+    )
+    hospitalization_frequency: HospitalizationFrequencyType = Field(
+        ..., 
+        description="Frequency of heart failure-related hospitalizations: frequent (≥2 per year), rare (<2 per year), or none."
+    )
+    ejection_fraction: Optional[float] = Field(
+        None, 
+        ge=0.0, 
+        le=100.0, 
+        description="Left ventricular ejection fraction percentage. Used to classify HFrEF (≤40%), HFmrEF (41-49%), or HFpEF (≥50%) and guide therapy selection."
+    )
     
     class Config:
         schema_extra = {
@@ -1968,16 +2187,66 @@ class AccAhaHfStagingRequest(BaseModel):
 
 
 class AccAhaHfStagingResponse(BaseModel):
-    """Response model for ACC/AHA HF Staging"""
-    result: str = Field(..., description="Heart failure stage")
-    unit: str = Field(..., description="Unit of the result")
-    interpretation: str = Field(..., description="Interpretation and therapeutic recommendations")
-    stage: str = Field(..., description="HF stage")
-    stage_description: str = Field(..., description="Description of the stage")
-    therapy_recommendations: Dict[str, Any] = Field(..., description="Detailed therapeutic recommendations")
-    prognosis: Dict[str, str] = Field(..., description="Prognostic assessment")
-    ejection_fraction: Optional[float] = Field(None, description="Provided ejection fraction")
-    can_regress: bool = Field(..., description="Whether the patient can regress to previous stages")
+    """
+    Response model for ACC/AHA Heart Failure Staging System
+    
+    Provides comprehensive heart failure staging with evidence-based therapy recommendations
+    and prognostic assessment according to the 2022 AHA/ACC/HFSA Guidelines.
+    
+    **Stage Characteristics**:
+    - Stage A: Risk factors present, no structural disease or symptoms
+    - Stage B: Structural disease present, no current or prior symptoms
+    - Stage C: Structural disease with current or prior HF symptoms
+    - Stage D: Refractory HF requiring specialized interventions
+    
+    **Therapy Framework**:
+    - All stages: Risk factor modification and lifestyle interventions
+    - Stage A: Primary prevention with ACEI/ARB, statins
+    - Stage B: ACEI/ARB, beta-blockers, ICD if indicated
+    - Stage C: GDMT optimization, devices, sodium restriction
+    - Stage D: Advanced therapies (VAD, transplant, palliative care)
+    
+    **Prognostic Implications**:
+    - Stage progression is irreversible (no regression)
+    - Earlier intervention improves outcomes
+    - Stage D has highest mortality and morbidity
+    """
+    result: str = Field(
+        ..., 
+        description="Determined heart failure stage (A, B, C, or D) based on hierarchical assessment of risk factors, structural disease, symptoms, and treatment response."
+    )
+    unit: str = Field(
+        ..., 
+        description="Unit of the staging result"
+    )
+    interpretation: str = Field(
+        ..., 
+        description="Comprehensive clinical interpretation with stage-specific evidence-based therapeutic recommendations and management goals according to current guidelines."
+    )
+    stage: str = Field(
+        ..., 
+        description="Full stage designation with descriptive name (e.g., 'Stage A', 'Stage B', 'Stage C', 'Stage D')"
+    )
+    stage_description: str = Field(
+        ..., 
+        description="Brief description of the stage characteristics and clinical significance"
+    )
+    therapy_recommendations: Dict[str, Any] = Field(
+        ..., 
+        description="Detailed evidence-based therapeutic recommendations organized by category (primary medications, devices, lifestyle, monitoring) specific to the determined stage."
+    )
+    prognosis: Dict[str, str] = Field(
+        ..., 
+        description="Prognostic assessment including outlook, mortality risk, and progression likelihood with stage-specific considerations."
+    )
+    ejection_fraction: Optional[float] = Field(
+        None, 
+        description="Provided left ventricular ejection fraction used for HF phenotype classification and therapy selection"
+    )
+    can_regress: bool = Field(
+        ..., 
+        description="Indicates whether patients can regress to previous stages (always False in ACC/AHA system - progression is irreversible)"
+    )
     
     class Config:
         schema_extra = {
@@ -1988,12 +2257,14 @@ class AccAhaHfStagingResponse(BaseModel):
                 "stage": "Stage B",
                 "stage_description": "Pre-heart failure",
                 "therapy_recommendations": {
-                    "primary": ["ACEI or ARB (LVEF ≤40%)", "Evidence-based beta-blockers"],
-                    "devices": ["ICD if LVEF ≤30% post-MI (>40 days)"]
+                    "primary": ["ACEI or ARB (LVEF ≤40%)", "Evidence-based beta-blockers", "Statins"],
+                    "devices": ["ICD if LVEF ≤30% post-MI (>40 days)"],
+                    "monitoring": ["Follow-up echocardiogram", "Renal function monitoring"]
                 },
                 "prognosis": {
                     "outlook": "Good with optimized treatment",
-                    "mortality": "Low to moderate"
+                    "mortality": "Low to moderate",
+                    "progression": "Prevention of symptoms is the goal"
                 },
                 "ejection_fraction": 45.0,
                 "can_regress": False
@@ -2034,13 +2305,70 @@ class HipPainRomType(str, Enum):
 
 
 class EularAcrPmrRequest(BaseModel):
-    """Request model for EULAR/ACR PMR Criteria"""
-    morning_stiffness: MorningStiffnessType = Field(..., description="Duration of morning stiffness")
-    hip_pain_limited_rom: HipPainRomType = Field(..., description="Hip pain or limited range of motion")
-    rf_or_acpa: RfAcpaType = Field(..., description="Rheumatoid factor (RF) or anti-citrullinated peptide antibody (ACPA)")
-    other_joint_pain: OtherJointPainType = Field(..., description="Pain in other joints")
-    ultrasound_shoulder_hip: Optional[UltrasoundType] = Field(UltrasoundType.NOT_PERFORMED, description="At least one shoulder with specific findings and one hip with synovitis (ultrasound)")
-    ultrasound_both_shoulders: Optional[UltrasoundType] = Field(UltrasoundType.NOT_PERFORMED, description="Both shoulders with specific findings (ultrasound)")
+    """
+    Request model for EULAR/ACR 2012 Classification Criteria for Polymyalgia Rheumatica
+    
+    The 2012 EULAR/ACR classification criteria for Polymyalgia Rheumatica (PMR) provide 
+    a standardized approach to PMR diagnosis, incorporating clinical features and optional 
+    ultrasonographic findings to improve diagnostic accuracy.
+    
+    **Clinical Applications**:
+    - PMR diagnosis and classification
+    - Differentiation from rheumatoid arthritis
+    - Clinical trial enrollment criteria
+    - Standardized diagnostic approach
+    - Research and epidemiological studies
+    
+    **Scoring System**:
+    - Morning stiffness >45min: 2 points
+    - Hip pain or limited ROM: 1 point
+    - Absence of RF and ACPA: 2 points
+    - Absence of other joint pain: 1 point
+    - Ultrasound findings (if performed): 1-2 additional points
+    
+    **Diagnostic Thresholds**:
+    - Without ultrasound: ≥4 points suggests PMR
+    - With ultrasound: ≥5 points suggests PMR
+    
+    **Clinical Features of PMR**:
+    - Bilateral shoulder and/or hip pain/stiffness
+    - Age ≥50 years (prerequisite)
+    - Elevated inflammatory markers (ESR/CRP)
+    - Dramatic response to low-dose corticosteroids
+    
+    **Differential Diagnosis**:
+    - Rheumatoid arthritis (RF/ACPA positive)
+    - Giant cell arteritis (associated condition)
+    - Fibromyalgia (normal inflammatory markers)
+    - Malignancy (weight loss, systemic symptoms)
+    
+    **References**:
+    - Dasgupta B, et al. 2012 Provisional classification criteria for polymyalgia rheumatica: a European League Against Rheumatism/American College of Rheumatology collaborative initiative. Ann Rheum Dis. 2012;71(4):484-92.
+    """
+    morning_stiffness: MorningStiffnessType = Field(
+        ..., 
+        description="Duration of morning stiffness. >45 minutes is characteristic of inflammatory conditions like PMR and adds 2 points to the score."
+    )
+    hip_pain_limited_rom: HipPainRomType = Field(
+        ..., 
+        description="Presence of hip pain or limited range of motion. Hip involvement is common in PMR and adds 1 point when present."
+    )
+    rf_or_acpa: RfAcpaType = Field(
+        ..., 
+        description="Presence of rheumatoid factor (RF) or anti-citrullinated peptide antibody (ACPA). Absence supports PMR diagnosis (2 points) vs. rheumatoid arthritis."
+    )
+    other_joint_pain: OtherJointPainType = Field(
+        ..., 
+        description="Pain in joints other than shoulders and hips. Absence is more consistent with PMR (1 point) as PMR typically affects proximal joints."
+    )
+    ultrasound_shoulder_hip: Optional[UltrasoundType] = Field(
+        UltrasoundType.NOT_PERFORMED, 
+        description="Ultrasound finding of at least one shoulder with subdeltoid bursitis/bicipital tenosynovitis/glenohumeral synovitis AND one hip with synovitis/trochanteric bursitis. Adds 1 point if present."
+    )
+    ultrasound_both_shoulders: Optional[UltrasoundType] = Field(
+        UltrasoundType.NOT_PERFORMED, 
+        description="Ultrasound finding of bilateral shoulder involvement with subdeltoid bursitis, bicipital tenosynovitis, or glenohumeral synovitis. Adds 1 point if present."
+    )
     
     class Config:
         schema_extra = {
@@ -2056,22 +2384,58 @@ class EularAcrPmrRequest(BaseModel):
 
 
 class EularAcrPmrResponse(BaseModel):
-    """Response model for EULAR/ACR PMR"""
-    result: int = Field(..., description="Total EULAR/ACR PMR score")
-    unit: str = Field(..., description="Unit of the result")
-    interpretation: str = Field(..., description="Diagnostic interpretation")
-    stage: str = Field(..., description="Diagnostic result")
-    stage_description: str = Field(..., description="Description of the result")
+    """
+    Response model for EULAR/ACR 2012 Polymyalgia Rheumatica Classification Criteria
+    
+    Provides comprehensive PMR classification assessment with diagnostic probability
+    and clinical management recommendations based on validated criteria.
+    
+    **Interpretation Framework**:
+    - Without ultrasound: ≥4 points classifies as PMR (sensitivity 72%, specificity 65%)
+    - With ultrasound: ≥5 points classifies as PMR (sensitivity 71%, specificity 70%)
+    - Score <threshold: Consider alternative diagnoses
+    
+    **Clinical Validation**:
+    - Validated in multiple international cohorts
+    - Improved specificity over previous criteria
+    - Incorporates modern imaging techniques
+    - Standardized approach for clinical practice
+    
+    **Management Implications**:
+    - PMR classification: Consider corticosteroid trial (prednisolone 15-20mg daily)
+    - Monitor for giant cell arteritis association
+    - Assess for contraindications to steroids
+    - Plan gradual steroid taper over 12-24 months
+    """
+    result: int = Field(
+        ..., 
+        description="Total EULAR/ACR 2012 PMR classification score. Higher scores indicate greater likelihood of PMR diagnosis."
+    )
+    unit: str = Field(
+        ..., 
+        description="Unit of measurement for the classification score"
+    )
+    interpretation: str = Field(
+        ..., 
+        description="Evidence-based diagnostic interpretation with classification probability, sensitivity/specificity data, and clinical management recommendations."
+    )
+    stage: str = Field(
+        ..., 
+        description="Classification result (PMR, Non-PMR, PMR with ultrasound, Non-PMR with ultrasound) based on threshold criteria"
+    )
+    stage_description: str = Field(
+        ..., 
+        description="Detailed description of the classification result with clinical implications and next steps"
+    )
     
     class Config:
         schema_extra = {
             "example": {
                 "result": 6,
                 "unit": "points",
-                "interpretation": "Score ≥4 suggests a diagnosis of polymyalgia rheumatica.",
-                "stage": "Probable PMR",
-                "stage_description": "PMR diagnosis is probable",
-                "diagnosis_likely": True
+                "interpretation": "Score of 6 points (≥4) classifies as polymyalgia rheumatica by EULAR/ACR 2012 criteria. Sensitivity 72%, specificity 65%.",
+                "stage": "PMR",
+                "stage_description": "Classifies as PMR (without ultrasound)"
             }
         }
 
@@ -2098,11 +2462,66 @@ class AcuteChangeType(str, Enum):
 
 
 class FourAtRequest(BaseModel):
-    """Request model for 4AT (4 A's Test)"""
-    alertness: AlertnessType = Field(..., description="Patient's alertness level")
-    amt4_errors: int = Field(..., ge=0, le=4, description="Number of errors in AMT4 (age, date of birth, place, current year)")
-    attention_months: AttentionMonthsType = Field(..., description="Performance on attention test (months in reverse order)")
-    acute_change: AcuteChangeType = Field(..., description="Presence of acute change or fluctuating course")
+    """
+    Request model for 4AT (4 A's Test) Delirium Screening Tool
+    
+    The 4AT is a rapid, validated screening tool for delirium detection in elderly patients
+    and acute care settings. It can be completed in <2 minutes and requires no special
+    training, making it ideal for routine clinical use.
+    
+    **Clinical Applications**:
+    - Delirium screening in emergency departments
+    - Acute care and hospital ward assessments
+    - Post-operative delirium detection
+    - Geriatric and elderly care evaluations
+    - ICU delirium screening (when appropriate)
+    - Cognitive impairment differentiation
+    
+    **Test Components (4 A's)**:
+    1. **Alertness**: Normal vs. altered consciousness
+    2. **AMT4**: Abbreviated Mental Test (age, DOB, place, year)
+    3. **Attention**: Months backwards test
+    4. **Acute change**: Fluctuating course or acute onset
+    
+    **Scoring System**:
+    - Alertness: Normal (0), Altered (4)
+    - AMT4 errors: 0 errors (0), 1 error (1), ≥2 errors (2)
+    - Attention: ≥7 months (0), starts but <7 (1), refuses/untestable (2)
+    - Acute change: Absent (0), Present (4)
+    
+    **Interpretation Thresholds**:
+    - 0 points: Delirium unlikely
+    - 1-3 points: Possible cognitive impairment
+    - ≥4 points: Possible delirium (requires clinical assessment)
+    
+    **Clinical Validation**:
+    - Sensitivity: 89.7% for delirium detection
+    - Specificity: 84.1% for delirium exclusion
+    - Validated across multiple healthcare settings
+    - Superior to many longer assessment tools
+    
+    **References**:
+    - Bellelli G, et al. Validation of the 4AT, a new instrument for rapid delirium screening: a study in 234 hospitalised older people. Age Ageing. 2014;43(4):496-502.
+    - Shenkin SD, et al. Delirium detection in older acute medical inpatients: a multicentre prospective comparative diagnostic test accuracy study of the 4AT and the confusion assessment method. BMC Med. 2019;17(1):138.
+    """
+    alertness: AlertnessType = Field(
+        ..., 
+        description="Patient's alertness level. Normal alertness (0 points) vs. altered alertness including mild drowsiness, hypervigilance, or clearly abnormal alertness (4 points)."
+    )
+    amt4_errors: int = Field(
+        ..., 
+        ge=0, 
+        le=4, 
+        description="Number of errors in Abbreviated Mental Test 4 (AMT4): patient's age, date of birth, current place, current year. 0 errors = 0 points, 1 error = 1 point, ≥2 errors = 2 points."
+    )
+    attention_months: AttentionMonthsType = Field(
+        ..., 
+        description="Performance on attention test (months of year in reverse order). Achieves ≥7 months correctly (0 points), starts but <7 months (1 point), refuses or untestable (2 points)."
+    )
+    acute_change: AcuteChangeType = Field(
+        ..., 
+        description="Evidence of acute change or fluctuating course in cognition, behavior, or function. Absent (0 points) or present (4 points). Key feature distinguishing delirium from dementia."
+    )
     
     class Config:
         schema_extra = {
@@ -2116,22 +2535,57 @@ class FourAtRequest(BaseModel):
 
 
 class FourAtResponse(BaseModel):
-    """Response model for 4AT"""
-    result: int = Field(..., description="Total 4AT score (0-12)")
-    unit: str = Field(..., description="Unit of the result")
-    interpretation: str = Field(..., description="Delirium interpretation")
-    stage: str = Field(..., description="Result classification")
-    stage_description: str = Field(..., description="Description of the result")
+    """
+    Response model for 4AT (4 A's Test) Delirium Screening
+    
+    Provides rapid delirium screening results with clinical interpretation
+    and management recommendations based on validated thresholds.
+    
+    **Score Interpretation**:
+    - 0 points: Delirium unlikely, no cognitive impairment detected
+    - 1-3 points: Possible cognitive impairment, further assessment needed
+    - ≥4 points: Possible delirium, requires immediate clinical evaluation
+    
+    **Clinical Actions by Score**:
+    - Score 0: Continue routine monitoring
+    - Score 1-3: Detailed cognitive assessment, investigate causes
+    - Score ≥4: Delirium workup, identify precipitants, consider interventions
+    
+    **Important Considerations**:
+    - Not diagnostic - clinical judgment required
+    - False positives possible in severe dementia
+    - Acute change component is crucial for delirium diagnosis
+    - May be affected by hearing/visual impairments
+    """
+    result: int = Field(
+        ..., 
+        description="Total 4AT score ranging from 0-12 points. Higher scores indicate greater likelihood of delirium or cognitive impairment."
+    )
+    unit: str = Field(
+        ..., 
+        description="Unit of measurement for the screening score"
+    )
+    interpretation: str = Field(
+        ..., 
+        description="Evidence-based clinical interpretation with delirium probability assessment and recommended clinical actions based on validated thresholds."
+    )
+    stage: str = Field(
+        ..., 
+        description="Classification result (Negative, Cognitive Impairment, Possible Delirium) based on score thresholds and clinical significance"
+    )
+    stage_description: str = Field(
+        ..., 
+        description="Detailed description of the screening result with clinical implications and recommended next steps"
+    )
     
     class Config:
         schema_extra = {
             "example": {
                 "result": 4,
                 "unit": "points",
-                "interpretation": "Score ≥4 suggests possible delirium or cognitive impairment.",
+                "interpretation": "Score ≥4 suggests possible delirium. This result is not diagnostic - the final diagnosis must be based on clinical judgment. Comprehensive mental assessment and investigation of reversible causes are recommended.",
                 "stage": "Possible Delirium",
-                "stage_description": "Possible delirium",
-                "delirium_likely": True
+                "stage_description": "Result suggests delirium"
             }
         }
 
@@ -2144,13 +2598,69 @@ class EegFindingType(str, Enum):
 
 
 class Helps2bRequest(BaseModel):
-    """Request model for 2HELPS2B Score"""
-    seizure_history: YesNoType = Field(..., description="History of seizures (remote or recent acute suspected)")
-    epileptiform_discharges: EegFindingType = Field(..., description="Epileptiform discharges (spikes or sporadic sharp waves)")
-    lateralized_periodic_discharges: EegFindingType = Field(..., description="Lateralized periodic discharges (LPDs)")
-    bilateral_independent_periodic_discharges: EegFindingType = Field(..., description="Bilateral independent periodic discharges (BIPDs)")
-    brief_potentially_ictal_rhythmic_discharges: EegFindingType = Field(..., description="Brief potentially ictal rhythmic discharges (BIRDs)")
-    burst_suppression: EegFindingType = Field(..., description="Burst-suppression pattern on EEG")
+    """
+    Request model for 2HELPS2B Score - Seizure Risk Prediction in Hospitalized Patients
+    
+    The 2HELPS2B score is a validated clinical tool for predicting seizure risk in 
+    acutely ill hospitalized patients undergoing continuous EEG monitoring. It helps
+    optimize the duration of neurological monitoring and resource allocation.
+    
+    **Clinical Applications**:
+    - Seizure risk stratification in hospitalized patients
+    - Continuous EEG monitoring duration optimization
+    - Neurological ICU resource allocation
+    - Early seizure detection protocol guidance
+    - Clinical decision-making for EEG monitoring
+    
+    **Score Components (Each worth 1 point)**:
+    - **H**: History of seizures (remote or acute suspected)
+    - **E**: Epileptiform discharges on EEG
+    - **L**: Lateralized periodic discharges (LPDs)
+    - **P**: Bilateral independent periodic discharges (BIPDs)
+    - **S**: Brief potentially ictal rhythmic discharges (BIRDs)
+    - **2B**: Burst-suppression pattern
+    
+    **Risk Stratification**:
+    - Score 0: Very low risk (5% in 72h) - 1h screening sufficient
+    - Score 1: Moderate risk (12% in 72h) - 12h monitoring recommended
+    - Score 2: High risk (27% in 72h) - 24h monitoring recommended
+    - Score 3: Very high risk (50% in 72h) - Extended monitoring
+    - Score 4+: Extreme risk (>70% in 72h) - Intensive monitoring
+    
+    **Clinical Validation**:
+    - Validated in multicenter cohorts
+    - Superior discrimination compared to clinical judgment alone
+    - Helps reduce unnecessary prolonged monitoring
+    - Improves seizure detection efficiency
+    
+    **References**:
+    - Struck AF, et al. Assessment of the Validity of the 2HELPS2B Score for Inpatient Seizure Risk Prediction. JAMA Neurol. 2020;77(4):500-507.
+    - Struck AF, et al. Comparison of machine learning models for seizure prediction in hospitalized patients. Ann Clin Transl Neurol. 2019;6(7):1239-1247.
+    """
+    seizure_history: YesNoType = Field(
+        ..., 
+        description="History of seizures including remote seizures or recent acute suspected seizures. Any seizure history regardless of timing adds 1 point."
+    )
+    epileptiform_discharges: EegFindingType = Field(
+        ..., 
+        description="Epileptiform discharges on EEG including spikes, sharp waves, or sporadic epileptiform activity. Classic interictal epileptiform patterns add 1 point."
+    )
+    lateralized_periodic_discharges: EegFindingType = Field(
+        ..., 
+        description="Lateralized periodic discharges (LPDs) on EEG. Repetitive, lateralized discharges at 0.5-3 Hz that are potentially epileptogenic add 1 point."
+    )
+    bilateral_independent_periodic_discharges: EegFindingType = Field(
+        ..., 
+        description="Bilateral independent periodic discharges (BIPDs) on EEG. Independent periodic patterns from both hemispheres add 1 point."
+    )
+    brief_potentially_ictal_rhythmic_discharges: EegFindingType = Field(
+        ..., 
+        description="Brief potentially ictal rhythmic discharges (BIRDs) on EEG. Brief rhythmic patterns that may represent brief seizures or ictal-interictal continuum add 1 point."
+    )
+    burst_suppression: EegFindingType = Field(
+        ..., 
+        description="Burst-suppression pattern on EEG. Alternating periods of high-amplitude activity and suppression, often indicating severe brain dysfunction, add 1 point."
+    )
     
     class Config:
         schema_extra = {
@@ -2166,40 +2676,178 @@ class Helps2bRequest(BaseModel):
 
 
 class Helps2bResponse(BaseModel):
-    """Response model for 2HELPS2B Score"""
-    result: int = Field(..., description="Total 2HELPS2B Score (0-6 points)")
-    unit: str = Field(..., description="Unit of the result")
-    interpretation: str = Field(..., description="Interpretation of seizure risk")
-    stage: str = Field(..., description="Risk classification")
-    stage_description: str = Field(..., description="Risk description")
+    """
+    Response model for 2HELPS2B Score - Seizure Risk Prediction
+    
+    Provides evidence-based seizure risk assessment with specific monitoring
+    recommendations for hospitalized patients undergoing EEG evaluation.
+    
+    **Risk Categories and Monitoring Recommendations**:
+    - Score 0 (5% risk): 1-hour screening EEG sufficient
+    - Score 1 (12% risk): 12-hour continuous monitoring
+    - Score 2 (27% risk): 24-hour continuous monitoring  
+    - Score 3 (50% risk): Extended monitoring (≥24h)
+    - Score 4 (73% risk): Intensive monitoring, consider prophylaxis
+    - Score 5 (88% risk): Critical monitoring, prophylaxis indicated
+    - Score 6 (>95% risk): Maximum risk, urgent intervention
+    
+    **Clinical Decision Framework**:
+    - Low risk (0-1): Conservative monitoring approach
+    - Moderate risk (2): Standard 24-hour protocol
+    - High risk (3+): Intensive monitoring and intervention
+    
+    **Resource Optimization**:
+    - Reduces unnecessary prolonged monitoring
+    - Improves seizure detection rates
+    - Optimizes neurological ICU resources
+    - Guides anticonvulsant prophylaxis decisions
+    """
+    result: int = Field(
+        ..., 
+        description="Total 2HELPS2B score ranging from 0-6 points. Higher scores indicate exponentially increased seizure risk within 72 hours."
+    )
+    unit: str = Field(
+        ..., 
+        description="Unit of measurement for the seizure risk score"
+    )
+    interpretation: str = Field(
+        ..., 
+        description="Evidence-based clinical interpretation with specific seizure risk percentage, monitoring duration recommendations, and clinical management guidance."
+    )
+    stage: str = Field(
+        ..., 
+        description="Risk classification category (Low Risk, Moderate Risk, High Risk, Very High Risk, Extreme Risk, Critical Risk, Maximum Risk)"
+    )
+    stage_description: str = Field(
+        ..., 
+        description="Detailed description of the seizure risk level with clinical significance and monitoring implications"
+    )
     
     class Config:
         schema_extra = {
             "example": {
-                "result": 0, # Example value, actual calculation would be done in the calculator
+                "result": 0,
                 "unit": "points",
-                "interpretation": "Low risk of seizures. Continue monitoring as clinically indicated.",
+                "interpretation": "Seizure risk in 72h: 5%. Only 1-hour screening EEG recommended. Additional monitoring generally not necessary.",
                 "stage": "Low Risk",
-                "stage_description": "Low risk of seizures"
+                "stage_description": "Very low seizure risk"
             }
         }
 
 
 # AIMS Models
 class AimsRequest(BaseModel):
-    """Request model for AIMS"""
-    facial_muscles: int = Field(..., ge=0, le=4, description="Facial muscles and facial expression (0-4)")
-    lips_perioral: int = Field(..., ge=0, le=4, description="Lips and perioral area (0-4)")
-    jaw: int = Field(..., ge=0, le=4, description="Jaw (0-4)")
-    tongue: int = Field(..., ge=0, le=4, description="Tongue (0-4)")
-    upper_extremities: int = Field(..., ge=0, le=4, description="Upper extremities (0-4)")
-    lower_extremities: int = Field(..., ge=0, le=4, description="Lower extremities (0-4)")
-    trunk_movements: int = Field(..., ge=0, le=4, description="Trunk movements (0-4)")
-    global_severity: int = Field(..., ge=0, le=4, description="Global severity of abnormal movements (0-4)")
-    incapacitation: int = Field(..., ge=0, le=4, description="Incapacitation due to abnormal movements (0-4)")
-    patient_awareness: int = Field(..., ge=0, le=4, description="Patient's awareness of movements (0-4)")
-    current_problems_teeth: DiabetesType = Field(..., description="Current problems with teeth/dentures")
-    dental_problems_interfere: DiabetesType = Field(..., description="Dental problems interfere with movements?")
+    """
+    Request model for Abnormal Involuntary Movement Scale (AIMS)
+    
+    The AIMS is a standardized rating scale developed by the National Institute of Mental Health 
+    to assess tardive dyskinesia (TD) in patients receiving neuroleptic medications. It provides 
+    systematic evaluation of involuntary movements across different body regions.
+    
+    **Clinical Applications**:
+    - Tardive dyskinesia detection and monitoring
+    - Antipsychotic medication safety assessment
+    - Longitudinal tracking of movement disorders
+    - Clinical trial endpoints for TD studies
+    - Medico-legal documentation of drug-induced movements
+    - Treatment response monitoring
+    
+    **Assessment Areas**:
+    1. **Facial/Oral Movements**: Face, lips, jaw, tongue
+    2. **Extremity Movements**: Arms, hands, legs, feet
+    3. **Trunk Movements**: Neck, shoulders, hips
+    4. **Global Assessment**: Overall severity and impact
+    
+    **Scoring System**:
+    - 0 = None (no abnormal movements)
+    - 1 = Minimal (may be extreme normal)
+    - 2 = Mild (abnormal but not disabling)
+    - 3 = Moderate (abnormal and somewhat disabling)
+    - 4 = Severe (abnormal and markedly disabling)
+    
+    **TD Diagnosis Criteria**:
+    - Any single item rated ≥3 (moderate-severe), OR
+    - Any two items rated ≥2 (mild or greater)
+    - Must persist for ≥4 weeks after drug discontinuation
+    
+    **Risk Factors for TD**:
+    - Age >50 years, female gender, diabetes
+    - Duration and dose of antipsychotic exposure
+    - First-generation > second-generation antipsychotics
+    - Concurrent anticholinergic use
+    
+    **References**:
+    - Guy W. ECDEU Assessment Manual for Psychopharmacology. Rockville, MD: US Department of Health, Education, and Welfare; 1976.
+    - Schooler NR, Kane JM. Research diagnoses for tardive dyskinesia. Arch Gen Psychiatry. 1982;39(4):486-7.
+    """
+    facial_muscles: int = Field(
+        ..., 
+        ge=0, 
+        le=4, 
+        description="Facial muscles and facial expression movements including forehead, eyebrows, periorbital area, cheeks. Includes frowning, blinking, smiling, grimacing."
+    )
+    lips_perioral: int = Field(
+        ..., 
+        ge=0, 
+        le=4, 
+        description="Lips and perioral area movements including puckering, pouting, smacking. Common early sign of tardive dyskinesia."
+    )
+    jaw: int = Field(
+        ..., 
+        ge=0, 
+        le=4, 
+        description="Jaw movements including biting, clenching, chewing, mouth opening, lateral movement. May interfere with speech and eating."
+    )
+    tongue: int = Field(
+        ..., 
+        ge=0, 
+        le=4, 
+        description="Tongue movements both in and out of mouth. Rate only increases in movement, NOT inability to sustain movement. Darting movements are characteristic."
+    )
+    upper_extremities: int = Field(
+        ..., 
+        ge=0, 
+        le=4, 
+        description="Upper extremity movements (arms, wrists, hands, fingers). Include choreic (rapid, irregular) and athetoid (slow, complex) movements. Exclude tremor."
+    )
+    lower_extremities: int = Field(
+        ..., 
+        ge=0, 
+        le=4, 
+        description="Lower extremity movements (legs, knees, ankles, toes) including lateral knee movement, foot tapping, heel dropping, foot squirming, inversion/eversion."
+    )
+    trunk_movements: int = Field(
+        ..., 
+        ge=0, 
+        le=4, 
+        description="Trunk movements of neck, shoulders, hips including rocking, twisting, squirming, pelvic gyrations. May affect posture and gait."
+    )
+    global_severity: int = Field(
+        ..., 
+        ge=0, 
+        le=4, 
+        description="Global assessment of overall severity of abnormal movements considering frequency, amplitude, and functional impact."
+    )
+    incapacitation: int = Field(
+        ..., 
+        ge=0, 
+        le=4, 
+        description="Degree of incapacitation due to abnormal movements affecting daily activities, work, social functioning, and quality of life."
+    )
+    patient_awareness: int = Field(
+        ..., 
+        ge=0, 
+        le=4, 
+        description="Patient's awareness of abnormal movements: 0=no awareness, 1=aware/no distress, 2=mild distress, 3=moderate distress, 4=severe distress."
+    )
+    current_problems_teeth: DiabetesType = Field(
+        ..., 
+        description="Current problems with teeth and/or dentures that might affect oral movement assessment or be affected by oral dyskinesia."
+    )
+    dental_problems_interfere: DiabetesType = Field(
+        ..., 
+        description="Whether dental problems interfere with the assessment of oral movements or are exacerbated by tardive dyskinesia."
+    )
     
     class Config:
         schema_extra = {
@@ -2221,12 +2869,54 @@ class AimsRequest(BaseModel):
 
 
 class AimsResponse(BaseModel):
-    """Response model for AIMS"""
-    result: int = Field(..., description="Total AIMS score (sum of items 1-7)")
-    unit: str = Field(..., description="Unit of the result")
-    interpretation: str = Field(..., description="Clinical interpretation of tardive dyskinesia")
-    stage: str = Field(..., description="Dyskinesia classification")
-    stage_description: str = Field(..., description="Description of dyskinesia degree")
+    """
+    Response model for Abnormal Involuntary Movement Scale (AIMS)
+    
+    Provides comprehensive tardive dyskinesia assessment with clinical significance
+    evaluation and management recommendations based on standardized criteria.
+    
+    **Diagnostic Interpretation**:
+    - No TD: Score ≤1 and no items ≥2
+    - Mild-Moderate TD: Any item ≥2 or total score 2-13
+    - Severe TD: Total score ≥14 or marked functional impairment
+    
+    **Clinical Significance**:
+    - Rating of 2 or higher indicates abnormal movements
+    - Two or more items ≥2 suggests probable TD
+    - Single item ≥3 indicates definite abnormal movements
+    - Global severity and incapacitation guide treatment urgency
+    
+    **Management Recommendations**:
+    - Mild TD: Consider dose reduction, switch to lower-risk antipsychotic
+    - Moderate TD: Evaluate risk-benefit, consider TD-specific treatments
+    - Severe TD: Urgent intervention, TD-specific medications (VMAT2 inhibitors)
+    - Monitor progression with regular AIMS assessments
+    
+    **Treatment Options for TD**:
+    - VMAT2 inhibitors: valbenazine, deutetrabenazine
+    - Antipsychotic adjustment: dose reduction, switch to clozapine/quetiapine
+    - Supportive care: vitamin E, ginkgo biloba (limited evidence)
+    """
+    result: int = Field(
+        ..., 
+        description="Total AIMS score (sum of items 1-7) ranging from 0-28 points. Higher scores indicate more severe tardive dyskinesia."
+    )
+    unit: str = Field(
+        ..., 
+        description="Unit of measurement for the movement disorder assessment"
+    )
+    interpretation: str = Field(
+        ..., 
+        description="Evidence-based clinical interpretation with tardive dyskinesia probability, severity assessment, and specific management recommendations."
+    )
+    stage: str = Field(
+        ..., 
+        description="Dyskinesia classification (No Dyskinesia, Mild to Moderate Dyskinesia, Severe Dyskinesia) based on validated criteria"
+    )
+    stage_description: str = Field(
+        ..., 
+        description="Detailed description of the tardive dyskinesia severity with clinical implications and treatment urgency"
+    )
     
     class Config:
         schema_extra = {

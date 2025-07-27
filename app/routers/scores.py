@@ -1216,13 +1216,38 @@ async def calculate_abic_score(request: AbicScoreRequest):
 @router.post("/alc", response_model=AlcResponse)
 async def calculate_alc(request: AlcRequest):
     """
-    Calculates ALC (Absolute Lymphocyte Count)
+    Calculate Absolute Lymphocyte Count (ALC) for HIV Monitoring and Immune Assessment
+    
+    The ALC serves as a surrogate marker for CD4+ T-cell count in HIV patients and provides
+    critical information for immune status assessment, particularly in resource-limited settings.
+    
+    **Clinical Applications:**
+    - HIV disease monitoring and staging
+    - CD4+ T-cell count prediction when direct testing unavailable
+    - Opportunistic infection risk assessment
+    - Immune reconstitution evaluation
+    - Hematological malignancy monitoring
+    
+    **Key Features:**
+    - Validated correlation with CD4 counts in HIV patients
+    - Cost-effective alternative to flow cytometry
+    - Useful for monitoring antiretroviral therapy response
+    - Guides timing of opportunistic infection prophylaxis
+    
+    **Interpretation:**
+    - ALC <1,000: High likelihood CD4 <200 cells/mm³ (high infection risk)
+    - ALC 1,000-2,000: Indeterminate zone, direct CD4 testing needed
+    - ALC ≥2,000: High likelihood CD4 ≥200 cells/mm³ (lower infection risk)
     
     Args:
-        request: Parameters required for calculation (white blood cells, lymphocyte percentage)
+        request: AlcRequest containing white blood cell count and lymphocyte percentage
         
     Returns:
-        AlcResponse: Result with absolute lymphocyte count
+        AlcResponse: Calculated ALC with CD4 prediction and clinical interpretation
+        
+    Raises:
+        422: Validation error for invalid input parameters
+        500: Internal calculation error
     """
     try:
         # Convert request to dictionary
