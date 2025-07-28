@@ -1,0 +1,86 @@
+{
+  "id": "age_adjusted_esr_crp",
+  "title": "Age-Adjusted ESR/CRP for Rheumatoid Arthritis",
+  "description": "Calculates age-adjusted ESR and CRP in adult rheumatoid arthritis patients to account for age-related increases in inflammatory markers",
+  "category": "rheumatology",
+  "version": "2005",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient sex (affects both ESR and CRP age-adjustment formulas)",
+      "validation": {
+        "enum": ["male", "female"]
+      },
+      "options": ["male", "female"]
+    },
+    {
+      "name": "measured_esr",
+      "type": "float",
+      "required": false,
+      "description": "Measured ESR value in mm/hr (optional, for comparison with age-adjusted upper limit)",
+      "validation": {
+        "min": 0,
+        "max": 200
+      },
+      "unit": "mm/hr"
+    },
+    {
+      "name": "measured_crp",
+      "type": "float",
+      "required": false,
+      "description": "Measured CRP value in mg/dL (optional, for comparison with age-adjusted upper limit)",
+      "validation": {
+        "min": 0,
+        "max": 50
+      },
+      "unit": "mg/dL"
+    }
+  ],
+  "result": {
+    "name": "age_adjusted_limits",
+    "type": "object",
+    "unit": "various",
+    "description": "Age-adjusted upper limits for ESR and CRP"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 999999,
+        "stage": "Age-Adjusted Limits",
+        "description": "Calculated age-adjusted upper limits",
+        "interpretation": "Age-adjusted upper limits help account for the natural increase in ESR and CRP with aging. Values above these limits may indicate active inflammation beyond what is expected for age."
+      }
+    ]
+  },
+  "references": [
+    "Ranganath VK, Elashoff DA, Khanna D, et al. Age adjustment corrects for apparent differences in erythrocyte sedimentation rate and C-reactive protein values at the onset of seropositive rheumatoid arthritis in younger and older patients. J Rheumatol. 2005;32(6):1040-2.",
+    "Miller A, Green M, Robinson D. Simple rule for calculating normal erythrocyte sedimentation rate. BMJ. 1983;286(6361):266.",
+    "Wener MH, Daum PR, McQuillan GM. The influence of age, sex, and race on the upper reference limit of serum C-reactive protein concentration. J Rheumatol. 2000;27(10):2351-9.",
+    "Siemons L, ten Klooster PM, Vonkeman HE, et al. How age and sex affect the erythrocyte sedimentation rate and C-reactive protein in early rheumatoid arthritis. BMC Musculoskelet Disord. 2014;15:368."
+  ],
+  "formula": "ESR: Male = Age ÷ 2, Female = (Age + 10) ÷ 2; CRP: Male = Age ÷ 50, Female = (Age ÷ 50) + 0.6",
+  "notes": [
+    "Age-adjusted formulas help correct for the natural increase in ESR and CRP with aging",
+    "ESR formula: Male = Age ÷ 2 mm/hr, Female = (Age + 10) ÷ 2 mm/hr",
+    "CRP formula: Male = Age ÷ 50 mg/dL, Female = (Age ÷ 50) + 0.6 mg/dL",
+    "Values above age-adjusted limits may indicate active inflammation",
+    "Particularly useful in elderly patients where conventional limits may be inappropriate",
+    "Should be used in conjunction with clinical assessment and other disease activity measures",
+    "Age-adjustment helps distinguish disease activity from age-related increases",
+    "Based on studies in healthy populations and validated in rheumatoid arthritis patients"
+  ]
+}

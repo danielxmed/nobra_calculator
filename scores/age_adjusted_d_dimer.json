@@ -1,0 +1,74 @@
+{
+  "id": "age_adjusted_d_dimer",
+  "title": "Age-Adjusted D-dimer for Venous Thromboembolism (VTE)",
+  "description": "Adjusts D-dimer cutoffs to help rule out VTE in patients ≥50 years old, improving specificity while maintaining sensitivity",
+  "category": "emergency",
+  "version": "2013",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years (must be ≥50 years old)",
+      "validation": {
+        "min": 50,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "d_dimer_unit_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of D-dimer units used by the laboratory",
+      "validation": {
+        "enum": ["FEU", "DDU"]
+      },
+      "options": ["FEU", "DDU"]
+    },
+    {
+      "name": "d_dimer_level",
+      "type": "float",
+      "required": false,
+      "description": "Measured D-dimer level (optional, for comparison with cutoff)",
+      "validation": {
+        "min": 0,
+        "max": 10000
+      },
+      "unit": "µg/L"
+    }
+  ],
+  "result": {
+    "name": "age_adjusted_cutoff",
+    "type": "float",
+    "unit": "µg/L",
+    "description": "Age-adjusted D-dimer cutoff value"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 999999,
+        "stage": "Age-Adjusted Cutoff",
+        "description": "Calculated age-adjusted D-dimer cutoff",
+        "interpretation": "If measured D-dimer ≤ cutoff: VTE diagnosis unlikely, no further testing needed. If measured D-dimer > cutoff: VTE cannot be ruled out, proceed with imaging (CTA or V/Q scan)."
+      }
+    ]
+  },
+  "references": [
+    "Schouten HJ, Geersing GJ, Koek HL, et al. Diagnostic accuracy of conventional or age adjusted D-dimer cut-off values in older patients with suspected venous thromboembolism: systematic review and meta-analysis. BMJ. 2013;346:f2492.",
+    "Righini M, Van Es J, Den Exter PL, et al. Age-adjusted D-dimer cutoff levels to rule out pulmonary embolism: the ADJUST-PE study. JAMA. 2014;311(11):1117-1124.",
+    "Sharp AL, Vinson DR, Alamshaw F, Handler J, Gould MK. An Age-Adjusted D-dimer Threshold for Emergency Department Patients With Suspected Pulmonary Embolus: Accuracy and Clinical Implications. Ann Emerg Med. 2016;67(2):249-257."
+  ],
+  "formula": "FEU: Age × 10 µg/L; DDU: Age × 5 µg/L",
+  "notes": [
+    "Only applicable to patients ≥50 years old",
+    "More specific than conventional D-dimer cutoffs with minimal reduction in sensitivity",
+    "FEU (Fibrinogen Equivalent Units) is more common, with conventional cutoff ~500 µg/L",
+    "DDU (D-dimer Units) is less common, with conventional cutoff ~250 µg/L",
+    "Not appropriate for high-risk patients who should proceed to imaging regardless",
+    "Should be used in conjunction with clinical probability assessment",
+    "Age-adjusted cutoffs help prevent unnecessary imaging in elderly patients",
+    "D-dimer alone cannot confirm VTE diagnosis - imaging is required for confirmation"
+  ]
+}

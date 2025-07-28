@@ -142,10 +142,10 @@
 ### ✅ Adverse Childhood Experiences (ACE) Score
 **Description:** Screens for adverse childhood experiences.
 
-### Age-Adjusted D-dimer for Venous Thromboembolism (VTE)
+### ✅ Age-Adjusted D-dimer for Venous Thromboembolism (VTE)
 **Description:** Adjusts D-dimer cutoffs to help rule out VTE in patients ≥50 years old.
 
-### Age-Adjusted ESR/CRP for Rheumatoid Arthritis
+### ✅ Age-Adjusted ESR/CRP for Rheumatoid Arthritis
 **Description:** Calculates age-adjusted ESR and CRP in adult rheumatoid arthritis patients.
 
 ### AIMS65 Score for Upper GI Bleeding Mortality
