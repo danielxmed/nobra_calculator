@@ -6,6 +6,10 @@ from .four_c_mortality import FourCMortalityRequest, FourCMortalityResponse
 from .ais_inhalation_injury import AisInhalationInjuryRequest, AisInhalationInjuryResponse
 from .emergency_medicine_coding_guide_2023 import EmergencyMedicineCodingGuide2023Request, EmergencyMedicineCodingGuide2023Response
 from .abc_score import AbcScoreRequest, AbcScoreResponse
+from .acep_ed_covid19_management_tool import (
+    AcepEdCovid19ManagementToolRequest,
+    AcepEdCovid19ManagementToolResponse,
+)
 
 __all__ = [
     "FourCMortalityRequest",
@@ -16,4 +20,6 @@ __all__ = [
     "EmergencyMedicineCodingGuide2023Response",
     "AbcScoreRequest",
     "AbcScoreResponse",
+    "AcepEdCovid19ManagementToolRequest",
+    "AcepEdCovid19ManagementToolResponse",
 ]

@@ -68,6 +68,8 @@ __all__ = [
     # Emergency Medicine
     "FourCMortalityRequest",
     "FourCMortalityResponse",
+    "AcepEdCovid19ManagementToolRequest",
+    "AcepEdCovid19ManagementToolResponse",
     
     # Psychiatry
     "AasRequest",
