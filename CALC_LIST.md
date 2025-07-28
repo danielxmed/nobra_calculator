@@ -151,10 +151,10 @@
 ### ✅ AIMS65 Score for Upper GI Bleeding Mortality
 **Description:** Determines risk of in-hospital mortality from upper GI bleeding.
 
-### AKIN Classification for Acute Kidney Injury (AKI)
+### ✅ AKIN Classification for Acute Kidney Injury (AKI)
 **Description:** Classifies severity of acute kidney injury, similar to RIFLE Criteria.
 
-### Alberta Stroke Program Early CT Score (ASPECTS)
+### ✅ Alberta Stroke Program Early CT Score (ASPECTS)
 **Description:** Determines severity of MCA stroke using available CT data.
 
 ### ALBI (Albumin-Bilirubin) Grade for Hepatocellular Carcinoma (HCC)
