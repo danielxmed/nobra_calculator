@@ -1,0 +1,113 @@
+{
+  "id": "aims65",
+  "title": "AIMS65 Score for Upper GI Bleeding Mortality",
+  "description": "Predicts in-hospital mortality in patients with acute upper gastrointestinal bleeding using 5 simple clinical variables",
+  "category": "emergency",
+  "version": "2011",
+  "parameters": [
+    {
+      "name": "albumin",
+      "type": "float",
+      "required": true,
+      "description": "Serum albumin level in g/dL",
+      "validation": {
+        "min": 1.0,
+        "max": 6.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "inr",
+      "type": "float",
+      "required": true,
+      "description": "International Normalized Ratio (INR)",
+      "validation": {
+        "min": 0.5,
+        "max": 10.0
+      },
+      "unit": "ratio"
+    },
+    {
+      "name": "mental_status_altered",
+      "type": "string",
+      "required": true,
+      "description": "Altered mental status (confusion, disorientation, or altered consciousness)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "systolic_bp",
+      "type": "integer",
+      "required": true,
+      "description": "Systolic blood pressure in mmHg",
+      "validation": {
+        "min": 50,
+        "max": 250
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    }
+  ],
+  "result": {
+    "name": "aims65_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "AIMS65 score (0-5 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "Low mortality risk",
+        "interpretation": "AIMS65 score 0-1: Low risk of in-hospital mortality (0.3-7.8%). Consider outpatient management or early discharge for stable patients."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Moderate Risk",
+        "description": "Moderate mortality risk",
+        "interpretation": "AIMS65 score 2: Moderate risk of in-hospital mortality (~20%). Consider inpatient monitoring and early endoscopy."
+      },
+      {
+        "min": 3,
+        "max": 5,
+        "stage": "High Risk",
+        "description": "High mortality risk",
+        "interpretation": "AIMS65 score 3-5: High risk of in-hospital mortality (36-50%). Requires intensive monitoring, urgent endoscopy, and aggressive management."
+      }
+    ]
+  },
+  "references": [
+    "Saltzman JR, Tabak YP, Hyett BH, Sun X, Travis AC, Johannes RS. A simple risk score accurately predicts in-hospital mortality, length of stay, and cost in acute upper GI bleeding. Gastrointest Endosc. 2011;74(6):1215-24.",
+    "Hyett BH, Abougergi MS, Charpentier JP, et al. The AIMS65 score compared with the Glasgow-Blatchford score in predicting outcomes in upper GI bleeding. Gastrointest Endosc. 2013;77(4):551-7.",
+    "Thandassery RB, Sharma M, John AK, et al. Clinical application of AIMS65 scores to predict outcomes in patients with upper gastrointestinal hemorrhage. Clin Endosc. 2015;48(5):380-4.",
+    "Park SW, Song YW, Tak DH, et al. The AIMS65 score is a useful predictor of mortality in patients with nonvariceal upper gastrointestinal bleeding: urgent endoscopy in patients with high AIMS65 scores. Clin Endosc. 2015;48(6):522-7."
+  ],
+  "formula": "AIMS65 = A + I + M + S + 65, where each component scores 1 point if present: Albumin <3.0 g/dL, INR >1.5, Mental status altered, Systolic BP ≤90 mmHg, Age ≥65 years",
+  "notes": [
+    "AIMS65 score ranges from 0-5 points",
+    "Each component (A, I, M, S, 65) contributes 1 point if criteria met",
+    "Score ≥2 indicates high mortality risk and need for urgent intervention",
+    "Superior to other scores in predicting in-hospital mortality",
+    "Can be calculated early (within 12 hours) without endoscopic findings",
+    "Helps guide triage decisions and resource allocation",
+    "Score 0-1: Low risk (~0.3-7.8% mortality)",
+    "Score 2: Moderate risk (~20% mortality)",
+    "Score 3-5: High risk (36-50% mortality)",
+    "Validated in multiple studies across different populations"
+  ]
+}

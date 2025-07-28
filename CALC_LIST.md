@@ -148,7 +148,7 @@
 ### ✅ Age-Adjusted ESR/CRP for Rheumatoid Arthritis
 **Description:** Calculates age-adjusted ESR and CRP in adult rheumatoid arthritis patients.
 
-### AIMS65 Score for Upper GI Bleeding Mortality
+### ✅ AIMS65 Score for Upper GI Bleeding Mortality
 **Description:** Determines risk of in-hospital mortality from upper GI bleeding.
 
 ### AKIN Classification for Acute Kidney Injury (AKI)
