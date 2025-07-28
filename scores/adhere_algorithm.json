@@ -1,0 +1,94 @@
+{
+  "id": "adhere_algorithm",
+  "title": "Acute Decompensated Heart Failure National Registry (ADHERE) Algorithm",
+  "description": "Predicts in-hospital mortality in patients hospitalized with acute decompensated heart failure (ADHF). This is a simple decision tree algorithm that uses three readily available clinical parameters to risk-stratify heart failure patients.",
+  "category": "cardiology",
+  "version": "ADHERE Registry",
+  "parameters": [
+    {
+      "name": "bun",
+      "type": "string",
+      "required": true,
+      "description": "Blood urea nitrogen level at admission",
+      "options": ["under_43", "43_or_over"],
+      "validation": {
+        "enum": ["under_43", "43_or_over"]
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "systolic_bp",
+      "type": "string",
+      "required": true,
+      "description": "Systolic blood pressure at admission (only assessed when BUN ≥43 mg/dL)",
+      "options": ["115_or_over", "under_115"],
+      "validation": {
+        "enum": ["115_or_over", "under_115"]
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "creatinine",
+      "type": "string",
+      "required": true,
+      "description": "Serum creatinine level at admission (only assessed when BUN ≥43 mg/dL and SBP <115 mmHg)",
+      "options": ["under_2_75", "2_75_or_over"],
+      "validation": {
+        "enum": ["under_2_75", "2_75_or_over"]
+      },
+      "unit": "mg/dL"
+    }
+  ],
+  "result": {
+    "name": "mortality_risk",
+    "type": "string",
+    "unit": "risk_category",
+    "description": "In-hospital mortality risk category based on ADHERE algorithm"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "BUN <43 mg/dL",
+        "interpretation": "Low risk of in-hospital mortality (2.1-2.3%). Standard heart failure management on general medical ward is appropriate. Monitor response to therapy and optimize guideline-directed medical therapy."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Intermediate Risk",
+        "description": "BUN ≥43 mg/dL and SBP ≥115 mmHg",
+        "interpretation": "Intermediate risk of in-hospital mortality (5.5-6.4%). Consider enhanced monitoring on telemetry unit. May benefit from more intensive diuretic therapy and closer hemodynamic monitoring."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Intermediate-High Risk",
+        "description": "BUN ≥43 mg/dL, SBP <115 mmHg, and creatinine <2.75 mg/dL",
+        "interpretation": "Intermediate-high risk of in-hospital mortality (12.4-12.8%). Consider intensive care unit monitoring or step-down unit care. May require inotropic support and aggressive hemodynamic optimization."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "High Risk",
+        "description": "BUN ≥43 mg/dL, SBP <115 mmHg, and creatinine ≥2.75 mg/dL",
+        "interpretation": "High risk of in-hospital mortality (19.8-21.9%). Strong consideration for intensive care unit admission. Likely requires inotropic support, aggressive diuresis, and consideration of advanced heart failure therapies or mechanical circulatory support."
+      }
+    ]
+  },
+  "references": [
+    "Fonarow GC, Adams KF Jr, Abraham WT, Yancy CW, Boscardin WJ; ADHERE Scientific Advisory Committee. Risk stratification for in-hospital mortality in acutely decompensated heart failure: classification and regression tree analysis. JAMA. 2005 Feb 2;293(5):572-80. doi: 10.1001/jama.293.5.572.",
+    "Abraham WT, Fonarow GC, Albert NM, et al. Predictors of in-hospital mortality in patients hospitalized for heart failure: insights from the Organized Program to Initiate Lifesaving Treatment in Hospitalized Patients with Heart Failure (OPTIMIZE-HF). J Am Coll Cardiol. 2008 Jul 29;52(5):347-56. doi: 10.1016/j.jacc.2008.04.028."
+  ],
+  "formula": "Decision tree algorithm: If BUN <43 mg/dL → Low Risk. If BUN ≥43 mg/dL and SBP ≥115 mmHg → Intermediate Risk. If BUN ≥43 mg/dL, SBP <115 mmHg, and creatinine <2.75 mg/dL → Intermediate-High Risk. If BUN ≥43 mg/dL, SBP <115 mmHg, and creatinine ≥2.75 mg/dL → High Risk.",
+  "notes": [
+    "This algorithm was derived from the ADHERE registry, which included over 65,000 hospitalizations for heart failure",
+    "The algorithm uses a simple decision tree approach rather than a point-based scoring system",
+    "BUN was the strongest single predictor of in-hospital mortality in the ADHERE registry",
+    "The algorithm should be used in conjunction with clinical judgment and other prognostic factors",
+    "Not validated in patients with acute heart failure secondary to acute coronary syndromes",
+    "May not be applicable to patients with end-stage renal disease or those on dialysis",
+    "The mortality percentages are based on the original ADHERE registry population and may vary in different populations"
+  ]
+}

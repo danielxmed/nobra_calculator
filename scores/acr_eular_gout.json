@@ -1,0 +1,149 @@
+{
+  "id": "acr_eular_gout",
+  "title": "ACR/EULAR Gout Classification Criteria",
+  "description": "Provides formal diagnostic criteria for gout using a 3-step approach: entry criterion, sufficient criterion, and classification criteria requiring ≥7 points for positive diagnosis",
+  "category": "rheumatology",
+  "version": "2015",
+  "parameters": [
+    {
+      "name": "entry_criterion",
+      "type": "string",
+      "required": true,
+      "description": "≥1 episode of swelling, pain, or tenderness in a peripheral joint/bursa",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "msu_crystals_present",
+      "type": "string",
+      "required": true,
+      "description": "Presence of Monosodium Urate (MSU) crystals in a symptomatic joint, bursa, or tophus",
+      "options": ["yes", "no", "not_tested"],
+      "validation": {
+        "enum": ["yes", "no", "not_tested"]
+      }
+    },
+    {
+      "name": "joint_pattern",
+      "type": "string",
+      "required": true,
+      "description": "Pattern of joint/bursa involvement during episodes",
+      "options": ["other_joint", "ankle_midfoot", "first_mtp"],
+      "validation": {
+        "enum": ["other_joint", "ankle_midfoot", "first_mtp"]
+      }
+    },
+    {
+      "name": "episode_characteristics",
+      "type": "string",
+      "required": true,
+      "description": "Number of characteristics during episode(s): erythema overlying joint, can't bear touch/pressure, great difficulty walking/using joint",
+      "options": ["none", "one", "two", "three"],
+      "validation": {
+        "enum": ["none", "one", "two", "three"]
+      }
+    },
+    {
+      "name": "typical_episodes",
+      "type": "string",
+      "required": true,
+      "description": "Number of episodes with typical time-course (≥2 symptoms: time to max pain <24h, resolution ≤14 days, complete resolution between episodes)",
+      "options": ["none", "one", "recurrent"],
+      "validation": {
+        "enum": ["none", "one", "recurrent"]
+      }
+    },
+    {
+      "name": "tophus_evidence",
+      "type": "string",
+      "required": true,
+      "description": "Evidence of tophus: draining or chalk-like subcutaneous nodule in typical locations",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      }
+    },
+    {
+      "name": "serum_urate",
+      "type": "string",
+      "required": true,
+      "description": "Serum urate level (measured by uricase method, ideally when not taking urate-lowering treatment and >4 weeks from episode)",
+      "options": ["under_4", "4_to_6", "6_to_8", "8_to_10", "over_10"],
+      "validation": {
+        "enum": ["under_4", "4_to_6", "6_to_8", "8_to_10", "over_10"]
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "synovial_fluid_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Synovial fluid analysis of a symptomatic joint or bursa (assessed by trained observer)",
+      "options": ["negative_msu", "not_done"],
+      "validation": {
+        "enum": ["negative_msu", "not_done"]
+      }
+    },
+    {
+      "name": "imaging_urate_deposition",
+      "type": "string",
+      "required": true,
+      "description": "Imaging evidence of urate deposition in symptomatic joint/bursa (ultrasound double-contour sign OR DECT)",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      }
+    },
+    {
+      "name": "imaging_joint_damage",
+      "type": "string",
+      "required": true,
+      "description": "Imaging evidence of gout-related joint damage (X-ray of hands/feet with ≥1 erosion)",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      }
+    }
+  ],
+  "result": {
+    "name": "gout_classification_result",
+    "type": "string",
+    "unit": "classification",
+    "description": "Gout classification result based on ACR/EULAR 2015 criteria"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 6,
+        "stage": "Does not meet criteria",
+        "description": "Does not meet gout classification criteria",
+        "interpretation": "Score <7 points. Does not meet ACR/EULAR 2015 classification criteria for gout. Consider alternative diagnoses such as pseudogout, septic arthritis, or other crystal arthropathies."
+      },
+      {
+        "min": 7,
+        "max": 23,
+        "stage": "Meets criteria for gout",
+        "description": "Meets gout classification criteria",
+        "interpretation": "Score ≥7 points. Meets ACR/EULAR 2015 classification criteria for gout. Diagnosis consistent with gout."
+      }
+    ]
+  },
+  "references": [
+    "Neogi T, Jansen TL, Dalbeth N, Fransen J, Schumacher HR, Berendsen D, Brown M, Choi H, Edwards NL, Janssens HJ, Liote F, Naden RP, Nuki G, Ogdie A, Perez-Ruiz F, Saag K, Singh JA, Sundy JS, Tausche AK, Vaquez-Mellado J, Yarows SA, Taylor WJ. 2015 Gout classification criteria: an American College of Rheumatology/European League Against Rheumatism collaborative initiative. Ann Rheum Dis. 2015 Oct;74(10):1789-98. doi: 10.1136/annrheumdis-2015-208237.",
+    "Taylor WJ, Fransen J, Jansen TL, Dalbeth N, Schumacher HR, Brown M, Louthrenoo W, Vazquez-Mellado J, Eliseev M, McCarthy G, Stamp LK, Perez-Ruiz F, Nuki G, Bardin T, Uhlig T, Kalra S, Sundy JS, Yarows S, Becce F, Cavagna L, Jatuworapruk K, Lioté F, Pineda C, Chua J, Tausche AK, Christensen R, Gibson T, Gout Classification Criteria Consortium, Ogdie A, Neogi T. Study for Updated Gout Classification Criteria: identification of features to classify gout. Arthritis Care Res (Hoboken). 2015 Sep;67(9):1304-15. doi: 10.1002/acr.22585."
+  ],
+  "formula": "Three-step approach: 1) Entry criterion (≥1 episode peripheral joint swelling/pain/tenderness); 2) Sufficient criterion (MSU crystals present = definite gout); 3) Classification criteria scoring (7+ points required): Joint pattern (0-2 pts), Episode characteristics (0-3 pts), Typical episodes (0-2 pts), Tophus (0 or 4 pts), Serum urate (-4 to +4 pts), Synovial fluid analysis (-2 or 0 pts), Imaging urate deposition (0 or 4 pts), Imaging joint damage (0 or 4 pts)",
+  "notes": [
+    "Entry criterion must be met before proceeding to step 2",
+    "If MSU crystals are present in symptomatic joint/bursa/tophus, diagnosis is definite gout (sufficient criterion)",
+    "If MSU crystals not identified or not tested, proceed to classification criteria scoring",
+    "Score ≥7 points required for gout classification",
+    "Serum urate should ideally be measured when not on urate-lowering therapy and >4 weeks from acute episode",
+    "Highest serum urate value should be used regardless of timing",
+    "Synovial fluid analysis should be performed by trained observer",
+    "Double-contour sign on ultrasound or urate deposition on DECT indicates positive imaging for urate deposition"
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "id": "action_icu_nstemi",
+  "title": "ACTION ICU Score for Intensive Care in NSTEMI",
+  "description": "Predicts risk of NSTEMI complications requiring ICU care. This is a prognostic tool for emergency patients with non-ST elevation myocardial infarction (NSTEMI) to assess their risk of developing complications that would require intensive care unit (ICU) management.",
+  "category": "cardiology",
+  "version": "2017",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "string",
+      "required": true,
+      "description": "Patient age in years",
+      "options": ["under_70", "70_or_over"],
+      "validation": {
+        "enum": ["under_70", "70_or_over"]
+      },
+      "unit": "years"
+    },
+    {
+      "name": "serum_creatinine",
+      "type": "string",
+      "required": true,
+      "description": "Serum creatinine level",
+      "options": ["under_1_1", "1_1_or_over"],
+      "validation": {
+        "enum": ["under_1_1", "1_1_or_over"]
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "heart_rate",
+      "type": "string",
+      "required": true,
+      "description": "Heart rate in beats per minute",
+      "options": ["under_85", "85_to_100", "100_or_over"],
+      "validation": {
+        "enum": ["under_85", "85_to_100", "100_or_over"]
+      },
+      "unit": "bpm"
+    },
+    {
+      "name": "systolic_bp",
+      "type": "string",
+      "required": true,
+      "description": "Systolic blood pressure",
+      "options": ["145_or_over", "125_to_145", "under_125"],
+      "validation": {
+        "enum": ["145_or_over", "125_to_145", "under_125"]
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "troponin_ratio",
+      "type": "string",
+      "required": true,
+      "description": "Ratio of initial troponin to upper limit of normal",
+      "options": ["under_12", "12_or_over"],
+      "validation": {
+        "enum": ["under_12", "12_or_over"]
+      },
+      "unit": "ratio"
+    },
+    {
+      "name": "heart_failure_signs",
+      "type": "string",
+      "required": true,
+      "description": "Signs or symptoms of heart failure present",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "st_depression",
+      "type": "string",
+      "required": true,
+      "description": "ST segment depression on electrocardiogram",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "prior_revascularization",
+      "type": "string",
+      "required": true,
+      "description": "History of prior coronary revascularization (PCI or CABG)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "chronic_lung_disease",
+      "type": "string",
+      "required": true,
+      "description": "Presence of chronic lung disease (COPD, asthma, etc.)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "action_icu_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "ACTION ICU score for NSTEMI complications requiring ICU care"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Low risk",
+        "description": "Low risk of ICU complications",
+        "interpretation": "Low risk of complications requiring ICU care. Consider standard cardiac monitoring and care on telemetry unit."
+      },
+      {
+        "min": 4,
+        "max": 7,
+        "stage": "Intermediate risk",
+        "description": "Intermediate risk of ICU complications",
+        "interpretation": "Intermediate risk of complications requiring ICU care. Consider enhanced monitoring and possible step-down unit care."
+      },
+      {
+        "min": 8,
+        "max": 20,
+        "stage": "High risk",
+        "description": "High risk of ICU complications",
+        "interpretation": "High risk of complications requiring ICU care. Consider direct ICU admission for intensive monitoring and management."
+      }
+    ]
+  },
+  "references": [
+    "Fanaroff AC, Chen AY, Roe MT, et al. A Simple Risk Score to Predict In-Hospital Complications in Patients With Non-ST-Segment Elevation Myocardial Infarction. J Am Heart Assoc. 2018;7(11):e008108.",
+    "Alexander C. Fanaroff, MD, Duke Clinical Research Institute, Duke University Medical Center"
+  ],
+  "formula": "Points assigned: Age ≥70 years (+1), Creatinine ≥1.1 mg/dL (+1), HR 85-100 bpm (+1), HR ≥100 bpm (+3), SBP 125-145 mmHg (+1), SBP <125 mmHg (+3), Troponin ratio ≥12 (+2), Heart failure signs (+5), ST depression (+1), No prior revascularization (+1), Chronic lung disease (+2). Total score ranges 0-20 points.",
+  "notes": [
+    "This calculator is not externally validated and should be used with caution",
+    "Intended for use in emergency patients with NSTEMI",
+    "Helps guide ICU admission decisions and resource allocation",
+    "Should be used in conjunction with clinical judgment",
+    "Higher scores indicate greater risk of complications requiring ICU-level care"
+  ]
+}

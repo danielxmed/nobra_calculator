@@ -106,22 +106,22 @@
 ### ✅ ACEP ED COVID-19 Management Tool
 **Description:** Emergency department triage and management tool for adult (age >18) patients with suspected or confirmed SARS-CoV-2.
 
-### Acetaminophen Overdose and NAC Dosing
+### ✅ Acetaminophen Overdose and NAC Dosing
 **Description:** Calculates PO/IV NAC dosing for acetaminophen overdose (and nomogram to determine toxic 4-hour level).
 
-### ACR/EULAR 2010 Rheumatoid Arthritis Classification Criteria
+### ✅ ACR/EULAR 2010 Rheumatoid Arthritis Classification Criteria
 **Description:** Diagnoses rheumatoid arthritis (RA) in patients with undifferentiated inflammatory synovitis.
 
-### ACR/EULAR Gout Classification Criteria
+### ✅ ACR/EULAR Gout Classification Criteria
 **Description:** Provides formal diagnostic criteria for gout.
 
-### ACTION ICU Score for Intensive Care in NSTEMI
+### ✅ ACTION ICU Score for Intensive Care in NSTEMI
 **Description:** Predicts risk of NSTEMI complications requiring ICU care.
 
-### Acute Decompensated Heart Failure National Registry (ADHERE) Algorithm
+### ✅ Acute Decompensated Heart Failure National Registry (ADHERE) Algorithm
 **Description:** Predicts in-hospital mortality in heart failure (HF) patients.
 
-### Acute Gout Diagnosis Rule
+### ✅ Acute Gout Diagnosis Rule
 **Description:** Stratifies risk for gouty vs. non-gouty arthritis and helps determine which patients most benefit from joint aspiration.
 
 ### Acute Interstitial Nephritis (AIN) Risk Calculator - NEW

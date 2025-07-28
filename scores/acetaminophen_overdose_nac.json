@@ -1,0 +1,88 @@
+{
+  "id": "acetaminophen_overdose_nac",
+  "title": "Acetaminophen Overdose and NAC Dosing",
+  "description": "Calculates PO/IV N-acetylcysteine (NAC) dosing for acetaminophen overdose and determines toxicity based on the Rumack-Matthew nomogram",
+  "category": "emergency",
+  "version": "2024",
+  "parameters": [
+    {
+      "name": "route",
+      "type": "string",
+      "required": true,
+      "description": "Route of N-acetylcysteine administration",
+      "options": ["IV", "PO"],
+      "validation": {
+        "enum": ["IV", "PO"]
+      }
+    },
+    {
+      "name": "weight",
+      "type": "float",
+      "required": true,
+      "description": "Patient weight in kilograms",
+      "unit": "kg",
+      "validation": {
+        "min": 1,
+        "max": 500
+      }
+    },
+    {
+      "name": "hours_since_ingestion",
+      "type": "float",
+      "required": false,
+      "description": "Hours since acetaminophen ingestion (optional, for nomogram assessment)",
+      "unit": "hours",
+      "validation": {
+        "min": 4,
+        "max": 24
+      }
+    },
+    {
+      "name": "acetaminophen_level",
+      "type": "float",
+      "required": false,
+      "description": "Serum acetaminophen level (optional, for nomogram assessment)",
+      "unit": "mcg/mL",
+      "validation": {
+        "min": 0,
+        "max": 1000
+      }
+    }
+  ],
+  "result": {
+    "name": "nac_dosing",
+    "type": "object",
+    "unit": "complex",
+    "description": "NAC dosing regimen and toxicity assessment"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "nomogram_zone": "above_treatment_line",
+        "stage": "Toxic",
+        "description": "Above treatment line",
+        "interpretation": "Probable hepatic toxicity. Immediate NAC treatment is indicated."
+      },
+      {
+        "nomogram_zone": "below_treatment_line",
+        "stage": "Non-toxic",
+        "description": "Below treatment line",
+        "interpretation": "Hepatic toxicity unlikely. NAC treatment typically not needed unless clinical concern."
+      }
+    ]
+  },
+  "references": [
+    "Rumack BH, Matthew H. Acetaminophen poisoning and toxicity. Pediatrics. 1975 Jun;55(6):871-6. PMID: 1134886.",
+    "Ershad M, Naji A, Patel P, Vearrier D. N-Acetylcysteine. [Updated 2024 Feb 29]. In: StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; 2025 Jan-. Available from: https://www.ncbi.nlm.nih.gov/books/NBK537183/",
+    "Prescott LF, Illingworth RN, Critchley JA, Stewart MJ, Adam RD, Proudfoot AT. Intravenous N-acetylcystine: the treatment of choice for paracetamol poisoning. Br Med J. 1979 Nov 3;2(6198):1097-100. PMID: 519312.",
+    "Hodgman MJ, Garrard AR. A review of acetaminophen poisoning. Crit Care Clin. 2012 Oct;28(4):499-516. doi: 10.1016/j.ccc.2012.07.006. PMID: 22998987."
+  ],
+  "formula": "IV Protocol (21-hour): Loading dose: 150 mg/kg over 60 min; Second dose: 50 mg/kg over 4 hours; Third dose: 100 mg/kg over 16 hours. Oral Protocol (72-hour): Loading dose: 140 mg/kg; Maintenance: 70 mg/kg every 4 hours for 17 doses. Rumack-Matthew nomogram: Treatment line at 4 hours = 150 mcg/mL, declining logarithmically.",
+  "notes": [
+    "NAC is almost 100% effective if given within 8 hours post-ingestion",
+    "The Rumack-Matthew nomogram is only valid for single acute ingestions between 4-24 hours",
+    "For patients with fluid restrictions or <40 kg, IV NAC volumes should be adjusted",
+    "Monitor for anaphylactoid reactions with IV NAC (up to 18% of patients)",
+    "Oral NAC should be diluted to 5% and mixed with juice for palatability"
+  ]
+}

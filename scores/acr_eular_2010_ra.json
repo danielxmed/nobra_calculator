@@ -1,0 +1,107 @@
+{
+  "id": "acr_eular_2010_ra",
+  "title": "ACR/EULAR 2010 Rheumatoid Arthritis Classification Criteria",
+  "description": "Diagnoses rheumatoid arthritis (RA) in patients with undifferentiated inflammatory synovitis using joint involvement, serology, acute-phase reactants, and symptom duration",
+  "category": "rheumatology",
+  "version": "2010",
+  "parameters": [
+    {
+      "name": "joint_involvement",
+      "type": "string",
+      "required": true,
+      "description": "Number and type of joints involved (swollen/tender joints on exam, excluding DIP joints and 1st MCP/MTP joints)",
+      "options": ["1_large", "2_to_10_large", "1_to_3_small", "4_to_10_small", "more_than_10_small"],
+      "validation": {
+        "enum": ["1_large", "2_to_10_large", "1_to_3_small", "4_to_10_small", "more_than_10_small"]
+      }
+    },
+    {
+      "name": "rf_status",
+      "type": "string",
+      "required": true,
+      "description": "Rheumatoid factor test result",
+      "options": ["negative", "low_positive", "high_positive"],
+      "validation": {
+        "enum": ["negative", "low_positive", "high_positive"]
+      }
+    },
+    {
+      "name": "acpa_status",
+      "type": "string",
+      "required": true,
+      "description": "Anti-citrullinated protein antibody test result",
+      "options": ["negative", "low_positive", "high_positive"],
+      "validation": {
+        "enum": ["negative", "low_positive", "high_positive"]
+      }
+    },
+    {
+      "name": "crp_status",
+      "type": "string",
+      "required": true,
+      "description": "C-reactive protein test result",
+      "options": ["normal", "abnormal"],
+      "validation": {
+        "enum": ["normal", "abnormal"]
+      }
+    },
+    {
+      "name": "esr_status",
+      "type": "string",
+      "required": true,
+      "description": "Erythrocyte sedimentation rate test result",
+      "options": ["normal", "abnormal"],
+      "validation": {
+        "enum": ["normal", "abnormal"]
+      }
+    },
+    {
+      "name": "symptom_duration",
+      "type": "string",
+      "required": true,
+      "description": "Duration of synovitis signs/symptoms (pain, swelling, tenderness) in joints clinically involved at assessment",
+      "options": ["less_than_6_weeks", "6_weeks_or_more"],
+      "validation": {
+        "enum": ["less_than_6_weeks", "6_weeks_or_more"]
+      }
+    }
+  ],
+  "result": {
+    "name": "ra_classification_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total ACR/EULAR 2010 classification score (≥6 points indicates definite RA)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 5,
+        "stage": "Non-RA",
+        "description": "Does not meet criteria",
+        "interpretation": "Score <6 points. Does not meet criteria for rheumatoid arthritis classification. Consider other diagnoses or continued monitoring."
+      },
+      {
+        "min": 6,
+        "max": 10,
+        "stage": "Definite RA",
+        "description": "Meets classification criteria",
+        "interpretation": "Score ≥6 points. Meets ACR/EULAR 2010 classification criteria for rheumatoid arthritis. Consider early DMARD therapy initiation."
+      }
+    ]
+  },
+  "references": [
+    "Aletaha D, Neogi T, Silman AJ, Funovits J, Felson DT, Bingham CO 3rd, Birnbaum NS, Burmester GR, Bykerk VP, Cohen MD, Combe B, Costenbader KH, Dougados M, Emery P, Ferraccioli G, Hazes JM, Hobbs K, Huizinga TW, Kavanaugh A, Kay J, Kvien TK, Laing T, Mease P, Ménard HA, Moreland LW, Naden RL, Pincus T, Smolen JS, Stanislawska-Biernat E, Symmons D, Tak PP, Upchurch KS, Vencovský J, Wolfe F, Hawker G. 2010 Rheumatoid arthritis classification criteria: an American College of Rheumatology/European League Against Rheumatism collaborative initiative. Arthritis Rheum. 2010 Sep;62(9):2569-81. doi: 10.1002/art.27584.",
+    "Aletaha D, Neogi T, Silman AJ, Funovits J, Felson DT, Bingham CO 3rd, Birnbaum NS, Burmester GR, Bykerk VP, Cohen MD, Combe B, Costenbader KH, Dougados M, Emery P, Ferraccioli G, Hazes JM, Hobbs K, Huizinga TW, Kavanaugh A, Kay J, Kvien TK, Laing T, Mease P, Ménard HA, Moreland LW, Naden RL, Pincus T, Smolen JS, Stanislawska-Biernat E, Symmons D, Tak PP, Upchurch KS, Vencovský J, Wolfe F, Hawker G. 2010 rheumatoid arthritis classification criteria: an American College of Rheumatology/European League Against Rheumatism collaborative initiative. Ann Rheum Dis. 2010 Sep;69(9):1580-8. doi: 10.1136/ard.2010.138461."
+  ],
+  "formula": "Joint involvement (0-5 points) + Serology (0-3 points) + Acute-phase reactants (0-1 point) + Duration of symptoms (0-1 point). Score ≥6 indicates definite RA.",
+  "notes": [
+    "Requires at least one swollen joint and no better explanation for synovitis",
+    "DIP joints and 1st MCP/MTP joints are excluded from joint counts",
+    "Need at least one serology test result and one acute-phase reactant test result to use these criteria",
+    "Low-positive = IU values >ULN but <3x ULN; High-positive = IU values ≥3x ULN",
+    "If RF reported only as positive/negative, positive result should be scored as low-positive",
+    "Duration refers to patient self-report of synovitis signs/symptoms regardless of treatment status",
+    "Maximum possible score is 10 points"
+  ]
+}

@@ -10,6 +10,10 @@ from .acep_ed_covid19_management_tool import (
     AcepEdCovid19ManagementToolRequest,
     AcepEdCovid19ManagementToolResponse,
 )
+from .acetaminophen_overdose_nac import (
+    AcetaminophenOverdoseNacRequest,
+    AcetaminophenOverdoseNacResponse,
+)
 
 __all__ = [
     "FourCMortalityRequest",
@@ -22,4 +26,6 @@ __all__ = [
     "AbcScoreResponse",
     "AcepEdCovid19ManagementToolRequest",
     "AcepEdCovid19ManagementToolResponse",
+    "AcetaminophenOverdoseNacRequest",
+    "AcetaminophenOverdoseNacResponse",
 ]

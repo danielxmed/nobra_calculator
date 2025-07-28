@@ -1,0 +1,164 @@
+{
+  "id": "acute_gout_diagnosis_rule",
+  "title": "Acute Gout Diagnosis Rule",
+  "description": "Risk stratifies for gout vs non-gout arthritis and helps determine which patients benefit most from joint aspiration. A diagnostic rule for acute gouty arthritis in primary care without joint fluid analysis.",
+  "category": "rheumatology",
+  "version": "2010",
+  "parameters": [
+    {
+      "name": "male_sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient's sex (male sex increases risk)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": "categorical",
+      "scoring": {
+        "no": 0,
+        "yes": 2
+      }
+    },
+    {
+      "name": "previous_arthritis_attack",
+      "type": "string",
+      "required": true,
+      "description": "Previous patient-reported arthritis attack",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": "categorical",
+      "scoring": {
+        "no": 0,
+        "yes": 2
+      }
+    },
+    {
+      "name": "onset_within_one_day",
+      "type": "string",
+      "required": true,
+      "description": "Onset of symptoms within 1 day",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": "categorical",
+      "scoring": {
+        "no": 0,
+        "yes": 0.5
+      }
+    },
+    {
+      "name": "joint_redness",
+      "type": "string",
+      "required": true,
+      "description": "Joint redness present",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": "categorical",
+      "scoring": {
+        "no": 0,
+        "yes": 1
+      }
+    },
+    {
+      "name": "first_mtp_involvement",
+      "type": "string",
+      "required": true,
+      "description": "First metatarsophalangeal (MTP) joint involvement",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": "categorical",
+      "scoring": {
+        "no": 0,
+        "yes": 2.5
+      }
+    },
+    {
+      "name": "hypertension_or_cardiovascular",
+      "type": "string",
+      "required": true,
+      "description": "Hypertension or presence of ≥1 cardiovascular disease (angina, MI, CHF, stroke/TIA, PVD)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": "categorical",
+      "scoring": {
+        "no": 0,
+        "yes": 1.5
+      }
+    },
+    {
+      "name": "elevated_uric_acid",
+      "type": "string",
+      "required": true,
+      "description": "Serum uric acid > 5.88 mg/dL (> 0.35 mmol/L)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": "categorical",
+      "scoring": {
+        "no": 0,
+        "yes": 3.5
+      }
+    }
+  ],
+  "result": {
+    "name": "acute_gout_score",
+    "type": "float",
+    "unit": "points",
+    "description": "Acute Gout Diagnosis Rule score (0-13 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 4,
+        "stage": "Low Risk",
+        "description": "Score ≤4",
+        "interpretation": "Low likelihood of acute gout (2.2% prevalence). Gout is unlikely, consider alternative diagnoses. Joint aspiration is not typically needed.",
+        "prevalence": "2.2%",
+        "npv": "97.8%"
+      },
+      {
+        "min": 4.5,
+        "max": 7.5,
+        "stage": "Intermediate Risk",
+        "description": "Score 4.5-7.5",
+        "interpretation": "Intermediate likelihood of acute gout (31.2% prevalence). Diagnosis remains uncertain. Consider joint aspiration for synovial fluid analysis to confirm diagnosis.",
+        "prevalence": "31.2%"
+      },
+      {
+        "min": 8,
+        "max": 13,
+        "stage": "High Risk",
+        "description": "Score ≥8",
+        "interpretation": "High likelihood of acute gout (80.4-82.5% prevalence). Gout is highly likely. Consider empirical treatment while awaiting confirmation if needed.",
+        "prevalence": "80.4-82.5%",
+        "ppv": "87%"
+      }
+    ]
+  },
+  "references": [
+    "Janssens HJ, Fransen J, van de Lisdonk EH, van Riel PL, van Weel C, Janssen M. A diagnostic rule for acute gouty arthritis in primary care without joint fluid analysis. Arch Intern Med. 2010 Jul 12;170(13):1120-6. doi: 10.1001/archinternmed.2010.196.",
+    "Kienhorst LB, Janssens HJ, Fransen J, Janssen M. The validation of a diagnostic rule for gout without joint fluid analysis: a prospective study. Rheumatology (Oxford). 2015 Apr;54(4):609-14. doi: 10.1093/rheumatology/keu378."
+  ],
+  "formula": "Score = (Male sex × 2) + (Previous arthritis attack × 2) + (Onset within 1 day × 0.5) + (Joint redness × 1) + (1st MTP involvement × 2.5) + (Hypertension/CVD × 1.5) + (Elevated uric acid × 3.5)",
+  "notes": [
+    "Designed for use in primary care settings when joint fluid analysis is not readily available",
+    "Applies to adult patients presenting with monoarthritis (single joint involvement)",
+    "Should not be used in polyarticular disease, septic arthritis, or recent joint trauma",
+    "Joint aspiration remains the gold standard for definitive gout diagnosis",
+    "NPV of 95% for scores <4 and PPV of 87% for scores ≥8 in validation study",
+    "Cardiovascular diseases include: angina, MI, CHF, stroke/TIA, and peripheral vascular disease",
+    "Serum uric acid should ideally be measured when patient is not on urate-lowering therapy"
+  ]
+}

@@ -5,6 +5,8 @@ Cardiology score models
 from .cha2ds2_vasc import Cha2ds2VascRequest, Cha2ds2VascResponse
 from .acc_aha_hf_staging import AccAhaHfStagingRequest, AccAhaHfStagingResponse
 from .acef_ii import AcefIiRequest, AcefIiResponse
+from .action_icu_nstemi import ActionIcuNstemiRequest, ActionIcuNstemiResponse
+from .adhere_algorithm import AdhereAlgorithmRequest, AdhereAlgorithmResponse
 
 __all__ = [
     "Cha2ds2VascRequest",
@@ -12,5 +14,9 @@ __all__ = [
     "AccAhaHfStagingRequest",
     "AccAhaHfStagingResponse",
     "AcefIiRequest",
-    "AcefIiResponse"
+    "AcefIiResponse",
+    "ActionIcuNstemiRequest",
+    "ActionIcuNstemiResponse",
+    "AdhereAlgorithmRequest",
+    "AdhereAlgorithmResponse"
 ]
