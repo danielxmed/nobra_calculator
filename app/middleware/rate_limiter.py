@@ -31,6 +31,7 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
     def __init__(self, app, redis_client: redis.Redis, req_per_sec: int = None, whitelist: List[str] = None):
         super().__init__(app)
         self.redis_client = redis_client
+        
         # Get req_per_sec from environment if not provided
         if req_per_sec is None:
             req_per_sec_env = os.getenv("REQ_PER_SEC")
@@ -39,7 +40,13 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
             self.req_per_sec = int(req_per_sec_env)
         else:
             self.req_per_sec = req_per_sec
-        self.whitelist = whitelist or []
+        
+        # Get whitelist from environment if not provided
+        if whitelist is None:
+            whitelist_env = os.getenv("WHITE_LIST", "[]")
+            self.whitelist = parse_whitelist(whitelist_env)
+        else:
+            self.whitelist = whitelist
         
     async def dispatch(self, request: Request, call_next):
         """Process the request and apply rate limiting"""

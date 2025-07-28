@@ -104,24 +104,22 @@ app.add_middleware(
 # Rate limiting configuration
 redis_url = os.getenv("REDIS_URL")
 redis_password = os.getenv("REDIS_PASSWORD")
-whitelist_str = os.getenv("WHITE_LIST", "[]")
 
 # Initialize Redis client
 redis_client = create_redis_client(redis_url, redis_password)
 
 if redis_client:
-    # Parse whitelist
-    whitelist = parse_whitelist(whitelist_str)
-    
-    # Add rate limiting middleware (req_per_sec will be read from env)
+    # Add rate limiting middleware (both req_per_sec and whitelist will be read from env)
     app.add_middleware(
         RateLimitMiddleware,
-        redis_client=redis_client,
-        whitelist=whitelist
+        redis_client=redis_client
     )
     
-    # Get req_per_sec for logging
+    # Get configuration for logging
     req_per_sec = os.getenv("REQ_PER_SEC")
+    whitelist_str = os.getenv("WHITE_LIST", "[]")
+    whitelist = parse_whitelist(whitelist_str)
+    
     if req_per_sec:
         print(f"✅ Rate limiting enabled: {req_per_sec} req/sec, {len(whitelist)} whitelisted IPs")
     else:
