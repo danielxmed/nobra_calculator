@@ -10,6 +10,7 @@ from .emergency_medicine_coding_guide_2023 import router as emergency_medicine_c
 from .abc_score import router as abc_score_router
 from .acep_ed_covid19_management_tool import router as acep_ed_covid19_management_tool_router
 from .acetaminophen_overdose_nac import router as acetaminophen_overdose_nac_router
+from .adapt_protocol import router as adapt_protocol_router
 
 # Create main specialty router
 router = APIRouter()
@@ -20,3 +21,4 @@ router.include_router(emergency_medicine_coding_guide_2023_router)
 router.include_router(abc_score_router)
 router.include_router(acep_ed_covid19_management_tool_router)
 router.include_router(acetaminophen_overdose_nac_router)
+router.include_router(adapt_protocol_router)

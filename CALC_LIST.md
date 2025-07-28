@@ -127,13 +127,13 @@
 ### ✅ Acute Interstitial Nephritis (AIN) Risk Calculator - NEW
 **Description:** Identifies the likelihood of acute interstitial nephritis in at-risk patients.
 
-### Acute Renal Failure after Cardiac Surgery (Thakar Score)
+### ✅ Acute Renal Failure after Cardiac Surgery (Thakar Score)
 **Description:** Predicts risk of acute kidney injury (AKI) requiring dialysis after cardiac surgery.
 
-### ADAPT Protocol for Cardiac Event Risk
+### ✅ ADAPT Protocol for Cardiac Event Risk
 **Description:** Assesses patients with chest pain at 2 hours for cardiac event risk.
 
-### Additional Nodal Metastasis Nomogram
+### ✅ Additional Nodal Metastasis Nomogram
 **Description:** Predicts probability of breast cancer with sentinel lymph node metastasis having also spread to additional lymph nodes.
 
 ### Adult Self-Report Scale (ASRS v1.1) for ADHD

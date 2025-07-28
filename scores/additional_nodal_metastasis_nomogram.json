@@ -1,0 +1,139 @@
+{
+  "id": "additional_nodal_metastasis_nomogram",
+  "title": "Additional Nodal Metastasis Nomogram",
+  "description": "Predicts probability of additional non-sentinel lymph node metastases in breast cancer patients with a positive sentinel node biopsy",
+  "category": "hematology",
+  "version": "2003",
+  "parameters": [
+    {
+      "name": "nuclear_grade",
+      "type": "string",
+      "required": true,
+      "description": "Nuclear grade and tumor type",
+      "options": ["ductal_i", "ductal_ii", "ductal_iii", "lobular"],
+      "validation": {
+        "enum": ["ductal_i", "ductal_ii", "ductal_iii", "lobular"]
+      }
+    },
+    {
+      "name": "lymphovascular_invasion",
+      "type": "string", 
+      "required": true,
+      "description": "Presence of lymphovascular invasion (LVI)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "multifocal",
+      "type": "string",
+      "required": true,
+      "description": "Multifocal tumor (cancer in multiple locations in breast)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "estrogen_receptor_status",
+      "type": "string",
+      "required": true,
+      "description": "Estrogen receptor (ER) status",
+      "options": ["negative", "positive"],
+      "validation": {
+        "enum": ["negative", "positive"]
+      }
+    },
+    {
+      "name": "negative_slns",
+      "type": "integer",
+      "required": true,
+      "description": "Number of negative sentinel lymph nodes",
+      "validation": {
+        "min": 0,
+        "max": 14
+      }
+    },
+    {
+      "name": "positive_slns",
+      "type": "integer",
+      "required": true,
+      "description": "Number of positive sentinel lymph nodes",
+      "validation": {
+        "min": 0,
+        "max": 7
+      }
+    },
+    {
+      "name": "pathologic_size",
+      "type": "float",
+      "required": true,
+      "description": "Pathologic size of tumor in centimeters",
+      "unit": "cm",
+      "validation": {
+        "min": 0,
+        "max": 9
+      }
+    },
+    {
+      "name": "detection_method",
+      "type": "string",
+      "required": true,
+      "description": "Method of detection of sentinel lymph node metastases",
+      "options": ["ihc", "serial_he", "routine", "frozen"],
+      "validation": {
+        "enum": ["ihc", "serial_he", "routine", "frozen"]
+      }
+    }
+  ],
+  "result": {
+    "name": "probability",
+    "type": "float",
+    "unit": "%",
+    "description": "Probability of additional non-sentinel lymph node metastases"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 10,
+        "stage": "Very Low Risk",
+        "description": "Very low probability",
+        "interpretation": "Very low probability (<10%) of additional non-sentinel lymph node metastases. Consider omitting completion axillary lymph node dissection."
+      },
+      {
+        "min": 10,
+        "max": 20,
+        "stage": "Low Risk", 
+        "description": "Low probability",
+        "interpretation": "Low probability (10-20%) of additional non-sentinel lymph node metastases. Clinical decision-making should incorporate patient factors and preferences."
+      },
+      {
+        "min": 20,
+        "max": 50,
+        "stage": "Moderate Risk",
+        "description": "Moderate probability",
+        "interpretation": "Moderate probability (20-50%) of additional non-sentinel lymph node metastases. Consider completion axillary lymph node dissection or axillary radiation therapy."
+      },
+      {
+        "min": 50,
+        "max": 100,
+        "stage": "High Risk",
+        "description": "High probability",
+        "interpretation": "High probability (>50%) of additional non-sentinel lymph node metastases. Strong consideration for completion axillary lymph node dissection or axillary radiation therapy."
+      }
+    ]
+  },
+  "references": [
+    "Van Zee KJ, Manasseh DM, Bevilacqua JL, Boolbol SK, Fey JV, Tan LK, Borgen PI, Cody HS 3rd, Kattan MW. A nomogram for predicting the likelihood of additional nodal metastases in breast cancer patients with a positive sentinel node biopsy. Ann Surg Oncol. 2003 Dec;10(10):1140-51.",
+    "Specht MC, Kattan MW, Gonen M, Fey J, Van Zee KJ. Predicting nonsentinel node status after positive sentinel lymph biopsy for breast cancer: clinicians versus nomogram. Ann Surg Oncol. 2005 Aug;12(8):654-9."
+  ],
+  "formula": "Linear predictor = β₀ + β₁(nuclear grade) + β₂(LVI) + β₃(multifocal) + β₄(ER status) + β₅(negative SLNs) + β₆(positive SLNs) + β₇(pathologic size) + β₈(detection method). Probability = exp(linear predictor) / (1 + exp(linear predictor))",
+  "notes": [
+    "This nomogram was developed and validated at Memorial Sloan Kettering Cancer Center",
+    "Applies to breast cancer patients with positive sentinel lymph node biopsy",
+    "Decision thresholds may vary by institution and should incorporate patient factors",
+    "Modern practice often considers axillary radiation as alternative to completion dissection"
+  ]
+}

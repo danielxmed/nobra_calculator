@@ -14,6 +14,7 @@ from .acetaminophen_overdose_nac import (
     AcetaminophenOverdoseNacRequest,
     AcetaminophenOverdoseNacResponse,
 )
+from .adapt_protocol import AdaptProtocolRequest, AdaptProtocolResponse
 
 __all__ = [
     "FourCMortalityRequest",
@@ -28,4 +29,6 @@ __all__ = [
     "AcepEdCovid19ManagementToolResponse",
     "AcetaminophenOverdoseNacRequest",
     "AcetaminophenOverdoseNacResponse",
+    "AdaptProtocolRequest",
+    "AdaptProtocolResponse",
 ]

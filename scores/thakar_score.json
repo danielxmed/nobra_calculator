@@ -1,0 +1,177 @@
+{
+  "id": "thakar_score",
+  "title": "Acute Renal Failure after Cardiac Surgery (Thakar Score)",
+  "description": "Predicts risk of acute kidney injury (AKI) requiring dialysis after cardiac surgery. The score was developed and validated in over 33,000 patients at the Cleveland Clinic Foundation.",
+  "category": "cardiology",
+  "version": "2005",
+  "parameters": [
+    {
+      "name": "gender",
+      "type": "string",
+      "required": true,
+      "description": "Patient gender",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "congestive_heart_failure",
+      "type": "string",
+      "required": true,
+      "description": "Presence of congestive heart failure",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "left_ventricular_ejection_fraction_under_35",
+      "type": "string",
+      "required": true,
+      "description": "Left ventricular ejection fraction <35%",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "preoperative_iabp",
+      "type": "string",
+      "required": true,
+      "description": "Preoperative use of intra-aortic balloon pump (IABP)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "copd",
+      "type": "string",
+      "required": true,
+      "description": "Chronic obstructive pulmonary disease (COPD)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "insulin_requiring_diabetes",
+      "type": "string",
+      "required": true,
+      "description": "Insulin-requiring diabetes mellitus",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "previous_cardiac_surgery",
+      "type": "string",
+      "required": true,
+      "description": "Previous cardiac surgery",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "emergency_surgery",
+      "type": "string",
+      "required": true,
+      "description": "Emergency surgery (not elective)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "surgery_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of cardiac surgery performed",
+      "options": ["none", "valve_only", "cabg_and_valve", "other"],
+      "validation": {
+        "enum": ["none", "valve_only", "cabg_and_valve", "other"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "preoperative_creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Preoperative serum creatinine level",
+      "validation": {
+        "min": 0.1,
+        "max": 20.0
+      },
+      "unit": "mg/dL"
+    }
+  ],
+  "result": {
+    "name": "thakar_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Thakar score for acute renal failure risk after cardiac surgery (0-17 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Very Low Risk",
+        "description": "Very low risk for AKI requiring dialysis",
+        "interpretation": "Score 0-2 points: Very low risk (0.3-0.5% risk of AKI requiring dialysis). These patients have excellent renal prognosis after cardiac surgery."
+      },
+      {
+        "min": 3,
+        "max": 5,
+        "stage": "Low Risk",
+        "description": "Low risk for AKI requiring dialysis",
+        "interpretation": "Score 3-5 points: Low risk (1.8-3.3% risk of AKI requiring dialysis). Standard perioperative renal monitoring is appropriate."
+      },
+      {
+        "min": 6,
+        "max": 8,
+        "stage": "Moderate Risk",
+        "description": "Moderate risk for AKI requiring dialysis",
+        "interpretation": "Score 6-8 points: Moderate risk (7.8-11.4% risk of AKI requiring dialysis). Consider enhanced renal monitoring and nephrotoxin avoidance."
+      },
+      {
+        "min": 9,
+        "max": 13,
+        "stage": "High Risk",
+        "description": "High risk for AKI requiring dialysis",
+        "interpretation": "Score 9-13 points: High risk (18.6-22.1% risk of AKI requiring dialysis). Aggressive renal protection strategies warranted, nephrology consultation may be beneficial."
+      },
+      {
+        "min": 14,
+        "max": 17,
+        "stage": "Very High Risk",
+        "description": "Very high risk for AKI requiring dialysis",
+        "interpretation": "Score >13 points: Very high risk (>22% risk of AKI requiring dialysis). Consider postponing surgery if possible to optimize patient, nephrology consultation recommended."
+      }
+    ]
+  },
+  "references": [
+    "Thakar CV, Arrigain S, Worley S, Yared JP, Paganini EP. A clinical score to predict acute renal failure after cardiac surgery. J Am Soc Nephrol. 2005 Jan;16(1):162-8. doi: 10.1681/ASN.2004040331.",
+    "Chertow GM, Levy EM, Hammermeister KE, Grover F, Daley J. Independent association between acute renal failure and mortality following cardiac surgery. Am J Med. 1998 Apr;104(4):343-8.",
+    "Bove T, Monaco F, Covello RD, Zangrillo A. Acute renal failure and cardiac surgery. HSR Proc Intensive Care Cardiovasc Anesth. 2009;1(3):13-21."
+  ],
+  "formula": "Points assigned: Female gender (+1), CHF (+1), LVEF <35% (+1), Preop IABP (+2), COPD (+1), Insulin-requiring DM (+1), Previous cardiac surgery (+1), Emergency surgery (+2), Valve only surgery (+1), CABG+valve or other surgery (+2), Preop creatinine 1.2-2.0 mg/dL (+2), Preop creatinine >2.0 mg/dL (+5). Total score 0-17 points.",
+  "notes": [
+    "The score was developed and validated in 33,217 patients at Cleveland Clinic (1993-2002)",
+    "Primary outcome was acute renal failure requiring dialysis",
+    "Area under ROC curve was 0.81 in development set and 0.82 in validation set",
+    "Score is most accurate for predicting need for dialysis, not mild AKI",
+    "Consider using in conjunction with clinical judgment for surgical risk assessment"
+  ]
+}

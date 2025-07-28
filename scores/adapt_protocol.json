@@ -1,0 +1,122 @@
+{
+  "id": "adapt_protocol",
+  "title": "ADAPT Protocol for Cardiac Event Risk",
+  "description": "Assesses chest pain patients at 2 hours for risk of cardiac event. Uses elevated troponin, ischemic ECG changes, and TIMI risk factors to stratify patients into low and high risk categories for major adverse cardiac events at 30 days.",
+  "category": "emergency",
+  "version": "2012",
+  "parameters": [
+    {
+      "name": "abnormal_troponin",
+      "type": "string",
+      "required": true,
+      "description": "Abnormal troponin at 0 or 2 hours",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "ischemic_changes_ecg",
+      "type": "string",
+      "required": true,
+      "description": "Ischemic changes on ECG",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "age_65_or_older",
+      "type": "string",
+      "required": true,
+      "description": "Age ≥65 years",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "three_or_more_cad_risk_factors",
+      "type": "string",
+      "required": true,
+      "description": "≥3 CAD risk factors (hypertension, hypercholesterolemia, diabetes, family history of coronary artery disease, or current smoker)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "known_cad",
+      "type": "string",
+      "required": true,
+      "description": "Known CAD (stenosis ≥50%)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "aspirin_use_past_7_days",
+      "type": "string",
+      "required": true,
+      "description": "Aspirin use in past 7 days",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "severe_angina",
+      "type": "string",
+      "required": true,
+      "description": "Severe angina (≥2 episodes in 24 hrs or persisting discomfort)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "adapt_risk_level",
+    "type": "string",
+    "unit": "",
+    "description": "ADAPT Protocol risk stratification result"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "Low risk for major cardiac event",
+        "interpretation": "0-0.3% risk of major cardiac event in 30 days. Patient can be safely discharged from the emergency department with appropriate outpatient follow-up."
+      },
+      {
+        "min": 1,
+        "max": 7,
+        "stage": "High Risk",
+        "description": "High risk for major cardiac event",
+        "interpretation": "Elevated risk of major cardiac event in 30 days. Further cardiac evaluation and monitoring recommended. Consider cardiology consultation and hospital admission or observation."
+      }
+    ]
+  },
+  "references": [
+    "Than M, Flaws D, Sanders S, Doust J, Glasziou P, Kline J, Aldous S, Troughton R, Reid C, Parsonage WA, Frampton C, Greenslade JH, Deely JM, Hess E, Sadiq AB, Singleton R, Shopland R, Vercoe L, Woolhouse-Williams M, Ardagh M, Bossuyt P, Bannister L, Cullen L. Development and validation of the Emergency Department Assessment of Chest pain Score and 2 h accelerated diagnostic protocol. Emerg Med Australas. 2014 Feb;26(1):34-44. doi: 10.1111/1742-6723.12164.",
+    "Cullen L, Mueller C, Parsonage WA, Wildi K, Greenslade JH, Twerenbold R, Aldous S, Meller B, Tate JR, Reichlin T, Hammett CJ, Zellweger C, Ungerer JP, Rubini Gimenez M, Troughton R, Murray K, Brown AF, Mueller M, George P, Mosimann T, Flaws DF, Reiter M, Lamanna A, Haaf P, Pemberton CJ, Richards AM, Chu K, Reid CM, Peacock WF, Jaffe AS, Florkowski C, Deely JM, Than M. Validation of high-sensitivity troponin I in a 2-hour diagnostic strategy to assess 30-day outcomes in emergency department patients with possible acute coronary syndrome. J Am Coll Cardiol. 2013 Oct 1;62(14):1242-9. doi: 10.1016/j.jacc.2013.02.078."
+  ],
+  "formula": "ADAPT uses a binary decision tree approach: High risk if any of the following are present: abnormal troponin at 0 or 2 hours, ischemic changes on ECG, or any TIMI risk factors (age ≥65, ≥3 CAD risk factors, known CAD, aspirin use in past 7 days, severe angina). Low risk if none of these criteria are met.",
+  "notes": [
+    "ADAPT stands for Accelerated Diagnostic Protocol to Assess Patients with Chest Pain Symptoms Using Contemporary Troponins as the Only Biomarker",
+    "Protocol is designed for use at 2 hours after presentation to the emergency department",
+    "Must be used in conjunction with EDACS (Emergency Department Assessment of Chest Pain Score)",
+    "Excludes patients with obvious ST-elevation MI, cardiogenic shock, or life-threatening arrhythmias",
+    "High-sensitivity troponin assays are recommended for optimal performance"
+  ]
+}
