@@ -33,3 +33,7 @@ steps:
       - '--set-env-vars'
       - 'REDIS_URL=$_REDIS_URL,REDIS_PASSWORD=$_REDIS_PASSWORD,REQ_PER_SEC=$_REQ_PER_SEC,WHITE_LIST=$_WHITE_LIST'
 
+
+
+options:
+  logging: CLOUD_LOGGING_ONLY
