@@ -103,7 +103,7 @@
 ### ✅ ACEF II Risk Score for Cardiac Surgery
 **Description:** Predicts 30-day mortality after elective or emergency cardiac surgery.
 
-### ACEP ED COVID-19 Management Tool
+### ✅ ACEP ED COVID-19 Management Tool
 **Description:** Emergency department triage and management tool for adult (age >18) patients with suspected or confirmed SARS-CoV-2.
 
 ### Acetaminophen Overdose and NAC Dosing

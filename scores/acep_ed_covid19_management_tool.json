@@ -1,0 +1,34 @@
+{
+  "id": "acep_ed_covid19_management_tool",
+  "title": "ACEP ED COVID-19 Management Tool",
+  "description": "Provides disposition guidance for adult ED patients with suspected or confirmed SARS-CoV-2 using severity classification, PRIEST score, and risk factors.",
+  "category": "emergency",
+  "version": "2023",
+  "parameters": [
+    {"name": "severity", "type": "string", "required": true, "description": "Clinical severity category", "options": ["mild", "moderate", "severe", "critical"], "validation": {"enum": ["mild", "moderate", "severe", "critical"]}},
+    {"name": "priest_score", "type": "integer", "required": true, "description": "PRIEST score", "validation": {"min": 0, "max": 30}},
+    {"name": "risk_factors", "type": "integer", "required": true, "description": "Number of high-risk comorbidities", "validation": {"min": 0, "max": 20}},
+    {"name": "imaging_concerning", "type": "boolean", "required": true, "description": "Concerning imaging findings"},
+    {"name": "labs_concerning", "type": "boolean", "required": true, "description": "Concerning laboratory results"},
+    {"name": "self_care_capable", "type": "boolean", "required": true, "description": "Patient able to care for self at home"}
+  ],
+  "result": {"name": "recommended_disposition", "type": "string", "unit": "disposition", "description": "Recommended level of care"},
+  "interpretation": {
+    "ranges": [
+      {"min": 0, "max": 0, "stage": "Discharge", "description": "Mild disease with low risk", "interpretation": "Safe for discharge with education and follow-up."},
+      {"min": 1, "max": 1, "stage": "Admission/Observation", "description": "Mild or moderate disease with risk factors", "interpretation": "Consider admission or observation."},
+      {"min": 2, "max": 2, "stage": "Admission", "description": "Severe disease", "interpretation": "Hospital admission recommended."},
+      {"min": 3, "max": 3, "stage": "ICU", "description": "Critical illness", "interpretation": "Immediate ICU admission or transfer."}
+    ]
+  },
+  "references": [
+    "American College of Emergency Physicians. ACEP Emergency Department COVID-19 Management Tool. Fall 2023.",
+    "MDCalc. ACEP ED COVID-19 Management Tool. Available at: https://www.mdcalc.com/calc/10333/acep-ed-covid-19-management-tool"
+  ],
+  "formula": "Disposition based on severity category, PRIEST score, and risk factors per ACEP guidelines.",
+  "notes": [
+    "Designed for adults ≥18 years presenting with suspected or confirmed COVID-19.",
+    "Uses NIH severity criteria and PRIEST score to guide workup and disposition.",
+    "Home care possible when mild severity, low PRIEST score, minimal comorbidities, and no concerning findings."
+  ]
+}
