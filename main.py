@@ -9,7 +9,12 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import sys
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Add the root directory to the path for imports
 sys.path.insert(0, str(Path(__file__).parent))
@@ -17,6 +22,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from app import __version__, __description__
 from app.routers import scores_router, health_router
 from app.routers.api_routes import router as api_router
+from app.middleware import RateLimitMiddleware, create_redis_client, parse_whitelist
 
 # FastAPI application configuration
 app = FastAPI(
@@ -95,6 +101,34 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Rate limiting configuration
+redis_url = os.getenv("REDIS_URL")
+redis_password = os.getenv("REDIS_PASSWORD")
+whitelist_str = os.getenv("WHITE_LIST", "[]")
+
+# Initialize Redis client
+redis_client = create_redis_client(redis_url, redis_password)
+
+if redis_client:
+    # Parse whitelist
+    whitelist = parse_whitelist(whitelist_str)
+    
+    # Add rate limiting middleware (req_per_sec will be read from env)
+    app.add_middleware(
+        RateLimitMiddleware,
+        redis_client=redis_client,
+        whitelist=whitelist
+    )
+    
+    # Get req_per_sec for logging
+    req_per_sec = os.getenv("REQ_PER_SEC")
+    if req_per_sec:
+        print(f"✅ Rate limiting enabled: {req_per_sec} req/sec, {len(whitelist)} whitelisted IPs")
+    else:
+        print("⚠️  REQ_PER_SEC not set in environment variables")
+else:
+    print("⚠️  Rate limiting disabled: Redis connection failed")
+
 # Middleware to catch unhandled errors
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
@@ -159,10 +193,11 @@ async def shutdown_event():
 
 if __name__ == "__main__":
     # Configuration for local execution
+    port = int(os.getenv("PORT", "8000"))
     uvicorn.run(
         "main:app",
         host="0.0.0.0",
-        port=8000,
+        port=port,
         reload=True,  # Automatic reload during development
         log_level="info"
     )

@@ -1,0 +1,44 @@
+# Cloud Build configuration for automatic deployment to Cloud Run
+steps:
+  # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/nobra-calculator:$COMMIT_SHA', '.']
+
+  # Push the container image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/nobra-calculator:$COMMIT_SHA']
+
+  # Deploy container image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'nobra-calculator'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/nobra-calculator:$COMMIT_SHA'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--memory'
+      - '512Mi'
+      - '--cpu'
+      - '1'
+      - '--min-instances'
+      - '0'
+      - '--max-instances'
+      - '100'
+      - '--set-env-vars'
+      - 'REDIS_URL=$_REDIS_URL,REDIS_PASSWORD=$_REDIS_PASSWORD,REQ_PER_SEC=$_REQ_PER_SEC,WHITE_LIST=$_WHITE_LIST'
+
+# Substitution variables - set these in Cloud Build trigger or command line
+substitutions:
+  _REDIS_URL: 'redis-19065.c259.us-central1-2.gce.redns.redis-cloud.com:19065'
+  _REDIS_PASSWORD: 'YYf4hI22vAaoi8NFadqYJOumCEw4a9Qt'
+  _REQ_PER_SEC: '10'
+  _WHITE_LIST: '[]'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
