@@ -1,4 +1,4 @@
-# nobra_calculator 🏥
+# Nobra Calculator 🏥
 
 Modular API for medical calculations and scores developed with FastAPI, originally designed for [Nobra](https://www.nobregamedtech.com), our AI research agent for medical doctors.
 
@@ -12,7 +12,7 @@ Modular API for medical calculations and scores developed with FastAPI, original
 
 ## 📋 Description
 
-nobra_calculator is a scalable REST API that allows the calculation of various medical scores and indices. Originally developed as part of the **Nobra ecosystem** at [Nobrega MedTech](https://www.nobregamedtech.com), we've decided to open-source this powerful tool to benefit the global medical community.
+Nobra Calculator is a scalable REST API that allows the calculation of various medical scores and indices. Originally developed as part of the **Nobra ecosystem** at [Nobrega MedTech](https://www.nobregamedtech.com), we've decided to open-source this powerful tool to benefit the global medical community.
 
 Our company specializes in AI solutions for healthcare, focusing on academic support and medical decision-making tools. This calculator represents our commitment to advancing evidence-based medicine through technology.
 

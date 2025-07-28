@@ -1,0 +1,108 @@
+{
+  "id": "ain_risk_calculator",
+  "title": "Acute Interstitial Nephritis (AIN) Risk Calculator",
+  "description": "Identifies the likelihood of acute interstitial nephritis in at-risk patients undergoing kidney biopsy evaluation. Uses commonly available clinical and laboratory parameters to predict AIN probability.",
+  "category": "nephrology",
+  "version": "2020",
+  "parameters": [
+    {
+      "name": "creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Serum creatinine level",
+      "validation": {
+        "min": 0.1,
+        "max": 20.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "bun",
+      "type": "float",
+      "required": true,
+      "description": "Blood urea nitrogen level",
+      "validation": {
+        "min": 1.0,
+        "max": 300.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "urine_specific_gravity",
+      "type": "float",
+      "required": true,
+      "description": "Urine specific gravity measurement",
+      "validation": {
+        "min": 1.000,
+        "max": 1.050
+      },
+      "unit": ""
+    },
+    {
+      "name": "urine_dipstick_protein",
+      "type": "string",
+      "required": true,
+      "description": "Urine dipstick protein level",
+      "options": ["1_plus_or_lower", "2_plus_or_higher"],
+      "validation": {
+        "enum": ["1_plus_or_lower", "2_plus_or_higher"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "local_prevalence_ain",
+      "type": "float",
+      "required": true,
+      "description": "Local prevalence of AIN among all kidney biopsies. Use 0.23 if unknown.",
+      "validation": {
+        "min": 0.01,
+        "max": 1.0
+      },
+      "unit": "proportion"
+    }
+  ],
+  "result": {
+    "name": "ain_probability",
+    "type": "float",
+    "unit": "probability",
+    "description": "Probability of acute interstitial nephritis"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0.0,
+        "max": 0.2,
+        "stage": "Low Risk",
+        "description": "Low probability of AIN",
+        "interpretation": "AIN is unlikely. Consider alternative diagnoses for acute kidney injury. High negative predictive value (>90%)."
+      },
+      {
+        "min": 0.2,
+        "max": 0.5,
+        "stage": "Intermediate Risk",
+        "description": "Intermediate probability of AIN",
+        "interpretation": "Moderate probability of AIN. Consider clinical correlation and additional testing. Kidney biopsy may be warranted based on clinical judgment."
+      },
+      {
+        "min": 0.5,
+        "max": 1.0,
+        "stage": "High Risk",
+        "description": "High probability of AIN",
+        "interpretation": "High likelihood of AIN. Strong consideration for discontinuation of potential causative medications and corticosteroid therapy. Kidney biopsy may help confirm diagnosis."
+      }
+    ]
+  },
+  "references": [
+    "Moledina DG, Luciano RL, Kukova L, et al. Kidney biopsy-related complications in hospitalized patients with acute kidney disease. Clin J Am Soc Nephrol. 2018;13(11):1633-1640.",
+    "Moledina DG, Wilson FP, Kukova L, et al. Prevalence and outcomes of kidney biopsy in hospitalized patients with acute kidney injury. J Am Soc Nephrol. 2017;28(4):1342-1349.",
+    "Perazella MA, Moledina DG. Drug-induced acute interstitial nephritis. Clin J Am Soc Nephrol. 2017;12(12):2046-2049."
+  ],
+  "formula": "Logistic regression model using creatinine, BUN, urine specific gravity, urine protein, and local AIN prevalence to calculate probability of acute interstitial nephritis",
+  "notes": [
+    "Should only be used for patients in whom a kidney biopsy is being considered",
+    "Developed from multicenter data including Yale, Indiana University, and Johns Hopkins",
+    "Model showed AUC of 0.73-0.74 in external validation with high negative predictive value (>90%)",
+    "Helps distinguish AIN from other causes of acute kidney injury",
+    "Important for guiding decisions about medication discontinuation and corticosteroid therapy"
+  ]
+}

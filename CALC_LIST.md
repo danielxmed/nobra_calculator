@@ -124,7 +124,7 @@
 ### ✅ Acute Gout Diagnosis Rule
 **Description:** Stratifies risk for gouty vs. non-gouty arthritis and helps determine which patients most benefit from joint aspiration.
 
-### Acute Interstitial Nephritis (AIN) Risk Calculator - NEW
+### ✅ Acute Interstitial Nephritis (AIN) Risk Calculator - NEW
 **Description:** Identifies the likelihood of acute interstitial nephritis in at-risk patients.
 
 ### Acute Renal Failure after Cardiac Surgery (Thakar Score)
