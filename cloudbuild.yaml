@@ -33,12 +33,3 @@ steps:
       - '--set-env-vars'
       - 'REDIS_URL=$_REDIS_URL,REDIS_PASSWORD=$_REDIS_PASSWORD,REQ_PER_SEC=$_REQ_PER_SEC,WHITE_LIST=$_WHITE_LIST'
 
-# Substitution variables - set these in Cloud Build trigger or command line
-substitutions:
-  _REDIS_URL: 'redis-19065.c259.us-central1-2.gce.redns.redis-cloud.com:19065'
-  _REDIS_PASSWORD: 'YYf4hI22vAaoi8NFadqYJOumCEw4a9Qt'
-  _REQ_PER_SEC: '10'
-  _WHITE_LIST: '[]'
-
-options:
-  logging: CLOUD_LOGGING_ONLY
