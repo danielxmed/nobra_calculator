@@ -1,0 +1,151 @@
+{
+  "id": "akin",
+  "title": "AKIN Classification for Acute Kidney Injury (AKI)",
+  "description": "Classifies severity of acute kidney injury based on serum creatinine and urine output criteria within 48 hours",
+  "category": "nephrology",
+  "version": "2007",
+  "parameters": [
+    {
+      "name": "baseline_creatinine",
+      "type": "float",
+      "required": false,
+      "description": "Baseline serum creatinine in mg/dL (if known)",
+      "validation": {
+        "min": 0.1,
+        "max": 15.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "current_creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Current serum creatinine in mg/dL",
+      "validation": {
+        "min": 0.1,
+        "max": 15.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "creatinine_increase",
+      "type": "float",
+      "required": false,
+      "description": "Absolute increase in creatinine from baseline in mg/dL (if baseline known)",
+      "validation": {
+        "min": 0.0,
+        "max": 10.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "urine_output_6h",
+      "type": "float",
+      "required": false,
+      "description": "Urine output over 6 hours in mL/kg",
+      "validation": {
+        "min": 0.0,
+        "max": 50.0
+      },
+      "unit": "mL/kg"
+    },
+    {
+      "name": "urine_output_12h",
+      "type": "float",
+      "required": false,
+      "description": "Urine output over 12 hours in mL/kg",
+      "validation": {
+        "min": 0.0,
+        "max": 100.0
+      },
+      "unit": "mL/kg"
+    },
+    {
+      "name": "urine_output_24h",
+      "type": "float",
+      "required": false,
+      "description": "Urine output over 24 hours in mL/kg",
+      "validation": {
+        "min": 0.0,
+        "max": 200.0
+      },
+      "unit": "mL/kg"
+    },
+    {
+      "name": "anuria_12h",
+      "type": "string",
+      "required": false,
+      "description": "Anuria (no urine output) for 12 hours",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "on_rrt",
+      "type": "string",
+      "required": false,
+      "description": "Patient on renal replacement therapy (automatically Stage 3)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    }
+  ],
+  "result": {
+    "name": "akin_stage",
+    "type": "string",
+    "unit": "stage",
+    "description": "AKIN stage classification"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "No AKI",
+        "description": "No acute kidney injury",
+        "interpretation": "No criteria met for acute kidney injury. Normal kidney function or chronic kidney disease without acute deterioration."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Stage 1",
+        "description": "Mild AKI",
+        "interpretation": "Stage 1 AKI: Absolute increase in creatinine ≥0.3 mg/dL or 1.5-2x baseline, OR urine output <0.5 mL/kg/hr for >6 hours. Requires close monitoring and nephrology consultation."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Stage 2",
+        "description": "Moderate AKI",
+        "interpretation": "Stage 2 AKI: Creatinine 2-3x baseline OR urine output <0.5 mL/kg/hr for >12 hours. Requires intensive monitoring and nephrology consultation."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Stage 3",
+        "description": "Severe AKI",
+        "interpretation": "Stage 3 AKI: Creatinine >3x baseline or ≥4.0 mg/dL with acute increase ≥0.5 mg/dL, OR urine output <0.3 mL/kg/hr for ≥24 hours or anuria for 12 hours, OR on RRT. Requires urgent nephrology consultation and consideration of renal replacement therapy."
+      }
+    ]
+  },
+  "references": [
+    "Mehta RL, Kellum JA, Shah SV, et al. Acute Kidney Injury Network: report of an initiative to improve outcomes in acute kidney injury. Crit Care. 2007;11(2):R31.",
+    "Lopes JA, Jorge S. The RIFLE and AKIN classifications for acute kidney injury: a critical and comprehensive review. Clin Kidney J. 2013;6(1):8-14.",
+    "Xiong J, Tang X, Hu Z, et al. The RIFLE versus AKIN classification for incidence and mortality of acute kidney injury in critical ill patients: A meta-analysis. Sci Rep. 2015;5:17917."
+  ],
+  "formula": "Stage 1: Cr ≥0.3 mg/dL increase or 1.5-2x baseline OR UO <0.5 mL/kg/hr x >6h; Stage 2: Cr 2-3x baseline OR UO <0.5 mL/kg/hr x >12h; Stage 3: Cr >3x baseline or ≥4.0 mg/dL with acute increase ≥0.5 mg/dL OR UO <0.3 mL/kg/hr x ≥24h or anuria x 12h OR RRT",
+  "notes": [
+    "AKIN classification requires changes within 48 hours",
+    "Diagnosis requires adequate hydration and exclusion of urinary obstruction",
+    "Patients on RRT are automatically classified as Stage 3",
+    "Two creatinine measurements within 48 hours are required",
+    "Baseline creatinine not required - can use first reference reading",
+    "Stage corresponds to highest criterion met (creatinine or urine output)",
+    "More sensitive than RIFLE for detecting mild AKI",
+    "Associated with increased mortality even at Stage 1",
+    "Important for clinical decision-making and prognosis",
+    "Should be used with clinical context and other assessments"
+  ]
+}

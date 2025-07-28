@@ -139,22 +139,22 @@
 ### Adult Self-Report Scale (ASRS v1.1) for ADHD
 **Description:** Diagnoses ADHD in adults.
 
-### Adverse Childhood Experiences (ACE) Score
+### ✅ Adverse Childhood Experiences (ACE) Score
 **Description:** Screens for adverse childhood experiences.
 
-### Age-Adjusted D-dimer for Venous Thromboembolism (VTE)
+### ✅ Age-Adjusted D-dimer for Venous Thromboembolism (VTE)
 **Description:** Adjusts D-dimer cutoffs to help rule out VTE in patients ≥50 years old.
 
-### Age-Adjusted ESR/CRP for Rheumatoid Arthritis
+### ✅ Age-Adjusted ESR/CRP for Rheumatoid Arthritis
 **Description:** Calculates age-adjusted ESR and CRP in adult rheumatoid arthritis patients.
 
-### AIMS65 Score for Upper GI Bleeding Mortality
+### ✅ AIMS65 Score for Upper GI Bleeding Mortality
 **Description:** Determines risk of in-hospital mortality from upper GI bleeding.
 
-### AKIN Classification for Acute Kidney Injury (AKI)
+### ✅ AKIN Classification for Acute Kidney Injury (AKI)
 **Description:** Classifies severity of acute kidney injury, similar to RIFLE Criteria.
 
-### Alberta Stroke Program Early CT Score (ASPECTS)
+### ✅ Alberta Stroke Program Early CT Score (ASPECTS)
 **Description:** Determines severity of MCA stroke using available CT data.
 
 ### ALBI (Albumin-Bilirubin) Grade for Hepatocellular Carcinoma (HCC)

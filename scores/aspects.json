@@ -1,0 +1,160 @@
+{
+  "id": "aspects",
+  "title": "Alberta Stroke Program Early CT Score (ASPECTS)",
+  "description": "Quantifies early ischemic changes in MCA territory on non-contrast CT to predict stroke outcome and guide treatment decisions",
+  "category": "neurology",
+  "version": "2000",
+  "parameters": [
+    {
+      "name": "caudate",
+      "type": "string",
+      "required": true,
+      "description": "Caudate nucleus - focal edema or parenchymal hypoattenuation",
+      "validation": {
+        "enum": ["normal", "abnormal"]
+      },
+      "options": ["normal", "abnormal"]
+    },
+    {
+      "name": "lentiform",
+      "type": "string",
+      "required": true,
+      "description": "Lentiform nucleus - focal edema or parenchymal hypoattenuation",
+      "validation": {
+        "enum": ["normal", "abnormal"]
+      },
+      "options": ["normal", "abnormal"]
+    },
+    {
+      "name": "internal_capsule",
+      "type": "string",
+      "required": true,
+      "description": "Internal capsule - focal edema or parenchymal hypoattenuation",
+      "validation": {
+        "enum": ["normal", "abnormal"]
+      },
+      "options": ["normal", "abnormal"]
+    },
+    {
+      "name": "insular_ribbon",
+      "type": "string",
+      "required": true,
+      "description": "Insular ribbon/cortex - focal edema or parenchymal hypoattenuation",
+      "validation": {
+        "enum": ["normal", "abnormal"]
+      },
+      "options": ["normal", "abnormal"]
+    },
+    {
+      "name": "m1",
+      "type": "string",
+      "required": true,
+      "description": "M1 - Anterior MCA cortex (frontal operculum) - focal edema or parenchymal hypoattenuation",
+      "validation": {
+        "enum": ["normal", "abnormal"]
+      },
+      "options": ["normal", "abnormal"]
+    },
+    {
+      "name": "m2",
+      "type": "string",
+      "required": true,
+      "description": "M2 - MCA cortex lateral to insular ribbon (anterior temporal) - focal edema or parenchymal hypoattenuation",
+      "validation": {
+        "enum": ["normal", "abnormal"]
+      },
+      "options": ["normal", "abnormal"]
+    },
+    {
+      "name": "m3",
+      "type": "string",
+      "required": true,
+      "description": "M3 - Posterior MCA cortex (posterior temporal) - focal edema or parenchymal hypoattenuation",
+      "validation": {
+        "enum": ["normal", "abnormal"]
+      },
+      "options": ["normal", "abnormal"]
+    },
+    {
+      "name": "m4",
+      "type": "string",
+      "required": true,
+      "description": "M4 - Anterior MCA cortex superior to M1 - focal edema or parenchymal hypoattenuation",
+      "validation": {
+        "enum": ["normal", "abnormal"]
+      },
+      "options": ["normal", "abnormal"]
+    },
+    {
+      "name": "m5",
+      "type": "string",
+      "required": true,
+      "description": "M5 - Lateral MCA cortex superior to M2 - focal edema or parenchymal hypoattenuation",
+      "validation": {
+        "enum": ["normal", "abnormal"]
+      },
+      "options": ["normal", "abnormal"]
+    },
+    {
+      "name": "m6",
+      "type": "string",
+      "required": true,
+      "description": "M6 - Posterior MCA cortex superior to M3 - focal edema or parenchymal hypoattenuation",
+      "validation": {
+        "enum": ["normal", "abnormal"]
+      },
+      "options": ["normal", "abnormal"]
+    }
+  ],
+  "result": {
+    "name": "aspects_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "ASPECTS score (0-10 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 4,
+        "stage": "Extensive Infarction",
+        "description": "Extensive MCA territory involvement",
+        "interpretation": "ASPECTS 0-4: Extensive MCA territory infarction. Very poor prognosis. High risk of symptomatic hemorrhage with thrombolysis. Consider palliative care discussions."
+      },
+      {
+        "min": 5,
+        "max": 7,
+        "stage": "Large Infarction",
+        "description": "Large MCA territory involvement",
+        "interpretation": "ASPECTS 5-7: Large MCA territory infarction. Poor functional outcome likely. High risk (14%) of symptomatic ICH with IV thrombolysis. Mechanical thrombectomy may still be considered if ASPECTS ≥6."
+      },
+      {
+        "min": 8,
+        "max": 10,
+        "stage": "Favorable",
+        "description": "Limited MCA territory involvement",
+        "interpretation": "ASPECTS 8-10: Limited early ischemic changes. Good candidate for reperfusion therapy. Lower risk of symptomatic hemorrhage. Greater benefit from IV thrombolysis expected."
+      }
+    ]
+  },
+  "references": [
+    "Barber PA, Demchuk AM, Zhang J, Buchan AM. Validity and reliability of a quantitative computed tomography score in predicting outcome of hyperacute stroke before thrombolytic therapy. ASPECTS Study Group. Alberta Stroke Programme Early CT Score. Lancet. 2000;355(9216):1670-4.",
+    "Pexman JH, Barber PA, Hill MD, et al. Use of the Alberta Stroke Program Early CT Score (ASPECTS) for assessing CT scans in patients with acute stroke. AJNR Am J Neuroradiol. 2001;22(8):1534-42.",
+    "Goyal M, Demchuk AM, Menon BK, et al. Randomized assessment of rapid endovascular treatment of ischemic stroke. N Engl J Med. 2015;372(11):1019-30."
+  ],
+  "formula": "Start with 10 points. Subtract 1 point for each region with focal edema or parenchymal hypoattenuation: Caudate, Lentiform, Internal Capsule, Insular ribbon, M1, M2, M3, M4, M5, M6",
+  "notes": [
+    "ASPECTS score ranges from 0-10 points (10 = normal, 0 = extensive infarction)",
+    "Evaluated on two standardized axial CT cuts: basal ganglia level and supraganglionic level",
+    "Subtract 1 point for each region with ≥1/3 area involvement",
+    "Score ≤7 predicts poor functional outcome and increased hemorrhage risk",
+    "Score ≥8 indicates good candidates for IV thrombolysis",
+    "Score ≥6 may be considered for mechanical thrombectomy",
+    "Correlates inversely with NIHSS score and stroke severity",
+    "Predicts 3-month functional outcome and symptomatic ICH risk",
+    "Used in major stroke trials (ESCAPE, SWIFT-PRIME) for patient selection",
+    "Requires assessment of all axial cuts, not just two standardized levels",
+    "Should be used with clinical assessment and other imaging findings",
+    "Interrater reliability is good with proper training"
+  ]
+}

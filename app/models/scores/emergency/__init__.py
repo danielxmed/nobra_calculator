@@ -15,6 +15,8 @@ from .acetaminophen_overdose_nac import (
     AcetaminophenOverdoseNacResponse,
 )
 from .adapt_protocol import AdaptProtocolRequest, AdaptProtocolResponse
+from .age_adjusted_d_dimer import AgeAdjustedDDimerRequest, AgeAdjustedDDimerResponse
+from .aims65 import Aims65Request, Aims65Response
 
 __all__ = [
     "FourCMortalityRequest",
@@ -31,4 +33,8 @@ __all__ = [
     "AcetaminophenOverdoseNacResponse",
     "AdaptProtocolRequest",
     "AdaptProtocolResponse",
+    "AgeAdjustedDDimerRequest",
+    "AgeAdjustedDDimerResponse",
+    "Aims65Request",
+    "Aims65Response",
 ]
