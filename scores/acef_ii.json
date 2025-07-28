@@ -1,0 +1,70 @@
+{
+  "id": "acef_ii",
+  "title": "ACEF II Risk Score for Cardiac Surgery",
+  "description": "Predicts 30-day mortality after elective or emergency cardiac surgery, incorporating age, creatinine, ejection fraction, emergency status, and pre-operative anemia.",
+  "category": "cardiology",
+  "version": "2018",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age",
+      "validation": {"min": 18, "max": 100},
+      "unit": "years"
+    },
+    {
+      "name": "ejection_fraction",
+      "type": "float",
+      "required": true,
+      "description": "Left ventricular ejection fraction percentage",
+      "validation": {"min": 10, "max": 80},
+      "unit": "%"
+    },
+    {
+      "name": "serum_creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Serum creatinine",
+      "validation": {"min": 0.1, "max": 20.0},
+      "unit": "mg/dL"
+    },
+    {
+      "name": "emergency_surgery",
+      "type": "boolean",
+      "required": true,
+      "description": "Emergency surgery indicator"
+    },
+    {
+      "name": "hematocrit",
+      "type": "float",
+      "required": true,
+      "description": "Pre-operative hematocrit",
+      "validation": {"min": 15, "max": 60},
+      "unit": "%"
+    }
+  ],
+  "result": {
+    "name": "acef_ii_score",
+    "type": "float",
+    "unit": "points",
+    "description": "Calculated ACEF II score"
+  },
+  "interpretation": {
+    "ranges": [
+      {"min": 0, "max": 2, "stage": "Low Risk", "description": "Estimated mortality <2%", "interpretation": "Proceed with standard perioperative management."},
+      {"min": 2, "max": 3, "stage": "Intermediate Risk", "description": "Estimated mortality 2-5%", "interpretation": "Consider optimization of comorbidities and careful monitoring."},
+      {"min": 3, "max": 99, "stage": "High Risk", "description": "Estimated mortality >5%", "interpretation": "Enhanced perioperative monitoring and risk-benefit discussion recommended."}
+    ]
+  },
+  "references": [
+    "Ranucci M, Pistuddi V, Scolletta S, de Vincentiis C, Menicanti L. The ACEF II Risk Score for cardiac surgery: updated but still parsimonious. Eur Heart J. 2018;39(23):2183-2189."
+  ],
+  "formula": "ACEF II = age / ejection fraction + [2 if serum_creatinine > 2 mg/dL] + [3 if emergency surgery] + [0.2 × (36 - hematocrit) if hematocrit < 36]",
+  "notes": [
+    "Designed for elective and emergency cardiac surgery patients.",
+    "Predicts operative mortality within 30 days.",
+    "Anemia penalty applies when hematocrit is below 36%: add 0.2 points for each percent below 36%.",
+    "Higher scores indicate increased operative mortality risk."
+  ]
+}

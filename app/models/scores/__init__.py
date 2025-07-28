@@ -38,8 +38,10 @@ __all__ = [
     # Cardiology
     "Cha2ds2VascRequest",
     "Cha2ds2VascResponse",
-    "AccAhaHfStagingRequest", 
+    "AccAhaHfStagingRequest",
     "AccAhaHfStagingResponse",
+    "AcefIiRequest",
+    "AcefIiResponse",
     
     # Pulmonology
     "Curb65Request",

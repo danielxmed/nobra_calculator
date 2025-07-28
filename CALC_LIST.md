@@ -100,7 +100,7 @@
 ### ✅ ACC/AHA Heart Failure Staging
 **Description:** Describes heart failure stages and provides stage-specific therapy recommendations.
 
-### ACEF II Risk Score for Cardiac Surgery
+### ✅ ACEF II Risk Score for Cardiac Surgery
 **Description:** Predicts 30-day mortality after elective or emergency cardiac surgery.
 
 ### ACEP ED COVID-19 Management Tool
