@@ -136,7 +136,7 @@
 ### ✅ Additional Nodal Metastasis Nomogram
 **Description:** Predicts probability of breast cancer with sentinel lymph node metastasis having also spread to additional lymph nodes.
 
-### Adult Self-Report Scale (ASRS v1.1) for ADHD
+### ✅ Adult Self-Report Scale (ASRS v1.1) for ADHD
 **Description:** Diagnoses ADHD in adults.
 
 ### ✅ Adverse Childhood Experiences (ACE) Score
@@ -157,64 +157,64 @@
 ### ✅ Alberta Stroke Program Early CT Score (ASPECTS)
 **Description:** Determines severity of MCA stroke using available CT data.
 
-### ALBI (Albumin-Bilirubin) Grade for Hepatocellular Carcinoma (HCC)
+### ✅ ALBI (Albumin-Bilirubin) Grade for Hepatocellular Carcinoma (HCC)
 **Description:** Predicts survival in HCC patients.
 
-### ALT-70 Score for Cellulitis
+### ✅ ALT-70 Score for Cellulitis
 **Description:** Predicts likelihood of lower extremity cellulitis over other diagnoses.
 
-### Altitude-Adjusted PERC Rule
+### ✅ Altitude-Adjusted PERC Rule
 **Description:** Rules out PE if no criteria are present; includes SaO2 adjustment for altitude.
 
-### Alvarado Score for Acute Appendicitis
+### ✅ Alvarado Score for Acute Appendicitis
 **Description:** Predicts likelihood of appendicitis diagnosis.
 
-### American Diabetes Association (ADA) Risk Calculator
+### ✅ American Diabetes Association (ADA) Risk Calculator
 **Description:** Predicts risk of undiagnosed diabetes to determine who should be screened.
 
-### American University of Beirut (AUB)-HAS2 Cardiovascular Risk Index
+### ✅ American University of Beirut (AUB)-HAS2 Cardiovascular Risk Index
 **Description:** Stratifies cardiovascular risk of patients undergoing non-cardiac surgery.
 
-### American Urological Association Symptom Index (AUA-SI)/International Prostate Symptom Score (IPSS)
+### ✅ American Urological Association Symptom Index (AUA-SI)/International Prostate Symptom Score (IPSS)
 **Description:** Measures severity of benign prostatic hyperplasia (BPH) symptoms.
 
-### Ankylosing Spondylitis Disease Activity Score with CRP (ASDAS-CRP)
+### ✅ Ankylosing Spondylitis Disease Activity Score with CRP (ASDAS-CRP)
 **Description:** Stratifies severity of ankylosing spondylitis (AS) using clinical and laboratory data, specifically CRP.
 
-### Ankylosing Spondylitis Disease Activity Score with ESR (ASDAS-ESR)
+### ✅ Ankylosing Spondylitis Disease Activity Score with ESR (ASDAS-ESR)
 **Description:** Stratifies severity of ankylosing spondylitis (AS) using clinical and laboratory data, specifically ESR.
 
-### Antivenom Dosing Algorithm
+### ✅ Antivenom Dosing Algorithm
 **Description:** Doses antivenom (CroFab only, not Anavip) for pit viper snakebites.
 
-### Aortic Dissection Detection Risk Score (ADD-RS)
+### ✅ Aortic Dissection Detection Risk Score (ADD-RS)
 **Description:** Rules out aortic dissection.
 
-### APACHE II Score
+### ✅ APACHE II Score
 **Description:** Estimates ICU mortality.
 
-### Apfel Score for Postoperative Nausea and Vomiting
+### ✅ Apfel Score for Postoperative Nausea and Vomiting
 **Description:** Predicts risk of postoperative nausea and vomiting (PONV).
 
-### APGAR Score
+### ✅ APGAR Score
 **Description:** Assesses neonates 1 and 5 minutes after birth.
 
-### Appendicitis Inflammatory Response (AIR) Score
+### ✅ Appendicitis Inflammatory Response (AIR) Score
 **Description:** Diagnoses appendicitis based on clinical and laboratory findings.
 
-### ARISCAT Score for Postoperative Pulmonary Complications
+### ✅ ARISCAT Score for Postoperative Pulmonary Complications
 **Description:** Predicts risk of pulmonary complications after surgery, including respiratory failure.
 
-### Arterial Blood Gas (ABG) Analyzer
+### ✅ Arterial Blood Gas (ABG) Analyzer
 **Description:** Interprets arterial blood gas.
 
-### ASA Physical Status/ASA Classification
+### ✅ ASA Physical Status/ASA Classification
 **Description:** Classifies health of patients prior to surgery.
 
-### ASAS Criteria for Axial Spondyloarthritis (SpA)
+### ✅ ASAS Criteria for Axial Spondyloarthritis (SpA)
 **Description:** Classifies axial spondyloarthritis according to the Assessment of Spondyloarthritis International Society (ASAS) criteria.
 
-### ASAS Criteria for Peripheral SpondyloArthritis (SpA)
+### ✅ ASAS Criteria for Peripheral SpondyloArthritis (SpA)
 **Description:** Classifies peripheral spondyloarthritis according to the Assessment of SpondyloArthritis International Society (ASAS) criteria.
 
 ### ASCOD Algorithm for Ischemic Stroke

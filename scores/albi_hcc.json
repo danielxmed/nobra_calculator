@@ -1,0 +1,77 @@
+{
+  "id": "albi_hcc",
+  "title": "ALBI (Albumin-Bilirubin) Grade for Hepatocellular Carcinoma (HCC)",
+  "description": "Predicts survival in hepatocellular carcinoma patients based on serum albumin and bilirubin concentrations",
+  "category": "hematology",
+  "version": "2015",
+  "parameters": [
+    {
+      "name": "albumin",
+      "type": "float",
+      "required": true,
+      "description": "Serum albumin concentration",
+      "validation": {
+        "min": 1.0,
+        "max": 6.0
+      },
+      "unit": "g/L"
+    },
+    {
+      "name": "bilirubin",
+      "type": "float",
+      "required": true,
+      "description": "Serum bilirubin concentration",
+      "validation": {
+        "min": 3.0,
+        "max": 500.0
+      },
+      "unit": "μmol/L"
+    }
+  ],
+  "result": {
+    "name": "albi_score",
+    "type": "float",
+    "unit": "score",
+    "description": "ALBI score with corresponding grade and median survival prediction"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": -10.0,
+        "max": -2.6,
+        "stage": "Grade 1",
+        "description": "Best prognosis",
+        "interpretation": "ALBI Grade 1 (score ≤-2.60). Median survival: 18.5 - 85.6 months. Best liver function and prognosis in HCC patients."
+      },
+      {
+        "min": -2.6,
+        "max": -1.39,
+        "stage": "Grade 2",
+        "description": "Intermediate prognosis",
+        "interpretation": "ALBI Grade 2 (score >-2.60 to ≤-1.39). Median survival: 5.3 - 46.5 months. Intermediate liver function and prognosis in HCC patients."
+      },
+      {
+        "min": -1.39,
+        "max": 10.0,
+        "stage": "Grade 3",
+        "description": "Poorest prognosis",
+        "interpretation": "ALBI Grade 3 (score >-1.39). Median survival: 2.3 - 15.5 months. Poorest liver function and prognosis in HCC patients."
+      }
+    ]
+  },
+  "references": [
+    "Johnson PJ, Berhane S, Kagebayashi C, et al. Assessment of liver function in patients with hepatocellular carcinoma: a new evidence-based approach-the ALBI grade. J Clin Oncol. 2015;33(6):550-8. doi: 10.1200/JCO.2014.57.9151.",
+    "Hiraoka A, Michitaka K, Kumada T, et al. Validation and Potential of Albumin-Bilirubin Grade and Prognostication in a Nationwide Survey of 46,681 Hepatocellular Carcinoma Patients in Japan: The Need for a More Detailed Evaluation of Hepatic Function. Liver Cancer. 2017;6(4):325-336. doi: 10.1159/000479984.",
+    "Chen B, Lin S. Albumin-bilirubin (ALBI) score at admission predicts possible outcomes in patients with acute-on-chronic liver failure. Medicine (Baltimore). 2017;96(24):e7142. doi: 10.1097/MD.0000000000007142."
+  ],
+  "formula": "ALBI = (log10 bilirubin × 0.66) + (albumin × -0.085), where bilirubin is in μmol/L and albumin in g/L",
+  "notes": [
+    "Alternative to Child-Pugh grade without subjective variables like ascites and encephalopathy",
+    "Uses only objective laboratory measures of liver function",
+    "Developed from international collaboration involving 1,313 Japanese HCC patients",
+    "Validated across multiple geographical regions and clinical situations",
+    "ALBI Grade 1: ≤-2.60, Grade 2: >-2.60 to ≤-1.39, Grade 3: >-1.39",
+    "Survival depends on tumor stage, liver function, and performance status",
+    "Applicable to HCC patients with or without underlying cirrhosis"
+  ]
+}

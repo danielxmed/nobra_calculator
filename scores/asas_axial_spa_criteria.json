@@ -1,0 +1,194 @@
+{
+  "id": "asas_axial_spa_criteria",
+  "title": "ASAS Criteria for Axial Spondyloarthritis (SpA)",
+  "description": "Classifies axial spondyloarthritis according to Assessment of Spondyloarthritis International Society (ASAS) criteria. This classification system allows for early diagnosis of axial SpA by incorporating both clinical and imaging features.",
+  "category": "rheumatology",
+  "version": "2009",
+  "parameters": [
+    {
+      "name": "back_pain_duration_months",
+      "type": "integer",
+      "required": true,
+      "description": "Duration of back pain in months",
+      "validation": {
+        "min": 0,
+        "max": 1200
+      },
+      "unit": "months"
+    },
+    {
+      "name": "age_at_onset",
+      "type": "integer",
+      "required": true,
+      "description": "Age at onset of back pain",
+      "validation": {
+        "min": 0,
+        "max": 100
+      },
+      "unit": "years"
+    },
+    {
+      "name": "sacroiliitis_imaging",
+      "type": "string",
+      "required": true,
+      "description": "Sacroiliitis on imaging: X-ray (bilateral grade 2-4 or unilateral grade 3-4) or MRI (active inflammatory lesions suggestive of sacroiliitis associated with SpA)",
+      "options": ["present", "absent"],
+      "validation": {
+        "enum": ["present", "absent"]
+      }
+    },
+    {
+      "name": "hla_b27_positive",
+      "type": "string",
+      "required": true,
+      "description": "HLA-B27 positive according to standard laboratory techniques",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "inflammatory_back_pain",
+      "type": "string",
+      "required": true,
+      "description": "Inflammatory back pain according to ASAS experts: 4 out of 5 criteria (age at onset <40 years, insidious onset, improvement with exercise, no improvement with rest, pain at night with improvement upon getting up)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "arthritis",
+      "type": "string",
+      "required": true,
+      "description": "Past or present active synovitis diagnosed by a doctor",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "enthesitis",
+      "type": "string",
+      "required": true,
+      "description": "Heel enthesitis: past or present spontaneous pain or tenderness at examination at the site of the insertion of the Achilles tendon or plantar fascia at the calcaneus",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "uveitis",
+      "type": "string",
+      "required": true,
+      "description": "Past or present anterior uveitis confirmed by an ophthalmologist",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "dactylitis",
+      "type": "string",
+      "required": true,
+      "description": "Past or present dactylitis diagnosed by a doctor",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "psoriasis",
+      "type": "string",
+      "required": true,
+      "description": "Past or present psoriasis diagnosed by a doctor",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "crohns_colitis",
+      "type": "string",
+      "required": true,
+      "description": "Past or present Crohn's disease or ulcerative colitis diagnosed by a doctor",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "good_response_nsaids",
+      "type": "string",
+      "required": true,
+      "description": "Good response to NSAIDs: at 24-48h after a full dose of NSAID the back pain is not present anymore or much better",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "family_history",
+      "type": "string",
+      "required": true,
+      "description": "Family history: presence in first-degree or second-degree relatives of ankylosing spondylitis, psoriasis, uveitis, reactive arthritis, or inflammatory bowel disease",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "elevated_crp",
+      "type": "string",
+      "required": true,
+      "description": "CRP above upper normal limit in the presence of back pain, after exclusion of other causes for elevated CRP",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "classification",
+    "type": "string",
+    "description": "Classification result according to ASAS criteria for axial spondyloarthritis"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Axial SpA",
+        "description": "Meets ASAS criteria for axial spondyloarthritis",
+        "interpretation": "Patient fulfills the ASAS classification criteria for axial spondyloarthritis. Further rheumatological evaluation and appropriate treatment should be considered."
+      },
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Not Axial SpA",
+        "description": "Does not meet ASAS criteria",
+        "interpretation": "Patient does not fulfill the ASAS classification criteria for axial spondyloarthritis. Consider alternative diagnoses and further evaluation if clinical suspicion remains high."
+      },
+      {
+        "min": -1,
+        "max": -1,
+        "stage": "Entry Criterion Not Met",
+        "description": "Entry criterion not fulfilled",
+        "interpretation": "Entry criterion (back pain ≥3 months and age at onset <45 years) not fulfilled. ASAS criteria cannot be applied."
+      }
+    ]
+  },
+  "references": [
+    "Rudwaleit M, van der Heijde D, Landewé R, Listing J, Akkoc N, Brandt J, et al. The development of Assessment of SpondyloArthritis international Society classification criteria for axial spondyloarthritis (part II): validation and final selection. Ann Rheum Dis. 2009;68(6):777-83.",
+    "Sieper J, Rudwaleit M, Baraliakos X, Brandt J, Braun J, Burgos-Vargas R, et al. The Assessment of SpondyloArthritis international Society (ASAS) handbook: a guide to assess spondyloarthritis. Ann Rheum Dis. 2009;68 Suppl 2:ii1-44.",
+    "Sieper J, van der Heijde D, Landewé R, Brandt J, Burgos-Vargas R, Collantes-Estevez E, et al. New criteria for inflammatory back pain in patients with chronic back pain: a real patient exercise by experts from the Assessment of SpondyloArthritis International Society (ASAS). Ann Rheum Dis. 2009;68(6):784-8."
+  ],
+  "formula": "Entry criterion: Back pain ≥3 months AND age at onset <45 years. If entry criterion met: Imaging arm (sacroiliitis on imaging + ≥1 SpA feature) OR Clinical arm (HLA-B27 positive + ≥2 SpA features). SpA features include: inflammatory back pain, arthritis, enthesitis, uveitis, dactylitis, psoriasis, Crohn's/colitis, good response to NSAIDs, family history, elevated CRP.",
+  "notes": [
+    "Entry criterion must be fulfilled first: chronic back pain ≥3 months with age at onset <45 years",
+    "Two arms for classification: Imaging arm (sacroiliitis + ≥1 SpA feature) or Clinical arm (HLA-B27 + ≥2 SpA features)",
+    "SpA features include inflammatory back pain, arthritis, enthesitis, uveitis, dactylitis, psoriasis, inflammatory bowel disease, good response to NSAIDs, family history, and elevated CRP",
+    "Inflammatory back pain is defined by ASAS experts as 4 out of 5 criteria: age at onset <40 years, insidious onset, improvement with exercise, no improvement with rest, pain at night with improvement upon getting up",
+    "These are classification criteria, not diagnostic criteria. Clinical judgment should always be applied"
+  ]
+}

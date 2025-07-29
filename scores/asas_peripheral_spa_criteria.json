@@ -1,0 +1,150 @@
+{
+  "id": "asas_peripheral_spa_criteria",
+  "title": "ASAS Criteria for Peripheral SpondyloArthritis (SpA)",
+  "description": "Classifies peripheral spondyloarthritis according to the Assessment of SpondyloArthritis International Society (ASAS) criteria",
+  "category": "rheumatology",
+  "version": "2011",
+  "parameters": [
+    {
+      "name": "peripheral_arthritis",
+      "type": "string",
+      "required": true,
+      "description": "Peripheral arthritis (usually predominantly lower limbs and/or asymmetric arthritis)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "enthesitis",
+      "type": "string",
+      "required": true,
+      "description": "Enthesitis (clinically assessed)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "dactylitis",
+      "type": "string",
+      "required": true,
+      "description": "Dactylitis (clinically assessed)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "psoriasis",
+      "type": "string",
+      "required": true,
+      "description": "Past or present psoriasis diagnosed by a doctor",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "inflammatory_bowel_disease",
+      "type": "string", 
+      "required": true,
+      "description": "Past or present Crohn's disease or ulcerative colitis diagnosed by a doctor",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "preceding_infection",
+      "type": "string",
+      "required": true,
+      "description": "Preceding infection (urethritis/cervicitis or diarrhea within 1 month before arthritis onset)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hla_b27",
+      "type": "string",
+      "required": true,
+      "description": "HLA-B27 positive testing according to standard laboratory techniques",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "uveitis_anterior",
+      "type": "string",
+      "required": true,
+      "description": "Past or present anterior uveitis confirmed by an ophthalmologist",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "sacroiliitis_imaging",
+      "type": "string",
+      "required": true,
+      "description": "Sacroiliitis on imaging (bilateral grade 2-4 or unilateral grade 3-4 on X-rays OR active sacroiliitis on MRI)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "inflammatory_back_pain_past",
+      "type": "string",
+      "required": true,
+      "description": "History of inflammatory back pain in the past",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "family_history_spa",
+      "type": "string",
+      "required": true,
+      "description": "Family history of spondyloarthritis (presence in first or second-degree relatives of ankylosing spondylitis, psoriasis, uveitis, reactive arthritis, or inflammatory bowel disease)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "classification",
+    "unit": "",
+    "description": "Classification result for peripheral spondyloarthritis"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "classification": "Peripheral SpA Criteria Met",
+        "description": "Meets ASAS criteria for peripheral spondyloarthritis",
+        "interpretation": "Patient meets the ASAS classification criteria for peripheral spondyloarthritis. Entry criterion (arthritis and/or enthesitis and/or dactylitis) is fulfilled plus one or more SpA features from Group A OR two or more SpA features from Group B."
+      },
+      {
+        "classification": "Peripheral SpA Criteria NOT Met",
+        "description": "Does not meet ASAS criteria for peripheral spondyloarthritis",
+        "interpretation": "Patient does not meet the ASAS classification criteria for peripheral spondyloarthritis. Either the entry criterion is not fulfilled or insufficient SpA features are present."
+      }
+    ]
+  },
+  "references": [
+    "Rudwaleit M, van der Heijde D, Landewé R, et al. The Assessment of SpondyloArthritis International Society classification criteria for peripheral spondyloarthritis and for spondyloarthritis in general. Ann Rheum Dis. 2011;70(1):25-31.",
+    "Sieper J, Rudwaleit M, Baraliakos X, et al. The Assessment of SpondyloArthritis international Society (ASAS) handbook: a guide to assess spondyloarthritis. Ann Rheum Dis. 2009;68 Suppl 2:ii1-44."
+  ],
+  "formula": "Entry criterion: Arthritis and/or enthesitis and/or dactylitis. Plus one or more from Group A (psoriasis, IBD, preceding infection, HLA-B27, uveitis, sacroiliitis) OR two or more from Group B (arthritis, enthesitis, dactylitis, IBP past, family history SpA)",
+  "notes": [
+    "These criteria are intended for classification purposes in research studies",
+    "Peripheral arthritis is usually predominantly lower limbs and/or asymmetric arthritis",
+    "Enthesitis and dactylitis should be clinically assessed",
+    "Sacroiliitis on imaging refers to definite radiographic sacroiliitis or active sacroiliitis on MRI",
+    "Classification criteria should not be used as diagnostic criteria in clinical practice"
+  ]
+}

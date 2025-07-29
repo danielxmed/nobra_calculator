@@ -1,0 +1,126 @@
+{
+  "id": "air_score",
+  "title": "Appendicitis Inflammatory Response (AIR) Score",
+  "description": "Diagnoses appendicitis based on clinical and laboratory findings using objective inflammatory variables and clinical signs of peritoneal irritation",
+  "category": "emergency",
+  "version": "2008",
+  "parameters": [
+    {
+      "name": "vomiting",
+      "type": "string",
+      "required": true,
+      "description": "Presence of vomiting",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "rif_pain",
+      "type": "string",
+      "required": true,
+      "description": "Right iliac fossa (RIF) pain",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "rebound_tenderness",
+      "type": "string",
+      "required": true,
+      "description": "Rebound tenderness (percussion tenderness reflecting peritoneal irritation)",
+      "options": ["none", "light", "medium", "strong"],
+      "validation": {
+        "enum": ["none", "light", "medium", "strong"]
+      }
+    },
+    {
+      "name": "fever",
+      "type": "string",
+      "required": true,
+      "description": "Temperature ≥38.5°C (101.3°F)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "polymorphonuclear_percentage",
+      "type": "string",
+      "required": true,
+      "description": "Polymorphonuclear leukocytes percentage (neutrophil percentage)",
+      "options": ["under_70", "70_to_84", "85_or_over"],
+      "validation": {
+        "enum": ["under_70", "70_to_84", "85_or_over"]
+      }
+    },
+    {
+      "name": "wbc_count",
+      "type": "string",
+      "required": true,
+      "description": "White blood cell count (×10⁹/L)",
+      "options": ["under_10", "10_to_14_9", "15_or_over"],
+      "validation": {
+        "enum": ["under_10", "10_to_14_9", "15_or_over"]
+      }
+    },
+    {
+      "name": "crp_level",
+      "type": "string",
+      "required": true,
+      "description": "C-reactive protein level (mg/L)",
+      "options": ["under_10", "10_to_49", "50_or_over"],
+      "validation": {
+        "enum": ["under_10", "10_to_49", "50_or_over"]
+      }
+    }
+  ],
+  "result": {
+    "name": "air_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "AIR Score (range 0-12 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 4,
+        "stage": "Low Risk",
+        "description": "Low probability of appendicitis",
+        "interpretation": "Outpatient follow-up if unaltered general condition. Consider other diagnoses. Can be discharged with planned reexamination if clinically stable."
+      },
+      {
+        "min": 5,
+        "max": 8,
+        "stage": "Indeterminate Risk",
+        "description": "Intermediate probability of appendicitis",
+        "interpretation": "Admit patient for observation and serial reassessment. Consider rescoring after 4-8 hours of observation. May require imaging studies or surgical consultation."
+      },
+      {
+        "min": 9,
+        "max": 12,
+        "stage": "High Risk",
+        "description": "High probability of appendicitis",
+        "interpretation": "High suspicion for appendicitis. Surgical consultation recommended. Consider immediate surgical intervention, especially in patients with advanced appendicitis."
+      }
+    ]
+  },
+  "references": [
+    "Andersson M, Andersson RE. The appendicitis inflammatory response score: a tool for the diagnosis of acute appendicitis that outperforms the Alvarado score. World J Surg. 2008;32(8):1843-9.",
+    "Sammalkorpi HE, Mentula P, Leppäniemi A. A new adult appendicitis score improves diagnostic accuracy of acute appendicitis—a prospective study. BMC Gastroenterol. 2014;14:114.",
+    "Scott AJ, Mason SE, Arunakirinathan M, et al. Risk stratification by the Appendicitis Inflammatory Response score to guide decision-making in patients with suspected appendicitis. Br J Surg. 2015;102(5):563-72."
+  ],
+  "formula": "AIR Score = Vomiting (0-1) + RIF pain (0-1) + Rebound tenderness (0-3) + Fever ≥38.5°C (0-1) + Polymorphonuclear % (0-2) + WBC count (0-2) + CRP level (0-2)",
+  "notes": [
+    "The AIR Score is designed to have high sensitivity for advanced appendicitis, which is most clinically important to identify",
+    "Patients with short duration of symptoms may have low scores as their immune system has not yet reacted fully",
+    "Consider rescoring after a few hours in patients with short symptom duration",
+    "The score works especially well in children and women, but may be less specific in elderly patients",
+    "Advanced appendicitis often has lymphopenia, so normal or low WBC with high neutrophil percentage is significant",
+    "The proportion of neutrophils is particularly important as it reflects the inflammatory response",
+    "Rebound tenderness reflects peritoneal irritation and is a key clinical finding",
+    "External validation shows good performance across age groups 2-96 years"
+  ]
+}

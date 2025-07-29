@@ -1,0 +1,114 @@
+{
+  "id": "ada_risk_calculator",
+  "title": "American Diabetes Association (ADA) Risk Calculator",
+  "description": "Predicts risk of undiagnosed diabetes to determine who should be screened. Uses demographic and clinical factors to identify individuals at high risk for type 2 diabetes mellitus.",
+  "category": "endocrinology",
+  "version": "2011",
+  "parameters": [
+    {
+      "name": "age_category",
+      "type": "string",
+      "required": true,
+      "description": "Patient age category in years",
+      "validation": {
+        "enum": ["under_40", "40_49", "50_59", "60_or_older"]
+      },
+      "unit": "years"
+    },
+    {
+      "name": "gender",
+      "type": "string", 
+      "required": true,
+      "description": "Patient gender",
+      "validation": {
+        "enum": ["female", "male"]
+      },
+      "unit": null
+    },
+    {
+      "name": "family_history_diabetes",
+      "type": "string",
+      "required": true,
+      "description": "First-degree relative (parent, sibling, or child) with diabetes",
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": null
+    },
+    {
+      "name": "hypertension",
+      "type": "string",
+      "required": true,
+      "description": "History of hypertension (self-reported, prescribed antihypertensive medication, and/or BP ≥140/90 mmHg)",
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "unit": null
+    },
+    {
+      "name": "physically_active",
+      "type": "string",
+      "required": true,
+      "description": "Physically active as self-reported by patient",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "bmi_category",
+      "type": "string",
+      "required": true,
+      "description": "Body Mass Index category",
+      "validation": {
+        "enum": ["under_25", "25_to_30", "30_to_40", "40_or_higher"]
+      },
+      "unit": "kg/m²"
+    }
+  ],
+  "result": {
+    "name": "ada_risk_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "ADA diabetes risk score (0-10 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Low Risk",
+        "description": "Low risk for diabetes",
+        "interpretation": "Low risk for diabetes. Continue routine preventive care and lifestyle counseling. No additional diabetes screening needed at this time."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "High Risk for Prediabetes",
+        "description": "High risk for prediabetes",
+        "interpretation": "High risk for prediabetes. Consider screening with fasting glucose, oral glucose tolerance test, or HbA1c. Lifestyle interventions recommended."
+      },
+      {
+        "min": 5,
+        "max": 10,
+        "stage": "High Risk for Diabetes",
+        "description": "High risk for diabetes",
+        "interpretation": "High risk for undiagnosed diabetes. Recommend screening with fasting glucose, oral glucose tolerance test, or HbA1c. Consider diabetes prevention programs and lifestyle interventions."
+      }
+    ]
+  },
+  "references": [
+    "Bang H, Edwards AM, Bomback AS, et al. Development and validation of a patient self-assessment score for diabetes risk. Ann Intern Med. 2009 Dec 1;151(11):775-83. PMID: 19949143.",
+    "American Diabetes Association. Classification and Diagnosis of Diabetes: Standards of Medical Care in Diabetes-2021. Diabetes Care. 2021 Jan;44(Suppl 1):S15-S33.",
+    "Herman WH, Smith PJ, Thompson TJ, Engelgau MM, Aubert RE. A new and simple questionnaire to identify people at increased risk for undiagnosed diabetes. Diabetes Care. 1995 Mar;18(3):382-7."
+  ],
+  "formula": "Age points + Gender points + Family history points + Hypertension points + Physical activity points + BMI points = 0-10 points",
+  "notes": [
+    "Score ≥5 indicates high risk for diabetes and warrants screening",
+    "Score = 4 indicates high risk for prediabetes",
+    "Scores 0-3 indicate low risk and no immediate screening needed",
+    "The calculator uses easily obtainable information without laboratory tests",
+    "Should be used for screening asymptomatic adults",
+    "Does not replace clinical judgment or established diabetes screening guidelines"
+  ]
+}

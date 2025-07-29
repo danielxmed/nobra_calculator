@@ -1,0 +1,114 @@
+{
+  "id": "aub_has2_cardiovascular_risk_index",
+  "title": "American University of Beirut (AUB)-HAS2 Cardiovascular Risk Index",
+  "description": "Stratifies cardiovascular risk of patients undergoing noncardiac surgery using 6 easily obtainable clinical variables with superior discriminatory power compared to other risk indices.",
+  "category": "cardiology",
+  "version": "2019",
+  "parameters": [
+    {
+      "name": "history_heart_disease",
+      "type": "string",
+      "required": true,
+      "description": "History of heart disease including ischemic heart disease, congestive heart failure, or other cardiac conditions",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "age_75_or_older",
+      "type": "string", 
+      "required": true,
+      "description": "Patient age 75 years or older",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "symptoms_angina_dyspnea",
+      "type": "string",
+      "required": true,
+      "description": "Symptoms of angina or dyspnea (shortness of breath) suggesting cardiac or pulmonary compromise",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "anemia_hgb_less_12",
+      "type": "string",
+      "required": true,
+      "description": "Anemia defined as hemoglobin less than 12 mg/dL",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "vascular_surgery",
+      "type": "string",
+      "required": true,
+      "description": "Surgery involving vascular procedures (higher risk surgery type)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "emergency_surgery",
+      "type": "string",
+      "required": true,
+      "description": "Emergency or urgent surgery (non-elective procedure)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "aub_has2_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "AUB-HAS2 cardiovascular risk score (0-6 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "Low cardiovascular risk",
+        "interpretation": "Very low risk of major cardiovascular events (death, myocardial infarction, or stroke) within 30 days after surgery. Event rate <1%. Routine perioperative management without additional cardiac monitoring or interventions."
+      },
+      {
+        "min": 2,
+        "max": 3,
+        "stage": "Intermediate Risk", 
+        "description": "Intermediate cardiovascular risk",
+        "interpretation": "Moderate risk of major cardiovascular events within 30 days after surgery. Event rate 5-11%. Consider enhanced perioperative monitoring and cardiac consultation for optimization of medical therapy."
+      },
+      {
+        "min": 4,
+        "max": 6,
+        "stage": "High Risk",
+        "description": "High cardiovascular risk", 
+        "interpretation": "High risk of major cardiovascular events within 30 days after surgery. Event rate >15%. Recommend preoperative cardiac consultation, optimization of medical therapy, enhanced perioperative monitoring, and consideration of postoperative ICU care."
+      }
+    ]
+  },
+  "references": [
+    "Dakik H, Chehab O, Eldirani M, Soud M, Kassas I, Almedani S, et al. A New Index for Pre-Operative Cardiovascular Evaluation. J Am Coll Cardiol. 2019 Jul 9;73(26):3067-3078. doi: 10.1016/j.jacc.2019.04.023.",
+    "Dakik H, Sbaity E, Msheik A, Kasmar A, Chehab O, Tamim H. AUB-HAS2 Cardiovascular Risk Index: Performance in Surgical Subpopulations and Comparison to the Revised Cardiac Risk Index. J Am Heart Assoc. 2020 May 19;9(10):e016228. doi: 10.1161/JAHA.119.016228.",
+    "Dakik H, Eldirani M, Kaspar C, Chehab O, Sbaity E, Msheik A, et al. Prospective Validation of the AUB-HAS2 Cardiovascular Risk Index. Eur Heart J Qual Care Clin Outcomes. 2021 Jan 8;7(1):96-97. doi: 10.1093/ehjqcco/qcaa077."
+  ],
+  "formula": "AUB-HAS2 Score = Sum of present risk factors: History of heart disease (1 point) + Age ≥75 years (1 point) + Symptoms of angina/dyspnea (1 point) + Anemia Hgb <12 mg/dL (1 point) + Vascular surgery (1 point) + Emergency surgery (1 point). Total range: 0-6 points.",
+  "notes": [
+    "The AUB-HAS2 index demonstrated superior discriminatory power compared to the Revised Cardiac Risk Index (RCRI) in large validation studies.",
+    "The index can stratify patients into low (0-1 points), intermediate (2-3 points), and high risk (>3 points) categories with strong predictive ability (AUC 0.82-0.90).",
+    "Each risk factor contributes equally (1 point each) to the total score, making it simple to calculate and remember.",
+    "The score predicts 30-day major cardiovascular events (death, myocardial infarction, or stroke) after noncardiac surgery.",
+    "Validated in over 1 million patients from the American College of Surgeons National Surgical Quality Improvement Program database.",
+    "The HAS2 acronym represents: Heart disease, Age ≥75, Symptoms, and 2 additional factors (anemia and Surgery type)."
+  ]
+}

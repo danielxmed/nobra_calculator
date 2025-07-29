@@ -1,0 +1,98 @@
+{
+  "id": "asa_physical_status",
+  "title": "ASA Physical Status Classification System",
+  "description": "Classifies health of patients prior to surgery based on systemic disease and functional limitations. Used by anesthesiologists to assess preoperative risk and guide perioperative care.",
+  "category": "anesthesiology",
+  "version": "2020",
+  "parameters": [
+    {
+      "name": "physical_status",
+      "type": "string",
+      "required": true,
+      "description": "Patient's physical status based on systemic disease and functional limitations",
+      "options": [
+        "asa_1",
+        "asa_2", 
+        "asa_3",
+        "asa_4",
+        "asa_5",
+        "asa_6"
+      ],
+      "validation": {
+        "enum": ["asa_1", "asa_2", "asa_3", "asa_4", "asa_5", "asa_6"]
+      }
+    },
+    {
+      "name": "emergency_surgery",
+      "type": "string",
+      "required": true,
+      "description": "Whether this is an emergency surgery (delay would significantly increase threat to life or body part)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "asa_classification",
+    "type": "string",
+    "unit": "",
+    "description": "Final ASA Physical Status Classification with emergency modifier if applicable"
+  },
+  "interpretation": {
+    "classifications": [
+      {
+        "class": "ASA I",
+        "description": "Normal healthy patient",
+        "interpretation": "A normal healthy patient with no systemic disease. Examples: healthy non-smoking patient with no or minimal alcohol use, normal BMI.",
+        "perioperative_risk": "Minimal risk"
+      },
+      {
+        "class": "ASA II", 
+        "description": "Patient with mild systemic disease",
+        "interpretation": "A patient with mild systemic disease without substantive functional limitations. Examples: current smoker, social alcohol drinker, pregnancy, obesity (BMI 30-40), well-controlled diabetes/hypertension, mild lung disease.",
+        "perioperative_risk": "Low risk"
+      },
+      {
+        "class": "ASA III",
+        "description": "Patient with severe systemic disease",
+        "interpretation": "A patient with severe systemic disease with substantive functional limitations. Examples: poorly controlled diabetes or hypertension, COPD, morbid obesity (BMI ≥40), active hepatitis, alcohol dependence, pacemaker, ESRD on dialysis, history of MI/CVA/TIA >3 months.",
+        "perioperative_risk": "Moderate risk"
+      },
+      {
+        "class": "ASA IV",
+        "description": "Patient with severe systemic disease that is constant threat to life", 
+        "interpretation": "A patient with severe systemic disease that is a constant threat to life. Examples: recent (<3 months) MI/CVA/TIA, ongoing cardiac ischemia, severe valve dysfunction, shock, sepsis, DIC, ESRD not on scheduled dialysis.",
+        "perioperative_risk": "High risk"
+      },
+      {
+        "class": "ASA V",
+        "description": "Moribund patient not expected to survive without operation",
+        "interpretation": "A moribund patient who is not expected to survive without the operation. Examples: ruptured abdominal/thoracic aneurysm, massive trauma, intracranial bleed with mass effect, ischemic bowel with significant cardiac pathology.",
+        "perioperative_risk": "Very high risk"
+      },
+      {
+        "class": "ASA VI",
+        "description": "Brain-dead patient for organ donation",
+        "interpretation": "A declared brain-dead patient whose organs are being removed for donor purposes.",
+        "perioperative_risk": "Not applicable"
+      }
+    ]
+  },
+  "references": [
+    "American Society of Anesthesiologists. ASA Physical Status Classification System. Last amended December 13, 2020.",
+    "Hendrix JM, Garmon EH. American Society of Anesthesiologists Physical Status Classification System. StatPearls Publishing; 2025.",
+    "Hurwitz EE, Simon M, Vinta SR, et al. Adding Examples to the ASA-Physical Status Classification Improves Correct Assignment to Patients. Anesthesiology. 2017;126(4):614-622.",
+    "Mayhew D, Mendonca V, Murthy BVS. A review of ASA physical status - historical perspectives and modern developments. Anaesthesia. 2019;74(3):373-379."
+  ],
+  "formula": "Clinical assessment-based classification system ranging from ASA I (normal healthy patient) to ASA VI (brain-dead organ donor). Emergency modifier 'E' added when delay in treatment would significantly increase threat to life or body part.",
+  "notes": [
+    "The ASA Physical Status Classification System has been in use for over 60 years",
+    "The classification system alone does not predict perioperative risks but is used with other factors",
+    "Final assignment should be made on the day of anesthesia care by the anesthesiologist",
+    "The system is subjective and may have interrater variability",
+    "Age is not specifically included in the classification system",
+    "The 'E' modifier denotes emergency surgery but does not change the underlying physical status",
+    "This classification should be used alongside other risk assessment tools for comprehensive perioperative evaluation"
+  ]
+}

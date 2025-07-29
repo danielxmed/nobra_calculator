@@ -42,6 +42,8 @@ __all__ = [
     "AccAhaHfStagingResponse",
     "AcefIiRequest",
     "AcefIiResponse",
+    "AorticDissectionDetectionRiskScoreRequest",
+    "AorticDissectionDetectionRiskScoreResponse",
     
     # Pulmonology
     "Curb65Request",
@@ -70,6 +72,8 @@ __all__ = [
     "FourCMortalityResponse",
     "AcepEdCovid19ManagementToolRequest",
     "AcepEdCovid19ManagementToolResponse",
+    "AntivenomDosingAlgorithmRequest",
+    "AntivenomDosingAlgorithmResponse",
     
     # Psychiatry
     "AasRequest",
@@ -86,8 +90,10 @@ __all__ = [
     "AbbeyPainResponse",
     
     # Rheumatology
-    "EularAcrPmrRequest",
-    "EularAcrPmrResponse",
+    "AsdasCrpRequest",
+    "AsdasCrpResponse",
+    "AsdasEsrRequest",
+    "AsdasEsrResponse",
     
     # Infectious Disease
     "Helps2bRequest",

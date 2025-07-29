@@ -1,0 +1,115 @@
+{
+  "id": "asdas_esr",
+  "title": "Ankylosing Spondylitis Disease Activity Score with ESR (ASDAS-ESR)",
+  "description": "Stratifies severity of ankylosing spondylitis (AS) using clinical and laboratory data, specifically ESR. The ASDAS-ESR is a composite index to assess disease activity in axial spondyloarthritis, combining patient-reported outcomes with laboratory measures to provide a comprehensive evaluation of disease activity.",
+  "category": "rheumatology",
+  "version": "2009",
+  "parameters": [
+    {
+      "name": "back_pain",
+      "type": "integer",
+      "required": true,
+      "description": "Overall level of AS neck, back, or hip pain (0-10 scale)",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points"
+    },
+    {
+      "name": "morning_stiffness",
+      "type": "integer",
+      "required": true,
+      "description": "Overall level of morning stiffness from the time you wake up (0-10 scale)",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points"
+    },
+    {
+      "name": "patient_global",
+      "type": "integer",
+      "required": true,
+      "description": "How active was your spondylitis, on average, during the last week (0-10 scale)",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points"
+    },
+    {
+      "name": "peripheral_pain",
+      "type": "integer",
+      "required": true,
+      "description": "Overall level of pain/swelling in joints other than neck, back, or hips (0-10 scale)",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points"
+    },
+    {
+      "name": "esr",
+      "type": "integer",
+      "required": true,
+      "description": "Erythrocyte Sedimentation Rate",
+      "validation": {
+        "min": 0,
+        "max": 200
+      },
+      "unit": "mm/hr"
+    }
+  ],
+  "result": {
+    "name": "asdas_esr_score",
+    "type": "float",
+    "unit": "points",
+    "description": "ASDAS-ESR score calculated from clinical and laboratory parameters"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1.3,
+        "stage": "Inactive",
+        "description": "Inactive disease",
+        "interpretation": "Disease activity is inactive. Patient has minimal symptoms and inflammation markers are low. Continue current management and monitor regularly."
+      },
+      {
+        "min": 1.3,
+        "max": 2.1,
+        "stage": "Moderate",
+        "description": "Moderate disease activity",
+        "interpretation": "Disease activity is moderate. Consider optimization of current therapy or initiation of biological therapy if not already on treatment. Monitor closely for response."
+      },
+      {
+        "min": 2.1,
+        "max": 3.5,
+        "stage": "High",
+        "description": "High disease activity",
+        "interpretation": "Disease activity is high. Strongly consider biological therapy if not already initiated. Increase monitoring frequency and assess treatment response regularly."
+      },
+      {
+        "min": 3.5,
+        "max": 10,
+        "stage": "Very High",
+        "description": "Very high disease activity",
+        "interpretation": "Disease activity is very high. Urgent consideration for biological therapy or switching to alternative biological agent if already on treatment. Close monitoring and rapid treatment optimization required."
+      }
+    ]
+  },
+  "references": [
+    "Lukas C, Landewé R, Sieper J, Dougados M, Davis J, Braun J, van der Linden S, van der Heijde D. Development of an ASAS-endorsed disease activity score (ASDAS) in patients with ankylosing spondylitis. Ann Rheum Dis. 2009 Jan;68(1):18-24. doi: 10.1136/ard.2008.094870.",
+    "van der Heijde D, Lie E, Kvien TK, Sieper J, van den Bosch F, Listing J, Braun J, Landewé R. ASDAS, a highly discriminatory ASAS-endorsed disease activity score in patients with ankylosing spondylitis. Ann Rheum Dis. 2009 Dec;68(12):1811-8. doi: 10.1136/ard.2008.100826.",
+    "Machado P, Landewé R, Lie E, Kvien TK, Braun J, Baker D, van der Heijde D. Ankylosing Spondylitis Disease Activity Score (ASDAS): defining cut-off values for disease activity states and improvement scores. Ann Rheum Dis. 2011 Jan;70(1):47-53. doi: 10.1136/ard.2010.138594."
+  ],
+  "formula": "ASDAS-ESR = 0.08 × Back Pain + 0.07 × Duration of Morning Stiffness + 0.11 × Patient Global + 0.09 × Peripheral Pain/Swelling + 0.29 × √(ESR)",
+  "notes": [
+    "All patient-reported parameters (back pain, morning stiffness, patient global, peripheral pain) are assessed on a 0-10 numerical rating scale or visual analogue scale.",
+    "ESR should be measured in mm/hr using standard laboratory methods.",
+    "The ASDAS-CRP version (using C-reactive protein) is preferred over ASDAS-ESR when CRP is available.",
+    "Cut-offs for improvement: ≥1.1 units indicates clinically important improvement, ≥2.0 units indicates major improvement.",
+    "This score is validated for axial spondyloarthritis (including ankylosing spondylitis) patients."
+  ]
+}

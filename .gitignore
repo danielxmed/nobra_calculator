@@ -143,3 +143,6 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 cloudbuild.yaml
+
+CLAUDE.md
+.claude/

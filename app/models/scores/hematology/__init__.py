@@ -9,6 +9,7 @@ from .additional_nodal_metastasis_nomogram import (
     AdditionalNodalMetastasisNomogramRequest,
     AdditionalNodalMetastasisNomogramResponse
 )
+from .albi_hcc import AlbiHccRequest, AlbiHccResponse
 
 __all__ = [
     "FourTsRequest",
@@ -19,4 +20,6 @@ __all__ = [
     "AncResponse",
     "AdditionalNodalMetastasisNomogramRequest",
     "AdditionalNodalMetastasisNomogramResponse",
+    "AlbiHccRequest",
+    "AlbiHccResponse",
 ]

@@ -17,6 +17,13 @@ from .acetaminophen_overdose_nac import (
 from .adapt_protocol import AdaptProtocolRequest, AdaptProtocolResponse
 from .age_adjusted_d_dimer import AgeAdjustedDDimerRequest, AgeAdjustedDDimerResponse
 from .aims65 import Aims65Request, Aims65Response
+from .alt_70_cellulitis import Alt70CellulitisRequest, Alt70CellulitisResponse
+from .altitude_adjusted_perc import AltitudeAdjustedPercRequest, AltitudeAdjustedPercResponse
+from .alvarado_score import AlvaradoScoreRequest, AlvaradoScoreResponse
+from .antivenom_dosing_algorithm import AntivenomDosingAlgorithmRequest, AntivenomDosingAlgorithmResponse
+from .apache_ii_score import ApacheIiScoreRequest, ApacheIiScoreResponse
+from .air_score import AirScoreRequest, AirScoreResponse
+from .abg_analyzer import AbgAnalyzerRequest, AbgAnalyzerResponse
 
 __all__ = [
     "FourCMortalityRequest",
@@ -37,4 +44,18 @@ __all__ = [
     "AgeAdjustedDDimerResponse",
     "Aims65Request",
     "Aims65Response",
+    "Alt70CellulitisRequest",
+    "Alt70CellulitisResponse",
+    "AltitudeAdjustedPercRequest",
+    "AltitudeAdjustedPercResponse",
+    "AlvaradoScoreRequest",
+    "AlvaradoScoreResponse",
+    "AntivenomDosingAlgorithmRequest",
+    "AntivenomDosingAlgorithmResponse",
+    "ApacheIiScoreRequest",
+    "ApacheIiScoreResponse",
+    "AirScoreRequest",
+    "AirScoreResponse",
+    "AbgAnalyzerRequest",
+    "AbgAnalyzerResponse",
 ]

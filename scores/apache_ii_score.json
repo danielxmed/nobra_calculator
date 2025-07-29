@@ -1,0 +1,264 @@
+{
+  "id": "apache_ii_score",
+  "title": "APACHE II Score",
+  "description": "Estimates ICU mortality using physiological parameters, age, and chronic health status within 24 hours of ICU admission",
+  "category": "emergency",
+  "version": "1985",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient's age in years",
+      "validation": {
+        "min": 0,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "temperature",
+      "type": "float",
+      "required": true,
+      "description": "Worst body temperature (rectal) in first 24 hours of ICU admission",
+      "validation": {
+        "min": 25.0,
+        "max": 46.0
+      },
+      "unit": "°C"
+    },
+    {
+      "name": "mean_arterial_pressure",
+      "type": "integer",
+      "required": true,
+      "description": "Worst mean arterial pressure in first 24 hours of ICU admission",
+      "validation": {
+        "min": 30,
+        "max": 250
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "ph",
+      "type": "float",
+      "required": true,
+      "description": "Worst arterial pH in first 24 hours of ICU admission",
+      "validation": {
+        "min": 6.5,
+        "max": 8.0
+      },
+      "unit": ""
+    },
+    {
+      "name": "heart_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Worst heart rate in first 24 hours of ICU admission",
+      "validation": {
+        "min": 20,
+        "max": 250
+      },
+      "unit": "bpm"
+    },
+    {
+      "name": "respiratory_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Worst respiratory rate in first 24 hours of ICU admission",
+      "validation": {
+        "min": 5,
+        "max": 80
+      },
+      "unit": "breaths/min"
+    },
+    {
+      "name": "sodium",
+      "type": "integer",
+      "required": true,
+      "description": "Worst serum sodium in first 24 hours of ICU admission",
+      "validation": {
+        "min": 100,
+        "max": 200
+      },
+      "unit": "mEq/L"
+    },
+    {
+      "name": "potassium",
+      "type": "float",
+      "required": true,
+      "description": "Worst serum potassium in first 24 hours of ICU admission",
+      "validation": {
+        "min": 1.0,
+        "max": 10.0
+      },
+      "unit": "mEq/L"
+    },
+    {
+      "name": "creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Worst serum creatinine in first 24 hours of ICU admission",
+      "validation": {
+        "min": 0.1,
+        "max": 20.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "acute_renal_failure",
+      "type": "string",
+      "required": true,
+      "description": "Presence of acute renal failure (doubles creatinine points)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hematocrit",
+      "type": "float",
+      "required": true,
+      "description": "Worst hematocrit in first 24 hours of ICU admission",
+      "validation": {
+        "min": 10.0,
+        "max": 70.0
+      },
+      "unit": "%"
+    },
+    {
+      "name": "white_blood_cell_count",
+      "type": "float",
+      "required": true,
+      "description": "Worst white blood cell count in first 24 hours of ICU admission",
+      "validation": {
+        "min": 0.1,
+        "max": 100.0
+      },
+      "unit": "×10³/mm³"
+    },
+    {
+      "name": "glasgow_coma_scale",
+      "type": "integer",
+      "required": true,
+      "description": "Glasgow Coma Scale score (15 points = fully alert)",
+      "validation": {
+        "min": 3,
+        "max": 15
+      },
+      "unit": "points"
+    },
+    {
+      "name": "fio2",
+      "type": "float",
+      "required": true,
+      "description": "Fraction of inspired oxygen (as decimal, e.g., 0.21 for 21%)",
+      "validation": {
+        "min": 0.21,
+        "max": 1.0
+      },
+      "unit": ""
+    },
+    {
+      "name": "pao2",
+      "type": "float",
+      "required": false,
+      "description": "Arterial oxygen pressure (required if FiO2 < 0.5)",
+      "validation": {
+        "min": 30.0,
+        "max": 700.0
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "aado2",
+      "type": "float",
+      "required": false,
+      "description": "Alveolar-arterial oxygen gradient (required if FiO2 ≥ 0.5)",
+      "validation": {
+        "min": 0.0,
+        "max": 800.0
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "chronic_health_status",
+      "type": "string",
+      "required": true,
+      "description": "History of severe organ system insufficiency or immunocompromised state",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "admission_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of ICU admission",
+      "options": ["elective_postoperative", "nonoperative", "emergency_postoperative"],
+      "validation": {
+        "enum": ["elective_postoperative", "nonoperative", "emergency_postoperative"]
+      }
+    }
+  ],
+  "result": {
+    "name": "apache_ii_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "APACHE II score (0-71 points, higher scores indicate higher mortality risk)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 9,
+        "stage": "Low Risk",
+        "description": "Low mortality risk",
+        "interpretation": "APACHE II score 0-9 points indicates low severity of illness with predicted mortality typically <10%. Patients in this range generally have a good prognosis for ICU survival."
+      },
+      {
+        "min": 10,
+        "max": 19,
+        "stage": "Moderate Risk",
+        "description": "Moderate mortality risk",
+        "interpretation": "APACHE II score 10-19 points indicates moderate severity of illness with predicted mortality typically 10-25%. Close monitoring and standard ICU care are appropriate."
+      },
+      {
+        "min": 20,
+        "max": 29,
+        "stage": "High Risk",
+        "description": "High mortality risk",
+        "interpretation": "APACHE II score 20-29 points indicates high severity of illness with predicted mortality typically 25-50%. Aggressive intensive care management is warranted."
+      },
+      {
+        "min": 30,
+        "max": 39,
+        "stage": "Very High Risk",
+        "description": "Very high mortality risk",
+        "interpretation": "APACHE II score 30-39 points indicates very high severity of illness with predicted mortality typically 50-75%. Maximum intensive care support and consideration of goals of care discussions may be appropriate."
+      },
+      {
+        "min": 40,
+        "max": 71,
+        "stage": "Extremely High Risk",
+        "description": "Extremely high mortality risk",
+        "interpretation": "APACHE II score ≥40 points indicates extremely high severity of illness with predicted mortality typically >75%. Consider palliative care consultation and careful evaluation of treatment goals."
+      }
+    ]
+  },
+  "references": [
+    "Knaus WA, Draper EA, Wagner DP, Zimmerman JE. APACHE II: a severity of disease classification system. Crit Care Med. 1985;13(10):818-29. doi: 10.1097/00003246-198510000-00009. PMID: 3928249.",
+    "Vincent JL, Moreno R. Clinical review: scoring systems in the critically ill. Crit Care. 2010;14(2):207. doi: 10.1186/cc8204. PMID: 20392287.",
+    "Zimmerman JE, Kramer AA, McNair DS, Malila FM. Acute Physiology and Chronic Health Evaluation (APACHE) IV: hospital mortality assessment for today's critically ill patients. Crit Care Med. 2006;34(5):1297-310. doi: 10.1097/01.CCM.0000215112.84523.F0. PMID: 16540951."
+  ],
+  "formula": "APACHE II = Acute Physiology Score (0-60) + Age Points (0-6) + Chronic Health Points (0-5). APS is sum of weighted scores for 12 physiological variables (temperature, MAP, HR, RR, oxygenation, pH, sodium, potassium, creatinine, hematocrit, WBC, GCS). Age points: ≤44y=0, 45-54y=2, 55-64y=3, 65-74y=5, ≥75y=6. Chronic health: 5 points for nonoperative/emergency operative, 2 points for elective operative if severe organ insufficiency or immunocompromised.",
+  "notes": [
+    "Use the worst values within the first 24 hours of ICU admission",
+    "Score is not recalculated during stay - it is by definition an admission score",
+    "If patient is readmitted to ICU, calculate a new APACHE II score",
+    "For oxygenation: use PaO2 if FiO2 <0.5, use A-aDO2 if FiO2 ≥0.5",
+    "Chronic health criteria: liver cirrhosis with portal hypertension, NYHA Class IV heart failure, severe respiratory disease, dialysis dependence, or immunocompromised state",
+    "Score ranges 0-71, but rarely exceeds 55 in practice",
+    "Predicted mortality requires ICU admission diagnosis in addition to APACHE II score"
+  ]
+}

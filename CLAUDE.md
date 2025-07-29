@@ -618,10 +618,11 @@ curl http://localhost:8000/api/scores
 
 ### 3. Test the Calculation
 ```bash
-curl -X POST http://localhost:8000/api/{score_id} \
+curl -X POST http://localhost:8000/{score_id} \  
   -H "Content-Type: application/json" \
   -d '{"param1": "value", "param2": 50, "param3": 1.5}'
 ```
+**Careful!** -> There is no /api on the specific score routes! It`s just root_url/score_id
 
 ### 4. Check Metadata
 ```bash

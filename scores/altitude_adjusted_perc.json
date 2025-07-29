@@ -1,0 +1,127 @@
+{
+  "id": "altitude_adjusted_perc",
+  "title": "Altitude-Adjusted PERC Rule",
+  "description": "Rules out pulmonary embolism (PE) if no criteria are present; includes adjustment for high altitude (>4000 ft) by removing oxygen saturation criterion. Used in patients with low pretest probability of PE (<15%) who live at high altitude.",
+  "category": "emergency",
+  "version": "2014",
+  "parameters": [
+    {
+      "name": "high_altitude",
+      "type": "string",
+      "required": true,
+      "description": "Patient lives at high altitude (>4000 ft)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "age_50_or_older",
+      "type": "string",
+      "required": true,
+      "description": "Age ≥50 years",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "hr_100_or_greater",
+      "type": "string",
+      "required": true,
+      "description": "Heart rate ≥100 beats per minute",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "unilateral_leg_swelling",
+      "type": "string",
+      "required": true,
+      "description": "Unilateral leg swelling",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "hemoptysis",
+      "type": "string",
+      "required": true,
+      "description": "Hemoptysis (coughing up blood)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "recent_surgery_trauma",
+      "type": "string",
+      "required": true,
+      "description": "Recent surgery or trauma (≤4 weeks ago requiring general anesthesia)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "prior_pe_dvt",
+      "type": "string",
+      "required": true,
+      "description": "Prior history of PE or DVT",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "hormone_use",
+      "type": "string",
+      "required": true,
+      "description": "Hormone use (oral contraceptives, hormone replacement, or estrogenic hormones)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "perc_result",
+    "type": "string", 
+    "unit": "recommendation",
+    "description": "PERC rule result and clinical recommendation"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "PERC Negative",
+        "description": "No criteria present - PE ruled out",
+        "interpretation": "PERC rule criteria satisfied. No need for further workup, as <2% chance of PE. Patient can be safely discharged without additional testing for PE if clinician's pretest probability is <15%."
+      },
+      {
+        "min": 1,
+        "max": 8,
+        "stage": "PERC Positive", 
+        "description": "One or more criteria present",
+        "interpretation": "PERC rule not satisfied. Further workup for PE is indicated as one or more criteria are present. Consider D-dimer, CT pulmonary angiogram, or other appropriate diagnostic testing based on clinical judgment and pretest probability."
+      }
+    ]
+  },
+  "references": [
+    "Wolf SJ, McCubbin TR, Nordenholz KE, Naviaux NW, Haukoos JS, Kline JA. Assessment of the pulmonary embolism rule-out criteria rule for evaluation of suspected pulmonary embolism in the emergency department. Am J Emerg Med. 2008 Feb;26(2):181-5. doi: 10.1016/j.ajem.2007.04.026.",
+    "Kline JA, Mitchell AM, Kabrhel C, Richman PB, Courtney DM. Clinical criteria to prevent unnecessary diagnostic testing in emergency department patients with suspected pulmonary embolism. J Thromb Haemost. 2004 Aug;2(8):1247-55. doi: 10.1111/j.1538-7836.2004.00790.x.",
+    "Kline JA, Courtney DM, Kabrhel C, Moore CL, Smithline HA, Plewa MC, et al. Prospective multicenter evaluation of the pulmonary embolism rule-out criteria. J Thromb Haemost. 2008 May;6(5):772-80. doi: 10.1111/j.1538-7836.2008.02944.x."
+  ],
+  "formula": "PERC = Sum of positive criteria. If all 7 criteria are negative AND patient lives at high altitude (>4000 ft) AND pretest probability <15%, then PE is ruled out.",
+  "notes": [
+    "This tool is specifically intended for patients with low risk for PE who live at high altitude (>4000 ft)",
+    "The altitude adjustment removes the oxygen saturation criterion (<95% on room air) that is present in the standard PERC rule, as normal SaO2 is naturally lower at high altitude",
+    "The rule is only valid when the clinician's gestalt pretest probability of PE is <15%",
+    "If any criterion is positive, further workup is needed regardless of pretest probability",
+    "The PERC rule should not be used in patients with high or intermediate pretest probability of PE",
+    "This rule was developed to help avoid unnecessary testing in very low-risk patients"
+  ]
+}

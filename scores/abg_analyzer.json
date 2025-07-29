@@ -1,0 +1,118 @@
+{
+  "id": "abg_analyzer",
+  "title": "Arterial Blood Gas (ABG) Analyzer",
+  "description": "Interprets arterial blood gas results to determine acid-base status, respiratory compensation, and metabolic derangements",
+  "category": "emergency",
+  "version": "2024",
+  "parameters": [
+    {
+      "name": "ph",
+      "type": "float",
+      "required": true,
+      "description": "Arterial blood pH value",
+      "validation": {
+        "min": 6.8,
+        "max": 7.8
+      },
+      "unit": ""
+    },
+    {
+      "name": "pco2",
+      "type": "float",
+      "required": true,
+      "description": "Partial pressure of carbon dioxide in arterial blood",
+      "validation": {
+        "min": 10,
+        "max": 100
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "hco3",
+      "type": "float",
+      "required": true,
+      "description": "Bicarbonate concentration in arterial blood",
+      "validation": {
+        "min": 5,
+        "max": 50
+      },
+      "unit": "mEq/L"
+    },
+    {
+      "name": "po2",
+      "type": "float",
+      "required": false,
+      "description": "Partial pressure of oxygen in arterial blood (optional for oxygenation assessment)",
+      "validation": {
+        "min": 30,
+        "max": 600
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "fio2",
+      "type": "float",
+      "required": false,
+      "description": "Fraction of inspired oxygen (optional, expressed as decimal: 0.21 for room air)",
+      "validation": {
+        "min": 0.21,
+        "max": 1.0
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "abg_interpretation",
+    "type": "string",
+    "unit": "",
+    "description": "Complete arterial blood gas interpretation including acid-base status and compensation"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "condition": "pH < 7.35 and HCO3 < 22",
+        "stage": "Metabolic Acidosis",
+        "description": "Primary metabolic acidosis",
+        "interpretation": "Low pH with low bicarbonate indicates metabolic acidosis. Assess for respiratory compensation and calculate anion gap."
+      },
+      {
+        "condition": "pH < 7.35 and PCO2 > 45",
+        "stage": "Respiratory Acidosis",
+        "description": "Primary respiratory acidosis",
+        "interpretation": "Low pH with high CO2 indicates respiratory acidosis. Assess for metabolic compensation."
+      },
+      {
+        "condition": "pH > 7.45 and HCO3 > 26",
+        "stage": "Metabolic Alkalosis",
+        "description": "Primary metabolic alkalosis",
+        "interpretation": "High pH with high bicarbonate indicates metabolic alkalosis. Assess for respiratory compensation."
+      },
+      {
+        "condition": "pH > 7.45 and PCO2 < 35",
+        "stage": "Respiratory Alkalosis",
+        "description": "Primary respiratory alkalosis",
+        "interpretation": "High pH with low CO2 indicates respiratory alkalosis. Assess for metabolic compensation."
+      },
+      {
+        "condition": "pH 7.35-7.45",
+        "stage": "Normal pH",
+        "description": "pH within normal range",
+        "interpretation": "pH is normal. Assess for mixed disorders or compensated acid-base disturbances."
+      }
+    ]
+  },
+  "references": [
+    "Seifter JL. Acid-base disorders. In: Jameson J, Fauci AS, Kasper DL, Hauser SL, Longo DL, Loscalzo J. eds. Harrison's Principles of Internal Medicine, 20e. McGraw Hill; 2018.",
+    "Kraut JA, Madias NE. Serum anion gap: its uses and limitations in clinical medicine. Clin J Am Soc Nephrol. 2007;2(1):162-74.",
+    "Berend K, de Vries AP, Gans RO. Physiological approach to assessment of acid-base disturbances. N Engl J Med. 2014;371(15):1434-45.",
+    "MDCalc. Arterial Blood Gas (ABG) Analyzer. Available at: https://www.mdcalc.com/calc/1741/arterial-blood-gas-abg-analyzer"
+  ],
+  "formula": "Primary disorder determined by pH direction and primary parameter (HCO3 for metabolic, PCO2 for respiratory). Compensation assessed using Winter's formula for metabolic acidosis: Expected PCO2 = 1.5 × [HCO3] + 8 (±2)",
+  "notes": [
+    "Normal values: pH 7.35-7.45, PCO2 35-45 mmHg, HCO3 22-26 mEq/L",
+    "For metabolic acidosis, calculate anion gap: Na - (Cl + HCO3). Normal: 8-12 mEq/L",
+    "Winter's formula applies only to pure metabolic acidosis",
+    "Always consider clinical context and additional laboratory values",
+    "Mixed disorders may be present, especially in critically ill patients"
+  ]
+}

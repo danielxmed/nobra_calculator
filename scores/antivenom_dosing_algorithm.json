@@ -1,0 +1,86 @@
+{
+  "id": "antivenom_dosing_algorithm",
+  "title": "Antivenom Dosing Algorithm",
+  "description": "Doses antivenom (CroFab only, not Anavip) for pit viper snakebites. This unified treatment algorithm assists with quick identification and management of patients who may benefit from treatment with Crotalidae Polyvalent Immune Fab (CroFab®).",
+  "category": "emergency",
+  "version": "2011",
+  "parameters": [
+    {
+      "name": "signs_of_envenomation",
+      "type": "string",
+      "required": true,
+      "description": "Presence of signs of envenomation including swelling, tenderness, redness, ecchymosis, or blebs at bite site; elevated protime, decreased fibrinogen or platelets; systemic signs (hypotension, bleeding beyond puncture site, refractory vomiting, diarrhea, angioedema, neurotoxicity)",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "severity_grade",
+      "type": "string",
+      "required": true,
+      "description": "Clinical severity grade of envenomation based on local, systemic, and hematologic effects",
+      "validation": {
+        "enum": ["none", "minimal", "moderate", "severe"]
+      }
+    },
+    {
+      "name": "patient_weight_kg",
+      "type": "float",
+      "required": true,
+      "description": "Patient weight in kilograms (dosing is same for adults and pediatrics)",
+      "validation": {
+        "min": 1,
+        "max": 300
+      },
+      "unit": "kg"
+    }
+  ],
+  "result": {
+    "name": "initial_dose_vials",
+    "type": "integer",
+    "unit": "vials",
+    "description": "Initial dose of CroFab antivenom in vials"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "No Treatment",
+        "description": "No antivenom needed",
+        "interpretation": "No signs of envenomation present. Monitor patient closely for progression. Provide supportive care including tetanus prophylaxis, wound care, and pain management. Mark leading edge of any swelling every 15-30 minutes."
+      },
+      {
+        "min": 4,
+        "max": 6,
+        "stage": "Standard Initial Dose",
+        "description": "Standard initial antivenom dose",
+        "interpretation": "Administer 4-6 vials CroFab IV over 60 minutes. Monitor for initial control of envenomation (arrest of local effects, resolution of systemic effects, reduction of hematologic abnormalities). If initial control not achieved in ~1 hour, administer additional 4-6 vials. Once initial control achieved, give maintenance doses of 2 vials every 6 hours for 3 doses (at 6, 12, and 18 hours)."
+      },
+      {
+        "min": 6,
+        "max": 12,
+        "stage": "Higher Initial Dose",
+        "description": "Higher initial antivenom dose for severe cases",
+        "interpretation": "Administer 6-12 vials CroFab IV over 60 minutes for severe envenomation. Monitor for initial control of envenomation. May require additional doses if control not achieved. Once initial control achieved, give maintenance doses of 2 vials every 6 hours for 3 doses (at 6, 12, and 18 hours). Contact poison control (1-800-222-1222)."
+      }
+    ]
+  },
+  "references": [
+    "Lavonas EJ, Ruha AM, Banner W, et al. Unified treatment algorithm for the management of crotaline snakebite in the United States: results of an evidence-informed consensus workshop. BMC Emerg Med. 2011;11:2. doi: 10.1186/1471-227X-11-2",
+    "Dart RC, Seifert SA, Boyer LV, et al. A randomized multicenter trial of crotalinae polyvalent immune Fab (ovine) antivenom for the treatment for crotaline snakebite in the United States. Arch Intern Med. 2001;161(16):2030-2036.",
+    "CroFab® Prescribing Information. BTG International Inc.; August 2018."
+  ],
+  "formula": "Algorithm-based dosing: Initial dose 4-6 vials (up to 12 for severe cases), additional 4-6 vials if control not achieved, maintenance 2 vials q6h x 3 doses",
+  "notes": [
+    "Use only for symptomatic crotalid snake envenomation (pit vipers including rattlesnakes, cottonmouths, and copperheads) in the US",
+    "For CroFab administration only - do not use for Anavip dosing",
+    "Do not use for coral snake envenomation or non-US indigenous snakes",
+    "Not valid for snakebites on head/neck, snakebites causing rhabdomyolysis, or anaphylaxis/anaphylactoid reactions",
+    "Report all cases to poison control: 1-800-222-1222",
+    "Avoid: cutting/suctioning wound, ice, NSAIDs, prophylactic antibiotics, fasciotomy, electrical shock, steroids (unless allergic), tourniquets",
+    "Initial control requires: arrest of local effects, resolution of systemic effects, reduction of hematologic abnormalities",
+    "Maintenance therapy may not be needed if close physician-expert observation available",
+    "Follow-up: bleeding precautions for 2 weeks, lab monitoring at 2-3 days and 5-7 days post-discharge"
+  ]
+}

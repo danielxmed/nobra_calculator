@@ -1,0 +1,108 @@
+{
+  "id": "apgar_score",
+  "title": "APGAR Score",
+  "description": "Assesses neonatal vitality at 1 and 5 minutes after birth using 5 clinical criteria",
+  "category": "pediatrics",
+  "version": "1952",
+  "parameters": [
+    {
+      "name": "activity_muscle_tone",
+      "type": "string",
+      "required": true,
+      "description": "Assessment of muscle tone and activity",
+      "options": ["active", "some_flexion", "limp"],
+      "validation": {
+        "enum": ["active", "some_flexion", "limp"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "pulse",
+      "type": "string",
+      "required": true,
+      "description": "Heart rate assessment",
+      "options": [">=100_bpm", "<100_bpm", "absent"],
+      "validation": {
+        "enum": [">=100_bpm", "<100_bpm", "absent"]
+      },
+      "unit": "bpm"
+    },
+    {
+      "name": "grimace_reflex",
+      "type": "string",
+      "required": true,
+      "description": "Reflex irritability/grimace response to stimulation",
+      "options": ["sneeze_cough", "grimace", "none"],
+      "validation": {
+        "enum": ["sneeze_cough", "grimace", "none"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "appearance_color",
+      "type": "string",
+      "required": true,
+      "description": "Skin color assessment",
+      "options": ["all_pink", "blue_extremities", "blue_pale"],
+      "validation": {
+        "enum": ["all_pink", "blue_extremities", "blue_pale"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "respirations",
+      "type": "string",
+      "required": true,
+      "description": "Respiratory effort assessment",
+      "options": ["good_crying", "irregular_slow", "absent"],
+      "validation": {
+        "enum": ["good_crying", "irregular_slow", "absent"]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "apgar_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total APGAR score (0-10 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Severe Distress",
+        "description": "Severe distress - immediate medical attention required",
+        "interpretation": "Score 0-3 indicates severe distress. The neonate requires immediate resuscitation and intensive medical intervention. This suggests significant compromise in the transition to extrauterine life."
+      },
+      {
+        "min": 4,
+        "max": 6,
+        "stage": "Moderate Distress",
+        "description": "Moderate distress - may need assistance",
+        "interpretation": "Score 4-6 indicates moderate distress. The neonate may require some assistance with breathing or circulatory support. Close monitoring and possible intervention are warranted."
+      },
+      {
+        "min": 7,
+        "max": 10,
+        "stage": "Normal",
+        "description": "Normal condition - reassuring",
+        "interpretation": "Score 7-10 indicates good condition. The neonate is adapting well to extrauterine life. Scores of 8-9 are most common, as most newborns lose 1 point for blue extremities which is normal."
+      }
+    ]
+  },
+  "references": [
+    "Apgar V. A proposal for a new method of evaluation of the newborn infant. Curr Res Anesth Analg. 1953;32(4):260-267.",
+    "Apgar V, Holaday DA, James LS, Weisbrot IM, Berrien C. Evaluation of the newborn infant; second report. J Am Med Assoc. 1958;168(15):1985-1988.",
+    "American College of Obstetricians and Gynecologists Committee on Obstetric Practice. The Apgar Score. Committee Opinion No. 644. Obstet Gynecol. 2015;126:e52-55."
+  ],
+  "formula": "Sum of 5 components: Activity (0-2) + Pulse (0-2) + Grimace (0-2) + Appearance (0-2) + Respirations (0-2) = Total Score (0-10)",
+  "notes": [
+    "The APGAR score should be assessed at 1 and 5 minutes after birth",
+    "If the 5-minute score is <7, additional scores should be assessed every 5 minutes up to 20 minutes",
+    "The score should not be used to predict long-term neurological outcomes",
+    "A score of 10 is very unusual as most newborns lose 1 point for blue extremities",
+    "Created by Dr. Virginia Apgar in 1952 at Columbia University"
+  ]
+}

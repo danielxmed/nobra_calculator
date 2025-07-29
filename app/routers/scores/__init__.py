@@ -5,6 +5,7 @@ Main scores router that includes all specialty score routers
 from fastapi import APIRouter
 
 # Import all specialty routers
+from .anesthesiology import router as anesthesiology_router
 from .nephrology import router as nephrology_router
 from .cardiology import router as cardiology_router
 from .pulmonology import router as pulmonology_router
@@ -22,6 +23,7 @@ from .oncology import router as oncology_router
 router = APIRouter()
 
 # Include all specialty routers
+router.include_router(anesthesiology_router, tags=["anesthesiology"])
 router.include_router(nephrology_router, tags=["nephrology"])
 router.include_router(cardiology_router, tags=["cardiology"])
 router.include_router(pulmonology_router, tags=["pulmonology"])

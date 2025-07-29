@@ -1,0 +1,140 @@
+{
+  "id": "alvarado_score",
+  "title": "Alvarado Score for Acute Appendicitis",
+  "description": "Predicts likelihood of acute appendicitis based on clinical symptoms, signs, and laboratory findings. Uses the MANTRELS mnemonic to assess 8 clinical factors for diagnosis of appendicitis.",
+  "category": "emergency",
+  "version": "1986",
+  "parameters": [
+    {
+      "name": "migration_to_rlq",
+      "type": "string",
+      "required": true,
+      "description": "Migration of pain to the right lower quadrant (right iliac fossa)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "anorexia",
+      "type": "string",
+      "required": true,
+      "description": "Anorexia (loss of appetite)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "nausea_vomiting",
+      "type": "string",
+      "required": true,
+      "description": "Nausea or vomiting",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "tenderness_rlq",
+      "type": "string",
+      "required": true,
+      "description": "Tenderness in the right lower quadrant (right iliac fossa)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "rebound_tenderness",
+      "type": "string",
+      "required": true,
+      "description": "Rebound tenderness or indirect signs (Roving sign, Dunphy sign, Markle test, percussion tenderness)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "elevated_temperature",
+      "type": "string",
+      "required": true,
+      "description": "Elevated temperature (fever >37.3°C or >99.1°F)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "leukocytosis",
+      "type": "string",
+      "required": true,
+      "description": "Leukocytosis (WBC count >10,000/μL)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "neutrophil_left_shift",
+      "type": "string",
+      "required": true,
+      "description": "Neutrophil left shift (>75% neutrophils)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    }
+  ],
+  "result": {
+    "name": "alvarado_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Alvarado score (0-10 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Low Risk",
+        "description": "Low probability of appendicitis",
+        "interpretation": "Low probability of appendicitis (1-6% risk). Consider discharge with close follow-up. No further imaging typically needed."
+      },
+      {
+        "min": 4,
+        "max": 6,
+        "stage": "Intermediate Risk",
+        "description": "Intermediate probability of appendicitis",
+        "interpretation": "Intermediate probability of appendicitis (15-25% risk). Consider observation, serial exams, or imaging (CT scan). Surgical consultation may be warranted."
+      },
+      {
+        "min": 7,
+        "max": 8,
+        "stage": "High Risk",
+        "description": "High probability of appendicitis",
+        "interpretation": "High probability of appendicitis (75-85% risk). Strong indication for surgical consultation and likely appendectomy. Consider expedited surgical evaluation."
+      },
+      {
+        "min": 9,
+        "max": 10,
+        "stage": "Very High Risk",
+        "description": "Very high probability of appendicitis",
+        "interpretation": "Very high probability of appendicitis (>90% risk). Very strong indication for immediate surgical consultation and appendectomy. Imaging may delay necessary surgery."
+      }
+    ]
+  },
+  "references": [
+    "Alvarado A. A practical score for the early diagnosis of acute appendicitis. Ann Emerg Med. 1986 May;15(5):557-64. PMID: 3963537.",
+    "Alvarado A. How to improve the clinical diagnosis of acute appendicitis in resource limited settings. World J Emerg Surg. 2016 Apr 26;11:16. PMID: 27123036.",
+    "Coleman JJ, Carr BW, Rogers T, et al. The Alvarado score should be used to reduce emergency department length of stay and CT use in select patients with abdominal pain. J Trauma Acute Care Surg. 2018;84(6):946-950."
+  ],
+  "formula": "Migration (1) + Anorexia (1) + Nausea/Vomiting (1) + Tenderness RLQ (2) + Rebound tenderness (1) + Elevated temperature (1) + Leukocytosis (2) + Left shift (1) = 0-10 points",
+  "notes": [
+    "The MANTRELS mnemonic helps remember the 8 components: Migration, Anorexia, Nausea/vomiting, Tenderness in RLQ, Rebound tenderness, Elevated temperature, Leukocytosis, Left Shift",
+    "Tenderness in RLQ and leukocytosis are weighted more heavily (2 points each) as they are the most important predictive factors",
+    "The score performs better in men and children than in women of childbearing age due to higher false-positive rate in women",
+    "Originally developed as a rule-out tool for low scores (<4) and rule-in tool for high scores (>6)",
+    "A score of 5-6 is compatible with appendicitis diagnosis, 7-8 indicates probable appendicitis, and 9-10 indicates very probable appendicitis"
+  ]
+}

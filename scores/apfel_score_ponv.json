@@ -1,0 +1,107 @@
+{
+  "id": "apfel_score_ponv",
+  "title": "Apfel Score for Postoperative Nausea and Vomiting",
+  "description": "Predicts risk of postoperative nausea and vomiting (PONV) using four simple clinical factors to guide prophylactic antiemetic therapy decisions.",
+  "category": "anesthesiology",
+  "version": "1999",
+  "parameters": [
+    {
+      "name": "gender",
+      "type": "string",
+      "required": true,
+      "description": "Patient gender (female gender is a risk factor for PONV)",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "smoking_status", 
+      "type": "string",
+      "required": true,
+      "description": "Current smoking status (non-smoking is a risk factor for PONV)",
+      "options": ["smoker", "nonsmoker"],
+      "validation": {
+        "enum": ["smoker", "nonsmoker"]
+      }
+    },
+    {
+      "name": "history_motion_sickness_ponv",
+      "type": "string", 
+      "required": true,
+      "description": "Previous history of motion sickness or postoperative nausea and vomiting",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "postoperative_opioids",
+      "type": "string",
+      "required": true, 
+      "description": "Planned use of postoperative opioids for pain management",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "apfel_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Apfel Score for PONV risk assessment (0-4 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Very Low Risk",
+        "description": "0 risk factors",
+        "interpretation": "Approximately 10% risk of PONV within 24 hours. Prophylactic antiemetics generally not recommended."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Low Risk", 
+        "description": "1 risk factor",
+        "interpretation": "Approximately 20% risk of PONV within 24 hours. Consider single prophylactic antiemetic agent."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Moderate Risk",
+        "description": "2 risk factors", 
+        "interpretation": "Approximately 40% risk of PONV within 24 hours. Recommend combination of 2 prophylactic antiemetic agents."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "High Risk",
+        "description": "3 risk factors",
+        "interpretation": "Approximately 60% risk of PONV within 24 hours. Recommend combination of 2-3 prophylactic antiemetic agents."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Very High Risk",
+        "description": "4 risk factors",
+        "interpretation": "Approximately 80% risk of PONV within 24 hours. Recommend combination of multiple prophylactic antiemetic agents and consider total intravenous anesthesia (TIVA)."
+      }
+    ]
+  },
+  "references": [
+    "Apfel CC, Läärä E, Koivuranta M, Greim CA, Roewer N. A simplified risk score for predicting postoperative nausea and vomiting: conclusions from cross-validations between two centers. Anesthesiology. 1999;91(3):693-700.",
+    "Gan TJ, Belani KG, Bergese S, et al. Fourth Consensus Guidelines for the Management of Postoperative Nausea and Vomiting. Anesth Analg. 2020;131(2):411-448.",
+    "Apfel CC, Heidrich FM, Jukar-Rao S, et al. Evidence-based analysis of risk factors for postoperative nausea and vomiting. Br J Anaesth. 2012;109(5):742-753."
+  ],
+  "formula": "Sum of risk factors: Female gender (1 point) + Non-smoking (1 point) + History of motion sickness or PONV (1 point) + Use of postoperative opioids (1 point)",
+  "notes": [
+    "The Apfel Score is one of the most widely validated and used risk assessment tools for PONV",
+    "Each risk factor contributes equally (1 point) to the total score",
+    "The score helps guide prophylactic antiemetic therapy decisions in the perioperative period",
+    "Consider multimodal prophylaxis for patients with ≥2 risk factors",
+    "Total intravenous anesthesia (TIVA) may be considered for very high-risk patients"
+  ]
+}

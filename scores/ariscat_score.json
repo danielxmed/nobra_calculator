@@ -1,0 +1,120 @@
+{
+  "id": "ariscat_score",
+  "title": "ARISCAT Score for Postoperative Pulmonary Complications",
+  "description": "Predicts risk of postoperative pulmonary complications including respiratory failure, respiratory infection, pleural effusion, atelectasis, pneumothorax, bronchospasm, or aspiration pneumonitis after surgery with general, neuraxial or regional anesthesia",
+  "category": "anesthesiology",
+  "version": "2010",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "string",
+      "required": true,
+      "description": "Patient age category",
+      "options": ["50_or_less", "51_to_80", "over_80"],
+      "validation": {
+        "enum": ["50_or_less", "51_to_80", "over_80"]
+      }
+    },
+    {
+      "name": "preoperative_spo2",
+      "type": "string",
+      "required": true,
+      "description": "Preoperative oxygen saturation category",
+      "options": ["96_or_higher", "91_to_95", "90_or_less"],
+      "validation": {
+        "enum": ["96_or_higher", "91_to_95", "90_or_less"]
+      }
+    },
+    {
+      "name": "respiratory_infection_last_month",
+      "type": "string",
+      "required": true,
+      "description": "Respiratory infection in the last month (upper or lower respiratory tract infection with fever and antibiotic treatment)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "preoperative_anemia",
+      "type": "string",
+      "required": true,
+      "description": "Preoperative anemia (hemoglobin ≤10 g/dL)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "surgical_incision",
+      "type": "string",
+      "required": true,
+      "description": "Type of surgical incision",
+      "options": ["peripheral", "upper_abdominal", "intrathoracic"],
+      "validation": {
+        "enum": ["peripheral", "upper_abdominal", "intrathoracic"]
+      }
+    },
+    {
+      "name": "surgery_duration",
+      "type": "string",
+      "required": true,
+      "description": "Duration of surgery in hours",
+      "options": ["less_than_2", "2_to_3", "more_than_3"],
+      "validation": {
+        "enum": ["less_than_2", "2_to_3", "more_than_3"]
+      }
+    },
+    {
+      "name": "emergency_procedure",
+      "type": "string",
+      "required": true,
+      "description": "Emergency surgical procedure",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "ariscat_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "ARISCAT score for postoperative pulmonary complications risk"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 25,
+        "stage": "Low Risk",
+        "description": "Low risk of postoperative pulmonary complications",
+        "interpretation": "Patients in this category have a low probability of developing postoperative pulmonary complications. Standard perioperative care and monitoring are usually sufficient."
+      },
+      {
+        "min": 26,
+        "max": 44,
+        "stage": "Intermediate Risk",
+        "description": "Intermediate risk of postoperative pulmonary complications",
+        "interpretation": "Patients in this category have an intermediate probability of developing postoperative pulmonary complications. Enhanced respiratory monitoring and preventive measures should be considered."
+      },
+      {
+        "min": 45,
+        "max": 120,
+        "stage": "High Risk",
+        "description": "High risk of postoperative pulmonary complications",
+        "interpretation": "Patients in this category have a high probability of developing postoperative pulmonary complications. Intensive respiratory monitoring, prophylactic measures, and possibly ICU care should be strongly considered."
+      }
+    ]
+  },
+  "references": [
+    "Canet J, Gallart L, Gomar C, Paluzie G, Vallès J, Castillo J, et al. Prediction of postoperative pulmonary complications in a population-based surgical cohort. Anesthesiology. 2010;113(6):1338-50.",
+    "Mazo V, Sabaté S, Canet J, Gallart L, de Abreu MG, Belda J, et al. Prospective external validation of a predictive score for postoperative pulmonary complications. Anesthesiology. 2014;121(2):219-31."
+  ],
+  "formula": "Sum of points: Age (≤50y: 0, 51-80y: 3, >80y: 16) + SpO2 (≥96%: 0, 91-95%: 8, ≤90%: 24) + Respiratory infection last month (No: 0, Yes: 17) + Anemia (No: 0, Yes: 11) + Surgical incision (Peripheral: 0, Upper abdominal: 15, Intrathoracic: 24) + Surgery duration (<2h: 0, 2-3h: 16, >3h: 23) + Emergency (No: 0, Yes: 8)",
+  "notes": [
+    "ARISCAT was developed to predict postoperative pulmonary complications defined as respiratory failure, respiratory infection, pleural effusion, atelectasis, pneumothorax, bronchospasm, or aspiration pneumonitis",
+    "The score was validated in a large European cohort and has shown good predictive performance",
+    "Risk stratification helps guide perioperative management and resource allocation"
+  ]
+}

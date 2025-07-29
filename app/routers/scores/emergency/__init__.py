@@ -13,6 +13,13 @@ from .acetaminophen_overdose_nac import router as acetaminophen_overdose_nac_rou
 from .adapt_protocol import router as adapt_protocol_router
 from .age_adjusted_d_dimer import router as age_adjusted_d_dimer_router
 from .aims65 import router as aims65_router
+from .alt_70_cellulitis import router as alt_70_cellulitis_router
+from .altitude_adjusted_perc import router as altitude_adjusted_perc_router
+from .alvarado_score import router as alvarado_score_router
+from .antivenom_dosing_algorithm import router as antivenom_dosing_algorithm_router
+from .apache_ii_score import router as apache_ii_score_router
+from .air_score import router as air_score_router
+from .abg_analyzer import router as abg_analyzer_router
 
 # Create main specialty router
 router = APIRouter()
@@ -26,3 +33,10 @@ router.include_router(acetaminophen_overdose_nac_router)
 router.include_router(adapt_protocol_router)
 router.include_router(age_adjusted_d_dimer_router)
 router.include_router(aims65_router)
+router.include_router(alt_70_cellulitis_router)
+router.include_router(altitude_adjusted_perc_router)
+router.include_router(alvarado_score_router)
+router.include_router(antivenom_dosing_algorithm_router)
+router.include_router(apache_ii_score_router)
+router.include_router(air_score_router)
+router.include_router(abg_analyzer_router)

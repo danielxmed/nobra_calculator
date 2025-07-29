@@ -1,0 +1,83 @@
+{
+  "id": "aortic_dissection_detection_risk_score",
+  "title": "Aortic Dissection Detection Risk Score (ADD-RS)",
+  "description": "Rules out aortic dissection based on clinical risk factors. A guideline-based tool for identification of acute aortic dissection at initial presentation developed from the International Registry of Acute Aortic Dissection (IRAD).",
+  "category": "cardiology",
+  "version": "2011",
+  "parameters": [
+    {
+      "name": "predisposing_conditions",
+      "type": "string",
+      "required": true,
+      "description": "High-risk predisposing conditions for aortic dissection",
+      "validation": {
+        "enum": ["none", "present"]
+      },
+      "notes": "Includes: Marfan syndrome, family history of aortic disease, known aortic valve disease, recent aortic manipulation, or known thoracic aortic aneurysm"
+    },
+    {
+      "name": "pain_features",
+      "type": "string", 
+      "required": true,
+      "description": "High-risk pain features suggestive of aortic dissection",
+      "validation": {
+        "enum": ["none", "present"]
+      },
+      "notes": "Includes: abrupt onset of pain, severe pain intensity, or ripping/tearing pain quality"
+    },
+    {
+      "name": "examination_features",
+      "type": "string",
+      "required": true,
+      "description": "High-risk examination features consistent with aortic dissection",
+      "validation": {
+        "enum": ["none", "present"]
+      },
+      "notes": "Includes: pulse deficit or systolic BP differential between extremities, focal neurological deficit (with pain), new murmur of aortic insufficiency (with pain), or hypotension/shock state"
+    }
+  ],
+  "result": {
+    "name": "add_rs_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "ADD-RS score based on number of high-risk categories present"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "No high-risk features present",
+        "interpretation": "Low risk for aortic dissection. Consider chest X-ray; if widened mediastinum present or no alternative diagnosis found, consider aortic imaging. ADD-RS captures 95.7% of aortic dissections, but 4.3% of confirmed cases had no high-risk features."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Intermediate Risk", 
+        "description": "One high-risk category present",
+        "interpretation": "Intermediate risk for aortic dissection. Consider D-dimer testing or proceed to aortic imaging based on clinical judgment. If D-dimer available and negative (<500 ng/mL), may help rule out dissection in appropriate clinical context."
+      },
+      {
+        "min": 2,
+        "max": 3,
+        "stage": "High Risk",
+        "description": "Two or more high-risk categories present", 
+        "interpretation": "High risk for aortic dissection. Proceed immediately to definitive aortic imaging (CT angiography, MRA, or TEE). Do not delay imaging for additional testing."
+      }
+    ]
+  },
+  "references": [
+    "Rogers AM, Hermann LK, Booher AM, et al. Sensitivity of the aortic dissection detection risk score, a novel guideline-based tool for identification of acute aortic dissection at initial presentation: results from the International Registry of Acute Aortic Dissection. Circulation. 2011;123(20):2213-2218. doi: 10.1161/CIRCULATIONAHA.110.988568",
+    "Hiratzka LF, Bakris GL, Beckman JA, et al. 2010 ACCF/AHA/AATS/ACR/ASA/SCA/SCAI/SIR/STS/SVM guidelines for the diagnosis and management of patients with thoracic aortic disease. Circulation. 2010;121(13):e266-e369. doi: 10.1161/CIR.0b013e3181d4739e"
+  ],
+  "formula": "ADD-RS Score = Number of high-risk categories present (0-3). Categories: (1) Predisposing conditions, (2) Pain features, (3) Examination features. Each category scores 0 or 1 point based on presence of any high-risk feature within that category.",
+  "notes": [
+    "Based on analysis of 2538 patients with confirmed acute aortic dissection from IRAD database",
+    "95.7% sensitivity for detection of acute aortic dissection when any high-risk feature present", 
+    "Designed for screening large volumes of patients at bedside",
+    "Should be used in conjunction with clinical judgment and appropriate imaging when indicated",
+    "Not validated for specificity - may result in over-testing in low-prevalence populations",
+    "Consider D-dimer testing in intermediate-risk patients where available and appropriate"
+  ]
+}

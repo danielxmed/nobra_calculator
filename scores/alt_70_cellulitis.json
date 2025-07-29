@@ -1,0 +1,94 @@
+{
+  "id": "alt_70_cellulitis",
+  "title": "ALT-70 Score for Cellulitis",
+  "description": "Predicts likelihood of lower extremity cellulitis over other diagnoses (pseudocellulitis). Helps differentiate true cellulitis from its mimics in adult patients presenting to the emergency department with a red leg and clinical concern for cellulitis.",
+  "category": "emergency",
+  "version": "2017",
+  "parameters": [
+    {
+      "name": "asymmetric",
+      "type": "string",
+      "required": true,
+      "description": "Asymmetric involvement (unilateral leg involvement)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "leukocytosis",
+      "type": "string",
+      "required": true,
+      "description": "Leukocytosis (white blood cell count ≥10,000/µL)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "tachycardia",
+      "type": "string",
+      "required": true,
+      "description": "Tachycardia (heart rate ≥90 beats per minute in ED)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "age_70_or_older",
+      "type": "string",
+      "required": true,
+      "description": "Age ≥70 years",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "alt_70_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "ALT-70 score (0-7 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Cellulitis Unlikely",
+        "description": "Low probability of cellulitis",
+        "interpretation": "Cellulitis unlikely (9% likelihood). Reassess diagnosis and consider pseudocellulitis diagnoses such as venous stasis dermatitis, contact dermatitis, superficial thrombophlebitis, gout, or lymphedema. More than 83.3% likelihood of pseudocellulitis."
+      },
+      {
+        "min": 3,
+        "max": 4,
+        "stage": "Indeterminate",
+        "description": "Moderate probability of cellulitis",
+        "interpretation": "Indeterminate (72% likelihood of cellulitis). Consider dermatology or infectious disease consultation to improve diagnostic accuracy, as clinical features alone are insufficient to rule in or rule out cellulitis."
+      },
+      {
+        "min": 5,
+        "max": 7,
+        "stage": "Cellulitis Likely",
+        "description": "High probability of cellulitis",
+        "interpretation": "Cellulitis likely (95% likelihood). Treat empirically with appropriate antibiotic therapy for cellulitis. Consider typical cellulitis pathogens (Streptococcus species and Staphylococcus aureus)."
+      }
+    ]
+  },
+  "references": [
+    "Raff AB, Weng QY, Cohen JM, Gunasekera N, Okhovat JP, Vedak P, et al. A predictive model for diagnosis of lower extremity cellulitis: a cross-sectional study. J Am Acad Dermatol. 2017 Apr;76(4):618-625.e2. doi: 10.1016/j.jaad.2016.12.044.",
+    "Li DG, Dewan AK, Xia FD, Khosravi H, Joyce C, Mostaghimi A. The ALT-70 predictive model outperforms thermal imaging for the diagnosis of lower extremity cellulitis: a prospective evaluation. J Am Acad Dermatol. 2018 Dec;79(6):1076-1080.e1. doi: 10.1016/j.jaad.2018.06.062.",
+    "Singer S, Li DG, Gunasekera N, Okhovat JP, Vedak P, Weng C, et al. The ALT-70 cellulitis model maintains predictive value at 24 and 48 hours after presentation. J Am Acad Dermatol. 2019 Dec;81(6):1252-1256. doi: 10.1016/j.jaad.2019.04.008.",
+    "Weng QY, Raff AB, Cohen JM, Gunasekera N, Okhovat JP, Vedak P, et al. Costs and Consequences Associated With Misdiagnosed Lower Extremity Cellulitis. JAMA Dermatol. 2017 Feb 1;153(2):141-146. doi: 10.1001/jamadermatol.2016.3816."
+  ],
+  "formula": "ALT-70 Score = (3 × Asymmetric) + (1 × Leukocytosis) + (1 × Tachycardia) + (2 × Age ≥70)",
+  "notes": [
+    "Exclusion criteria: Do not use if patient has visible abscess/fluctuance, penetrating trauma, burn, diabetic ulcer, hardware/device, post-operative patient (surgery within 30 days), recent (within 48 hrs) IV antibiotic use, or known history of osteomyelitis",
+    "The ALT-70 score was developed and validated in emergency department settings and may not apply to primary care or other clinical settings",
+    "A score of 3-4 is considered indeterminate; consultation with dermatology or infectious disease is recommended for these patients",
+    "About 30% of patients admitted to the hospital for cellulitis are misdiagnosed, leading to unnecessary hospitalizations and antibiotic use",
+    "Common mimics of cellulitis include venous stasis dermatitis, contact dermatitis, superficial thrombophlebitis, gout, lymphedema, and more serious conditions like DVT or necrotizing fasciitis"
+  ]
+}

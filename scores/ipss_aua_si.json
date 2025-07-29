@@ -1,0 +1,132 @@
+{
+  "id": "ipss_aua_si",
+  "title": "International Prostate Symptom Score (IPSS)/American Urological Association Symptom Index (AUA-SI)",
+  "description": "Measures severity of benign prostatic hyperplasia (BPH) symptoms using 7 questions about urinary symptoms to guide treatment decisions.",
+  "category": "urology",
+  "version": "1992",
+  "parameters": [
+    {
+      "name": "incomplete_emptying",
+      "type": "integer",
+      "required": true,
+      "description": "How often have you had the sensation of not emptying your bladder?",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "options": ["0", "1", "2", "3", "4", "5"]
+    },
+    {
+      "name": "frequency",
+      "type": "integer",
+      "required": true,
+      "description": "How often have you had to urinate less than every two hours?",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "options": ["0", "1", "2", "3", "4", "5"]
+    },
+    {
+      "name": "intermittency",
+      "type": "integer",
+      "required": true,
+      "description": "How often have you found you stopped and started again several times when you urinated?",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "options": ["0", "1", "2", "3", "4", "5"]
+    },
+    {
+      "name": "urgency",
+      "type": "integer",
+      "required": true,
+      "description": "How often have you found it difficult to postpone urination?",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "options": ["0", "1", "2", "3", "4", "5"]
+    },
+    {
+      "name": "weak_stream",
+      "type": "integer",
+      "required": true,
+      "description": "How often have you had a weak urinary stream?",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "options": ["0", "1", "2", "3", "4", "5"]
+    },
+    {
+      "name": "straining",
+      "type": "integer",
+      "required": true,
+      "description": "How often have you had to strain to start urination?",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "options": ["0", "1", "2", "3", "4", "5"]
+    },
+    {
+      "name": "nocturia",
+      "type": "integer",
+      "required": true,
+      "description": "How many times do you typically get up at night to urinate?",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "options": ["0", "1", "2", "3", "4", "5"]
+    }
+  ],
+  "result": {
+    "name": "ipss_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "IPSS/AUA-SI total symptom score (0-35 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 7,
+        "stage": "Mild",
+        "description": "Mild BPH symptoms",
+        "interpretation": "Mild benign prostatic hyperplasia symptoms. Patient may be managed with watchful waiting, lifestyle modifications, and regular monitoring. Medical treatment generally not required unless bothersome to patient."
+      },
+      {
+        "min": 8,
+        "max": 19,
+        "stage": "Moderate",
+        "description": "Moderate BPH symptoms",
+        "interpretation": "Moderate benign prostatic hyperplasia symptoms. Consider medical treatment with alpha-blockers, 5-alpha reductase inhibitors, or combination therapy. Lifestyle modifications and regular follow-up recommended."
+      },
+      {
+        "min": 20,
+        "max": 35,
+        "stage": "Severe",
+        "description": "Severe BPH symptoms",
+        "interpretation": "Severe benign prostatic hyperplasia symptoms. Medical treatment strongly recommended. Consider surgical intervention if medical therapy fails or patient has complications such as recurrent UTIs, bladder stones, or renal insufficiency."
+      }
+    ]
+  },
+  "references": [
+    "Barry MJ, Fowler FJ Jr, O'Leary MP, Bruskewitz RC, Holtgrewe HL, Mebust WK, Cockett AT. The American Urological Association symptom index for benign prostatic hyperplasia. The Measurement Committee of the American Urological Association. J Urol. 1992 Nov;148(5):1549-57. doi: 10.1016/s0022-5347(17)36966-5.",
+    "Cockett AT, Aso Y, Denis L, Khoury S, Barry M, Carlton CE Jr, et al. World Health Organization Consensus Committee recommendations concerning the diagnosis of BPH. Prog Urol. 1991 Nov;1(6):957-72.",
+    "Bosch JL, Hop WC, Kirkels WJ, Schröder FH. The International Prostate Symptom Score in a community-based sample of men between 55 and 74 years of age: prevalence and correlation of symptoms with age, prostate volume, flow rate and residual urine volume. Br J Urol. 1995 Dec;76(6):625-33."
+  ],
+  "formula": "IPSS Score = Sum of 7 symptom questions: Incomplete emptying (0-5) + Frequency (0-5) + Intermittency (0-5) + Urgency (0-5) + Weak stream (0-5) + Straining (0-5) + Nocturia (0-5). Total range: 0-35 points.",
+  "notes": [
+    "The IPSS and AUA-SI are identical questionnaires with the same 7 questions and scoring system.",
+    "Each question is scored from 0 (not at all) to 5 (almost always), except nocturia which is scored by number of times per night.",
+    "An optional 8th question about quality of life can be included but is not part of the total score.",
+    "The score helps guide treatment decisions: mild (0-7) - watchful waiting, moderate (8-19) - medical therapy, severe (20-35) - consider surgery.",
+    "The questionnaire should be completed by the patient and can be used to monitor treatment response over time.",
+    "Validated for use in men with lower urinary tract symptoms suggestive of BPH.",
+    "Does not diagnose BPH but quantifies symptom severity and impact on quality of life."
+  ]
+}
