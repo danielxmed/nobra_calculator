@@ -1,0 +1,109 @@
+{
+  "id": "apri",
+  "title": "AST to Platelet Ratio Index (APRI)",
+  "description": "Determines the likelihood of liver fibrosis and cirrhosis in patients with hepatitis C using AST levels and platelet count",
+  "category": "infectious_disease",
+  "version": "2011",
+  "parameters": [
+    {
+      "name": "ast_level",
+      "type": "float",
+      "required": true,
+      "description": "Aspartate aminotransferase (AST) level",
+      "validation": {
+        "min": 1,
+        "max": 2000
+      },
+      "unit": "IU/L"
+    },
+    {
+      "name": "ast_upper_limit_normal",
+      "type": "float",
+      "required": true,
+      "description": "Upper limit of normal for AST (typically 40 IU/L for most laboratories)",
+      "validation": {
+        "min": 10,
+        "max": 100
+      },
+      "unit": "IU/L"
+    },
+    {
+      "name": "platelet_count",
+      "type": "float",
+      "required": true,
+      "description": "Platelet count",
+      "validation": {
+        "min": 10,
+        "max": 1000
+      },
+      "unit": "×10⁹/L"
+    }
+  ],
+  "result": {
+    "name": "apri_score",
+    "type": "float",
+    "unit": "ratio",
+    "description": "APRI score calculated as [(AST/upper limit normal) × 100] / platelet count"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0.5,
+        "stage": "Low Risk",
+        "description": "Minimal or no fibrosis",
+        "interpretation": "APRI score ≤0.5 suggests minimal or no liver fibrosis. High negative predictive value for ruling out significant fibrosis and cirrhosis."
+      },
+      {
+        "min": 0.5,
+        "max": 0.7,
+        "stage": "Low-Moderate Risk",
+        "description": "Possible mild fibrosis",
+        "interpretation": "APRI score 0.5-0.7 suggests possible mild fibrosis. Additional testing may be needed for definitive assessment."
+      },
+      {
+        "min": 0.7,
+        "max": 1.0,
+        "stage": "Moderate Risk",
+        "description": "Significant fibrosis likely",
+        "interpretation": "APRI score 0.7-1.0 suggests significant hepatic fibrosis with 77% sensitivity and 72% specificity. Consider further evaluation."
+      },
+      {
+        "min": 1.0,
+        "max": 1.5,
+        "stage": "High Risk",
+        "description": "Cirrhosis likely",
+        "interpretation": "APRI score 1.0-1.5 suggests cirrhosis with 76% sensitivity and 72% specificity. Further evaluation recommended."
+      },
+      {
+        "min": 1.5,
+        "max": 2.0,
+        "stage": "Very High Risk",
+        "description": "Cirrhosis very likely",
+        "interpretation": "APRI score 1.5-2.0 indicates high probability of cirrhosis. High positive predictive value for ruling in cirrhosis."
+      },
+      {
+        "min": 2.0,
+        "max": 100,
+        "stage": "Extremely High Risk",
+        "description": "Cirrhosis highly likely",
+        "interpretation": "APRI score ≥2.0 indicates very high probability of cirrhosis with 91% specificity but 46% sensitivity. Strong positive predictor of cirrhosis."
+      }
+    ]
+  },
+  "references": [
+    "Lin ZH, Xin YN, Dong QJ, et al. Performance of the aspartate aminotransferase-to-platelet ratio index for the staging of hepatitis C-related fibrosis: an updated meta-analysis. Hepatology. 2011;53(3):726-36.",
+    "Chou R, Wasson N. Blood tests to diagnose fibrosis or cirrhosis in patients with chronic hepatitis C virus infection: a systematic review. Ann Intern Med. 2013;158(11):807-20.",
+    "Wai CT, Greenson JK, Fontana RJ, et al. A simple noninvasive index can predict both significant fibrosis and cirrhosis in patients with chronic hepatitis C. Hepatology. 2003;38(2):518-26."
+  ],
+  "formula": "APRI = [(AST ÷ AST Upper Limit Normal) × 100] ÷ Platelet Count",
+  "notes": [
+    "APRI is most validated for hepatitis C patients but has been used in other liver diseases",
+    "Most laboratories use 40 IU/L as the upper limit of normal for AST",
+    "APRI alone may not be sufficiently sensitive to rule out significant disease",
+    "Combination with other indices (e.g., FIB-4) may improve diagnostic accuracy",
+    "Lower scores (<0.5) have high negative predictive value for ruling out cirrhosis",
+    "Higher scores (>1.5) have high positive predictive value for ruling in cirrhosis",
+    "Mid-range values (0.5-1.5) are less definitive and may require additional testing"
+  ]
+}
