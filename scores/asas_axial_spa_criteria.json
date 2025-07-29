@@ -3,6 +3,7 @@
   "title": "ASAS Criteria for Axial Spondyloarthritis (SpA)",
   "description": "Classifies axial spondyloarthritis according to Assessment of Spondyloarthritis International Society (ASAS) criteria. This classification system allows for early diagnosis of axial SpA by incorporating both clinical and imaging features.",
   "category": "rheumatology",
+  "subcategory": "spondyloarthritis",
   "version": "2009",
   "parameters": [
     {
@@ -151,6 +152,7 @@
   "result": {
     "name": "classification",
     "type": "string",
+    "unit": "classification",
     "description": "Classification result according to ASAS criteria for axial spondyloarthritis"
   },
   "interpretation": {
@@ -158,21 +160,21 @@
       {
         "min": 1,
         "max": 1,
-        "stage": "Axial SpA",
+        "label": "Axial SpA",
         "description": "Meets ASAS criteria for axial spondyloarthritis",
         "interpretation": "Patient fulfills the ASAS classification criteria for axial spondyloarthritis. Further rheumatological evaluation and appropriate treatment should be considered."
       },
       {
         "min": 0,
         "max": 0,
-        "stage": "Not Axial SpA",
+        "label": "Not Axial SpA",
         "description": "Does not meet ASAS criteria",
         "interpretation": "Patient does not fulfill the ASAS classification criteria for axial spondyloarthritis. Consider alternative diagnoses and further evaluation if clinical suspicion remains high."
       },
       {
         "min": -1,
         "max": -1,
-        "stage": "Entry Criterion Not Met",
+        "label": "Entry Criterion Not Met",
         "description": "Entry criterion not fulfilled",
         "interpretation": "Entry criterion (back pain ≥3 months and age at onset <45 years) not fulfilled. ASAS criteria cannot be applied."
       }

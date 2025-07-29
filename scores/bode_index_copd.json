@@ -1,0 +1,109 @@
+{
+  "id": "bode_index_copd",
+  "title": "BODE Index for COPD Survival",
+  "description": "Predicts survival and mortality risk in patients with Chronic Obstructive Pulmonary Disease (COPD). The BODE Index (Body-Mass Index, Obstruction, Dyspnea, Exercise) is a multidimensional grading system that better predicts survival than FEV1 alone.",
+  "category": "pulmonology",
+  "version": "2004",
+  "parameters": [
+    {
+      "name": "fev1_percent_predicted",
+      "type": "float",
+      "required": true,
+      "description": "FEV1 as percentage of predicted normal value based on age, sex, height, and ethnicity",
+      "validation": {
+        "min": 10,
+        "max": 150
+      },
+      "unit": "%"
+    },
+    {
+      "name": "six_minute_walk_distance",
+      "type": "integer",
+      "required": true,
+      "description": "Distance walked in meters during standardized 6-minute walk test",
+      "validation": {
+        "min": 0,
+        "max": 1000
+      },
+      "unit": "meters"
+    },
+    {
+      "name": "mmrc_dyspnea_scale",
+      "type": "string",
+      "required": true,
+      "description": "Modified Medical Research Council Dyspnea Scale assessing functional disability due to breathlessness",
+      "options": [
+        "grade_0_strenuous_only",
+        "grade_1_walks_slower",
+        "grade_2_stops_100m",
+        "grade_3_too_dyspneic"
+      ]
+    },
+    {
+      "name": "body_mass_index",
+      "type": "float",
+      "required": true,
+      "description": "Body mass index in kg/m²",
+      "validation": {
+        "min": 10,
+        "max": 50
+      },
+      "unit": "kg/m²"
+    }
+  ],
+  "result": {
+    "name": "bode_index_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "BODE Index score from 0-10 points with survival predictions"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Quartile 1 (Low Risk)",
+        "description": "BODE Index 0-2 points",
+        "interpretation": "Lowest mortality risk with 80% 4-year survival rate. Patients in this quartile have relatively preserved lung function, exercise capacity, and minimal functional disability. Continue current management and monitor disease progression."
+      },
+      {
+        "min": 3,
+        "max": 4,
+        "stage": "Quartile 2 (Moderate Risk)",
+        "description": "BODE Index 3-4 points",
+        "interpretation": "Moderate mortality risk with 67% 4-year survival rate. Patients show moderate impairment in multiple domains. Consider intensification of bronchodilator therapy, pulmonary rehabilitation, and regular monitoring."
+      },
+      {
+        "min": 5,
+        "max": 6,
+        "stage": "Quartile 3 (High Risk)",
+        "description": "BODE Index 5-6 points",
+        "interpretation": "High mortality risk with 57% 4-year survival rate. Significant impairment across multiple domains requiring comprehensive management including optimization of medical therapy, pulmonary rehabilitation, and consideration of oxygen therapy."
+      },
+      {
+        "min": 7,
+        "max": 10,
+        "stage": "Quartile 4 (Very High Risk)",
+        "description": "BODE Index 7-10 points",
+        "interpretation": "Very high mortality risk with only 18% 4-year survival rate. Severe disease with marked functional impairment. Requires aggressive management including oxygen therapy, consideration of lung volume reduction surgery or transplantation, and palliative care planning."
+      }
+    ]
+  },
+  "references": [
+    "Celli BR, Cote CG, Marin JM, et al. The body-mass index, airflow obstruction, dyspnea, and exercise capacity index in chronic obstructive pulmonary disease. N Engl J Med. 2004 Mar 4;350(10):1005-12. doi: 10.1056/NEJMoa021322.",
+    "Ong KC, Earnest A, Lu SJ. A multidimensional grading system (BODE index) as predictor of hospitalization for COPD. Chest. 2005 Dec;128(6):3810-6. doi: 10.1378/chest.128.6.3810.",
+    "Cote CG, Celli BR. Pulmonary rehabilitation and the BODE index in COPD. Eur Respir J. 2005 Oct;26(4):630-6. doi: 10.1183/09031936.05.00045505.",
+    "Puhan MA, Garcia-Aymerich J, Frey M, et al. Expansion of the prognostic assessment of patients with chronic obstructive pulmonary disease: the updated BODE index and the ADO index. Lancet. 2009 Aug 29;374(9691):704-11. doi: 10.1016/S0140-6736(09)61301-5."
+  ],
+  "formula": "BODE Index = FEV1 score + 6MWD score + mMRC score + BMI score. Total score ranges from 0-10 points with higher scores indicating worse prognosis.",
+  "notes": [
+    "Not intended for use during acute COPD exacerbations - use only in stable patients",
+    "Does not guide specific treatment decisions but provides prognostic information",
+    "Should be used in conjunction with clinical judgment and other prognostic factors",
+    "FEV1 percentage predicted should be based on appropriate reference equations for patient demographics",
+    "6-minute walk test should be performed according to standardized protocols (ATS guidelines)",
+    "BMI component reflects the obesity paradox in COPD where lower BMI indicates worse prognosis",
+    "Originally developed and validated in outpatients with stable COPD",
+    "Has been validated across multiple populations and healthcare systems worldwide"
+  ]
+}

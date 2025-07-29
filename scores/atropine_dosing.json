@@ -1,0 +1,62 @@
+{
+  "id": "atropine_dosing",
+  "title": "Atropine Dosing for Cholinesterase Inhibitor Toxicity",
+  "description": "Doses atropine for cholinesterase inhibitor toxicity from prescription drugs, nerve gas, or insecticides",
+  "category": "toxicology",
+  "version": "2024",
+  "parameters": [
+    {
+      "name": "patient_type",
+      "type": "string",
+      "required": true,
+      "description": "Patient age category",
+      "options": ["adult", "pediatric"],
+      "validation": {
+        "enum": ["adult", "pediatric"]
+      }
+    },
+    {
+      "name": "weight",
+      "type": "float",
+      "required": false,
+      "description": "Patient weight (required for pediatric patients)",
+      "unit": "kg",
+      "validation": {
+        "min": 0.1,
+        "max": 300
+      }
+    },
+    {
+      "name": "severity",
+      "type": "string",
+      "required": true,
+      "description": "Severity of cholinesterase inhibitor toxicity",
+      "options": ["mild", "severe"],
+      "validation": {
+        "enum": ["mild", "severe"]
+      }
+    }
+  ],
+  "result": {
+    "name": "dosing_recommendation",
+    "type": "object",
+    "unit": "mg",
+    "description": "Complete atropine dosing recommendations including initial dose and infusion protocol"
+  },
+  "interpretation": {
+    "guide": "Follow initial dosing recommendations and reassess every 5 minutes for signs of atropinization"
+  },
+  "references": [
+    "Howland MA. Antidotes in Depth: Atropine. In: Hoffman RS, Howland MA, Lewin NA, Nelson LS, Goldfrank LR, eds. Goldfrank's Toxicologic Emergencies. 10th ed. New York, NY: McGraw-Hill; 2015.",
+    "Abedin MJ, Sayeed AA, Basher A, Maude RJ, Hoque G, Faiz MA. Open-label randomized clinical trial of atropine bolus injection versus incremental boluses plus infusion for organophosphate poisoning in Bangladesh. Clin Toxicol (Phila). 2012 Jun;50(5):433-40.",
+    "Eddleston M, Dawson A, Karalliedde L, Dissanayake W, Hittarage A, Azher S, et al. Early management after self-poisoning with an organophosphorus or carbamate pesticide - a treatment protocol for junior doctors. Crit Care. 2004 Dec;8(6):R391-7."
+  ],
+  "formula": "Initial dose: Pediatric = 0.02 mg/kg (up to adult max); Adult mild = 1-2 mg; Adult severe = 3-5 mg. Double dose every 5 minutes until atropinization achieved. Continuous infusion = 10% of total initial doses per hour.",
+  "notes": [
+    "Not indicated for isolated bradycardia",
+    "Large cumulative doses may be necessary",
+    "Immediate decontamination is critical",
+    "Consider concurrent pralidoxime administration",
+    "Atropinization endpoints: clear lung exam, HR >80, SBP >80"
+  ]
+}

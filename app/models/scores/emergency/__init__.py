@@ -24,6 +24,13 @@ from .antivenom_dosing_algorithm import AntivenomDosingAlgorithmRequest, Antiven
 from .apache_ii_score import ApacheIiScoreRequest, ApacheIiScoreResponse
 from .air_score import AirScoreRequest, AirScoreResponse
 from .abg_analyzer import AbgAnalyzerRequest, AbgAnalyzerResponse
+from .basic_statistics_calc import BasicStatisticsCalcRequest, BasicStatisticsCalcResponse
+from .bastion_classification import BastionClassificationRequest, BastionClassificationResponse
+from .behavioral_pain_scale import BehavioralPainScaleRequest, BehavioralPainScaleResponse
+from .benzodiazepine_conversion import BenzodiazepineConversionRequest, BenzodiazepineConversionResponse
+from .bicarbonate_deficit import BicarbonateDeficitRequest, BicarbonateDeficitResponse
+from .bisap_score import BisapScoreRequest, BisapScoreResponse
+from .blast_lung_injury_severity import BlastLungInjurySeverityRequest, BlastLungInjurySeverityResponse
 
 __all__ = [
     "FourCMortalityRequest",
@@ -58,4 +65,18 @@ __all__ = [
     "AirScoreResponse",
     "AbgAnalyzerRequest",
     "AbgAnalyzerResponse",
+    "BasicStatisticsCalcRequest",
+    "BasicStatisticsCalcResponse",
+    "BastionClassificationRequest",
+    "BastionClassificationResponse",
+    "BehavioralPainScaleRequest",
+    "BehavioralPainScaleResponse",
+    "BenzodiazepineConversionRequest",
+    "BenzodiazepineConversionResponse",
+    "BicarbonateDeficitRequest",
+    "BicarbonateDeficitResponse",
+    "BisapScoreRequest",
+    "BisapScoreResponse",
+    "BlastLungInjurySeverityRequest",
+    "BlastLungInjurySeverityResponse",
 ]

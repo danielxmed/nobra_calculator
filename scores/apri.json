@@ -1,0 +1,101 @@
+{
+  "id": "apri",
+  "title": "AST to Platelet Ratio Index (APRI)",
+  "description": "Determines the likelihood of hepatic fibrosis and cirrhosis in patients with hepatitis C using readily available laboratory values.",
+  "category": "hematology",
+  "version": "2003",
+  "parameters": [
+    {
+      "name": "ast",
+      "type": "float",
+      "required": true,
+      "description": "Serum aspartate aminotransferase (AST) level",
+      "validation": {
+        "min": 1,
+        "max": 2000
+      },
+      "unit": "U/L"
+    },
+    {
+      "name": "ast_upper_limit",
+      "type": "float",
+      "required": true,
+      "description": "Upper limit of normal for AST (typically 40 U/L for males, 32 U/L for females, or laboratory-specific reference range)",
+      "validation": {
+        "min": 10,
+        "max": 100
+      },
+      "unit": "U/L"
+    },
+    {
+      "name": "platelet_count",
+      "type": "float",
+      "required": true,
+      "description": "Platelet count",
+      "validation": {
+        "min": 10,
+        "max": 1000
+      },
+      "unit": "× 10³/µL"
+    }
+  ],
+  "result": {
+    "name": "apri_score",
+    "type": "float",
+    "unit": "index",
+    "description": "APRI score calculated from AST and platelet values"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0.0,
+        "max": 0.3,
+        "stage": "Low Risk",
+        "description": "Rules out significant fibrosis",
+        "interpretation": "APRI ≤0.3 has high negative predictive value for excluding significant liver fibrosis (METAVIR F2-F4). Significant fibrosis is unlikely."
+      },
+      {
+        "min": 0.3,
+        "max": 0.5,
+        "stage": "Low-Intermediate Risk",
+        "description": "Low probability of cirrhosis",
+        "interpretation": "APRI 0.3-0.5 suggests low probability of advanced fibrosis. Values ≤0.5 have good negative predictive value for ruling out cirrhosis."
+      },
+      {
+        "min": 0.5,
+        "max": 1.5,
+        "stage": "Intermediate Risk",
+        "description": "Indeterminate risk",
+        "interpretation": "APRI 0.5-1.5 represents intermediate risk. Additional assessment with other non-invasive markers or liver biopsy may be needed for accurate staging."
+      },
+      {
+        "min": 1.5,
+        "max": 2.0,
+        "stage": "High Risk",
+        "description": "Suggests significant fibrosis",
+        "interpretation": "APRI ≥1.5 has good positive predictive value for significant fibrosis (METAVIR F3-F4). Consider hepatology referral and surveillance for complications."
+      },
+      {
+        "min": 2.0,
+        "max": 100.0,
+        "stage": "Very High Risk",
+        "description": "Suggests cirrhosis",
+        "interpretation": "APRI ≥2.0 strongly suggests cirrhosis (METAVIR F4). Requires hepatology evaluation, surveillance for hepatocellular carcinoma, and assessment for portal hypertension complications."
+      }
+    ]
+  },
+  "references": [
+    "Wai CT, Greenson JK, Fontana RJ, et al. A simple noninvasive index can predict both significant fibrosis and cirrhosis in patients with chronic hepatitis C. Hepatology. 2003;38(2):518-26.",
+    "Shaheen AA, Myers RP. Diagnostic accuracy of the aspartate aminotransferase-to-platelet ratio index for the prediction of hepatitis C-related fibrosis: a systematic review. Hepatology. 2007;46(3):912-21.",
+    "Lin ZH, Xin YN, Dong QJ, et al. Performance of the aspartate aminotransferase-to-platelet ratio index for the staging of hepatitis C-related fibrosis: an updated meta-analysis. Hepatology. 2011;53(3):726-36."
+  ],
+  "formula": "APRI = [(AST/AST upper limit of normal) × 100] / Platelet count (×10³/µL)",
+  "notes": [
+    "Originally developed and validated in hepatitis C patients",
+    "APRI has better negative predictive value than positive predictive value",
+    "Low APRI scores are reliable for ruling out cirrhosis, but APRI is less sensitive for identifying cirrhosis",
+    "Consider using in combination with other non-invasive markers for improved accuracy",
+    "May be less accurate in patients with acute hepatitis, portal hypertension, or other causes of thrombocytopenia",
+    "The AST upper limit of normal may vary by laboratory (commonly 40 U/L for males, 32 U/L for females)"
+  ]
+}

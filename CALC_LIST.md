@@ -223,125 +223,125 @@
 ### ✅ ASCVD (Atherosclerotic Cardiovascular Disease) 2013 Risk Calculator from AHA/ACC
 **Description:** Determines 10-year risk of major ASCVD, i.e. myocardial infarction, stroke, or death due to coronary heart disease or stroke.
 
-### AST to Platelet Ratio Index (APRI)
+### ✅ AST to Platelet Ratio Index (APRI)
 **Description:** Determines the likelihood of liver fibrosis and cirrhosis in patients with hepatitis C.
 
-### Asthma Impairment and Risk Questionnaire (AIRQ)
+### ✅ Asthma Impairment and Risk Questionnaire (AIRQ)
 **Description:** Measures asthma impairment and risk.
 
-### Asthma Predictive Index (API)
+### ✅ Asthma Predictive Index (API)
 **Description:** Determines likelihood of pediatric patients developing childhood asthma.
 
-### ASTRAL Score for Ischemic Stroke
+### ✅ ASTRAL Score for Ischemic Stroke
 **Description:** Predicts poor 90-day outcome in patients with acute ischemic stroke.
 
-### Asymptomatic Myeloma Prognosis
+### ✅ Asymptomatic Myeloma Prognosis
 **Description:** Predicts risk of progression from asymptomatic (smoldering) multiple myeloma to active myeloma or amyloidosis.
 
-### ATLAS Score for Clostridium Difficile Infection
+### ✅ ATLAS Score for Clostridium Difficile Infection
 **Description:** Predicts response to therapy in C. diff patients.
 
-### ATRIA Bleeding Risk Score
+### ✅ ATRIA Bleeding Risk Score
 **Description:** Determines bleeding risk for patients on warfarin.
 
-### ATRIA Stroke Risk Score
+### ✅ ATRIA Stroke Risk Score
 **Description:** Determines stroke risk in patients with atrial fibrillation.
 
-### Atropine Dosing for Cholinesterase Inhibitor Toxicity
+### ✅ Atropine Dosing for Cholinesterase Inhibitor Toxicity
 **Description:** Doses atropine for cholinesterase inhibitor toxicity (prescription drugs, nerve gas, insecticides).
 
-### AUDIT-C for Alcohol Use
+### ✅ AUDIT-C for Alcohol Use
 **Description:** Identifies at-risk drinkers (i.e., binge drinking) who may not be alcohol dependent.
 
-### Australian Type 2 Diabetes Risk (AUSDRISK) Assessment Tool
+### ✅ Australian Type 2 Diabetes Risk (AUSDRISK) Assessment Tool
 **Description:** Estimates risk of developing type 2 diabetes, primarily in Australian patients.
 
-### AWOL Score for Delirium
+### ✅ AWOL Score for Delirium
 **Description:** Predicts risk of delirium during hospitalization.
 
 ---
 
 ## B
 
-### Bacterial Meningitis Score for Children
+### ✅ Bacterial Meningitis Score for Children
 **Description:** Rules out bacterial meningitis.
 
-### BALL Score for Relapsed/Refractory CLL - NEW
+### ✅ BALL Score for Relapsed/Refractory CLL - NEW
 **Description:** Assesses prognosis of patients with relapsed/refractory chronic lymphocytic leukemia (R/R CLL) on targeted therapies.
 
-### BAP-65 Score for Acute Exacerbation of COPD
+### ✅ BAP-65 Score for Acute Exacerbation of COPD
 **Description:** Predicts mortality in acute COPD exacerbation.
 
-### Barcelona-Clinic Liver Cancer (BCLC) Staging Classification and Treatment Guidelines
+### ✅ Barcelona-Clinic Liver Cancer (BCLC) Staging Classification and Treatment Guidelines
 **Description:** Determines disease progression and appropriate treatment course for HCC patients.
 
-### BARD Score for NAFLD Fibrosis
+### ✅ BARD Score for NAFLD Fibrosis
 **Description:** Predicts risk of advanced fibrosis in NAFLD patients.
 
-### Barnes Jewish Hospital Stroke Dysphagia Screen
+### ✅ Barnes Jewish Hospital Stroke Dysphagia Screen
 **Description:** Assesses ability to swallow without aspiration after stroke.
 
-### Barthel Index for Activities of Daily Living (ADL)
+### ✅ Barthel Index for Activities of Daily Living (ADL)
 **Description:** Assesses functional independence, usually in stroke patients.
 
-### Basal Energy Expenditure
+### ✅ Basal Energy Expenditure
 **Description:** Calculates daily energy expenditure.
 
-### Basic Statistics Calc
+### ✅ Basic Statistics Calc
 **Description:** Calculates common epidemiological values for diagnostic tests and treatments.
 
-### Bastion Classification of Lower Limb Blast Injuries
+### ✅ Bastion Classification of Lower Limb Blast Injuries
 **Description:** Stratifies lower limb blast injuries to guide treatment.
 
-### BeAM Value
+### ✅ BeAM Value
 **Description:** Calculates the difference between bedtime and morning fasting blood glucose.
 
-### Behavioral Activity Rating Scale (BARS) - NEW
+### ✅ Behavioral Activity Rating Scale (BARS) - NEW
 **Description:** Screens patients for agitation in emergency care and psychiatric settings.
 
-### Behavioral Observational Pain Scale (BOPS) for Post-Op Pediatric Pain
+### ✅ Behavioral Observational Pain Scale (BOPS) for Post-Op Pediatric Pain
 **Description:** Quantifies post-operative pain for children aged 1-7.
 
-### Behavioral Pain Scale (BPS) for Pain Assessment in Intubated Patients
+### ✅ Behavioral Pain Scale (BPS) for Pain Assessment in Intubated Patients
 **Description:** Quantifies pain in intubated patients.
 
-### Benzodiazepine Conversion Calculator
+### ✅ Benzodiazepine Conversion Calculator
 **Description:** Provides equivalents between different benzodiazepines.
 
-### Berg Balance Scale (BBS) - NEW
+### ✅ Berg Balance Scale (BBS) - NEW
 **Description:** Assesses balance and fall risk in community-dwelling older adults.
 
-### Berlin Criteria for Acute Respiratory Distress Syndrome
+### ✅ Berlin Criteria for Acute Respiratory Distress Syndrome
 **Description:** Provides diagnostic criteria for acute respiratory distress syndrome (ARDS).
 
-### Bicarbonate Deficit
+### ✅ Bicarbonate Deficit
 **Description:** Calculates total body bicarbonate deficit.
 
-### Binet Staging System for Chronic Lymphocytic Leukemia (CLL)
+### ✅ Binet Staging System for Chronic Lymphocytic Leukemia (CLL)
 **Description:** Stages chronic lymphocytic leukemia, similar to Rai Staging System.
 
-### BISAP Score for Pancreatitis Mortality
+### ✅ BISAP Score for Pancreatitis Mortality
 **Description:** Predicts mortality risk in pancreatitis with fewer variables than Ranson's.
 
-### Bishop Score for Vaginal Delivery and Induction of Labor
+### ✅ Bishop Score for Vaginal Delivery and Induction of Labor
 **Description:** Predicts likelihood of successful vaginal delivery.
 
-### Blast Lung Injury Severity Score
+### ✅ Blast Lung Injury Severity Score
 **Description:** Stratifies primary blast lung injuries into three categories to guide ventilatory treatment.
 
-### Blood Volume Calculation
+### ✅ Blood Volume Calculation
 **Description:** Calculates total blood volume, red blood cell volume, and plasma volume.
 
-### BMI Calculator (Body Mass Index and BSA)
+### ✅ BMI Calculator (Body Mass Index and BSA)
 **Description:** Calculates body mass index and body surface area.
 
-### BODE Index for COPD Survival
+### ✅ BODE Index for COPD Survival
 **Description:** Predicts survival in COPD patients.
 
-### Body Fluid Balance Calculator by Inputs and Outputs
+### ✅ Body Fluid Balance Calculator by Inputs and Outputs
 **Description:** Calculates fluid balance from sodium concentrations indicating 0.9% saline fluid, and free water losses (GI, urine, etc) and gains (IV fluids, PO, etc).
 
-### Body Roundness Index (BRI) - NEW
+### ✅ Body Roundness Index (BRI) - NEW
 **Description:** Estimates % body fat and % visceral adipose tissue (VAT).
 
 ### Bova Score for Pulmonary Embolism Complications

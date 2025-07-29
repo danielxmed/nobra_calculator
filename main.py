@@ -22,6 +22,9 @@ sys.path.insert(0, str(Path(__file__).parent))
 from app import __version__, __description__
 from app.routers import scores_router, health_router
 from app.routers.api_routes import router as api_router
+# Import specialty scores router from the scores package
+import app.routers.scores
+specialty_scores_router = app.routers.scores.router
 from app.middleware import RateLimitMiddleware, create_redis_client, parse_whitelist
 
 # FastAPI application configuration
@@ -150,6 +153,8 @@ async def global_exception_handler(request: Request, exc: Exception):
 app.include_router(health_router)
 app.include_router(scores_router)
 app.include_router(api_router)
+# Include specialty scores at root level for individual endpoints
+app.include_router(specialty_scores_router)
 
 # Root endpoint
 @app.get("/")

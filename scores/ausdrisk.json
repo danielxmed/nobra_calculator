@@ -1,0 +1,161 @@
+{
+  "id": "ausdrisk",
+  "title": "Australian Type 2 Diabetes Risk (AUSDRISK) Assessment Tool",
+  "description": "Estimates 5-year risk of developing type 2 diabetes in Australian patients based on demographic, lifestyle and simple anthropometric measures",
+  "category": "endocrinology",
+  "version": "2010",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "string",
+      "required": true,
+      "description": "Age group of the patient",
+      "options": ["25-34", "35-44", "45-54", "55-64", "65+"],
+      "validation": {
+        "enum": ["25-34", "35-44", "45-54", "55-64", "65+"]
+      }
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Biological sex of the patient",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "ethnicity",
+      "type": "string",
+      "required": true,
+      "description": "Ethnic background of the patient",
+      "options": ["southern_european", "asian", "aboriginal_torres_strait", "pacific_islander", "other"],
+      "validation": {
+        "enum": ["southern_european", "asian", "aboriginal_torres_strait", "pacific_islander", "other"]
+      }
+    },
+    {
+      "name": "parental_diabetes",
+      "type": "string",
+      "required": true,
+      "description": "Family history of diabetes in parents",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "high_blood_glucose_history",
+      "type": "string",
+      "required": true,
+      "description": "History of high blood glucose levels (e.g., during pregnancy, illness, or health check)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "antihypertensive_medication",
+      "type": "string",
+      "required": true,
+      "description": "Currently taking medication for high blood pressure",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "current_smoker",
+      "type": "string",
+      "required": true,
+      "description": "Currently smoking cigarettes or other tobacco products on a daily basis",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "physical_activity",
+      "type": "string",
+      "required": true,
+      "description": "Physical activity status - Active if ≥150 minutes/week of walking (continuous ≥10 min) or moderate/vigorous activity",
+      "options": ["active", "inactive"],
+      "validation": {
+        "enum": ["active", "inactive"]
+      }
+    },
+    {
+      "name": "waist_circumference_category",
+      "type": "string",
+      "required": true,
+      "description": "Waist circumference category based on ethnicity and sex-specific cut-points",
+      "options": ["category_1", "category_2", "category_3"],
+      "validation": {
+        "enum": ["category_1", "category_2", "category_3"]
+      }
+    }
+  ],
+  "result": {
+    "name": "ausdrisk_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "AUSDRISK score for 5-year diabetes risk (0-35 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 5,
+        "stage": "Low Risk",
+        "description": "5 or less points",
+        "interpretation": "Approximately 1 in 100 chance of developing type 2 diabetes within 5 years. Consider lifestyle modifications to maintain low risk."
+      },
+      {
+        "min": 6,
+        "max": 8,
+        "stage": "Intermediate Risk",
+        "description": "6-8 points",
+        "interpretation": "Approximately 1 in 50 chance of developing type 2 diabetes within 5 years. Lifestyle modifications strongly recommended."
+      },
+      {
+        "min": 9,
+        "max": 11,
+        "stage": "Intermediate Risk",
+        "description": "9-11 points",
+        "interpretation": "Approximately 1 in 30 chance of developing type 2 diabetes within 5 years. Lifestyle modifications strongly recommended, consider consulting healthcare provider."
+      },
+      {
+        "min": 12,
+        "max": 15,
+        "stage": "High Risk",
+        "description": "12-15 points",
+        "interpretation": "Approximately 1 in 14 chance of developing type 2 diabetes within 5 years. See your doctor about your risk of diabetes and consider blood glucose testing."
+      },
+      {
+        "min": 16,
+        "max": 19,
+        "stage": "High Risk",
+        "description": "16-19 points",
+        "interpretation": "Approximately 1 in 7 chance of developing type 2 diabetes within 5 years. See your doctor about your risk of diabetes. Blood glucose testing strongly recommended."
+      },
+      {
+        "min": 20,
+        "max": 35,
+        "stage": "Very High Risk",
+        "description": "20 or more points",
+        "interpretation": "Approximately 1 in 3 chance of developing type 2 diabetes within 5 years. See your doctor about your risk of diabetes as soon as possible. You may already have diabetes."
+      }
+    ]
+  },
+  "references": [
+    "Chen L, Magliano DJ, Balkau B, Colagiuri S, Zimmet PZ, Tonkin AM, et al. AUSDRISK: an Australian Type 2 Diabetes Risk Assessment Tool based on demographic, lifestyle and simple anthropometric measures. Med J Aust. 2010;192(4):197-202."
+  ],
+  "formula": "Score = Age points + Sex points + Ethnicity points + Parental diabetes points + High blood glucose history points + Antihypertensive medication points + Smoking points + Physical inactivity points + Waist circumference points",
+  "notes": [
+    "Waist circumference categories are ethnicity and sex-specific. For Aboriginal/Torres Strait Islander or Asian: Category 1 = <90cm (men), <80cm (women); Category 2 = 90-99cm (men), 80-89cm (women); Category 3 = ≥100cm (men), ≥90cm (women). For other ethnicities: Category 1 = <102cm (men), <88cm (women); Category 2 = 102-109cm (men), 88-99cm (women); Category 3 = ≥110cm (men), ≥100cm (women).",
+    "Physical inactivity is defined as less than 150 minutes per week of walking (if continuous and ≥10 minutes) or moderate/vigorous activity.",
+    "A score of 12 or higher indicates increased diabetes risk requiring medical evaluation.",
+    "The tool has 74% sensitivity and 67.7% specificity at the ≥12 point threshold."
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "id": "body_fluid_balance",
+  "title": "Body Fluid Balance Calculator by Inputs and Outputs",
+  "description": "Calculates fluid balance from sodium concentrations indicating 0.9% saline fluid, and free water losses (GI, urine, etc) and gains (IV fluids, PO, etc). Helps track complex fluid dynamics in hospitalized patients by accounting for different sodium concentrations in various fluids.",
+  "category": "nephrology",
+  "version": "2016",
+  "parameters": [
+    {
+      "name": "gastric_losses",
+      "type": "float",
+      "required": false,
+      "description": "Volume of gastric losses in mL (sodium concentration ~60 mEq/L)",
+      "validation": {
+        "min": 0,
+        "max": 10000
+      },
+      "unit": "mL"
+    },
+    {
+      "name": "biliary_losses",
+      "type": "float",
+      "required": false,
+      "description": "Volume of biliary losses in mL (sodium concentration ~130 mEq/L)",
+      "validation": {
+        "min": 0,
+        "max": 10000
+      },
+      "unit": "mL"
+    },
+    {
+      "name": "small_bowel_losses",
+      "type": "float",
+      "required": false,
+      "description": "Volume of small bowel losses in mL (sodium concentration ~110 mEq/L)",
+      "validation": {
+        "min": 0,
+        "max": 10000
+      },
+      "unit": "mL"
+    },
+    {
+      "name": "diarrhea_losses",
+      "type": "float",
+      "required": false,
+      "description": "Volume of diarrhea losses in mL (sodium concentration ~60 mEq/L)",
+      "validation": {
+        "min": 0,
+        "max": 10000
+      },
+      "unit": "mL"
+    },
+    {
+      "name": "urine_output",
+      "type": "float",
+      "required": false,
+      "description": "Volume of urine output in mL (sodium concentration variable, typically 40 mEq/L)",
+      "validation": {
+        "min": 0,
+        "max": 10000
+      },
+      "unit": "mL"
+    },
+    {
+      "name": "insensible_losses",
+      "type": "float",
+      "required": false,
+      "description": "Estimated insensible losses in mL (pure water loss, no sodium)",
+      "validation": {
+        "min": 0,
+        "max": 2000
+      },
+      "unit": "mL"
+    },
+    {
+      "name": "other_losses",
+      "type": "float",
+      "required": false,
+      "description": "Other fluid losses in mL (assume isotonic, sodium ~140 mEq/L)",
+      "validation": {
+        "min": 0,
+        "max": 10000
+      },
+      "unit": "mL"
+    },
+    {
+      "name": "normal_saline_iv",
+      "type": "float",
+      "required": false,
+      "description": "Volume of 0.9% normal saline administered IV in mL (sodium 154 mEq/L)",
+      "validation": {
+        "min": 0,
+        "max": 10000
+      },
+      "unit": "mL"
+    },
+    {
+      "name": "half_normal_saline_iv",
+      "type": "float",
+      "required": false,
+      "description": "Volume of 0.45% half normal saline administered IV in mL (sodium 77 mEq/L)",
+      "validation": {
+        "min": 0,
+        "max": 10000
+      },
+      "unit": "mL"
+    },
+    {
+      "name": "lactated_ringers_iv",
+      "type": "float",
+      "required": false,
+      "description": "Volume of lactated Ringer's solution administered IV in mL (sodium 130 mEq/L)",
+      "validation": {
+        "min": 0,
+        "max": 10000
+      },
+      "unit": "mL"
+    },
+    {
+      "name": "d5w_iv",
+      "type": "float",
+      "required": false,
+      "description": "Volume of D5W (5% dextrose in water) administered IV in mL (no sodium, free water)",
+      "validation": {
+        "min": 0,
+        "max": 10000
+      },
+      "unit": "mL"
+    },
+    {
+      "name": "oral_intake",
+      "type": "float",
+      "required": false,
+      "description": "Volume of oral fluid intake in mL (assume free water)",
+      "validation": {
+        "min": 0,
+        "max": 10000
+      },
+      "unit": "mL"
+    }
+  ],
+  "result": {
+    "name": "fluid_balance_results",
+    "type": "object",
+    "unit": "mL",
+    "description": "Fluid balance calculations including net saline balance and free water balance"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": -1000,
+        "max": -500,
+        "stage": "Significant Negative Balance",
+        "description": "Net fluid loss >500 mL",
+        "interpretation": "Significant fluid deficit requiring prompt replacement. Assess for signs of volume depletion including hypotension, tachycardia, decreased urine output, and elevated BUN/Cr ratio. Consider IV fluid resuscitation based on sodium and free water deficits."
+      },
+      {
+        "min": -500,
+        "max": -200,
+        "stage": "Moderate Negative Balance",
+        "description": "Net fluid loss 200-500 mL",
+        "interpretation": "Moderate fluid deficit that may require intervention. Monitor vital signs and urine output closely. Consider fluid replacement if clinical signs of dehydration present or if trend continues."
+      },
+      {
+        "min": -200,
+        "max": 200,
+        "stage": "Neutral Balance",
+        "description": "Net fluid balance -200 to +200 mL",
+        "interpretation": "Appropriate fluid balance maintained. Continue current fluid management strategy with routine monitoring. This represents euvolemia in most clinical contexts."
+      },
+      {
+        "min": 200,
+        "max": 500,
+        "stage": "Moderate Positive Balance",
+        "description": "Net fluid gain 200-500 mL",
+        "interpretation": "Moderate fluid accumulation. Monitor for signs of volume overload including peripheral edema, pulmonary congestion, and weight gain. Consider fluid restriction or diuretics if clinically indicated."
+      },
+      {
+        "min": 500,
+        "max": 2000,
+        "stage": "Significant Positive Balance",
+        "description": "Net fluid gain >500 mL",
+        "interpretation": "Significant fluid overload risk. Assess for signs of congestion including elevated JVP, crackles, S3 gallop, and orthopnea. Strong consideration for diuretic therapy or fluid restriction unless intentional volume expansion indicated."
+      }
+    ]
+  },
+  "references": [
+    "Kaptein EM, Sreeramoju D, Kaptein JS, Kaptein MJ. A systematic approach to factitious hypernatremia: A case report and review of the literature. Clin Nephrol. 2016 Apr;85(4):246-52. doi: 10.5414/CN108716.",
+    "Konstam MA, Gheorghiade M, Burnett JC Jr, et al. Effects of oral tolvaptan in patients hospitalized for worsening heart failure: the EVEREST Outcome Trial. JAMA. 2007 Mar 28;297(12):1319-31. doi: 10.1001/jama.297.12.1319.",
+    "Testani JM, Brisco MA, Chen J, McCauley BD, Parikh CR, Tang WH. Timing of hemoconcentration during treatment of acute decompensated heart failure and subsequent survival: importance of sustained decongestion. J Am Coll Cardiol. 2013 Aug 6;62(6):516-24. doi: 10.1016/j.jacc.2013.05.027.",
+    "Rose BD, Post TW. Clinical Physiology of Acid-Base and Electrolyte Disorders. 5th ed. New York: McGraw-Hill; 2001."
+  ],
+  "formula": "Net Fluid Balance = Total Fluid Gains - Total Fluid Losses. 0.9% Saline Balance = (Volume × Na concentration / 154) for each fluid. Free Water Balance = Volume × (1 - Na concentration / 154) for each fluid.",
+  "notes": [
+    "Sodium concentrations are approximations and may vary based on individual patient factors",
+    "Insensible losses typically 500-1000 mL/day but increase with fever, tachypnea, or burns",
+    "This calculator assumes standard sodium concentrations for body fluids which may vary significantly",
+    "Does not account for third-spacing or fluid shifts between compartments",
+    "Clinical assessment should always accompany calculated fluid balance",
+    "Consider measured urine sodium for more accurate calculations when available",
+    "Enteral nutrition formulas have variable sodium content not captured in this simplified model",
+    "Blood products (PRBCs, plasma) contain sodium and should be considered in comprehensive fluid assessment"
+  ]
+}

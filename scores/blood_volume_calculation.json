@@ -1,0 +1,108 @@
+{
+  "id": "blood_volume_calculation",
+  "title": "Blood Volume Calculation",
+  "description": "Calculates total blood volume, red blood cell volume, and plasma volume using Nadler equations based on age, sex, height, weight, and hematocrit",
+  "category": "hematology",
+  "version": "1962",
+  "parameters": [
+    {
+      "name": "patient_category",
+      "type": "string",
+      "required": true,
+      "description": "Patient age/weight category determining calculation method",
+      "validation": {
+        "enum": ["preterm_neonate", "term_neonate", "infant_1_4_months", "child_under_25kg", "adult_or_child_25kg_plus"]
+      },
+      "options": [
+        "preterm_neonate - Preterm neonate (100 mL/kg)",
+        "term_neonate - Term neonate (85 mL/kg)",
+        "infant_1_4_months - Infant 1-4 months (75 mL/kg)",
+        "child_under_25kg - Child <25 kg (70 mL/kg)",
+        "adult_or_child_25kg_plus - Adult or child ≥25 kg (Nadler equations)"
+      ]
+    },
+    {
+      "name": "weight",
+      "type": "float",
+      "required": true,
+      "description": "Patient weight in kilograms",
+      "unit": "kg",
+      "validation": {
+        "min": 0.5,
+        "max": 300
+      }
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": false,
+      "description": "Patient sex (required for adults/children ≥25 kg using Nadler equations)",
+      "validation": {
+        "enum": ["male", "female"]
+      },
+      "options": [
+        "male - Male patient",
+        "female - Female patient"
+      ]
+    },
+    {
+      "name": "height",
+      "type": "float",
+      "required": false,
+      "description": "Patient height in centimeters (required for adults/children ≥25 kg using Nadler equations)",
+      "unit": "cm",
+      "validation": {
+        "min": 30,
+        "max": 250
+      }
+    },
+    {
+      "name": "hematocrit",
+      "type": "float",
+      "required": false,
+      "description": "Hematocrit percentage (optional, needed for RBC and plasma volume calculations)",
+      "unit": "%",
+      "validation": {
+        "min": 10,
+        "max": 70
+      }
+    }
+  ],
+  "result": {
+    "name": "blood_volumes",
+    "type": "object",
+    "unit": "mL",
+    "description": "Calculated blood volumes including total, RBC, and plasma volumes"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 999999,
+        "stage": "Blood Volume Results",
+        "description": "Calculated blood volume components",
+        "interpretation": "Blood volume calculations provide estimates for clinical decision-making including transfusion therapy, plasma exchange, and drug dosing. Total blood volume is calculated using established equations. RBC and plasma volumes require hematocrit input."
+      }
+    ]
+  },
+  "references": [
+    "Nadler SB, Hidalgo JH, Bloch T. Prediction of blood volume in normal human adults. Surgery. 1962 Feb;51(2):224-32.",
+    "Gilcher RO, McCombs JS. Blood volume and red cell mass measurements. In: Hillman RS, Ault KA, Rinder HM, editors. Hematology in Clinical Practice. 4th ed. New York: McGraw-Hill; 2005. p. 595-605.",
+    "International Council for Standardization in Haematology. Recommended methods for measurement of red-cell and plasma volume. J Nucl Med. 1980 Aug;21(8):793-800."
+  ],
+  "formula": "Total Blood Volume: Adults/children ≥25kg use Nadler equations: Male=[0.3669×height³+0.03219×weight+0.6041], Female=[0.3561×height³+0.03308×weight+0.1833]. Children <25kg use weight-based: Preterm neonate=100mL/kg, Term neonate=85mL/kg, Infant=75mL/kg, Child=70mL/kg. RBC Volume=Total×(Hct/100). Plasma Volume=Total×(1-Hct/100)",
+  "notes": [
+    "Developed by Nadler et al. in 1962 based on radioisotope labeling studies",
+    "Nadler equations apply to adults and children ≥25 kg using height, weight, and sex",
+    "Weight-based calculations (mL/kg) used for children <25 kg",
+    "Preterm neonates: 100 mL/kg, Term neonates: 85 mL/kg",
+    "Infants 1-4 months: 75 mL/kg, Children <25 kg: 70 mL/kg",
+    "Height must be converted to meters for Nadler equation calculations",
+    "Hematocrit is optional but required for RBC and plasma volume calculations",
+    "Clinical applications include transfusion therapy, plasma exchange, and coagulation factor dosing",
+    "Less accurate in obese patients due to non-linear relationship with weight",
+    "Results guide blood product dosing, fluid management, and therapeutic procedures",
+    "Normal blood volume is approximately 70 mL/kg for males, 65 mL/kg for females",
+    "Calculations assume normal hydration status and absence of acute blood loss"
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "id": "bishop_score",
+  "title": "Bishop Score for Vaginal Delivery and Induction of Labor",
+  "description": "Predicts likelihood of successful vaginal delivery and determines favorable cervical conditions for labor induction in pregnant women at term",
+  "category": "pediatrics",
+  "version": "1964",
+  "parameters": [
+    {
+      "name": "cervical_dilation",
+      "type": "string",
+      "required": true,
+      "description": "Cervical dilation measured in centimeters during pelvic examination",
+      "validation": {
+        "enum": ["closed", "1_2_cm", "3_4_cm", "5_or_more_cm"]
+      },
+      "options": [
+        "closed - Cervix is closed (0 points)",
+        "1_2_cm - 1-2 cm dilation (1 point)",
+        "3_4_cm - 3-4 cm dilation (2 points)",
+        "5_or_more_cm - 5 cm or more dilation (3 points)"
+      ]
+    },
+    {
+      "name": "cervical_effacement",
+      "type": "string",
+      "required": true,
+      "description": "Cervical effacement (thinning) expressed as percentage",
+      "validation": {
+        "enum": ["0_30_percent", "40_50_percent", "60_70_percent", "80_or_more_percent"]
+      },
+      "options": [
+        "0_30_percent - 0-30% effacement (0 points)",
+        "40_50_percent - 40-50% effacement (1 point)",
+        "60_70_percent - 60-70% effacement (2 points)",
+        "80_or_more_percent - 80% or more effacement (3 points)"
+      ]
+    },
+    {
+      "name": "fetal_station",
+      "type": "string",
+      "required": true,
+      "description": "Fetal station - position of baby's presenting part relative to ischial spines",
+      "validation": {
+        "enum": ["minus_3", "minus_2", "minus_1_or_0", "plus_1_or_2"]
+      },
+      "options": [
+        "minus_3 - Station -3 (0 points)",
+        "minus_2 - Station -2 (1 point)",
+        "minus_1_or_0 - Station -1 or 0 (2 points)",
+        "plus_1_or_2 - Station +1 or +2 (3 points)"
+      ]
+    },
+    {
+      "name": "cervical_position",
+      "type": "string",
+      "required": true,
+      "description": "Position of the cervix relative to the fetal head and vaginal axis",
+      "validation": {
+        "enum": ["posterior", "mid_position", "anterior"]
+      },
+      "options": [
+        "posterior - Posterior position (0 points)",
+        "mid_position - Mid-position (1 point)",
+        "anterior - Anterior position (2 points)"
+      ]
+    },
+    {
+      "name": "cervical_consistency",
+      "type": "string",
+      "required": true,
+      "description": "Consistency or firmness of the cervix on palpation",
+      "validation": {
+        "enum": ["firm", "moderately_firm", "soft"]
+      },
+      "options": [
+        "firm - Firm consistency (0 points)",
+        "moderately_firm - Moderately firm consistency (1 point)",
+        "soft - Soft consistency (2 points)"
+      ]
+    }
+  ],
+  "result": {
+    "name": "bishop_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Bishop score for predicting successful vaginal delivery and labor induction"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 5,
+        "stage": "Unfavorable Cervix",
+        "description": "Scores ≤5 suggest unfavorable cervix",
+        "interpretation": "Unfavorable cervix with low likelihood of successful vaginal delivery. Labor induction may be necessary and cervical ripening agents should be considered before induction. Higher risk of cesarean delivery."
+      },
+      {
+        "min": 6,
+        "max": 7,
+        "stage": "Indeterminate",
+        "description": "Scores 6-7 are indeterminate for induction success",
+        "interpretation": "Intermediate cervical favorability. Success of labor induction is uncertain. Clinical judgment should guide decision-making regarding timing and method of delivery. Consider individual patient factors and circumstances."
+      },
+      {
+        "min": 8,
+        "max": 13,
+        "stage": "Favorable Cervix",
+        "description": "Scores ≥8 suggest favorable cervix",
+        "interpretation": "Favorable cervix with high likelihood of successful vaginal delivery. Spontaneous labor likely to occur soon or labor induction has good chance of success. Low risk of cesarean delivery."
+      }
+    ]
+  },
+  "references": [
+    "Bishop EH. Pelvic scoring for elective induction. Obstet Gynecol. 1964 Aug;24:266-8.",
+    "Laughon SK, Zhang J, Troendle J, Sun L, Reddy UM. Using a simplified Bishop score to predict vaginal delivery. Obstet Gynecol. 2011 Apr;117(4):805-11.",
+    "Crane JM. Factors predicting labor induction success: a critical analysis. Clin Obstet Gynecol. 2006 Sep;49(3):573-84."
+  ],
+  "formula": "Sum of scores from 5 components: Cervical dilation (0-3 points) + Effacement (0-3 points) + Fetal station (0-3 points) + Cervical position (0-2 points) + Cervical consistency (0-2 points). Total score range: 0-13 points",
+  "notes": [
+    "Originally developed by Dr. Edward Bishop in 1964 to predict success of elective labor induction",
+    "Score should be assessed by experienced clinician through standardized pelvic examination",
+    "Commonly used to predict risk of cesarean section and guide labor management decisions",
+    "Scores ≤5: Unfavorable cervix, consider cervical ripening before induction",
+    "Scores 6-7: Indeterminate, use clinical judgment for induction timing",
+    "Scores ≥8: Favorable cervix, good candidate for labor induction",
+    "Score may change rapidly during active labor as cervical changes occur",
+    "Modified Bishop scores exist that include additional factors like maternal age and parity",
+    "Should be used in conjunction with other clinical factors and patient preferences",
+    "Not recommended for use before 37 weeks gestation or in high-risk pregnancies without obstetric consultation"
+  ]
+}

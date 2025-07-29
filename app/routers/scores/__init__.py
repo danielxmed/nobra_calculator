@@ -18,6 +18,11 @@ from .geriatrics import router as geriatrics_router
 from .rheumatology import router as rheumatology_router
 from .infectious_disease import router as infectious_disease_router
 from .oncology import router as oncology_router
+from .toxicology import router as toxicology_router
+from .urology import router as urology_router
+from .endocrinology import router as endocrinology_router
+from .hepatology import router as hepatology_router
+from .general import router as general_router
 
 # Create main scores router
 router = APIRouter()
@@ -36,3 +41,8 @@ router.include_router(geriatrics_router, tags=["geriatrics"])
 router.include_router(rheumatology_router, tags=["rheumatology"])
 router.include_router(infectious_disease_router, tags=["infectious_disease"])
 router.include_router(oncology_router, tags=["oncology"])
+router.include_router(toxicology_router, tags=["toxicology"])
+router.include_router(urology_router, tags=["urology"])
+router.include_router(endocrinology_router, tags=["endocrinology"])
+router.include_router(hepatology_router, tags=["hepatology"])
+router.include_router(general_router, tags=["general"])

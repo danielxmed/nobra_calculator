@@ -1,0 +1,144 @@
+{
+  "id": "binet_staging_cll",
+  "title": "Binet Staging System for Chronic Lymphocytic Leukemia (CLL)",
+  "description": "Stages chronic lymphocytic leukemia based on lymphadenopathy areas and hematologic parameters to predict prognosis and guide treatment decisions",
+  "category": "hematology",
+  "version": "1977",
+  "parameters": [
+    {
+      "name": "cervical_lymphadenopathy",
+      "type": "string",
+      "required": true,
+      "description": "Enlarged cervical lymph nodes (neck region)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": [
+        "yes - Cervical lymphadenopathy present",
+        "no - No cervical lymphadenopathy"
+      ]
+    },
+    {
+      "name": "axillary_lymphadenopathy", 
+      "type": "string",
+      "required": true,
+      "description": "Enlarged axillary lymph nodes (underarm region)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": [
+        "yes - Axillary lymphadenopathy present",
+        "no - No axillary lymphadenopathy"
+      ]
+    },
+    {
+      "name": "inguinal_lymphadenopathy",
+      "type": "string", 
+      "required": true,
+      "description": "Enlarged inguinal lymph nodes (groin region)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": [
+        "yes - Inguinal lymphadenopathy present",
+        "no - No inguinal lymphadenopathy"
+      ]
+    },
+    {
+      "name": "splenomegaly",
+      "type": "string",
+      "required": true,
+      "description": "Enlarged spleen (splenomegaly)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": [
+        "yes - Splenomegaly present", 
+        "no - No splenomegaly"
+      ]
+    },
+    {
+      "name": "hepatomegaly",
+      "type": "string",
+      "required": true,
+      "description": "Enlarged liver (hepatomegaly)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": [
+        "yes - Hepatomegaly present",
+        "no - No hepatomegaly"
+      ]
+    },
+    {
+      "name": "hemoglobin",
+      "type": "float",
+      "required": true,
+      "description": "Hemoglobin level in g/dL",
+      "unit": "g/dL",
+      "validation": {
+        "min": 3.0,
+        "max": 20.0
+      }
+    },
+    {
+      "name": "platelet_count",
+      "type": "integer",
+      "required": true,
+      "description": "Platelet count in thousands per mm³ (×10³/mm³)",
+      "unit": "×10³/mm³",
+      "validation": {
+        "min": 10,
+        "max": 1000
+      }
+    }
+  ],
+  "result": {
+    "name": "binet_stage",
+    "type": "string",
+    "unit": "stage",
+    "description": "Binet staging classification for CLL prognosis"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Stage A",
+        "description": "Low risk - <3 lymphoid areas involved, normal Hgb and platelets",
+        "interpretation": "Low risk CLL with favorable prognosis. Estimated median overall survival: ~12 years. Most patients can be monitored with watchful waiting. Consider treatment only if disease progression or symptoms develop."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Stage B", 
+        "description": "Intermediate risk - ≥3 lymphoid areas involved, normal Hgb and platelets",
+        "interpretation": "Intermediate risk CLL with moderate prognosis. Estimated median overall survival: ~7 years. May require earlier treatment consideration. Monitor closely for disease progression and development of symptoms."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Stage C",
+        "description": "High risk - Anemia (Hgb <10 g/dL) and/or thrombocytopenia (platelets <100×10³/mm³)",
+        "interpretation": "High risk CLL with poor prognosis. Estimated median overall survival: 2-4 years. Typically requires immediate treatment consideration. Close monitoring and aggressive management indicated."
+      }
+    ]
+  },
+  "references": [
+    "Binet JL, Auquier A, Dighiero G, Chastang C, Piguet H, Goasguen J, et al. A new prognostic classification of chronic lymphocytic leukemia derived from a multivariate survival analysis. Cancer. 1981 Jul 1;48(1):198-206.",
+    "Hallek M, Cheson BD, Catovsky D, Caligaris-Cappio F, Dighiero G, Döhner H, et al. iwCLL guidelines for diagnosis, indications for treatment, response assessment, and supportive management of CLL. Blood. 2018 Jun 21;131(25):2745-2760.",
+    "Rai KR, Sawitsky A, Cronkite EP, Chanana AD, Levy RN, Pasternack BS. Clinical staging of chronic lymphocytic leukemia. Blood. 1975 Aug;46(2):219-34."
+  ],
+  "formula": "Count lymphoid areas involved (cervical, axillary, inguinal, spleen, liver). Stage A: <3 areas + normal Hgb/platelets. Stage B: ≥3 areas + normal Hgb/platelets. Stage C: Anemia (Hgb <10 g/dL) and/or thrombocytopenia (platelets <100×10³/mm³)",
+  "notes": [
+    "The Binet system is the European standard for CLL staging, comparable to the American Rai system",
+    "Five lymphoid areas are assessed: cervical, axillary, inguinal lymph nodes, plus spleen and liver",
+    "Anemia is defined as hemoglobin <10 g/dL (100 g/L)",
+    "Thrombocytopenia is defined as platelet count <100×10³/mm³ (100×10⁹/L)",
+    "Stage C has the worst prognosis regardless of number of lymphoid areas involved",
+    "Modern molecular markers (17p deletion, TP53 mutations, IGHV status) provide additional prognostic information",
+    "Survival estimates may be improved with modern targeted therapies",
+    "Both Binet and Rai systems are simple, reproducible, and require only physical examination and basic labs",
+    "Treatment decisions should incorporate clinical symptoms, performance status, and comorbidities"
+  ]
+}

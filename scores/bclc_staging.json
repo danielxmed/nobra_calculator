@@ -1,0 +1,116 @@
+{
+  "id": "bclc_staging",
+  "title": "Barcelona-Clinic Liver Cancer (BCLC) Staging Classification",
+  "description": "Determines disease progression and appropriate treatment course for hepatocellular carcinoma (HCC) patients. The BCLC staging system integrates tumor characteristics, liver function status, and performance status to classify patients into five stages (0, A, B, C, D) with specific treatment recommendations for each stage.",
+  "category": "oncology",
+  "version": "2022",
+  "parameters": [
+    {
+      "name": "performance_status",
+      "type": "integer",
+      "required": true,
+      "description": "ECOG Performance Status (0=Fully active, 1=Restricted in strenuous activity, 2=Ambulatory and capable of self-care, 3=Capable of limited self-care, 4=Completely disabled)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "child_pugh_class",
+      "type": "string",
+      "required": true,
+      "description": "Child-Pugh classification (A=Well-preserved liver function, B=Moderate liver dysfunction, C=Severe liver damage)",
+      "options": ["A", "B", "C"],
+      "validation": {
+        "enum": ["A", "B", "C"]
+      }
+    },
+    {
+      "name": "tumor_size",
+      "type": "float",
+      "required": true,
+      "description": "Size of the largest tumor in centimeters",
+      "unit": "cm",
+      "validation": {
+        "min": 0
+      }
+    },
+    {
+      "name": "number_of_nodules",
+      "type": "integer",
+      "required": true,
+      "description": "Number of tumor nodules",
+      "validation": {
+        "min": 0
+      }
+    },
+    {
+      "name": "portal_invasion",
+      "type": "string",
+      "required": true,
+      "description": "Presence of portal vein invasion (macrovascular invasion)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "extrahepatic_spread",
+      "type": "string",
+      "required": true,
+      "description": "Presence of extrahepatic spread (metastases)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "bclc_stage",
+    "type": "string",
+    "unit": "",
+    "description": "BCLC stage classification and treatment recommendation"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "stage": "0",
+        "description": "Very Early Stage: Single nodule <2cm, PS 0, Child-Pugh A",
+        "interpretation": "Treatment: Ablation (preferred), resection or transplantation. Prognosis: 5-year survival >70%"
+      },
+      {
+        "stage": "A",
+        "description": "Early Stage: Single nodule or up to 3 nodules ≤3cm, PS 0, Child-Pugh A-B",
+        "interpretation": "Treatment: Resection, transplantation, or ablation depending on portal pressure and bilirubin. Prognosis: 5-year survival 50-70%"
+      },
+      {
+        "stage": "B",
+        "description": "Intermediate Stage: Multinodular, PS 0, Child-Pugh A-B",
+        "interpretation": "Treatment: Transarterial chemoembolization (TACE). Prognosis: Median survival 20-26 months"
+      },
+      {
+        "stage": "C",
+        "description": "Advanced Stage: Portal invasion or extrahepatic spread, PS 1-2, Child-Pugh A-B",
+        "interpretation": "Treatment: Systemic therapy (atezolizumab + bevacizumab, sorafenib, lenvatinib). Prognosis: Median survival 6-11 months"
+      },
+      {
+        "stage": "D",
+        "description": "Terminal Stage: Any tumor burden, PS >2 or Child-Pugh C",
+        "interpretation": "Treatment: Best supportive care. Prognosis: Median survival <3 months"
+      }
+    ]
+  },
+  "references": [
+    "Reig M, Forner A, Rimola J, Ferrer-Fàbrega J, Burrel M, Garcia-Criado Á, et al. BCLC strategy for prognosis prediction and treatment recommendation: The 2022 update. J Hepatol. 2022 Mar;76(3):681-693. doi: 10.1016/j.jhep.2021.11.018.",
+    "Llovet JM, Brú C, Bruix J. Prognosis of hepatocellular carcinoma: the BCLC staging classification. Semin Liver Dis. 1999;19(3):329-38. doi: 10.1055/s-2007-1007122.",
+    "Cillo U, Vitale A, Grigoletto F, Farinati F, Brolese A, Zanus G, et al. Prospective validation of the Barcelona Clinic Liver Cancer staging system. J Hepatol. 2006 Apr;44(4):723-31. doi: 10.1016/j.jhep.2005.12.015."
+  ],
+  "formula": "BCLC staging is determined by a combination of: 1) Performance Status (ECOG 0-4), 2) Child-Pugh class (A/B/C), 3) Tumor characteristics (size, number, portal invasion, extrahepatic spread)",
+  "notes": [
+    "BCLC is the most widely used staging system for HCC as it links stage with treatment recommendations",
+    "Performance status is assessed using the Eastern Cooperative Oncology Group (ECOG) scale",
+    "Child-Pugh score assesses liver function based on bilirubin, albumin, INR, ascites, and encephalopathy",
+    "Portal invasion refers to macrovascular invasion visible on imaging",
+    "Treatment recommendations should be individualized based on local expertise and patient factors"
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "id": "bmi_calculator",
+  "title": "BMI Calculator (Body Mass Index and BSA)",
+  "description": "Calculates body mass index (BMI) and body surface area (BSA) to assess weight appropriateness and determine medication dosages. BMI provides a quick screening tool for weight-related health risks, while BSA is used for calculating drug dosages and cardiac index measurements.",
+  "category": "general",
+  "version": "2025",
+  "parameters": [
+    {
+      "name": "weight",
+      "type": "float",
+      "required": true,
+      "description": "Patient weight in kilograms",
+      "validation": {
+        "min": 0.5,
+        "max": 500
+      },
+      "unit": "kg"
+    },
+    {
+      "name": "height",
+      "type": "float",
+      "required": true,
+      "description": "Patient height in centimeters",
+      "validation": {
+        "min": 30,
+        "max": 250
+      },
+      "unit": "cm"
+    }
+  ],
+  "result": {
+    "name": "bmi_bsa_results",
+    "type": "object",
+    "unit": "BMI: kg/m², BSA: m²",
+    "description": "BMI and BSA calculation results with clinical interpretations"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 18.5,
+        "stage": "Underweight",
+        "description": "BMI less than 18.5",
+        "interpretation": "Below normal weight. May indicate malnutrition, eating disorders, or underlying medical conditions. Consider nutritional assessment and medical evaluation."
+      },
+      {
+        "min": 18.5,
+        "max": 24.9,
+        "stage": "Normal weight",
+        "description": "BMI 18.5-24.9",
+        "interpretation": "Healthy weight range. Associated with lowest risk of weight-related health problems. Continue current lifestyle and eating habits."
+      },
+      {
+        "min": 25.0,
+        "max": 29.9,
+        "stage": "Overweight",
+        "description": "BMI 25.0-29.9",
+        "interpretation": "Above normal weight. Increased risk of cardiovascular disease, type 2 diabetes, and other health conditions. Consider lifestyle modifications including diet and exercise."
+      },
+      {
+        "min": 30.0,
+        "max": 34.9,
+        "stage": "Obese (Class 1)",
+        "description": "BMI 30.0-34.9",
+        "interpretation": "Moderate obesity. Significantly increased risk of health complications. Recommend comprehensive weight management program including dietary changes, physical activity, and medical monitoring."
+      },
+      {
+        "min": 35.0,
+        "max": 39.9,
+        "stage": "Obese (Class 2)",
+        "description": "BMI 35.0-39.9",
+        "interpretation": "Severe obesity. High risk of serious health complications including cardiovascular disease, diabetes, and sleep apnea. Consider intensive medical intervention and possibly bariatric surgery evaluation."
+      },
+      {
+        "min": 40.0,
+        "max": 100,
+        "stage": "Obese (Class 3)",
+        "description": "BMI ≥40.0",
+        "interpretation": "Extreme obesity (morbid obesity). Very high risk of life-threatening health complications. Requires immediate medical intervention and consideration of bariatric surgery or other intensive treatments."
+      }
+    ]
+  },
+  "references": [
+    "World Health Organization. Obesity: preventing and managing the global epidemic. Report of a WHO consultation. World Health Organ Tech Rep Ser. 2000;894:i-xii, 1-253.",
+    "Mosteller RD. Simplified calculation of body-surface area. N Engl J Med. 1987 Oct 22;317(17):1098. doi: 10.1056/NEJM198710223171717.",
+    "National Institutes of Health. Clinical Guidelines on the Identification, Evaluation, and Treatment of Overweight and Obesity in Adults--The Evidence Report. Obes Res. 1998 Sep;6 Suppl 2:51S-209S.",
+    "Rubino F, Puhl RM, Cummings DE, et al. Joint international consensus statement for ending stigma of obesity. Nat Med. 2020 Apr;26(4):485-497. doi: 10.1038/s41591-020-0803-x."
+  ],
+  "formula": "BMI (kg/m²) = weight (kg) / [height (m)]². BSA (m²) = √[height (cm) × weight (kg) / 3600] (Mosteller formula)",
+  "notes": [
+    "BMI does not distinguish between muscle mass and fat mass, may overestimate body fat in muscular individuals",
+    "BMI may underestimate body fat in older adults with reduced muscle mass",
+    "Different BMI thresholds may be appropriate for certain ethnic populations (e.g., Asian populations)",
+    "BSA is commonly used for chemotherapy dosing and cardiac index calculations",
+    "BMI should be used as a screening tool in conjunction with other clinical assessments",
+    "Waist circumference and waist-to-hip ratio provide additional information about health risks"
+  ]
+}

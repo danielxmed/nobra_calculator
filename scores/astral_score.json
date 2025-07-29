@@ -1,0 +1,115 @@
+{
+  "id": "astral_score",
+  "title": "ASTRAL Score for Ischemic Stroke",
+  "description": "Predicts 90-day poor outcome (mRS >2) in patients with acute ischemic stroke. The score combines age, NIHSS, timing, visual defects, glucose levels, and consciousness to stratify prognosis.",
+  "category": "neurology",
+  "version": "2012",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 0,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "nihss_score",
+      "type": "integer",
+      "required": true,
+      "description": "National Institutes of Health Stroke Scale (NIHSS) score",
+      "validation": {
+        "min": 0,
+        "max": 42
+      },
+      "unit": "points"
+    },
+    {
+      "name": "onset_to_admission_over_3h",
+      "type": "string",
+      "required": true,
+      "description": "More than 3 hours from symptom onset (or last time seen without stroke symptoms) to admission",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "visual_field_defect",
+      "type": "string",
+      "required": true,
+      "description": "Presence of any new visual field defect",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "abnormal_glucose",
+      "type": "string",
+      "required": true,
+      "description": "Admission glucose >131 mg/dL (7.3 mmol/L) or <66 mg/dL (3.7 mmol/L)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "impaired_consciousness",
+      "type": "string",
+      "required": true,
+      "description": "Impaired consciousness at admission",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "astral_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "ASTRAL score for predicting 90-day poor outcome"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 15,
+        "stage": "Low Risk",
+        "description": "Lower probability of poor outcome",
+        "interpretation": "Scores 0-15 points indicate lower probability of poor outcome (mRS >2) at 90 days. Patients in this range have better prognosis for functional independence."
+      },
+      {
+        "min": 16,
+        "max": 25,
+        "stage": "Moderate Risk",
+        "description": "Moderate probability of poor outcome",
+        "interpretation": "Scores 16-25 points indicate moderate probability of poor outcome (mRS >2) at 90 days. These patients require careful monitoring and intensive rehabilitation planning."
+      },
+      {
+        "min": 26,
+        "max": 50,
+        "stage": "High Risk",
+        "description": "High probability of poor outcome",
+        "interpretation": "Scores ≥26 points indicate high probability of poor outcome (mRS >2) at 90 days. These patients are at high risk for significant disability or death and may benefit from palliative care discussions."
+      }
+    ]
+  },
+  "references": [
+    "Ntaios G, Faouzi M, Ferrari J, Lang W, Vemmos K, Michel P. An integer-based score to predict functional outcome in acute ischemic stroke: the ASTRAL score. Neurology. 2012;78(24):1916-22. doi: 10.1212/WNL.0b013e318259e221.",
+    "Ntaios G, Gioulekas F, Papavasileiou V, Strbian D, Michel P. ASTRAL, DRAGON and SEDAN scores predict stroke outcome more accurately than physicians. Eur J Neurol. 2016;23(11):1651-1657. doi: 10.1111/ene.13100.",
+    "Liu G, Ntaios G, Zheng H, Wang Y, Michel P, Wang Y. External validation of the ASTRAL score to predict 3- and 12-month functional outcome in the China National Stroke Registry. Stroke. 2013;44(6):1443-50. doi: 10.1161/STROKEAHA.113.001047."
+  ],
+  "formula": "ASTRAL Score = Age + NIHSS + (2 if onset >3h) + (2 if visual field defect) + (1 if abnormal glucose) + (3 if impaired consciousness)",
+  "notes": [
+    "Use only in patients admitted within 24 hours of stroke onset",
+    "Score should only be used for patients with pre-stroke independence (mRS 0-2)",
+    "Poor outcome defined as modified Rankin Scale (mRS) >2 at 90 days",
+    "The score has been externally validated with AUC of approximately 0.82",
+    "Use in conjunction with clinical judgment, not as sole decision-making tool"
+  ]
+}

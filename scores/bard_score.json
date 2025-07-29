@@ -1,0 +1,90 @@
+{
+  "id": "bard_score",
+  "title": "BARD Score for NAFLD Fibrosis",
+  "description": "Predicts risk of advanced fibrosis in patients with non-alcoholic fatty liver disease (NAFLD). The BARD score uses three simple clinical parameters (BMI, AST/ALT ratio, and diabetes) to identify patients at low risk of advanced fibrosis who may not require liver biopsy.",
+  "category": "hepatology",
+  "version": "2008",
+  "parameters": [
+    {
+      "name": "bmi",
+      "type": "float",
+      "required": true,
+      "description": "Body Mass Index (weight in kg / height in m²)",
+      "unit": "kg/m²",
+      "validation": {
+        "min": 10,
+        "max": 70
+      }
+    },
+    {
+      "name": "ast",
+      "type": "float",
+      "required": true,
+      "description": "Aspartate aminotransferase (AST)",
+      "unit": "U/L",
+      "validation": {
+        "min": 1,
+        "max": 5000
+      }
+    },
+    {
+      "name": "alt",
+      "type": "float",
+      "required": true,
+      "description": "Alanine aminotransferase (ALT)",
+      "unit": "U/L",
+      "validation": {
+        "min": 1,
+        "max": 5000
+      }
+    },
+    {
+      "name": "diabetes",
+      "type": "string",
+      "required": true,
+      "description": "Presence of type 2 diabetes mellitus",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "bard_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "BARD score (0-4 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "Low risk of advanced fibrosis",
+        "interpretation": "Score 0-1 indicates low risk of advanced fibrosis (F3-F4). Negative predictive value 96%. Consider routine monitoring without immediate need for liver biopsy."
+      },
+      {
+        "min": 2,
+        "max": 4,
+        "stage": "High Risk",
+        "description": "High risk of advanced fibrosis",
+        "interpretation": "Score 2-4 indicates high risk of advanced fibrosis (F3-F4). Odds ratio 17 (95% CI 9.2-31.9) for advanced fibrosis. Consider liver biopsy or non-invasive imaging (e.g., FibroScan) for further evaluation."
+      }
+    ]
+  },
+  "references": [
+    "Harrison SA, Oliver D, Arnold HL, Gogia S, Neuschwander-Tetri BA. Development and validation of a simple NAFLD clinical scoring system for identifying patients without advanced disease. Gut. 2008 Oct;57(10):1441-7. doi: 10.1136/gut.2007.146019.",
+    "Raszeja-Wyszomirska J, Szymanik B, Ławniczak M, Kajor M, Chwist A, Milkiewicz P, et al. Validation of the BARD scoring system in Polish patients with nonalcoholic fatty liver disease (NAFLD). BMC Gastroenterol. 2010 Jun 17;10:67. doi: 10.1186/1471-230X-10-67.",
+    "Cichoż-Lach H, Celiński K, Prozorow-Król B, Swatek J, Słomka M, Lach T. The BARD score and the NAFLD fibrosis score in the assessment of advanced liver fibrosis in nonalcoholic fatty liver disease. Med Sci Monit. 2012 Dec;18(12):CR735-40. doi: 10.12659/msm.883601."
+  ],
+  "formula": "BARD Score = BMI ≥28 (1 point) + AST/ALT ratio ≥0.8 (2 points) + Diabetes (1 point)",
+  "notes": [
+    "BARD stands for BMI, AST/ALT Ratio, Diabetes",
+    "Score ranges from 0 to 4 points",
+    "Developed to identify NAFLD patients without advanced fibrosis",
+    "High negative predictive value (96%) for scores 0-1",
+    "Consider additional testing (FibroScan, MR elastography) for high-risk patients",
+    "Not validated for use in patients with other liver diseases"
+  ]
+}

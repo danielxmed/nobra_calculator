@@ -1,0 +1,98 @@
+{
+  "id": "blast_lung_injury_severity",
+  "title": "Blast Lung Injury Severity Score",
+  "description": "Stratifies primary blast lung injuries into three severity categories to guide ventilatory treatment and predict clinical outcomes",
+  "category": "emergency",
+  "version": "1999",
+  "parameters": [
+    {
+      "name": "pao2_fio2_ratio",
+      "type": "float",
+      "required": true,
+      "description": "PaO₂/FiO₂ ratio in mmHg - key indicator of oxygenation status",
+      "unit": "mmHg",
+      "validation": {
+        "min": 20,
+        "max": 500
+      }
+    },
+    {
+      "name": "chest_xray_findings",
+      "type": "string",
+      "required": true,
+      "description": "Chest X-ray findings indicating extent of pulmonary infiltrates",
+      "validation": {
+        "enum": ["localized", "bilateral_or_unilateral", "massive_bilateral"]
+      },
+      "options": [
+        "localized - Localized lung infiltrates (0 points)",
+        "bilateral_or_unilateral - Bilateral or unilateral lung infiltrates (1 point)",
+        "massive_bilateral - Massive bilateral lung infiltrates (2 points)"
+      ]
+    },
+    {
+      "name": "bronchial_pleural_fistula",
+      "type": "string",
+      "required": true,
+      "description": "Presence of bronchial pleural fistula - abnormal connection between airways and pleural space",
+      "validation": {
+        "enum": ["no", "yes"]
+      },
+      "options": [
+        "no - No bronchial pleural fistula (0 points)",
+        "yes - Bronchial pleural fistula present (1 point)"
+      ]
+    }
+  ],
+  "result": {
+    "name": "blast_lung_injury_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Blast lung injury severity score for risk stratification and treatment guidance"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Mild",
+        "description": "0 points - Mild blast lung injury",
+        "interpretation": "Mild blast lung injury with excellent prognosis. ARDS risk: ~0%, Mortality: ~0%. Recommended ventilation: Volume-controlled or pressure support ventilation. PEEP: ≤5 cm H₂O. Standard respiratory monitoring and supportive care."
+      },
+      {
+        "min": 1,
+        "max": 4,
+        "stage": "Moderate",
+        "description": "1-4 points - Moderate blast lung injury",
+        "interpretation": "Moderate blast lung injury with intermediate risk. ARDS risk: 33%, Mortality: ~0%. Recommended ventilation: Conventional modes, consider inverse-ratio ventilation if needed. PEEP: 5-10 cm H₂O. Close respiratory monitoring required."
+      },
+      {
+        "min": 5,
+        "max": 5,
+        "stage": "Severe",
+        "description": "5 points - Severe blast lung injury",
+        "interpretation": "Severe blast lung injury with poor prognosis. ARDS risk: 100%, Mortality: 75%. Recommended ventilation: Conventional modes with potential advanced therapies. PEEP: >10 cm H₂O. Consider nitric oxide, high-frequency jet ventilation, independent lung ventilation, or ECMO."
+      }
+    ]
+  },
+  "references": [
+    "Pizov R, Oppenheim-Eden A, Matot I, Weiss YG, Eidelman LA, Rivkind AI, et al. Blast lung injury from an explosion on a civilian bus. Chest. 1999 Jan;115(1):165-72.",
+    "Leibovici D, Gofrit ON, Stein M, Shapira SC, Noga Y, Heruti RJ, et al. Blast injuries: bus versus open-air bombings--a comparative study of injuries in survivors of open-air versus confined-space explosions. J Trauma. 1996 Dec;41(6):1030-5.",
+    "Wolf SJ, Bebarta VS, Bonnett CJ, Pons PT, Cantrill SV. Blast injuries. Lancet. 2009 Jul 18;374(9687):405-15."
+  ],
+  "formula": "Sum of points from 3 components: PaO₂/FiO₂ ratio (0-2 points) + Chest X-ray findings (0-2 points) + Bronchial pleural fistula (0-1 point). Total score range: 0-5 points",
+  "notes": [
+    "Developed specifically for primary blast lung injury (PBLI) from high-intensity pressure waves",
+    "Most effective when applied within 2 hours of blast injury",
+    "Score primarily used for patients with respiratory symptoms after blast exposure",
+    "Helps guide respiratory management decisions and predict clinical outcomes",
+    "Mild (0 points): Excellent prognosis, standard supportive care",
+    "Moderate (1-4 points): 33% ARDS risk, requires close monitoring and conventional ventilation",
+    "Severe (5 points): 100% ARDS risk, 75% mortality, may require advanced respiratory support",
+    "Advanced therapies for severe cases include nitric oxide, HFJV, independent lung ventilation, ECMO",
+    "PEEP recommendations: Mild ≤5 cm H₂O, Moderate 5-10 cm H₂O, Severe >10 cm H₂O",
+    "Consider lung-protective ventilation strategies similar to ARDS management",
+    "Monitor for complications including pneumothorax, air embolism, and hemoptysis",
+    "Score was developed and validated in military and civilian blast injury populations"
+  ]
+}

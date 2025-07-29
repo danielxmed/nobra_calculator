@@ -1,0 +1,134 @@
+{
+  "id": "atria_stroke",
+  "title": "ATRIA Stroke Risk Score",
+  "description": "Determines stroke risk in patients with atrial fibrillation. The ATRIA (Anticoagulation and Risk Factors in Atrial Fibrillation) stroke risk score predicts ischemic stroke and other thromboembolism in patients with atrial fibrillation, helping guide anticoagulation decisions.",
+  "category": "cardiology",
+  "version": "2013",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 0,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Biological sex of the patient",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "history_of_stroke",
+      "type": "string",
+      "required": true,
+      "description": "History of prior ischemic stroke or transient ischemic attack",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "diabetes",
+      "type": "string",
+      "required": true,
+      "description": "Diabetes mellitus (Type 1 or Type 2)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "congestive_heart_failure",
+      "type": "string",
+      "required": true,
+      "description": "Congestive heart failure",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hypertension",
+      "type": "string",
+      "required": true,
+      "description": "Hypertension (diagnosed high blood pressure)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "proteinuria",
+      "type": "string",
+      "required": true,
+      "description": "Proteinuria (>1+ on dipstick or >300 mg/day)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "egfr_less_than_45_or_esrd",
+      "type": "string",
+      "required": true,
+      "description": "eGFR <45 mL/min/1.73m² or end-stage renal disease (on dialysis)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "atria_stroke_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total ATRIA stroke risk score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 5,
+        "stage": "Low",
+        "description": "Low stroke risk",
+        "interpretation": "Low risk of stroke (<1% per year). These patients have minimal stroke risk with atrial fibrillation. Consider patient preferences and bleeding risk when making anticoagulation decisions."
+      },
+      {
+        "min": 6,
+        "max": 6,
+        "stage": "Intermediate",
+        "description": "Intermediate stroke risk",
+        "interpretation": "Intermediate risk of stroke (1-<2% per year). These patients have moderate stroke risk. Anticoagulation should be considered based on patient preferences, bleeding risk, and overall clinical context."
+      },
+      {
+        "min": 7,
+        "max": 15,
+        "stage": "High",
+        "description": "High stroke risk",
+        "interpretation": "High risk of stroke (≥2% per year). These patients have substantial stroke risk from atrial fibrillation. Anticoagulation is strongly recommended unless contraindicated. The benefit of stroke prevention generally outweighs bleeding risk in these patients."
+      }
+    ]
+  },
+  "references": [
+    "Singer DE, Chang Y, Borowsky LH, Fang MC, Pomernacki NK, Udaltsova N, et al. A new risk scheme to predict ischemic stroke and other thromboembolism in atrial fibrillation: the ATRIA study stroke risk score. J Am Heart Assoc. 2013 Jun 21;2(3):e000250. doi: 10.1161/JAHA.113.000250.",
+    "Go AS, Fang MC, Udaltsova N, Chang Y, Pomernacki NK, Borowsky L, et al. Impact of proteinuria and glomerular filtration rate on risk of thromboembolism in atrial fibrillation: the anticoagulation and risk factors in atrial fibrillation (ATRIA) study. Circulation. 2009 Mar 17;119(10):1363-9. doi: 10.1161/CIRCULATIONAHA.108.816082.",
+    "Aspberg S, Chang Y, Atterman A, Go AS, Singer DE. Comparison of the ATRIA, CHADS2, and CHA2DS2-VASc stroke risk scores in predicting ischaemic stroke in a large Swedish cohort of patients with atrial fibrillation. Eur Heart J. 2016 Nov 7;37(42):3203-3210. doi: 10.1093/eurheartj/ehw077."
+  ],
+  "formula": "Age component (0-6 points based on age group) + Sex (female=1) + History of Stroke modifier + Diabetes (1) + CHF (1) + Hypertension (1) + Proteinuria (1) + eGFR<45/ESRD (1)",
+  "notes": [
+    "The ATRIA score was developed in a cohort of over 13,000 patients with atrial fibrillation.",
+    "Age contributes the most points to the score, with additional points for patients with prior stroke.",
+    "The score includes renal function parameters (proteinuria and eGFR) which distinguishes it from CHADS2 and CHA2DS2-VASc scores.",
+    "Patients with prior stroke have modified age scoring that results in higher total scores.",
+    "The score predicts ischemic stroke and systemic thromboembolism, not just stroke alone."
+  ]
+}

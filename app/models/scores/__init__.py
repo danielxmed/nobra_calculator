@@ -15,6 +15,9 @@ from .geriatrics import *
 from .rheumatology import *
 from .infectious_disease import *
 from .oncology import *
+from .toxicology import *
+from .hepatology import *
+from .general import *
 
 # Import shared models
 from ..shared import (
@@ -102,6 +105,10 @@ __all__ = [
     # Oncology
     "Leibovich2018RccRequest",
     "Leibovich2018RccResponse",
+    
+    # Toxicology
+    "AtropineDosingRequest",
+    "AtropineDosingResponse",
     
     # Shared/Common
     "ScoreListResponse",

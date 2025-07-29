@@ -1,0 +1,113 @@
+{
+  "id": "basal_energy_expenditure",
+  "title": "Basal Energy Expenditure",
+  "description": "Calculates daily energy expenditure using the Harris-Benedict equation. Estimates the minimum daily caloric requirements at rest (basal metabolic rate) and can be adjusted for activity level to determine total daily energy needs.",
+  "category": "endocrinology",
+  "version": "1919",
+  "parameters": [
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Biological sex",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "weight",
+      "type": "float",
+      "required": true,
+      "description": "Body weight",
+      "unit": "kg",
+      "validation": {
+        "min": 20,
+        "max": 300
+      }
+    },
+    {
+      "name": "height",
+      "type": "float",
+      "required": true,
+      "description": "Height",
+      "unit": "cm",
+      "validation": {
+        "min": 100,
+        "max": 250
+      }
+    },
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Age in years",
+      "unit": "years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      }
+    },
+    {
+      "name": "activity_level",
+      "type": "string",
+      "required": false,
+      "description": "Physical activity level",
+      "options": ["sedentary", "light", "moderate", "heavy", "very_heavy"],
+      "validation": {
+        "enum": ["sedentary", "light", "moderate", "heavy", "very_heavy"]
+      }
+    }
+  ],
+  "result": {
+    "name": "energy_expenditure",
+    "type": "float",
+    "unit": "kcal/day",
+    "description": "Daily energy expenditure"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1500,
+        "stage": "Low",
+        "description": "Low basal energy expenditure",
+        "interpretation": "Low basal metabolic rate. Consider evaluating for metabolic disorders if unexpectedly low."
+      },
+      {
+        "min": 1500,
+        "max": 2000,
+        "stage": "Normal",
+        "description": "Normal basal energy expenditure",
+        "interpretation": "Normal basal metabolic rate for most adults. Adjust caloric intake based on activity level and health goals."
+      },
+      {
+        "min": 2000,
+        "max": 2500,
+        "stage": "High",
+        "description": "High basal energy expenditure",
+        "interpretation": "Higher than average basal metabolic rate. Common in younger males and individuals with higher muscle mass."
+      },
+      {
+        "min": 2500,
+        "max": 10000,
+        "stage": "Very High",
+        "description": "Very high basal energy expenditure",
+        "interpretation": "Very high basal metabolic rate. May be seen in athletes or individuals with very high muscle mass."
+      }
+    ]
+  },
+  "references": [
+    "Harris JA, Benedict FG. A biometric study of basal metabolism in man. Washington DC: Carnegie Institute of Washington; 1919. Publication no. 279.",
+    "Roza AM, Shizgal HM. The Harris Benedict equation reevaluated: resting energy requirements and the body cell mass. Am J Clin Nutr. 1984 Jul;40(1):168-82. doi: 10.1093/ajcn/40.1.168.",
+    "Mifflin MD, St Jeor ST, Hill LA, Scott BJ, Daugherty SA, Koh YO. A new predictive equation for resting energy expenditure in healthy individuals. Am J Clin Nutr. 1990 Feb;51(2):241-7. doi: 10.1093/ajcn/51.2.241."
+  ],
+  "formula": "Harris-Benedict: Men: BEE = 66.5 + (13.75 × weight) + (5.003 × height) - (6.775 × age); Women: BEE = 655.1 + (9.563 × weight) + (1.850 × height) - (4.676 × age)",
+  "notes": [
+    "BEE represents resting metabolic rate without activity",
+    "Activity factors: Sedentary (×1.2), Light (×1.375), Moderate (×1.55), Heavy (×1.725), Very Heavy (×1.9)",
+    "Actual energy needs increase with stress, illness, and recovery from surgery",
+    "Consider using Mifflin-St Jeor equation for potentially more accurate results in obese individuals",
+    "Results should be adjusted based on individual metabolic factors and clinical condition"
+  ]
+}

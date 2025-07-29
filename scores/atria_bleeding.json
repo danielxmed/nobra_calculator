@@ -1,0 +1,103 @@
+{
+  "id": "atria_bleeding",
+  "title": "ATRIA Bleeding Risk Score",
+  "description": "Determines bleeding risk for patients on warfarin therapy for atrial fibrillation. The score was developed and validated in the ATRIA (Anticoagulation and Risk Factors in Atrial Fibrillation) cohort and helps stratify patients into low, intermediate, and high risk categories for major hemorrhage.",
+  "category": "cardiology",
+  "version": "2011",
+  "parameters": [
+    {
+      "name": "anemia",
+      "type": "string",
+      "required": true,
+      "description": "Presence of anemia (Hemoglobin <13 g/dL in males or <12 g/dL in females)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "severe_renal_disease",
+      "type": "string",
+      "required": true,
+      "description": "Severe renal disease (GFR <30 mL/min or dialysis-dependent)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "age_75_or_over",
+      "type": "string",
+      "required": true,
+      "description": "Age ≥75 years",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "prior_hemorrhage",
+      "type": "string",
+      "required": true,
+      "description": "Any prior hemorrhage diagnosis (e.g., GI bleed, intracranial hemorrhage)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hypertension",
+      "type": "string",
+      "required": true,
+      "description": "History of hypertension",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "atria_bleeding_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total ATRIA bleeding risk score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Low",
+        "description": "Low bleeding risk",
+        "interpretation": "Low risk (<1%) of major hemorrhage per year. These patients have the lowest bleeding risk on warfarin therapy. Consider standard anticoagulation management with regular INR monitoring."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Intermediate",
+        "description": "Intermediate bleeding risk",
+        "interpretation": "Intermediate risk (2.6%) of major hemorrhage per year. These patients require careful monitoring and consideration of bleeding risk when making anticoagulation decisions. More frequent INR monitoring may be warranted."
+      },
+      {
+        "min": 5,
+        "max": 10,
+        "stage": "High",
+        "description": "High bleeding risk",
+        "interpretation": "High risk (5.8%) of major hemorrhage per year. These patients have substantial bleeding risk on warfarin therapy. Consider alternative strategies including closer INR monitoring, lower INR targets, or alternative anticoagulation options. The risk-benefit ratio of anticoagulation should be carefully evaluated."
+      }
+    ]
+  },
+  "references": [
+    "Fang MC, Go AS, Chang Y, Borowsky LH, Pomernacki NK, Udaltsova N, et al. A new risk scheme to predict warfarin-associated hemorrhage: The ATRIA (Anticoagulation and Risk Factors in Atrial Fibrillation) Study. J Am Coll Cardiol. 2011 Jul 19;58(4):395-401. doi: 10.1016/j.jacc.2011.03.031.",
+    "Roldán V, Marín F, Fernández H, Manzano-Fernández S, Gallego P, Valdés M, et al. Predictive value of the HAS-BLED and ATRIA bleeding scores for the risk of serious bleeding in a \"real-world\" population with atrial fibrillation receiving anticoagulant therapy. Chest. 2013 Jan;143(1):179-184. doi: 10.1378/chest.12-0608.",
+    "Senoo K, Proietti M, Lane DA, Lip GY. Evaluation of the HAS-BLED, ATRIA, and ORBIT Bleeding Risk Scores in Patients with Atrial Fibrillation Taking Warfarin. Am J Med. 2016 Jun;129(6):600-7. doi: 10.1016/j.amjmed.2015.10.001."
+  ],
+  "formula": "ATRIA Score = Anemia (3 points) + Severe Renal Disease (3 points) + Age ≥75 (2 points) + Prior Hemorrhage (1 point) + Hypertension (1 point)",
+  "notes": [
+    "The ATRIA score was developed specifically for patients on warfarin therapy for atrial fibrillation.",
+    "Patients with a history of intracranial hemorrhage were likely excluded from the development cohort.",
+    "The score should be used in conjunction with clinical judgment and individual patient factors.",
+    "Some studies suggest HAS-BLED may have slightly better predictive accuracy than ATRIA.",
+    "Major hemorrhage is defined as fatal, requiring ≥2 units transfusion, or hemorrhage into critical anatomical site."
+  ]
+}

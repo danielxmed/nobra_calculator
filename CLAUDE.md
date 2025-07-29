@@ -13,7 +13,7 @@ This document defines an automated flow where Claude Code works autonomously imp
 2.5. **Search on MDCALC via Tavily/Firecrawl MCP** - Use Tavily/Firecrawl search to find information on how to calculate the score in question, its interpretation, and citeable references. Preferably on MDCALC. CRITICAL STEP. If Tavily is not avaliable, use Firecrawl MCP.
 3. **🏗️ Implement Calculator** - Follow the steps described in this document
 4. **✅ Mark Completion** - Update `@CALC_LIST.md` with a check for the implemented calculator
-5. **🗜️ Compact Conversation** - Use the `/compact` command to optimize context
+5. **🗜️ Compact Conversation** - Use the `/compact` (claude code) or *'/smol'* (cline) command to optimize context
 6. **🔄 Restart Cycle** - Return to step 1 for the next implementation
 
 ### Criteria for Selecting the Next Calculator
@@ -87,6 +87,7 @@ The following specialties are currently organized in the system:
 - `geriatrics`
 - `rheumatology`
 - `infectious_disease`
+...
 
 ## 📝 Implementing a New Calculator
 
@@ -608,17 +609,17 @@ __all__ = [
 
 ### 1. Reload Scores
 ```bash
-curl -X POST http://localhost:8000/api/reload
+curl -X POST http://localhost:8080/api/reload
 ```
 
 ### 2. Check if the Score Appears in the List
 ```bash
-curl http://localhost:8000/api/scores
+curl http://localhost:8080/api/scores
 ```
 
 ### 3. Test the Calculation
 ```bash
-curl -X POST http://localhost:8000/{score_id} \  
+curl -X POST http://localhost:8080/{score_id} \  
   -H "Content-Type: application/json" \
   -d '{"param1": "value", "param2": 50, "param3": 1.5}'
 ```
@@ -626,7 +627,7 @@ curl -X POST http://localhost:8000/{score_id} \
 
 ### 4. Check Metadata
 ```bash
-curl http://localhost:8000/api/scores/{score_id}
+curl http://localhost:8080/api/scores/{score_id}
 ```
 
 ## ⚠️ Important Points
@@ -735,7 +736,7 @@ For each implementation cycle, strictly follow:
 
 #### 5. **🗜️ Compact Context**
 ```
-- Execute /compact command
+- Execute /compact command or /smol if you are cline. 
 - Summarize implementations performed
 - Prepare context for next cycle
 ```

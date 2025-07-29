@@ -1,0 +1,128 @@
+{
+  "id": "audit_c",
+  "title": "AUDIT-C for Alcohol Use",
+  "description": "Identifies at-risk drinkers (i.e., binge drinking) who may not be alcohol dependent. A brief 3-question alcohol screen derived from the full AUDIT questionnaire.",
+  "category": "psychiatry",
+  "version": "1998",
+  "parameters": [
+    {
+      "name": "frequency",
+      "type": "string",
+      "required": true,
+      "description": "How often did you have a drink containing alcohol in the past year?",
+      "options": [
+        "never",
+        "monthly_or_less",
+        "2_to_4_times_month",
+        "2_to_3_times_week",
+        "4_or_more_times_week"
+      ],
+      "validation": {
+        "enum": [
+          "never",
+          "monthly_or_less",
+          "2_to_4_times_month",
+          "2_to_3_times_week",
+          "4_or_more_times_week"
+        ]
+      }
+    },
+    {
+      "name": "typical_drinks",
+      "type": "string",
+      "required": true,
+      "description": "How many drinks containing alcohol did you have on a typical day when you were drinking in the past year?",
+      "options": [
+        "1_or_2",
+        "3_or_4",
+        "5_or_6",
+        "7_to_9",
+        "10_or_more"
+      ],
+      "validation": {
+        "enum": [
+          "1_or_2",
+          "3_or_4",
+          "5_or_6",
+          "7_to_9",
+          "10_or_more"
+        ]
+      }
+    },
+    {
+      "name": "six_or_more",
+      "type": "string",
+      "required": true,
+      "description": "How often did you have six or more drinks on one occasion in the past year?",
+      "options": [
+        "never",
+        "less_than_monthly",
+        "monthly",
+        "weekly",
+        "daily_or_almost_daily"
+      ],
+      "validation": {
+        "enum": [
+          "never",
+          "less_than_monthly",
+          "monthly",
+          "weekly",
+          "daily_or_almost_daily"
+        ]
+      }
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient's biological sex (different cutoff values for males and females)",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    }
+  ],
+  "result": {
+    "name": "audit_c_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "AUDIT-C score ranging from 0-12 points"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Low risk",
+        "description": "Low risk drinking",
+        "interpretation": "Score suggests low risk drinking pattern"
+      },
+      {
+        "min": 3,
+        "max": 12,
+        "stage": "At risk (Female)",
+        "description": "At-risk drinking for females",
+        "interpretation": "For females, score ≥3 suggests alcohol misuse"
+      },
+      {
+        "min": 4,
+        "max": 12,
+        "stage": "At risk (Male)",
+        "description": "At-risk drinking for males",
+        "interpretation": "For males, score ≥4 suggests alcohol misuse"
+      }
+    ]
+  },
+  "references": [
+    "Bush K, Kivlahan DR, McDonell MB, Fihn SD, Bradley KA. The AUDIT alcohol consumption questions (AUDIT-C): an effective brief screening test for problem drinking. Ambulatory Care Quality Improvement Project (ACQUIP). Alcohol Use Disorders Identification Test. Arch Intern Med. 1998 Sep 14;158(16):1789-95.",
+    "Bradley KA, DeBenedetti AF, Volk RJ, Williams EC, Frank D, Kivlahan DR. AUDIT-C as a brief screen for alcohol misuse in primary care. Alcohol Clin Exp Res. 2007 Jul;31(7):1208-17.",
+    "Frank D, DeBenedetti AF, Volk RJ, Williams EC, Kivlahan DR, Bradley KA. Effectiveness of the AUDIT-C as a screening test for alcohol misuse in three race/ethnic groups. J Gen Intern Med. 2008 Jun;23(6):781-7."
+  ],
+  "formula": "Sum of points from three questions (0-4 points each). Total score range: 0-12 points.",
+  "notes": [
+    "One standard drink equals: 12 oz beer (5% alcohol), 8 oz malt liquor (7% alcohol), 5 oz wine (12% alcohol), or 1.5 oz spirits (40% alcohol)",
+    "Higher scores correlate with greater severity of alcohol misuse",
+    "The AUDIT-C is a brief version of the 10-question AUDIT instrument",
+    "Validated in male veterans initially, later validated across diverse populations"
+  ]
+}

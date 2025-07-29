@@ -1,0 +1,114 @@
+{
+  "id": "behavioral_pain_scale",
+  "title": "Behavioral Pain Scale (BPS) for Pain Assessment in Intubated Patients",
+  "description": "Quantifies pain in critically ill intubated patients who cannot self-report using three behavioral indicators",
+  "category": "emergency",
+  "version": "2001",
+  "parameters": [
+    {
+      "name": "facial_expression",
+      "type": "integer",
+      "required": true,
+      "description": "Assessment of facial expression as indicator of pain in intubated patient",
+      "validation": {
+        "min": 1,
+        "max": 4,
+        "enum": [1, 2, 3, 4]
+      },
+      "options": [
+        "1 - Relaxed",
+        "2 - Partially tightened (e.g., brow lowering)",
+        "3 - Fully tightened (e.g., eyelid closing)",
+        "4 - Grimacing"
+      ]
+    },
+    {
+      "name": "upper_limb_movements",
+      "type": "integer",
+      "required": true,
+      "description": "Assessment of upper limb movement patterns indicating pain or distress",
+      "validation": {
+        "min": 1,
+        "max": 4,
+        "enum": [1, 2, 3, 4]
+      },
+      "options": [
+        "1 - No movement",
+        "2 - Partially bent",
+        "3 - Fully bent with finger flexion",
+        "4 - Permanently retracted"
+      ]
+    },
+    {
+      "name": "compliance_with_ventilation",
+      "type": "integer",
+      "required": true,
+      "description": "Assessment of patient's compliance with mechanical ventilation",
+      "validation": {
+        "min": 1,
+        "max": 4, 
+        "enum": [1, 2, 3, 4]
+      },
+      "options": [
+        "1 - Tolerating movement",
+        "2 - Coughing but tolerating ventilation for most of the time",
+        "3 - Fighting ventilator",
+        "4 - Unable to control ventilation"
+      ]
+    }
+  ],
+  "result": {
+    "name": "bps_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "BPS score from 3 (no pain) to 12 (maximum pain)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "No Pain",
+        "description": "No pain behaviors observed",
+        "interpretation": "Patient demonstrates no pain behaviors. Continue current management with routine monitoring. No analgesic intervention required."
+      },
+      {
+        "min": 4,
+        "max": 5,
+        "stage": "Mild Pain",
+        "description": "Mild pain behaviors present",
+        "interpretation": "Patient demonstrates mild pain behaviors. Consider comfort measures and reassessment. May consider low-dose analgesics based on clinical context."
+      },
+      {
+        "min": 6,
+        "max": 11,
+        "stage": "Unacceptable Pain",
+        "description": "Unacceptable amount of pain requiring intervention",
+        "interpretation": "Patient demonstrates significant pain behaviors requiring intervention. Consider sedation and/or analgesia according to institutional protocols. Reassess after intervention."
+      },
+      {
+        "min": 12,
+        "max": 12,
+        "stage": "Maximum Pain",
+        "description": "Maximum pain requiring immediate intervention",
+        "interpretation": "Patient demonstrates maximum pain behaviors requiring immediate intervention. Administer appropriate analgesia and sedation. Consider multimodal pain management approach."
+      }
+    ]
+  },
+  "references": [
+    "Payen JF, Bru O, Bosson JL, Lagrasta A, Novel E, Deschaux I, et al. Assessing pain in critically ill sedated patients by using a behavioral pain scale. Crit Care Med. 2001 Dec;29(12):2258-63.",
+    "Ahlers SJ, van Gulik L, van der Veen AM, van Dongen HP, de Boer A, Tibboel D, et al. Comparison of different pain scoring systems in critically ill patients in a general ICU. Crit Care. 2008;12(1):R15.",
+    "Chanques G, Sebbane M, Barbotte E, Viel E, Eledjam JJ, Jaber S. A prospective study of pain at rest: incidence and characteristics of an unrecognized symptom in surgical and trauma versus medical intensive care unit patients. Anesthesiology. 2007 Nov;107(5):858-60."
+  ],
+  "formula": "BPS Score = Facial Expression (1-4) + Upper Limb Movements (1-4) + Compliance with Ventilation (1-4)",
+  "notes": [
+    "Designed specifically for critically ill intubated patients unable to self-report pain",
+    "Scores ≥6 indicate unacceptable pain requiring sedation and/or analgesia",
+    "Should be assessed at rest and during noxious stimuli",
+    "Recommended assessment frequency: once per shift or when analgesia changes",
+    "Validated in multiple ICU populations including surgical, trauma, and medical patients",
+    "One of the two recommended behavioral pain scales in 2018 PADIS guidelines (along with CPOT)",
+    "Particularly applicable to mechanically ventilated patients due to ventilation compliance component",
+    "More difficult to use in patients under deep sedation"
+  ]
+}

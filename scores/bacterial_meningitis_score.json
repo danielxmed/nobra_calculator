@@ -1,0 +1,99 @@
+{
+  "id": "bacterial_meningitis_score",
+  "title": "Bacterial Meningitis Score for Children",
+  "description": "Predicts likelihood of bacterial (versus aseptic) meningitis in children with CSF pleocytosis. The score helps clinicians distinguish between bacterial and aseptic meningitis to support safe discharge decisions while maintaining appropriate caution for this serious condition.",
+  "category": "pediatrics",
+  "version": "2007",
+  "parameters": [
+    {
+      "name": "csf_gram_stain",
+      "type": "string",
+      "required": true,
+      "description": "Cerebrospinal fluid (CSF) Gram stain result",
+      "options": ["negative", "positive"],
+      "validation": {
+        "enum": ["negative", "positive"]
+      }
+    },
+    {
+      "name": "csf_anc",
+      "type": "integer",
+      "required": true,
+      "description": "CSF absolute neutrophil count",
+      "unit": "cells/µL",
+      "validation": {
+        "min": 0,
+        "max": 50000
+      }
+    },
+    {
+      "name": "csf_protein",
+      "type": "float",
+      "required": true,
+      "description": "CSF protein level",
+      "unit": "mg/dL",
+      "validation": {
+        "min": 0,
+        "max": 1000
+      }
+    },
+    {
+      "name": "peripheral_blood_anc",
+      "type": "integer",
+      "required": true,
+      "description": "Peripheral blood absolute neutrophil count",
+      "unit": "cells/µL",
+      "validation": {
+        "min": 0,
+        "max": 100000
+      }
+    },
+    {
+      "name": "seizure_at_presentation",
+      "type": "string",
+      "required": true,
+      "description": "Seizure at or prior to initial presentation",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "bacterial_meningitis_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total score indicating risk of bacterial meningitis (0-5 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Very Low Risk",
+        "description": "Very low risk of bacterial meningitis",
+        "interpretation": "Score of 0 indicates very low risk of bacterial meningitis (risk approximately 0.1%). Consider discharge with close follow-up. Clinical judgment should always supersede the score. Consider single dose of parenteral antibiotics (e.g., ceftriaxone) prior to discharge while awaiting bacterial cultures."
+      },
+      {
+        "min": 1,
+        "max": 5,
+        "stage": "Not Very Low Risk",
+        "description": "Not very low risk of bacterial meningitis",
+        "interpretation": "Score ≥1 indicates patient is not very low risk for bacterial meningitis. Admission for parenteral antibiotics and monitoring is recommended while awaiting CSF culture results. Higher scores correlate with increased likelihood of bacterial meningitis."
+      }
+    ]
+  },
+  "references": [
+    "Nigrovic LE, Kuppermann N, Macias CG, et al. Clinical prediction rule for identifying children with cerebrospinal fluid pleocytosis at very low risk of bacterial meningitis. JAMA. 2007 Jan 3;297(1):52-60. doi: 10.1001/jama.297.1.52.",
+    "Nigrovic LE, Malley R, Macias CG, et al. Effect of antibiotic pretreatment on cerebrospinal fluid profiles of children with bacterial meningitis. Pediatrics. 2008 Oct;122(4):726-30. doi: 10.1542/peds.2007-3275.",
+    "Nigrovic LE, Malley R, Kuppermann N. Meta-analysis of bacterial meningitis score validation studies. Arch Dis Child. 2012 Sep;97(9):799-805. doi: 10.1136/archdischild-2012-301798."
+  ],
+  "formula": "Score = (Positive Gram stain × 1) + (CSF ANC ≥1,000 × 1) + (CSF protein ≥80 × 1) + (Peripheral blood ANC ≥10,000 × 1) + (Seizure at presentation × 1)",
+  "notes": [
+    "Not recommended for use in patients <2 months old",
+    "Not effective for ruling out all nervous system infections (e.g., Lyme meningitis)",
+    "Clinical judgment should always supersede the score",
+    "Particular caution should be exercised in infants with petechial rashes",
+    "Consider regional epidemiology (e.g., Lyme disease prevalence) when interpreting results"
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "id": "basic_statistics_calc",
+  "title": "Basic Statistics Calculator",
+  "description": "Calculates common epidemiological values for diagnostic tests and treatments, including sensitivity, specificity, predictive values, likelihood ratios, and treatment effectiveness measures.",
+  "category": "emergency",
+  "version": "2024",
+  "parameters": [
+    {
+      "name": "calculation_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of calculation to perform: 'diagnostic_test' or 'treatment'",
+      "validation": {
+        "enum": ["diagnostic_test", "treatment"]
+      }
+    },
+    {
+      "name": "input_method",
+      "type": "string",
+      "required": false,
+      "description": "Method of input for diagnostic test: 'rates' (prevalence, sensitivity, specificity) or 'counts' (TP, FP, FN, TN)",
+      "validation": {
+        "enum": ["rates", "counts"]
+      }
+    },
+    {
+      "name": "prevalence",
+      "type": "float",
+      "required": false,
+      "description": "Disease prevalence (0-100%)",
+      "unit": "%",
+      "validation": {
+        "min": 0,
+        "max": 100
+      }
+    },
+    {
+      "name": "sensitivity",
+      "type": "float",
+      "required": false,
+      "description": "Test sensitivity (0-100%)",
+      "unit": "%",
+      "validation": {
+        "min": 0,
+        "max": 100
+      }
+    },
+    {
+      "name": "specificity",
+      "type": "float",
+      "required": false,
+      "description": "Test specificity (0-100%)",
+      "unit": "%",
+      "validation": {
+        "min": 0,
+        "max": 100
+      }
+    },
+    {
+      "name": "true_positive",
+      "type": "integer",
+      "required": false,
+      "description": "Number of true positive results",
+      "validation": {
+        "min": 0
+      }
+    },
+    {
+      "name": "false_positive",
+      "type": "integer",
+      "required": false,
+      "description": "Number of false positive results",
+      "validation": {
+        "min": 0
+      }
+    },
+    {
+      "name": "false_negative",
+      "type": "integer",
+      "required": false,
+      "description": "Number of false negative results",
+      "validation": {
+        "min": 0
+      }
+    },
+    {
+      "name": "true_negative",
+      "type": "integer",
+      "required": false,
+      "description": "Number of true negative results",
+      "validation": {
+        "min": 0
+      }
+    },
+    {
+      "name": "experimental_with_outcome",
+      "type": "integer",
+      "required": false,
+      "description": "Number of experimental patients with outcome (A)",
+      "validation": {
+        "min": 0
+      }
+    },
+    {
+      "name": "experimental_without_outcome",
+      "type": "integer",
+      "required": false,
+      "description": "Number of experimental patients without outcome (B)",
+      "validation": {
+        "min": 0
+      }
+    },
+    {
+      "name": "control_with_outcome",
+      "type": "integer",
+      "required": false,
+      "description": "Number of control patients with outcome (C)",
+      "validation": {
+        "min": 0
+      }
+    },
+    {
+      "name": "control_without_outcome",
+      "type": "integer",
+      "required": false,
+      "description": "Number of control patients without outcome (D)",
+      "validation": {
+        "min": 0
+      }
+    }
+  ],
+  "result": {
+    "name": "statistics_result",
+    "type": "object",
+    "unit": "percent/ratio",
+    "description": "Comprehensive statistical analysis results"
+  },
+  "interpretation": {
+    "description": "Statistical measures for evidence-based medicine decision making",
+    "guidelines": [
+      "Sensitivity: probability of positive test when disease is present",
+      "Specificity: probability of negative test when disease is absent",
+      "PPV: probability of disease when test is positive",
+      "NPV: probability of no disease when test is negative",
+      "LR+: how much more likely a positive test is in someone with the disease",
+      "LR-: how much more likely a negative test is in someone without the disease",
+      "NNT: number of patients needed to treat to prevent one adverse outcome"
+    ]
+  },
+  "references": [
+    "Altman DG, Bland JM. Diagnostic tests. 1: Sensitivity and specificity. BMJ. 1994 Jun 11;308(6943):1552.",
+    "Van der Helm HJ, Hische EA. Application of Bayes's theorem to results of quantitative clinical chemical determinations. Clin Chem. 1979 Jun;25(6):985-8.",
+    "Akobeng AK. Understanding diagnostic tests 1: sensitivity, specificity and predictive values. Acta Paediatr. 2007 Mar;96(3):338-41.",
+    "Laupacis A, Sackett DL, Roberts RS. An assessment of clinically useful measures of the consequences of treatment. N Engl J Med. 1988 Jun 30;318(26):1728-33."
+  ],
+  "formula": "Multiple formulas based on calculation type",
+  "notes": [
+    "To practice evidence-based medicine, apply statistics and results of scientific studies to individual patients using clinical judgment",
+    "Confidence intervals are calculated using standard methods where applicable",
+    "For diagnostic tests, either rates or counts can be provided as input"
+  ]
+}

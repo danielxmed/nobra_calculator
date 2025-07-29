@@ -1,0 +1,118 @@
+{
+  "id": "ball_score_rr_cll",
+  "title": "BALL Score for Relapsed/Refractory CLL",
+  "description": "Assesses prognosis of patients with relapsed/refractory chronic lymphocytic leukemia (R/R CLL) on targeted therapies. The BALL Score (β2-microglobulin, Anemia, LDH, Last Therapy) helps estimate survival outcomes in patients with R/R-CLL who require further treatment with targeted therapies.",
+  "category": "hematology",
+  "version": "2019",
+  "parameters": [
+    {
+      "name": "beta2_microglobulin",
+      "type": "float",
+      "required": true,
+      "description": "Beta-2-microglobulin level",
+      "unit": "mg/dL",
+      "validation": {
+        "min": 0.1,
+        "max": 50
+      }
+    },
+    {
+      "name": "hemoglobin",
+      "type": "float",
+      "required": true,
+      "description": "Hemoglobin level",
+      "unit": "g/dL",
+      "validation": {
+        "min": 3,
+        "max": 20
+      }
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient's biological sex",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "ldh",
+      "type": "float",
+      "required": true,
+      "description": "Lactate dehydrogenase (LDH) level",
+      "unit": "U/L",
+      "validation": {
+        "min": 50,
+        "max": 5000
+      }
+    },
+    {
+      "name": "ldh_upper_limit",
+      "type": "float",
+      "required": true,
+      "description": "Upper limit of normal for LDH (lab-specific)",
+      "unit": "U/L",
+      "validation": {
+        "min": 100,
+        "max": 500
+      }
+    },
+    {
+      "name": "months_since_last_therapy",
+      "type": "integer",
+      "required": true,
+      "description": "Months since initiation of last therapy",
+      "unit": "months",
+      "validation": {
+        "min": 0,
+        "max": 600
+      }
+    }
+  ],
+  "result": {
+    "name": "ball_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "BALL Score for R/R CLL prognosis (0-4 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "Low risk group",
+        "interpretation": "Low risk for mortality. Estimated 24-month overall survival: 89.7%. Patients in this group have a favorable prognosis on targeted therapy."
+      },
+      {
+        "min": 2,
+        "max": 3,
+        "stage": "Intermediate Risk",
+        "description": "Intermediate risk group",
+        "interpretation": "Intermediate risk for mortality. Estimated 24-month overall survival: 79.5%. Patients require close monitoring and may benefit from more intensive surveillance."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "High Risk",
+        "description": "High risk group",
+        "interpretation": "High risk for mortality. Estimated 24-month overall survival: 55.8%. Consider more aggressive treatment strategies or clinical trial enrollment."
+      }
+    ]
+  },
+  "references": [
+    "Soumerai JD, Ni A, Xing G, Huang J, Furman RR, Jones J, et al. Evaluation of the CLL-IPI in relapsed and refractory chronic lymphocytic leukemia in idelalisib phase-3 trials. Leuk Lymphoma. 2019 Jun;60(6):1438-1446. doi: 10.1080/10428194.2018.1540782.",
+    "Soumerai JD, Ni A, Darif M, Londhe A, Xing G, Mun Y, et al. Prognostic risk score for patients with relapsed or refractory chronic lymphocytic leukaemia treated with targeted therapies or chemoimmunotherapy: a retrospective, pooled cohort study with external validations. Lancet Haematol. 2019 Jul;6(7):e366-e374. doi: 10.1016/S2352-3026(19)30085-7.",
+    "Gentile M, Morabito F, Del Poeta G, Mauro FR, Reda G, Sportoletti P, et al. Survival risk score for real-life relapsed/refractory chronic lymphocytic leukemia patients receiving ibrutinib. A campus CLL study. Leukemia. 2021 Jan;35(1):235-238. doi: 10.1038/s41375-020-0816-y."
+  ],
+  "formula": "BALL Score = β2-microglobulin points + Anemia points + LDH points + Last therapy points",
+  "notes": [
+    "BALL stands for: Beta-2-microglobulin, Anemia, LDH, Last therapy",
+    "Score was derived from studies using ibrutinib, idelalisib, and venetoclax",
+    "Does not encompass all potential prognostic variables for R/R-CLL",
+    "Results should be interpreted within broader clinical context",
+    "Anemia defined as Hgb <12 g/dL for men, <11 g/dL for women"
+  ]
+}

@@ -11,6 +11,8 @@ from .thakar_score import ThakarScoreRequest, ThakarScoreResponse
 from .aub_has2_cardiovascular_risk_index import AubHas2CardiovascularRiskIndexRequest, AubHas2CardiovascularRiskIndexResponse
 from .aortic_dissection_detection_risk_score import AorticDissectionDetectionRiskScoreRequest, AorticDissectionDetectionRiskScoreResponse
 from .ascvd_2013 import Ascvd2013Request, Ascvd2013Response
+from .atria_bleeding import AtriaBleedingRequest, AtriaBleedingResponse
+from .atria_stroke import AtriaStrokeRequest, AtriaStrokeResponse
 
 __all__ = [
     "Cha2ds2VascRequest",
@@ -30,5 +32,9 @@ __all__ = [
     "AorticDissectionDetectionRiskScoreRequest",
     "AorticDissectionDetectionRiskScoreResponse",
     "Ascvd2013Request",
-    "Ascvd2013Response"
+    "Ascvd2013Response",
+    "AtriaBleedingRequest",
+    "AtriaBleedingResponse",
+    "AtriaStrokeRequest",
+    "AtriaStrokeResponse"
 ]

@@ -1,0 +1,70 @@
+{
+  "id": "asymptomatic_myeloma_prognosis",
+  "title": "Asymptomatic Myeloma Prognosis",
+  "description": "Predicts risk of progression of asymptomatic (smoldering) multiple myeloma to active myeloma or amyloidosis",
+  "category": "oncology",
+  "version": "2007",
+  "parameters": [
+    {
+      "name": "bone_marrow_plasmacytosis",
+      "type": "string",
+      "required": true,
+      "description": "Average percentage from bone marrow aspirate and core biopsy",
+      "options": ["≥10%", "<10%"],
+      "validation": {
+        "enum": ["≥10%", "<10%"]
+      },
+      "unit": "%"
+    },
+    {
+      "name": "serum_monoclonal_protein",
+      "type": "string",
+      "required": true,
+      "description": "Serum monoclonal protein level on serum protein electrophoresis",
+      "options": ["≥3", "<3"],
+      "validation": {
+        "enum": ["≥3", "<3"]
+      },
+      "unit": "g/dL"
+    }
+  ],
+  "result": {
+    "name": "risk_group",
+    "type": "string",
+    "unit": "",
+    "description": "Risk stratification group for progression to symptomatic multiple myeloma"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "risk_group": "Low Risk",
+        "description": "Both bone marrow plasmacytosis <10% and serum M-protein <3 g/dL",
+        "interpretation": "Lowest risk of progression to symptomatic multiple myeloma. Median time to progression approximately 117 months. Annual risk of progression approximately 2-3%."
+      },
+      {
+        "risk_group": "Intermediate Risk",
+        "description": "Either bone marrow plasmacytosis ≥10% OR serum M-protein ≥3 g/dL (but not both)",
+        "interpretation": "Intermediate risk of progression to symptomatic multiple myeloma. Median time to progression approximately 60-75 months. Annual risk of progression approximately 5-7%."
+      },
+      {
+        "risk_group": "High Risk",
+        "description": "Both bone marrow plasmacytosis ≥10% AND serum M-protein ≥3 g/dL",
+        "interpretation": "Highest risk of progression to symptomatic multiple myeloma. Median time to progression approximately 26-27 months. Annual risk of progression approximately 15-20%."
+      }
+    ]
+  },
+  "references": [
+    "Kyle RA, Remstein ED, Therneau TM, Dispenzieri A, Kurtin PJ, Hodnefield JM, et al. Clinical course and prognosis of smoldering (asymptomatic) multiple myeloma. N Engl J Med. 2007;356(25):2582-90.",
+    "Rajkumar SV, Landgren O, Mateos MV. Smoldering multiple myeloma. Blood. 2015;125(20):3069-75.",
+    "Mateos MV, Kumar S, Dimopoulos MA, González-Calle V, Kastritis E, Hajek R, et al. International Myeloma Working Group risk stratification model for smoldering multiple myeloma (SMM). Blood Cancer J. 2020;10(10):102."
+  ],
+  "formula": "Risk stratification based on bone marrow plasmacytosis percentage and serum monoclonal protein level: Low Risk (both <10% and <3 g/dL), Intermediate Risk (one factor present), High Risk (both ≥10% and ≥3 g/dL)",
+  "notes": [
+    "This score applies to patients with smoldering (asymptomatic) multiple myeloma",
+    "The overall risk of progression is 10% per year for the first 5 years, ~3% per year for the next 5 years, and 1% per year thereafter",
+    "Bone marrow plasmacytosis should be the average of bone marrow aspirate and core biopsy",
+    "Serum monoclonal protein is measured by serum protein electrophoresis",
+    "Patients with high-risk smoldering myeloma may be candidates for early intervention",
+    "This model helps identify patients who would benefit from closer monitoring or clinical trials"
+  ]
+}

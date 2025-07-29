@@ -1,0 +1,76 @@
+{
+  "id": "bicarbonate_deficit",
+  "title": "Bicarbonate Deficit",
+  "description": "Calculates total body bicarbonate deficit for assessment of metabolic acidosis severity and bicarbonate replacement therapy planning.",
+  "category": "emergency",
+  "version": "2024",
+  "parameters": [
+    {
+      "name": "weight",
+      "type": "float",
+      "required": true,
+      "description": "Patient weight in kilograms",
+      "unit": "kg",
+      "validation": {
+        "min": 0.5,
+        "max": 500
+      }
+    },
+    {
+      "name": "bicarbonate_level",
+      "type": "float",
+      "required": true,
+      "description": "Current serum bicarbonate level",
+      "unit": "mEq/L",
+      "validation": {
+        "min": 4,
+        "max": 60
+      }
+    },
+    {
+      "name": "target_bicarbonate",
+      "type": "float",
+      "required": false,
+      "description": "Target bicarbonate level (default: 24 mEq/L)",
+      "unit": "mEq/L",
+      "validation": {
+        "min": 15,
+        "max": 30
+      }
+    }
+  ],
+  "result": {
+    "name": "bicarbonate_deficit",
+    "type": "float",
+    "unit": "mEq",
+    "description": "Total body bicarbonate deficit in milliequivalents"
+  },
+  "interpretation": {
+    "description": "Bicarbonate deficit calculation for metabolic acidosis management",
+    "normal_values": {
+      "bicarbonate_range": "23-28 mEq/L",
+      "target_level": "24 mEq/L (default)"
+    },
+    "clinical_guidance": [
+      "This is an estimate of total body bicarbonate deficit",
+      "Bicarbonate supplementation should be considered in severe metabolic acidosis",
+      "Often bicarbonate levels improve when underlying condition is treated",
+      "Consider gradual correction to avoid complications"
+    ]
+  },
+  "references": [
+    "Kurtz I. Acid-Base Case Studies. 2nd Ed. Trafford Publishing (2004); 68:150.",
+    "Forsythe SM, Schmidt GA. Sodium bicarbonate for the treatment of lactic acidosis. Chest. 2000;117(1):260.",
+    "Kollef MH, et al. The Washington Manual of Critical Care. Lippincott Williams & Wilkins, 2007; p185:583.",
+    "Sabatini S, Kurtzman NA. Bicarbonate Therapy in Severe Metabolic Acidosis. JASN. 2009;20(4):692-695."
+  ],
+  "formula": "Bicarbonate Deficit = 0.4 × Weight (kg) × (Target HCO3 - Current HCO3)",
+  "notes": [
+    "Formula uses distribution volume coefficient of 0.4 for bicarbonate",
+    "Normal bicarbonate range is 23-28 mEq/L",
+    "Used primarily for severe metabolic acidosis (HCO3 < 15 mEq/L)",
+    "Consider underlying etiology before bicarbonate supplementation",
+    "Avoid overly rapid correction to prevent complications",
+    "Monitor arterial blood gas and electrolytes during treatment"
+  ]
+}

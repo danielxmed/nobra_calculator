@@ -1,0 +1,152 @@
+{
+  "id": "barnes_jewish_dysphagia",
+  "title": "Barnes Jewish Hospital Stroke Dysphagia Screen",
+  "description": "Assesses ability to swallow without aspiration after stroke. This screening tool helps identify stroke patients at risk for dysphagia and aspiration, allowing safe initiation of oral intake while preventing aspiration complications.",
+  "category": "neurology",
+  "version": "2010",
+  "parameters": [
+    {
+      "name": "gcs_less_than_13",
+      "type": "string",
+      "required": true,
+      "description": "Is the Glasgow Coma Scale (GCS) less than 13?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "facial_asymmetry",
+      "type": "string",
+      "required": true,
+      "description": "Is there facial asymmetry or weakness present?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "tongue_asymmetry",
+      "type": "string",
+      "required": true,
+      "description": "Is there tongue asymmetry or weakness present?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "palatal_asymmetry",
+      "type": "string",
+      "required": true,
+      "description": "Is there palatal asymmetry or weakness present?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "water_test_performed",
+      "type": "string",
+      "required": true,
+      "description": "Was the water swallow test performed? (Only if all preliminary questions are NO)",
+      "options": ["yes", "no", "not_applicable"],
+      "validation": {
+        "enum": ["yes", "no", "not_applicable"]
+      }
+    },
+    {
+      "name": "throat_clearing_initial",
+      "type": "string",
+      "required": false,
+      "description": "Throat clearing during initial swallow (if water test performed)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "cough_initial",
+      "type": "string",
+      "required": false,
+      "description": "Cough during initial swallow (if water test performed)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "voice_change_initial",
+      "type": "string",
+      "required": false,
+      "description": "Voice change during initial swallow (if water test performed)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "throat_clearing_delayed",
+      "type": "string",
+      "required": false,
+      "description": "Throat clearing 1 minute after swallowing (if water test performed)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "cough_delayed",
+      "type": "string",
+      "required": false,
+      "description": "Cough 1 minute after swallowing (if water test performed)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "voice_change_delayed",
+      "type": "string",
+      "required": false,
+      "description": "Voice change 1 minute after swallowing (if water test performed)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "screening_result",
+    "type": "string",
+    "unit": "",
+    "description": "Dysphagia screening result (Pass or Fail)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "result": "Pass",
+        "description": "No dysphagia detected",
+        "interpretation": "Patient passed dysphagia screen. Can be started on regular diet. Continue to monitor for any changes in swallowing ability."
+      },
+      {
+        "result": "Fail",
+        "description": "Dysphagia risk identified",
+        "interpretation": "Patient failed dysphagia screen. Keep NPO (nothing by mouth) and refer to Speech-Language Pathology for comprehensive swallowing evaluation before initiating oral intake."
+      }
+    ]
+  },
+  "references": [
+    "Edmiaston J, Connor LT, Loehr L, Nassief A. Validation of a dysphagia screening tool in acute stroke patients. Am J Crit Care. 2010 Jul;19(4):357-64. doi: 10.4037/ajcc2009961.",
+    "Donovan NJ, Daniels SK, Edmiaston J, Weinhardt J, Summers D, Mitchell PH; American Heart Association Council on Cardiovascular Nursing and Stroke Council. Dysphagia screening: state of the art: invitational conference proceeding from the State-of-the-Art Nursing Symposium, International Stroke Conference 2012. Stroke. 2013 Apr;44(4):e24-31. doi: 10.1161/STR.0b013e3182877f57."
+  ],
+  "formula": "Screen fails if ANY preliminary question is YES OR if water test shows ANY signs of aspiration (throat clearing, cough, or voice change during or after swallowing)",
+  "notes": [
+    "Designed for use by non-speech pathology trained healthcare professionals",
+    "91-95% sensitive for detecting dysphagia and aspiration risk",
+    "Water test only performed if ALL preliminary questions are NO",
+    "Patient given 3 oz of water to drink in sequential swallows",
+    "Assess for symptoms both during initial swallow and 1 minute after",
+    "Any positive finding results in NPO status and speech pathology referral"
+  ]
+}

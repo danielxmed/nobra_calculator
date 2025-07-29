@@ -1,0 +1,316 @@
+{
+  "id": "berg_balance_scale",
+  "title": "Berg Balance Scale (BBS)",
+  "description": "Assesses balance and fall risk in community-dwelling older adults through 14 functional tasks",
+  "category": "geriatrics",
+  "version": "1989",
+  "parameters": [
+    {
+      "name": "sitting_to_standing",
+      "type": "integer",
+      "required": true,
+      "description": "Ability to move from sitting to standing position",
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "options": [
+        "0 - Unable to stand without help or falls when attempting to stand",
+        "1 - Needs minimal help to stand or stabilize",
+        "2 - Able to stand using hands after several tries",
+        "3 - Able to stand independently using hands",
+        "4 - Able to stand without using hands and stabilize independently"
+      ]
+    },
+    {
+      "name": "standing_unsupported",
+      "type": "integer", 
+      "required": true,
+      "description": "Ability to stand unsupported for 2 minutes",
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "options": [
+        "0 - Unable to stand 30 seconds unassisted",
+        "1 - Needs several tries to stand 30 seconds unsupported",
+        "2 - Able to stand 30 seconds unsupported",
+        "3 - Able to stand 2 minutes with supervision",
+        "4 - Able to stand safely 2 minutes"
+      ]
+    },
+    {
+      "name": "sitting_unsupported",
+      "type": "integer",
+      "required": true,
+      "description": "Ability to sit with back unsupported but feet supported on floor for 2 minutes",
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "options": [
+        "0 - Unable to sit without support 10 seconds",
+        "1 - Able to sit 10 seconds",
+        "2 - Able to sit 30 seconds",
+        "3 - Able to sit 2 minutes under supervision",
+        "4 - Able to sit safely and securely 2 minutes"
+      ]
+    },
+    {
+      "name": "standing_to_sitting",
+      "type": "integer",
+      "required": true,
+      "description": "Ability to sit down",
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "options": [
+        "0 - Needs help to sit",
+        "1 - Sits independently but has uncontrolled descent",
+        "2 - Uses back of legs against chair to control descent",
+        "3 - Controls descent by using hands",
+        "4 - Sits safely with minimal use of hands"
+      ]
+    },
+    {
+      "name": "transfers",
+      "type": "integer",
+      "required": true,
+      "description": "Ability to transfer from one chair to another",
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "options": [
+        "0 - Cannot transfer safely with or without help",
+        "1 - Needs help to transfer",
+        "2 - Able to transfer with verbal cuing and/or supervision",
+        "3 - Able to transfer safely but needs hands for support",
+        "4 - Able to transfer safely without using hands"
+      ]
+    },
+    {
+      "name": "standing_eyes_closed",
+      "type": "integer",
+      "required": true,
+      "description": "Ability to stand unsupported with eyes closed for 10 seconds",
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "options": [
+        "0 - Needs help to keep from falling",
+        "1 - Unable to keep eyes closed 3 seconds but stays steady",
+        "2 - Able to stand 3 seconds",
+        "3 - Able to stand 10 seconds with supervision",
+        "4 - Able to stand 10 seconds safely"
+      ]
+    },
+    {
+      "name": "standing_feet_together",
+      "type": "integer",
+      "required": true,
+      "description": "Ability to stand unsupported with feet together",
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "options": [
+        "0 - Needs help to attain position and unable to hold for 15 seconds",
+        "1 - Needs help to attain position but able to stand 15 seconds feet together",
+        "2 - Able to place feet together independently but unable to hold for 30 seconds",
+        "3 - Able to place feet together independently and stand 1 minute with supervision",
+        "4 - Able to place feet together independently and stand 1 minute safely"
+      ]
+    },
+    {
+      "name": "reaching_forward",
+      "type": "integer",
+      "required": true,
+      "description": "Reaching forward with outstretched arm while standing",
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "options": [
+        "0 - Loses balance while trying/requires external support",
+        "1 - Reaches forward but needs supervision",
+        "2 - Can reach forward >5 cm (2 inches) safely",
+        "3 - Can reach forward >12.5 cm (5 inches) safely",
+        "4 - Can reach forward confidently >25 cm (10 inches)"
+      ]
+    },
+    {
+      "name": "picking_up_object",
+      "type": "integer",
+      "required": true,
+      "description": "Pick up object from the floor from a standing position",
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "options": [
+        "0 - Unable to try/needs assistance to keep from losing balance or falling",
+        "1 - Unable to pick up and needs supervision while trying",
+        "2 - Unable to pick up but reaches 2-5 cm (1-2 inches) from slipper and keeps balance independently",
+        "3 - Able to pick up slipper but needs supervision",
+        "4 - Able to pick up slipper safely and easily"
+      ]
+    },
+    {
+      "name": "turning_to_look_behind",
+      "type": "integer",
+      "required": true,
+      "description": "Turning to look behind over left and right shoulders while standing",
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "options": [
+        "0 - Needs assistance to keep from losing balance or falling",
+        "1 - Needs supervision when turning",
+        "2 - Turns sideways only but maintains balance",
+        "3 - Looks behind one side only other side shows less weight shift",
+        "4 - Looks behind from both sides and weight shifts well"
+      ]
+    },
+    {
+      "name": "turning_360_degrees",
+      "type": "integer",
+      "required": true,
+      "description": "Turn 360 degrees",
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "options": [
+        "0 - Needs assistance while turning",
+        "1 - Needs close supervision or verbal cuing",
+        "2 - Able to turn 360 degrees safely but slowly",
+        "3 - Able to turn 360 degrees safely one side only <4 seconds",
+        "4 - Able to turn 360 degrees safely in <4 seconds both sides"
+      ]
+    },
+    {
+      "name": "placing_alternate_foot_on_step",
+      "type": "integer",
+      "required": true,
+      "description": "Place alternate foot on step or stool while standing unsupported",
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "options": [
+        "0 - Needs assistance to keep from falling/unable to try",
+        "1 - Able to place one foot on step/stool, needs supervision",
+        "2 - Able to place foot up and down 2 times, needs minimal support",
+        "3 - Able to place foot up and down 4 times without support but needs supervision",
+        "4 - Able to place foot up and down 8 times independently and safely"
+      ]
+    },
+    {
+      "name": "standing_one_foot_in_front",
+      "type": "integer",
+      "required": true,
+      "description": "Standing unsupported one foot in front",
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "options": [
+        "0 - Loses balance while stepping or standing",
+        "1 - Needs help to step but can hold 15 seconds",
+        "2 - Able to take small step independently and hold 30 seconds",
+        "3 - Able to place foot ahead independently and hold 30 seconds",
+        "4 - Able to place foot tandem independently and hold 30 seconds"
+      ]
+    },
+    {
+      "name": "standing_on_one_leg",
+      "type": "integer",
+      "required": true,
+      "description": "Standing on one leg",
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "options": [
+        "0 - Unable to lift leg or tries to lift leg but loses balance in <3 seconds",
+        "1 - Able to lift leg independently but cannot hold >3 seconds",
+        "2 - Able to lift leg independently and hold >3 but <10 seconds",
+        "3 - Able to lift leg independently and hold 10 seconds or more but <30 seconds",
+        "4 - Able to lift leg independently and hold for >30 seconds"
+      ]
+    }
+  ],
+  "result": {
+    "name": "bbs_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Berg Balance Scale total score from 0 (high fall risk) to 56 (excellent balance)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 20,
+        "stage": "Wheelchair Bound",
+        "description": "Severe balance impairment requiring wheelchair",
+        "interpretation": "Score indicates severe balance impairment typically requiring wheelchair use. Extremely high fall risk. Requires maximum assistance for mobility and safety."
+      },
+      {
+        "min": 21,
+        "max": 40,
+        "stage": "Walking with Assistance",
+        "description": "Significant balance impairment requiring walking aid",
+        "interpretation": "Score indicates significant balance impairment requiring walking aids (walker, cane) and assistance. High fall risk. Close supervision needed for mobility activities."
+      },
+      {
+        "min": 41,
+        "max": 44,
+        "stage": "Increased Fall Risk",
+        "description": "Moderate balance impairment with increased fall risk",
+        "interpretation": "Score indicates moderate balance impairment with increased fall risk. May benefit from assistive devices and fall prevention interventions. Requires some supervision for safety."
+      },
+      {
+        "min": 45,
+        "max": 56,
+        "stage": "Independent",
+        "description": "Good balance with low fall risk",
+        "interpretation": "Score indicates good functional balance with low fall risk. Generally safe for independent mobility. Continue balance maintenance exercises and periodic reassessment."
+      }
+    ]
+  },
+  "references": [
+    "Berg KO, Wood-Dauphinee SL, Williams JI, Maki B. Measuring balance in the elderly: validation of an instrument. Can J Public Health. 1992 Jul-Aug;83 Suppl 2:S7-11.",
+    "Berg K, Wood-Dauphinee S, Williams JI, Gayton D. Measuring balance in the elderly: preliminary development of an instrument. Physiother Can. 1989;41:304-311.",
+    "Bogle Thorbahn LD, Newton RA. Use of the Berg Balance Scale to predict falls in elderly persons. Phys Ther. 1996 Jun;76(6):576-83; discussion 584-5."
+  ],
+  "formula": "BBS Score = Sum of all 14 task scores (each scored 0-4 points)",
+  "notes": [
+    "Takes approximately 15-20 minutes to complete",
+    "Requires equipment: 2 chairs, stopwatch, step/footstool, ruler, shoe/slipper",
+    "Score <45 indicates increased fall risk",
+    "Score <40 associated with almost 100% fall risk",
+    "Score ≤36 is 100% predictive of falls within 6 months in geriatric population",
+    "Excellent inter-rater reliability (ICC = 0.95)",
+    "May have ceiling effect for mildly impaired individuals",
+    "Should not be used alone to determine fall risk - consider age, comorbidities, and setting",
+    "Designed for community-dwelling older adults and patients with neurological conditions"
+  ]
+}

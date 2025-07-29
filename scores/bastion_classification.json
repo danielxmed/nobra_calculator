@@ -1,0 +1,129 @@
+{
+  "id": "bastion_classification",
+  "title": "Bastion Classification of Lower Limb Blast Injuries",
+  "description": "Stratifies lower limb blast injuries to guide treatment. Developed by military surgeons at Camp Bastion, Afghanistan, to classify explosion-related lower extremity injuries and correlate with treatment needs.",
+  "category": "emergency",
+  "version": "2014",
+  "parameters": [
+    {
+      "name": "injury_class",
+      "type": "integer",
+      "required": true,
+      "description": "Anatomical level of injury (Classes 1-5)",
+      "validation": {
+        "min": 1,
+        "max": 5,
+        "enum": [1, 2, 3, 4, 5]
+      },
+      "options": [
+        {"value": 1, "label": "Injury confined to foot"},
+        {"value": 2, "label": "Injury involving lower leg permitting effective below-knee tourniquet application"},
+        {"value": 3, "label": "Injury involving proximal lower leg or thigh, permitting effective above-knee tourniquet application"},
+        {"value": 4, "label": "Proximal thigh injury, preventing effective tourniquet application"},
+        {"value": 5, "label": "Any injury with buttock involvement"}
+      ]
+    },
+    {
+      "name": "segmental_injury",
+      "type": "string",
+      "required": true,
+      "description": "Presence of potentially viable tissue distal to the most proximal injury",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "abdominal_injury",
+      "type": "string",
+      "required": true,
+      "description": "Associated intraperitoneal abdominal injury",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "genital_perineal_injury",
+      "type": "string",
+      "required": true,
+      "description": "Associated genitalia and perineal injury",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "pelvic_ring_injury",
+      "type": "string",
+      "required": true,
+      "description": "Associated pelvic ring injury",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "upper_limb_injury",
+      "type": "string",
+      "required": true,
+      "description": "Associated upper limb injury",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "bastion_classification",
+    "type": "string",
+    "unit": "classification",
+    "description": "Bastion Classification with applicable suffixes"
+  },
+  "interpretation": {
+    "description": "Classification correlates with treatment needs",
+    "classes": [
+      {
+        "class": 1,
+        "description": "Injury confined to foot",
+        "management": "Local hemorrhage control, consider foot salvage vs. amputation"
+      },
+      {
+        "class": 2,
+        "description": "Injury involving lower leg",
+        "management": "Below-knee tourniquet effective for hemorrhage control"
+      },
+      {
+        "class": 3,
+        "description": "Injury involving proximal lower leg or thigh",
+        "management": "Above-knee tourniquet effective for hemorrhage control (most common pattern: 49%)"
+      },
+      {
+        "class": 4,
+        "description": "Proximal thigh injury",
+        "management": "Tourniquet application challenging, may require proximal vascular control"
+      },
+      {
+        "class": 5,
+        "description": "Any injury with buttock involvement",
+        "management": "Tourniquet ineffective, requires operative proximal vascular control"
+      }
+    ],
+    "suffixes": [
+      {"suffix": "S", "meaning": "Segmental injury - potentially viable tissue distal to injury"},
+      {"suffix": "A", "meaning": "Associated intraperitoneal abdominal injury"},
+      {"suffix": "B", "meaning": "Associated genitalia and perineal injury"},
+      {"suffix": "C", "meaning": "Associated pelvic ring injury"},
+      {"suffix": "D", "meaning": "Associated upper limb injury"}
+    ]
+  },
+  "references": [
+    "Jacobs N, Rourke K, Rutherford J, Hicks A, Smith SR, Templeton P, et al. Lower limb injuries caused by improvised explosive devices: Proposed 'Bastion Classification' and prospective validation. Injury. 2014 Sep;45(9):1422-8.",
+    "Lundy JB, Hobbs CM. 'Bastion Classification': evolution of experience mandates caution when considering using class as predictor for method of temporary vascular control. Injury. 2013 Nov;44(11):1671-2.",
+    "Scerbo MH, Mumm JP, Gates K, Love JD, Wade CE, Holcomb JB, et al. Safety and Appropriateness of Tourniquets in 105 Civilians. Prehosp Emerg Care. 2016 Nov-Dec;20(6):712-722."
+  ],
+  "formula": "Classification = Class (1-5) + Applicable suffixes (S, A, B, C, D)",
+  "notes": [
+    "Developed at Camp Bastion, Afghanistan during Operation Herrick 13",
+    "69% of injuries in validation study were traumatic amputations",
+    "49% of casualties suffered bilateral lower limb amputation",
+    "Classes 4 and 5 (preventing effective tourniquet) accounted for 18% of injuries",
+    "Not designed to correlate with mortality, transfusion requirements, or definitive amputation level",
+    "Patients without prehospital tourniquets had increased transfusion needs and mortality from hemorrhagic shock"
+  ]
+}

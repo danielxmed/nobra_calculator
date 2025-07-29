@@ -1,0 +1,97 @@
+{
+  "id": "behavioral_observational_pain_scale",
+  "title": "Behavioral Observational Pain Scale (BOPS) for Post-Op Pediatric Pain",
+  "description": "Quantifies post-operative pain for children aged 1-7 years using observational behavioral indicators",
+  "category": "pediatrics",
+  "version": "2007",
+  "parameters": [
+    {
+      "name": "facial_expression",
+      "type": "integer",
+      "required": true,
+      "description": "Assessment of child's facial expression as an indicator of pain",
+      "validation": {
+        "min": 0,
+        "max": 2,
+        "enum": [0, 1, 2]
+      },
+      "options": [
+        "0 - Neutral/positive facial expression, composed, calm",
+        "1 - Negative facial expression, concerned",
+        "2 - Negative facial expression, grimace, distorted face"
+      ]
+    },
+    {
+      "name": "verbalization",
+      "type": "integer",
+      "required": true,
+      "description": "Assessment of child's verbal expressions and vocalizations",
+      "validation": {
+        "min": 0,
+        "max": 2,
+        "enum": [0, 1, 2]
+      },
+      "options": [
+        "0 - Normal conversation, laugh, crow",
+        "1 - Completely quiet, sobbing and/or complaining but not because of pain",
+        "2 - Crying, screaming and/or complaining about pain"
+      ]
+    },
+    {
+      "name": "body_position",
+      "type": "integer",
+      "required": true,
+      "description": "Assessment of child's body positioning and movement patterns",
+      "validation": {
+        "min": 0,
+        "max": 2,
+        "enum": [0, 1, 2]
+      },
+      "options": [
+        "0 - Inactive, laying, relaxed with all extremities or sitting, walking",
+        "1 - Restless movements, shifting fashion and/or touching wound or wound area",
+        "2 - Lying rigid and/or drawn up with arms and legs to the body"
+      ]
+    }
+  ],
+  "result": {
+    "name": "bops_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "BOPS score from 0 (no pain behaviors) to 6 (maximum pain behaviors)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Minimal Pain",
+        "description": "Little to no pain behaviors observed",
+        "interpretation": "Child demonstrates minimal or no pain behaviors. Continue routine monitoring and comfort measures. Consider non-pharmacological comfort interventions such as positioning, parental presence, or distraction techniques."
+      },
+      {
+        "min": 3,
+        "max": 6,
+        "stage": "Significant Pain",
+        "description": "Pain behaviors present, analgesia recommended",
+        "interpretation": "Child demonstrates significant pain behaviors requiring intervention. Consider analgesia administration according to institutional protocols. Reassess pain score 15-20 minutes after IV analgesics or 30-45 minutes after oral/rectal analgesics."
+      }
+    ]
+  },
+  "references": [
+    "Hesselgard K, Larsson S, Romner B, Strömblad LG, Reinstrup P. Validity and reliability of the Behavioural Observational Pain Scale for postoperative pain measurement in children 1-7 years of age. Pediatr Crit Care Med. 2007 Mar;8(2):102-8.",
+    "von Baeyer CL, Spagrud LJ. Systematic review of observational (behavioral) measures of pain for children and adolescents aged 3 to 18 years. Pain. 2007 Jan;127(1-2):140-50.",
+    "Duhn LJ, Medves JM. A systematic integrative review of infant pain assessment tools. Adv Neonatal Care. 2004 Jun;4(3):126-40."
+  ],
+  "formula": "BOPS Score = Facial Expression (0-2) + Verbalization (0-2) + Body Position (0-2)",
+  "notes": [
+    "Designed specifically for children aged 1-7 years in post-operative settings",
+    "Scores ≥3 indicate need for analgesia consideration",
+    "Should be assessed every 3 hours routinely",
+    "Reassess 15-20 minutes after IV analgesics or 30-45 minutes after oral/rectal analgesics",
+    "Excellent interrater reliability (κw 0.86 to 0.95 for each item)",
+    "Strong concurrent validity with CHEOPS scale (rs = 0.871, p < 0.001)",
+    "Simple scoring system makes it easy to incorporate in postoperative units",
+    "Developed in 1996 at Neurointensive Care Unit in Lund, Sweden"
+  ]
+}

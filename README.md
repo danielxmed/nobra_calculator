@@ -4,7 +4,7 @@ Modular API for medical calculations and scores developed with FastAPI, original
 
 ## 🌐 Live API
 
-**🚀 Try it now at: https://calculator.nobra.app.br**
+**🚀 Try it now at: https://calculator.nobra.app.br/docs**
 
 - **Free tier**: 10 requests per second
 - **Commercial use**: Contact us at daniel@nobregamedtech.com.br for higher limits

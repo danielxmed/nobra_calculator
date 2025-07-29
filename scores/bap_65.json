@@ -1,0 +1,109 @@
+{
+  "id": "bap_65",
+  "title": "BAP-65 Score for Acute Exacerbation of COPD",
+  "description": "Predicts mortality in acute COPD exacerbation using BUN, Altered mental status, Pulse rate, and age ≥65 years",
+  "category": "pulmonology",
+  "version": "2009",
+  "parameters": [
+    {
+      "name": "bun",
+      "type": "string",
+      "required": true,
+      "description": "Blood Urea Nitrogen (BUN) ≥25 mg/dL (8.9 mmol/L)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "altered_mental_status",
+      "type": "string",
+      "required": true,
+      "description": "Altered Mental Status - Initial Glasgow Coma Scale <14, or disorientation, stupor, or coma",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "pulse",
+      "type": "string",
+      "required": true,
+      "description": "Pulse ≥109 beats/min",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "unit": "years",
+      "validation": {
+        "min": 41,
+        "max": 120
+      }
+    }
+  ],
+  "result": {
+    "name": "bap_65_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "BAP-65 score (0-3 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "age_under_65": true,
+        "stage": "Class I",
+        "description": "0 points, age <65 years",
+        "interpretation": "0.3% in-hospital mortality risk"
+      },
+      {
+        "min": 0,
+        "max": 0,
+        "age_65_or_over": true,
+        "stage": "Class II",
+        "description": "0 points, age ≥65 years",
+        "interpretation": "1.0% in-hospital mortality risk"
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Class III",
+        "description": "1 point, any age",
+        "interpretation": "2.2% in-hospital mortality risk"
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Class IV",
+        "description": "2 points, any age",
+        "interpretation": "6.4% in-hospital mortality risk"
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Class V",
+        "description": "3 points, any age",
+        "interpretation": "14.1% in-hospital mortality risk"
+      }
+    ]
+  },
+  "references": [
+    "Tabak YP, Sun X, Johannes RS, Gupta V, Shorr AF. Mortality and need for mechanical ventilation in acute exacerbations of chronic obstructive pulmonary disease: development and validation of a simple risk score. Arch Intern Med. 2009 Sep 28;169(17):1595-602. doi: 10.1001/archinternmed.2009.270. PMID: 19786679.",
+    "Shorr AF, Sun X, Johannes RS, Yaitanes A, Tabak YP. Validation of a novel risk score for severity of illness in acute exacerbations of COPD. Chest. 2011 Nov;140(5):1177-1183. doi: 10.1378/chest.10-3035. Epub 2011 Apr 28. PMID: 21527510."
+  ],
+  "formula": "BAP-65 = BUN ≥25 mg/dL (1 point) + Altered Mental Status (1 point) + Pulse ≥109/min (1 point) + Age ≥65 years (1 point)",
+  "notes": [
+    "Only use in patients >40 years old",
+    "Use worst variables on day of admission",
+    "Not validated in patients ≤40 years old",
+    "BAP stands for: BUN (Blood Urea Nitrogen), Altered Mental Status, Pulse rate",
+    "The '65' refers to the age cutoff of ≥65 years"
+  ]
+}

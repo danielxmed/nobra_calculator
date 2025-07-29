@@ -1,0 +1,129 @@
+{
+  "id": "asthma_predictive_index",
+  "title": "Asthma Predictive Index (API)",
+  "description": "Determines likelihood of pediatric patients developing childhood asthma in children ≤3 years old with recurrent wheezing episodes.",
+  "category": "pediatrics",
+  "version": "2000",
+  "parameters": [
+    {
+      "name": "wheezing_episodes",
+      "type": "string",
+      "required": true,
+      "description": "Number of wheezing episodes per year",
+      "options": ["less_than_3", "3_or_more"],
+      "validation": {
+        "enum": ["less_than_3", "3_or_more"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "family_history_asthma",
+      "type": "string",
+      "required": true,
+      "description": "Family history (parent) with asthma - Major criterion",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "eczema_diagnosis",
+      "type": "string",
+      "required": true,
+      "description": "Patient diagnosed with eczema (atopic dermatitis) - Major criterion",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "air_allergen_sensitivity",
+      "type": "string",
+      "required": true,
+      "description": "Patient diagnosed with sensitivity to allergens in the air (positive skin prick tests or blood tests) - Minor criterion",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "wheezing_apart_from_colds",
+      "type": "string",
+      "required": true,
+      "description": "Wheezing present apart from colds - Minor criterion",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "eosinophils_over_4_percent",
+      "type": "string",
+      "required": true,
+      "description": "Greater than 4% blood eosinophils - Minor criterion",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "api_result",
+    "type": "string",
+    "unit": "classification",
+    "description": "API classification result"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "stage": "Positive Stringent",
+        "description": "High risk for asthma development",
+        "interpretation": "77% chance of diagnosed active asthma. Requires ≥3 wheezing episodes per year AND either 1 major criterion OR 2 minor criteria."
+      },
+      {
+        "stage": "Positive Loose",
+        "description": "Moderate risk for asthma development", 
+        "interpretation": "59% chance of diagnosed asthma. Requires <3 wheezing episodes per year AND either 1 major criterion OR 2 minor criteria."
+      },
+      {
+        "stage": "Negative",
+        "description": "Low risk for asthma development",
+        "interpretation": "Less than 3% chance of asthma diagnosis. Does not meet criteria for positive stringent or loose classification."
+      }
+    ],
+    "classifications": [
+      {
+        "class": "Positive Stringent",
+        "description": "High risk for asthma development",
+        "interpretation": "77% chance of diagnosed active asthma. Requires ≥3 wheezing episodes per year AND either 1 major criterion OR 2 minor criteria."
+      },
+      {
+        "class": "Positive Loose",
+        "description": "Moderate risk for asthma development", 
+        "interpretation": "59% chance of diagnosed asthma. Requires <3 wheezing episodes per year AND either 1 major criterion OR 2 minor criteria."
+      },
+      {
+        "class": "Negative",
+        "description": "Low risk for asthma development",
+        "interpretation": "Less than 3% chance of asthma diagnosis. Does not meet criteria for positive stringent or loose classification."
+      }
+    ]
+  },
+  "references": [
+    "Castro-Rodríguez JA, Holberg CJ, Wright AL, Martinez FD. A clinical index to define risk of asthma in young children with recurrent wheezing. Am J Respir Crit Care Med. 2000;162(4 Pt 1):1403-6.",
+    "Leonardi NA, Spycher BD, Strippoli MP, Frey U, Silverman M, Kuehni CE. Validation of the Asthma Predictive Index and comparison with simpler clinical prediction rules. J Allergy Clin Immunol. 2011;127(6):1466-72.e6.",
+    "Castro-Rodriguez JA. The Asthma Predictive Index: early diagnosis of asthma. Curr Opin Allergy Clin Immunol. 2011;11:157–161."
+  ],
+  "formula": "Major criteria: Family history of asthma, Eczema diagnosis. Minor criteria: Air allergen sensitivity, Wheezing apart from colds, >4% eosinophils. Positive stringent: ≥3 wheezing episodes + (1 major OR 2 minor). Positive loose: <3 wheezing episodes + (1 major OR 2 minor). Negative: Does not meet positive criteria.",
+  "notes": [
+    "This score applies to pediatric patients ≤3 years old with recurrent wheezing episodes",
+    "The API was created to identify children who may develop asthma during school years",
+    "There is also a modified asthma predictive index (mAPI) version which adds food allergies as an additional criterion",
+    "Air allergen sensitivity is demonstrated through positive skin prick tests or blood tests to allergens like dust mites, mold, weeds, etc."
+  ]
+}

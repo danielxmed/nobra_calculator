@@ -1,0 +1,104 @@
+{
+  "id": "awol_score",
+  "title": "AWOL Score for Delirium",
+  "description": "Predicts risk of delirium during hospitalization using age, cognitive function, orientation, and illness severity",
+  "category": "neurology",
+  "version": "2013",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "string",
+      "required": true,
+      "description": "Patient age category",
+      "options": ["under_80", "80_or_over"],
+      "validation": {
+        "enum": ["under_80", "80_or_over"]
+      }
+    },
+    {
+      "name": "spelling_world_backward",
+      "type": "string",
+      "required": true,
+      "description": "Ability to spell 'world' backward correctly",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "orientation",
+      "type": "string",
+      "required": true,
+      "description": "Oriented to city, state, county, hospital name, and floor",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "illness_severity",
+      "type": "string",
+      "required": true,
+      "description": "Nursing illness severity assessment",
+      "options": ["not_ill", "mildly_ill", "moderately_ill", "severely_ill", "moribund"],
+      "validation": {
+        "enum": ["not_ill", "mildly_ill", "moderately_ill", "severely_ill", "moribund"]
+      }
+    }
+  ],
+  "result": {
+    "name": "awol_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "AWOL score indicating risk of delirium during hospitalization"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Very Low Risk",
+        "description": "0 points",
+        "interpretation": "2% risk of delirium during hospitalization. Low risk patient - routine monitoring appropriate."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "1 point",
+        "interpretation": "4% risk of delirium during hospitalization. Low risk patient - routine monitoring appropriate."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Moderate Risk",
+        "description": "2 points",
+        "interpretation": "14% risk of delirium during hospitalization. Consider delirium prevention strategies (early mobilization, reorientation, sleep hygiene)."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "High Risk",
+        "description": "3 points",
+        "interpretation": "20% risk of delirium during hospitalization. Implement delirium prevention protocol and consider specialist consultation."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Very High Risk",
+        "description": "4 points",
+        "interpretation": "64% risk of delirium during hospitalization. High priority for delirium prevention measures, close monitoring, and specialist involvement."
+      }
+    ]
+  },
+  "references": [
+    "Douglas VC, Hessler CS, Dhaliwal G, Betjemann JP, Fukuda KA, Alameddine LR, et al. The AWOL tool: derivation and validation of a delirium prediction rule. J Hosp Med. 2013 Sep;8(9):493-9. doi: 10.1002/jhm.2062."
+  ],
+  "formula": "AWOL Score = Age points + Spelling points + Orientation points + Illness severity points",
+  "notes": [
+    "AWOL stands for Age, World backward, Orientation, Illness severity",
+    "Validated only in English speakers",
+    "Designed to predict likelihood of delirium during hospitalization",
+    "A score ≥2 indicates high risk and helps direct hospital resources for delirium prevention"
+  ]
+}

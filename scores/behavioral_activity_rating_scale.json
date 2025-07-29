@@ -1,0 +1,96 @@
+{
+  "id": "behavioral_activity_rating_scale",
+  "title": "Behavioral Activity Rating Scale (BARS)",
+  "description": "Screens patients for agitation in emergency care and psychiatric settings using a 7-point observational scale",
+  "category": "psychiatry", 
+  "version": "2001",
+  "parameters": [
+    {
+      "name": "activity_level",
+      "type": "integer",
+      "required": true,
+      "description": "Patient's current level of behavioral activity observed by clinician",
+      "validation": {
+        "min": 1,
+        "max": 7,
+        "enum": [1, 2, 3, 4, 5, 6, 7]
+      },
+      "options": [
+        "1 - Difficult or unable to arouse",
+        "2 - Asleep but responds normally to verbal or physical contact", 
+        "3 - Drowsy, appears sedated",
+        "4 - Quiet and awake (normal level of activity)",
+        "5 - Signs of over activity (physical or verbal); calms down with instructions",
+        "6 - Extremely or continuously active; does not require restraint", 
+        "7 - Violent behavior requiring restraint"
+      ]
+    }
+  ],
+  "result": {
+    "name": "bars_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "BARS score from 1 (difficult to arouse) to 7 (violent behavior requiring restraint)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Hypoactive",
+        "description": "Difficult or unable to arouse",
+        "interpretation": "Patient is significantly under-responsive and difficult to arouse. This may indicate oversedation, medical emergency, or severe psychiatric withdrawal. Requires immediate medical evaluation and possible intervention to determine underlying cause."
+      },
+      {
+        "min": 2,
+        "max": 3,
+        "stage": "Sedated",
+        "description": "Sedated but responsive to arousal",
+        "interpretation": "Patient shows signs of sedation but remains responsive to stimulation. This level may be appropriate for patients receiving sedating medications or recovering from agitation episodes. Monitor for respiratory depression and maintain airway protection."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Normal",
+        "description": "Quiet and awake with normal activity level",
+        "interpretation": "Patient demonstrates normal, calm behavior with appropriate activity level. This is the therapeutic target for most patients in emergency psychiatric settings. Continue current management and monitor for changes."
+      },
+      {
+        "min": 5,
+        "max": 5,
+        "stage": "Mild Agitation",
+        "description": "Overactive but responds to verbal instructions",
+        "interpretation": "Patient shows signs of mild agitation with increased physical or verbal activity but remains responsive to verbal redirection. Consider environmental modifications, de-escalation techniques, and evaluation for underlying causes. May warrant clinical assessment for intervention."
+      },
+      {
+        "min": 6,
+        "max": 6,
+        "stage": "Moderate Agitation", 
+        "description": "Extremely or continuously active without restraint needs",
+        "interpretation": "Patient displays significant agitation with extreme or continuous activity but does not require physical restraints. Implement immediate de-escalation techniques, consider medication intervention, and ensure staff safety measures. Requires close monitoring and possible treatment escalation."
+      },
+      {
+        "min": 7,
+        "max": 7,
+        "stage": "Severe Agitation",
+        "description": "Violent behavior requiring restraint",
+        "interpretation": "Patient exhibits violent behavior that requires physical or chemical restraints for safety. This represents the highest level of agitation requiring immediate intervention. Implement emergency protocols, ensure staff and patient safety, consider rapid medication administration, and evaluate for underlying medical or psychiatric causes."
+      }
+    ]
+  },
+  "references": [
+    "Swift RH, Harrigan EP, Cappelleri JC, Kramer D, Chandler LP. Validation of the behavioural activity rating scale (BARS): a novel measure of activity in agitated patients. J Psychiatr Res. 2002 Mar-Apr;36(2):87-95.",
+    "Lindenmayer JP, Bossie CA, Kujawa M, Zhu Y, Canuso CM. Dimensions of agitation in schizophrenia: results from the CATIE study. Schizophr Res. 2009 Feb;107(2-3):225-30.",
+    "Price LM, Forbat L, Chew-Graham C, Palen L, Robinson D, McGoldrick M, et al. Learning and performance outcomes of mental health first aid training: a systematic review of randomized controlled trials. Acad Med. 2018 Sep;93(9):1404-13."
+  ],
+  "formula": "Direct observational assessment using 7-point scale (1-7) based on patient's current behavioral activity level",
+  "notes": [
+    "BARS is an observational tool that does not require patient participation or verbal responses",
+    "Scores >4 may warrant clinical evaluation and intervention by healthcare providers",
+    "The scale was originally developed for pharmaceutical studies but is widely used in clinical practice",
+    "Excellent inter-rater and intra-rater reliability has been demonstrated in validation studies",
+    "Should be used as part of comprehensive psychiatric assessment, not as a standalone diagnostic tool",
+    "Particularly useful in emergency department and inpatient psychiatric settings",
+    "Can be used by nurses, physicians, and other healthcare staff with minimal training"
+  ]
+}

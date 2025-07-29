@@ -1,0 +1,92 @@
+{
+  "id": "body_roundness_index",
+  "title": "Body Roundness Index (BRI)",
+  "description": "Estimates % body fat and % visceral adipose tissue (VAT) based on waist circumference and height. BRI provides a geometric assessment of body shape and correlates with mortality risk and cardiometabolic health outcomes.",
+  "category": "general",
+  "version": "2013",
+  "parameters": [
+    {
+      "name": "waist_circumference",
+      "type": "float",
+      "required": true,
+      "description": "Waist circumference measured at the level of the umbilicus (navel) in centimeters",
+      "validation": {
+        "min": 40,
+        "max": 200
+      },
+      "unit": "cm"
+    },
+    {
+      "name": "height",
+      "type": "float",
+      "required": true,
+      "description": "Height in centimeters",
+      "validation": {
+        "min": 100,
+        "max": 250
+      },
+      "unit": "cm"
+    }
+  ],
+  "result": {
+    "name": "body_roundness_index",
+    "type": "float",
+    "unit": "index",
+    "description": "Body Roundness Index value indicating body shape and associated health risks"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3.41,
+        "stage": "Low BRI",
+        "description": "Low body roundness",
+        "interpretation": "BRI less than 3.41 may indicate lower body fat but could suggest moderate increase in health risks in some populations. Hazard ratio for mortality: 0.57 (95% CI 0.49-0.67) compared to reference group. Consider comprehensive health assessment including muscle mass and nutritional status."
+      },
+      {
+        "min": 3.41,
+        "max": 4.45,
+        "stage": "Below Average BRI",
+        "description": "Below average body roundness",
+        "interpretation": "BRI between 3.41-4.45 shows no statistically significant increase in health risks. Hazard ratio for mortality: 0.81 (95% CI 0.69-0.95) compared to reference group. This range generally indicates favorable body composition."
+      },
+      {
+        "min": 4.45,
+        "max": 5.46,
+        "stage": "Average BRI",
+        "description": "Average body roundness (reference)",
+        "interpretation": "BRI between 4.45-5.46 represents the reference range for average body roundness. This is used as the baseline for mortality risk comparisons (HR 1.0). Generally indicates low risk for health problems related to visceral obesity."
+      },
+      {
+        "min": 5.46,
+        "max": 6.91,
+        "stage": "Above Average BRI",
+        "description": "Above average body roundness",
+        "interpretation": "BRI between 5.46-6.91 indicates increased body roundness with elevated health risks. Hazard ratio for mortality: 1.48 (95% CI 1.30-1.69) compared to reference group. Consider lifestyle modifications including diet and exercise interventions."
+      },
+      {
+        "min": 6.91,
+        "max": 20,
+        "stage": "High BRI",
+        "description": "High body roundness",
+        "interpretation": "BRI ≥6.91 indicates significantly increased body roundness with substantial health risks. Hazard ratio for mortality: 1.62 (95% CI 1.42-1.85) compared to reference group. Strongly recommend comprehensive metabolic assessment and aggressive risk factor modification."
+      }
+    ]
+  },
+  "references": [
+    "Thomas DM, Bredlau C, Bosy-Westphal A, et al. Relationships between body roundness with body fat and visceral adipose tissue emerging from a new geometrical model. Obesity (Silver Spring). 2013 Nov;21(11):2264-71. doi: 10.1002/oby.20408.",
+    "Zhang X, Ma N, Lin Q, et al. Body Roundness Index and All-Cause Mortality Among US Adults. JAMA Netw Open. 2024 Jun 3;7(6):e2415051. doi: 10.1001/jamanetworkopen.2024.15051.",
+    "Chang Y, Guo X, Chen Y, et al. A body shape index and body roundness index: two new body indices to identify diabetes mellitus among rural populations in northeast China. BMC Public Health. 2015 Aug 19;15:794. doi: 10.1186/s12889-015-2150-2."
+  ],
+  "formula": "BRI = 364.2 - 365.5 × √(1 - [(WC/2π) / (0.5 × H)]²) where WC is waist circumference and H is height in the same units",
+  "notes": [
+    "BRI estimates body fat and visceral adipose tissue based on the principle of body eccentricity",
+    "Unlike BMI, BRI accounts for waist circumference, providing better assessment of central adiposity",
+    "Waist circumference should be measured at the level of the umbilicus (navel) with the patient standing",
+    "BRI may be superior to BMI in predicting cardiometabolic risk and all-cause mortality",
+    "Values typically range from 1 to 20, with most adults falling between 3 and 7",
+    "The U-shaped mortality curve suggests both very low and very high values carry increased risk",
+    "BRI is a relatively new index and may require further validation in diverse populations",
+    "Consider using alongside other anthropometric measures for comprehensive assessment"
+  ]
+}

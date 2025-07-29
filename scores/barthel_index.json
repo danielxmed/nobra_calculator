@@ -1,0 +1,167 @@
+{
+  "id": "barthel_index",
+  "title": "Barthel Index for Activities of Daily Living (ADL)",
+  "description": "Assesses functional independence in activities of daily living, particularly useful in stroke patients and rehabilitation settings. The index evaluates 10 basic activities to determine the level of assistance required, with higher scores indicating greater independence.",
+  "category": "geriatrics",
+  "version": "1965",
+  "parameters": [
+    {
+      "name": "feeding",
+      "type": "string",
+      "required": true,
+      "description": "Ability to feed oneself",
+      "options": ["independent", "needs_help", "unable"],
+      "validation": {
+        "enum": ["independent", "needs_help", "unable"]
+      }
+    },
+    {
+      "name": "bathing",
+      "type": "string",
+      "required": true,
+      "description": "Ability to bathe/shower",
+      "options": ["independent", "unable"],
+      "validation": {
+        "enum": ["independent", "unable"]
+      }
+    },
+    {
+      "name": "grooming",
+      "type": "string",
+      "required": true,
+      "description": "Personal hygiene and grooming",
+      "options": ["independent", "unable"],
+      "validation": {
+        "enum": ["independent", "unable"]
+      }
+    },
+    {
+      "name": "dressing",
+      "type": "string",
+      "required": true,
+      "description": "Ability to dress and undress",
+      "options": ["independent", "needs_help", "unable"],
+      "validation": {
+        "enum": ["independent", "needs_help", "unable"]
+      }
+    },
+    {
+      "name": "bowel_control",
+      "type": "string",
+      "required": true,
+      "description": "Control of bowel movements",
+      "options": ["continent", "occasional_accident", "incontinent"],
+      "validation": {
+        "enum": ["continent", "occasional_accident", "incontinent"]
+      }
+    },
+    {
+      "name": "bladder_control",
+      "type": "string",
+      "required": true,
+      "description": "Control of bladder function",
+      "options": ["continent", "occasional_accident", "incontinent"],
+      "validation": {
+        "enum": ["continent", "occasional_accident", "incontinent"]
+      }
+    },
+    {
+      "name": "toilet_use",
+      "type": "string",
+      "required": true,
+      "description": "Ability to use toilet",
+      "options": ["independent", "needs_help", "unable"],
+      "validation": {
+        "enum": ["independent", "needs_help", "unable"]
+      }
+    },
+    {
+      "name": "transfers",
+      "type": "string",
+      "required": true,
+      "description": "Bed to chair transfers and back",
+      "options": ["independent", "needs_minor_help", "needs_major_help", "unable"],
+      "validation": {
+        "enum": ["independent", "needs_minor_help", "needs_major_help", "unable"]
+      }
+    },
+    {
+      "name": "mobility",
+      "type": "string",
+      "required": true,
+      "description": "Mobility on level surfaces",
+      "options": ["independent", "walks_with_help", "wheelchair_independent", "immobile"],
+      "validation": {
+        "enum": ["independent", "walks_with_help", "wheelchair_independent", "immobile"]
+      }
+    },
+    {
+      "name": "stairs",
+      "type": "string",
+      "required": true,
+      "description": "Ability to climb stairs",
+      "options": ["independent", "needs_help", "unable"],
+      "validation": {
+        "enum": ["independent", "needs_help", "unable"]
+      }
+    }
+  ],
+  "result": {
+    "name": "barthel_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total Barthel Index score (0-100)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 80,
+        "max": 100,
+        "stage": "Independent",
+        "description": "Independent in daily activities",
+        "interpretation": "Patient is functionally independent in activities of daily living. May require minimal assistance or supervision for complex tasks."
+      },
+      {
+        "min": 60,
+        "max": 79,
+        "stage": "Minimally Dependent",
+        "description": "Minimal dependency",
+        "interpretation": "Patient requires minimal assistance with daily activities. Generally able to live independently with some support."
+      },
+      {
+        "min": 40,
+        "max": 59,
+        "stage": "Partially Dependent",
+        "description": "Partial dependency",
+        "interpretation": "Patient requires moderate assistance with daily activities. May need regular caregiver support or assisted living arrangement."
+      },
+      {
+        "min": 20,
+        "max": 39,
+        "stage": "Very Dependent",
+        "description": "Very dependent",
+        "interpretation": "Patient requires substantial assistance with most daily activities. Likely needs full-time caregiver or institutional care."
+      },
+      {
+        "min": 0,
+        "max": 19,
+        "stage": "Totally Dependent",
+        "description": "Total dependency",
+        "interpretation": "Patient is totally dependent for all activities of daily living. Requires complete care and continuous supervision."
+      }
+    ]
+  },
+  "references": [
+    "Mahoney FI, Barthel DW. Functional evaluation: the Barthel Index. Md State Med J. 1965 Feb;14:61-5.",
+    "Collin C, Wade DT, Davies S, Horne V. The Barthel ADL Index: a reliability study. Int Disabil Stud. 1988;10(2):61-3. doi: 10.3109/09638288809164103.",
+    "Sainsbury A, Seebass G, Bansal A, Young JB. Reliability of the Barthel Index when used with older people. Age Ageing. 2005 May;34(3):228-32. doi: 10.1093/ageing/afi063."
+  ],
+  "formula": "Sum of points from all 10 activities. Feeding (0-10), Bathing (0-5), Grooming (0-5), Dressing (0-10), Bowel control (0-10), Bladder control (0-10), Toilet use (0-10), Transfers (0-15), Mobility (0-15), Stairs (0-10)",
+  "notes": [
+    "Most widely used ADL assessment tool in rehabilitation settings",
+    "Score of 100 indicates complete independence",
+    "Scores are typically reassessed periodically to monitor progress",
+    "Consider patient's baseline function when interpreting scores",
+    "May underestimate needs in patients with cognitive impairment"
+  ]
+}

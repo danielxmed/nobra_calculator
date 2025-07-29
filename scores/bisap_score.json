@@ -1,0 +1,92 @@
+{
+  "id": "bisap_score",
+  "title": "BISAP Score for Pancreatitis Mortality",
+  "description": "Predicts mortality risk in pancreatitis with fewer variables than Ranson's. The Bedside Index for Severity in Acute Pancreatitis (BISAP) allows for early identification of patients at increased risk for in-hospital mortality.",
+  "category": "emergency",
+  "version": "2008",
+  "parameters": [
+    {
+      "name": "bun_elevated",
+      "type": "string",
+      "required": true,
+      "description": "Blood Urea Nitrogen (BUN) > 25 mg/dL",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "impaired_mental_status",
+      "type": "string",
+      "required": true,
+      "description": "Impaired mental status or Glasgow Coma Scale (GCS) < 15",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "sirs_criteria",
+      "type": "string",
+      "required": true,
+      "description": "≥2 SIRS (Systemic Inflammatory Response Syndrome) criteria present",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "age_over_60",
+      "type": "string",
+      "required": true,
+      "description": "Age > 60 years",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "pleural_effusion",
+      "type": "string",
+      "required": true,
+      "description": "Presence of pleural effusion on imaging (chest X-ray or CT)",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "bisap_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "BISAP score (0-5 points)"
+  },
+  "interpretation": {
+    "description": "BISAP score for pancreatitis mortality risk stratification",
+    "score_ranges": [
+      {
+        "range": "0-2",
+        "severity": "Low risk",
+        "mortality": "<2%",
+        "description": "Mild acute pancreatitis with low mortality risk"
+      },
+      {
+        "range": "3-5",
+        "severity": "High risk",
+        "mortality": "15-20%",
+        "description": "Severe acute pancreatitis with significantly increased mortality risk"
+      }
+    ],
+    "sirs_definition": "SIRS criteria: ≥2 of the following: pulse >90 bpm, respirations >20/min or PaCO2 <32 mmHg, temperature >38°C or <36°C, WBC >12,000 or <4,000 cells/mm³ or >10% bands"
+  },
+  "references": [
+    "Wu BU, Johannes RS, Sun X, Tabak Y, Conwell DL, Banks PA. The early prediction of mortality in acute pancreatitis: a large population-based study. Gut. 2008 Dec;57(12):1698-703.",
+    "Singh VK, Wu BU, Bollen TL, Repas K, Maurer R, Johannes RS, et al. A prospective evaluation of the bedside index for severity in acute pancreatitis score in assessing mortality and intermediate markers of severity in acute pancreatitis. Am J Gastroenterol. 2009 Apr;104(4):966-71.",
+    "Gao W, Yang HX, Ma CE. The Value of BISAP Score for Predicting Mortality and Severity in Acute Pancreatitis: A Systematic Review and Meta-Analysis. PLoS One. 2015 Jun 22;10(6):e0130412."
+  ],
+  "formula": "BISAP = Sum of present criteria (B + I + S + A + P), each worth 1 point",
+  "notes": [
+    "Developed using data from ~18,000 cases of acute pancreatitis from >200 hospitals",
+    "Score ≥3 indicates severe acute pancreatitis with high mortality risk",
+    "More convenient than Ranson's criteria with fewer variables",
+    "Can be calculated within 24 hours of admission",
+    "Sensitivity of 56% and specificity of 91% for mortality prediction at cutoff ≥3",
+    "Should be used in conjunction with clinical judgment and other assessment tools"
+  ]
+}

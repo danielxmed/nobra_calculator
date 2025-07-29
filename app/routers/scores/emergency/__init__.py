@@ -20,6 +20,13 @@ from .antivenom_dosing_algorithm import router as antivenom_dosing_algorithm_rou
 from .apache_ii_score import router as apache_ii_score_router
 from .air_score import router as air_score_router
 from .abg_analyzer import router as abg_analyzer_router
+from .basic_statistics_calc import router as basic_statistics_calc_router
+from .bastion_classification import router as bastion_classification_router
+from .behavioral_pain_scale import router as behavioral_pain_scale_router
+from .benzodiazepine_conversion import router as benzodiazepine_conversion_router
+from .bicarbonate_deficit import router as bicarbonate_deficit_router
+from .bisap_score import router as bisap_score_router
+from .blast_lung_injury_severity import router as blast_lung_injury_severity_router
 
 # Create main specialty router
 router = APIRouter()
@@ -40,3 +47,10 @@ router.include_router(antivenom_dosing_algorithm_router)
 router.include_router(apache_ii_score_router)
 router.include_router(air_score_router)
 router.include_router(abg_analyzer_router)
+router.include_router(basic_statistics_calc_router)
+router.include_router(bastion_classification_router)
+router.include_router(behavioral_pain_scale_router)
+router.include_router(benzodiazepine_conversion_router)
+router.include_router(bicarbonate_deficit_router)
+router.include_router(bisap_score_router)
+router.include_router(blast_lung_injury_severity_router)

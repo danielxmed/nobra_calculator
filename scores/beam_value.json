@@ -1,0 +1,75 @@
+{
+  "id": "beam_value",
+  "title": "BeAM Value",
+  "description": "Calculates the difference between bedtime and morning fasting blood glucose to guide prandial insulin therapy decisions in patients with type 2 diabetes",
+  "category": "endocrinology",
+  "version": "2016",
+  "parameters": [
+    {
+      "name": "bedtime_glucose",
+      "type": "float",
+      "required": true,
+      "description": "Bedtime blood glucose level (SMBG measurement taken before sleep)",
+      "unit": "mg/dL",
+      "validation": {
+        "min": 40,
+        "max": 600
+      }
+    },
+    {
+      "name": "morning_glucose",
+      "type": "float",
+      "required": true,
+      "description": "Morning fasting blood glucose level (SMBG measurement taken before breakfast)",
+      "unit": "mg/dL",
+      "validation": {
+        "min": 40,
+        "max": 600
+      }
+    }
+  ],
+  "result": {
+    "name": "beam_value",
+    "type": "float",
+    "unit": "mg/dL",
+    "description": "BeAM value (bedtime glucose minus morning glucose)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 30,
+        "max": 1000,
+        "stage": "High BeAM",
+        "description": "Large BeAM value (≥30 mg/dL)",
+        "interpretation": "High BeAM value suggests postprandial glucose excursions during the day and well-controlled fasting glucose. Indicator for prandial insulin supplementation rather than advancing basal insulin dose."
+      },
+      {
+        "min": 0,
+        "max": 29,
+        "stage": "Medium/Low BeAM",
+        "description": "Medium/Low BeAM value (0-29 mg/dL)",
+        "interpretation": "Medium/Low BeAM value suggests prandial insulin supplementation may be of little benefit. Consider optimizing basal insulin or other diabetes management strategies."
+      },
+      {
+        "min": -1000,
+        "max": -1,
+        "stage": "Negative BeAM",
+        "description": "Negative BeAM value (<0 mg/dL)",
+        "interpretation": "Higher morning glucose than bedtime glucose. Patients with negative BeAM tend to be younger, have shorter diabetes duration, and higher fasting glucose levels. This pattern is a contraindication for intensification of prandial insulin therapy."
+      }
+    ]
+  },
+  "references": [
+    "Raz I, Wilson PW, Strojek K, Kowalska I, Bozikov V, Gitt AK, et al. Effects of prandial versus fasting glycemia on cardiovascular outcomes in type 2 diabetes: the HEART2D trial. Diabetes Care. 2009 Mar;32(3):381-6.",
+    "Blonde L, Merilainen M, Karwe V, Raskin P; TITRATE Study Group. Patient-directed titration for achieving glycaemic goals using a once-daily basal insulin analogue: an assessment of two different fasting plasma glucose targets - the TITRATE study. Diabetes Obes Metab. 2009 Jun;11(6):623-31.",
+    "Garber AJ, King AB, Del Prato S, Sreenan S, Balci MK, Muñoz-Torres M, et al. Insulin degludec, an ultra-longacting basal insulin, versus insulin glargine in basal-bolus treatment with mealtime insulin aspart in type 2 diabetes (BEGIN Basal-Bolus Type 2): a phase 3, randomised, open-label, treat-to-target non-inferiority trial. Lancet. 2012 Apr 21;379(9825):1498-507."
+  ],
+  "formula": "BeAM Value = Bedtime glucose (mg/dL) - Morning fasting glucose (mg/dL)",
+  "notes": [
+    "The BeAM value helps identify patients with T2DM using basal insulin who need targeting of postprandial control rather than advancing basal insulin dose",
+    "Large BeAM (≥30 mg/dL) indicates need for prandial insulin supplementation",
+    "Negative BeAM (<0 mg/dL) is a contraindication for intensification of prandial insulin therapy",
+    "Should be used in conjunction with HbA1c and other diabetes management parameters",
+    "Requires consistent timing of glucose measurements (bedtime and morning fasting)"
+  ]
+}

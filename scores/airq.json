@@ -1,0 +1,153 @@
+{
+  "id": "airq",
+  "title": "Asthma Impairment and Risk Questionnaire (AIRQ)",
+  "description": "Validates asthma control in patients 12 years and older by assessing both symptom impairment and exacerbation risk domains",
+  "category": "pulmonology",
+  "version": "2020",
+  "parameters": [
+    {
+      "name": "daytime_symptoms",
+      "type": "string",
+      "required": true,
+      "description": "In the past 2 weeks, has coughing, wheezing, shortness of breath, or chest tightness bothered you during the day on more than 4 days?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "nighttime_awakenings",
+      "type": "string",
+      "required": true,
+      "description": "In the past 2 weeks, has coughing, wheezing, shortness of breath, or chest tightness woke you up from sleep more than 1 time?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "activity_limitation",
+      "type": "string",
+      "required": true,
+      "description": "In the past 2 weeks, has coughing, wheezing, shortness of breath, or chest tightness limited the activities you want to do every day?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "rescue_medication_daily",
+      "type": "string",
+      "required": true,
+      "description": "In the past 2 weeks, has coughing, wheezing, shortness of breath, or chest tightness caused you to use your rescue inhaler or nebulizer every day?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "social_activity_limitation",
+      "type": "string",
+      "required": true,
+      "description": "In the past 2 weeks, did you have to limit your social activities (such as visiting with friends/relatives or playing with pets/children) because of your asthma?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "exercise_limitation",
+      "type": "string",
+      "required": true,
+      "description": "In the past 2 weeks, did coughing, wheezing, shortness of breath, or chest tightness limit your ability to exercise?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "difficult_control",
+      "type": "string",
+      "required": true,
+      "description": "In the past 2 weeks, did you feel that it was difficult to control your asthma?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "oral_steroids",
+      "type": "string",
+      "required": true,
+      "description": "In the past 12 months, has coughing, wheezing, shortness of breath, or chest tightness caused you to take steroid pills or shots, such as prednisone or methylprednisolone?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "emergency_visits",
+      "type": "string",
+      "required": true,
+      "description": "In the past 12 months, has coughing, wheezing, shortness of breath, or chest tightness caused you to go to the emergency room or have unplanned visits to a health care provider?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hospitalization",
+      "type": "string",
+      "required": true,
+      "description": "In the past 12 months, has coughing, wheezing, shortness of breath, or chest tightness caused you to stay in the hospital overnight?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "airq_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total AIRQ score based on number of 'yes' responses (0-10 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Well-controlled",
+        "description": "Well-controlled asthma",
+        "interpretation": "Asthma is well-controlled. Continue current management and monitor regularly. Even well-controlled patients can have asthma attacks, but the risk is lower."
+      },
+      {
+        "min": 2,
+        "max": 4,
+        "stage": "Not well-controlled",
+        "description": "Not well-controlled asthma",
+        "interpretation": "Asthma control is suboptimal. Consider step-up therapy, review inhaler technique and adherence. Increased risk of exacerbations compared to well-controlled patients."
+      },
+      {
+        "min": 5,
+        "max": 10,
+        "stage": "Very poorly controlled",
+        "description": "Very poorly controlled asthma",
+        "interpretation": "Asthma is very poorly controlled with significant impairment and high exacerbation risk. Requires immediate therapeutic intervention and specialist referral consideration."
+      }
+    ]
+  },
+  "references": [
+    "Murphy KR, Chipps B, Beuther DA, Wise RA, McCann W, Gilbert I, et al. Development of the Asthma Impairment and Risk Questionnaire (AIRQ): a composite control measure. J Allergy Clin Immunol Pract. 2020;8(7):2263-2274.e5.",
+    "Beuther DA, Murphy KR, Zeiger RS, Wise RA, McCann W, Reibman J, et al. The Asthma Impairment and Risk Questionnaire (AIRQ) Control Level Predicts Future Risk of Asthma Exacerbations. J Allergy Clin Immunol Pract. 2022;10(12):3204-3212.e2."
+  ],
+  "formula": "Sum of 'yes' responses to all 10 questions. Score range: 0-10 points",
+  "notes": [
+    "The AIRQ is a validated tool for patients aged 12 years and older with physician-diagnosed asthma",
+    "The questionnaire includes both impairment (7 items, 2-week recall) and risk (3 items, 12-month recall) domains",
+    "Cut-point of ≥2 for separating well-controlled versus all others has sensitivity of 0.90 and specificity of 0.79",
+    "Cut-point of ≥5 has specificity of 0.95 for identifying very poorly controlled asthma",
+    "Higher scores indicate worse asthma control and increased risk of future exacerbations",
+    "The AIRQ should be used as part of comprehensive clinical assessment and shared decision-making"
+  ]
+}

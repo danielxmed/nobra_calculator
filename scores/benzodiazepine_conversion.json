@@ -1,0 +1,91 @@
+{
+  "id": "benzodiazepine_conversion",
+  "title": "Benzodiazepine Conversion Calculator",
+  "description": "Provides equivalents between different benzodiazepines for safe medication interchanging",
+  "category": "emergency",
+  "version": "2017",
+  "parameters": [
+    {
+      "name": "converting_from",
+      "type": "string",
+      "required": true,
+      "description": "Current benzodiazepine medication being converted from",
+      "validation": {
+        "enum": ["alprazolam", "chlordiazepoxide", "clonazepam", "diazepam", "lorazepam", "midazolam", "oxazepam", "temazepam"]
+      },
+      "options": [
+        "alprazolam - Xanax (short acting: 6-12 hours)",
+        "chlordiazepoxide - Librium (long acting: >24 hours)",
+        "clonazepam - Klonopin (long acting: >24 hours)",
+        "diazepam - Valium (long acting: >24 hours)",
+        "lorazepam - Ativan (intermediate acting: 12-24 hours)",
+        "midazolam - Versed (very short acting: <6 hours)",
+        "oxazepam - Serax (short acting: 6-12 hours)",
+        "temazepam - Restoril (short acting: 6-12 hours)"
+      ]
+    },
+    {
+      "name": "total_daily_dose",
+      "type": "float",
+      "required": true,
+      "description": "Total daily dosage of current benzodiazepine in milligrams",
+      "unit": "mg",
+      "validation": {
+        "min": 0.1,
+        "max": 100
+      }
+    },
+    {
+      "name": "converting_to",
+      "type": "string",
+      "required": true,
+      "description": "Target benzodiazepine medication being converted to",
+      "validation": {
+        "enum": ["alprazolam", "chlordiazepoxide", "clonazepam", "diazepam", "lorazepam", "midazolam", "oxazepam", "temazepam"]
+      },
+      "options": [
+        "alprazolam - Xanax (short acting: 6-12 hours)",
+        "chlordiazepoxide - Librium (long acting: >24 hours)",
+        "clonazepam - Klonopin (long acting: >24 hours)",
+        "diazepam - Valium (long acting: >24 hours)",
+        "lorazepam - Ativan (intermediate acting: 12-24 hours)",
+        "midazolam - Versed (very short acting: <6 hours)",
+        "oxazepam - Serax (short acting: 6-12 hours)",
+        "temazepam - Restoril (short acting: 6-12 hours)"
+      ]
+    }
+  ],
+  "result": {
+    "name": "equivalent_dose",
+    "type": "float",
+    "unit": "mg",
+    "description": "Equivalent daily dose of target benzodiazepine"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1000,
+        "stage": "Conversion Complete",
+        "description": "Benzodiazepine conversion calculated",
+        "interpretation": "Use lower end of dose range to minimize oversedation risk. Monitor for withdrawal symptoms and adjust as needed based on clinical response."
+      }
+    ]
+  },
+  "references": [
+    "Ashton H. Benzodiazepines: how they work and how to withdraw. The Ashton Manual. 2002. Available at: https://www.benzo.org.uk/manual/",
+    "Lader M, Tylee A, Donoghue J. Withdrawing benzodiazepines in primary care. CNS Drugs. 2009;23(1):19-34.",
+    "Parr JM, Kavanagh DJ, Cahill L, et al. Effectiveness of current treatment approaches for benzodiazepine discontinuation: a meta-analysis. Addiction. 2009 Jan;104(1):13-24."
+  ],
+  "formula": "Target dose (mg) = Current dose (mg) × (Target potency factor / Current potency factor)",
+  "notes": [
+    "Intended for use when interchanging benzodiazepines, NOT for calculating initial doses for benzodiazepine-naive patients",
+    "Does not account for age, organ function, or individual variability in metabolism",
+    "Use lower end of dose range to minimize oversedation risk",
+    "Abrupt discontinuation should be avoided due to potential withdrawal symptoms",
+    "Consider half-life differences when timing dose conversions",
+    "Monitor closely for signs of oversedation or withdrawal",
+    "Conversion factors are approximate and may require clinical adjustment",
+    "Short-acting benzodiazepines are generally more potent than long-acting ones"
+  ]
+}
