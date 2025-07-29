@@ -10,6 +10,7 @@ from .adhere_algorithm import AdhereAlgorithmRequest, AdhereAlgorithmResponse
 from .thakar_score import ThakarScoreRequest, ThakarScoreResponse
 from .aub_has2_cardiovascular_risk_index import AubHas2CardiovascularRiskIndexRequest, AubHas2CardiovascularRiskIndexResponse
 from .aortic_dissection_detection_risk_score import AorticDissectionDetectionRiskScoreRequest, AorticDissectionDetectionRiskScoreResponse
+from .ascvd_2013 import Ascvd2013Request, Ascvd2013Response
 
 __all__ = [
     "Cha2ds2VascRequest",
@@ -27,5 +28,7 @@ __all__ = [
     "AubHas2CardiovascularRiskIndexRequest",
     "AubHas2CardiovascularRiskIndexResponse",
     "AorticDissectionDetectionRiskScoreRequest",
-    "AorticDissectionDetectionRiskScoreResponse"
+    "AorticDissectionDetectionRiskScoreResponse",
+    "Ascvd2013Request",
+    "Ascvd2013Response"
 ]

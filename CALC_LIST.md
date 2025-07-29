@@ -217,14 +217,11 @@
 ### ✅ ASAS Criteria for Peripheral SpondyloArthritis (SpA)
 **Description:** Classifies peripheral spondyloarthritis according to the Assessment of SpondyloArthritis International Society (ASAS) criteria.
 
-### ASCOD Algorithm for Ischemic Stroke
+### ✅ ASCOD Algorithm for Ischemic Stroke
 **Description:** Assigns phenotype in patients with ischemic stroke of uncertain causes.
 
-### ASCVD (Atherosclerotic Cardiovascular Disease) 2013 Risk Calculator from AHA/ACC
+### ✅ ASCVD (Atherosclerotic Cardiovascular Disease) 2013 Risk Calculator from AHA/ACC
 **Description:** Determines 10-year risk of major ASCVD, i.e. myocardial infarction, stroke, or death due to coronary heart disease or stroke.
-
-### ASCVD (Atherosclerotic Cardiovascular Disease) Risk Algorithm including Known ASCVD from AHA/ACC
-**Description:** Determines 10-year risk of major ASCVD and provides statin recommendations.
 
 ### AST to Platelet Ratio Index (APRI)
 **Description:** Determines the likelihood of liver fibrosis and cirrhosis in patients with hepatitis C.

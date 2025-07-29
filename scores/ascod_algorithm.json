@@ -1,0 +1,146 @@
+{
+  "id": "ascod_algorithm",
+  "title": "ASCOD Algorithm for Ischemic Stroke",
+  "description": "Assigns phenotype in patients with ischemic stroke of uncertain causes by evaluating five main etiologic categories: Atherothrombosis, Small-vessel disease, Cardiac pathology, Other causes, and Dissection. Provides a comprehensive classification system that captures overlap between multiple underlying stroke mechanisms.",
+  "category": "neurology",
+  "version": "2013",
+  "parameters": [
+    {
+      "name": "atherosclerosis",
+      "type": "string",
+      "required": true,
+      "description": "Atherosclerosis grade. Grade 1: Ipsilateral stenosis 50-99% supplying area of ischemia. Grade 2: Ipsilateral stenosis 30-49%. Grade 3: Plaque without stenosis or <30% in any territory. Grade 0: No atherosclerotic disease. Grade 9: Incomplete workup",
+      "options": [
+        "grade_9",
+        "grade_1",
+        "grade_2",
+        "grade_3",
+        "grade_0"
+      ],
+      "validation": {
+        "enum": ["grade_9", "grade_1", "grade_2", "grade_3", "grade_0"]
+      }
+    },
+    {
+      "name": "small_vessel_disease",
+      "type": "string",
+      "required": true,
+      "description": "Small vessel disease grade. Grade 1: Lacunar syndrome with relevant subcortical infarct <15mm. Grade 2: Incomplete lacunar syndrome or infarct 15-20mm. Grade 3: WMH/microbleeds without qualifying syndrome. Grade 0: No SVD. Grade 9: Incomplete workup",
+      "options": [
+        "grade_9",
+        "grade_1",
+        "grade_2",
+        "grade_3",
+        "grade_0"
+      ],
+      "validation": {
+        "enum": ["grade_9", "grade_1", "grade_2", "grade_3", "grade_0"]
+      }
+    },
+    {
+      "name": "cardiac_pathology",
+      "type": "string",
+      "required": true,
+      "description": "Cardiac pathology grade. Grade 1: High-risk sources (AF, mitral stenosis, recent MI, endocarditis). Grade 2: Low/uncertain risk (PFO with ASA). Grade 3: Minor-risk sources. Grade 0: No cardiac pathology. Grade 9: Incomplete workup",
+      "options": [
+        "grade_9",
+        "grade_1",
+        "grade_2",
+        "grade_3",
+        "grade_0"
+      ],
+      "validation": {
+        "enum": ["grade_9", "grade_1", "grade_2", "grade_3", "grade_0"]
+      }
+    },
+    {
+      "name": "other_causes",
+      "type": "string",
+      "required": true,
+      "description": "Other causes grade (vasculitis, hematologic disorders, genetic conditions). Grade 1: Disease directly causing stroke. Grade 2: Disease present, causal link uncertain. Grade 3: Disease present, unlikely related. Grade 0: No other causes. Grade 9: Incomplete workup",
+      "options": [
+        "grade_9",
+        "grade_1",
+        "grade_2",
+        "grade_3",
+        "grade_0"
+      ],
+      "validation": {
+        "enum": ["grade_9", "grade_1", "grade_2", "grade_3", "grade_0"]
+      }
+    },
+    {
+      "name": "dissection",
+      "type": "string",
+      "required": true,
+      "description": "Dissection grade. Grade 1: Dissection demonstrated in relevant artery. Grade 2: Imaging suggestive but not diagnostic. Grade 3: Dissection in non-relevant artery. Grade 0: No dissection. Grade 9: Incomplete workup",
+      "options": [
+        "grade_9",
+        "grade_1",
+        "grade_2",
+        "grade_3",
+        "grade_0"
+      ],
+      "validation": {
+        "enum": ["grade_9", "grade_1", "grade_2", "grade_3", "grade_0"]
+      }
+    }
+  ],
+  "result": {
+    "name": "ascod_phenotype",
+    "type": "string",
+    "unit": "phenotype",
+    "description": "ASCOD phenotype classification (5-digit code: A-S-C-O-D)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "pattern": ".*1.*",
+        "stage": "Potentially Causal",
+        "description": "At least one potentially causal mechanism identified",
+        "interpretation": "Consider targeted secondary prevention for identified mechanism(s). May require multiple therapeutic approaches if multiple grade 1 mechanisms are present."
+      },
+      {
+        "pattern": ".*2.*",
+        "stage": "Uncertain Causality",
+        "description": "Causal link uncertain for identified mechanism(s)",
+        "interpretation": "Mechanism present but relationship to stroke uncertain. Consider secondary prevention based on overall risk profile and clinical judgment."
+      },
+      {
+        "pattern": ".*3.*",
+        "stage": "Disease Present",
+        "description": "Disease present but causal link unlikely",
+        "interpretation": "Underlying condition identified but not likely causative for this stroke. May still require management for overall cardiovascular risk reduction."
+      },
+      {
+        "pattern": ".*9.*",
+        "stage": "Incomplete Workup",
+        "description": "Incomplete diagnostic evaluation",
+        "interpretation": "Further diagnostic workup needed to complete stroke classification. Consider additional testing as clinically appropriate."
+      },
+      {
+        "pattern": "0-0-0-0-0",
+        "stage": "No Disease Detected",
+        "description": "No identifiable mechanisms detected",
+        "interpretation": "Comprehensive workup negative for common stroke mechanisms. Consider rare causes or repeat evaluation if clinically indicated."
+      }
+    ]
+  },
+  "references": [
+    "Amarenco P, Bogousslavsky J, Caplan LR, Donnan GA, Wolf ME, Hennerici MG. The ASCOD phenotyping of ischemic stroke (Updated ASCO phenotyping). Cerebrovasc Dis. 2013;36(1):1-5. doi: 10.1159/000352050.",
+    "Sirimarco G, Lavallée PC, Labreuche J, Meseguer E, Cabrejo L, Guidoux C, et al. Overlap of diseases underlying ischemic stroke: the ASCOD phenotyping. Stroke. 2013 Dec;44(12):3427-33. doi: 10.1161/STROKEAHA.113.001363.",
+    "Radu RA, Terecoasă EO, Băjenaru OA, Tiu C. Etiologic classification of ischemic stroke: Where do we stand? Clin Neurol Neurosurg. 2017 Aug;159:93-106. doi: 10.1016/j.clineuro.2017.05.019."
+  ],
+  "formula": "ASCOD phenotype = A-S-C-O-D where each letter represents the causality grade (0, 1, 2, 3, or 9) for: A=Atherothrombosis, S=Small-vessel disease, C=Cardiac pathology, O=Other causes, D=Dissection",
+  "notes": [
+    "Grade 9: Incomplete workup - further evaluation needed",
+    "Grade 1: Potentially causal - direct relationship to stroke likely",
+    "Grade 2: Causal link uncertain - mechanism present but relationship unclear", 
+    "Grade 3: Causal link unlikely but disease present - condition exists but not stroke-causative",
+    "Grade 0: No disease detected in this category",
+    "Multiple mechanisms can be graded simultaneously, reflecting stroke complexity",
+    "Results guide comprehensive secondary prevention strategies",
+    "More detailed than traditional TOAST classification",
+    "Encourages thorough diagnostic workup for stroke etiology"
+  ]
+}

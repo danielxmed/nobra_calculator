@@ -1,0 +1,142 @@
+{
+  "id": "ascvd_2013",
+  "title": "ASCVD (Atherosclerotic Cardiovascular Disease) 2013 Risk Calculator from AHA/ACC",
+  "description": "Estimates the 10-year risk of atherosclerotic cardiovascular disease (heart attack, stroke, or death due to coronary heart disease or stroke) using the Pooled Cohort Equations. For patients 40-79 years old with no history of ASCVD.",
+  "category": "cardiology",
+  "version": "2013",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient's age in years (must be between 40 and 79)",
+      "validation": {
+        "min": 40,
+        "max": 79
+      },
+      "unit": "years"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient's biological sex",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "race",
+      "type": "string",
+      "required": true,
+      "description": "Patient's race (White or African American)",
+      "options": ["white", "african_american", "other"],
+      "validation": {
+        "enum": ["white", "african_american", "other"]
+      }
+    },
+    {
+      "name": "total_cholesterol",
+      "type": "float",
+      "required": true,
+      "description": "Total cholesterol level",
+      "validation": {
+        "min": 130,
+        "max": 320
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "hdl_cholesterol",
+      "type": "float",
+      "required": true,
+      "description": "HDL cholesterol level",
+      "validation": {
+        "min": 20,
+        "max": 100
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "systolic_bp",
+      "type": "integer",
+      "required": true,
+      "description": "Systolic blood pressure",
+      "validation": {
+        "min": 90,
+        "max": 200
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "bp_treatment",
+      "type": "boolean",
+      "required": true,
+      "description": "Currently on blood pressure lowering medication"
+    },
+    {
+      "name": "diabetes",
+      "type": "boolean",
+      "required": true,
+      "description": "History of diabetes mellitus"
+    },
+    {
+      "name": "smoker",
+      "type": "boolean",
+      "required": true,
+      "description": "Current smoker (cigarettes, cigars, or pipe)"
+    }
+  ],
+  "result": {
+    "name": "ascvd_risk",
+    "type": "float",
+    "unit": "%",
+    "description": "10-year ASCVD risk percentage"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 5,
+        "stage": "Low Risk",
+        "description": "<5% 10-year risk",
+        "interpretation": "Low 10-year ASCVD risk. Focus on lifestyle modifications including heart-healthy diet, regular physical activity, and smoking cessation if applicable."
+      },
+      {
+        "min": 5,
+        "max": 7.5,
+        "stage": "Borderline Risk",
+        "description": "5% to <7.5% 10-year risk",
+        "interpretation": "Borderline 10-year ASCVD risk. Consider risk-enhancing factors. Emphasize lifestyle modifications. For selected patients, consider moderate-intensity statin therapy after risk discussion."
+      },
+      {
+        "min": 7.5,
+        "max": 20,
+        "stage": "Intermediate Risk",
+        "description": "7.5% to <20% 10-year risk",
+        "interpretation": "Intermediate 10-year ASCVD risk. Moderate- to high-intensity statin therapy recommended after clinician-patient risk discussion, especially if risk enhancers present."
+      },
+      {
+        "min": 20,
+        "max": 100,
+        "stage": "High Risk",
+        "description": "≥20% 10-year risk",
+        "interpretation": "High 10-year ASCVD risk. High-intensity statin therapy recommended to reduce LDL-C by ≥50%. Consider adding ezetimibe if LDL-C remains ≥70 mg/dL on maximally tolerated statin."
+      }
+    ]
+  },
+  "references": [
+    "Goff DC Jr, Lloyd-Jones DM, Bennett G, et al. 2013 ACC/AHA guideline on the assessment of cardiovascular risk: a report of the American College of Cardiology/American Heart Association Task Force on Practice Guidelines. Circulation. 2014 Jun 24;129(25 Suppl 2):S49-73.",
+    "Stone NJ, Robinson JG, Lichtenstein AH, et al. 2013 ACC/AHA guideline on the treatment of blood cholesterol to reduce atherosclerotic cardiovascular risk in adults: a report of the American College of Cardiology/American Heart Association Task Force on Practice Guidelines. Circulation. 2014 Jun 24;129(25 Suppl 2):S1-45.",
+    "Arnett DK, Blumenthal RS, Albert MA, et al. 2019 ACC/AHA Guideline on the Primary Prevention of Cardiovascular Disease: A Report of the American College of Cardiology/American Heart Association Task Force on Clinical Practice Guidelines. Circulation. 2019 Sep 10;140(11):e596-e646."
+  ],
+  "formula": "10-year ASCVD risk = 1 - S₀(t)^exp(Xβ - mean Xβ), where S₀(t) is the baseline survival, Xβ is the sum of coefficient × value for each risk factor, with race- and sex-specific coefficients",
+  "notes": [
+    "Not applicable to patients with prior ASCVD, LDL-C ≥190 mg/dL, or age outside 40-79 years",
+    "May overestimate risk in some populations; consider risk-enhancing factors",
+    "Risk-enhancing factors include: family history of premature ASCVD, persistently elevated LDL-C ≥160 mg/dL, chronic kidney disease, metabolic syndrome, preeclampsia, premature menopause, inflammatory diseases, ethnicity (e.g., South Asian), persistently elevated triglycerides ≥175 mg/dL",
+    "For patients with 'other' race, calculator uses white race coefficients by default",
+    "USPSTF recommends statin therapy for ages 40-75 with ≥1 CVD risk factor and 10-year risk ≥10%"
+  ]
+}
