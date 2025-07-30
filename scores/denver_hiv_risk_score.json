@@ -1,0 +1,193 @@
+{
+  "id": "denver_hiv_risk_score",
+  "title": "Denver HIV Risk Score",
+  "description": "Predicts probability of undiagnosed HIV infection in patients aged 13 and older using demographic and behavioral risk factors.",
+  "category": "infectious_disease",
+  "version": "2012",
+  "parameters": [
+    {
+      "name": "age_group",
+      "type": "string",
+      "required": true,
+      "description": "Patient age group with variable point assignments",
+      "options": ["under_22", "22_25", "26_32", "33_46", "47_54", "55_60", "over_60"],
+      "validation": {
+        "enum": ["under_22", "22_25", "26_32", "33_46", "47_54", "55_60", "over_60"]
+      }
+    },
+    {
+      "name": "gender",
+      "type": "string",
+      "required": true,
+      "description": "Patient gender",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "sexual_practices",
+      "type": "string",
+      "required": true,
+      "description": "Sexual behavior risk factors",
+      "options": ["sex_with_male", "receptive_anal_intercourse", "vaginal_intercourse", "none"],
+      "validation": {
+        "enum": ["sex_with_male", "receptive_anal_intercourse", "vaginal_intercourse", "none"]
+      }
+    },
+    {
+      "name": "injection_drug_use",
+      "type": "string",
+      "required": true,
+      "description": "History of injection drug use",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "past_hiv_testing",
+      "type": "string",
+      "required": true,
+      "description": "History of previous HIV testing",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "race_ethnicity",
+      "type": "string",
+      "required": false,
+      "description": "Race/ethnicity (optional parameter for additional risk stratification)",
+      "options": ["black", "hispanic", "white", "asian", "other"],
+      "validation": {
+        "enum": ["black", "hispanic", "white", "asian", "other"]
+      }
+    }
+  ],
+  "result": {
+    "name": "hiv_risk_assessment",
+    "type": "object",
+    "unit": "points",
+    "description": "Denver HIV Risk Score with probability assessment and screening recommendations"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": -14,
+        "max": 19,
+        "stage": "Very Low Risk",
+        "description": "Very low probability of undiagnosed HIV infection",
+        "interpretation": "HIV prevalence approximately 0.31%. Routine screening may be considered based on clinical judgment and patient preferences. Focus on prevention education and risk reduction counseling.",
+        "hiv_prevalence": "0.31%",
+        "recommendation": "Consider routine screening per guidelines"
+      },
+      {
+        "min": 20,
+        "max": 29,
+        "stage": "Low Risk",
+        "description": "Low probability of undiagnosed HIV infection",
+        "interpretation": "HIV prevalence approximately 0.41%. Offer HIV testing and prevention counseling. Consider periodic rescreening based on ongoing risk factors.",
+        "hiv_prevalence": "0.41%",
+        "recommendation": "Offer HIV testing and prevention counseling"
+      },
+      {
+        "min": 30,
+        "max": 39,
+        "stage": "Moderate Risk",
+        "description": "Moderate probability of undiagnosed HIV infection",
+        "interpretation": "HIV prevalence approximately 0.99%. Strongly recommend HIV testing and comprehensive prevention counseling. Consider frequent rescreening for persistent risk factors.",
+        "hiv_prevalence": "0.99%",
+        "recommendation": "Strongly recommend HIV testing"
+      },
+      {
+        "min": 40,
+        "max": 49,
+        "stage": "High Risk",
+        "description": "High probability of undiagnosed HIV infection",
+        "interpretation": "HIV prevalence approximately 1.59%. Urgent HIV testing recommended with comprehensive risk assessment and prevention counseling. Consider expedited testing and linkage to care protocols.",
+        "hiv_prevalence": "1.59%",
+        "recommendation": "Urgent HIV testing recommended"
+      },
+      {
+        "min": 50,
+        "max": 81,
+        "stage": "Very High Risk",
+        "description": "Very high probability of undiagnosed HIV infection",
+        "interpretation": "HIV prevalence approximately 3.59%. Immediate HIV testing essential with comprehensive prevention services and linkage to care. Consider same-day testing and expedited results.",
+        "hiv_prevalence": "3.59%",
+        "recommendation": "Immediate HIV testing essential"
+      }
+    ]
+  },
+  "clinical_applications": [
+    "Targeted HIV screening in emergency departments and urgent care",
+    "Risk stratification in primary care and community health settings",
+    "Resource allocation for HIV testing programs",
+    "Pre-exposure prophylaxis (PrEP) candidate identification",
+    "Public health surveillance and outbreak investigation",
+    "Cost-effective screening program development",
+    "Clinical decision support for HIV testing protocols"
+  ],
+  "screening_recommendations": {
+    "very_low_risk": [
+      "Consider routine screening per CDC guidelines",
+      "Provide general HIV prevention education",
+      "Document risk assessment in medical record",
+      "Follow standard screening intervals if no risk factors"
+    ],
+    "low_risk": [
+      "Offer HIV testing with informed consent",
+      "Provide risk reduction counseling",
+      "Consider annual screening if ongoing low-level risk",
+      "Educate about HIV transmission and prevention"
+    ],
+    "moderate_risk": [
+      "Strongly recommend HIV testing",
+      "Provide comprehensive prevention counseling",
+      "Consider more frequent screening (every 3-6 months)",
+      "Discuss risk reduction strategies and safer practices",
+      "Consider PrEP evaluation if appropriate"
+    ],
+    "high_risk": [
+      "Urgent HIV testing with expedited results",
+      "Comprehensive risk assessment and counseling",
+      "Frequent screening (every 3 months) if negative",
+      "Strong consideration for PrEP evaluation",
+      "Linkage to HIV prevention services"
+    ],
+    "very_high_risk": [
+      "Immediate HIV testing with same-day results if possible",
+      "Comprehensive prevention services engagement",
+      "Frequent screening (monthly to quarterly) if negative",
+      "Prioritize for PrEP evaluation and initiation",
+      "Intensive case management and support services"
+    ]
+  },
+  "references": [
+    "Haukoos JS, Hopkins E, Conroy AA, et al. Derivation and validation of the Denver Human Immunodeficiency Virus (HIV) risk score for targeted HIV screening. Am J Epidemiol. 2012;175(8):838-846. doi: 10.1093/aje/kwr389.",
+    "Hsieh YH, Jung JJ, Shahan JB, et al. Validation of an abbreviated version of the Denver HIV risk score for prediction of HIV infection in an urban emergency department. Acad Emerg Med. 2014;21(7):757-767. doi: 10.1111/acem.12413.",
+    "Haukoos JS, Lyons MS, Lindsell CJ, et al. Derivation and validation of the Denver Human Immunodeficiency Virus risk score for targeted HIV screening in emergency departments. Am J Epidemiol. 2012;175(8):838-846. doi: 10.1093/aje/kwr389.",
+    "Centers for Disease Control and Prevention. Screening for HIV infection: US Preventive Services Task Force recommendation statement. JAMA. 2019;321(23):2326-2336. doi: 10.1001/jama.2019.6587."
+  ],
+  "formula": "Denver HIV Risk Score = Age Points + Gender Points + Sexual Practice Points + Injection Drug Use Points + Past HIV Testing Points + Race/Ethnicity Points (optional)",
+  "notes": [
+    "Score validated for patients aged 13 and older",
+    "Derived from sexually transmitted disease clinic and emergency department populations",
+    "Race/ethnicity parameter is optional and may be omitted based on clinical or institutional policies",
+    "Low score does not eliminate possibility of HIV infection",
+    "Consider clinical context and individual risk factors not captured by the score",
+    "Tool intended to supplement, not replace, clinical judgment",
+    "Effectiveness of targeted screening varies by population and setting",
+    "Consider local HIV prevalence and resource availability",
+    "Score may require recalibration for different populations or geographic areas",
+    "Regular updates may be needed as HIV epidemiology evolves"
+  ],
+  "validation": {
+    "population": "Patients aged 13 and older seeking care in clinical settings",
+    "settings": ["Emergency departments", "Primary care clinics", "Urgent care centers", "STD clinics"],
+    "evidence_basis": "Derived and validated in US clinical populations with external validation studies",
+    "clinical_utility": "Validated tool for targeted HIV screening with demonstrated cost-effectiveness compared to universal screening"
+  }
+}

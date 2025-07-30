@@ -1,0 +1,86 @@
+{
+  "id": "calcium_correction",
+  "title": "Calcium Correction for Hypoalbuminemia and Hyperalbuminemia",
+  "description": "Calculates corrected calcium level for patients with hypoalbuminemia or hyperalbuminemia",
+  "category": "endocrinology",
+  "version": "1973",
+  "parameters": [
+    {
+      "name": "calcium",
+      "type": "float",
+      "required": true,
+      "description": "Total serum calcium level",
+      "validation": {
+        "min": 4,
+        "max": 18
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "albumin",
+      "type": "float",
+      "required": true,
+      "description": "Serum albumin level",
+      "validation": {
+        "min": 0,
+        "max": 7
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "unit_system",
+      "type": "string",
+      "required": false,
+      "description": "Unit system for calculations",
+      "options": ["us", "si"],
+      "validation": {
+        "enum": ["us", "si"]
+      }
+    }
+  ],
+  "result": {
+    "name": "corrected_calcium",
+    "type": "float",
+    "unit": "mg/dL or mmol/L",
+    "description": "Corrected calcium level adjusted for albumin"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 8.5,
+        "stage": "Hypocalcemia",
+        "description": "Low corrected calcium",
+        "interpretation": "Consider evaluation for hypocalcemia. Confirm with ionized calcium measurement. Common causes include hypoparathyroidism, vitamin D deficiency, chronic kidney disease, or medications."
+      },
+      {
+        "min": 8.5,
+        "max": 10.5,
+        "stage": "Normal",
+        "description": "Normal corrected calcium",
+        "interpretation": "Calcium level is within normal range when adjusted for albumin. No immediate intervention needed based on calcium level alone."
+      },
+      {
+        "min": 10.5,
+        "max": 999,
+        "stage": "Hypercalcemia",
+        "description": "High corrected calcium",
+        "interpretation": "Consider evaluation for hypercalcemia. Confirm with ionized calcium measurement. Common causes include hyperparathyroidism, malignancy, vitamin D intoxication, or medications."
+      }
+    ]
+  },
+  "references": [
+    "Payne RB, Little AJ, Williams RB, Milner JR. Interpretation of serum calcium in patients with abnormal serum proteins. Br Med J. 1973 Dec 15;4(5893):643-6. doi: 10.1136/bmj.4.5893.643.",
+    "Clase CM, Norman GL, Beecroft ML, Churchill DN. Albumin-corrected calcium and ionized calcium in stable haemodialysis patients. Nephrol Dial Transplant. 2000 Nov;15(11):1841-6. doi: 10.1093/ndt/15.11.1841.",
+    "Gauci C, Moranne O, Fouqueray B, de la Faille R, Maruani G, Haymann JP, et al. Pitfalls of measuring total blood calcium in patients with CKD. J Am Soc Nephrol. 2008 Aug;19(8):1592-8. doi: 10.1681/ASN.2007040449."
+  ],
+  "formula": "Corrected Ca = [0.8 × (Normal Albumin - Patient's Albumin)] + Serum Ca (US units) or Corrected Ca = Total Ca + 0.02 × (40 - Albumin) (SI units)",
+  "notes": [
+    "This formula assumes normal albumin of 4 g/dL (40 g/L)",
+    "Formula accuracy is limited, especially in CKD, ESRD, and severe hypoalbuminemia",
+    "Recent evidence suggests ionized calcium is preferred over corrected calcium",
+    "Some experts recommend abandoning albumin correction formulas entirely",
+    "Rarely, changes in gamma globulins can cause pseudohypercalcemia",
+    "Always confirm results with ionized calcium when calcium homeostasis is in question"
+  ]
+}

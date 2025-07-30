@@ -1,0 +1,316 @@
+{
+  "id": "diabetes_distress_scale",
+  "title": "Diabetes Distress Scale (DDS17)",
+  "description": "Measures diabetes-related emotional distress across four domains to identify sources of distress and guide targeted interventions for patients with diabetes.",
+  "category": "endocrinology",
+  "version": "2005",
+  "parameters": [
+    {
+      "name": "overwhelming_demands",
+      "type": "integer",
+      "required": true,
+      "description": "Feeling overwhelmed by the demands of living with diabetes",
+      "validation": {
+        "min": 1,
+        "max": 6
+      },
+      "options": [1, 2, 3, 4, 5, 6],
+      "scale": "1=Not a problem, 2=A slight problem, 3=A moderate problem, 4=Somewhat serious problem, 5=A serious problem, 6=A very serious problem"
+    },
+    {
+      "name": "feeling_discouraged",
+      "type": "integer",
+      "required": true,
+      "description": "Feeling discouraged with your diabetes regimen",
+      "validation": {
+        "min": 1,
+        "max": 6
+      },
+      "options": [1, 2, 3, 4, 5, 6],
+      "scale": "1=Not a problem, 2=A slight problem, 3=A moderate problem, 4=Somewhat serious problem, 5=A serious problem, 6=A very serious problem"
+    },
+    {
+      "name": "failure_regimen",
+      "type": "integer",
+      "required": true,
+      "description": "Feeling that I am often failing with my diabetes regimen",
+      "validation": {
+        "min": 1,
+        "max": 6
+      },
+      "options": [1, 2, 3, 4, 5, 6],
+      "scale": "1=Not a problem, 2=A slight problem, 3=A moderate problem, 4=Somewhat serious problem, 5=A serious problem, 6=A very serious problem"
+    },
+    {
+      "name": "clear_concrete_goals",
+      "type": "integer",
+      "required": true,
+      "description": "Not having clear and concrete goals for your diabetes care",
+      "validation": {
+        "min": 1,
+        "max": 6
+      },
+      "options": [1, 2, 3, 4, 5, 6],
+      "scale": "1=Not a problem, 2=A slight problem, 3=A moderate problem, 4=Somewhat serious problem, 5=A serious problem, 6=A very serious problem"
+    },
+    {
+      "name": "not_motivated",
+      "type": "integer",
+      "required": true,
+      "description": "Not feeling motivated to keep up your diabetes self-management",
+      "validation": {
+        "min": 1,
+        "max": 6
+      },
+      "options": [1, 2, 3, 4, 5, 6],
+      "scale": "1=Not a problem, 2=A slight problem, 3=A moderate problem, 4=Somewhat serious problem, 5=A serious problem, 6=A very serious problem"
+    },
+    {
+      "name": "angry_frustrated",
+      "type": "integer",
+      "required": true,
+      "description": "Feeling angry, scared, and/or depressed when you think about living with diabetes",
+      "validation": {
+        "min": 1,
+        "max": 6
+      },
+      "options": [1, 2, 3, 4, 5, 6],
+      "scale": "1=Not a problem, 2=A slight problem, 3=A moderate problem, 4=Somewhat serious problem, 5=A serious problem, 6=A very serious problem"
+    },
+    {
+      "name": "unsatisfied_care",
+      "type": "integer",
+      "required": true,
+      "description": "Feeling unsatisfied with your diabetes physician",
+      "validation": {
+        "min": 1,
+        "max": 6
+      },
+      "options": [1, 2, 3, 4, 5, 6],
+      "scale": "1=Not a problem, 2=A slight problem, 3=A moderate problem, 4=Somewhat serious problem, 5=A serious problem, 6=A very serious problem"
+    },
+    {
+      "name": "physician_communication",
+      "type": "integer",
+      "required": true,
+      "description": "Feeling that your physician doesn't know enough about diabetes and diabetes care",
+      "validation": {
+        "min": 1,
+        "max": 6
+      },
+      "options": [1, 2, 3, 4, 5, 6],
+      "scale": "1=Not a problem, 2=A slight problem, 3=A moderate problem, 4=Somewhat serious problem, 5=A serious problem, 6=A very serious problem"
+    },
+    {
+      "name": "physician_doesnt_give_direction",
+      "type": "integer",
+      "required": true,
+      "description": "Feeling that your physician doesn't give you clear enough directions for managing your diabetes",
+      "validation": {
+        "min": 1,
+        "max": 6
+      },
+      "options": [1, 2, 3, 4, 5, 6],
+      "scale": "1=Not a problem, 2=A slight problem, 3=A moderate problem, 4=Somewhat serious problem, 5=A serious problem, 6=A very serious problem"
+    },
+    {
+      "name": "physician_doesnt_take_seriously",
+      "type": "integer",
+      "required": true,
+      "description": "Feeling that your physician doesn't take your concerns seriously enough",
+      "validation": {
+        "min": 1,
+        "max": 6
+      },
+      "options": [1, 2, 3, 4, 5, 6],
+      "scale": "1=Not a problem, 2=A slight problem, 3=A moderate problem, 4=Somewhat serious problem, 5=A serious problem, 6=A very serious problem"
+    },
+    {
+      "name": "regimen_overwhelming",
+      "type": "integer",
+      "required": true,
+      "description": "Feeling that the regimen my physician has given me is overwhelming",
+      "validation": {
+        "min": 1,
+        "max": 6
+      },
+      "options": [1, 2, 3, 4, 5, 6],
+      "scale": "1=Not a problem, 2=A slight problem, 3=A moderate problem, 4=Somewhat serious problem, 5=A serious problem, 6=A very serious problem"
+    },
+    {
+      "name": "constant_thoughts",
+      "type": "integer",
+      "required": true,
+      "description": "Feeling that diabetes is taking up too much mental and physical energy every day",
+      "validation": {
+        "min": 1,
+        "max": 6
+      },
+      "options": [1, 2, 3, 4, 5, 6],
+      "scale": "1=Not a problem, 2=A slight problem, 3=A moderate problem, 4=Somewhat serious problem, 5=A serious problem, 6=A very serious problem"
+    },
+    {
+      "name": "blood_sugar_checking",
+      "type": "integer",
+      "required": true,
+      "description": "Feeling that checking my blood sugars is stressful",
+      "validation": {
+        "min": 1,
+        "max": 6
+      },
+      "options": [1, 2, 3, 4, 5, 6],
+      "scale": "1=Not a problem, 2=A slight problem, 3=A moderate problem, 4=Somewhat serious problem, 5=A serious problem, 6=A very serious problem"
+    },
+    {
+      "name": "regimen_burden",
+      "type": "integer",
+      "required": true,
+      "description": "Feeling that diabetes interferes with my diet",
+      "validation": {
+        "min": 1,
+        "max": 6
+      },
+      "options": [1, 2, 3, 4, 5, 6],
+      "scale": "1=Not a problem, 2=A slight problem, 3=A moderate problem, 4=Somewhat serious problem, 5=A serious problem, 6=A very serious problem"
+    },
+    {
+      "name": "friends_family_nagging",
+      "type": "integer",
+      "required": true,
+      "description": "Feeling that friends or family are not supportive enough of self-care efforts",
+      "validation": {
+        "min": 1,
+        "max": 6
+      },
+      "options": [1, 2, 3, 4, 5, 6],
+      "scale": "1=Not a problem, 2=A slight problem, 3=A moderate problem, 4=Somewhat serious problem, 5=A serious problem, 6=A very serious problem"
+    },
+    {
+      "name": "friends_family_interference",
+      "type": "integer",
+      "required": true,
+      "description": "Feeling that friends or family act like 'diabetes police'",
+      "validation": {
+        "min": 1,
+        "max": 6
+      },
+      "options": [1, 2, 3, 4, 5, 6],
+      "scale": "1=Not a problem, 2=A slight problem, 3=A moderate problem, 4=Somewhat serious problem, 5=A serious problem, 6=A very serious problem"
+    },
+    {
+      "name": "friends_family_dont_understand",
+      "type": "integer",
+      "required": true,
+      "description": "Feeling that friends or family don't understand how difficult living with diabetes can be",
+      "validation": {
+        "min": 1,
+        "max": 6
+      },
+      "options": [1, 2, 3, 4, 5, 6],
+      "scale": "1=Not a problem, 2=A slight problem, 3=A moderate problem, 4=Somewhat serious problem, 5=A serious problem, 6=A very serious problem"
+    }
+  ],
+  "result": {
+    "name": "diabetes_distress_assessment",
+    "type": "object",
+    "unit": "DDS17 Score",
+    "description": "Comprehensive diabetes distress assessment with total score and subscale scores"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1.0,
+        "max": 1.9,
+        "stage": "Little or No Distress",
+        "description": "Minimal diabetes-related distress",
+        "interpretation": "Patients demonstrate good emotional adaptation to diabetes management with minimal distress. Continue current support and monitor periodically for changes in distress levels."
+      },
+      {
+        "min": 2.0,
+        "max": 2.9,
+        "stage": "Moderate Distress",
+        "description": "Moderate diabetes-related distress",
+        "interpretation": "Patients experience moderate diabetes-related distress that may benefit from targeted support and intervention. Consider discussing specific sources of distress and developing coping strategies."
+      },
+      {
+        "min": 3.0,
+        "max": 6.0,
+        "stage": "High Distress",
+        "description": "High diabetes-related distress requiring intervention",
+        "interpretation": "Patients experience significant diabetes-related distress that warrants clinical attention and intervention. This level of distress is associated with poorer glycemic control and self-care behaviors. Recommend referral to diabetes educator, psychologist, or specialized diabetes support services."
+      }
+    ],
+    "subscales": {
+      "emotional_burden": {
+        "items": [1, 2, 3, 6, 12],
+        "description": "Emotional distress related to living with diabetes",
+        "interpretation": "High scores indicate significant emotional impact of diabetes on daily life, including feelings of being overwhelmed, discouraged, and the mental energy required for diabetes management."
+      },
+      "physician_distress": {
+        "items": [7, 8, 9, 10],
+        "description": "Distress related to healthcare provider relationship",
+        "interpretation": "High scores suggest dissatisfaction with diabetes care provider, including concerns about physician knowledge, communication, and support for diabetes management."
+      },
+      "regimen_distress": {
+        "items": [11, 13, 14, 15, 16],
+        "description": "Distress related to diabetes management regimen",
+        "interpretation": "High scores indicate difficulty with diabetes self-care tasks, including blood glucose monitoring, dietary restrictions, and adherence to treatment recommendations."
+      },
+      "interpersonal_distress": {
+        "items": [4, 5, 17, 18],
+        "description": "Distress related to family and social support",
+        "interpretation": "High scores suggest problems with social support, including lack of understanding from family/friends or perceived interference with diabetes management."
+      }
+    }
+  },
+  "clinical_applications": [
+    "Screening for diabetes-related emotional distress in clinical settings",
+    "Identifying specific sources of diabetes distress for targeted intervention",
+    "Monitoring response to diabetes distress interventions over time",
+    "Research on diabetes distress and its relationship to diabetes outcomes",
+    "Quality improvement initiatives in diabetes care programs",
+    "Comprehensive diabetes care assessment and care planning",
+    "Referral decisions for specialized diabetes support services"
+  ],
+  "scoring_methodology": {
+    "total_score": "Sum all 17 items and divide by 17 to obtain mean item score",
+    "subscale_scores": "Sum items in each subscale and divide by number of items in subscale",
+    "interpretation_threshold": "Mean item score ≥3.0 indicates high distress requiring clinical intervention",
+    "response_scale": "6-point Likert scale: 1=Not a problem, 2=A slight problem, 3=A moderate problem, 4=Somewhat serious problem, 5=A serious problem, 6=A very serious problem"
+  },
+  "psychometric_properties": {
+    "reliability": {
+      "total_scale": "Cronbach's alpha = 0.938",
+      "emotional_burden": "Cronbach's alpha = 0.906",
+      "physician_distress": "Cronbach's alpha = 0.896", 
+      "regimen_distress": "Cronbach's alpha = 0.889",
+      "interpersonal_distress": "Cronbach's alpha = 0.880"
+    },
+    "validity": "Validated across diverse diabetes populations with established clinical cut points",
+    "clinical_utility": "Demonstrated association with glycemic control, self-efficacy, and diabetes self-care behaviors"
+  },
+  "references": [
+    "Polonsky WH, Fisher L, Earles J, et al. Assessing psychosocial distress in diabetes: development of the diabetes distress scale. Diabetes Care. 2005;28(3):626-631. doi: 10.2337/diacare.28.3.626.",
+    "Fisher L, Hessler DM, Polonsky WH, Mullan J. When is diabetes distress clinically meaningful?: establishing cut points for the Diabetes Distress Scale. Diabetes Care. 2012;35(2):259-264. doi: 10.2337/dc11-1572.",
+    "Fisher L, Glasgow RE, Mullan JT, Skaff MM, Polonsky WH. Development of a brief diabetes distress screening instrument. Ann Fam Med. 2008;6(3):246-252. doi: 10.1370/afm.842.",
+    "Hessler D, Fisher L, Polonsky W, et al. Diabetes distress is linked with worsening diabetes management over time in adults with Type 1 diabetes. Diabet Med. 2017;34(9):1228-1234. doi: 10.1111/dme.13381."
+  ],
+  "formula": "DDS17 Total Score = (Sum of all 17 items) / 17; Subscale Scores = (Sum of subscale items) / (Number of items in subscale)",
+  "notes": [
+    "DDS17 assesses diabetes-specific distress, not general psychological distress",
+    "Higher scores indicate greater diabetes-related distress",
+    "Score ≥3.0 is considered clinically meaningful and warrants intervention",
+    "Four subscales help identify specific areas of distress for targeted intervention",
+    "Can be used in both Type 1 and Type 2 diabetes populations",
+    "Should be administered in clinical settings as part of comprehensive diabetes care",
+    "Results should be discussed with patients to develop appropriate support strategies",
+    "May be used to monitor response to diabetes distress interventions over time",
+    "Consider referral to mental health professionals for scores ≥3.0 with additional clinical concerns"
+  ],
+  "validation": {
+    "population": "Adults with Type 1 or Type 2 diabetes",
+    "settings": ["Primary care clinics", "Endocrinology clinics", "Diabetes education centers", "Community health centers"],
+    "evidence_basis": "Extensively validated instrument with established psychometric properties and clinical cut points",
+    "clinical_utility": "Widely used tool for diabetes distress assessment with proven clinical and research applications"
+  }
+}

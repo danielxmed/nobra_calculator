@@ -1,0 +1,348 @@
+{
+  "id": "caprini_score_2005",
+  "title": "Caprini Score for Venous Thromboembolism (2005)",
+  "description": "The Caprini Score stratifies risk of venous thromboembolism (VTE) in surgical patients, guiding prophylaxis decisions. It assesses multiple risk factors including age, surgery type, medical conditions, and mobility status to predict VTE risk and inform appropriate prevention strategies.",
+  "category": "emergency",
+  "version": "2005",
+  "parameters": [
+    {
+      "name": "age_category",
+      "type": "string",
+      "required": true,
+      "description": "Patient age category",
+      "options": ["under_41", "41_to_60", "61_to_74", "75_or_older"],
+      "validation": {
+        "enum": ["under_41", "41_to_60", "61_to_74", "75_or_older"]
+      }
+    },
+    {
+      "name": "minor_surgery",
+      "type": "string",
+      "required": true,
+      "description": "Minor surgery (planned procedure <45 minutes)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "major_surgery",
+      "type": "string",
+      "required": true,
+      "description": "Major surgery (>45 minutes, laparoscopic surgery >45 minutes, or arthroscopic surgery >45 minutes)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hip_knee_arthroplasty",
+      "type": "string",
+      "required": true,
+      "description": "Elective major lower extremity arthroplasty (hip or knee replacement)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hip_pelvis_leg_fracture",
+      "type": "string",
+      "required": true,
+      "description": "Hip, pelvis, or leg fracture",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "acute_spinal_cord_injury",
+      "type": "string",
+      "required": true,
+      "description": "Acute spinal cord injury (paralysis)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "varicose_veins",
+      "type": "string",
+      "required": true,
+      "description": "Varicose veins",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "current_swollen_legs",
+      "type": "string",
+      "required": true,
+      "description": "Current swollen legs (edema)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "central_venous_access",
+      "type": "string",
+      "required": true,
+      "description": "Central venous access",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "inflammatory_bowel_disease",
+      "type": "string",
+      "required": true,
+      "description": "Inflammatory bowel disease",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "bmi_over_25",
+      "type": "string",
+      "required": true,
+      "description": "BMI >25 kg/m²",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "acute_myocardial_infarction",
+      "type": "string",
+      "required": true,
+      "description": "Acute myocardial infarction",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "congestive_heart_failure",
+      "type": "string",
+      "required": true,
+      "description": "Congestive heart failure (<1 month)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "sepsis",
+      "type": "string",
+      "required": true,
+      "description": "Sepsis (<1 month)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "serious_lung_disease",
+      "type": "string",
+      "required": true,
+      "description": "Serious lung disease including pneumonia (<1 month)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "abnormal_pulmonary_function",
+      "type": "string",
+      "required": true,
+      "description": "Abnormal pulmonary function (COPD)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "medical_patient_bed_rest",
+      "type": "string",
+      "required": true,
+      "description": "Medical patient currently at bed rest",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "cast_or_brace",
+      "type": "string",
+      "required": true,
+      "description": "Plaster cast or brace",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "history_of_vte",
+      "type": "string",
+      "required": true,
+      "description": "History of DVT/PE",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "family_history_thrombosis",
+      "type": "string",
+      "required": true,
+      "description": "Family history of thrombosis",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "factor_v_leiden",
+      "type": "string",
+      "required": true,
+      "description": "Factor V Leiden",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "prothrombin_20210a",
+      "type": "string",
+      "required": true,
+      "description": "Prothrombin 20210A",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "lupus_anticoagulant",
+      "type": "string",
+      "required": true,
+      "description": "Lupus anticoagulant",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "anticardiolipin_antibodies",
+      "type": "string",
+      "required": true,
+      "description": "Anticardiolipin antibodies",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "heparin_induced_thrombocytopenia",
+      "type": "string",
+      "required": true,
+      "description": "Heparin-induced thrombocytopenia (HIT)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "other_congenital_thrombophilia",
+      "type": "string",
+      "required": true,
+      "description": "Other congenital or acquired thrombophilia",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "malignancy",
+      "type": "string",
+      "required": true,
+      "description": "Malignancy (present or previous)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "caprini_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Caprini Score for VTE Risk (0 to >20 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Lowest Risk",
+        "description": "Minimal risk",
+        "interpretation": "Lowest risk of VTE. No specific anticoagulation prophylaxis required. Early ambulation and compression stockings recommended."
+      },
+      {
+        "min": 1,
+        "max": 2,
+        "stage": "Low Risk",
+        "description": "Minimal risk",
+        "interpretation": "Low risk of VTE. No specific anticoagulation prophylaxis required. Early ambulation, compression stockings, and intermittent pneumatic compression recommended."
+      },
+      {
+        "min": 3,
+        "max": 4,
+        "stage": "Moderate Risk",
+        "description": "0.7% VTE risk",
+        "interpretation": "Moderate risk of VTE. Consider intermittent pneumatic compression or low molecular weight heparin. Risk-benefit assessment for chemoprophylaxis recommended."
+      },
+      {
+        "min": 5,
+        "max": 6,
+        "stage": "High Risk",
+        "description": "1.8% VTE risk",
+        "interpretation": "High risk of VTE. Intermittent pneumatic compression AND low molecular weight heparin recommended. Consider extended prophylaxis based on individual risk factors."
+      },
+      {
+        "min": 7,
+        "max": 8,
+        "stage": "High Risk",
+        "description": "4.0% VTE risk",
+        "interpretation": "High risk of VTE. Intermittent pneumatic compression AND low molecular weight heparin strongly recommended. Consider extended prophylaxis for 30 days post-operatively."
+      },
+      {
+        "min": 9,
+        "max": 50,
+        "stage": "Highest Risk",
+        "description": "10.7% VTE risk",
+        "interpretation": "Highest risk of VTE. Aggressive prophylaxis with intermittent pneumatic compression AND low molecular weight heparin mandatory. Extended prophylaxis for 30 days post-operatively strongly recommended. Consider inferior vena cava filter if anticoagulation contraindicated."
+      }
+    ]
+  },
+  "references": [
+    "Caprini JA. Thrombosis risk assessment as a guide to quality patient care. Dis Mon. 2005 Feb-Mar;51(2-3):70-8. doi: 10.1016/j.disamonth.2005.02.003.",
+    "Pannucci CJ, Laird S, Dimick JB, Campbell DA, Henke PK. A validated risk model to predict 90-day VTE events in postsurgical patients. Chest. 2014 Mar;145(3):567-73. doi: 10.1378/chest.13-1553.",
+    "Bahl V, Hu HM, Henke PK, Wakefield TW, Campbell DA Jr, Caprini JA. A validation study of a retrospective venous thromboembolism risk scoring method. Ann Surg. 2010 Feb;251(2):344-50. doi: 10.1097/SLA.0b013e3181b7fca6."
+  ],
+  "formula": "Score = age_points + surgery_points + medical_condition_points + thrombophilia_points",
+  "notes": [
+    "Use in surgical and medical patients to assess VTE risk",
+    "Age: ≤40 (0), 41-60 (1), 61-74 (2), ≥75 (3) points",
+    "Minor surgery <45 min (1 point), Major surgery >45 min (2 points)",
+    "Hip/knee replacement (5 points), Hip/pelvis/leg fracture (5 points)",
+    "Multiple risk factors are additive",
+    "Score ≥5 generally indicates need for pharmacologic prophylaxis",
+    "Extended prophylaxis (30 days) recommended for scores ≥7",
+    "Most widely validated VTE risk assessment tool",
+    "Recommended by ACCP guidelines for surgical patients"
+  ]
+}

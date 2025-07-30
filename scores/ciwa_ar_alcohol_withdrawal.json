@@ -1,0 +1,165 @@
+{
+  "id": "ciwa_ar_alcohol_withdrawal",
+  "title": "CIWA-Ar for Alcohol Withdrawal",
+  "description": "Objectifies severity of alcohol withdrawal symptoms and guides treatment decisions",
+  "category": "psychiatry",
+  "version": "1989",
+  "parameters": [
+    {
+      "name": "nausea_vomiting",
+      "type": "integer",
+      "required": true,
+      "description": "Nausea and vomiting symptoms",
+      "validation": {
+        "min": 0,
+        "max": 7
+      },
+      "unit": "points"
+    },
+    {
+      "name": "tremor",
+      "type": "integer",
+      "required": true,
+      "description": "Tremor severity",
+      "validation": {
+        "min": 0,
+        "max": 7
+      },
+      "unit": "points"
+    },
+    {
+      "name": "paroxysmal_sweats",
+      "type": "integer",
+      "required": true,
+      "description": "Paroxysmal sweats severity",
+      "validation": {
+        "min": 0,
+        "max": 7
+      },
+      "unit": "points"
+    },
+    {
+      "name": "anxiety",
+      "type": "integer",
+      "required": true,
+      "description": "Anxiety level",
+      "validation": {
+        "min": 0,
+        "max": 7
+      },
+      "unit": "points"
+    },
+    {
+      "name": "agitation",
+      "type": "integer",
+      "required": true,
+      "description": "Agitation level",
+      "validation": {
+        "min": 0,
+        "max": 7
+      },
+      "unit": "points"
+    },
+    {
+      "name": "tactile_disturbances",
+      "type": "integer",
+      "required": true,
+      "description": "Tactile disturbances (numbness, tingling, burning)",
+      "validation": {
+        "min": 0,
+        "max": 7
+      },
+      "unit": "points"
+    },
+    {
+      "name": "auditory_disturbances",
+      "type": "integer",
+      "required": true,
+      "description": "Auditory disturbances (sounds that disturb or frighten)",
+      "validation": {
+        "min": 0,
+        "max": 7
+      },
+      "unit": "points"
+    },
+    {
+      "name": "visual_disturbances",
+      "type": "integer",
+      "required": true,
+      "description": "Visual disturbances (light sensitivity, seeing things)",
+      "validation": {
+        "min": 0,
+        "max": 7
+      },
+      "unit": "points"
+    },
+    {
+      "name": "headache",
+      "type": "integer",
+      "required": true,
+      "description": "Headache and fullness in head",
+      "validation": {
+        "min": 0,
+        "max": 7
+      },
+      "unit": "points"
+    },
+    {
+      "name": "orientation",
+      "type": "integer",
+      "required": true,
+      "description": "Orientation and clouding of sensorium",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "points"
+    }
+  ],
+  "result": {
+    "name": "ciwa_ar_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "CIWA-Ar total score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 8,
+        "stage": "Minimal",
+        "description": "Absent or minimal withdrawal",
+        "interpretation": "No or minimal treatment required, monitor regularly"
+      },
+      {
+        "min": 9,
+        "max": 19,
+        "stage": "Mild to Moderate",
+        "description": "Mild to moderate withdrawal",
+        "interpretation": "Consider symptomatic treatment, monitor closely"
+      },
+      {
+        "min": 20,
+        "max": 67,
+        "stage": "Severe",
+        "description": "Severe withdrawal",
+        "interpretation": "Requires immediate treatment, high risk for delirium tremens"
+      }
+    ]
+  },
+  "references": [
+    "Sullivan JT, Sykora K, Schneiderman J, Naranjo CA, Sellers EM. Assessment of alcohol withdrawal: the revised clinical institute withdrawal assessment for alcohol scale (CIWA-Ar). Br J Addict. 1989 Nov;84(11):1353-7.",
+    "Mayo-Smith MF, Beecher LH, Fischer TL, Gorelick DA, Guillaume JL, Hill A, et al. Management of alcohol withdrawal delirium. An evidence-based practice guideline. Arch Intern Med. 2004 Jul 12;164(13):1405-12.",
+    "Holbrook AM, Crowther R, Lotter A, Cheng C, King D. Meta-analysis of benzodiazepine use in the treatment of acute alcohol withdrawal. CMAJ. 1999 Mar 23;160(6):649-55."
+  ],
+  "formula": "Sum of all 10 component scores: nausea/vomiting + tremor + sweats + anxiety + agitation + tactile + auditory + visual + headache + orientation",
+  "notes": [
+    "Takes less than 5 minutes to complete",
+    "Should be assessed every 1-2 hours during active withdrawal",
+    "Most effective when used with symptom-triggered treatment protocols",
+    "Not suitable for intubated or heavily sedated patients",
+    "Scores ≥8 typically warrant consideration of pharmacological treatment",
+    "Scores ≥20 indicate high risk for delirium tremens and seizures",
+    "Must be used in conjunction with clinical judgment"
+  ]
+}

@@ -18,6 +18,8 @@ from .oncology import *
 from .toxicology import *
 from .hepatology import *
 from .general import *
+from .gynecology import *
+from .ophthalmology import *
 
 # Import shared models
 from ..shared import (
@@ -109,6 +111,10 @@ __all__ = [
     # Toxicology
     "AtropineDosingRequest",
     "AtropineDosingResponse",
+    
+    # Ophthalmology
+    "ColorVisionScreeningRequest",
+    "ColorVisionScreeningResponse",
     
     # Shared/Common
     "ScoreListResponse",

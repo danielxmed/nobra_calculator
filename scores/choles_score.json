@@ -1,0 +1,158 @@
+{
+  "id": "choles_score",
+  "title": "CholeS Score for Duration of Laparoscopic Cholecystectomy",
+  "description": "Predicts operative time duration for elective laparoscopic cholecystectomy procedures",
+  "category": "gastroenterology",
+  "version": "2018",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "unit": "years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      }
+    },
+    {
+      "name": "gender",
+      "type": "string",
+      "required": true,
+      "description": "Patient gender",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "indication",
+      "type": "string",
+      "required": true,
+      "description": "Surgical indication for cholecystectomy",
+      "options": ["pancreatitis", "colic_dyskinesia_polyp", "cbd_stone", "acalculous_cholecystitis"],
+      "validation": {
+        "enum": ["pancreatitis", "colic_dyskinesia_polyp", "cbd_stone", "acalculous_cholecystitis"]
+      }
+    },
+    {
+      "name": "bmi",
+      "type": "float",
+      "required": true,
+      "description": "Body Mass Index",
+      "unit": "kg/m²",
+      "validation": {
+        "min": 15.0,
+        "max": 60.0
+      }
+    },
+    {
+      "name": "cbd_diameter",
+      "type": "string",
+      "required": true,
+      "description": "Common bile duct diameter",
+      "options": ["normal", "dilated"],
+      "validation": {
+        "enum": ["normal", "dilated"]
+      }
+    },
+    {
+      "name": "gallbladder_wall",
+      "type": "string",
+      "required": true,
+      "description": "Gallbladder wall thickness",
+      "options": ["normal", "thick"],
+      "validation": {
+        "enum": ["normal", "thick"]
+      }
+    },
+    {
+      "name": "preoperative_ct",
+      "type": "string",
+      "required": true,
+      "description": "Pre-operative CT scan performed",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "planned_cholangiogram",
+      "type": "string",
+      "required": true,
+      "description": "Planned intra-operative cholangiogram",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "previous_admissions",
+      "type": "integer",
+      "required": true,
+      "description": "Number of previous surgical admissions",
+      "unit": "admissions",
+      "validation": {
+        "min": 0,
+        "max": 20
+      }
+    },
+    {
+      "name": "asa_grade",
+      "type": "integer",
+      "required": true,
+      "description": "ASA Physical Status Classification",
+      "validation": {
+        "min": 1,
+        "max": 5
+      }
+    }
+  ],
+  "result": {
+    "name": "choles_score",
+    "type": "float",
+    "unit": "points",
+    "description": "CholeS score and operative duration risk prediction"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3.5,
+        "risk_category": "Low Risk",
+        "description": "Low likelihood of prolonged surgery",
+        "interpretation": "5.1% chance of surgery lasting >90 minutes. Suitable for standard operative scheduling with 3 cases per half-day list."
+      },
+      {
+        "min": 4,
+        "max": 8,
+        "risk_category": "Intermediate Risk",
+        "description": "Moderate likelihood of prolonged surgery",
+        "interpretation": "5.1-41.8% chance of surgery lasting >90 minutes. Consider scheduling 2-3 cases per half-day list based on total risk."
+      },
+      {
+        "min": 8.5,
+        "max": 17.5,
+        "risk_category": "High Risk",
+        "description": "High likelihood of prolonged surgery",
+        "interpretation": ">41.8% chance of surgery lasting >90 minutes. Schedule maximum 2 cases per half-day list to avoid overruns."
+      }
+    ]
+  },
+  "references": [
+    "Nassar AHM, Hodson J, Ng HJ, Vohra RS, Katbeh T, Zino S, et al. Predicting the difficult laparoscopic cholecystectomy: development and validation of a pre-operative risk score using an objective operative difficulty grading system. Surg Endosc. 2020 Oct;34(10):4549-4561.",
+    "Griffiths EA, Hodson J, Vohra RS, Marriott P, Katbeh T, Zino S, et al. Utilisation of an operative difficulty grading scale for laparoscopic cholecystectomy. Surg Endosc. 2019 Jan;33(1):110-121.",
+    "Vohra RS, Pasquali S, Kirkham JJ, Marriott P, Johnstone M, Spreadborough P, et al. The development and validation of a scoring tool to predict the operative duration of elective laparoscopic cholecystectomy. Surg Endosc. 2018 Jul;32(7):3149-3157."
+  ],
+  "formula": "Score = Age points + Gender points + Indication points + BMI points + CBD points + GB wall points + CT points + Cholangiogram points + Previous admissions points + ASA points",
+  "notes": [
+    "Developed from CholeS study data (8820 patients, 166 UK hospitals)",
+    "Only applicable to elective laparoscopic cholecystectomy",
+    "Not validated for emergency or acute cholecystectomy",
+    "Score range: 0.5-17.5 points (median 5.0)",
+    "Area under ROC curve: 0.708 for >90 minute surgery prediction",
+    "Helps optimize theatre scheduling and resource allocation",
+    "Does not account for anesthesia time or theatre turnover"
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "id": "reticulocyte_production_index",
+  "title": "Corrected Reticulocyte Percentage/Reticulocyte Production Index (RPI)",
+  "description": "Assesses bone marrow response to anemia by correcting reticulocyte count for degree of anemia and maturation time",
+  "category": "hematology",
+  "version": "2024",
+  "parameters": [
+    {
+      "name": "reticulocyte_percentage",
+      "type": "float",
+      "required": true,
+      "description": "Reticulocyte percentage from laboratory report",
+      "validation": {
+        "min": 0.0,
+        "max": 50.0
+      },
+      "unit": "%"
+    },
+    {
+      "name": "measured_hematocrit",
+      "type": "float",
+      "required": true,
+      "description": "Patient's measured hematocrit",
+      "validation": {
+        "min": 5.0,
+        "max": 65.0
+      },
+      "unit": "%"
+    },
+    {
+      "name": "normal_hematocrit",
+      "type": "float",
+      "required": true,
+      "description": "Normal hematocrit reference value (typically 45% for adults)",
+      "validation": {
+        "min": 35.0,
+        "max": 50.0
+      },
+      "unit": "%"
+    },
+    {
+      "name": "rbc_count",
+      "type": "float",
+      "required": false,
+      "description": "Red blood cell count for absolute reticulocyte count calculation",
+      "validation": {
+        "min": 1.0,
+        "max": 8.0
+      },
+      "unit": "×10⁶/μL"
+    }
+  ],
+  "result": {
+    "name": "rpi_value",
+    "type": "float",
+    "unit": "index",
+    "description": "Reticulocyte Production Index value"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": null,
+        "max": 0.5,
+        "stage": "Very Low Response",
+        "description": "Very decreased reticulocyte production",
+        "interpretation": "RPI <0.5 indicates very decreased reticulocyte production, suggesting bone marrow failure or severe nutritional deficiency"
+      },
+      {
+        "min": 0.5,
+        "max": 2.0,
+        "stage": "Inadequate Response",
+        "description": "Inadequate bone marrow response",
+        "interpretation": "RPI <2 indicates inadequate bone marrow response to anemia, suggesting hypoproliferative anemia"
+      },
+      {
+        "min": 2.0,
+        "max": 3.0,
+        "stage": "Borderline Response",
+        "description": "Borderline bone marrow response",
+        "interpretation": "RPI 2-3 indicates borderline bone marrow response, may suggest early recovery or mild bone marrow dysfunction"
+      },
+      {
+        "min": 3.0,
+        "max": null,
+        "stage": "Appropriate Response",
+        "description": "Appropriate bone marrow response",
+        "interpretation": "RPI >3 indicates appropriate bone marrow response to anemia, suggesting hemolytic or hemorrhagic anemia"
+      }
+    ]
+  },
+  "references": [
+    "Koepke JA. Laboratory hematology practice. New York: Churchill Livingstone; 1989.",
+    "Hillman RS, Ault KA. Hematology in clinical practice. New York: McGraw-Hill; 2002.",
+    "Nathan DG, Orkin SH, Look AT, Ginsburg D. Nathan and Oski's Hematology of Infancy and Childhood. 6th ed. Philadelphia: W.B. Saunders; 2003.",
+    "Bain BJ. Blood Cells: A Practical Guide. 4th ed. Oxford: Blackwell Publishing; 2006."
+  ],
+  "formula": "RPI = (Reticulocyte % × Measured Hct / Normal Hct) / Maturation Factor. Maturation factors: Hct ≥35%=1.0, 25-34%=1.5, 20-24%=2.0, <20%=2.5",
+  "notes": [
+    "Normal RPI range: 0.5-2.5% in healthy individuals",
+    "RPI >3 with anemia indicates RBC loss with increased reticulocyte production",
+    "RPI <2 with anemia suggests hypoproliferative anemia",
+    "Recent blood transfusions can affect results",
+    "Maturation time correction accounts for premature release of reticulocytes in severe anemia",
+    "Use in conjunction with other hematologic parameters for complete assessment"
+  ]
+}

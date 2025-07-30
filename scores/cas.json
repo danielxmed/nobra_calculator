@@ -1,0 +1,132 @@
+{
+  "id": "cas",
+  "title": "Coronavirus Anxiety Scale (CAS)",
+  "description": "Assesses dysfunctional anxiety associated with the COVID-19 crisis through a brief 5-item self-report screening tool designed to identify individuals experiencing clinically significant coronavirus-related anxiety symptoms.",
+  "category": "psychiatry",
+  "version": "1.0",
+  "parameters": [
+    {
+      "name": "dizzy_news",
+      "type": "integer",
+      "required": true,
+      "description": "I felt dizzy, lightheaded, or faint when I read or listened to news about the coronavirus",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        "Not at all (0)",
+        "Rare, less than a day or two (1)", 
+        "Several days (2)",
+        "More than 7 days (3)",
+        "Nearly every day over the last 2 weeks (4)"
+      ]
+    },
+    {
+      "name": "sleep_problems",
+      "type": "integer",
+      "required": true,
+      "description": "I had trouble falling or staying asleep because I was thinking about the coronavirus",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        "Not at all (0)",
+        "Rare, less than a day or two (1)",
+        "Several days (2)", 
+        "More than 7 days (3)",
+        "Nearly every day over the last 2 weeks (4)"
+      ]
+    },
+    {
+      "name": "paralyzed_frozen",
+      "type": "integer",
+      "required": true,
+      "description": "I felt paralyzed or frozen when I thought about or was exposed to information about the coronavirus",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        "Not at all (0)",
+        "Rare, less than a day or two (1)",
+        "Several days (2)",
+        "More than 7 days (3)", 
+        "Nearly every day over the last 2 weeks (4)"
+      ]
+    },
+    {
+      "name": "appetite_loss",
+      "type": "integer",
+      "required": true,
+      "description": "I lost interest in eating when I thought about or was exposed to information about the coronavirus",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        "Not at all (0)",
+        "Rare, less than a day or two (1)",
+        "Several days (2)",
+        "More than 7 days (3)",
+        "Nearly every day over the last 2 weeks (4)"
+      ]
+    },
+    {
+      "name": "nausea_stomach",
+      "type": "integer",
+      "required": true,
+      "description": "I felt nauseous or had stomach problems when I thought about or was exposed to information about the coronavirus",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        "Not at all (0)",
+        "Rare, less than a day or two (1)",
+        "Several days (2)",
+        "More than 7 days (3)",
+        "Nearly every day over the last 2 weeks (4)"
+      ]
+    }
+  ],
+  "result": {
+    "name": "cas_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total CAS score indicating level of coronavirus-related anxiety"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 8,
+        "stage": "No Dysfunctional Anxiety",
+        "description": "Normal coronavirus-related concerns",
+        "interpretation": "Score below threshold for dysfunctional anxiety. Individual may experience normal concerns about COVID-19 but these do not significantly impair functioning or cause excessive distress."
+      },
+      {
+        "min": 9,
+        "max": 20,
+        "stage": "Dysfunctional Anxiety",
+        "description": "Clinically significant coronavirus-related anxiety",
+        "interpretation": "Score indicates probable dysfunctional coronavirus-related anxiety that may significantly impair functioning. Clinical evaluation and potential intervention recommended."
+      }
+    ]
+  },
+  "references": [
+    "Lee SA. Coronavirus Anxiety Scale: A brief mental health screener for COVID-19 related anxiety. Death Stud. 2020;44(7):393-401. doi: 10.1080/07481187.2020.1748481.",
+    "Lee SA, Jobe MC, Mathis AA, Gibbons JA. Incremental validity of coronaphobia: Coronavirus anxiety explains depression, generalized anxiety, and death anxiety. J Anxiety Disord. 2020;74:102263. doi: 10.1016/j.janxdis.2020.102263.",
+    "Lieven T, Kujath P, Araya M, et al. Global validation of the Coronavirus Anxiety Scale (CAS). Curr Psychol. 2021;1-8. doi: 10.1007/s12144-021-01837-w."
+  ],
+  "formula": "Sum of all 5 item scores (0-4 each), with total range 0-20. Cut-off score ≥9 indicates dysfunctional anxiety (90% sensitivity, 85% specificity)",
+  "notes": [
+    "Designed specifically for COVID-19 related anxiety, not general anxiety disorders",
+    "Cut-off score of ≥9 has 90% sensitivity and 85% specificity for dysfunctional anxiety",
+    "Time frame references the last 2 weeks for symptom assessment",
+    "Validated across multiple populations and demographic groups",
+    "Should be interpreted within broader clinical context and patient history",
+    "May be used as a screening tool but does not replace comprehensive mental health evaluation"
+  ]
+}

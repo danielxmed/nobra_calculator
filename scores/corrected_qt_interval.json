@@ -1,0 +1,124 @@
+{
+  "id": "corrected_qt_interval",
+  "title": "Corrected QT Interval (QTc)",
+  "description": "Corrects QT interval for heart rate extremes using multiple validated formulas (Bazett, Fridericia, Framingham, Hodges, or Rautaharju)",
+  "category": "cardiology",
+  "version": "2024",
+  "parameters": [
+    {
+      "name": "qt_interval",
+      "type": "integer",
+      "required": true,
+      "description": "QT interval measured on ECG",
+      "validation": {
+        "min": 200,
+        "max": 800
+      },
+      "unit": "ms"
+    },
+    {
+      "name": "heart_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Heart rate measured on ECG",
+      "validation": {
+        "min": 30,
+        "max": 300
+      },
+      "unit": "bpm"
+    },
+    {
+      "name": "formula",
+      "type": "string",
+      "required": true,
+      "description": "QTc correction formula to use",
+      "options": ["bazett", "fridericia", "framingham", "hodges", "rautaharju"],
+      "validation": {
+        "enum": ["bazett", "fridericia", "framingham", "hodges", "rautaharju"]
+      }
+    }
+  ],
+  "result": {
+    "name": "qtc_value",
+    "type": "float",
+    "unit": "ms",
+    "description": "Corrected QT interval value"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": null,
+        "max": 320,
+        "stage": "Severely Short QT",
+        "description": "Diagnostic for Short QT Syndrome",
+        "interpretation": "QTc ≤320 ms is diagnostic for Short QT Syndrome and associated with increased risk of sudden cardiac death"
+      },
+      {
+        "min": 320,
+        "max": 360,
+        "stage": "Short QT",
+        "description": "Suggestive of Short QT Syndrome",
+        "interpretation": "QTc 320-360 ms may suggest Short QT Syndrome when combined with additional clinical criteria"
+      },
+      {
+        "min": 360,
+        "max": 440,
+        "stage": "Normal",
+        "description": "Normal QTc interval",
+        "interpretation": "QTc within normal limits for both men and women"
+      },
+      {
+        "min": 440,
+        "max": 450,
+        "stage": "Borderline (Male)",
+        "description": "Borderline prolonged for males",
+        "interpretation": "QTc borderline prolonged for males; consider clinical context and monitoring"
+      },
+      {
+        "min": 450,
+        "max": 460,
+        "stage": "Prolonged (Male)",
+        "description": "Prolonged for males, borderline for females",
+        "interpretation": "QTc prolonged for males; borderline for females. Clinical correlation recommended"
+      },
+      {
+        "min": 460,
+        "max": 480,
+        "stage": "Prolonged",
+        "description": "Prolonged QTc interval",
+        "interpretation": "QTc prolonged for both sexes. Increased risk of arrhythmias; evaluate for causes"
+      },
+      {
+        "min": 480,
+        "max": 500,
+        "stage": "Significantly Prolonged",
+        "description": "Significantly prolonged QTc",
+        "interpretation": "QTc ≥480 ms diagnostic for Long QT Syndrome regardless of symptoms. High arrhythmic risk"
+      },
+      {
+        "min": 500,
+        "max": null,
+        "stage": "Severely Prolonged",
+        "description": "Severely prolonged QTc",
+        "interpretation": "QTc >500 ms indicates very high risk of torsades de pointes and sudden cardiac death"
+      }
+    ]
+  },
+  "references": [
+    "Bazett HC. An analysis of the time-relations of electrocardiograms. Heart. 1920;7:353-370.",
+    "Fridericia LS. Die Systolendauer im Elektrokardiogramm bei normalen Menschen und bei Herzkranken. Acta Med Scand. 1920;53:469-486.",
+    "Sagie A, Larson MG, Goldberg RJ, Bengtson JR, Levy D. An improved method for adjusting the QT interval for heart rate (the Framingham Heart Study). Am J Cardiol. 1992;70(7):797-801.",
+    "Hodges M, Salerno D, Erlien D. Bazett's QT correction reviewed. Evidence that a linear QT correction for heart rate is better. J Am Coll Cardiol. 1983;1(2):694.",
+    "Rautaharju PM, Surawicz B, Gettes LS, et al. AHA/ACCF/HRS recommendations for the standardization and interpretation of the electrocardiogram. J Am Coll Cardiol. 2009;53(11):982-991."
+  ],
+  "formula": "Multiple formulas available: Bazett: QTc = QT/√RR, Fridericia: QTc = QT/(RR)^(1/3), Framingham: QTc = QT + 154×(1-RR), Hodges: QTc = QT + 1.75×[(60/RR)-60], Rautaharju: QTc = QT×(120+HR)/180",
+  "notes": [
+    "RR interval calculated as 60/heart rate",
+    "Bazett formula most commonly used but can over/under-correct at extreme heart rates",
+    "Fridericia and Framingham formulas often preferred for broader heart rate ranges",
+    "QTc ≥480 ms diagnostic for Long QT Syndrome regardless of symptoms",
+    "QTc >500 ms indicates high risk of torsades de pointes",
+    "QTc ≤320 ms diagnostic for Short QT Syndrome",
+    "Normal values: <450 ms (men), <460 ms (women) per ACC/HRS guidelines"
+  ]
+}

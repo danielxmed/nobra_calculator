@@ -1,0 +1,114 @@
+{
+  "id": "centor_score",
+  "title": "Centor Score (Modified/McIsaac) for Strep Pharyngitis",
+  "description": "Estimates likelihood that pharyngitis is streptococcal and suggests management course. Modified version includes age adjustment and provides evidence-based approach to antibiotic prescribing and testing decisions.",
+  "category": "emergency",
+  "version": "1998",
+  "parameters": [
+    {
+      "name": "tonsillar_exudate",
+      "type": "string",
+      "required": true,
+      "description": "Presence of tonsillar swelling or exudate",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "tender_cervical_nodes",
+      "type": "string",
+      "required": true,
+      "description": "Swollen, tender anterior cervical lymph nodes",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "history_of_fever",
+      "type": "string",
+      "required": true,
+      "description": "History of fever (>38°C or 100.4°F)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "absence_of_cough",
+      "type": "string",
+      "required": true,
+      "description": "Absence of cough",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "age_years",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years (affects scoring: 3-14 years +1, 15-44 years 0, ≥45 years -1)",
+      "unit": "years",
+      "validation": {
+        "min": 3,
+        "max": 120
+      }
+    }
+  ],
+  "result": {
+    "name": "centor_assessment",
+    "type": "object",
+    "unit": "points",
+    "description": "Centor Score with probability of streptococcal infection and management recommendations"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": -1,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "Low probability of streptococcal infection",
+        "interpretation": "Score ≤1: Probability of GAS 1-10%. No testing or antibiotics recommended. Symptomatic treatment only. Consider viral etiology."
+      },
+      {
+        "min": 2,
+        "max": 3,
+        "stage": "Moderate Risk",
+        "description": "Moderate probability of streptococcal infection",
+        "interpretation": "Score 2-3: Probability of GAS 11-35%. Rapid antigen detection test (RADT) and/or throat culture recommended. Antibiotics only if positive test results."
+      },
+      {
+        "min": 4,
+        "max": 5,
+        "stage": "High Risk",
+        "description": "High probability of streptococcal infection",
+        "interpretation": "Score ≥4: Probability of GAS 51-53%. Strong consideration for empiric antibiotic treatment or testing with RADT/culture. High likelihood of bacterial infection requiring treatment."
+      }
+    ]
+  },
+  "references": [
+    "Centor RM, Witherspoon JM, Dalton HP, Brody CE, Link K. The diagnosis of strep throat in adults in the emergency room. Med Decis Making. 1981;1(3):239-46. doi: 10.1177/0272989X8100100304.",
+    "McIsaac WJ, White D, Tannenbaum D, Low DE. A clinical score to reduce unnecessary antibiotic use in patients with sore throat. CMAJ. 1998 Jan 13;158(1):75-83.",
+    "McIsaac WJ, Kellner JD, Aufricht P, Vanjaka A, Low DE. Empirical validation of guidelines for the management of pharyngitis in children and adults. JAMA. 2004 Apr 7;291(13):1587-95. doi: 10.1001/jama.291.13.1587.",
+    "Shulman ST, Bisno AL, Clegg HW, Gerber MA, Kaplan EL, Lee G, Martin JM, Van Beneden C. Clinical practice guideline for the diagnosis and management of group A streptococcal pharyngitis: 2012 update by the Infectious Diseases Society of America. Clin Infect Dis. 2012 Nov 15;55(10):e86-102. doi: 10.1093/cid/cis629."
+  ],
+  "formula": "Modified Centor Score = Tonsillar exudate (1) + Tender cervical nodes (1) + History of fever (1) + Absence of cough (1) + Age adjustment: 3-14 years (+1), 15-44 years (0), ≥45 years (-1). Total range: -1 to +5 points.",
+  "notes": [
+    "Modified by McIsaac et al. 1998 to include age adjustment",
+    "Age 3-14 years: +1 point (higher risk of streptococcal infection)",
+    "Age 15-44 years: 0 points (baseline risk)",
+    "Age ≥45 years: -1 point (lower risk of streptococcal infection)",
+    "Score ≤1: No testing or antibiotics needed (1-10% GAS probability)",
+    "Score 2-3: RADT and/or culture recommended (11-35% GAS probability)",
+    "Score ≥4: Consider empiric treatment or testing (51-53% GAS probability)",
+    "Reduces unnecessary antibiotic prescriptions by 48%",
+    "Current IDSA guidelines recommend testing before antibiotic treatment",
+    "Should not be used as sole decision-making tool - clinical judgment important",
+    "Valid for both children and adults presenting with sore throat",
+    "Does not apply to patients with recent streptococcal exposure",
+    "Consider alternative diagnoses if recurrent episodes",
+    "Validated across multiple healthcare settings"
+  ]
+}

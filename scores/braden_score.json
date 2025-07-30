@@ -1,0 +1,174 @@
+{
+  "id": "braden_score",
+  "title": "Braden Score for Pressure Ulcers",
+  "description": "Identifies patients at risk for pressure ulcers by assessing six key factors: sensory perception, moisture, activity, mobility, nutrition, and friction/shear",
+  "category": "geriatrics",
+  "version": "1987",
+  "parameters": [
+    {
+      "name": "sensory_perception",
+      "type": "integer",
+      "required": true,
+      "description": "Ability to respond meaningfully to pressure-related discomfort",
+      "options": [1, 2, 3, 4],
+      "validation": {
+        "min": 1,
+        "max": 4,
+        "enum": [1, 2, 3, 4]
+      },
+      "labels": {
+        "1": "Completely limited: unresponsive to painful stimuli due to diminished level of consciousness or sedation, or limited ability to feel pain over most of body",
+        "2": "Very limited: responds only to painful stimuli, cannot communicate discomfort except by moaning or restlessness, or has sensory impairment limiting ability to feel pain over half of body",
+        "3": "Slightly limited: responds to verbal commands but cannot always communicate discomfort or need to be turned, or has some sensory impairment limiting ability to feel pain in 1-2 extremities",
+        "4": "No impairment: responds to verbal commands, has no sensory deficit which would limit ability to feel or voice pain or discomfort"
+      }
+    },
+    {
+      "name": "moisture",
+      "type": "integer",
+      "required": true,
+      "description": "Degree to which skin is exposed to moisture",
+      "options": [1, 2, 3, 4],
+      "validation": {
+        "min": 1,
+        "max": 4,
+        "enum": [1, 2, 3, 4]
+      },
+      "labels": {
+        "1": "Constantly moist: skin is kept moist almost constantly by perspiration, urine, etc. Dampness is detected every time patient is moved or turned",
+        "2": "Very moist: skin is often but not always moist. Linen must be changed at least once a shift",
+        "3": "Occasionally moist: skin is occasionally moist, requiring an extra linen change approximately once a day",
+        "4": "Rarely moist: skin is usually dry, linen only requires changing at routine intervals"
+      }
+    },
+    {
+      "name": "activity",
+      "type": "integer",
+      "required": true,
+      "description": "Degree of physical activity",
+      "options": [1, 2, 3, 4],
+      "validation": {
+        "min": 1,
+        "max": 4,
+        "enum": [1, 2, 3, 4]
+      },
+      "labels": {
+        "1": "Bedfast: confined to bed",
+        "2": "Chairfast: ability to walk severely limited or non-existent. Cannot bear own weight and/or must be assisted into chair or wheelchair",
+        "3": "Walks occasionally: walks occasionally during day but for very short distances, with or without assistance. Spends majority of each shift in bed or chair",
+        "4": "Walks frequently: walks outside the room at least twice a day and inside room at least once every 2 hours during waking hours"
+      }
+    },
+    {
+      "name": "mobility",
+      "type": "integer",
+      "required": true,
+      "description": "Ability to change and control body position",
+      "options": [1, 2, 3, 4],
+      "validation": {
+        "min": 1,
+        "max": 4,
+        "enum": [1, 2, 3, 4]
+      },
+      "labels": {
+        "1": "Completely immobile: does not make even slight changes in body or extremity position without assistance",
+        "2": "Very limited: makes occasional slight changes in body or extremity position but unable to make frequent or significant changes independently",
+        "3": "Slightly limited: makes frequent though slight changes in body or extremity position independently",
+        "4": "No limitation: makes major and frequent changes in position without assistance"
+      }
+    },
+    {
+      "name": "nutrition",
+      "type": "integer",
+      "required": true,
+      "description": "Usual food intake pattern",
+      "options": [1, 2, 3, 4],
+      "validation": {
+        "min": 1,
+        "max": 4,
+        "enum": [1, 2, 3, 4]
+      },
+      "labels": {
+        "1": "Very poor: never eats a complete meal. Rarely eats more than 1/3 of any food offered. Eats 2 servings or less of protein per day. Takes fluids poorly. Does not take a liquid dietary supplement",
+        "2": "Probably inadequate: rarely eats a complete meal and generally eats only about 1/2 of any food offered. Protein intake includes only 3 servings of meat or dairy products per day. Occasionally will take a dietary supplement",
+        "3": "Adequate: eats over half of most meals. Eats a total of 4 servings of protein each day. Occasionally will refuse a meal, but will usually take a supplement when offered",
+        "4": "Excellent: eats most of every meal. Never refuses a meal. Usually eats a total of 4 or more servings of meat and dairy products. Occasionally eats between meals. Does not require supplementation"
+      }
+    },
+    {
+      "name": "friction_shear",
+      "type": "integer",
+      "required": true,
+      "description": "Friction and shear forces when moving",
+      "options": [1, 2, 3],
+      "validation": {
+        "min": 1,
+        "max": 3,
+        "enum": [1, 2, 3]
+      },
+      "labels": {
+        "1": "Problem: requires moderate to maximum assistance in moving. Complete lifting without sliding against sheets is impossible. Frequently slides down in bed or chair, requiring frequent repositioning with maximum assistance",
+        "2": "Potential problem: moves feebly or requires minimum assistance. During a move, skin probably slides to some extent against sheets, chair, restraints, or other devices",
+        "3": "No apparent problem: moves in bed and in chair independently and has sufficient muscle strength to lift up completely during move"
+      }
+    }
+  ],
+  "result": {
+    "name": "braden_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total Braden score ranging from 6-23 points"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 19,
+        "max": 23,
+        "stage": "No Risk",
+        "description": "No risk for pressure ulcers",
+        "interpretation": "Patient is not at risk for developing pressure ulcers. Continue routine skin care and monitoring. Reassess if patient condition changes."
+      },
+      {
+        "min": 15,
+        "max": 18,
+        "stage": "Mild Risk",
+        "description": "Mild risk for pressure ulcers",
+        "interpretation": "Patient is at mild risk for developing pressure ulcers. Implement basic preventive measures including turning schedule every 2-3 hours, skin moisturization, and nutritional support."
+      },
+      {
+        "min": 13,
+        "max": 14,
+        "stage": "Moderate Risk",
+        "description": "Moderate risk for pressure ulcers",
+        "interpretation": "Patient is at moderate risk for developing pressure ulcers. Implement turning schedule every 2 hours, use pressure-reducing surfaces, optimize nutrition and hydration, and perform daily comprehensive skin assessments."
+      },
+      {
+        "min": 10,
+        "max": 12,
+        "stage": "High Risk",
+        "description": "High risk for pressure ulcers",
+        "interpretation": "Patient is at high risk for developing pressure ulcers. Implement aggressive prevention protocol: turning every 1-2 hours, specialized support surfaces, nutritional consultation, moisture management, and twice-daily skin assessments."
+      },
+      {
+        "min": 6,
+        "max": 9,
+        "stage": "Very High Risk",
+        "description": "Very high risk for pressure ulcers",
+        "interpretation": "Patient is at very high risk for developing pressure ulcers. Implement maximum prevention measures: hourly repositioning, advanced pressure redistribution surfaces, intensive nutritional support, barrier creams, and frequent comprehensive skin assessments. Consider wound care specialist consultation."
+      }
+    ]
+  },
+  "references": [
+    "Braden BJ, Bergstrom N. Clinical utility of the Braden scale for Predicting Pressure Sore Risk. Decubitus. 1989 Aug;2(3):44-6, 50-1.",
+    "Bergstrom N, Braden BJ, Laguzza A, Holman V. The Braden Scale for Predicting Pressure Sore Risk. Nurs Res. 1987 Jul-Aug;36(4):205-10.",
+    "Braden BJ, Maklebust J. Preventing pressure ulcers with the Braden scale: an update on this easy-to-use tool that assesses a patient's risk. Am J Nurs. 2005 Jun;105(6):70-2."
+  ],
+  "formula": "Braden Score = Sensory Perception (1-4) + Moisture (1-4) + Activity (1-4) + Mobility (1-4) + Nutrition (1-4) + Friction/Shear (1-3)",
+  "notes": [
+    "Lower scores indicate higher risk for pressure ulcer development",
+    "The scale should be used on admission and at regular intervals based on patient acuity",
+    "Reassessment should occur with any significant change in patient condition",
+    "Prevention strategies should be implemented based on risk level",
+    "The Braden Scale is validated for use in multiple care settings including acute care, long-term care, and home care"
+  ]
+}

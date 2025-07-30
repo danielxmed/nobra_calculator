@@ -1,0 +1,68 @@
+{
+  "id": "ccs_angina_grade",
+  "title": "Canadian Cardiovascular Society (CCS) Angina Grade",
+  "description": "The Canadian Cardiovascular Society (CCS) Angina Grade classifies the severity of exertional angina based on the degree of effort necessary to induce angina symptoms. This standardized grading system helps clinicians communicate about functional limitations and symptom severity in patients with coronary artery disease.",
+  "category": "cardiology",
+  "version": "1976",
+  "parameters": [
+    {
+      "name": "angina_symptoms",
+      "type": "string",
+      "required": true,
+      "description": "Select the level of physical activity that triggers angina symptoms",
+      "options": [
+        "strenuous_exertion_only",
+        "moderate_exertion_limitation",
+        "marked_limitation",
+        "symptoms_at_rest"
+      ],
+      "validation": {
+        "enum": ["strenuous_exertion_only", "moderate_exertion_limitation", "marked_limitation", "symptoms_at_rest"]
+      }
+    }
+  ],
+  "result": {
+    "name": "ccs_grade",
+    "type": "string",
+    "unit": "grade",
+    "description": "CCS Angina Grade (I-IV)"
+  },
+  "interpretation": {
+    "grades": [
+      {
+        "grade": "Grade I",
+        "description": "Angina only with strenuous exertion",
+        "interpretation": "Ordinary physical activity (such as walking and climbing stairs) does not cause angina. Angina occurs with strenuous, rapid, or prolonged exertion at work or recreation. No limitation of ordinary activity."
+      },
+      {
+        "grade": "Grade II", 
+        "description": "Slight limitation of ordinary activity",
+        "interpretation": "Angina occurs on walking or climbing stairs rapidly, walking uphill, walking or stair climbing after meals, in cold, in wind, under emotional stress, or only during the few hours after awakening. Angina on walking more than 2 blocks on the level and climbing more than 1 flight of ordinary stairs at normal pace and in normal conditions."
+      },
+      {
+        "grade": "Grade III",
+        "description": "Marked limitation of ordinary physical activity",
+        "interpretation": "Angina occurs on walking 1 to 2 blocks on the level and climbing 1 flight of stairs at normal pace in normal conditions. Marked limitation of ordinary physical activity."
+      },
+      {
+        "grade": "Grade IV",
+        "description": "Inability to carry out any physical activity without discomfort",
+        "interpretation": "Angina may be present at rest. Unable to perform any physical activity without discomfort. Anginal symptoms may occur at rest."
+      }
+    ]
+  },
+  "references": [
+    "Campeau L. Letter: Grading of angina pectoris. Circulation. 1976 Sep;54(3):522-3. PMID: 947585.",
+    "Campeau L. The Canadian Cardiovascular Society grading of angina pectoris revisited 30 years later. Can J Cardiol. 2002 Apr;18(4):371-9. PMID: 11992130.",
+    "Goldman L, Hashimoto B, Cook EF, Loscalzo A. Comparative reproducibility and validity of systems for assessing cardiovascular functional class: advantages of a new specific activity scale. Circulation. 1981 Dec;64(6):1227-34. doi: 10.1161/01.cir.64.6.1227."
+  ],
+  "formula": "Categorical classification based on functional limitation: Grade I = strenuous exertion only; Grade II = slight limitation with moderate exertion; Grade III = marked limitation with minimal exertion; Grade IV = symptoms at rest or any activity",
+  "notes": [
+    "Analogous to NYHA classification for heart failure",
+    "Used to standardize terminology for coronary artery disease studies",
+    "Not intended as a prognostic tool, but has been associated with mortality and morbidity",
+    "Used by British Cardiovascular Society to evaluate fitness to fly",
+    "Does not account for anti-anginal medication use before exertion",
+    "Personal warm-up effects not considered in classification"
+  ]
+}

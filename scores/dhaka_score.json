@@ -1,0 +1,171 @@
+{
+  "id": "dhaka_score",
+  "title": "Dehydration: Assessing Kids Accurately (DHAKA) Score",
+  "description": "Classifies dehydration severity in children under 5 years old with acute diarrhea using four clinical assessment parameters.",
+  "category": "pediatrics",
+  "version": "2015",
+  "parameters": [
+    {
+      "name": "general_appearance",
+      "type": "string",
+      "required": true,
+      "description": "Child's general appearance and level of consciousness",
+      "options": ["normal", "restless_irritable", "lethargic_unconscious"],
+      "validation": {
+        "enum": ["normal", "restless_irritable", "lethargic_unconscious"]
+      }
+    },
+    {
+      "name": "respirations",
+      "type": "string",
+      "required": true,
+      "description": "Respiratory pattern assessment",
+      "options": ["normal", "deep"],
+      "validation": {
+        "enum": ["normal", "deep"]
+      }
+    },
+    {
+      "name": "skin_pinch",
+      "type": "string",
+      "required": true,
+      "description": "Skin elasticity test (pinch skin and observe return)",
+      "options": ["normal", "slow", "very_slow"],
+      "validation": {
+        "enum": ["normal", "slow", "very_slow"]
+      }
+    },
+    {
+      "name": "tears",
+      "type": "string",
+      "required": true,
+      "description": "Tear production when child cries",
+      "options": ["normal", "decreased", "absent"],
+      "validation": {
+        "enum": ["normal", "decreased", "absent"]
+      }
+    },
+    {
+      "name": "child_age_months",
+      "type": "integer",
+      "required": false,
+      "description": "Child's age in months (must be <60 months for score validity)",
+      "validation": {
+        "min": 1,
+        "max": 59
+      },
+      "unit": "months"
+    },
+    {
+      "name": "diarrhea_duration",
+      "type": "integer",
+      "required": false,
+      "description": "Duration of diarrhea in days (must be <14 days for acute diarrhea)",
+      "validation": {
+        "min": 1,
+        "max": 13
+      },
+      "unit": "days"
+    }
+  ],
+  "result": {
+    "name": "dhaka_assessment",
+    "type": "object",
+    "unit": "points",
+    "description": "DHAKA score with dehydration classification and management recommendations"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "No Dehydration",
+        "description": "Minimal or no fluid loss",
+        "interpretation": "Child has minimal or no dehydration. Encourage continued fluid intake and normal diet. Monitor for signs of worsening. Continue breastfeeding if applicable.",
+        "fluid_loss": "<3%",
+        "management": "Encourage fluid intake, continue normal diet"
+      },
+      {
+        "min": 2,
+        "max": 3,
+        "stage": "Some Dehydration",
+        "description": "Mild to moderate fluid loss",
+        "interpretation": "Child has some dehydration requiring oral rehydration therapy. Supervised ORT with frequent monitoring for improvement or deterioration. May require closer observation.",
+        "fluid_loss": "3-9%",
+        "management": "Supervised oral rehydration therapy"
+      },
+      {
+        "min": 4,
+        "max": 10,
+        "stage": "Severe Dehydration",
+        "description": "Significant fluid loss requiring immediate intervention",
+        "interpretation": "Child has severe dehydration requiring immediate intravenous rehydration and potential hospitalization. Close monitoring for complications and electrolyte imbalances is essential.",
+        "fluid_loss": "≥10%",
+        "management": "Immediate IV rehydration, potential hospitalization"
+      }
+    ]
+  },
+  "clinical_applications": [
+    "Assessment of dehydration severity in children <5 years with acute diarrhea",
+    "Triage decision-making in emergency departments and primary care",
+    "Guiding rehydration therapy intensity and route of administration",
+    "Resource allocation in low-resource settings",
+    "Quality improvement in pediatric diarrheal disease management",
+    "Training tool for healthcare providers in dehydration assessment",
+    "Clinical research and epidemiological studies of childhood dehydration"
+  ],
+  "management_guidelines": {
+    "no_dehydration": [
+      "Encourage continued fluid intake and breastfeeding",
+      "Continue normal age-appropriate diet",
+      "Provide zinc supplementation as recommended",
+      "Monitor for signs of worsening dehydration",
+      "Educate caregivers on warning signs",
+      "Follow-up as needed based on clinical course"
+    ],
+    "some_dehydration": [
+      "Initiate supervised oral rehydration therapy (ORT)",
+      "Administer ORS solution according to WHO/UNICEF recommendations",
+      "Monitor response to therapy closely",
+      "Continue breastfeeding and age-appropriate feeding",
+      "Provide zinc supplementation",
+      "Reassess hydration status frequently",
+      "Consider admission if ORT fails or tolerance is poor"
+    ],
+    "severe_dehydration": [
+      "Immediate intravenous fluid resuscitation",
+      "Rapid assessment and stabilization of vital signs",
+      "Monitor for complications (shock, electrolyte imbalances)",
+      "Hospitalization for close monitoring",
+      "Transition to ORT once clinically stable",
+      "Address underlying causes and complications",
+      "Multidisciplinary care coordination"
+    ]
+  },
+  "references": [
+    "Chisti MJ, Pietroni MAC, Smith JH, et al. Derivation and validation of a clinical dehydration scale for children with acute diarrhoea: a prospective cohort study. Lancet Glob Health. 2015;3(4):e204-e211. doi: 10.1016/S2214-109X(15)70015-1.",
+    "Pietroni MAC, Chisti MJ, Dewan ML, et al. External validation of the DHAKA score and comparison with the current IMCI algorithm for the assessment of dehydration in children with diarrhoea: a prospective cohort study. Lancet Glob Health. 2016;4(10):e744-e751. doi: 10.1016/S2214-109X(16)30150-4.",
+    "Goldman RD, Friedman JN, Parkin PC. Validation of the clinical dehydration scale for children with acute gastroenteritis. Pediatrics. 2008;122(3):545-549. doi: 10.1542/peds.2007-2134.",
+    "World Health Organization. The treatment of diarrhoea: a manual for physicians and other senior health workers. 4th rev. Geneva: World Health Organization; 2005."
+  ],
+  "formula": "DHAKA Score = General Appearance (0-4 points) + Respirations (0-2 points) + Skin Pinch (0-4 points) + Tears (0-2 points)",
+  "notes": [
+    "Score validated for children <5 years (under 60 months) with acute diarrhea",
+    "Acute diarrhea defined as ≥3 loose stools per day for <14 days",
+    "More accurate than WHO IMCI algorithm in validation studies",
+    "First dehydration assessment tool validated in low-income country settings",
+    "General appearance is assessed during examination and interaction",
+    "Deep respirations indicate compensatory hyperventilation for metabolic acidosis",
+    "Skin pinch test should be performed on lateral abdominal wall",
+    "Tear assessment requires observation during crying or distress",
+    "Score should be used in conjunction with clinical judgment",
+    "Not validated for non-diarrheal causes of dehydration",
+    "Consider underlying malnutrition which may affect assessment"
+  ],
+  "validation": {
+    "population": "Children <60 months with acute diarrhea in low-income country setting",
+    "settings": ["Emergency departments", "Primary care clinics", "Pediatric wards", "Community health centers"],
+    "evidence_basis": "Derived and externally validated in Bangladesh with superior performance to IMCI algorithm",
+    "clinical_utility": "Validated tool for dehydration assessment in resource-limited settings with improved accuracy over existing methods"
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "id": "ckd_prediction_hiv_patients",
+  "title": "CKD Prediction in HIV+ Patients",
+  "description": "Determines likelihood of HIV patients developing CKD in the next 5 years, whether they take tenofovir or not",
+  "category": "nephrology",
+  "version": "2014",
+  "parameters": [
+    {
+      "name": "age_category",
+      "type": "string",
+      "required": true,
+      "description": "Patient age category",
+      "options": ["19_to_39", "40_to_49", "50_to_59", "60_to_90"],
+      "validation": {
+        "enum": ["19_to_39", "40_to_49", "50_to_59", "60_to_90"]
+      },
+      "unit": "years"
+    },
+    {
+      "name": "glucose_elevated",
+      "type": "string",
+      "required": true,
+      "description": "Glucose > 140 mg/dL",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "systolic_bp_elevated",
+      "type": "string",
+      "required": true,
+      "description": "Systolic blood pressure > 140 mmHg",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "hypertension",
+      "type": "string",
+      "required": true,
+      "description": "Diagnosis of hypertension",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "triglycerides_elevated",
+      "type": "string",
+      "required": true,
+      "description": "Triglycerides > 200 mg/dL",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "proteinuria",
+      "type": "string",
+      "required": true,
+      "description": "Presence of proteinuria",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "cd4_low",
+      "type": "string",
+      "required": true,
+      "description": "CD4+ count < 200 cells/µL",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": "cells/µL"
+    },
+    {
+      "name": "tenofovir_use",
+      "type": "string",
+      "required": true,
+      "description": "Current or planned tenofovir (TDF) use",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "ckd_risk_percentage",
+    "type": "float",
+    "unit": "percent",
+    "description": "5-year CKD development risk percentage"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 5,
+        "stage": "Low Risk",
+        "description": "Low risk for CKD development",
+        "interpretation": "Consider tenofovir use with routine monitoring"
+      },
+      {
+        "min": 5,
+        "max": 15,
+        "stage": "Moderate Risk",
+        "description": "Moderate risk for CKD development",
+        "interpretation": "Careful consideration of tenofovir risks and benefits"
+      },
+      {
+        "min": 15,
+        "max": 100,
+        "stage": "High Risk",
+        "description": "High risk for CKD development",
+        "interpretation": "Strong consideration for alternative to tenofovir"
+      }
+    ]
+  },
+  "references": [
+    "Scherzer R, Gandhi M, Estrella MM, Tien PC, Deeks SG, Grunfeld C, Peralta CA, Shlipak MG. A chronic kidney disease risk score to determine tenofovir safety in a prospective cohort of HIV-positive male veterans. AIDS. 2014;28(9):1289-95.",
+    "Mocroft A, Lundgren JD, Ross M, Law M, Reiss P, Kirk O, Smith C, Wentworth D, Neuhaus J, Fux CA, Moranne O, Morlat P, Johnson MA, Ryom L; D:A:D Study Group. Development and validation of a risk score for chronic kidney disease in HIV infection using prospective cohort data from the D:A:D study. PLoS Med. 2015;12(3):e1001809."
+  ],
+  "formula": "Sum of risk factor points: Age (0-6) + Glucose >140 (2) + SBP >140 (1) + Hypertension (2) + Triglycerides >200 (1) + Proteinuria (2) + CD4+ <200 (1). 5-year CKD risk based on total score and tenofovir use status.",
+  "notes": [
+    "Based on prospective cohort study of HIV-positive male veterans",
+    "Helps guide clinical decision-making around tenofovir use",
+    "Traditional kidney risk factors are dominant contributors",
+    "CD4+ count included but HIV RNA viral load is not a component",
+    "Number needed to harm (NNH) for tenofovir decreases with higher scores",
+    "Should be used in conjunction with clinical judgment",
+    "Regular monitoring of kidney function recommended regardless of risk score"
+  ]
+}

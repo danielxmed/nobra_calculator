@@ -1,0 +1,77 @@
+{
+  "id": "c_peptide_to_glucose_ratio",
+  "title": "C-Peptide to Glucose Ratio",
+  "description": "Assesses beta cell secretory function in patients with diabetes/pre-diabetes. The C-peptide to glucose ratio (CGR) is a simple marker that helps evaluate endogenous insulin secretion capacity and can guide diabetes management decisions.",
+  "category": "endocrinology",
+  "version": "2016",
+  "parameters": [
+    {
+      "name": "c_peptide",
+      "type": "float",
+      "required": true,
+      "description": "Serum C-peptide level",
+      "validation": {
+        "min": 0.01,
+        "max": 50.0
+      },
+      "unit": "ng/mL"
+    },
+    {
+      "name": "glucose",
+      "type": "float",
+      "required": true,
+      "description": "Plasma glucose level",
+      "validation": {
+        "min": 10,
+        "max": 1000
+      },
+      "unit": "mg/dL"
+    }
+  ],
+  "result": {
+    "name": "c_peptide_glucose_ratio",
+    "type": "float",
+    "unit": "ratio",
+    "description": "C-peptide to glucose ratio indicating beta cell function"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Insulin Secretion Deficit",
+        "description": "Severe beta cell dysfunction",
+        "interpretation": "Ratio < 2 indicates severe insulin secretion deficit. Insulin therapy is necessary for glycemic control."
+      },
+      {
+        "min": 2,
+        "max": 5,
+        "stage": "Impaired Insulin Secretion",
+        "description": "Moderate beta cell dysfunction",
+        "interpretation": "Ratio 2-5 indicates impaired endogenous insulin secretion. Basal insulin plus other antidiabetic agents may be needed."
+      },
+      {
+        "min": 5,
+        "max": 999,
+        "stage": "Preserved Insulin Secretion",
+        "description": "Adequate beta cell function",
+        "interpretation": "Ratio > 5 indicates preserved endogenous insulin secretion. Insulin therapy is usually unnecessary; other antidiabetic agents may suffice."
+      }
+    ]
+  },
+  "references": [
+    "Saisho Y. Postprandial C-Peptide to Glucose Ratio as a Marker of β Cell Function: Implication for the Management of Type 2 Diabetes. Int J Mol Sci. 2016 May 6;17(5):744. doi: 10.3390/ijms17050744.",
+    "Fritsche A, Heni M, Peter A, Stefan N, Häring HU, Wagner R. Different Effects of Lifestyle Intervention in High- and Low-Insulin Secretors. Diabetes Care. 2023 Feb 1;46(2):290-297. doi: 10.2337/dc22-1523.",
+    "Iwao T, Sakata N, Takeuchi T, Nishimura K, Ohtake S, Akaiwa Y, Kawamura I, Ito A, Yoshida A. Postprandial Serum C-Peptide to Plasma Glucose Ratio Predicts Future Insulin Therapy in Patients with Type 2 Diabetes: A 10-Year Prospective Cohort Study. J Diabetes Investig. 2021 Jan;12(1):68-75. doi: 10.1111/jdi.13304."
+  ],
+  "formula": "C-peptide to glucose ratio = serum C-peptide level (ng/mL) / plasma glucose level (mg/dL) × 100",
+  "notes": [
+    "C-peptide is co-secreted with insulin in equimolar amounts from pancreatic beta cells",
+    "Unlike insulin, C-peptide is not significantly extracted by the liver and has a longer half-life",
+    "Best measured in the postprandial state (1-2 hours after meal) for optimal assessment",
+    "Not recommended for patients with chronic kidney disease as C-peptide clearance is reduced",
+    "Can help distinguish between Type 1 and Type 2 diabetes in unclear cases",
+    "Useful for monitoring disease progression and adjusting therapy in Type 2 diabetes",
+    "May help identify patients who can transition from insulin to oral agents"
+  ]
+}

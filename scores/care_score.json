@@ -1,0 +1,129 @@
+{
+  "id": "care_score",
+  "title": "Cardiac Anesthesia Risk Evaluation Score (CARE)",
+  "description": "The CARE Score predicts mortality and morbidity after cardiac surgery. It is a simple risk classification based on clinical judgment and three clinical variables: comorbid conditions (controlled vs uncontrolled), surgical complexity, and urgency of the procedure.",
+  "category": "cardiology",
+  "version": "2001",
+  "parameters": [
+    {
+      "name": "cardiac_disease_status",
+      "type": "string",
+      "required": true,
+      "description": "Status of cardiac disease",
+      "options": ["stable", "chronic_advanced"],
+      "validation": {
+        "enum": ["stable", "chronic_advanced"]
+      }
+    },
+    {
+      "name": "other_medical_problems",
+      "type": "string",
+      "required": true,
+      "description": "Other medical problems beyond cardiac disease",
+      "options": ["none", "controlled", "uncontrolled"],
+      "validation": {
+        "enum": ["none", "controlled", "uncontrolled"]
+      }
+    },
+    {
+      "name": "surgery_complexity",
+      "type": "string",
+      "required": true,
+      "description": "Complexity of the cardiac surgery",
+      "options": ["noncomplex", "complex"],
+      "validation": {
+        "enum": ["noncomplex", "complex"]
+      }
+    },
+    {
+      "name": "emergency_surgery",
+      "type": "string",
+      "required": true,
+      "description": "Surgery required as soon as diagnosis is made and operating room is available",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "last_hope_surgery",
+      "type": "string",
+      "required": true,
+      "description": "Surgery performed as last hope to save or improve life",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "care_score",
+    "type": "integer",
+    "unit": "category",
+    "description": "CARE Score Category (1 to 6)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "CARE 1",
+        "description": "Very Low Risk",
+        "interpretation": "Stable cardiac disease, no other medical problems, undergoing noncomplex surgery. Lowest risk category with excellent prognosis. Standard perioperative monitoring and care appropriate."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "CARE 2",
+        "description": "Low Risk",
+        "interpretation": "Stable cardiac disease, one or more controlled medical problems, undergoing noncomplex surgery. Low risk with good prognosis. Enhanced monitoring may be considered based on specific comorbidities."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "CARE 3",
+        "description": "Moderate Risk",
+        "interpretation": "Any uncontrolled medical problem OR undergoing complex surgery. Moderate risk requiring enhanced perioperative monitoring and management. Consider intensive care unit monitoring and specialized cardiac anesthesia techniques."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "CARE 4",
+        "description": "High Risk",
+        "interpretation": "Any uncontrolled medical problem AND undergoing complex surgery. High risk requiring intensive monitoring, specialized anesthetic management, and likely ICU care. Multidisciplinary approach recommended."
+      },
+      {
+        "min": 5,
+        "max": 5,
+        "stage": "CARE 5",
+        "description": "Very High Risk",
+        "interpretation": "Chronic or advanced cardiac disease undergoing cardiac surgery as last hope to save or improve life. Very high risk with guarded prognosis. Requires maximum perioperative support and family counseling regarding risks."
+      },
+      {
+        "min": 6,
+        "max": 6,
+        "stage": "CARE 6",
+        "description": "Extreme Risk",
+        "interpretation": "Emergency surgery (CARE 5 + 1 point for emergency). Extreme risk with very guarded prognosis. Requires immediate operative intervention with maximum perioperative support. Extensive family discussion regarding outcomes essential."
+      }
+    ]
+  },
+  "references": [
+    "Dupuis JY, Wang F, Nathan H, Lam M, Grimes S, Bourke M. The cardiac anesthesia risk evaluation score: a clinically useful predictor of mortality and morbidity after cardiac surgery. Anesthesiology. 2001 Feb;94(2):194-204. doi: 10.1097/00000542-200102000-00006.",
+    "Zingone B, Pappalardo A, Dreas L. Logistic versus clinical prediction models: prognostic accuracy of the EuroSCORE and the cardiac anesthesia risk evaluation score. Eur J Cardiothorac Surg. 2004 Nov;26(5):883-7. doi: 10.1016/j.ejcts.2004.07.014.",
+    "Ranucci M, Castelvecchio S, Menicanti L, Frigiola A, Pelissero G. A comparison of the EuroSCORE and the Cardiac Anesthesia Risk Evaluation (CARE) score for risk-adjusted mortality analysis in cardiac surgery. Eur J Cardiothorac Surg. 2012 Feb;41(2):307-13. doi: 10.1016/j.ejcts.2011.05.043."
+  ],
+  "formula": "Base CARE category (1-5) determined by cardiac status, medical problems, and surgery complexity + 1 point if emergency surgery",
+  "notes": [
+    "Use in patients undergoing cardiac surgery for risk stratification",
+    "Controlled medical problems: stable diabetes, hypertension, etc.",
+    "Uncontrolled medical problems: pulmonary edema, renal insufficiency, etc.",
+    "Complex surgery: reoperation, combined procedures, multiple valve surgery, etc.",
+    "Emergency surgery: required as soon as diagnosis made and OR available",
+    "CARE 5: surgery as last hope to save or improve life",
+    "Score ranges from 1 (lowest risk) to 6 (emergency + highest risk)",
+    "Excellent correlation with postoperative mortality and morbidity",
+    "Simple clinical assessment suitable for routine use",
+    "AUC for mortality prediction: 0.801"
+  ]
+}

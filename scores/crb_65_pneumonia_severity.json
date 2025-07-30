@@ -1,0 +1,97 @@
+{
+  "id": "crb_65_pneumonia_severity",
+  "title": "CRB-65 Score for Pneumonia Severity",
+  "description": "Stratifies severity of community-acquired pneumonia (CAP) to determine outpatient versus inpatient treatment using 4 clinical criteria (without blood urea nitrogen)",
+  "category": "pulmonology",
+  "version": "2003",
+  "parameters": [
+    {
+      "name": "confusion",
+      "type": "string",
+      "required": true,
+      "description": "New onset confusion or altered mental status",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "respiratory_rate",
+      "type": "string",
+      "required": true,
+      "description": "Respiratory rate assessment",
+      "options": ["<30", ">=30"],
+      "validation": {
+        "enum": ["<30", ">=30"]
+      }
+    },
+    {
+      "name": "blood_pressure",
+      "type": "string",
+      "required": true,
+      "description": "Blood pressure assessment",
+      "options": ["normal", "low"],
+      "validation": {
+        "enum": ["normal", "low"]
+      }
+    },
+    {
+      "name": "age",
+      "type": "string",
+      "required": true,
+      "description": "Age category",
+      "options": ["<65", ">=65"],
+      "validation": {
+        "enum": ["<65", ">=65"]
+      }
+    }
+  ],
+  "result": {
+    "name": "crb_65_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "CRB-65 score indicating pneumonia severity"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "Very low risk of mortality",
+        "interpretation": "Home treatment appropriate. 30-day mortality risk <1%."
+      },
+      {
+        "min": 1,
+        "max": 2,
+        "stage": "Intermediate Risk", 
+        "description": "Intermediate risk of mortality",
+        "interpretation": "Consider hospital evaluation or short inpatient observation. 30-day mortality risk 1-10%."
+      },
+      {
+        "min": 3,
+        "max": 4,
+        "stage": "High Risk",
+        "description": "High risk of mortality",
+        "interpretation": "Hospital admission recommended. Consider ICU assessment. 30-day mortality risk >10%."
+      }
+    ]
+  },
+  "references": [
+    "Lim WS, van der Eerden MM, Laing R, Boersma WG, Karalus N, Town GI, et al. Defining community acquired pneumonia severity on presentation to hospital: an international derivation and validation study. Thorax. 2003;58(5):377-382. doi:10.1136/thorax.58.5.377",
+    "Capelastegui A, España PP, Quintana JM, Areitio I, Gorordo I, Egurrola M, et al. Validation of a predictive rule for the management of community-acquired pneumonia. Eur Respir J. 2006;27(1):151-157.",
+    "McNally M, Curtain J, O'Brien KK, Dimitrov BD, Fahey T. Validity of British Thoracic Society guidance (the CRB-65 rule) for predicting the severity of pneumonia in general practice: systematic review and meta-analysis. Br J Gen Pract. 2010;60(579):e423-433."
+  ],
+  "formula": "Sum of: Confusion (1 point) + Respiratory rate ≥30 (1 point) + Blood pressure <90/<60 mmHg (1 point) + Age ≥65 years (1 point)",
+  "notes": [
+    "CRB-65 is a simplified version of CURB-65 that does not require blood urea nitrogen measurement",
+    "Particularly useful in primary care settings where laboratory tests may not be readily available",
+    "Validated in multiple countries for community-acquired pneumonia severity assessment",
+    "Should be used in conjunction with clinical judgment and local guidelines",
+    "Not validated for healthcare-associated or hospital-acquired pneumonia",
+    "Confusion defined as new onset altered mental status or disorientation",
+    "Blood pressure criteria: systolic <90 mmHg OR diastolic ≤60 mmHg",
+    "Age ≥65 years includes all patients 65 years of age and older",
+    "Consider patient comorbidities and social circumstances in treatment decisions"
+  ]
+}

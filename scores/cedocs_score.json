@@ -1,0 +1,158 @@
+{
+  "id": "cedocs_score",
+  "title": "CEDOCS Score for Emergency Department Overcrowding",
+  "description": "Community Emergency Department Overcrowding Scale (CEDOCS) estimates the severity of overcrowding in community emergency departments. Provides objective quantification for resource allocation, patient flow management, and real-time assessment of ED crowding levels across varying patient volumes.",
+  "category": "emergency",
+  "version": "2014",
+  "parameters": [
+    {
+      "name": "critical_care_patients",
+      "type": "integer",
+      "required": true,
+      "description": "Number of patients currently requiring critical care in the ED",
+      "unit": "patients",
+      "validation": {
+        "min": 0,
+        "max": 100
+      }
+    },
+    {
+      "name": "longest_wait_time_minutes",
+      "type": "integer",
+      "required": true,
+      "description": "Waiting time of the longest admitted patient currently in the ED",
+      "unit": "minutes",
+      "validation": {
+        "min": 0,
+        "max": 2880
+      }
+    },
+    {
+      "name": "waiting_room_patients",
+      "type": "integer",
+      "required": true,
+      "description": "Number of patients currently in the waiting room",
+      "unit": "patients",
+      "validation": {
+        "min": 0,
+        "max": 500
+      }
+    },
+    {
+      "name": "total_ed_patients",
+      "type": "integer",
+      "required": true,
+      "description": "Total number of patients currently in the ED (including those being treated)",
+      "unit": "patients",
+      "validation": {
+        "min": 0,
+        "max": 1000
+      }
+    },
+    {
+      "name": "ed_beds",
+      "type": "integer",
+      "required": true,
+      "description": "Total number of licensed beds in the emergency department",
+      "unit": "beds",
+      "validation": {
+        "min": 1,
+        "max": 500
+      }
+    },
+    {
+      "name": "annual_ed_visits",
+      "type": "integer",
+      "required": true,
+      "description": "Annual volume of ED visits (total visits per year for the department)",
+      "unit": "visits",
+      "validation": {
+        "min": 1000,
+        "max": 500000
+      }
+    },
+    {
+      "name": "scaling_factor",
+      "type": "float",
+      "required": false,
+      "description": "Optional scaling factor for final score adjustment (default is 2.0)",
+      "validation": {
+        "min": 0.1,
+        "max": 10.0
+      }
+    }
+  ],
+  "result": {
+    "name": "cedocs_assessment",
+    "type": "object",
+    "unit": "points",
+    "description": "CEDOCS Score with overcrowding level assessment and clinical recommendations"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 20,
+        "stage": "Level 1",
+        "description": "Not busy",
+        "interpretation": "Normal ED operations. Minimal crowding with adequate resources and patient flow."
+      },
+      {
+        "min": 21,
+        "max": 60,
+        "stage": "Level 2",
+        "description": "Busy",
+        "interpretation": "Increased activity but manageable. Monitor patient flow and resource allocation."
+      },
+      {
+        "min": 61,
+        "max": 100,
+        "stage": "Level 3",
+        "description": "Extremely busy but not overcrowded",
+        "interpretation": "High activity level approaching capacity. Consider proactive measures to prevent overcrowding."
+      },
+      {
+        "min": 101,
+        "max": 140,
+        "stage": "Level 4",
+        "description": "Overcrowded",
+        "interpretation": "Overcrowding threshold exceeded. Implement overcrowding protocols and resource reallocation."
+      },
+      {
+        "min": 141,
+        "max": 180,
+        "stage": "Level 5",
+        "description": "Severely overcrowded",
+        "interpretation": "Severe overcrowding requiring immediate intervention. Consider diversion protocols and emergency staffing."
+      },
+      {
+        "min": 181,
+        "max": 200,
+        "stage": "Level 6",
+        "description": "Dangerously overcrowded",
+        "interpretation": "Critical overcrowding situation. Implement emergency measures, consider ambulance diversion."
+      }
+    ]
+  },
+  "references": [
+    "Weiss SJ, Rogers DB, Maas F, Ernst AA, Nick TG. Evaluating community ED crowding: the Community ED Overcrowding Scale study. Am J Emerg Med. 2014 Nov;32(11):1357-63. doi: 10.1016/j.ajem.2014.08.035.",
+    "Weiss SJ, Ernst AA, Derlet R, King R, Bair A, Nick TG. Relationship between the National ED Overcrowding Scale and the number of patients who leave without being seen in an academic ED. Am J Emerg Med. 2005 Jul;23(4):456-61."
+  ],
+  "formula": "CEDOCS = -29.53 + (3.14 × critical care patients) + (0.52 × longest wait) + (1.14 × waiting room patients) + (20.55 × total patients/ED beds) + (0.00124 × annual visits) + conditional adjustments (A+B+C+D) × scaling factor",
+  "notes": [
+    "Developed specifically for community emergency departments with varying patient volumes",
+    "More broadly applicable than NEDOCS which was designed for academic centers",
+    "Overcrowding threshold defined as CEDOCS score > 100",
+    "Validated across EDs with annual volumes ≥ 18,000 patients per year",
+    "Uses complex cubic spline adjustments for different annual visit volume ranges",
+    "Default scaling factor is 2.0 if not specified",
+    "Score can exceed 200 in extreme overcrowding situations",
+    "Real-time calculation enables immediate decision-making for resource allocation",
+    "Helps standardize overcrowding assessment across different ED settings",
+    "Useful for quality improvement initiatives and research studies",
+    "Should be interpreted alongside clinical judgment and local protocols",
+    "Conditional adjustments (A, B, C, D) apply to specific annual visit thresholds",
+    "Patient-to-bed ratio is a key driver of the overcrowding score",
+    "Waiting time component reflects admitted patient boarding issues"
+  ]
+}

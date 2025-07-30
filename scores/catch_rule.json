@@ -1,0 +1,132 @@
+{
+  "id": "catch_rule",
+  "title": "CATCH (Canadian Assessment of Tomography for Childhood Head injury) Rule",
+  "description": "Predicts clinically significant head injuries in children aged 0-16 years to guide CT imaging decisions. Identifies high-risk factors for neurologic intervention and medium-risk factors for brain injury on CT.",
+  "category": "pediatrics",
+  "version": "2010",
+  "parameters": [
+    {
+      "name": "gcs_less_than_15",
+      "type": "string",
+      "required": true,
+      "description": "Glasgow Coma Scale <15 at two hours after injury (HIGH RISK)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "suspected_skull_fracture",
+      "type": "string",
+      "required": true,
+      "description": "Suspected open or depressed skull fracture (HIGH RISK)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "worsening_headache",
+      "type": "string",
+      "required": true,
+      "description": "History of worsening headache (HIGH RISK)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "irritability_on_exam",
+      "type": "string",
+      "required": true,
+      "description": "Irritability on examination (HIGH RISK)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "basal_skull_fracture_signs",
+      "type": "string",
+      "required": true,
+      "description": "Signs of basal skull fracture (MEDIUM RISK)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "large_scalp_hematoma",
+      "type": "string",
+      "required": true,
+      "description": "Large, boggy scalp hematoma (MEDIUM RISK)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "dangerous_mechanism",
+      "type": "string",
+      "required": true,
+      "description": "Dangerous mechanism of injury (MEDIUM RISK)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "catch_assessment",
+    "type": "object",
+    "unit": "risk_level",
+    "description": "CATCH Rule assessment with risk stratification and CT recommendation"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "No high-risk or medium-risk factors",
+        "interpretation": "Low risk for clinically significant head injury. CT not routinely indicated. Consider clinical observation and discharge planning per institutional protocols."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Medium Risk",
+        "description": "Medium-risk factors present",
+        "interpretation": "Medium risk for brain injury on CT. Consider CT imaging. Medium-risk factors alone identify brain injury on CT with 98.1% sensitivity. Clinical judgment should guide final decision."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "High Risk",
+        "description": "High-risk factors present",
+        "interpretation": "High risk for neurologic intervention required. CT imaging strongly recommended. High-risk factors predict need for neurologic intervention with 100% sensitivity."
+      }
+    ]
+  },
+  "references": [
+    "Osmond MH, Klassen TP, Wells GA, Correll R, Jarvis A, Joubert G, et al; Pediatric Emergency Research Canada (PERC). CATCH: a clinical decision rule for the use of computed tomography in children with minor head injury. CMAJ. 2010 Mar 9;182(4):341-8. doi: 10.1503/cmaj.091421.",
+    "Lyttle MD, Crowe L, Oakley E, Dunning J, Babl FE. Comparing CATCH, CHALICE and PECARN clinical decision rules for paediatric head injuries. Emerg Med J. 2012 Oct;29(10):785-94. doi: 10.1136/emermed-2011-200225.",
+    "Easter JS, Bakes K, Dhaliwal J, Miller M, Caruso E, Haukoos JS. Comparison of PECARN, CATCH, and CHALICE rules for children with minor head injury: a prospective cohort study. Ann Emerg Med. 2014 Aug;64(2):145-52, 152.e1-5. doi: 10.1016/j.annemergmed.2014.01.030."
+  ],
+  "formula": "CATCH Rule: HIGH RISK (need for neurologic intervention) = any of: GCS <15 at 2h, suspected open/depressed skull fracture, worsening headache, irritability on exam. MEDIUM RISK (brain injury on CT) = any of: basal skull fracture signs, large scalp hematoma, dangerous mechanism.",
+  "notes": [
+    "Applies to children aged 0-16 years with minor head injury",
+    "Requires initial GCS ≥13 and injury within 24 hours",
+    "Must have witnessed LOC, amnesia, disorientation, vomiting ≥2x, or irritability",
+    "High-risk factors: 100% sensitive for neurologic intervention, 70.2% specific",
+    "Medium-risk factors: 98.1% sensitive for brain injury on CT, 50.1% specific",
+    "Dangerous mechanisms: MVC >60 km/h, fall >3 feet or 5 stairs, axial load to head",
+    "Basal skull fracture signs: hemotympanum, raccoon eyes, CSF otorrhea/rhinorrhea",
+    "Large scalp hematoma: frontal, temporal, or parietal region",
+    "Consider PECARN rule as alternative - more extensively validated",
+    "Original study included 3,866 children with minor head injury",
+    "CT rate reduction: high-risk only (30.2%), any risk factor (51.9%)",
+    "Less sensitive than PECARN for children under 2 years",
+    "Should not be applied to intoxicated patients",
+    "Clinical judgment should always supplement decision rules"
+  ]
+}

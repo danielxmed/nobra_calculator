@@ -1,0 +1,306 @@
+{
+  "id": "cirs_g",
+  "title": "Cumulative Illness Rating Scale-Geriatric (CIRS-G)",
+  "description": "Quantifies burden of illness in elderly patients by systematically rating the severity of medical conditions across multiple organ systems. The CIRS-G is considered potentially more accurate than the Charlson Comorbidity Index for geriatric patients and provides a comprehensive assessment of overall health status.",
+  "category": "geriatrics",
+  "version": "1.0",
+  "parameters": [
+    {
+      "name": "heart",
+      "type": "integer",
+      "required": true,
+      "description": "Heart conditions (arrhythmias, congestive heart failure, coronary artery disease, myocardial infarction, valvular disease)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "No problem", "description": "No heart disease or symptoms"},
+        {"value": 1, "label": "Mild", "description": "Mild heart disease with minimal symptoms or well-controlled conditions"},
+        {"value": 2, "label": "Moderate", "description": "Moderate heart disease requiring ongoing management, some functional limitation"},
+        {"value": 3, "label": "Severe", "description": "Severe heart disease significantly impacting daily activities"},
+        {"value": 4, "label": "Extremely severe", "description": "Life-threatening heart condition or end-stage disease"}
+      ]
+    },
+    {
+      "name": "vascular",
+      "type": "integer",
+      "required": true,
+      "description": "Vascular system (hypertension, peripheral vascular disease, cerebrovascular disease, aortic aneurysm)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "No problem", "description": "No vascular disease"},
+        {"value": 1, "label": "Mild", "description": "Mild hypertension or early vascular disease, well-controlled"},
+        {"value": 2, "label": "Moderate", "description": "Moderate vascular disease requiring ongoing treatment"},
+        {"value": 3, "label": "Severe", "description": "Severe vascular disease with functional impairment"},
+        {"value": 4, "label": "Extremely severe", "description": "Life-threatening vascular condition"}
+      ]
+    },
+    {
+      "name": "hematopoietic",
+      "type": "integer",
+      "required": true,
+      "description": "Blood and lymphatic systems (anemia, leukemia, lymphoma, bleeding disorders, blood clotting disorders)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "No problem", "description": "No blood or lymphatic disorders"},
+        {"value": 1, "label": "Mild", "description": "Mild anemia or minor blood disorders"},
+        {"value": 2, "label": "Moderate", "description": "Moderate blood disorders requiring treatment"},
+        {"value": 3, "label": "Severe", "description": "Severe blood disorders with significant impact"},
+        {"value": 4, "label": "Extremely severe", "description": "Life-threatening blood disorders or active malignancy"}
+      ]
+    },
+    {
+      "name": "respiratory",
+      "type": "integer",
+      "required": true,
+      "description": "Respiratory system (COPD, asthma, pneumonia, lung cancer, pulmonary embolism)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "No problem", "description": "No respiratory problems"},
+        {"value": 1, "label": "Mild", "description": "Mild respiratory symptoms or well-controlled conditions"},
+        {"value": 2, "label": "Moderate", "description": "Moderate respiratory disease with some functional limitation"},
+        {"value": 3, "label": "Severe", "description": "Severe respiratory disease significantly limiting activity"},
+        {"value": 4, "label": "Extremely severe", "description": "Life-threatening respiratory condition"}
+      ]
+    },
+    {
+      "name": "eent",
+      "type": "integer",
+      "required": true,
+      "description": "Eyes, Ears, Nose, Throat, and Larynx (vision problems, hearing loss, ENT disorders)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "No problem", "description": "No EENT problems"},
+        {"value": 1, "label": "Mild", "description": "Mild vision, hearing, or ENT issues"},
+        {"value": 2, "label": "Moderate", "description": "Moderate sensory or ENT impairment"},
+        {"value": 3, "label": "Severe", "description": "Severe sensory or ENT impairment affecting function"},
+        {"value": 4, "label": "Extremely severe", "description": "Profound sensory loss or life-threatening ENT condition"}
+      ]
+    },
+    {
+      "name": "upper_gi",
+      "type": "integer",
+      "required": true,
+      "description": "Upper gastrointestinal system (esophagus, stomach, duodenum - ulcers, reflux, gastritis)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "No problem", "description": "No upper GI problems"},
+        {"value": 1, "label": "Mild", "description": "Mild upper GI symptoms, well-controlled"},
+        {"value": 2, "label": "Moderate", "description": "Moderate upper GI disease requiring treatment"},
+        {"value": 3, "label": "Severe", "description": "Severe upper GI disease with significant symptoms"},
+        {"value": 4, "label": "Extremely severe", "description": "Life-threatening upper GI condition"}
+      ]
+    },
+    {
+      "name": "lower_gi",
+      "type": "integer",
+      "required": true,
+      "description": "Lower gastrointestinal system (small bowel, colon, rectum - IBD, diverticulitis, cancer)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "No problem", "description": "No lower GI problems"},
+        {"value": 1, "label": "Mild", "description": "Mild lower GI symptoms or well-controlled conditions"},
+        {"value": 2, "label": "Moderate", "description": "Moderate lower GI disease requiring ongoing management"},
+        {"value": 3, "label": "Severe", "description": "Severe lower GI disease with significant impact"},
+        {"value": 4, "label": "Extremely severe", "description": "Life-threatening lower GI condition"}
+      ]
+    },
+    {
+      "name": "liver_pancreas_biliary",
+      "type": "integer",
+      "required": true,
+      "description": "Liver, Pancreas, and Biliary system (hepatitis, cirrhosis, pancreatitis, gallbladder disease)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "No problem", "description": "No hepatic, pancreatic, or biliary problems"},
+        {"value": 1, "label": "Mild", "description": "Mild liver, pancreatic, or biliary disease"},
+        {"value": 2, "label": "Moderate", "description": "Moderate hepatobiliary disease requiring treatment"},
+        {"value": 3, "label": "Severe", "description": "Severe hepatobiliary disease with functional impairment"},
+        {"value": 4, "label": "Extremely severe", "description": "Life-threatening hepatobiliary condition"}
+      ]
+    },
+    {
+      "name": "renal",
+      "type": "integer",
+      "required": true,
+      "description": "Renal system (chronic kidney disease, acute kidney injury, nephrolithiasis, glomerulonephritis)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "No problem", "description": "No kidney problems"},
+        {"value": 1, "label": "Mild", "description": "Mild kidney disease or early CKD"},
+        {"value": 2, "label": "Moderate", "description": "Moderate kidney disease (CKD stage 3)"},
+        {"value": 3, "label": "Severe", "description": "Severe kidney disease (CKD stage 4-5)"},
+        {"value": 4, "label": "Extremely severe", "description": "End-stage renal disease or acute life-threatening kidney condition"}
+      ]
+    },
+    {
+      "name": "genitourinary",
+      "type": "integer",
+      "required": true,
+      "description": "Genitourinary system (prostate disease, urinary incontinence, sexual dysfunction, reproductive disorders)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "No problem", "description": "No genitourinary problems"},
+        {"value": 1, "label": "Mild", "description": "Mild genitourinary symptoms"},
+        {"value": 2, "label": "Moderate", "description": "Moderate genitourinary disease affecting quality of life"},
+        {"value": 3, "label": "Severe", "description": "Severe genitourinary disease with significant functional impact"},
+        {"value": 4, "label": "Extremely severe", "description": "Life-threatening genitourinary condition"}
+      ]
+    },
+    {
+      "name": "musculoskeletal_skin",
+      "type": "integer",
+      "required": true,
+      "description": "Musculoskeletal and Skin systems (arthritis, osteoporosis, fractures, skin disorders, wounds)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "No problem", "description": "No musculoskeletal or skin problems"},
+        {"value": 1, "label": "Mild", "description": "Mild arthritis, minor skin conditions, or minor injuries"},
+        {"value": 2, "label": "Moderate", "description": "Moderate musculoskeletal disease or skin conditions"},
+        {"value": 3, "label": "Severe", "description": "Severe musculoskeletal disease limiting mobility or severe skin conditions"},
+        {"value": 4, "label": "Extremely severe", "description": "Debilitating musculoskeletal disease or life-threatening skin condition"}
+      ]
+    },
+    {
+      "name": "neurologic",
+      "type": "integer",
+      "required": true,
+      "description": "Neurologic system (stroke, dementia, Parkinson's disease, seizures, peripheral neuropathy)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "No problem", "description": "No neurologic problems"},
+        {"value": 1, "label": "Mild", "description": "Mild neurologic symptoms or well-controlled conditions"},
+        {"value": 2, "label": "Moderate", "description": "Moderate neurologic disease with some functional limitation"},
+        {"value": 3, "label": "Severe", "description": "Severe neurologic disease significantly affecting function"},
+        {"value": 4, "label": "Extremely severe", "description": "Devastating neurologic condition or vegetative state"}
+      ]
+    },
+    {
+      "name": "endocrine_breast",
+      "type": "integer",
+      "required": true,
+      "description": "Endocrine and Breast systems (diabetes, thyroid disease, adrenal disorders, breast cancer)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "No problem", "description": "No endocrine or breast problems"},
+        {"value": 1, "label": "Mild", "description": "Mild endocrine disorders or well-controlled diabetes"},
+        {"value": 2, "label": "Moderate", "description": "Moderate endocrine disease requiring ongoing management"},
+        {"value": 3, "label": "Severe", "description": "Severe endocrine disease with complications"},
+        {"value": 4, "label": "Extremely severe", "description": "Life-threatening endocrine condition or metastatic breast cancer"}
+      ]
+    }
+  ],
+  "result": {
+    "name": "cirs_g_assessment",
+    "type": "object",
+    "unit": "points",
+    "description": "Comprehensive CIRS-G assessment including total score, severity indices, and comorbidity analysis"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 6,
+        "stage": "Low Burden",
+        "description": "Minimal illness burden",
+        "interpretation": "Low overall illness burden with minimal impact on health status. Patients typically have good functional capacity and prognosis."
+      },
+      {
+        "min": 7,
+        "max": 12,
+        "stage": "Mild Burden",
+        "description": "Mild illness burden",
+        "interpretation": "Mild to moderate illness burden. Some health conditions present but generally well-managed with good overall functional status."
+      },
+      {
+        "min": 13,
+        "max": 20,
+        "stage": "Moderate Burden",
+        "description": "Moderate illness burden",
+        "interpretation": "Moderate illness burden with multiple health conditions or more severe single conditions. May impact daily activities and require comprehensive care."
+      },
+      {
+        "min": 21,
+        "max": 30,
+        "stage": "High Burden",
+        "description": "High illness burden",
+        "interpretation": "High illness burden with multiple severe conditions or very severe single conditions. Significant impact on function and quality of life."
+      },
+      {
+        "min": 31,
+        "max": 52,
+        "stage": "Very High Burden",
+        "description": "Very high illness burden",
+        "interpretation": "Very high illness burden with multiple severe conditions. May indicate poor prognosis and need for intensive medical management or palliative care."
+      }
+    ]
+  },
+  "clinical_applications": [
+    "Comprehensive geriatric assessment",
+    "Predicting hospital outcomes and length of stay",
+    "Research tool for comorbidity assessment",
+    "Treatment planning and prognosis",
+    "Resource allocation in geriatric care",
+    "Comparison with other comorbidity indices",
+    "Monitoring disease progression over time"
+  ],
+  "references": [
+    "Miller MD, Paradis CF, Houck PR, et al. Rating chronic medical illness burden in geropsychiatric practice and research: application of the Cumulative Illness Rating Scale. Psychiatry Res. 1992;41(3):237-248. doi: 10.1016/0165-1781(92)90005-n.",
+    "Linn BS, Linn MW, Gurel L. Cumulative illness rating scale. J Am Geriatr Soc. 1968;16(5):622-626. doi: 10.1111/j.1532-5415.1968.tb02103.x.",
+    "Hudon C, Fortin M, Vanasse A. Cumulative Illness Rating Scale was a reliable and valid index in a family practice context. J Clin Epidemiol. 2005;58(6):603-608. doi: 10.1016/j.jclinepi.2004.10.017.",
+    "Salvi F, Miller MD, Grilli A, et al. A manual of guidelines to score the modified cumulative illness rating scale and its validation in acute hospitalized elderly patients. J Am Geriatr Soc. 2008;56(10):1926-1931. doi: 10.1111/j.1532-5415.2008.01935.x."
+  ],
+  "formula": "Total Score = Sum of all 13 organ system scores (0-52); Severity Index = Total Score / Number of categories with scores > 0; Comorbidity Index = Number of categories with scores ≥ 3",
+  "notes": [
+    "Scores range from 0-52 (13 categories × 4 maximum points each)",
+    "Higher scores indicate greater illness burden",
+    "Consider both the total score and the number of affected organ systems",
+    "The CIRS-G may be more accurate than Charlson Comorbidity Index for geriatric patients",
+    "Useful for predicting hospital outcomes including mortality and length of stay",
+    "Should be completed by trained healthcare professionals familiar with the patient's medical history",
+    "Score can be used to track changes in illness burden over time"
+  ],
+  "validation": {
+    "population": "Elderly patients (typically ≥65 years)",
+    "settings": ["Inpatient", "Outpatient", "Geriatric assessment", "Research"],
+    "outcomes_predicted": ["Mortality", "Hospital length of stay", "Functional decline", "Resource utilization"],
+    "reliability": "Good inter-rater reliability (ICC 0.78-0.88)"
+  }
+}

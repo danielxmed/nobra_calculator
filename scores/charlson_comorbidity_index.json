@@ -1,0 +1,246 @@
+{
+  "id": "charlson_comorbidity_index",
+  "title": "Charlson Comorbidity Index (CCI)",
+  "description": "Predicts 10-year survival in patients with multiple comorbidities. Uses 19 weighted comorbidity categories plus age adjustment to estimate mortality risk and guide clinical decision-making.",
+  "category": "geriatrics",
+  "version": "1987",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years. Age adjustment: 0 points (<50), 1 point (50-59), 2 points (60-69), 3 points (70-79), 4 points (≥80)",
+      "validation": {
+        "min": 0,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "myocardial_infarction",
+      "type": "string",
+      "required": true,
+      "description": "History of myocardial infarction (1 point if present)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "congestive_heart_failure",
+      "type": "string",
+      "required": true,
+      "description": "Congestive heart failure (1 point if present)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "peripheral_vascular_disease",
+      "type": "string",
+      "required": true,
+      "description": "Peripheral vascular disease (1 point if present)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "cerebrovascular_disease",
+      "type": "string",
+      "required": true,
+      "description": "Cerebrovascular accident or TIA (1 point if present)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "dementia",
+      "type": "string",
+      "required": true,
+      "description": "Dementia (1 point if present)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "chronic_pulmonary_disease",
+      "type": "string",
+      "required": true,
+      "description": "Chronic pulmonary disease (1 point if present)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "connective_tissue_disease",
+      "type": "string",
+      "required": true,
+      "description": "Connective tissue disease (1 point if present)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "peptic_ulcer_disease",
+      "type": "string",
+      "required": true,
+      "description": "Peptic ulcer disease (1 point if present)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "liver_disease",
+      "type": "string",
+      "required": true,
+      "description": "Liver disease severity. Mild (1 point), Moderate-Severe (3 points), None (0 points). Mutually exclusive with diabetes categories.",
+      "options": ["none", "mild", "moderate_severe"],
+      "validation": {
+        "enum": ["none", "mild", "moderate_severe"]
+      }
+    },
+    {
+      "name": "diabetes",
+      "type": "string",
+      "required": true,
+      "description": "Diabetes severity. Uncomplicated (1 point), With end-organ damage (2 points), None (0 points). Mutually exclusive with liver disease categories.",
+      "options": ["none", "uncomplicated", "with_end_organ_damage"],
+      "validation": {
+        "enum": ["none", "uncomplicated", "with_end_organ_damage"]
+      }
+    },
+    {
+      "name": "hemiplegia",
+      "type": "string",
+      "required": true,
+      "description": "Hemiplegia (2 points if present)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "moderate_severe_ckd",
+      "type": "string",
+      "required": true,
+      "description": "Moderate to severe chronic kidney disease (2 points if present)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "localized_solid_tumor",
+      "type": "string",
+      "required": true,
+      "description": "Localized solid tumor (2 points if present)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "leukemia",
+      "type": "string",
+      "required": true,
+      "description": "Leukemia (2 points if present)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "lymphoma",
+      "type": "string",
+      "required": true,
+      "description": "Lymphoma (2 points if present)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "metastatic_solid_tumor",
+      "type": "string",
+      "required": true,
+      "description": "Metastatic solid tumor (6 points if present)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "aids",
+      "type": "string",
+      "required": true,
+      "description": "AIDS (6 points if present)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "charlson_assessment",
+    "type": "object",
+    "unit": "points",
+    "description": "Charlson Comorbidity Index score with 10-year survival probability"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "Minimal comorbidity burden",
+        "interpretation": "Score 0-1: Excellent 10-year survival (>90%). Minimal impact from comorbidities on life expectancy."
+      },
+      {
+        "min": 2,
+        "max": 3,
+        "stage": "Moderate Risk",
+        "description": "Moderate comorbidity burden",
+        "interpretation": "Score 2-3: Good 10-year survival (70-90%). Moderate impact from comorbidities on life expectancy."
+      },
+      {
+        "min": 4,
+        "max": 5,
+        "stage": "High Risk",
+        "description": "Significant comorbidity burden",
+        "interpretation": "Score 4-5: Reduced 10-year survival (30-70%). Significant impact from comorbidities on life expectancy."
+      },
+      {
+        "min": 6,
+        "max": 37,
+        "stage": "Very High Risk",
+        "description": "Severe comorbidity burden",
+        "interpretation": "Score ≥6: Poor 10-year survival (<30%). Severe impact from comorbidities on life expectancy."
+      }
+    ]
+  },
+  "references": [
+    "Charlson ME, Pompei P, Ales KL, MacKenzie CR. A new method of classifying prognostic comorbidity in longitudinal studies: development and validation. J Chronic Dis. 1987;40(5):373-83.",
+    "Charlson M, Szatrowski TP, Peterson J, Gold J. Validation of a combined comorbidity index. J Clin Epidemiol. 1994;47(11):1245-51.",
+    "Deyo RA, Cherkin DC, Ciol MA. Adapting a clinical comorbidity index for use with ICD-9-CM administrative databases. J Clin Epidemiol. 1992;45(6):613-9."
+  ],
+  "formula": "CCI Score = Sum of comorbidity points + Age adjustment points. 10-year survival = 0.983^(CCI × 0.9)",
+  "notes": [
+    "Developed in 1987 by Charlson et al. for predicting 10-year mortality",
+    "Age adjustment: <50y (0 pts), 50-59y (1 pt), 60-69y (2 pts), 70-79y (3 pts), ≥80y (4 pts)",
+    "Maximum possible score is 37 points",
+    "Higher scores indicate higher predicted mortality and lower 10-year survival",
+    "Liver disease categories are mutually exclusive (mild vs moderate-severe)",
+    "Diabetes categories are mutually exclusive (uncomplicated vs with end-organ damage)",
+    "Widely used in clinical research and practice for risk stratification",
+    "Helps guide treatment intensity and screening decisions based on life expectancy",
+    "Originally validated in hospitalized medical patients",
+    "Formula assumes theoretical low-risk population with 98.3% 10-year survival"
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "id": "cha2ds2_va_score",
+  "title": "CHA₂DS₂-VA Score for Atrial Fibrillation Stroke Risk",
+  "description": "Calculates stroke risk for patients with atrial fibrillation; similar to CHA₂DS₂-VASc Score but without considering sex. Simplified version recommended in 2024 ESC guidelines to remove complexity of gender-based scoring.",
+  "category": "cardiology",
+  "version": "2024",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years. <65 years (0 points), 65-74 years (1 point), ≥75 years (2 points)",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "congestive_heart_failure",
+      "type": "string",
+      "required": true,
+      "description": "Congestive heart failure or left ventricular dysfunction (1 point if present)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hypertension",
+      "type": "string",
+      "required": true,
+      "description": "History of hypertension or currently on antihypertensive treatment (1 point if present)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "diabetes_mellitus",
+      "type": "string",
+      "required": true,
+      "description": "Diabetes mellitus (1 point if present)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "stroke_tia_thromboembolism",
+      "type": "string",
+      "required": true,
+      "description": "Prior stroke, TIA, or arterial thromboembolism (2 points if present)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "vascular_disease",
+      "type": "string",
+      "required": true,
+      "description": "Vascular disease including myocardial infarction, peripheral artery disease, or aortic plaque (1 point if present)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "cha2ds2_va_assessment",
+    "type": "object",
+    "unit": "points",
+    "description": "CHA₂DS₂-VA score with stroke risk assessment and anticoagulation recommendations"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "Very low stroke risk",
+        "interpretation": "Score 0: 0.5 strokes per 100 patient-years. Anticoagulation is not recommended. Consider bleeding risk assessment."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Moderate Risk",
+        "description": "Low-moderate stroke risk",
+        "interpretation": "Score 1: 1.5 strokes per 100 patient-years. Use clinical judgment to weigh risks and benefits of anticoagulation. Consider individual patient factors."
+      },
+      {
+        "min": 2,
+        "max": 9,
+        "stage": "High Risk",
+        "description": "High stroke risk",
+        "interpretation": "Score ≥2: 2.9-19.5 strokes per 100 patient-years. Oral anticoagulation is recommended to reduce stroke risk unless contraindicated."
+      }
+    ]
+  },
+  "references": [
+    "Lip GYH, Keshishian A, Li X, Hamilton M, Masseria C, Gupta K, Mardekian J, Friend K, Nadkarni A, Pan X, Baser O, Deitelzweig S. Effectiveness and Safety of Oral Anticoagulants Among Nonvalvular Atrial Fibrillation Patients. Stroke. 2018;49(12):2933-2944.",
+    "Hindricks G, Potpara T, Dagres N, et al. 2020 ESC Guidelines for the diagnosis and management of atrial fibrillation developed in collaboration with the European Association for Cardio-Thoracic Surgery (EACTS). Eur Heart J. 2021;42(5):373-498.",
+    "Romiti GF, Pastori D, Rivera-Caravaca JM, et al. Adherence to the 'Atrial Fibrillation Better Care' pathway in patients with atrial fibrillation: impact on clinical outcomes-a systematic review and meta-analysis of 285,000 patients. Thromb Haemost. 2022;122(3):406-414.",
+    "Boriani G, Ruff CT, Kuder JF, et al. Relationship between time to therapeutic anticoagulation and clinical outcomes in atrial fibrillation patients treated with warfarin. Europace. 2021;23(3):334-342."
+  ],
+  "formula": "CHA₂DS₂-VA Score = C (1) + H (1) + A₂ (age ≥75: 2) + D (1) + S₂ (2) + V (1) + A (age 65-74: 1). Range: 0-8 points.",
+  "notes": [
+    "Introduced in 2024 ESC guidelines to simplify CHA₂DS₂-VASc by removing sex category",
+    "Rationale: Female sex as age-dependent rather than independent risk factor",
+    "Removes complexity for healthcare professionals and patients",
+    "Includes non-binary and transgender individuals without gender-based scoring",
+    "Risk of thromboembolism in women has decreased over time (2007-2018)",
+    "Discrimination ability comparable to CHA₂DS₂-VASc score",
+    "Score 0: No anticoagulation recommended",
+    "Score 1: Clinical judgment required - consider individual factors",
+    "Score ≥2: Oral anticoagulation recommended",
+    "Consider bleeding risk assessment (HAS-BLED) alongside stroke risk",
+    "Periodically reassess stroke risk as patient conditions change",
+    "Maximum possible score is 8 points",
+    "Applies to nonvalvular atrial fibrillation patients"
+  ]
+}

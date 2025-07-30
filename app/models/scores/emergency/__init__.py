@@ -31,6 +31,25 @@ from .benzodiazepine_conversion import BenzodiazepineConversionRequest, Benzodia
 from .bicarbonate_deficit import BicarbonateDeficitRequest, BicarbonateDeficitResponse
 from .bisap_score import BisapScoreRequest, BisapScoreResponse
 from .blast_lung_injury_severity import BlastLungInjurySeverityRequest, BlastLungInjurySeverityResponse
+from .burch_wartofsky_point_scale import BurchWartofskypointScaleRequest, BurchWartofskypointScaleResponse
+from .canadian_c_spine_rule import CanadianCSpineRuleRequest, CanadianCSpineRuleResponse
+from .canadian_ct_head_rule import CanadianCtHeadRuleRequest, CanadianCtHeadRuleResponse
+from .canadian_syncope_risk_score import CanadianSyncopeRiskScoreRequest, CanadianSyncopeRiskScoreResponse
+from .caprini_score_2005 import CapriniScore2005Request, CapriniScore2005Response
+from .cart_score import CartScoreRequest, CartScoreResponse
+from .centor_score import CentorScoreRequest, CentorScoreResponse
+from .cedocs_score import CedocsScoreRequest, CedocsScoreResponse
+from .chip_prediction_rule import ChipPredictionRuleRequest, ChipPredictionRuleResponse
+from .chosen_covid_discharge import ChosenCovidDischargeRequest, ChosenCovidDischargeResponse
+from .covid_inpatient_risk_calculator import CovidInpatientRiskCalculatorRequest, CovidInpatientRiskCalculatorResponse
+from .cincinnati_prehospital_stroke_severity_scale import (
+    CincinnatiPrehospitalStrokeSeverityScaleRequest,
+    CincinnatiPrehospitalStrokeSeverityScaleResponse,
+)
+from .cam_icu import CamIcuRequest, CamIcuResponse
+from .covid_gram_critical_illness import CovidGramCriticalIllnessRequest, CovidGramCriticalIllnessResponse
+from .cpot_pain_observation import CpotPainObservationRequest, CpotPainObservationResponse
+from .danger_assessment_tool import DangerAssessmentToolRequest, DangerAssessmentToolResponse
 
 __all__ = [
     "FourCMortalityRequest",
@@ -79,4 +98,36 @@ __all__ = [
     "BisapScoreResponse",
     "BlastLungInjurySeverityRequest",
     "BlastLungInjurySeverityResponse",
+    "BurchWartofskypointScaleRequest",
+    "BurchWartofskypointScaleResponse",
+    "CanadianCSpineRuleRequest",
+    "CanadianCSpineRuleResponse",
+    "CanadianCtHeadRuleRequest",
+    "CanadianCtHeadRuleResponse",
+    "CanadianSyncopeRiskScoreRequest",
+    "CanadianSyncopeRiskScoreResponse",
+    "CapriniScore2005Request",
+    "CapriniScore2005Response",
+    "CartScoreRequest",
+    "CartScoreResponse",
+    "CentorScoreRequest",
+    "CentorScoreResponse",
+    "CedocsScoreRequest",
+    "CedocsScoreResponse",
+    "ChipPredictionRuleRequest",
+    "ChipPredictionRuleResponse",
+    "ChosenCovidDischargeRequest",
+    "ChosenCovidDischargeResponse",
+    "CovidInpatientRiskCalculatorRequest",
+    "CovidInpatientRiskCalculatorResponse",
+    "CincinnatiPrehospitalStrokeSeverityScaleRequest",
+    "CincinnatiPrehospitalStrokeSeverityScaleResponse",
+    "CamIcuRequest",
+    "CamIcuResponse",
+    "CovidGramCriticalIllnessRequest",
+    "CovidGramCriticalIllnessResponse",
+    "CpotPainObservationRequest",
+    "CpotPainObservationResponse",
+    "DangerAssessmentToolRequest",
+    "DangerAssessmentToolResponse",
 ]

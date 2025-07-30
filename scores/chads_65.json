@@ -1,0 +1,135 @@
+{
+  "id": "chads_65",
+  "title": "CHADS-65 (Canadian Society of Cardiology Guideline)",
+  "description": "Clinical decision algorithm developed by the Canadian Cardiovascular Society to guide antithrombotic therapy for patients with nonvalvular atrial fibrillation or atrial flutter. Uses age-based approach to determine whether patients should receive oral anticoagulation, antiplatelet therapy, or no antithrombotic therapy for stroke prevention.",
+  "category": "cardiology",
+  "version": "2020",
+  "parameters": [
+    {
+      "name": "age_65_or_older",
+      "type": "string",
+      "required": true,
+      "description": "Patient age 65 years or older",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "congestive_heart_failure",
+      "type": "string",
+      "required": true,
+      "description": "History of congestive heart failure or left ventricular dysfunction",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hypertension",
+      "type": "string",
+      "required": true,
+      "description": "History of hypertension or current antihypertensive treatment",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "diabetes_mellitus",
+      "type": "string",
+      "required": true,
+      "description": "History of diabetes mellitus or current antidiabetic treatment",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "stroke_tia_history",
+      "type": "string",
+      "required": true,
+      "description": "Previous stroke, transient ischemic attack, or thromboembolism",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "coronary_artery_disease",
+      "type": "string",
+      "required": true,
+      "description": "Coronary artery disease including myocardial infarction or coronary revascularization",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "peripheral_artery_disease",
+      "type": "string",
+      "required": true,
+      "description": "Peripheral artery disease including previous amputation, bypass surgery, or angioplasty",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "chads_65_recommendation",
+    "type": "object",
+    "unit": "algorithm",
+    "description": "CHADS-65 decision algorithm result with antithrombotic therapy recommendation"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Oral Anticoagulation",
+        "description": "Age ≥65 or CHADS₂ risk factors present",
+        "interpretation": "Oral anticoagulation recommended. Direct oral anticoagulants (DOACs) preferred over warfarin for stroke prevention in nonvalvular atrial fibrillation."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Antiplatelet Therapy",
+        "description": "Age <65, no CHADS₂ risk factors, vascular disease present",
+        "interpretation": "Antiplatelet therapy recommended. ASA 81mg daily for stroke prevention in patients with vascular disease but low CHADS₂ risk."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "No Antithrombotic Therapy",
+        "description": "Age <65, no CHADS₂ risk factors, no vascular disease",
+        "interpretation": "No antithrombotic therapy recommended. Annual reassessment advised as patient age and comorbidities may change."
+      }
+    ]
+  },
+  "references": [
+    "Andrade JG, Aguilar M, Atzema C, Bell A, Cairns JA, Cheung CC, et al. The 2020 Canadian Cardiovascular Society/Canadian Heart Rhythm Society Comprehensive Guidelines for the Management of Atrial Fibrillation. Can J Cardiol. 2020 Dec;36(12):1847-1948. doi: 10.1016/j.cjca.2020.09.001.",
+    "Verma A, Cairns JA, Mitchell LB, Macle L, Stiell IG, Gladstone D, et al. 2014 focused update of the Canadian Cardiovascular Society Guidelines for the management of atrial fibrillation. Can J Cardiol. 2014 Oct;30(10):1114-30. doi: 10.1016/j.cjca.2014.08.001.",
+    "Canadian Agency for Drugs and Technologies in Health (CADTH). CHAD65 and CHA2DS2-VASc Risk Stratification Tools for Patients with Atrial Fibrillation: A Review of Clinical Effectiveness and Guidelines. Ottawa: CADTH; 2019 Mar.",
+    "Lip GY, Nieuwlaat R, Pisters R, Lane DA, Crijns HJ. Refining clinical risk stratification for predicting stroke and thromboembolism in atrial fibrillation using a novel risk factor-based approach: the euro heart survey on atrial fibrillation. Chest. 2010 Feb;137(2):263-72. doi: 10.1378/chest.09-1584."
+  ],
+  "formula": "Decision Algorithm: Step 1: Age ≥65? → OAC. Step 2: CHADS₂ risk factors present? → OAC. Step 3: Vascular disease present? → ASA. Otherwise → No therapy.",
+  "notes": [
+    "CHADS-65 is a decision algorithm, not a numerical scoring system",
+    "Primary decision point: Age ≥65 years automatically qualifies for anticoagulation",
+    "CHADS₂ risk factors: CHF, Hypertension, Age ≥75, Diabetes, Stroke/TIA history",
+    "For CHADS-65, age cutoff is 65 years (not 75 as in traditional CHADS₂)",
+    "Direct oral anticoagulants (DOACs) preferred over warfarin",
+    "ASA dose recommendation: 81mg daily for vascular disease patients",
+    "Combination ASA + OAC beyond 1 year not recommended (bleeding risk)",
+    "Algorithm designed for nonvalvular atrial fibrillation and atrial flutter",
+    "Annual stroke risk: 2.1% for ages 65-74, 4.4% for ages ≥75",
+    "Endorsed with Strong Recommendation, High-Quality Evidence (CCS 2020)",
+    "Simplifies decision-making compared to complex numerical risk scores",
+    "Age alone (≥65) is sufficient indication for anticoagulation",
+    "For recent coronary stents, consult interventional cardiologist for combination therapy",
+    "Annual reassessment recommended as patient risk factors may change",
+    "Algorithm emphasizes practical clinical decision-making",
+    "Designed for emergency departments and primary care settings"
+  ]
+}

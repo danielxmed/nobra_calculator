@@ -1,0 +1,291 @@
+{
+  "id": "danger_assessment_tool",
+  "title": "Danger Assessment Tool for Domestic Abuse",
+  "description": "Predicts risk of death by intimate partner (IP) in violent intimate relationship. Validated lethality risk assessment instrument for intimate partner femicide developed by Dr. Jacquelyn Campbell at Johns Hopkins University.",
+  "category": "emergency",
+  "version": "revised_2019",
+  "parameters": [
+    {
+      "name": "physical_violence_increased",
+      "type": "string",
+      "required": true,
+      "description": "Has the physical violence increased in frequency or severity over the past year?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "owns_gun",
+      "type": "string",
+      "required": true,
+      "description": "Does he own a gun?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "threatened_weapon",
+      "type": "string",
+      "required": true,
+      "description": "Has he ever threatened or tried to kill you with a weapon?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "threatened_kill_you",
+      "type": "string",
+      "required": true,
+      "description": "Has he threatened to kill you?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "avoided_killing",
+      "type": "string",
+      "required": true,
+      "description": "Do you think he might try to kill you?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "beaten_pregnant",
+      "type": "string",
+      "required": true,
+      "description": "Has he beaten you while you were pregnant?",
+      "options": ["yes", "no", "not_applicable"],
+      "validation": {
+        "enum": ["yes", "no", "not_applicable"]
+      }
+    },
+    {
+      "name": "jealous_controlling",
+      "type": "string",
+      "required": true,
+      "description": "Is he violently and constantly jealous of you?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "controls_activities",
+      "type": "string",
+      "required": true,
+      "description": "Have you ever been beaten by him when he was drunk or high on drugs?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "controls_daily_activities",
+      "type": "string",
+      "required": true,
+      "description": "Does he control most or all of your daily activities?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "violent_others",
+      "type": "string",
+      "required": true,
+      "description": "Has he ever been violent toward your children?",
+      "options": ["yes", "no", "not_applicable"],
+      "validation": {
+        "enum": ["yes", "no", "not_applicable"]
+      }
+    },
+    {
+      "name": "violent_toward_others",
+      "type": "string",
+      "required": true,
+      "description": "Has he ever been violent toward other family members or friends?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "threatened_suicide",
+      "type": "string",
+      "required": true,
+      "description": "Has he ever threatened or attempted suicide?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "threatened_kill_children",
+      "type": "string",
+      "required": true,
+      "description": "Has he threatened to kill your children?",
+      "options": ["yes", "no", "not_applicable"],
+      "validation": {
+        "enum": ["yes", "no", "not_applicable"]
+      }
+    },
+    {
+      "name": "child_not_his",
+      "type": "string",
+      "required": true,
+      "description": "Do you have a child that is not his?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "employment_problems",
+      "type": "string",
+      "required": true,
+      "description": "Has he lost his job in the past year?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "follows_spies",
+      "type": "string",
+      "required": true,
+      "description": "Does he follow or spy on you, leave threatening notes, destroy your property, or call you when you don't want him to?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "forced_sex",
+      "type": "string",
+      "required": true,
+      "description": "Has he forced you to have sex when you did not wish to do so?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "tried_to_strangle",
+      "type": "string",
+      "required": true,
+      "description": "Has he ever tried to choke you?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "drugs_alcohol_problems",
+      "type": "string",
+      "required": true,
+      "description": "Does he use illegal drugs?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "stepchild_present",
+      "type": "string",
+      "required": true,
+      "description": "Is he an alcoholic or problem drinker?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "danger_assessment",
+    "type": "object",
+    "unit": "points",
+    "description": "Danger assessment score with risk level and safety recommendations"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 7,
+        "stage": "Variable Danger",
+        "description": "Low to moderate risk",
+        "interpretation": "Danger is probably not extreme at this time, but safety planning is still important. Risk factors should be monitored and safety measures implemented. Consider periodic reassessment."
+      },
+      {
+        "min": 8,
+        "max": 13,
+        "stage": "Increased Danger",
+        "description": "Moderate to high risk",
+        "interpretation": "Risk of intimate partner homicide is elevated. Enhanced safety planning is essential. Consider coordinated community response and frequent reassessment. Professional intervention strongly recommended."
+      },
+      {
+        "min": 14,
+        "max": 20,
+        "stage": "Extreme Danger",
+        "description": "High to extreme risk",
+        "interpretation": "Risk of intimate partner homicide is severe and immediate. Emergency safety planning is critical. Law enforcement notification, shelter placement, and coordinated high-risk response may be necessary. Immediate professional intervention required."
+      }
+    ]
+  },
+  "clinical_applications": [
+    "Intimate partner violence risk assessment",
+    "Law enforcement lethality screening",
+    "Healthcare provider screening in emergency departments",
+    "Domestic violence shelter intake assessment",
+    "Court-based victim advocacy programs",
+    "Safety planning and risk management",
+    "Community coordinated response protocols"
+  ],
+  "safety_planning": {
+    "immediate_safety": [
+      "Emergency contact numbers readily available",
+      "Safe place identified to go in crisis",
+      "Emergency bag prepared with essentials",
+      "Safety plan for children if applicable",
+      "Documentation of abuse (photos, medical records)",
+      "Important documents in safe location"
+    ],
+    "ongoing_safety": [
+      "Regular safety plan review and updates",
+      "Support network activation and maintenance",
+      "Legal protection order consideration",
+      "Counseling and support services engagement",
+      "Economic safety and independence planning",
+      "Technology safety (phone, computer, social media)"
+    ]
+  },
+  "references": [
+    "Campbell JC, Webster D, Koziol-McLain J, et al. Risk factors for femicide in abusive relationships: results from a multisite case control study. Am J Public Health. 2003;93(7):1089-1097. doi: 10.2105/ajph.93.7.1089.",
+    "Campbell JC, Webster DW, Glass N. The danger assessment: validation of a lethality risk assessment instrument for intimate partner femicide. J Interpers Violence. 2009;24(4):653-674. doi: 10.1177/0886260508317180.",
+    "Messing JT, Campbell J, Webster DW, et al. The Oklahoma Lethality Assessment Study: a quasi-experimental evaluation of the lethality assessment program. Soc Serv Rev. 2015;89(3):499-530. doi: 10.1086/682621.",
+    "Campbell JC, Alhusen JL, Draughon JE, Kub J, Walton-Moss B. Vulnerability and protective factors for intimate partner violence. In: Mitchell C, Anglin D, eds. Intimate Partner Violence: A Health-Based Perspective. Oxford University Press; 2009:143-162."
+  ],
+  "formula": "Weighted scoring system based on validated risk factors with adjusted odds ratios from 11-city femicide study",
+  "notes": [
+    "Developed and validated by Dr. Jacquelyn Campbell at Johns Hopkins University",
+    "Based on 11-city case-control study of intimate partner femicide",
+    "Requires specialized training for proper administration and interpretation",
+    "Should be used as part of comprehensive safety planning process",
+    "Risk assessment should be conducted in private, safe environment",
+    "Consider victim safety when documenting and storing assessment results",
+    "Tool is designed for use with women in heterosexual relationships",
+    "Regular reassessment recommended as risk factors can change over time",
+    "Professional consultation recommended for high-risk cases"
+  ],
+  "validation": {
+    "population": "Women in abusive intimate partner relationships",
+    "settings": ["Healthcare facilities", "Law enforcement", "Domestic violence shelters", "Court systems", "Community advocacy programs"],
+    "evidence_basis": "Multi-site case-control study with 310 femicide cases and 324 controls",
+    "clinical_utility": "Validated lethality risk assessment with demonstrated predictive validity for intimate partner homicide"
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "id": "corrected_count_increment",
+  "title": "Corrected Count Increment (CCI) for Platelet Transfusion",
+  "description": "Assesses adequacy of response to platelet transfusion by measuring the expected increase in platelets adjusted for patient size and platelet dose",
+  "category": "hematology",
+  "version": "2021",
+  "parameters": [
+    {
+      "name": "pre_transfusion_count",
+      "type": "integer",
+      "required": true,
+      "description": "Pre-transfusion platelet count",
+      "validation": {
+        "min": 0,
+        "max": 500000
+      },
+      "unit": "platelets/μL"
+    },
+    {
+      "name": "post_transfusion_count",
+      "type": "integer",
+      "required": true,
+      "description": "Post-transfusion platelet count",
+      "validation": {
+        "min": 0,
+        "max": 500000
+      },
+      "unit": "platelets/μL"
+    },
+    {
+      "name": "time_after_transfusion",
+      "type": "string",
+      "required": true,
+      "description": "Time after transfusion when post-transfusion count was measured",
+      "options": ["1_hour", "20_hour"],
+      "validation": {
+        "enum": ["1_hour", "20_hour"]
+      }
+    },
+    {
+      "name": "patient_height",
+      "type": "float",
+      "required": true,
+      "description": "Patient height",
+      "validation": {
+        "min": 48,
+        "max": 90
+      },
+      "unit": "inches"
+    },
+    {
+      "name": "patient_weight",
+      "type": "float",
+      "required": true,
+      "description": "Patient weight",
+      "validation": {
+        "min": 0.5,
+        "max": 620
+      },
+      "unit": "lbs"
+    },
+    {
+      "name": "platelet_unit_content",
+      "type": "float",
+      "required": true,
+      "description": "Total platelet content in transfused units",
+      "validation": {
+        "min": 0.5,
+        "max": 500
+      },
+      "unit": "×10¹¹ platelets"
+    }
+  ],
+  "result": {
+    "name": "cci_value",
+    "type": "float",
+    "unit": "platelets/μL/m²/(×10¹¹ platelets)",
+    "description": "Corrected Count Increment value"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "condition": "1_hour_successful",
+        "min": 7500,
+        "max": null,
+        "stage": "Successful Transfusion",
+        "description": "Good platelet response at 1 hour",
+        "interpretation": "CCI >7,500 at 1 hour indicates successful platelet transfusion with adequate response"
+      },
+      {
+        "condition": "1_hour_poor",
+        "min": null,
+        "max": 7500,
+        "stage": "Poor Response",
+        "description": "Inadequate platelet response at 1 hour",
+        "interpretation": "CCI ≤7,500 at 1 hour suggests poor platelet response; consider platelet refractoriness and repeat transfusion"
+      },
+      {
+        "condition": "20_hour_successful",
+        "min": 4800,
+        "max": null,
+        "stage": "Successful Transfusion",
+        "description": "Good platelet response at 20 hours",
+        "interpretation": "CCI >4,800 at 20 hours indicates successful platelet transfusion with adequate response"
+      },
+      {
+        "condition": "20_hour_poor",
+        "min": null,
+        "max": 4800,
+        "stage": "Poor Response",
+        "description": "Inadequate platelet response at 20 hours",
+        "interpretation": "CCI ≤4,800 at 20 hours suggests poor platelet response; consider platelet refractoriness and repeat transfusion"
+      }
+    ]
+  },
+  "references": [
+    "Davis KB, Slichter SJ, Corash L. Corrected count increment and percent platelet recovery as measures of posttransfusion platelet response: problems and a solution. Transfusion. 1999;39(6):586-92.",
+    "Bishop JF, Matthews JP, McGrath K, Yuen K, Wolf MM, Szer J. Factors influencing 20-hour increments after platelet transfusion. Transfusion. 1991;31(5):392-6.",
+    "Slichter SJ, Davis K, Enright H, et al. Factors affecting posttransfusion platelet increments, platelet refractoriness, and platelet transfusion intervals in thrombocytopenic patients. Blood. 2005;105(10):4106-14."
+  ],
+  "formula": "CCI = (Post-transfusion count - Pre-transfusion count) × BSA / Platelet dose, where BSA = sqrt((height_cm × weight_kg) / 3600)",
+  "notes": [
+    "CCI >7,500 at 1 hour indicates successful transfusion",
+    "CCI >4,800 at 20 hours indicates successful transfusion",
+    "Lower CCI values may indicate platelet refractoriness",
+    "Platelet refractoriness defined as failure to achieve acceptable platelet increment on ≥2 occasions",
+    "Alternative causes of poor response: fever, sepsis, DIC, bleeding, splenomegaly, drug interactions"
+  ]
+}

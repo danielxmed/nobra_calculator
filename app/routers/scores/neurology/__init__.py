@@ -12,6 +12,9 @@ from .ascod_algorithm import router as ascod_algorithm_router
 from .astral_score import router as astral_score_router
 from .awol_score import router as awol_score_router
 from .barnes_jewish_dysphagia import router as barnes_jewish_dysphagia_router
+from .canadian_tia_score import router as canadian_tia_score_router
+from .cerebral_perfusion_pressure import router as cerebral_perfusion_pressure_router
+from .clinical_dementia_rating import router as clinical_dementia_rating_router
 
 # Create main specialty router
 router = APIRouter()
@@ -24,3 +27,6 @@ router.include_router(ascod_algorithm_router)
 router.include_router(astral_score_router)
 router.include_router(awol_score_router)
 router.include_router(barnes_jewish_dysphagia_router)
+router.include_router(canadian_tia_score_router)
+router.include_router(cerebral_perfusion_pressure_router)
+router.include_router(clinical_dementia_rating_router)

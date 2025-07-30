@@ -1,0 +1,99 @@
+{
+  "id": "c_ssrs",
+  "title": "Columbia Suicide Severity Rating Scale (C-SSRS) Screener",
+  "description": "Screens for suicidal ideation and behavior to assess suicide risk and guide clinical management. The C-SSRS evaluates both the severity of suicidal ideation and the presence of suicidal behaviors, helping stratify patients into low, moderate, or high risk categories.",
+  "category": "psychiatry",
+  "version": "2011",
+  "parameters": [
+    {
+      "name": "ideation_level",
+      "type": "integer",
+      "required": true,
+      "description": "Severity of suicidal ideation in the past month (0-5 scale)",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "options": [
+        "0 - No reported suicidal ideation",
+        "1 - Wish to be dead",
+        "2 - Nonspecific active suicidal thoughts",
+        "3 - Active suicidal ideation with methods (no intent)",
+        "4 - Active suicidal ideation with some intent to act",
+        "5 - Active suicidal ideation with specific plan and intent"
+      ]
+    },
+    {
+      "name": "behavior_level",
+      "type": "integer",
+      "required": true,
+      "description": "Most severe lifetime suicidal behavior (0-5 scale)",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "options": [
+        "0 - No reported suicidal behavior",
+        "1 - Preparatory acts or behavior",
+        "2 - Aborted/self-interrupted attempt",
+        "3 - Interrupted attempt",
+        "4 - Actual suicide attempt",
+        "5 - Suicide (death occurred)"
+      ]
+    },
+    {
+      "name": "behavior_recent",
+      "type": "string",
+      "required": true,
+      "description": "Timing of most recent suicidal behavior",
+      "options": ["Never", "More than 3 months ago", "Within past 3 months"],
+      "validation": {
+        "enum": ["Never", "More than 3 months ago", "Within past 3 months"]
+      }
+    }
+  ],
+  "result": {
+    "name": "risk_level",
+    "type": "string",
+    "unit": "category",
+    "description": "Suicide risk stratification level"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "Low suicide risk",
+        "interpretation": "Low risk for suicide. Consider behavioral health referral at discharge as appropriate. Continue to monitor for changes in ideation or behavior."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Moderate Risk",
+        "description": "Moderate suicide risk",
+        "interpretation": "Moderate risk for suicide. Recommend behavioral health consultation and implementation of patient safety precautions. Develop safety plan before discharge."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "High Risk",
+        "description": "High suicide risk",
+        "interpretation": "High risk for suicide. Immediate physician and behavioral health notification required. Implement patient safety precautions. Consider psychiatric hospitalization."
+      }
+    ]
+  },
+  "references": [
+    "Posner K, Brown GK, Stanley B, Brent DA, Yershova KV, Oquendo MA, et al. The Columbia-Suicide Severity Rating Scale: initial validity and internal consistency findings from three multisite studies with adolescents and adults. Am J Psychiatry. 2011 Dec;168(12):1266-77. doi: 10.1176/appi.ajp.2011.10111704.",
+    "Bjureberg J, Dahlin M, Carlborg A, Edberg H, Haglund A, Runeson B. Columbia-Suicide Severity Rating Scale Screen Version: initial screening for suicide risk in a psychiatric emergency department. Psychol Med. 2022 Dec;52(16):3904-3912. doi: 10.1017/S0033291721000751.",
+    "Madan A, Frueh BC, Allen JG, Ellis TE, Rufino KA, Oldham JM, et al. Psychometric Reevaluation of the Columbia-Suicide Severity Rating Scale: Findings From a Prospective, Inpatient Cohort of Severely Mentally Ill Adults. J Clin Psychiatry. 2016 Jul;77(7):e867-73. doi: 10.4088/JCP.15m10069."
+  ],
+  "formula": "Risk stratification based on ideation severity and behavior recency",
+  "notes": [
+    "The C-SSRS should not replace a complete clinical evaluation",
+    "Any endorsement of suicidal ideation requires follow-up assessment",
+    "Consider cultural factors that may influence reporting of suicidal thoughts",
+    "Screen can be administered by non-mental health professionals",
+    "Validated in multiple populations including adolescents and veterans"
+  ]
+}

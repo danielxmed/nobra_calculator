@@ -1,0 +1,164 @@
+{
+  "id": "canrisk",
+  "title": "Canadian Diabetes Risk Assessment Questionnaire (CANRISK)",
+  "description": "CANRISK screens for undiagnosed type 2 diabetes mellitus and prediabetes in Canadian adults aged 18-74 years. It was developed by the Canadian Task Force on Preventive Health Care in partnership with the Public Health Agency of Canada and has been validated in Canada's multi-ethnic population.",
+  "category": "endocrinology",
+  "version": "2011",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "string",
+      "required": true,
+      "description": "Age range of the patient",
+      "options": ["18-44", "45-54", "55-64", "65-74"],
+      "validation": {
+        "enum": ["18-44", "45-54", "55-64", "65-74"]
+      }
+    },
+    {
+      "name": "gender",
+      "type": "string",
+      "required": true,
+      "description": "Biological sex of the patient",
+      "options": ["female", "male"],
+      "validation": {
+        "enum": ["female", "male"]
+      }
+    },
+    {
+      "name": "bmi",
+      "type": "string",
+      "required": true,
+      "description": "Body Mass Index (kg/m²) category",
+      "options": ["under_25", "25_to_29", "30_to_34", "35_or_over"],
+      "validation": {
+        "enum": ["under_25", "25_to_29", "30_to_34", "35_or_over"]
+      }
+    },
+    {
+      "name": "waist_circumference",
+      "type": "string",
+      "required": true,
+      "description": "Waist circumference measured at belly button level",
+      "options": ["small", "medium", "large"],
+      "validation": {
+        "enum": ["small", "medium", "large"]
+      }
+    },
+    {
+      "name": "physical_activity",
+      "type": "string",
+      "required": true,
+      "description": "Do you do at least 30 minutes of physical activity every day? (e.g., brisk walking, gardening, cleaning, etc.)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "vegetable_fruit_consumption",
+      "type": "string",
+      "required": true,
+      "description": "How often do you eat vegetables or fruits?",
+      "options": ["every_day", "not_every_day"],
+      "validation": {
+        "enum": ["every_day", "not_every_day"]
+      }
+    },
+    {
+      "name": "high_blood_pressure",
+      "type": "string",
+      "required": true,
+      "description": "Have you ever been told by a doctor or nurse that you have high blood pressure OR have you ever taken high blood pressure medication?",
+      "options": ["yes", "no", "dont_know"],
+      "validation": {
+        "enum": ["yes", "no", "dont_know"]
+      }
+    },
+    {
+      "name": "high_blood_sugar",
+      "type": "string",
+      "required": true,
+      "description": "Have you ever been found to have high blood sugar? (e.g., in a health examination, during an illness, during pregnancy)",
+      "options": ["yes", "no", "dont_know"],
+      "validation": {
+        "enum": ["yes", "no", "dont_know"]
+      }
+    },
+    {
+      "name": "large_baby",
+      "type": "string",
+      "required": true,
+      "description": "Have you ever given birth to a large baby weighing 4 kg (9 lbs) or more? (Females only)",
+      "options": ["yes", "no", "dont_know", "not_applicable"],
+      "validation": {
+        "enum": ["yes", "no", "dont_know", "not_applicable"]
+      }
+    },
+    {
+      "name": "family_diabetes",
+      "type": "string",
+      "required": true,
+      "description": "Do you have a mother, father, sister, or brother with diabetes?",
+      "options": ["no", "one_relative", "two_relatives", "three_relatives", "all_relatives", "dont_know"],
+      "validation": {
+        "enum": ["no", "one_relative", "two_relatives", "three_relatives", "all_relatives", "dont_know"]
+      }
+    },
+    {
+      "name": "ethnicity",
+      "type": "string",
+      "required": true,
+      "description": "What ethnic group does your biological (blood) mother and/or father belong to? If more than one group applies, choose the one with the highest score",
+      "options": ["white", "south_asian", "east_asian", "other"],
+      "validation": {
+        "enum": ["white", "south_asian", "east_asian", "other"]
+      }
+    }
+  ],
+  "result": {
+    "name": "canrisk_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "CANRISK total risk score (0-86 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 20,
+        "stage": "Low Risk",
+        "description": "Low risk of type 2 diabetes",
+        "interpretation": "Your risk of having prediabetes or type 2 diabetes is low. Maintain a healthy lifestyle with regular physical activity and a balanced diet. Re-assess your risk annually or if your health status changes."
+      },
+      {
+        "min": 21,
+        "max": 32,
+        "stage": "Moderate Risk",
+        "description": "Moderate risk of type 2 diabetes",
+        "interpretation": "You have a moderate risk of having prediabetes or type 2 diabetes. You should discuss your risk with a healthcare practitioner and consider lifestyle modifications. Screening with fasting glucose or HbA1c may be recommended."
+      },
+      {
+        "min": 33,
+        "max": 86,
+        "stage": "High Risk",
+        "description": "High risk of type 2 diabetes",
+        "interpretation": "You have a high risk of having prediabetes or type 2 diabetes. You should consult with a healthcare practitioner to discuss getting your blood sugar tested. Immediate screening with fasting glucose or HbA1c is recommended, along with lifestyle interventions."
+      }
+    ]
+  },
+  "references": [
+    "Robinson CA, Agarwal G, Nerenberg K. Validating the CANRISK prognostic model for assessing diabetes risk in Canada's multi-ethnic population. Chronic Dis Inj Can. 2011 Dec;32(1):19-31. PMID: 22153173.",
+    "Public Health Agency of Canada. CANRISK: The Canadian Diabetes Risk Questionnaire User Guide for Pharmacists. Ottawa: Public Health Agency of Canada; 2011.",
+    "Anand SS, Samaan Z, Middleton C, Irvine J, Desai D, Schulze KM, et al. A digital health intervention to lower cardiovascular risk: a randomized clinical trial. JAMA Cardiol. 2016 Aug 1;1(5):601-6. doi: 10.1001/jamacardio.2016.1035."
+  ],
+  "formula": "Sum of points from: age (0-15) + gender (0-6) + BMI (0-14) + waist circumference (0-6) + physical activity (0-1) + diet (0-2) + blood pressure (0-4) + blood sugar (0-14) + large baby (0-1) + family history (0-8) + ethnicity (0-11)",
+  "notes": [
+    "Validated in Canadian adults aged 18-74 years",
+    "Maximum possible score is 86 points",
+    "Ethnicity scoring: Choose only one score (the highest if multiple apply)",
+    "Large baby question applies to females only",
+    "For younger populations, particularly First Nations and Métis under 40, a lower cut-off of 21 points may be more sensitive",
+    "Waist circumference: Men (small <94cm, medium 94-102cm, large >102cm); Women (small <80cm, medium 80-88cm, large >88cm)"
+  ]
+}

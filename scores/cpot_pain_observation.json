@@ -1,0 +1,114 @@
+{
+  "id": "cpot_pain_observation",
+  "title": "Critical Care Pain Observation Tool (CPOT)",
+  "description": "Pain assessment tool for critically ill adults who are unable to self-report pain, using behavioral indicators across four domains",
+  "category": "emergency",
+  "version": "2006",
+  "parameters": [
+    {
+      "name": "facial_expression",
+      "type": "string",
+      "required": true,
+      "description": "Facial expression assessment - observational scoring of facial muscle tension and movements",
+      "options": ["relaxed_neutral", "tense", "grimacing"],
+      "validation": {
+        "enum": ["relaxed_neutral", "tense", "grimacing"]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "body_movements",
+      "type": "string",
+      "required": true,
+      "description": "Body movements assessment - observational scoring of patient movement patterns and protective behaviors",
+      "options": ["absence_of_movements", "protection", "restlessness"],
+      "validation": {
+        "enum": ["absence_of_movements", "protection", "restlessness"]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "muscle_tension",
+      "type": "string",
+      "required": true,
+      "description": "Muscle tension assessment - evaluation of resistance to passive movements",
+      "options": ["relaxed", "tense_rigid", "very_tense_rigid"],
+      "validation": {
+        "enum": ["relaxed", "tense_rigid", "very_tense_rigid"]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "patient_status",
+      "type": "string",
+      "required": true,
+      "description": "Patient intubation status - determines which assessment domain to use (ventilator compliance vs vocalization)",
+      "options": ["intubated", "extubated"],
+      "validation": {
+        "enum": ["intubated", "extubated"]
+      },
+      "unit": "status"
+    },
+    {
+      "name": "ventilator_compliance",
+      "type": "string",
+      "required": false,
+      "description": "Compliance with ventilator (for intubated patients only) - assessment of patient tolerance of mechanical ventilation",
+      "options": ["tolerating", "coughing_tolerating", "fighting_ventilator"],
+      "validation": {
+        "enum": ["tolerating", "coughing_tolerating", "fighting_ventilator"]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "vocalization",
+      "type": "string",
+      "required": false,
+      "description": "Vocalization (for extubated patients only) - assessment of verbal and vocal expressions of pain",
+      "options": ["normal_tone_no_sound", "sighing_moaning", "crying_sobbing"],
+      "validation": {
+        "enum": ["normal_tone_no_sound", "sighing_moaning", "crying_sobbing"]
+      },
+      "unit": "score"
+    }
+  ],
+  "result": {
+    "name": "cpot_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total CPOT score ranging from 0-8 points based on behavioral pain indicators"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Minimal to No Pain",
+        "description": "Acceptable pain level",
+        "interpretation": "CPOT score ≤2 indicates minimal to no pain. Continue current pain management plan and routine monitoring."
+      },
+      {
+        "min": 3,
+        "max": 8,
+        "stage": "Unacceptable Pain",
+        "description": "Significant pain requiring intervention",
+        "interpretation": "CPOT score >2 indicates unacceptable pain level. Consider alternative analgesia, reassess pain management plan, and provide non-pharmacological comfort measures."
+      }
+    ]
+  },
+  "references": [
+    "Gélinas C, Fillion L, Puntillo KA, Viens C, Fortier M. Validation of the critical-care pain observation tool in adult patients. Am J Crit Care. 2006;15(4):420-427.",
+    "Gélinas C, Harel F, Fillion L, Puntillo KA, Johnston CC. Sensitivity and specificity of the critical-care pain observation tool for the detection of pain in intubated adults after cardiac surgery. J Pain Symptom Manage. 2009;37(1):58-67.",
+    "Payen JF, Bru O, Bosson JL, et al. Assessing pain in critically ill sedated patients by using a behavioral pain scale. Crit Care Med. 2001;29(12):2258-2263."
+  ],
+  "formula": "Sum of individual domain scores: Facial Expression (0-2) + Body Movements (0-2) + Muscle Tension (0-2) + Ventilator Compliance OR Vocalization (0-2)",
+  "notes": [
+    "Designed for critically ill adults who cannot self-report pain",
+    "Observe patient at rest for 60 seconds before scoring",
+    "Use ventilator compliance domain for intubated patients, vocalization domain for extubated patients",
+    "Validated for use in conscious and unconscious ICU patients",
+    "Part of the ABCDEF bundle for ICU pain management",
+    "Should be used in conjunction with clinical assessment and other pain indicators",
+    "Reassess after pain interventions to evaluate effectiveness"
+  ]
+}

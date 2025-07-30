@@ -1,0 +1,94 @@
+{
+  "id": "brugada_criteria_vt",
+  "title": "Brugada Criteria for Ventricular Tachycardia",
+  "description": "Distinguishes ventricular tachycardia from supraventricular tachycardia with aberrancy using ECG morphology criteria",
+  "category": "cardiology",
+  "version": "1991",
+  "parameters": [
+    {
+      "name": "absence_rs_precordial",
+      "type": "string",
+      "required": true,
+      "description": "Absence of RS complex in all precordial leads (V1-V6)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "r_to_s_interval_100ms",
+      "type": "string",
+      "required": true,
+      "description": "R to S interval >100 ms in any precordial lead",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "av_dissociation",
+      "type": "string",
+      "required": true,
+      "description": "Atrioventricular dissociation present",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "morphology_criteria_vt",
+      "type": "string",
+      "required": true,
+      "description": "Morphology criteria for VT present in V1-V2 and V6",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "diagnosis",
+    "type": "string",
+    "unit": "",
+    "description": "Diagnosis of rhythm (VT or SVT with aberrancy)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "VT",
+        "description": "Ventricular Tachycardia",
+        "interpretation": "The ECG findings are consistent with ventricular tachycardia. This is a life-threatening arrhythmia requiring immediate cardioversion or antiarrhythmic therapy. Do not treat with medications intended for SVT (adenosine, calcium channel blockers) as they may worsen the condition."
+      },
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "SVT with Aberrancy",
+        "description": "Supraventricular Tachycardia with Aberrancy",
+        "interpretation": "The ECG findings are more consistent with supraventricular tachycardia with aberrant conduction. However, when in doubt, treat as VT. Consider vagal maneuvers, adenosine, or calcium channel blockers as appropriate for SVT management, but maintain high suspicion for VT."
+      }
+    ]
+  },
+  "references": [
+    "Brugada P, Brugada J, Mont L, Smeets J, Andries EW. A new approach to the differential diagnosis of a regular tachycardia with a wide QRS complex. Circulation. 1991;83(5):1649-59. doi: 10.1161/01.cir.83.5.1649.",
+    "Isenhour JL, Craig S, Gibbs M, Littmann L, Rose G, Risch R. Wide-complex tachycardia: continued evaluation of diagnostic criteria. Acad Emerg Med. 2000;7(7):769-73. doi: 10.1111/j.1553-2712.2000.tb02267.x.",
+    "Vereckei A, Duray G, Szénási G, Altemose GT, Miller JM. Application of a new algorithm in the differential diagnosis of wide QRS complex tachycardia. Eur Heart J. 2007;28(5):589-600. doi: 10.1093/eurheartj/ehl473."
+  ],
+  "formula": "Sequential algorithm: Step 1: Absence of RS in V1-V6? Step 2: R-S interval >100ms? Step 3: AV dissociation? Step 4: Morphology criteria for VT? Any 'yes' = VT diagnosis",
+  "notes": [
+    "Original study reported 98.7% sensitivity and 96.5% specificity for VT detection",
+    "Subsequent validation studies showed lower performance (sensitivity ~80%)",
+    "If any step is positive (yes), diagnosis is VT and algorithm stops",
+    "All four steps must be negative (no) to suggest SVT with aberrancy",
+    "When in doubt, treat as VT - SVT medications can worsen VT",
+    "AV dissociation: P waves randomly dispersed throughout rhythm",
+    "R-S interval: measured from beginning of R wave to nadir of S wave",
+    "Morphology criteria include specific patterns in leads V1-V2 and V6",
+    "Consider clinical context and additional ECG features (capture beats, fusion beats)"
+  ]
+}

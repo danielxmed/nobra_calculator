@@ -1,0 +1,236 @@
+{
+  "id": "cdai_crohns",
+  "title": "Crohn's Disease Activity Index (CDAI)",
+  "description": "Quantifies disease activity in Crohn's disease patients using clinical symptoms and laboratory findings over a 7-day period",
+  "category": "gastroenterology",
+  "version": "1976",
+  "parameters": [
+    {
+      "name": "liquid_stools_week",
+      "type": "integer",
+      "required": true,
+      "description": "Total number of liquid or loose stools over the past 7 days (patient diary)",
+      "validation": {
+        "min": 0,
+        "max": 200
+      },
+      "unit": "count"
+    },
+    {
+      "name": "abdominal_pain_score",
+      "type": "string",
+      "required": true,
+      "description": "Average daily abdominal pain rating over the past 7 days (0=none, 1=mild, 2=moderate, 3=severe)",
+      "options": ["none", "mild", "moderate", "severe"],
+      "validation": {
+        "enum": ["none", "mild", "moderate", "severe"]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "general_wellbeing_score",
+      "type": "string",
+      "required": true,
+      "description": "Average daily general well-being rating over the past 7 days (0=generally well, 1=slightly under par, 2=poor, 3=very poor, 4=terrible)",
+      "options": ["generally_well", "slightly_under_par", "poor", "very_poor", "terrible"],
+      "validation": {
+        "enum": ["generally_well", "slightly_under_par", "poor", "very_poor", "terrible"]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "arthritis_arthralgias",
+      "type": "string",
+      "required": true,
+      "description": "Presence of arthritis or arthralgias (joint pain/inflammation)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": "presence"
+    },
+    {
+      "name": "iritis_uveitis",
+      "type": "string",
+      "required": true,
+      "description": "Presence of iritis or uveitis (eye inflammation)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": "presence"
+    },
+    {
+      "name": "erythema_nodosum",
+      "type": "string",
+      "required": true,
+      "description": "Presence of erythema nodosum (skin inflammation)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": "presence"
+    },
+    {
+      "name": "anal_fissure_fistula",
+      "type": "string",
+      "required": true,
+      "description": "Presence of anal fissure, fistula, or abscess",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": "presence"
+    },
+    {
+      "name": "other_fistulas",
+      "type": "string",
+      "required": true,
+      "description": "Presence of other fistulas (excluding anal)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": "presence"
+    },
+    {
+      "name": "fever",
+      "type": "string",
+      "required": true,
+      "description": "Fever >37.8°C (100°F) during the past 7 days",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": "presence"
+    },
+    {
+      "name": "antidiarrheal_use",
+      "type": "string",
+      "required": true,
+      "description": "Use of antidiarrheal medications (loperamide, diphenoxylate) during the past 7 days",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": "presence"
+    },
+    {
+      "name": "abdominal_mass",
+      "type": "string",
+      "required": true,
+      "description": "Presence of abdominal mass on physical examination (0=none, 2=questionable, 5=definite)",
+      "options": ["none", "questionable", "definite"],
+      "validation": {
+        "enum": ["none", "questionable", "definite"]
+      },
+      "unit": "presence"
+    },
+    {
+      "name": "patient_sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient biological sex (for expected hematocrit calculation)",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      },
+      "unit": "sex"
+    },
+    {
+      "name": "observed_hematocrit",
+      "type": "float",
+      "required": true,
+      "description": "Current hematocrit percentage (laboratory value)",
+      "validation": {
+        "min": 10.0,
+        "max": 60.0
+      },
+      "unit": "percentage"
+    },
+    {
+      "name": "current_weight",
+      "type": "float",
+      "required": true,
+      "description": "Current body weight in kilograms",
+      "validation": {
+        "min": 30.0,
+        "max": 300.0
+      },
+      "unit": "kg"
+    },
+    {
+      "name": "ideal_weight",
+      "type": "float",
+      "required": true,
+      "description": "Ideal body weight in kilograms (calculated or estimated)",
+      "validation": {
+        "min": 30.0,
+        "max": 300.0
+      },
+      "unit": "kg"
+    }
+  ],
+  "result": {
+    "name": "cdai_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total CDAI score ranging from 0 to approximately 600 points"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 149,
+        "stage": "Remission",
+        "description": "Clinical remission",
+        "interpretation": "CDAI <150 indicates clinical remission. Patients in this range are typically rated as 'very well' by physicians. Continue current maintenance therapy and monitor regularly."
+      },
+      {
+        "min": 150,
+        "max": 219,
+        "stage": "Mild Disease",
+        "description": "Mild disease activity",
+        "interpretation": "CDAI 150-219 indicates mild disease activity. Consider optimization of current therapy or step-up treatment. Monitor closely and reassess in 2-4 weeks."
+      },
+      {
+        "min": 220,
+        "max": 299,
+        "stage": "Moderate Disease",
+        "description": "Moderate disease activity",
+        "interpretation": "CDAI 220-299 indicates moderate disease activity. Consider corticosteroids, immunomodulators, or biologic therapy. Reassess in 2-4 weeks."
+      },
+      {
+        "min": 300,
+        "max": 450,
+        "stage": "Severe Disease",
+        "description": "Severe disease activity",
+        "interpretation": "CDAI 300-450 indicates severe disease activity. Consider hospitalization, corticosteroids, immunosuppressants, or biologic therapy. Close monitoring required."
+      },
+      {
+        "min": 451,
+        "max": 600,
+        "stage": "Very Severe Disease",
+        "description": "Very severe disease activity",
+        "interpretation": "CDAI >450 indicates very severe disease activity. Consider hospitalization, intensive medical therapy, or surgical intervention. Immediate specialist consultation recommended."
+      }
+    ]
+  },
+  "references": [
+    "Best WR, Becktel JM, Singleton JW, Kern F Jr. Development of a Crohn's disease activity index. National Cooperative Crohn's Disease Study. Gastroenterology. 1976;70(3):439-444.",
+    "Sandborn WJ, Feagan BG, Hanauer SB, et al. A review of activity indices and efficacy endpoints for clinical trials of medical therapy in adults with Crohn's disease. Gastroenterology. 2002;122(2):512-530.",
+    "Jørgensen LG, Fredholm L, Hyltoft Petersen P, et al. How accurate are clinical activity indices for scoring of disease activity in inflammatory bowel disease (IBD)? Clin Chem Lab Med. 2005;43(4):403-411."
+  ],
+  "formula": "CDAI = (Liquid stools × 2) + (Abdominal pain × 5) + (General well-being × 7) + (Extraintestinal complications × 20) + (Antidiarrheal use × 30) + (Abdominal mass × 10) + (Hematocrit deficit × 6) + (Weight deficit × 1)",
+  "notes": [
+    "Requires 7-day patient diary for stool frequency, pain, and well-being scores",
+    "Developed in 1976 by the National Cooperative Crohn's Disease Study Group",
+    "Gold standard for assessing Crohn's disease activity in clinical trials",
+    "A decrease of ≥70 points is considered a significant response to treatment",
+    "A decrease of ≥100 points indicates a major clinical response",
+    "Does not include endoscopic findings or quality of life measures",
+    "Expected hematocrit: 47% for men, 42% for women",
+    "Weight deficit calculated as percentage below ideal weight",
+    "Should be used in conjunction with clinical judgment and other assessments"
+  ]
+}

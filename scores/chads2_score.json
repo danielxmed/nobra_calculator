@@ -1,0 +1,143 @@
+{
+  "id": "chads2_score",
+  "title": "CHADS₂ Score for Atrial Fibrillation Stroke Risk",
+  "description": "Clinical prediction tool that estimates annual stroke risk in patients with atrial fibrillation. Helps determine whether anticoagulation therapy is warranted based on patient's risk profile for thromboembolic events. Developed from the National Registry of Atrial Fibrillation and validated in multiple populations.",
+  "category": "cardiology",
+  "version": "2001",
+  "parameters": [
+    {
+      "name": "congestive_heart_failure",
+      "type": "string",
+      "required": true,
+      "description": "History of congestive heart failure or left ventricular dysfunction",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hypertension",
+      "type": "string",
+      "required": true,
+      "description": "History of hypertension or current antihypertensive treatment",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "age_75_or_older",
+      "type": "string",
+      "required": true,
+      "description": "Patient age 75 years or older",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "diabetes_mellitus",
+      "type": "string",
+      "required": true,
+      "description": "History of diabetes mellitus or current antidiabetic treatment",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "stroke_tia_thromboembolism",
+      "type": "string",
+      "required": true,
+      "description": "Previous stroke, transient ischemic attack, or thromboembolism",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "chads2_assessment",
+    "type": "object",
+    "unit": "points",
+    "description": "CHADS₂ score with annual stroke risk assessment and anticoagulation recommendations"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "Low annual stroke risk",
+        "interpretation": "CHADS₂ Score 0: Low stroke risk (1.9% per year). Consider further risk stratification with CHA₂DS₂-VASc score. May consider aspirin or observation based on bleeding risk and patient preferences."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Low-Intermediate Risk",
+        "description": "Low-intermediate annual stroke risk",
+        "interpretation": "CHADS₂ Score 1: Low-intermediate stroke risk (2.8% per year). Consider further risk stratification with CHA₂DS₂-VASc score or anticoagulation based on bleeding risk assessment."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Intermediate Risk",
+        "description": "Intermediate annual stroke risk",
+        "interpretation": "CHADS₂ Score 2: Intermediate stroke risk (4.0% per year). Anticoagulation generally recommended unless contraindicated due to bleeding risk."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "High Risk",
+        "description": "High annual stroke risk",
+        "interpretation": "CHADS₂ Score 3: High stroke risk (5.9% per year). Strong recommendation for anticoagulation therapy with warfarin or direct oral anticoagulants (DOACs)."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "High Risk",
+        "description": "High annual stroke risk",
+        "interpretation": "CHADS₂ Score 4: High stroke risk (8.5% per year). Strong recommendation for anticoagulation therapy with warfarin or direct oral anticoagulants (DOACs)."
+      },
+      {
+        "min": 5,
+        "max": 5,
+        "stage": "Very High Risk",
+        "description": "Very high annual stroke risk",
+        "interpretation": "CHADS₂ Score 5: Very high stroke risk (12.5% per year). Strong recommendation for anticoagulation therapy with warfarin or direct oral anticoagulants (DOACs)."
+      },
+      {
+        "min": 6,
+        "max": 6,
+        "stage": "Very High Risk",
+        "description": "Very high annual stroke risk",
+        "interpretation": "CHADS₂ Score 6: Very high stroke risk (18.2% per year). Strong recommendation for anticoagulation therapy with warfarin or direct oral anticoagulants (DOACs)."
+      }
+    ]
+  },
+  "references": [
+    "Gage BF, Waterman AD, Shannon W, Boechler M, Rich MW, Radford MJ. Validation of clinical classification schemes for predicting stroke: results from the National Registry of Atrial Fibrillation. JAMA. 2001;285(22):2864-70.",
+    "Gage BF, van Walraven C, Pearce L, Hart RG, Koudstaal PJ, Boode BS, Petersen P. Selecting patients with atrial fibrillation for anticoagulation: stroke risk stratification in patients taking aspirin. Circulation. 2004;110(16):2287-92.",
+    "Olesen JB, Lip GY, Hansen ML, Hansen PR, Tolstrup JS, Lindhardsen J, Selmer C, Ahlehoff O, Olsen AM, Gislason GH, Torp-Pedersen C. Validation of risk stratification schemes for predicting stroke and thromboembolism in patients with atrial fibrillation: nationwide cohort study. BMJ. 2011;342:d124.",
+    "Singer DE, Albers GW, Dalen JE, Fang MC, Go AS, Halperin JL, Lip GY, Manning WJ; American College of Chest Physicians. Antithrombotic therapy in atrial fibrillation: American College of Chest Physicians Evidence-Based Clinical Practice Guidelines (8th Edition). Chest. 2008;133(6 Suppl):546S-592S."
+  ],
+  "formula": "CHADS₂ Score = Congestive heart failure (1) + Hypertension (1) + Age ≥75 years (1) + Diabetes mellitus (1) + Stroke/TIA/thromboembolism history (2). Total range: 0-6 points.",
+  "notes": [
+    "CHADS₂ acronym: C-Congestive heart failure, H-Hypertension, A-Age ≥75, D-Diabetes, S₂-Stroke/TIA/thromboembolism (2 points)",
+    "Developed from National Registry of Atrial Fibrillation in 2001",
+    "Score 0: 1.9% annual stroke risk - consider CHA₂DS₂-VASc for further stratification",
+    "Score 1: 2.8% annual stroke risk - intermediate risk category",
+    "Score 2: 4.0% annual stroke risk - generally recommend anticoagulation",
+    "Score ≥3: 5.9-18.2% annual stroke risk - strong anticoagulation recommendation",
+    "C-statistic approximately 0.68 for stroke prediction",
+    "Validated in multiple populations and healthcare systems",
+    "Largely superseded by CHA₂DS₂-VASc score for more comprehensive risk assessment",
+    "Better at identifying high-risk patients than truly low-risk patients",
+    "Among patients 65-95 years, <7% classified as low risk",
+    "Does not capture all stroke risk factors (vascular disease, gender, age 65-74)",
+    "Simple bedside calculation makes it clinically practical",
+    "Used for anticoagulation decision-making in atrial fibrillation",
+    "Score ≥2 generally indicates anticoagulation benefit outweighs bleeding risk",
+    "Consider bleeding risk assessment (HAS-BLED) alongside stroke risk"
+  ]
+}

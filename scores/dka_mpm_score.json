@@ -1,0 +1,178 @@
+{
+  "id": "dka_mpm_score",
+  "title": "Diabetic Ketoacidosis Mortality Prediction Model (DKA MPM) Score",
+  "description": "Predicts in-hospital mortality in patients with diabetic ketoacidosis using clinical and laboratory parameters at presentation, 12 hours, and 24 hours",
+  "category": "endocrinology",
+  "version": "2002",
+  "parameters": [
+    {
+      "name": "severe_comorbidities",
+      "type": "string",
+      "required": true,
+      "description": "Presence of severe comorbidities (immunosuppression, previous MI, COPD, cirrhosis, CHF, and/or previous stroke)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"],
+      "points": {
+        "yes": 6,
+        "no": 0
+      }
+    },
+    {
+      "name": "ph_less_than_7",
+      "type": "string",
+      "required": true,
+      "description": "pH < 7.0 at presentation",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"],
+      "points": {
+        "yes": 4,
+        "no": 0
+      }
+    },
+    {
+      "name": "insulin_over_50_units",
+      "type": "string",
+      "required": true,
+      "description": "More than 50 units of regular insulin required over first 12 hours",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"],
+      "points": {
+        "yes": 4,
+        "no": 0
+      }
+    },
+    {
+      "name": "glucose_over_300_at_12h",
+      "type": "string",
+      "required": true,
+      "description": "Serum glucose > 300 mg/dL (16.7 mmol/L) after 12 hours",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"],
+      "points": {
+        "yes": 4,
+        "no": 0
+      }
+    },
+    {
+      "name": "depressed_mental_state_24h",
+      "type": "string",
+      "required": true,
+      "description": "Depressed mental state at 24 hours after presentation (as determined by examiner)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"],
+      "points": {
+        "yes": 4,
+        "no": 0
+      }
+    },
+    {
+      "name": "fever_24h",
+      "type": "string",
+      "required": true,
+      "description": "Fever at 24 hours after presentation (axillary temperature ≥38°C / 100.4°F)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"],
+      "points": {
+        "yes": 3,
+        "no": 0
+      }
+    }
+  ],
+  "result": {
+    "name": "dka_mpm_score_result",
+    "type": "integer",
+    "unit": "points",
+    "description": "DKA MPM Score for mortality prediction (0-25 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 14,
+        "stage": "Low Risk",
+        "description": "Low risk of in-hospital mortality",
+        "interpretation": "Patients with DKA MPM Score 0-14 points have low risk of in-hospital mortality (0.86%). Standard DKA management and monitoring protocols are appropriate. These patients typically have good prognosis with appropriate treatment."
+      },
+      {
+        "min": 15,
+        "max": 18,
+        "stage": "High Risk",
+        "description": "High risk of in-hospital mortality",
+        "interpretation": "Patients with DKA MPM Score 15-18 points have high risk of in-hospital mortality (20.8%). Enhanced monitoring, aggressive management, and consideration for intensive care unit admission is recommended. Close monitoring of fluid balance, electrolytes, and mental status is crucial."
+      },
+      {
+        "min": 19,
+        "max": 25,
+        "stage": "Very High Risk",
+        "description": "Very high risk of in-hospital mortality",
+        "interpretation": "Patients with DKA MPM Score 19-25 points have very high risk of in-hospital mortality (93.3%). Immediate intensive care unit admission, aggressive resuscitation, and specialized multidisciplinary management are indicated. Consider early family discussions regarding prognosis and goals of care."
+      }
+    ]
+  },
+  "clinical_applications": [
+    "Risk stratification of patients with diabetic ketoacidosis",
+    "Guiding intensity of monitoring and care in DKA patients",
+    "Assisting in ICU admission decisions for DKA patients",
+    "Prognostic counseling for patients and families",
+    "Quality improvement initiatives in DKA management",
+    "Research stratification in DKA studies",
+    "Healthcare resource allocation planning"
+  ],
+  "scoring_methodology": {
+    "calculation": "Sum of all parameter points based on presence/absence of risk factors",
+    "timing": "Assessment at presentation (0h), 12 hours, and 24 hours after presentation",
+    "total_score_range": "0-25 points",
+    "risk_categories": "Low risk (0-14), High risk (15-18), Very high risk (19-25)"
+  },
+  "limitations": [
+    "Not externally validated - use with caution",
+    "Not intended for routine patient disposition decisions",
+    "APACHE II Score may be a better mortality predictor",
+    "Limited to adult patients with confirmed DKA diagnosis",
+    "Not validated in pediatric populations",
+    "Requires assessment at multiple time points (0h, 12h, 24h)",
+    "Inter-observer variability in assessment of mental state"
+  ],
+  "contraindications": [
+    "Pediatric patients (< 18 years old)",
+    "Patients without confirmed DKA diagnosis",
+    "Use as sole basis for clinical decision-making"
+  ],
+  "validation": {
+    "population": "Adult patients with diabetic ketoacidosis",
+    "study_size": "154 patients (52 males, mean age 58 ± 12 years)",
+    "mortality_rate": "13% in-hospital mortality (20/154 patients)",
+    "settings": ["Emergency departments", "Intensive care units", "Internal medicine wards"],
+    "evidence_basis": "Single-center retrospective study - not externally validated"
+  },
+  "references": [
+    "Efstathiou SP, Tsiakou AG, Tsioulos DI, et al. A mortality prediction model in diabetic ketoacidosis. Clin Endocrinol (Oxf). 2002;57(5):595-601. doi: 10.1046/j.1365-2265.2002.01636.x.",
+    "Kitabchi AE, Umpierrez GE, Miles JM, Fisher JN. Hyperglycemic crises in adult patients with diabetes. Diabetes Care. 2009;32(7):1335-1343. doi: 10.2337/dc09-9032.",
+    "Dhatariya KK, Glaser NS, Codner E, Umpierrez GE. Diabetic ketoacidosis. Nat Rev Dis Primers. 2020;6(1):40. doi: 10.1038/s41572-020-0165-1."
+  ],
+  "formula": "DKA MPM Score = (Severe comorbidities × 6) + (pH < 7.0 × 4) + (>50 units insulin in 12h × 4) + (Glucose >300 mg/dL at 12h × 4) + (Depressed mental state at 24h × 4) + (Fever at 24h × 3)",
+  "notes": [
+    "Score requires assessment at three time points: presentation, 12 hours, and 24 hours",
+    "Severe comorbidities include immunosuppression, previous MI, COPD, cirrhosis, CHF, and/or previous stroke",
+    "pH measurement should be arterial blood gas",
+    "Regular insulin requirement includes only regular insulin, not long-acting forms",
+    "Glucose measurement at 12 hours should be serum glucose",
+    "Mental state assessment is subjective and requires clinical judgment",
+    "Fever is defined as axillary temperature ≥38°C (100.4°F)",
+    "Not externally validated - use clinical judgment in conjunction with score",
+    "Consider APACHE II score as alternative mortality predictor",
+    "Not intended as sole basis for clinical decision-making"
+  ]
+}

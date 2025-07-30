@@ -1,0 +1,110 @@
+{
+  "id": "cisne",
+  "title": "Clinical Index of Stable Febrile Neutropenia (CISNE)",
+  "description": "Identifies febrile neutropenia patients at low risk for serious complications. Used for adult outpatients with solid tumor, fever ≥38°C (100.4°F), and neutropenia (≤500 cells/mm³ or ≤1,000 cells/mm³ with expected decrease to 500).",
+  "category": "oncology",
+  "version": "2015",
+  "parameters": [
+    {
+      "name": "ecog_performance_status",
+      "type": "string",
+      "required": true,
+      "description": "ECOG Performance Status",
+      "options": ["<2", "≥2"],
+      "validation": {
+        "enum": ["<2", "≥2"]
+      }
+    },
+    {
+      "name": "stress_induced_hyperglycemia",
+      "type": "string",
+      "required": true,
+      "description": "Stress-induced hyperglycemia (glucose >250 mg/dL or >13.9 mmol/L, or glucose >121 mg/dL or >6.7 mmol/L with diabetes)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "copd",
+      "type": "string",
+      "required": true,
+      "description": "Chronic obstructive pulmonary disease",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "cardiovascular_disease",
+      "type": "string",
+      "required": true,
+      "description": "Cardiovascular disease history (heart failure, ischemic heart disease, arrhythmia)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "nci_mucositis_grade",
+      "type": "string",
+      "required": true,
+      "description": "NCI mucositis grade ≥2",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "monocytes",
+      "type": "string",
+      "required": true,
+      "description": "Monocyte count",
+      "options": ["≥200/µL", "<200/µL"],
+      "validation": {
+        "enum": ["≥200/µL", "<200/µL"]
+      }
+    }
+  ],
+  "result": {
+    "name": "cisne_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "CISNE risk score (0-8 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "risk_category": "Low",
+        "description": "Low risk",
+        "interpretation": "Low risk of complications (1.1%). May be appropriate for outpatient management with close monitoring."
+      },
+      {
+        "min": 1,
+        "max": 2,
+        "risk_category": "Intermediate",
+        "description": "Intermediate risk",
+        "interpretation": "Intermediate risk of complications (6.2%). Consider admission or very close outpatient monitoring."
+      },
+      {
+        "min": 3,
+        "max": 8,
+        "risk_category": "High",
+        "description": "High risk",
+        "interpretation": "High risk of complications (36%). Hospital admission strongly recommended."
+      }
+    ]
+  },
+  "references": [
+    "Carmona-Bayonas A, Gómez J, González-Billalabeitia E, et al. Prognostic evaluation of febrile neutropenia in apparently stable adult cancer patients. Br J Cancer. 2011 Aug 23;105(5):612-7. doi: 10.1038/bjc.2011.284.",
+    "Carmona-Bayonas A, Jiménez-Fonseca P, Virizuela Echaburu J, et al. Prediction of serious complications in patients with seemingly stable febrile neutropenia: validation of the Clinical Index of Stable Febrile Neutropenia in a prospective cohort of patients from the FINITE study. J Clin Oncol. 2015 Feb 10;33(5):465-71. doi: 10.1200/JCO.2014.57.2347."
+  ],
+  "formula": "CISNE Score = ECOG Performance Status points + Stress-induced hyperglycemia points + COPD points + Cardiovascular disease points + NCI mucositis points + Monocyte points",
+  "notes": [
+    "Only for stable patients with solid tumors and febrile neutropenia",
+    "Not for use in patients who are considered high risk on initial assessment",
+    "Complications include hypotension, acute organ failure, arrhythmia, major bleeding, acute abdomen, DIC, delirium"
+  ]
+}

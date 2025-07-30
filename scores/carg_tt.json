@@ -1,0 +1,177 @@
+{
+  "id": "carg_tt",
+  "title": "Cancer and Aging Research Group Chemotherapy Toxicity Tool (CARG-TT)",
+  "description": "The CARG-TT estimates the risk of severe chemotherapy-related side effects (Grade 3 or greater toxicity) in older cancer patients (age >65). It uses 11 geriatric assessment variables, laboratory values, and patient characteristics to predict chemotherapy toxicity risk.",
+  "category": "oncology",
+  "version": "2011",
+  "parameters": [
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient sex (used for hemoglobin thresholds)",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "age_72_or_older",
+      "type": "string",
+      "required": true,
+      "description": "Patient age 72 years or older",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "gi_gu_cancer",
+      "type": "string",
+      "required": true,
+      "description": "Gastrointestinal or genitourinary cancer type",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "standard_dose_chemo",
+      "type": "string",
+      "required": true,
+      "description": "Standard-dose chemotherapy (vs. reduced dose)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "polychemotherapy",
+      "type": "string",
+      "required": true,
+      "description": "Polychemotherapy (more than one chemotherapy drug)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hemoglobin_low",
+      "type": "string",
+      "required": true,
+      "description": "Low hemoglobin (males <11 g/dL, females <10 g/dL)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "creatinine_clearance_low",
+      "type": "string",
+      "required": true,
+      "description": "Creatinine clearance <34 mL/min",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hearing_impaired",
+      "type": "string",
+      "required": true,
+      "description": "Hearing fair, poor, or totally deaf (vs. excellent/good)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "falls_past_6_months",
+      "type": "string",
+      "required": true,
+      "description": "History of falls in the preceding 6 months",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "medication_assistance",
+      "type": "string",
+      "required": true,
+      "description": "Needs assistance with medication use",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "walking_limited",
+      "type": "string",
+      "required": true,
+      "description": "Limited in walking one block or more",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "social_activity_decreased",
+      "type": "string",
+      "required": true,
+      "description": "Decreased social activity because of health",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "carg_tt_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "CARG-TT Score (0 to 23 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 5,
+        "stage": "Low Risk",
+        "description": "30% risk of grade ≥3 toxicity",
+        "interpretation": "Low risk of severe chemotherapy toxicity. Standard chemotherapy regimens can generally be considered. Monitor closely for side effects and provide supportive care as needed."
+      },
+      {
+        "min": 6,
+        "max": 9,
+        "stage": "Intermediate Risk",
+        "description": "52% risk of grade ≥3 toxicity",
+        "interpretation": "Intermediate risk of severe chemotherapy toxicity. Consider dose reduction, alternative regimens, or enhanced supportive care measures. Close monitoring and frequent follow-up recommended."
+      },
+      {
+        "min": 10,
+        "max": 23,
+        "stage": "High Risk",
+        "description": "83% risk of grade ≥3 toxicity",
+        "interpretation": "High risk of severe chemotherapy toxicity. Strongly consider dose reduction, single-agent therapy, or alternative treatment approaches. Intensive supportive care and very frequent monitoring essential."
+      }
+    ]
+  },
+  "references": [
+    "Hurria A, Togawa K, Mohile SG, Owusu C, Klepin HD, Gross CP, et al. Predicting chemotherapy toxicity in older adults with cancer: a prospective multicenter study. J Clin Oncol. 2011 Sep 1;29(25):3457-65. doi: 10.1200/JCO.2011.34.7625.",
+    "Magnuson A, Sattar S, Nightingale G, Saracino R, Skoneczka J, Trevino KM, et al. A practical guide to geriatric syndromes in older adults with cancer: A focus on falls, cognition, polypharmacy, and depression. Am Soc Clin Oncol Educ Book. 2019 Jan;39:e96-e109. doi: 10.1200/EDBK_237641.",
+    "Extermann M, Boler I, Reich RR, Lyman GH, Brown RH, DeFelice J, et al. Predicting the risk of chemotherapy toxicity in older patients: the Chemotherapy Risk Assessment Scale for High-Age Patients (CRASH) score. Cancer. 2012 Jul 1;118(13):3377-86. doi: 10.1002/cncr.26646."
+  ],
+  "formula": "Score = (2 × age_72_or_older) + (2 × gi_gu_cancer) + (2 × standard_dose_chemo) + (2 × polychemotherapy) + (3 × hemoglobin_low) + (3 × creatinine_clearance_low) + (2 × hearing_impaired) + (3 × falls_past_6_months) + (1 × medication_assistance) + (2 × walking_limited) + (1 × social_activity_decreased)",
+  "notes": [
+    "Use in cancer patients aged 65 years or older undergoing chemotherapy",
+    "Hemoglobin thresholds: males <11 g/dL, females <10 g/dL",
+    "Creatinine clearance calculated using Cockcroft-Gault equation",
+    "Standard dose = 100% of published dose, reduced dose = <100%",
+    "Polychemotherapy = combination of >1 chemotherapy drug",
+    "Score ranges from 0 to 23 points",
+    "Recommended by ASCO guidelines for geriatric oncology assessment",
+    "Based on prospective study of 500 patients aged ≥65 years",
+    "Grade ≥3 toxicity defined by Common Terminology Criteria for Adverse Events (CTCAE)"
+  ]
+}

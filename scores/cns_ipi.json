@@ -1,0 +1,124 @@
+{
+  "id": "cns_ipi",
+  "title": "Central Nervous System International Prognostic Index (CNS-IPI)",
+  "description": "Prognostic scoring system that predicts the risk of central nervous system (CNS) relapse in patients with diffuse large B-cell lymphoma (DLBCL) treated with R-CHOP chemotherapy. Helps identify patients who may benefit from CNS-directed prophylaxis and guides treatment planning decisions.",
+  "category": "hematology",
+  "version": "2016",
+  "parameters": [
+    {
+      "name": "age_over_60",
+      "type": "string",
+      "required": true,
+      "description": "Patient age greater than 60 years",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "elevated_ldh",
+      "type": "string",
+      "required": true,
+      "description": "Lactate dehydrogenase (LDH) level above normal laboratory range",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "ecog_performance_status_over_1",
+      "type": "string",
+      "required": true,
+      "description": "ECOG Performance Status greater than 1 (moderate to severe limitation of activity)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "advanced_stage",
+      "type": "string",
+      "required": true,
+      "description": "Ann Arbor stage III or IV disease (advanced stage)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "multiple_extranodal_sites",
+      "type": "string",
+      "required": true,
+      "description": "More than 1 extranodal disease site involved",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "kidney_adrenal_involvement",
+      "type": "string",
+      "required": true,
+      "description": "Involvement of kidney and/or adrenal gland",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "cns_ipi_assessment",
+    "type": "object",
+    "unit": "points",
+    "description": "CNS-IPI score with CNS relapse risk assessment and prophylaxis recommendations"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "Very low CNS relapse risk",
+        "interpretation": "CNS-IPI 0-1: Very low risk of CNS relapse (0.6% at 2 years). CNS prophylaxis generally not recommended. Standard treatment with R-CHOP appropriate."
+      },
+      {
+        "min": 2,
+        "max": 3,
+        "stage": "Intermediate Risk",
+        "description": "Low to moderate CNS relapse risk",
+        "interpretation": "CNS-IPI 2-3: Low to moderate risk of CNS relapse (3.4% at 2 years). CNS prophylaxis may be considered based on additional high-risk features and clinical judgment."
+      },
+      {
+        "min": 4,
+        "max": 6,
+        "stage": "High Risk",
+        "description": "High CNS relapse risk",
+        "interpretation": "CNS-IPI 4-6: High risk of CNS relapse (10.2% at 2 years). CNS prophylaxis strongly recommended. Consider intrathecal chemotherapy or high-dose methotrexate."
+      }
+    ]
+  },
+  "references": [
+    "Schmitz N, Zeynalova S, Nickelsen M, Kansara R, Villa D, Sehn LH, et al. CNS International Prognostic Index: A Risk Model for CNS Relapse in Patients With Diffuse Large B-Cell Lymphoma Treated With R-CHOP. J Clin Oncol. 2016 Sep 10;34(26):3150-3156. doi: 10.1200/JCO.2015.65.6520.",
+    "Ma'koseh M, Rahahleh N, Abdel-Razeq H. Impact of Central Nervous System International Prognostic Index on the Treatment of Diffuse Large B Cell Lymphoma. Cureus. 2021 Aug 13;13(8):e17016. doi: 10.7759/cureus.17016.",
+    "Savage KJ, Slack GW, Mottok A, Sehn LH, Villa D, Kansara R, et al. Impact of dual expression of MYC and BCL2 by immunohistochemistry on the risk of CNS relapse in DLBCL. Blood. 2016 Apr 28;127(17):2182-8. doi: 10.1182/blood-2015-10-676700."
+  ],
+  "formula": "CNS-IPI Score = Age >60 years (1) + LDH >normal (1) + ECOG PS >1 (1) + Ann Arbor stage III/IV (1) + >1 extranodal site (1) + Kidney/adrenal involvement (1). Total range: 0-6 points.",
+  "notes": [
+    "Developed for patients with DLBCL treated with R-CHOP chemotherapy",
+    "Validated in over 2,000 patients in original study",
+    "Low risk (0-1 points): 46% of patients, 0.6% CNS relapse rate at 2 years",
+    "Intermediate risk (2-3 points): 41% of patients, 3.4% CNS relapse rate at 2 years",
+    "High risk (4-6 points): 12% of patients, 10.2% CNS relapse rate at 2 years",
+    "Does not capture all high-risk patients - additional factors to consider",
+    "Additional high-risk features: breast, uterus, testis, epidural involvement",
+    "Bone marrow involvement and double-hit lymphomas also increase risk",
+    "MYC/BCL2 dual expression may modify risk assessment",
+    "Model helps avoid unnecessary CNS prophylaxis in low-risk patients",
+    "Approximately 90% of patients fall into low and intermediate risk categories",
+    "High-risk patients should be strongly considered for CNS prophylaxis",
+    "CNS prophylaxis options include intrathecal chemotherapy or high-dose methotrexate",
+    "Score should be calculated at initial diagnosis before treatment initiation",
+    "Validated across multiple international populations and healthcare systems",
+    "Used for treatment planning, patient counseling, and clinical trial stratification"
+  ]
+}

@@ -1,0 +1,283 @@
+{
+  "id": "bush_francis_catatonia_rating_scale",
+  "title": "Bush-Francis Catatonia Rating Scale",
+  "description": "Assesses severity of catatonia and screens for catatonia in psychiatric and neurological conditions. The first 14 items comprise the screening instrument. If 2 or more of the first 14 items are positive, this indicates a positive screening and should prompt completion of 9 additional items.",
+  "category": "psychiatry",
+  "version": "1996",
+  "parameters": [
+    {
+      "name": "excitement",
+      "type": "integer",
+      "required": true,
+      "description": "Extreme hyperactivity, constant motor unrest which is apparently non-purposeful",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "immobility_stupor",
+      "type": "integer",
+      "required": true,
+      "description": "Extreme hypoactivity, immobile, minimally responsive to stimuli",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "mutism",
+      "type": "integer",
+      "required": true,
+      "description": "Verbally unresponsive or minimally responsive",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "staring",
+      "type": "integer",
+      "required": true,
+      "description": "Fixed gaze, little or no visual scanning of environment, decreased blinking",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "posturing_catalepsy",
+      "type": "integer",
+      "required": true,
+      "description": "Spontaneous maintenance of posture(s), including mundane (e.g., sitting or standing for long periods without reacting)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "grimacing",
+      "type": "integer",
+      "required": true,
+      "description": "Maintenance of odd facial expressions",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "echopraxia_echolalia",
+      "type": "integer",
+      "required": true,
+      "description": "Mimicking of examiner's movements/speech",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "stereotypy",
+      "type": "integer",
+      "required": true,
+      "description": "Repetitive, non-goal-directed motor activity (e.g., finger-play, repeatedly touching, patting, or rubbing self)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "mannerisms",
+      "type": "integer",
+      "required": true,
+      "description": "Odd, purposeful movements (e.g., hopping or walking tiptoe, saluting passers-by, or exaggerated caricatures of mundane movements)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "verbigeration",
+      "type": "integer",
+      "required": true,
+      "description": "Repetition of phrases or sentences (like a scratched record)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "rigidity",
+      "type": "integer",
+      "required": true,
+      "description": "Maintenance of a rigid position despite efforts to be moved, exclude if cogwheel rigidity or tremor present",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "negativism",
+      "type": "integer",
+      "required": true,
+      "description": "Apparently motiveless resistance to instructions or attempts to move/examine patient. Contrary behavior, does exact opposite of instruction",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "waxy_flexibility",
+      "type": "integer",
+      "required": true,
+      "description": "During reposturing of patient, patient offers initial resistance before allowing themselves to be repositioned, similar to that of a bending candle",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "withdrawal",
+      "type": "integer",
+      "required": true,
+      "description": "Refusal to eat, drink, and/or make eye contact",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 3]
+      }
+    },
+    {
+      "name": "impulsivity",
+      "type": "integer",
+      "required": false,
+      "description": "Patient suddenly engages in inappropriate behavior (e.g., runs down hallway, starts screaming, or takes off clothes) without provocation. Afterwards can give no, or only a facile explanation",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "automatic_obedience",
+      "type": "integer",
+      "required": false,
+      "description": "Exaggerated cooperation with examiner's request or spontaneous continuation of movement requested",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "passive_obedience",
+      "type": "integer",
+      "required": false,
+      "description": "Mitgehen. 'Anglepoise lamp' arm raising in response to light pressure of finger, despite instruction to resist",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 3]
+      }
+    },
+    {
+      "name": "muscle_resistance",
+      "type": "integer",
+      "required": false,
+      "description": "Gegenhalten. Resistance to passive movement which is proportional to strength of the stimulus; appears automatic rather than willful",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 3]
+      }
+    },
+    {
+      "name": "motorically_stuck",
+      "type": "integer",
+      "required": false,
+      "description": "Ambitendency. Patient appears motorically 'stuck' in indecisive, hesitant movement",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 3]
+      }
+    },
+    {
+      "name": "grasp_reflex",
+      "type": "integer",
+      "required": false,
+      "description": "Per neurological exam",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 3]
+      }
+    },
+    {
+      "name": "perseveration",
+      "type": "integer",
+      "required": false,
+      "description": "Repeatedly returns to same topic or persists with same movements",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 3]
+      }
+    },
+    {
+      "name": "combativeness",
+      "type": "integer",
+      "required": false,
+      "description": "Usually in an undirected manner, with no, or only a facile explanation afterwards",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "autonomic_abnormality",
+      "type": "integer",
+      "required": false,
+      "description": "Temperature, BP, pulse, or respiratory rate abnormality; diaphoresis",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    }
+  ],
+  "result": {
+    "name": "total_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total Bush-Francis Catatonia Rating Scale score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Negative Screen",
+        "description": "Catatonia unlikely",
+        "interpretation": "Less than 2 items positive in screening instrument. Catatonia is unlikely. Consider other diagnoses or re-evaluate if clinical suspicion remains high."
+      },
+      {
+        "min": 2,
+        "max": 69,
+        "stage": "Positive Screen",
+        "description": "Catatonia likely present",
+        "interpretation": "Two or more items positive in screening instrument indicates positive screening for catatonia. Complete full 23-item assessment. Higher scores indicate greater severity. Consider immediate treatment, particularly if autonomic instability is present."
+      }
+    ]
+  },
+  "references": [
+    "Bush G, Fink M, Petrides G, Dowling F, Francis A. Catatonia. I. Rating scale and standardized examination. Acta Psychiatr Scand. 1996;93(2):129-36.",
+    "Bush G, Fink M, Petrides G, Dowling F, Francis A. Catatonia. II. Treatment with lorazepam and electroconvulsive therapy. Acta Psychiatr Scand. 1996;93(2):137-143.",
+    "Francis A. Catatonia: diagnosis, classification, and treatment. Curr Psychiatry Rep. 2010;12(3):180-5.",
+    "Sienaert P, Dhossche DM, Vancampfort D, De Hert M, Gazdag G. A clinical review of the treatment of catatonia. Front Psychiatry. 2014;5:181."
+  ],
+  "formula": "Total Score = Sum of all 23 items (0-69 points). Screening positive if ≥2 of first 14 items are positive (score ≥1).",
+  "notes": [
+    "The first 14 items constitute the Bush-Francis Catatonia Screening Instrument (BFCSI)",
+    "Items 13 and 17-21 are scored as either 0 (absent) or 3 (present) only",
+    "All other items are scored 0-3: 0=absent, 1=occasional, 2=frequent, 3=constant",
+    "The BFCRS is not a standalone diagnostic tool and should be used with comprehensive psychiatric evaluation",
+    "Catatonia is a medical emergency when associated with autonomic instability (malignant catatonia)"
+  ]
+}

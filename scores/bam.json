@@ -1,0 +1,259 @@
+{
+  "id": "bam",
+  "title": "Brief Addiction Monitor (BAM)",
+  "description": "Assesses substance use-related behaviors, risk factors, and protective factors over the past 30 days",
+  "category": "psychiatry",
+  "version": "2010",
+  "parameters": [
+    {
+      "name": "physical_health",
+      "type": "integer",
+      "required": true,
+      "description": "How would you say your physical health has been? (past 30 days)",
+      "options": ["poor", "fair", "good", "very_good", "excellent"],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      }
+    },
+    {
+      "name": "sleep_troubles",
+      "type": "integer",
+      "required": true,
+      "description": "How many nights have you had trouble falling asleep or staying asleep? (past 30 days)",
+      "options": ["0_nights", "1_5_nights", "6_10_nights", "11_15_nights", "16_30_nights"],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "emotional_distress",
+      "type": "integer",
+      "required": true,
+      "description": "How many days have you felt depressed, anxious, angry or very upset throughout most of the day? (past 30 days)",
+      "options": ["0_days", "1_5_days", "6_10_days", "11_15_days", "16_30_days"],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "alcohol_use",
+      "type": "integer",
+      "required": true,
+      "description": "How many days have you drunk ANY alcohol? (past 30 days)",
+      "options": ["0_days", "1_5_days", "6_10_days", "11_15_days", "16_30_days"],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "alcohol_intoxication",
+      "type": "integer",
+      "required": true,
+      "description": "How many days have you been drunk or intoxicated? (past 30 days)",
+      "options": ["0_days", "1_5_days", "6_10_days", "11_15_days", "16_30_days"],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "illegal_drug_use",
+      "type": "integer",
+      "required": true,
+      "description": "How many days have you used illegal drugs or abused prescribed medication? (past 30 days)",
+      "options": ["0_days", "1_5_days", "6_10_days", "11_15_days", "16_30_days"],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "marijuana_use",
+      "type": "integer",
+      "required": true,
+      "description": "How many days have you used marijuana (cannabis, pot, weed)? (past 30 days)",
+      "options": ["0_days", "1_5_days", "6_10_days", "11_15_days", "16_30_days"],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "cravings",
+      "type": "integer",
+      "required": true,
+      "description": "How much have you been bothered by cravings or urges to drink alcohol or use drugs? (past 30 days)",
+      "options": ["not_at_all", "slightly", "moderately", "considerably", "extremely"],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "abstinence_confidence",
+      "type": "integer",
+      "required": true,
+      "description": "How confident are you in your ability to be completely abstinent (clean) from alcohol and drugs in the next 30 days?",
+      "options": ["not_at_all", "slightly", "moderately", "considerably", "extremely"],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "self_help_attendance",
+      "type": "integer",
+      "required": true,
+      "description": "How many days have you attended self-help meetings like AA or NA to support recovery? (past 30 days)",
+      "options": ["0_days", "1_5_days", "6_10_days", "11_15_days", "16_30_days"],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "risky_situations",
+      "type": "integer",
+      "required": true,
+      "description": "How many days were you in situations or with people that might put you at an increased risk for using alcohol or drugs? (past 30 days)",
+      "options": ["0_days", "1_5_days", "6_10_days", "11_15_days", "16_30_days"],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "spiritual_support",
+      "type": "integer",
+      "required": true,
+      "description": "How much does your religion or spirituality help support your recovery?",
+      "options": ["not_at_all", "slightly", "moderately", "considerably", "extremely"],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "work_participation",
+      "type": "integer",
+      "required": true,
+      "description": "How many days did you attend work, school, or volunteer activities? (past 30 days)",
+      "options": ["0_days", "1_5_days", "6_10_days", "11_15_days", "16_30_days"],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "income_adequate",
+      "type": "integer",
+      "required": true,
+      "description": "Do you have enough income (from legal sources) to pay for necessities?",
+      "options": ["no", "yes"],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "family_conflicts",
+      "type": "integer",
+      "required": true,
+      "description": "How stressful have things been between you and your family and/or significant others? (past 30 days)",
+      "options": ["not_at_all", "slightly", "moderately", "considerably", "extremely"],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "social_support",
+      "type": "integer",
+      "required": true,
+      "description": "How many days have you been in contact or spent time with family and/or friends who are supportive of your recovery? (past 30 days)",
+      "options": ["0_days", "1_5_days", "6_10_days", "11_15_days", "16_30_days"],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "recovery_satisfaction",
+      "type": "integer",
+      "required": true,
+      "description": "How satisfied are you with your progress toward achieving your recovery goals?",
+      "options": ["not_at_all", "slightly", "moderately", "considerably", "extremely"],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    }
+  ],
+  "result": {
+    "name": "bam_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total BAM score and subscale scores"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 68,
+        "stage": "Total Score",
+        "description": "Total BAM score",
+        "interpretation": "Higher scores indicate worse outcomes. Use subscale scores for detailed assessment."
+      }
+    ]
+  },
+  "references": [
+    "Cacciola JS, Alterman AI, DePhilippis D, et al. Development and initial evaluation of the Brief Addiction Monitor (BAM). J Subst Abuse Treat. 2013;44(3):256-63.",
+    "Nelson KG, Young K, Chapman H. Examining the performance of the Brief Addiction Monitor. J Subst Abuse Treat. 2014;46(4):472-81.",
+    "McDonell MG, Kerbrat AH, Comtois KA, et al. Validation of the Brief Addiction Monitor in United States Veterans with Substance Use Disorders. Addict Behav. 2016;63:118-24."
+  ],
+  "formula": "Total Score = Sum of all 17 items; Use Factors = Q4-7; Risk Factors = Q1-3,8,11,15; Protective Factors = Q9-10,12-14,16-17",
+  "notes": [
+    "Higher scores indicate worse substance use-related behaviors and outcomes",
+    "Questions use 30-day time frame except for confidence question (Q9)",
+    "Can be self-administered or clinician-administered",
+    "Validated in adults with substance use disorders",
+    "Subscales allow assessment of specific domains: use, risk, and protective factors"
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "id": "cheops_pain_scale",
+  "title": "Children's Hospital of Eastern Ontario Pain Scale (CHEOPS) for Post-Op Pediatric Pain",
+  "description": "Quantifies post-operative pain in pediatric patients aged 1-5 years using behavioral observations",
+  "category": "pediatrics",
+  "version": "1985",
+  "parameters": [
+    {
+      "name": "cry",
+      "type": "string",
+      "required": true,
+      "description": "Vocal response and crying behavior",
+      "options": ["no_crying", "moaning_crying", "screaming"],
+      "validation": {
+        "enum": ["no_crying", "moaning_crying", "screaming"]
+      }
+    },
+    {
+      "name": "facial",
+      "type": "string",
+      "required": true,
+      "description": "Facial expression assessment",
+      "options": ["smiling", "composed", "grimace"],
+      "validation": {
+        "enum": ["smiling", "composed", "grimace"]
+      }
+    },
+    {
+      "name": "verbal",
+      "type": "string",
+      "required": true,
+      "description": "Verbal responses and complaints",
+      "options": ["positive", "not_talking_other", "pain_complaints"],
+      "validation": {
+        "enum": ["positive", "not_talking_other", "pain_complaints"]
+      }
+    },
+    {
+      "name": "torso",
+      "type": "string",
+      "required": true,
+      "description": "Body position and movement",
+      "options": ["neutral", "shifting_tense"],
+      "validation": {
+        "enum": ["neutral", "shifting_tense"]
+      }
+    },
+    {
+      "name": "touch",
+      "type": "string",
+      "required": true,
+      "description": "Wound evaluation and touching behavior",
+      "options": ["not_touching", "reaching_touching"],
+      "validation": {
+        "enum": ["not_touching", "reaching_touching"]
+      }
+    },
+    {
+      "name": "legs",
+      "type": "string",
+      "required": true,
+      "description": "Leg position and movement",
+      "options": ["neutral", "squirming_tensed"],
+      "validation": {
+        "enum": ["neutral", "squirming_tensed"]
+      }
+    }
+  ],
+  "result": {
+    "name": "cheops_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "CHEOPS pain score and clinical recommendations"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 4,
+        "max": 4,
+        "level": "No Pain",
+        "description": "Minimal discomfort",
+        "interpretation": "No analgesic intervention required. Continue routine monitoring and comfort measures."
+      },
+      {
+        "min": 5,
+        "max": 7,
+        "level": "Mild to Moderate Pain",
+        "description": "Consider analgesic intervention",
+        "interpretation": "Consider administering analgesic medication. Reassess pain level after intervention and provide comfort measures."
+      },
+      {
+        "min": 8,
+        "max": 13,
+        "level": "Severe Pain",
+        "description": "Analgesic intervention required",
+        "interpretation": "Analgesic medication required immediately. Implement comprehensive pain management strategies and frequent reassessment."
+      }
+    ]
+  },
+  "references": [
+    "McGrath PJ, Johnson G, Goodman JT, Schillinger J, Dunn J, Chapman J. CHEOPS: a behavioral scale for rating postoperative pain in children. In: Fields HL, Dubner R, Cervero F, editors. Advances in pain research and therapy. New York: Raven Press; 1985. p. 395-402.",
+    "Suraseranivongse S, Santawat U, Kraiprasit K, Petcharatana S, Prakkamodom S, Muntraporn N. Cross-validation of a composite pain scale for preschool children within 24 hours of surgery. Br J Anaesth. 2001 Sep;87(3):400-5.",
+    "Beyer JE, McGrath PJ, Berde CB. Discordance between self-report and behavioral pain measures in children aged 3-7 years after surgery. J Pain Symptom Manage. 1990 Dec;5(6):350-6."
+  ],
+  "formula": "Score = Cry points + Facial points + Verbal points + Torso points + Touch points + Legs points",
+  "notes": [
+    "Designed for post-operative pain assessment in children aged 1-5 years",
+    "Should be assessed every 3 hours during post-operative period",
+    "Reassess 15-20 minutes after IV analgesics or 30-45 minutes after oral/rectal analgesics",
+    "Scores ≥5 indicate need to consider analgesic intervention",
+    "Scores ≥8 indicate immediate need for analgesic intervention",
+    "Requires direct behavioral observation by trained healthcare provider",
+    "Not validated for procedural pain assessment"
+  ]
+}

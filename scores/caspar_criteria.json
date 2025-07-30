@@ -1,0 +1,114 @@
+{
+  "id": "caspar_criteria",
+  "title": "CASPAR Criteria for Psoriatic Arthritis",
+  "description": "Provides standardized classification criteria for identifying psoriatic arthritis (PsA) in patients with inflammatory arthritis. Requires presence of inflammatory articular disease plus ≥3 points from additional criteria.",
+  "category": "rheumatology",
+  "version": "2006",
+  "parameters": [
+    {
+      "name": "inflammatory_articular_disease",
+      "type": "string",
+      "required": true,
+      "description": "Presence of inflammatory articular disease (joint, spine, or entheseal) - MANDATORY CRITERION",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "psoriasis_status",
+      "type": "string",
+      "required": true,
+      "description": "Current psoriasis status or history",
+      "options": ["current", "history", "none"],
+      "validation": {
+        "enum": ["current", "history", "none"]
+      }
+    },
+    {
+      "name": "nail_dystrophy",
+      "type": "string",
+      "required": true,
+      "description": "Nail dystrophy: onycholysis, pitting, or hyperkeratosis on examination",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "rheumatoid_factor",
+      "type": "string",
+      "required": true,
+      "description": "Rheumatoid factor status (preferred: ELISA or nephelometry)",
+      "options": ["negative", "positive"],
+      "validation": {
+        "enum": ["negative", "positive"]
+      }
+    },
+    {
+      "name": "dactylitis",
+      "type": "string",
+      "required": true,
+      "description": "Dactylitis: current or historical swelling of entire digit",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "juxta_articular_new_bone",
+      "type": "string",
+      "required": true,
+      "description": "Juxtaarticular new bone formation: ill-defined ossification near joint margins on X-ray",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "caspar_classification",
+    "type": "object",
+    "unit": "points",
+    "description": "CASPAR classification result with total points and interpretation"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Does Not Meet CASPAR Criteria",
+        "description": "Insufficient criteria for psoriatic arthritis classification",
+        "interpretation": "Patient does not meet CASPAR criteria for psoriatic arthritis classification. <3 points from additional criteria or lacks mandatory inflammatory articular disease. Consider alternative diagnoses or further evaluation."
+      },
+      {
+        "min": 3,
+        "max": 6,
+        "stage": "Meets CASPAR Criteria",
+        "description": "Meets criteria for psoriatic arthritis classification",
+        "interpretation": "Patient meets CASPAR criteria for psoriatic arthritis classification. Presence of inflammatory articular disease plus ≥3 points from additional criteria supports PsA classification for research purposes."
+      }
+    ]
+  },
+  "references": [
+    "Taylor W, Gladman D, Helliwell P, Marchesoni A, Mease P, Mielants H; CASPAR Study Group. Classification criteria for psoriatic arthritis: development of new criteria from a large international study. Arthritis Rheum. 2006 Aug;54(8):2665-73. doi: 10.1002/art.21972.",
+    "Chandran V, Schentag CT, Gladman DD. Sensitivity and specificity of the CASPAR criteria for psoriatic arthritis in a family medicine clinic setting. J Rheumatol. 2008 Oct;35(10):2069-70.",
+    "Helliwell PS, Taylor WJ. Classification and diagnostic criteria for psoriatic arthritis. Ann Rheum Dis. 2005 Mar;64 Suppl 2(Suppl 2):ii3-8. doi: 10.1136/ard.2004.032318."
+  ],
+  "formula": "CASPAR Classification requires: 1) Inflammatory articular disease (mandatory) PLUS 2) ≥3 points from: Current psoriasis (2 pts), History of psoriasis (1 pt), Nail dystrophy (1 pt), RF negative (1 pt), Dactylitis (1 pt), Juxtaarticular new bone formation (1 pt)",
+  "notes": [
+    "CASPAR criteria are classification criteria, not diagnostic criteria",
+    "Designed primarily for research and clinical trial patient selection",
+    "Sensitivity: 91%, Specificity: 98%",
+    "Requires mandatory presence of inflammatory articular disease",
+    "Current psoriasis scores 2 points; all other features score 1 point",
+    "Developed from international study of 588 PsA patients across 30 clinics",
+    "Personal or family history of psoriasis counts as 1 point (if no current psoriasis)",
+    "Nail dystrophy includes onycholysis, pitting, and hyperkeratosis",
+    "Dactylitis can be current or historical",
+    "Juxtaarticular new bone formation seen on X-ray of hands or feet",
+    "RF negativity preferred by ELISA or nephelometry methods",
+    "Should be used in conjunction with clinical judgment",
+    "Not intended as standalone diagnostic tool for individual patients"
+  ]
+}

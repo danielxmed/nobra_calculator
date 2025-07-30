@@ -1,0 +1,357 @@
+{
+  "id": "comm",
+  "title": "Current Opioid Misuse Measure (COMM)",
+  "description": "Identifies potential medication misuse in patients who are on long-term opioid therapy. The COMM is a validated self-report instrument for identifying and monitoring opioid misuse in chronic pain patients taking prescription opioids for pain management.",
+  "category": "psychiatry",
+  "version": "1.0",
+  "parameters": [
+    {
+      "name": "thinking_clearly",
+      "type": "integer",
+      "required": true,
+      "description": "In the past 30 days, have you had trouble thinking clearly or memory problems?",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "Never"},
+        {"value": 1, "label": "Seldom"},
+        {"value": 2, "label": "Sometimes"},
+        {"value": 3, "label": "Often"},
+        {"value": 4, "label": "Very often"}
+      ]
+    },
+    {
+      "name": "not_completing_tasks",
+      "type": "integer",
+      "required": true,
+      "description": "In the past 30 days, have people complained that you are not completing necessary tasks?",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "Never"},
+        {"value": 1, "label": "Seldom"},
+        {"value": 2, "label": "Sometimes"},
+        {"value": 3, "label": "Often"},
+        {"value": 4, "label": "Very often"}
+      ]
+    },
+    {
+      "name": "relief_other_sources",
+      "type": "integer",
+      "required": true,
+      "description": "In the past 30 days, have you tried to get pain relief from sources other than your prescribing physician?",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "Never"},
+        {"value": 1, "label": "Seldom"},
+        {"value": 2, "label": "Sometimes"},
+        {"value": 3, "label": "Often"},
+        {"value": 4, "label": "Very often"}
+      ]
+    },
+    {
+      "name": "taking_differently",
+      "type": "integer",
+      "required": true,
+      "description": "In the past 30 days, have you taken your medications differently than prescribed?",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "Never"},
+        {"value": 1, "label": "Seldom"},
+        {"value": 2, "label": "Sometimes"},
+        {"value": 3, "label": "Often"},
+        {"value": 4, "label": "Very often"}
+      ]
+    },
+    {
+      "name": "thinking_hurting_self",
+      "type": "integer",
+      "required": true,
+      "description": "In the past 30 days, have you seriously thought about hurting yourself?",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "Never"},
+        {"value": 1, "label": "Seldom"},
+        {"value": 2, "label": "Sometimes"},
+        {"value": 3, "label": "Often"},
+        {"value": 4, "label": "Very often"}
+      ]
+    },
+    {
+      "name": "time_thinking_medications",
+      "type": "integer",
+      "required": true,
+      "description": "In the past 30 days, how much time have you spent thinking about opioid medications?",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "Never"},
+        {"value": 1, "label": "Seldom"},
+        {"value": 2, "label": "Sometimes"},
+        {"value": 3, "label": "Often"},
+        {"value": 4, "label": "Very often"}
+      ]
+    },
+    {
+      "name": "being_in_arguments",
+      "type": "integer",
+      "required": true,
+      "description": "In the past 30 days, have you been in arguments?",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "Never"},
+        {"value": 1, "label": "Seldom"},
+        {"value": 2, "label": "Sometimes"},
+        {"value": 3, "label": "Often"},
+        {"value": 4, "label": "Very often"}
+      ]
+    },
+    {
+      "name": "trouble_controlling_anger",
+      "type": "integer",
+      "required": true,
+      "description": "In the past 30 days, have you had trouble controlling anger?",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "Never"},
+        {"value": 1, "label": "Seldom"},
+        {"value": 2, "label": "Sometimes"},
+        {"value": 3, "label": "Often"},
+        {"value": 4, "label": "Very often"}
+      ]
+    },
+    {
+      "name": "need_medications_from_others",
+      "type": "integer",
+      "required": true,
+      "description": "In the past 30 days, have you had to take pain medications from someone else?",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "Never"},
+        {"value": 1, "label": "Seldom"},
+        {"value": 2, "label": "Sometimes"},
+        {"value": 3, "label": "Often"},
+        {"value": 4, "label": "Very often"}
+      ]
+    },
+    {
+      "name": "worried_handling_medications",
+      "type": "integer",
+      "required": true,
+      "description": "In the past 30 days, have you been worried about how you are handling your medications?",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "Never"},
+        {"value": 1, "label": "Seldom"},
+        {"value": 2, "label": "Sometimes"},
+        {"value": 3, "label": "Often"},
+        {"value": 4, "label": "Very often"}
+      ]
+    },
+    {
+      "name": "others_worried_handling",
+      "type": "integer",
+      "required": true,
+      "description": "In the past 30 days, have others been worried about how you are handling your medications?",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "Never"},
+        {"value": 1, "label": "Seldom"},
+        {"value": 2, "label": "Sometimes"},
+        {"value": 3, "label": "Often"},
+        {"value": 4, "label": "Very often"}
+      ]
+    },
+    {
+      "name": "emergency_clinic_visits",
+      "type": "integer",
+      "required": true,
+      "description": "In the past 30 days, have you made emergency clinic calls or visits?",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "Never"},
+        {"value": 1, "label": "Seldom"},
+        {"value": 2, "label": "Sometimes"},
+        {"value": 3, "label": "Often"},
+        {"value": 4, "label": "Very often"}
+      ]
+    },
+    {
+      "name": "getting_angry_with_people",
+      "type": "integer",
+      "required": true,
+      "description": "In the past 30 days, have you gotten angry with people?",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "Never"},
+        {"value": 1, "label": "Seldom"},
+        {"value": 2, "label": "Sometimes"},
+        {"value": 3, "label": "Often"},
+        {"value": 4, "label": "Very often"}
+      ]
+    },
+    {
+      "name": "taking_more_than_prescribed",
+      "type": "integer",
+      "required": true,
+      "description": "In the past 30 days, have you taken more medication than prescribed?",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "Never"},
+        {"value": 1, "label": "Seldom"},
+        {"value": 2, "label": "Sometimes"},
+        {"value": 3, "label": "Often"},
+        {"value": 4, "label": "Very often"}
+      ]
+    },
+    {
+      "name": "borrowing_pain_medication",
+      "type": "integer",
+      "required": true,
+      "description": "In the past 30 days, have you borrowed pain medication from others?",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "Never"},
+        {"value": 1, "label": "Seldom"},
+        {"value": 2, "label": "Sometimes"},
+        {"value": 3, "label": "Often"},
+        {"value": 4, "label": "Very often"}
+      ]
+    },
+    {
+      "name": "using_for_non_pain_symptoms",
+      "type": "integer",
+      "required": true,
+      "description": "In the past 30 days, have you used pain medicine for symptoms other than pain?",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "Never"},
+        {"value": 1, "label": "Seldom"},
+        {"value": 2, "label": "Sometimes"},
+        {"value": 3, "label": "Often"},
+        {"value": 4, "label": "Very often"}
+      ]
+    },
+    {
+      "name": "visiting_emergency_room",
+      "type": "integer",
+      "required": true,
+      "description": "In the past 30 days, have you visited the Emergency Room?",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "Never"},
+        {"value": 1, "label": "Seldom"},
+        {"value": 2, "label": "Sometimes"},
+        {"value": 3, "label": "Often"},
+        {"value": 4, "label": "Very often"}
+      ]
+    }
+  ],
+  "result": {
+    "name": "comm_assessment",
+    "type": "object",
+    "unit": "points",
+    "description": "COMM assessment with total score and risk categorization for opioid misuse"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 8,
+        "stage": "Low Risk",
+        "description": "Not misusing or abusing medications",
+        "interpretation": "Score below threshold indicates low risk for current opioid misuse. Continue standard monitoring and pain management protocols."
+      },
+      {
+        "min": 9,
+        "max": 68,
+        "stage": "High Risk",
+        "description": "Possible misuse or abuse of medications", 
+        "interpretation": "Score at or above threshold suggests possible opioid misuse. Further evaluation and enhanced monitoring recommended. Consider substance abuse consultation."
+      }
+    ]
+  },
+  "clinical_applications": [
+    "Screening for opioid misuse in chronic pain patients",
+    "Monitoring patients on long-term opioid therapy",
+    "Risk assessment for aberrant drug-related behaviors",
+    "Clinical decision support for opioid prescribing",
+    "Quality improvement in pain management programs",
+    "Research on opioid misuse and addiction"
+  ],
+  "references": [
+    "Butler SF, Budman SH, Fernandez KC, et al. Development and validation of the Current Opioid Misuse Measure. Pain. 2007;130(1-2):144-156. doi: 10.1016/j.pain.2007.01.014.",
+    "Butler SF, Budman SH, Fanciullo GJ, Jamison RN. Cross validation of the Current Opioid Misuse Measure to monitor chronic pain patients on opioid therapy. Clin J Pain. 2010;26(9):770-776. doi: 10.1097/AJP.0b013e3181f195ba.",
+    "Meltzer EC, Rybin D, Saitz R, et al. Identifying prescription opioid use disorder in primary care: diagnostic characteristics of the Current Opioid Misuse Measure (COMM). Pain. 2011;152(2):397-402. doi: 10.1016/j.pain.2010.11.006.",
+    "Butler SF, Budman SH, Fanciullo GJ, Jamison RN. Development of a Brief Version of the Current Opioid Misuse Measure (COMM): The COMM-9. Pain Med. 2019;20(1):113-118. doi: 10.1093/pm/pny022."
+  ],
+  "formula": "Total Score = Sum of all 17 item responses (each scored 0-4 points)",
+  "notes": [
+    "Total score ranges from 0-68 points",
+    "Cut-off score of ≥9 indicates possible opioid misuse",
+    "Designed for patients already on long-term opioid therapy",
+    "Should be administered by healthcare professionals",
+    "Not intended as a diagnostic tool for opioid use disorder",
+    "May have false positives and should be combined with clinical judgment",
+    "A shorter 9-item version (COMM-9) is also available",
+    "Self-report instrument with excellent internal reliability (α = .86)",
+    "One-week test-retest reliability is excellent (ICC = .86)"
+  ],
+  "validation": {
+    "population": "Chronic pain patients on long-term opioid therapy",
+    "settings": ["Primary care", "Pain management clinics", "Specialty clinics"],
+    "sensitivity": 0.47,
+    "specificity": 0.89,
+    "area_under_curve": 0.84,
+    "internal_consistency": 0.86,
+    "test_retest_reliability": 0.86
+  }
+}

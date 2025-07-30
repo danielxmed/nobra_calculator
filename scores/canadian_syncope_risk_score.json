@@ -1,0 +1,148 @@
+{
+  "id": "canadian_syncope_risk_score",
+  "title": "Canadian Syncope Risk Score",
+  "description": "The Canadian Syncope Risk Score (CSRS) predicts 30-day serious adverse events in patients presenting with syncope to the emergency department. It helps identify low-risk patients who can be safely discharged and high-risk patients requiring further investigation or admission.",
+  "category": "emergency",
+  "version": "2016",
+  "parameters": [
+    {
+      "name": "vasovagal_predisposition",
+      "type": "string",
+      "required": true,
+      "description": "Predisposition to vasovagal symptoms (triggered by being in a warm crowded place, prolonged standing, fear, emotion, or pain)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "heart_disease_history",
+      "type": "string",
+      "required": true,
+      "description": "History of heart disease (CAD, atrial fibrillation or flutter, CHF, valvular disease)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "systolic_bp_abnormal",
+      "type": "string",
+      "required": true,
+      "description": "Any systolic BP <90 or >180 mmHg in the emergency department",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "troponin_elevated",
+      "type": "string",
+      "required": true,
+      "description": "Troponin level above 99th percentile for normal population",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "abnormal_qrs_axis",
+      "type": "string",
+      "required": true,
+      "description": "Abnormal QRS axis (<-30° or >100°)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "qrs_duration_prolonged",
+      "type": "string",
+      "required": true,
+      "description": "QRS duration >130 ms",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "qtc_interval_prolonged",
+      "type": "string",
+      "required": true,
+      "description": "Corrected QT interval >480 ms",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "ed_diagnosis",
+      "type": "string",
+      "required": true,
+      "description": "Emergency department diagnosis",
+      "options": ["vasovagal_syncope", "cardiac_syncope", "neither"],
+      "validation": {
+        "enum": ["vasovagal_syncope", "cardiac_syncope", "neither"]
+      }
+    }
+  ],
+  "result": {
+    "name": "csrs_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Canadian Syncope Risk Score (-3 to 11 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": -3,
+        "max": -2,
+        "stage": "Very Low Risk",
+        "description": "0.4-0.7% risk of serious adverse event",
+        "interpretation": "Very low risk of serious adverse event within 30 days. Consider discharge home with appropriate follow-up as needed. No specific syncope workup typically required."
+      },
+      {
+        "min": -1,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "1.2-1.9% risk of serious adverse event",
+        "interpretation": "Low risk of serious adverse event within 30 days. Consider discharge home with close follow-up. Outpatient evaluation may be appropriate based on clinical judgment."
+      },
+      {
+        "min": 1,
+        "max": 3,
+        "stage": "Medium Risk",
+        "description": "3.1-8.1% risk of serious adverse event",
+        "interpretation": "Medium risk of serious adverse event within 30 days. Consider further ED evaluation and monitoring. Cardiac monitoring and additional testing may be warranted. Disposition based on findings and clinical judgment."
+      },
+      {
+        "min": 4,
+        "max": 5,
+        "stage": "High Risk",
+        "description": "12.9-19.7% risk of serious adverse event",
+        "interpretation": "High risk of serious adverse event within 30 days. Recommend admission for cardiac monitoring and expedited evaluation for underlying causes. Consider cardiology consultation."
+      },
+      {
+        "min": 6,
+        "max": 11,
+        "stage": "Very High Risk",
+        "description": "28.9-83.6% risk of serious adverse event",
+        "interpretation": "Very high risk of serious adverse event within 30 days. Strongly recommend admission to monitored setting. Urgent cardiology consultation and comprehensive evaluation for life-threatening causes of syncope."
+      }
+    ]
+  },
+  "references": [
+    "Thiruganasambandamoorthy V, Kwong K, Wells GA, Sivilotti ML, Mukarram M, Rowe BH, et al. Development of the Canadian Syncope Risk Score to predict serious adverse events after emergency department assessment of syncope. CMAJ. 2016 Sep 6;188(12):E289-98. doi: 10.1503/cmaj.151469.",
+    "Thiruganasambandamoorthy V, Sivilotti MLA, Le Sage N, Yan JW, Huang P, Hegdekar M, et al. Multicenter Emergency Department Validation of the Canadian Syncope Risk Score. JAMA Intern Med. 2020 May 1;180(5):737-44. doi: 10.1001/jamainternmed.2020.0288.",
+    "Thiruganasambandamoorthy V, Hess EP, Turko E, Perry JJ, Wells GA, Stiell IG. Outcomes in Canadian emergency department syncope patients--are we doing a good job? J Emerg Med. 2013 Feb;44(2):321-8. doi: 10.1016/j.jemermed.2012.06.028."
+  ],
+  "formula": "Score = (-1 × vasovagal predisposition) + (1 × heart disease) + (2 × abnormal BP) + (2 × elevated troponin) + (1 × abnormal QRS axis) + (1 × prolonged QRS) + (2 × prolonged QTc) + (-2 × vasovagal diagnosis) + (2 × cardiac diagnosis)",
+  "notes": [
+    "Use in patients ≥16 years presenting within 24 hours of syncope",
+    "Exclude: prolonged LOC >5 min, altered mental status, witnessed seizure, major trauma, intoxication",
+    "Serious adverse events: death, arrhythmia, MI, structural heart disease, aortic dissection, PE, severe hemorrhage, SAH",
+    "Vasovagal predisposition: warm crowded place, prolonged standing, fear, emotion, or pain",
+    "Heart disease: CAD, atrial fibrillation/flutter, CHF, valvular disease",
+    "Score ranges from -3 to 11 points"
+  ]
+}

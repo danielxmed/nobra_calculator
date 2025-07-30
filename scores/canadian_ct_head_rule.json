@@ -1,0 +1,118 @@
+{
+  "id": "canadian_ct_head_rule",
+  "title": "Canadian CT Head Injury/Trauma Rule",
+  "description": "The Canadian CT Head Rule is a clinical decision tool that helps determine which patients with minor head injury require CT head imaging. It uses high-risk and medium-risk criteria to identify patients who may have injuries requiring neurosurgical intervention or admission. The rule is 100% sensitive for detecting neurosurgical lesions and can reduce unnecessary CT scans by approximately 30%.",
+  "category": "emergency",
+  "version": "2001",
+  "parameters": [
+    {
+      "name": "gcs_less_than_15_at_2hrs",
+      "type": "string",
+      "required": true,
+      "description": "Is the Glasgow Coma Scale score less than 15 at 2 hours after injury?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "suspected_skull_fracture",
+      "type": "string",
+      "required": true,
+      "description": "Is there suspected open or depressed skull fracture?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "basilar_skull_fracture_signs",
+      "type": "string",
+      "required": true,
+      "description": "Any sign of basilar skull fracture? (hemotympanum, raccoon eyes, CSF otorrhea/rhinorrhea, Battle's sign)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "vomiting_2_or_more",
+      "type": "string",
+      "required": true,
+      "description": "Has the patient vomited 2 or more times?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "age_65_or_over",
+      "type": "string",
+      "required": true,
+      "description": "Is the patient aged 65 years or older?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "amnesia_30_min_or_more",
+      "type": "string",
+      "required": true,
+      "description": "Does the patient have retrograde amnesia to the event of 30 minutes or more?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "dangerous_mechanism",
+      "type": "string",
+      "required": true,
+      "description": "Was there a dangerous mechanism of injury? (pedestrian struck by vehicle, occupant ejected from vehicle, fall from >3 feet or >5 stairs)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "ct_recommendation",
+    "type": "string",
+    "unit": "recommendation",
+    "description": "Recommendation for CT head imaging"
+  },
+  "interpretation": {
+    "outcomes": [
+      {
+        "result": "CT Required - High Risk",
+        "description": "CT head recommended",
+        "interpretation": "The patient has high-risk criteria present. CT head imaging is recommended. High-risk criteria are 100% sensitive for predicting need for neurosurgical intervention."
+      },
+      {
+        "result": "CT Required - Medium Risk",
+        "description": "CT head recommended",
+        "interpretation": "The patient has medium-risk criteria present (but no high-risk criteria). CT head imaging is recommended. Medium-risk criteria identify patients with clinically important brain injury that may require admission."
+      },
+      {
+        "result": "CT Not Required",
+        "description": "No CT head required",
+        "interpretation": "The patient has no high-risk or medium-risk criteria. CT head imaging is not required based on the Canadian CT Head Rule. The patient can be safely discharged without imaging."
+      }
+    ]
+  },
+  "references": [
+    "Stiell IG, Wells GA, Vandemheen K, Clement C, Lesiuk H, Laupacis A, et al. The Canadian CT Head Rule for patients with minor head injury. Lancet. 2001 May 5;357(9266):1391-6. doi: 10.1016/s0140-6736(00)04561-x.",
+    "Stiell IG, Clement CM, Rowe BH, Schull MJ, Brison R, Cass D, et al. Comparison of the Canadian CT Head Rule and the New Orleans Criteria in patients with minor head injury. JAMA. 2005 Sep 28;294(12):1511-8. doi: 10.1001/jama.294.12.1511.",
+    "Stiell IG, Clement CM, Grimshaw JM, Brison RJ, Rowe BH, Lee JS, et al. A prospective cluster-randomized trial to implement the Canadian CT Head Rule in emergency departments. CMAJ. 2010 Oct 5;182(14):1527-32. doi: 10.1503/cmaj.091974."
+  ],
+  "formula": "High-risk criteria (any present = CT required): GCS <15 at 2hr, suspected open/depressed skull fracture, basilar skull fracture signs, vomiting ≥2, age ≥65. Medium-risk criteria (any present = CT required): amnesia ≥30min, dangerous mechanism.",
+  "notes": [
+    "Inclusion criteria: GCS 13-15 with witnessed LOC, amnesia, or disorientation",
+    "Exclusion criteria: Age <16 years, anticoagulation/bleeding disorder, seizure after injury",
+    "100% sensitive for neurosurgical intervention",
+    "Reduces CT imaging by approximately 30%",
+    "Dangerous mechanisms: pedestrian struck, occupant ejected, fall >3 feet or >5 stairs",
+    "Signs of basilar skull fracture: hemotympanum, raccoon eyes, CSF otorrhea/rhinorrhea, Battle's sign"
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "id": "cryoprecipitate_dosing",
+  "title": "Cryoprecipitate Dosing for Fibrinogen Replacement",
+  "description": "Calculates the required dose of cryoprecipitate units needed to achieve target fibrinogen levels in patients with fibrinogen deficiency or hypofibrinogenemia",
+  "category": "hematology",
+  "version": "2024",
+  "parameters": [
+    {
+      "name": "patient_weight",
+      "type": "float",
+      "required": true,
+      "description": "Patient weight in kilograms",
+      "validation": {
+        "min": 1.0,
+        "max": 300.0
+      },
+      "unit": "kg"
+    },
+    {
+      "name": "patient_sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient biological sex for plasma volume calculation",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "hematocrit",
+      "type": "float",
+      "required": true,
+      "description": "Current hematocrit as decimal (e.g., 0.40 for 40%)",
+      "validation": {
+        "min": 0.15,
+        "max": 0.65
+      },
+      "unit": "decimal"
+    },
+    {
+      "name": "current_fibrinogen",
+      "type": "float",
+      "required": true,
+      "description": "Current fibrinogen level",
+      "validation": {
+        "min": 0.0,
+        "max": 1000.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "target_fibrinogen",
+      "type": "float",
+      "required": true,
+      "description": "Target fibrinogen level to achieve",
+      "validation": {
+        "min": 50.0,
+        "max": 500.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "fibrinogen_per_unit",
+      "type": "float",
+      "required": false,
+      "description": "Fibrinogen content per cryoprecipitate unit (default 200 mg)",
+      "validation": {
+        "min": 150.0,
+        "max": 300.0
+      },
+      "unit": "mg"
+    }
+  ],
+  "result": {
+    "name": "units_required",
+    "type": "integer",
+    "unit": "units",
+    "description": "Number of cryoprecipitate units required"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 5,
+        "stage": "Low Dose",
+        "description": "Small fibrinogen replacement",
+        "interpretation": "Small cryoprecipitate dose required. Monitor response with repeat fibrinogen levels."
+      },
+      {
+        "min": 6,
+        "max": 15,
+        "stage": "Standard Dose",
+        "description": "Typical therapeutic replacement",
+        "interpretation": "Standard therapeutic dose. Consider pooled units (typically 10 units per pool) for efficient administration."
+      },
+      {
+        "min": 16,
+        "max": 30,
+        "stage": "High Dose",
+        "description": "Large fibrinogen replacement",
+        "interpretation": "High dose replacement required. Consider alternative therapies like fibrinogen concentrate. Monitor for volume overload."
+      },
+      {
+        "min": 31,
+        "max": 100,
+        "stage": "Very High Dose",
+        "description": "Massive fibrinogen replacement",
+        "interpretation": "Very high dose requirement. Consider fibrinogen concentrate instead of cryoprecipitate. Ensure adequate vascular access and monitor for complications."
+      }
+    ]
+  },
+  "references": [
+    "American Association of Blood Banks (AABB). Technical Manual, 20th Edition. 2020.",
+    "British Committee for Standards in Haematology (BCSH). Guidelines for the use of fresh-frozen plasma, cryoprecipitate and cryosupernatant. Br J Haematol. 2004;126(1):11-28.",
+    "Stanworth SJ, Brunskill SJ, Hyde CJ, McClelland DB, Murphy MF. Is fresh frozen plasma clinically effective? A systematic review of randomized controlled trials. Br J Haematol. 2004;126(1):139-152.",
+    "American Red Cross. Circular of Information for the Use of Human Blood and Blood Components. 2017."
+  ],
+  "formula": "Required Units = (Target Fibrinogen - Current Fibrinogen) × Plasma Volume / Fibrinogen per Unit; where Plasma Volume (dL) = Weight (kg) × Factor × (1 - Hematocrit); Factor = 0.07 for males, 0.065 for females",
+  "notes": [
+    "Standard adult dose is typically 10 pooled units containing approximately 2000 mg fibrinogen",
+    "One unit of cryoprecipitate typically contains 150-250 mg fibrinogen (200 mg average)",
+    "Alternative dosing: 1 unit per 5-10 kg body weight increases fibrinogen by approximately 60-100 mg/dL",
+    "Critical fibrinogen threshold is <50-100 mg/dL requiring urgent replacement",
+    "For major bleeding, maintain fibrinogen >150-200 mg/dL",
+    "Monitor response with repeat coagulation studies 1-2 hours post-transfusion",
+    "Consider fibrinogen concentrate for patients requiring large doses or with volume restrictions",
+    "Each cryoprecipitate unit is typically 15-20 mL in volume"
+  ]
+}

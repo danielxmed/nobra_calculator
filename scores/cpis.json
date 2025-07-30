@@ -1,0 +1,106 @@
+{
+  "id": "cpis",
+  "title": "Clinical Pulmonary Infection Score (CPIS) for Ventilator-Associated Pneumonia (VAP)",
+  "description": "Evaluates objective data in mechanically ventilated patients suspected of ventilator-associated pneumonia (VAP) and stratifies risk of positive diagnosis. The score assists clinicians in determining when to pursue pulmonary cultures and guides antibiotic management decisions.",
+  "category": "pulmonology",
+  "version": "2001",
+  "parameters": [
+    {
+      "name": "temperature",
+      "type": "string",
+      "required": true,
+      "description": "Core body temperature in degrees Celsius",
+      "options": ["36.5-38.4", "38.5-38.9", "≥39.0 or ≤36.0"],
+      "validation": {
+        "enum": ["36.5-38.4", "38.5-38.9", "≥39.0 or ≤36.0"]
+      }
+    },
+    {
+      "name": "white_blood_cells",
+      "type": "string",
+      "required": true,
+      "description": "White blood cell count (×10³/μL) with consideration of band forms",
+      "options": ["4-11", "<4 or >11", "<4 or >11 plus band forms ≥500"],
+      "validation": {
+        "enum": ["4-11", "<4 or >11", "<4 or >11 plus band forms ≥500"]
+      }
+    },
+    {
+      "name": "tracheal_secretions",
+      "type": "string",
+      "required": true,
+      "description": "Volume and character of tracheal secretions (+ indicates suction frequency)",
+      "options": ["<14+", "≥14+", "≥14+ plus purulent"],
+      "validation": {
+        "enum": ["<14+", "≥14+", "≥14+ plus purulent"]
+      }
+    },
+    {
+      "name": "oxygenation",
+      "type": "string",
+      "required": true,
+      "description": "PaO₂/FiO₂ ratio in mm Hg",
+      "options": [">240 or ARDS", "≤240 and no ARDS"],
+      "validation": {
+        "enum": [">240 or ARDS", "≤240 and no ARDS"]
+      }
+    },
+    {
+      "name": "chest_radiograph",
+      "type": "string",
+      "required": true,
+      "description": "Chest radiograph findings",
+      "options": ["No infiltrate", "Diffuse or patchy infiltrate", "Localized infiltrate"],
+      "validation": {
+        "enum": ["No infiltrate", "Diffuse or patchy infiltrate", "Localized infiltrate"]
+      }
+    },
+    {
+      "name": "tracheal_aspirate_culture",
+      "type": "string",
+      "required": true,
+      "description": "Tracheal aspirate culture results and gram stain findings",
+      "options": ["Pathogenic bacteria ≤1+ or no growth", "Pathogenic bacteria >1+", "Pathogenic bacteria >1+ plus same on gram stain >1+"],
+      "validation": {
+        "enum": ["Pathogenic bacteria ≤1+ or no growth", "Pathogenic bacteria >1+", "Pathogenic bacteria >1+ plus same on gram stain >1+"]
+      }
+    }
+  ],
+  "result": {
+    "name": "cpis_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Clinical Pulmonary Infection Score ranging from 0-12 points"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 6,
+        "stage": "Low likelihood",
+        "description": "Low likelihood of VAP",
+        "interpretation": "Score ≤6 suggests low probability of ventilator-associated pneumonia. Consider early discontinuation of empirical antimicrobial therapy if initiated. Continue monitoring clinical status."
+      },
+      {
+        "min": 7,
+        "max": 12,
+        "stage": "High likelihood",
+        "description": "High likelihood of VAP",
+        "interpretation": "Score ≥7 may indicate higher likelihood of ventilator-associated pneumonia. Consider obtaining pulmonary cultures (quantitative BAL or PSB) and continuing empirical antimicrobial therapy pending culture results."
+      }
+    ]
+  },
+  "references": [
+    "Pugin J, Auckenthaler R, Mili N, Janssens JP, Lew PD, Suter PM. Diagnosis of ventilator-associated pneumonia by bacteriologic analysis of bronchoscopic and nonbronchoscopic 'blind' bronchoalveolar lavage fluid. Am Rev Respir Dis. 1991 May;143(5 Pt 1):1121-9. doi: 10.1164/ajrccm/143.5_Pt_1.1121.",
+    "Singh N, Rogers P, Atwood CW, Wagener MM, Yu VL. Short-course empiric antibiotic therapy for patients with pulmonary infiltrates in the intensive care unit. A proposed solution for indiscriminate antibiotic prescription. Am J Respir Crit Care Med. 2000 Aug;162(2 Pt 1):505-11. doi: 10.1164/ajrccm.162.2.9909095.",
+    "Schurink CA, Van Nieuwenhoven CA, Jacobs JA, Rozenberg-Arska M, Joore HC, Buskens E, et al. Clinical pulmonary infection score for ventilator-associated pneumonia: accuracy and inter-observer variability. Intensive Care Med. 2004 Feb;30(2):217-24. doi: 10.1007/s00134-003-2018-2."
+  ],
+  "formula": "CPIS = Temperature points + WBC points + Secretions points + Oxygenation points + Radiograph points + Culture points",
+  "notes": [
+    "CPIS has limited sensitivity and specificity; should be used in conjunction with clinical judgment",
+    "Substantial inter-observer variability exists in CPIS calculation",
+    "Best used as part of initial evaluation before pursuing other diagnostic methods",
+    "ARDS = Acute Respiratory Distress Syndrome",
+    "PSB = Protected Specimen Brush; BAL = Bronchoalveolar Lavage"
+  ]
+}

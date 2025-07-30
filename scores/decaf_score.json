@@ -1,0 +1,176 @@
+{
+  "id": "decaf_score",
+  "title": "DECAF Score for Acute Exacerbation of COPD",
+  "description": "Predicts in-hospital mortality in acute COPD exacerbation using five clinical variables: Dyspnoea, Eosinopenia, Consolidation, Acidaemia, and atrial Fibrillation.",
+  "category": "pulmonology",
+  "version": "2012",
+  "parameters": [
+    {
+      "name": "emrcd_dyspnea",
+      "type": "string",
+      "required": true,
+      "description": "Extended MRC Dyspnea Scale (eMRCD) - functional status assessment",
+      "options": ["not_too_dyspneic", "too_dyspneic_independent", "too_dyspneic_dependent"],
+      "validation": {
+        "enum": ["not_too_dyspneic", "too_dyspneic_independent", "too_dyspneic_dependent"]
+      }
+    },
+    {
+      "name": "eosinopenia",
+      "type": "string",
+      "required": true,
+      "description": "Eosinopenia (eosinophils <0.05×10⁹/L or <50 cells/μL)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "consolidation",
+      "type": "string",
+      "required": true,
+      "description": "Consolidation on chest X-ray",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "acidemia",
+      "type": "string",
+      "required": true,
+      "description": "Acidemia (arterial blood gas pH <7.30)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "atrial_fibrillation",
+      "type": "string",
+      "required": true,
+      "description": "Atrial fibrillation on ECG or history",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "patient_age",
+      "type": "integer",
+      "required": false,
+      "description": "Patient age in years (for clinical context, ≥35 years required for score validity)",
+      "validation": {
+        "min": 35,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "smoking_history",
+      "type": "string",
+      "required": false,
+      "description": "Smoking history for clinical context (≥10 pack-years required for score validity)",
+      "options": ["yes", "no", "unknown"],
+      "validation": {
+        "enum": ["yes", "no", "unknown"]
+      }
+    }
+  ],
+  "result": {
+    "name": "decaf_assessment",
+    "type": "object",
+    "unit": "points",
+    "description": "DECAF score with mortality risk assessment and clinical management recommendations"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "Low mortality risk",
+        "interpretation": "In-hospital mortality risk 0-1.5%. Routine ward-based management is appropriate. Standard COPD exacerbation care with bronchodilators, corticosteroids, and supportive care.",
+        "mortality_risk": "0-1.5%",
+        "recommendation": "Routine management"
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Intermediate Risk",
+        "description": "Intermediate mortality risk",
+        "interpretation": "In-hospital mortality risk 5.4%. Use clinical judgment regarding disposition and level of care. Consider closer monitoring and assessment for complications.",
+        "mortality_risk": "5.4%",
+        "recommendation": "Use clinician judgment re: disposition"
+      },
+      {
+        "min": 3,
+        "max": 6,
+        "stage": "High Risk",
+        "description": "High mortality risk",
+        "interpretation": "In-hospital mortality risk 15.3-50%. Consider escalation of care (HDU/ICU) versus palliative care discussions. These patients warrant intensive monitoring and aggressive management.",
+        "mortality_risk": "15.3-50%",
+        "recommendation": "Consider escalation of care vs. palliative care"
+      }
+    ]
+  },
+  "clinical_applications": [
+    "In-hospital mortality prediction for acute COPD exacerbation",
+    "Risk stratification for disposition and level of care decisions",
+    "Early identification of patients requiring intensive monitoring",
+    "Supporting discussions about goals of care and palliative options",
+    "Quality improvement and standardization of COPD exacerbation management",
+    "Clinical decision support for emergency department and hospital medicine",
+    "Research stratification and outcome prediction in COPD studies"
+  ],
+  "management_recommendations": {
+    "low_risk": [
+      "Standard ward-based care is appropriate",
+      "Routine COPD exacerbation management protocol",
+      "Standard bronchodilator and corticosteroid therapy",
+      "Regular monitoring for clinical improvement",
+      "Discharge planning and outpatient follow-up arrangement"
+    ],
+    "intermediate_risk": [
+      "Close clinical monitoring and frequent reassessment",
+      "Consider higher level of nursing care or step-down unit",
+      "Aggressive bronchodilator and anti-inflammatory therapy",
+      "Early assessment for respiratory failure and need for ventilation",
+      "Consider early mobilization and respiratory therapy"
+    ],
+    "high_risk": [
+      "Strong consideration for HDU/ICU level care",
+      "Intensive monitoring for respiratory failure",
+      "Early assessment for non-invasive or invasive ventilation",
+      "Aggressive medical management with close monitoring",
+      "Palliative care consultation for goals of care discussion",
+      "Consider early family meetings and advance directive discussions"
+    ]
+  },
+  "references": [
+    "Steer J, Gibson J, Bourke SC. The DECAF Score: predicting hospital mortality in exacerbations of chronic obstructive pulmonary disease. Thorax. 2012;67(11):970-976. doi: 10.1136/thoraxjnl-2012-202103.",
+    "Echevarria C, Steer J, Heslop-Marshall K, et al. Validation of the DECAF score to predict hospital mortality in acute exacerbations of COPD. Thorax. 2016;71(2):133-140. doi: 10.1136/thoraxjnl-2015-207775.",
+    "Zhou M, Chen Y, Yang M, et al. DECAF score as a mortality predictor for acute exacerbation of chronic obstructive pulmonary disease: a systematic review and meta-analysis. BMJ Open. 2021;11(2):e044923. doi: 10.1136/bmjopen-2020-044923.",
+    "Nafae RM, Embarak S, Gad DM. Value of the DECAF score in predicting hospital mortality in patients with acute exacerbation of chronic obstructive pulmonary disease admitted to Zagazig University Hospitals, Egypt. Egypt J Chest Dis Tuberc. 2015;64(1):35-40. doi: 10.1016/j.ejcdt.2014.07.006."
+  ],
+  "formula": "DECAF Score = Dyspnoea (0-2 points) + Eosinopenia (0-1 point) + Consolidation (0-1 point) + Acidaemia (0-1 point) + atrial Fibrillation (0-1 point)",
+  "notes": [
+    "Score applies only to patients ≥35 years old with acute COPD exacerbation",
+    "Requires ≥10 pack-year smoking history for validity",
+    "Should only be used in hospitalized patients, not outpatient or stable COPD",
+    "Extended MRC Dyspnea Scale assesses functional limitation due to breathlessness",
+    "Eosinopenia defined as <0.05×10⁹/L (equivalent to <50 cells/μL)",
+    "Consolidation must be present on chest X-ray imaging",
+    "Acidemia requires arterial blood gas measurement with pH <7.30",
+    "Atrial fibrillation can be current or historical",
+    "Higher scores (3-6) warrant consideration of escalated care or palliative discussions",
+    "Score has been validated across multiple international populations",
+    "Superior prognostic accuracy compared to other COPD severity scores"
+  ],
+  "validation": {
+    "population": "Hospitalized patients ≥35 years with acute COPD exacerbation and ≥10 pack-year smoking history",
+    "settings": ["Emergency departments", "Internal medicine wards", "Respiratory medicine", "Critical care units"],
+    "evidence_basis": "Derived and validated from UK prospective cohort studies, externally validated internationally",
+    "clinical_utility": "Validated tool for mortality prediction and care escalation decisions in acute COPD exacerbation"
+  }
+}

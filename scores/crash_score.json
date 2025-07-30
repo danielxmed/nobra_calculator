@@ -1,0 +1,140 @@
+{
+  "id": "crash_score",
+  "title": "Chemotherapy Risk Assessment Scale for High-Age Patients (CRASH) Score",
+  "description": "Assesses the risk of severe chemotherapy toxicity in older cancer patients (≥70 years). Predicts both hematologic (grade 4) and nonhematologic (grade 3/4) toxicities based on patient characteristics and chemotherapy regimen.",
+  "category": "oncology",
+  "version": "2012",
+  "parameters": [
+    {
+      "name": "diastolic_bp",
+      "type": "string",
+      "required": true,
+      "description": "Diastolic blood pressure",
+      "options": ["lte_72", "gt_72"],
+      "validation": {
+        "enum": ["lte_72", "gt_72"]
+      }
+    },
+    {
+      "name": "iadl_score",
+      "type": "string",
+      "required": true,
+      "description": "Instrumental Activities of Daily Living (IADL) score",
+      "options": ["26_to_29", "10_to_25"],
+      "validation": {
+        "enum": ["26_to_29", "10_to_25"]
+      }
+    },
+    {
+      "name": "ldh",
+      "type": "string",
+      "required": true,
+      "description": "Lactate dehydrogenase (LDH) level",
+      "options": ["0_to_459", "gt_459"],
+      "validation": {
+        "enum": ["0_to_459", "gt_459"]
+      },
+      "unit": "U/L"
+    },
+    {
+      "name": "chemo_risk_hematologic",
+      "type": "string",
+      "required": true,
+      "description": "Chemotherapy risk for hematologic toxicity",
+      "options": ["0_to_0.44", "0.45_to_0.57", "gt_0.57"],
+      "validation": {
+        "enum": ["0_to_0.44", "0.45_to_0.57", "gt_0.57"]
+      }
+    },
+    {
+      "name": "ecog_ps",
+      "type": "string",
+      "required": true,
+      "description": "ECOG Performance Status",
+      "options": ["0", "1_to_2", "3_to_4"],
+      "validation": {
+        "enum": ["0", "1_to_2", "3_to_4"]
+      }
+    },
+    {
+      "name": "mmse",
+      "type": "string",
+      "required": true,
+      "description": "Mini Mental State Examination (MMSE) score",
+      "options": ["30", "lt_30"],
+      "validation": {
+        "enum": ["30", "lt_30"]
+      }
+    },
+    {
+      "name": "mna",
+      "type": "string",
+      "required": true,
+      "description": "Mini Nutritional Assessment (MNA) score",
+      "options": ["28_to_30", "lt_28"],
+      "validation": {
+        "enum": ["28_to_30", "lt_28"]
+      }
+    },
+    {
+      "name": "chemo_risk_nonhematologic",
+      "type": "string",
+      "required": true,
+      "description": "Chemotherapy risk for nonhematologic toxicity",
+      "options": ["0", "1", "2"],
+      "validation": {
+        "enum": ["0", "1", "2"]
+      }
+    }
+  ],
+  "result": {
+    "name": "crash_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "CRASH score with hematologic and nonhematologic subscores"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "risk_category": "Low",
+        "description": "Low risk",
+        "interpretation": "Low risk for severe chemotherapy toxicity. Approximately 7% risk of hematologic toxicity and 33% risk of nonhematologic toxicity."
+      },
+      {
+        "min": 4,
+        "max": 6,
+        "risk_category": "Low-Intermediate",
+        "description": "Low-intermediate risk",
+        "interpretation": "Low-intermediate risk for severe chemotherapy toxicity. Approximately 23% risk of hematologic toxicity and 46% risk of nonhematologic toxicity."
+      },
+      {
+        "min": 7,
+        "max": 9,
+        "risk_category": "Intermediate-High",
+        "description": "Intermediate-high risk",
+        "interpretation": "Intermediate-high risk for severe chemotherapy toxicity. Approximately 54% risk of hematologic toxicity and 67% risk of nonhematologic toxicity."
+      },
+      {
+        "min": 10,
+        "max": 100,
+        "risk_category": "High",
+        "description": "High risk",
+        "interpretation": "High risk for severe chemotherapy toxicity. Approximately 100% risk of hematologic toxicity and 93% risk of nonhematologic toxicity. Consider dose reduction or alternative therapy."
+      }
+    ]
+  },
+  "references": [
+    "Extermann M, Boler I, Reich RR, Lyman GH, Brown RH, DeFelice J, et al. Predicting the risk of chemotherapy toxicity in older patients: the Chemotherapy Risk Assessment Scale for High-Age Patients (CRASH) score. Cancer. 2012 Jul 1;118(13):3377-86.",
+    "Extermann M, Reich RR, Sehovic M. Chemotoxicity recalibration in the common terminology criteria for adverse events version 4.0 in older patients with cancer: Development of a training set. J Geriatr Oncol. 2013 Oct;4(4):353-8."
+  ],
+  "formula": "CRASH Score = Hematologic Subscore + Nonhematologic Subscore (chemotherapy risk counted only once in combined score)",
+  "notes": [
+    "Designed for patients aged ≥70 years starting chemotherapy",
+    "Hematologic toxicity defined as grade 4 per CTCAE v3.0",
+    "Nonhematologic toxicity defined as grade 3/4 per CTCAE v3.0",
+    "IADL score ranges from 0-29, higher scores indicate better function",
+    "Chemotherapy risk values are based on specific regimen toxicity profiles"
+  ]
+}

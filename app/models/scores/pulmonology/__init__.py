@@ -10,6 +10,11 @@ from .airq import AIRQRequest, AIRQResponse
 from .bap_65 import Bap65Request, Bap65Response
 from .berlin_criteria_ards import BerlinCriteriaArdsRequest, BerlinCriteriaArdsResponse
 from .bode_index_copd import BodeIndexCopdRequest, BodeIndexCopdResponse
+from .bova_score import BovaScoreRequest, BovaScoreResponse
+from .cpis import CpisRequest, CpisResponse
+from .copd_cat import CopdCatRequest, CopdCatResponse
+from .crb_65_pneumonia_severity import Crb65PneumoniaSeverityRequest, Crb65PneumoniaSeverityResponse
+from .decaf_score import DecafScoreRequest, DecafScoreResponse
 
 __all__ = [
     "Curb65Request",
@@ -28,4 +33,14 @@ __all__ = [
     "BerlinCriteriaArdsResponse",
     "BodeIndexCopdRequest",
     "BodeIndexCopdResponse",
+    "BovaScoreRequest",
+    "BovaScoreResponse",
+    "CpisRequest",
+    "CpisResponse",
+    "CopdCatRequest",
+    "CopdCatResponse",
+    "Crb65PneumoniaSeverityRequest",
+    "Crb65PneumoniaSeverityResponse",
+    "DecafScoreRequest",
+    "DecafScoreResponse",
 ]

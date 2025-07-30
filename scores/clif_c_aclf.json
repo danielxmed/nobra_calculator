@@ -1,0 +1,183 @@
+{
+  "id": "clif_c_aclf",
+  "title": "CLIF-C ACLF (Acute-on-Chronic Liver Failure)",
+  "description": "Predicts mortality in acute-on-chronic liver failure patients",
+  "category": "gastroenterology",
+  "version": "2014",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 100
+      },
+      "unit": "years"
+    },
+    {
+      "name": "white_blood_cell_count",
+      "type": "float",
+      "required": true,
+      "description": "White blood cell count",
+      "validation": {
+        "min": 0.1,
+        "max": 100
+      },
+      "unit": "×10⁹ cells/L"
+    },
+    {
+      "name": "bilirubin",
+      "type": "float",
+      "required": true,
+      "description": "Total bilirubin level",
+      "validation": {
+        "min": 0.1,
+        "max": 50
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Serum creatinine level",
+      "validation": {
+        "min": 0.1,
+        "max": 20
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "renal_replacement_therapy",
+      "type": "string",
+      "required": true,
+      "description": "Patient on renal replacement therapy",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "hepatic_encephalopathy_grade",
+      "type": "string",
+      "required": true,
+      "description": "Hepatic encephalopathy grade",
+      "options": ["grade_0", "grade_1_2", "grade_3_4"],
+      "validation": {
+        "enum": ["grade_0", "grade_1_2", "grade_3_4"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "inr",
+      "type": "float",
+      "required": true,
+      "description": "International normalized ratio",
+      "validation": {
+        "min": 0.5,
+        "max": 10
+      },
+      "unit": ""
+    },
+    {
+      "name": "mean_arterial_pressure",
+      "type": "float",
+      "required": true,
+      "description": "Mean arterial pressure",
+      "validation": {
+        "min": 30,
+        "max": 150
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "vasopressors",
+      "type": "string",
+      "required": true,
+      "description": "Patient on vasopressors",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "respiratory_ratio_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of respiratory ratio available",
+      "options": ["pao2_fio2", "spo2_fio2"],
+      "validation": {
+        "enum": ["pao2_fio2", "spo2_fio2"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "respiratory_ratio_value",
+      "type": "float",
+      "required": true,
+      "description": "PaO2/FiO2 or SpO2/FiO2 ratio value",
+      "validation": {
+        "min": 50,
+        "max": 600
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "clif_c_aclf_score",
+    "type": "float",
+    "unit": "points",
+    "description": "CLIF-C ACLF score (0-100)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 45,
+        "stage": "Low Risk",
+        "description": "Lower mortality risk",
+        "interpretation": "Standard supportive care with close monitoring"
+      },
+      {
+        "min": 45,
+        "max": 65,
+        "stage": "Moderate Risk",
+        "description": "Moderate mortality risk",
+        "interpretation": "Consider intensive care monitoring and advanced therapies"
+      },
+      {
+        "min": 65,
+        "max": 70,
+        "stage": "High Risk",
+        "description": "High mortality risk",
+        "interpretation": "Urgent consideration for liver transplantation if eligible"
+      },
+      {
+        "min": 70,
+        "max": 100,
+        "stage": "Critical Risk",
+        "description": "Critical mortality risk",
+        "interpretation": "Associated with 100% mortality at 28 days - consider futility of intensive care"
+      }
+    ]
+  },
+  "references": [
+    "Jalan R, Saliba F, Pavesi M, Amoros A, Moreau R, Ginès P, Levesque E, Durand F, Angeli P, Caraceni P, Hopf C, Alessandria C, Rodriguez E, Solis-Muñoz P, Laleman W, Trebicka J, Zeuzem S, Gustot T, Mookerjee R, Elkrief L, Soriano G, Cordoba J, Morando F, Gerbes A, Agarwal B, Samuel D, Bernardi M, Arroyo V; CANONIC study investigators of the EASL-Clif Consortium. Development and validation of a prognostic score to predict mortality in patients with acute-on-chronic liver failure. J Hepatol. 2014;61(5):1038-47.",
+    "Moreau R, Jalan R, Gines P, Pavesi M, Angeli P, Cordoba J, Durand F, Gustot T, Saliba F, Domenicali M, Gerbes A, Wendon J, Alessandria C, Laleman W, Zeuzem S, Trebicka J, Bernardi M, Arroyo V; CANONIC Study Investigators of the EASL-Clif Consortium. Acute-on-chronic liver failure is a distinct syndrome that develops in patients with acute decompensation of cirrhosis. Gastroenterology. 2013;144(7):1426-37."
+  ],
+  "formula": "CLIF-C ACLF Score = 10 × [0.33 × CLIF-C OF Score + 0.04 × age + 0.63 × ln(WBC count) - 2]. CLIF-C OF Score based on 6 organ systems: liver (bilirubin), kidney (creatinine/RRT), brain (hepatic encephalopathy), coagulation (INR), circulatory (MAP/vasopressors), respiratory (PaO2/FiO2 or SpO2/FiO2).",
+  "notes": [
+    "Specifically designed for patients with acute-on-chronic liver failure (ACLF)",
+    "Superior to MELD, MELD-Na, and Child-Pugh scores for mortality prediction in ACLF",
+    "Score ≥70 associated with 100% mortality at 28 days",
+    "Score ≥65 at 3-7 days after ACLF diagnosis indicates very poor prognosis",
+    "Predicts mortality at 1, 3, 6, and 12 months",
+    "Based on the CANONIC study (EASL-CLIF Acute-on-Chronic Liver Failure in Cirrhosis)",
+    "Should be used in conjunction with clinical judgment for treatment decisions",
+    "Helps guide decisions regarding intensive care admission and liver transplantation eligibility"
+  ]
+}

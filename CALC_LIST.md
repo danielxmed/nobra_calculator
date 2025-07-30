@@ -344,294 +344,291 @@
 ### ✅ Body Roundness Index (BRI) - NEW
 **Description:** Estimates % body fat and % visceral adipose tissue (VAT).
 
-### Bova Score for Pulmonary Embolism Complications
+### ✅ Bova Score for Pulmonary Embolism Complications
 **Description:** Predicts 30-day risk of PE-related complications in hemodynamically stable patients.
 
-### Braden Score for Pressure Ulcers
+### ✅ Braden Score for Pressure Ulcers
 **Description:** Identifies patients at risk for pressure ulcers.
 
-### Brain Metastasis Velocity (BMV) Model
+### ✅ Brain Metastasis Velocity (BMV) Model
 **Description:** Calculates rate of distant brain failure after stereotactic radiosurgery for brain metastasis.
 
-### Brescia-COVID Respiratory Severity Scale (BCRSS)/Algorithm
-**Description:** Step-by-step management approach for COVID-19 patients based on clinical severity as of June 2, 2020.
-
-### Brief Addiction Monitor (BAM)
+### ✅ Brief Addiction Monitor (BAM)
 **Description:** Assesses substance use-related behaviors.
 
-### Brief Alcohol Withdrawal Scale (BAWS)
+### ✅ Brief Alcohol Withdrawal Scale (BAWS)
 **Description:** Assesses alcohol withdrawal symptoms.
 
-### Brief Resolved Unexplained Events (BRUE) Criteria for Infants
+### ✅ Brief Resolved Unexplained Events (BRUE) Criteria for Infants
 **Description:** Classifies unexplained events and replaces the Apparent Life-Threatening Events (ALTE) classification.
 
-### Brief Resolved Unexplained Events 2.0 (BRUE 2.0) Criteria for Infants
+### ✅ Brief Resolved Unexplained Events 2.0 (BRUE 2.0) Criteria for Infants
 **Description:** Classifies unexplained events, improves BRUE Criteria.
 
-### Bristol Stool Form Scale
+### ✅ Bristol Stool Form Scale
 **Description:** Classifies stool (correlates with intestinal transit time).
 
-### Brugada Criteria for Ventricular Tachycardia
+### ✅ Brugada Criteria for Ventricular Tachycardia
 **Description:** Distinguishes ventricular tachycardia from supraventricular tachycardia.
 
-### BUN Creatinine Ratio
+### ✅ BUN Creatinine Ratio
 **Description:** Measures kidney function.
 
-### Burch-Wartofsky Point Scale (BWPS) for Thyrotoxicosis
+### ✅ Burch-Wartofsky Point Scale (BWPS) for Thyrotoxicosis
 **Description:** Predicts likelihood that biochemical thyrotoxicosis is thyroid storm.
 
-### Bush-Francis Catatonia Rating Scale
+### ✅ Bush-Francis Catatonia Rating Scale
 **Description:** Assesses severity of catatonia and screens for catatonia in psychiatric and neurological conditions.
 
-### BWH Egg Freezing Counseling Tool (EFCT)
+### ✅ BWH Egg Freezing Counseling Tool (EFCT)
 **Description:** Predicts likelihood of live birth for elective egg freezing in women.
 
 ---
 
 ## C
 
-### C-Peptide to Glucose Ratio
+### ✅ C-Peptide to Glucose Ratio
 **Description:** Assesses beta cell secretory function in patients with diabetes/pre-diabetes.
 
-### CAGE Questions for Alcohol Use
+### ✅ CAGE Questions for Alcohol Use
 **Description:** Screens for excessive drinking and alcoholism.
 
-### CAHP (Cardiac Arrest Hospital Prognosis) Score
+### ✅ CAHP (Cardiac Arrest Hospital Prognosis) Score
 **Description:** Predicts poor prognosis after out-of-hospital cardiac arrest and guides utility of cardiac catheterization.
 
-### Calcium Correction for Hypoalbuminemia and Hyperalbuminemia
+### ✅ Calcium Correction for Hypoalbuminemia and Hyperalbuminemia
 **Description:** Calculates corrected calcium level for patients with hypoalbuminemia or hyperalbuminemia.
 
-### Cambridge Diabetes Risk Score
+### ✅ Cambridge Diabetes Risk Score
 **Description:** Predicts risk of having previously undiagnosed type 2 diabetes.
 
-### Canadian Association of Radiologists and Osteoporosis Canada (CAROC) System
+### ✅ Canadian Association of Radiologists and Osteoporosis Canada (CAROC) System
 **Description:** Assesses 10-year absolute fracture risk.
 
-### Canadian C-Spine Rule
+### ✅ Canadian C-Spine Rule
 **Description:** Clinically clears cervical spine fracture without imaging in alert, stable trauma patients.
 
-### Canadian Cardiovascular Society (CCS) Angina Grade
+### ✅ Canadian Cardiovascular Society (CCS) Angina Grade
 **Description:** Classifies angina severity.
 
-### Canadian CT Head Injury/Trauma Rule
+### ✅ Canadian CT Head Injury/Trauma Rule
 **Description:** Rules out need for head CT in minor head trauma.
 
-### Canadian Diabetes Risk Assessment Questionnaire (CANRISK)
+### ✅ Canadian Diabetes Risk Assessment Questionnaire (CANRISK)
 **Description:** Screens for undiagnosed type 2 diabetes mellitus and pre-diabetes.
 
-### Canadian Syncope Risk Score
+### Canadian Syncope Risk Score ✅
 **Description:** Predicts 30-day serious adverse events in patients presenting with syncope.
 
-### Canadian Transient Ischemic Attack (TIA) Score
+### Canadian Transient Ischemic Attack (TIA) Score ✅
 **Description:** Identifies stroke risk in the next 7 days in patients who experienced TIA symptoms.
 
-### Cancer and Aging Research Group Chemotherapy Toxicity Tool (CARG-TT)
+### Cancer and Aging Research Group Chemotherapy Toxicity Tool (CARG-TT) ✅
 **Description:** Estimates the risk of severe chemotherapy-related side effects (Grade 3 or greater toxicity) in older oncology patients.
 
-### Caprini Score for Venous Thromboembolism (2005)
+### Caprini Score for Venous Thromboembolism (2005) ✅
 **Description:** Stratifies VTE risk in surgical patients, guiding prophylaxis decisions.
 
-### Cardiac Anesthesia Risk Evaluation Score (CARE)
+### Cardiac Anesthesia Risk Evaluation Score (CARE) ✅
 **Description:** Predicts mortality and morbidity after cardiac surgery.
 
-### Cardiac Output (Fick's Formula)
+### Cardiac Output (Fick's Formula) ✅
 **Description:** Calculates cardiac output, cardiac index, and stroke volume.
 
-### Cardiac Power Output (CPO)
+### Cardiac Power Output (CPO) ✅
 **Description:** Calculates the heart's rate of energy production.
 
-### Cardiovascular Risk in Orthotopic Liver Transplantation (CAR-OLT) - NEW
+### ✅ Cardiovascular Risk in Orthotopic Liver Transplantation (CAR-OLT) - NEW
 **Description:** Predicts cardiovascular risk in orthotopic liver transplantation (OLT).
 
-### CART (Cardiac Arrest Risk Triage) Score
+### CART (Cardiac Arrest Risk Triage) Score ✅
 **Description:** Predicts risk of in-hospital cardiac arrest.
 
-### CASPAR Criteria for Psoriatic Arthritis
+### CASPAR Criteria for Psoriatic Arthritis ✅
 **Description:** Provides classification criteria for psoriatic arthritis.
 
-### CATCH (Canadian Assessment of Tomography for Childhood Head injury) Rule
+### CATCH (Canadian Assessment of Tomography for Childhood Head injury) Rule ✅
 **Description:** Predicts clinically significant brain injuries in children.
 
-### CEDOCS Score for Emergency Department Overcrowding
+### CEDOCS Score for Emergency Department Overcrowding ✅
 **Description:** Estimates severity of overcrowding in community emergency departments.
 
-### Centor Score (Modified/McIsaac) for Strep Pharyngitis
+### Centor Score (Modified/McIsaac) for Strep Pharyngitis ✅
 **Description:** Estimates likelihood that pharyngitis is streptococcal and suggests management course.
 
-### Central Nervous System International Prognostic Index (CNS-IPI)
+### Central Nervous System International Prognostic Index (CNS-IPI) ✅
 **Description:** Predicts CNS relapse in patients with diffuse large B-cell lymphoma (DLBCL).
 
-### Cerebral Perfusion Pressure
+### Cerebral Perfusion Pressure ✅
 **Description:** Calculates blood flow to the brain.
 
-### CHADS-65 (Canadian Society of Cardiology Guideline)
+### CHADS-65 (Canadian Society of Cardiology Guideline) ✅
 **Description:** Guides antithrombotic therapy for patients with non-valvular atrial fibrillation or atrial flutter.
 
-### CHADS₂ Score for Atrial Fibrillation Stroke Risk
+### CHADS₂ Score for Atrial Fibrillation Stroke Risk ✅
 **Description:** Estimates stroke risk in patients with atrial fibrillation.
 
-### CHALICE (Children's Head injury ALgorithm for the prediction of Important Clinical Events) Rule
+### CHALICE (Children's Head injury ALgorithm for the prediction of Important Clinical Events) Rule ✅
 **Description:** Predicts death, need for neurosurgical intervention, or CT abnormality in children with head trauma.
 
-### Charlson Comorbidity Index (CCI)
+### Charlson Comorbidity Index (CCI) ✅
 **Description:** Predicts 10-year survival in patients with multiple comorbidities.
 
-### CHA₂DS₂-VA Score for Atrial Fibrillation Stroke Risk - -> CHECK (IMPLEMENTED)
+### ✅ CHA₂DS₂-VA Score for Atrial Fibrillation Stroke Risk 
 **Description:** Calculates stroke risk for patients with atrial fibrillation; similar to CHA₂DS₂-VASc Score but without considering sex.
 
 ### CHA₂DS₂-VASc Score for Atrial Fibrillation Stroke Risk ✅
 **Description:** Calculates stroke risk for patients with atrial fibrillation.
 
-### Chemotherapy Risk Assessment Scale for High-Age Patients (CRASH) Score
+### ✅ Chemotherapy Risk Assessment Scale for High-Age Patients (CRASH) Score
 **Description:** Assesses the individual risk of severe chemotherapy toxicity in older cancer patients.
 
-### Child-Pugh Score for Cirrhosis Mortality
+### Child-Pugh Score for Cirrhosis Mortality ✅
 **Description:** Estimates severity of cirrhosis.
 
-### Children's Hospital of Eastern Ontario Pain Scale (CHEOPS) for Post-Op Pediatric Pain
+### Children's Hospital of Eastern Ontario Pain Scale (CHEOPS) for Post-Op Pediatric Pain ✅
 **Description:** Quantifies post-operative pain in pediatric patients aged 1-5.
 
-### CHIP (CT in Head Injury Patients) Prediction Rule
+### CHIP (CT in Head Injury Patients) Prediction Rule ✅
 **Description:** Predicts traumatic intracranial CT findings in patients with minor head trauma.
 
-### CholeS Score for Duration of Laparoscopic Cholecystectomy
+### CholeS Score for Duration of Laparoscopic Cholecystectomy ✅
 **Description:** Predicts operative time of laparoscopic cholecystectomy.
 
-### Chronic Kidney Disease in Children (CKiD) U25 eGFR Calculator - NEW
+### Chronic Kidney Disease in Children (CKiD) U25 eGFR Calculator - NEW ✅
 **Description:** Estimates glomerular filtration rate based on creatinine and patient characteristics in patients aged 1 to 25.
 
-### Cincinnati Prehospital Stroke Severity Scale (CP-SSS)
+### Cincinnati Prehospital Stroke Severity Scale (CP-SSS) ✅
 **Description:** Predicts large vessel occlusion (LVO) and severe stroke in patients with stroke symptoms.
 
-### Cisplatin-Associated Acute Kidney Injury (CP-AKI) Risk Calculator - NEW
+### ✅ Cisplatin-Associated Acute Kidney Injury (CP-AKI) Risk Calculator - NEW
 **Description:** Predicts the risk of acute kidney injury in patients treated with intravenous cisplatin.
 
-### CIWA-Ar for Alcohol Withdrawal
+### CIWA-Ar for Alcohol Withdrawal ✅
 **Description:** The CIWA-Ar objectifies severity of alcohol withdrawal.
 
-### CKD Prediction in HIV+ Patients
+### CKD Prediction in HIV+ Patients ✅
 **Description:** Determines likelihood of HIV patients developing CKD in the next 5 years, whether they take tenofovir or not.
 
 ### CKD-EPI Equations for Glomerular Filtration Rate (GFR) --> (IMPLEMENTED - 2021 - CHECK) ✅
 **Description:** Estimates GFR in CKD patients using serum creatinine, cystatin C, or both.
 
-### CLIF-C ACLF (Acute-on-Chronic Liver Failure)
+### CLIF-C ACLF (Acute-on-Chronic Liver Failure) ✅
 **Description:** Predicts mortality in acute-on-chronic liver failure.
 
-### Clinical Dementia Rating (CDR) Scale
+### ✅ Clinical Dementia Rating (CDR) Scale
 **Description:** Stages dementia, including Alzheimer's disease, in elderly patients.
 
-### Clinical Disease Activity Index (CDAI) for Rheumatoid Arthritis
+### Clinical Disease Activity Index (CDAI) for Rheumatoid Arthritis ✅
 **Description:** Determines severity of rheumatoid arthritis using only clinical data.
 
-### Clinical Index of Stable Febrile Neutropenia (CISNE)
+### ✅ Clinical Index of Stable Febrile Neutropenia (CISNE)
 **Description:** Identifies febrile neutropenia patients at low risk for serious complications.
 
-### Clinical Pulmonary Infection Score (CPIS) for Ventilator-Associated Pneumonia (VAP)
+### ✅ Clinical Pulmonary Infection Score (CPIS) for Ventilator-Associated Pneumonia (VAP)
 **Description:** Aids in diagnosis of ventilator-associated pneumonia by predicting benefit of pulmonary cultures.
 
-### Color Vision Screening (Ishihara Test)
+### ✅ Color Vision Screening (Ishihara Test)
 **Description:** Assesses red-green color blindness.
 
-### Columbia Suicide Severity Rating Scale (C-SSRS Screener)
+### ✅ Columbia Suicide Severity Rating Scale (C-SSRS Screener)
 **Description:** Screens for suicidal ideation and behavior.
 
-### Common Terminology Criteria for Adverse Events (CTCAE) - NEW
+### ✅ Common Terminology Criteria for Adverse Events (CTCAE) - NEW
 **Description:** Describes the severity of hematologic and lymphatic adverse events from cancer treatment.
 
-### Confusion Assessment Method for the ICU (CAM-ICU)
+### ✅ Confusion Assessment Method for the ICU (CAM-ICU)
 **Description:** Establishes ability to detect delirium in high-risk settings.
 
-### COPD Assessment Test (CAT)
+### ✅ COPD Assessment Test (CAT)
 **Description:** Quantifies impact of COPD symptoms on patients' overall health.
 
-### Cornell Assessment of Pediatric Delirium (CAPD)
+### ✅ Cornell Assessment of Pediatric Delirium (CAPD)
 **Description:** Screens for pediatric delirium.
 
-### Coronavirus Anxiety Scale (CAS)
+### ✅ Coronavirus Anxiety Scale (CAS)
 **Description:** Assesses dysfunctional anxiety associated with the COVID-19 crisis.
 
-### Corrected Count Increment (CCI) for Platelet Transfusion
+### ✅ Corrected Count Increment (CCI) for Platelet Transfusion
 **Description:** Assesses adequacy of response to platelet transfusion.
 
-### Corrected QT Interval (QTc)
+### ✅ Corrected QT Interval (QTc)
 **Description:** Corrects QT interval for heart rate extremes (choose from Bazett, Fridericia, Framingham, Hodges, or Rautaharju formulas).
 
-### Corrected Reticulocyte Percentage/Reticulocyte Production Index (RPI)
+### ✅ Corrected Reticulocyte Percentage/Reticulocyte Production Index (RPI)
 **Description:** Assesses bone marrow response to anemia, often in sickle cell patients.
 
-### COVID Home Safely Now (CHOSEN) Risk Score for COVID-19
+### ✅ COVID Home Safely Now (CHOSEN) Risk Score for COVID-19
 **Description:** Predicts suitability for discharge in COVID-19 patients.
 
-### COVID-19 Inpatient Risk Calculator (CIRC)
+### ✅ COVID-19 Inpatient Risk Calculator (CIRC)
 **Description:** Predicts likelihood of in-hospital mortality or severe disease progression in COVID patients.
 
-### COVID-GRAM Critical Illness Risk Score
+### ✅ COVID-GRAM Critical Illness Risk Score
 **Description:** Predicts risk of critical illness in hospitalized COVID-19 patients.
 
-### COWS Score for Opiate Withdrawal
+### ✅ COWS Score for Opiate Withdrawal
 **Description:** Quantifies severity of opiate withdrawal.
 
-### CRB-65 Score for Pneumonia Severity - NEW
+### ✅ CRB-65 Score for Pneumonia Severity - NEW
 **Description:** Stratifies severity of community-acquired pneumonia (CAP) to determine outpatient versus inpatient treatment.
 
-### Creatinine Clearance (Cockcroft-Gault Equation)
+### ✅ Creatinine Clearance (Cockcroft-Gault Equation)
 **Description:** Calculates CrCl according to the Cockcroft-Gault equation.
 
-### Critical Care Pain Observation Tool (CPOT)
+### Critical Care Pain Observation Tool (CPOT) ✅
 **Description:** Assesses pain of critically ill patients based on clinical observation.
 
-### Crohn's Disease Activity Index (CDAI)
+### Crohn's Disease Activity Index (CDAI) ✅
 **Description:** Determines the current severity of Crohn's disease.
 
-### CRUSADE Score for Post-MI Bleeding Risk
+### CRUSADE Score for Post-MI Bleeding Risk ✅
 **Description:** Stratifies bleeding risk after NSTEMI.
 
-### Cryoprecipitate Dosing for Fibrinogen Replacement
+### Cryoprecipitate Dosing for Fibrinogen Replacement ✅
 **Description:** Estimates recommended cryoprecipitate volume for fibrinogen replacement.
 
-### CSHA Clinical Frailty Scale (CFS)
+### CSHA Clinical Frailty Scale (CFS) ✅
 **Description:** Measures frailty to predict survival.
 
-### Cumulative Illness Rating Scale-Geriatric (CIRS-G)
+### Cumulative Illness Rating Scale-Geriatric (CIRS-G) ✅
 **Description:** Quantifies burden of illness in elderly patients (comorbidity scale).
 
 ### CURB-65 Score for Pneumonia Severity -> (CHECK) IMPLEMENTED
 **Description:** Estimates mortality of community-acquired pneumonia to help determine outpatient vs. inpatient treatment.
 
-### Current Opioid Misuse Measure (COMM)
+### Current Opioid Misuse Measure (COMM) ✅
 **Description:** Identifies potential inappropriate medication use in patients who are on long-term opioid therapy.
 
-### Cytokine Release Syndrome (CRS) Grading
+### Cytokine Release Syndrome (CRS) Grading ✅
 **Description:** Assesses severity of CRS in immunotherapy patients.
 
 ---
 
 ## D
 
-### D'Amico Risk Classification for Prostate Cancer
+### D'Amico Risk Classification for Prostate Cancer ✅
 **Description:** Assesses 5-year risk of treatment failure based on clinical factors.
 
-### Danger Assessment Tool for Domestic Abuse
+### Danger Assessment Tool for Domestic Abuse ✅
 **Description:** Predicts risk of death by intimate partner (IP) in violent intimate relationship.
 
-### DASH Prediction Score for Recurrent VTE
+### ✅ DASH Prediction Score for Recurrent VTE
 **Description:** Predicts likelihood of recurrence of first VTE.
 
-### DECAF Score for Acute Exacerbation of COPD
+### ✅ DECAF Score for Acute Exacerbation of COPD
 **Description:** Predicts in-hospital mortality in acute COPD exacerbation.
 
-### Dehydration: Assessing Kids Accurately (DHAKA) Score - NEW
+### ✅ Dehydration: Assessing Kids Accurately (DHAKA) Score - NEW
 **Description:** Classifies dehydration in children <5 years with acute diarrhea.
 
-### Denver HIV Risk Score
+### ✅ Denver HIV Risk Score
 **Description:** Predicts likelihood of undiagnosed HIV infection.
 
-### Diabetes Distress Scale (DDS17)
+### ✅ Diabetes Distress Scale (DDS17)
 **Description:** Assesses emotional distress related to diabetes.
 
-### Diabetic Ketoacidosis Mortality Prediction Model (DKA MPM) Score
+### ✅ Diabetic Ketoacidosis Mortality Prediction Model (DKA MPM) Score
 **Description:** Predicts in-hospital mortality in DKA.
 
 ### DigiFab (Digibind) Dosing for Digoxin Poisoning

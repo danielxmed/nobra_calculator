@@ -1,0 +1,120 @@
+{
+  "id": "baws",
+  "title": "Brief Alcohol Withdrawal Scale (BAWS)",
+  "description": "Assesses alcohol withdrawal symptoms using 5 simple criteria: agitation, sweats, tremor, orientation, and hallucinations. A simplified alternative to CIWA-Ar that provides rapid assessment in clinical settings.",
+  "category": "psychiatry",
+  "version": "2017",
+  "parameters": [
+    {
+      "name": "tremor",
+      "type": "integer",
+      "required": true,
+      "description": "Tremor severity assessment",
+      "validation": {
+        "min": 0,
+        "max": 3
+      },
+      "options": ["0", "1", "2", "3"],
+      "unit": "points"
+    },
+    {
+      "name": "sweats",
+      "type": "integer",
+      "required": true,
+      "description": "Diaphoresis/sweating severity",
+      "validation": {
+        "min": 0,
+        "max": 3
+      },
+      "options": ["0", "1", "2", "3"],
+      "unit": "points"
+    },
+    {
+      "name": "agitation",
+      "type": "integer",
+      "required": true,
+      "description": "Agitation level based on RASS scale",
+      "validation": {
+        "min": 0,
+        "max": 3
+      },
+      "options": ["0", "1", "2", "3"],
+      "unit": "points"
+    },
+    {
+      "name": "orientation",
+      "type": "integer",
+      "required": true,
+      "description": "Orientation to person, place, and time",
+      "validation": {
+        "min": 0,
+        "max": 3
+      },
+      "options": ["0", "1", "2", "3"],
+      "unit": "points"
+    },
+    {
+      "name": "hallucinations",
+      "type": "integer",
+      "required": true,
+      "description": "Presence and severity of hallucinations",
+      "validation": {
+        "min": 0,
+        "max": 3
+      },
+      "options": ["0", "1", "2", "3"],
+      "unit": "points"
+    }
+  ],
+  "result": {
+    "name": "baws_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total BAWS score (sum of all 5 parameters)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Mild",
+        "description": "Mild withdrawal symptoms",
+        "interpretation": "Minimal intervention required. Continue monitoring and supportive care. Consider oral hydration and vitamins."
+      },
+      {
+        "min": 3,
+        "max": 5,
+        "stage": "Moderate",
+        "description": "Moderate withdrawal symptoms",
+        "interpretation": "Moderate intervention required. Consider benzodiazepine treatment (e.g., diazepam 10mg PO q4h until BAWS <3). Monitor closely for progression."
+      },
+      {
+        "min": 6,
+        "max": 8,
+        "stage": "Severe",
+        "description": "Severe withdrawal symptoms",
+        "interpretation": "Significant intervention required. Increased benzodiazepine dosing (e.g., diazepam 20mg PO q2h until BAWS <6). Consider ICU monitoring."
+      },
+      {
+        "min": 9,
+        "max": 15,
+        "stage": "Very Severe",
+        "description": "Very severe withdrawal symptoms",
+        "interpretation": "Immediate physician notification required. High-dose benzodiazepines, ICU care, and aggressive supportive measures. Risk of delirium tremens."
+      }
+    ]
+  },
+  "references": [
+    "Rastegar DA, Kuntz JL, Brower KJ, et al.Brief Alcohol Withdrawal Scale (BAWS): A practical tool for the evaluation of alcohol withdrawal symptoms. Subst Abus. 2017;38(4):463-469. doi: 10.1080/08897077.2017.1323346.",
+    "Chaudhry RA, Schreck JS. Evaluation of the Brief Alcohol Withdrawal Scale Protocol at an Academic Medical Center. J Intensive Care Med. 2020;35(3):268-272. doi: 10.1177/0885066618815781.",
+    "Maldonado JR, Nguyen LH, Schader EM, Brooks JO 3rd. Dexmedetomidine and the reduction of postoperative delirium after cardiac surgery. Psychosomatics. 2009;50(3):206-17. doi: 10.1176/appi.psy.50.3.206."
+  ],
+  "formula": "BAWS Score = Tremor + Sweats + Agitation + Orientation + Hallucinations (each scored 0-3 points)",
+  "notes": [
+    "BAWS correlates well with CIWA-Ar (r=0.88) but is faster to administer",
+    "A BAWS score ≥3 correlates with CIWA-Ar ≥8 (treatment threshold) with 90% sensitivity and 80% specificity",
+    "Particularly useful in emergency department and fast-paced clinical environments",
+    "Can be administered by nurses and other healthcare providers",
+    "Total assessment time typically <2 minutes vs 5-10 minutes for CIWA-Ar"
+  ]
+}

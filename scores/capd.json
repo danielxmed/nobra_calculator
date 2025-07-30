@@ -1,0 +1,153 @@
+{
+  "id": "capd",
+  "title": "Cornell Assessment of Pediatric Delirium (CAPD)",
+  "description": "Screens for delirium in pediatric patients through behavioral assessment of awareness, cognition, and psychomotor symptoms.",
+  "category": "pediatrics",
+  "version": "2024",
+  "parameters": [
+    {
+      "name": "eye_contact",
+      "type": "integer",
+      "required": true,
+      "description": "Makes eye contact with caregiver (0=Always, 1=Often, 2=Sometimes, 3=Rarely, 4=Never)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "points"
+    },
+    {
+      "name": "purposeful_actions",
+      "type": "integer", 
+      "required": true,
+      "description": "Actions are purposeful (0=Always, 1=Often, 2=Sometimes, 3=Rarely, 4=Never)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "points"
+    },
+    {
+      "name": "aware_surroundings",
+      "type": "integer",
+      "required": true,
+      "description": "Aware of surroundings (0=Always, 1=Often, 2=Sometimes, 3=Rarely, 4=Never)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "points"
+    },
+    {
+      "name": "communicates_needs",
+      "type": "integer",
+      "required": true,
+      "description": "Communicates needs and wants (0=Always, 1=Often, 2=Sometimes, 3=Rarely, 4=Never)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "points"
+    },
+    {
+      "name": "restless",
+      "type": "integer",
+      "required": true,
+      "description": "Restless (0=Never, 1=Rarely, 2=Sometimes, 3=Often, 4=Always)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "points"
+    },
+    {
+      "name": "inconsolable",
+      "type": "integer",
+      "required": true,
+      "description": "Inconsolable (0=Never, 1=Rarely, 2=Sometimes, 3=Often, 4=Always)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "points"
+    },
+    {
+      "name": "underactive",
+      "type": "integer",
+      "required": true,
+      "description": "Underactive - very little movement while awake (0=Never, 1=Rarely, 2=Sometimes, 3=Often, 4=Always)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "points"
+    },
+    {
+      "name": "slow_response",
+      "type": "integer",
+      "required": true,
+      "description": "Takes long time to respond to interactions (0=Never, 1=Rarely, 2=Sometimes, 3=Often, 4=Always)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "points"
+    },
+    {
+      "name": "patient_age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years (used for developmental context)",
+      "validation": {
+        "min": 0,
+        "max": 21
+      },
+      "unit": "years"
+    }
+  ],
+  "result": {
+    "name": "capd_assessment",
+    "type": "object", 
+    "unit": "assessment",
+    "description": "CAPD delirium screening results with clinical recommendations"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 8,
+        "stage": "CAPD Negative",
+        "description": "No delirium detected",
+        "interpretation": "Patient does not meet criteria for delirium. Continue routine monitoring and reassess regularly."
+      },
+      {
+        "min": 9,
+        "max": 32,
+        "stage": "CAPD Positive", 
+        "description": "Delirium present",
+        "interpretation": "Patient meets criteria for pediatric delirium. Investigate underlying causes and implement management strategies."
+      }
+    ]
+  },
+  "references": [
+    "Traube C, Silver G, Kearney J, Patel A, Atkinson TM, Yoon MJ, et al. Cornell Assessment of Pediatric Delirium: a valid, rapid, observational tool for screening delirium in the PICU. Crit Care Med. 2014 Mar;42(3):656-63. doi: 10.1097/CCM.0b013e3182a66b76.",
+    "Silver G, Traube C, Gerber LM, Sun X, Kearney J, Patel A, et al. Pediatric delirium and associated risk factors: a single-center prospective observational study. Pediatr Crit Care Med. 2015 May;16(4):303-9. doi: 10.1097/PCC.0000000000000356.",
+    "Traube C, Silver G, Gerber LM, Kaur S, Mauer EA, Kerson A, et al. Delirium and mortality in critically ill children: epidemiology and outcomes of pediatric delirium. Crit Care Med. 2017 May;45(5):891-898. doi: 10.1097/CCM.0000000000002324.",
+    "Smith HA, Boyd J, Fuchs DC, Melvin K, Berry P, Shintani A, et al. Diagnosing delirium in critically ill children: Validity and reliability of the Pediatric Confusion Assessment Method for the Intensive Care Unit. Crit Care Med. 2011 Jan;39(1):150-7. doi: 10.1097/CCM.0b013e3181feb489."
+  ],
+  "formula": "Sum of all 8 domain scores (0-32 points). CAPD positive if total score ≥ 9 points",
+  "notes": [
+    "The CAPD is a validated tool for detecting delirium in pediatric patients aged 0-21 years",
+    "Based on behavioral observations during routine nursing care - no patient participation required",
+    "Can be completed in less than 2 minutes by bedside nurses",
+    "Applicable to both developmentally normal and delayed children",
+    "Sensitivity 94.1% and specificity varies by age group (highest in younger children)",
+    "Should be performed every nursing shift for all pediatric ICU patients",
+    "Cutoff score ≥9 optimizes sensitivity for delirium detection",
+    "Developmental anchor points help guide age-appropriate assessment",
+    "Excludes deeply sedated patients (RASS < -3)",
+    "Delirium prevalence in pediatric ICU patients is approximately 20-25%",
+    "Early detection allows for prompt intervention and improved outcomes",
+    "Part of comprehensive pediatric delirium screening and management protocols"
+  ]
+}

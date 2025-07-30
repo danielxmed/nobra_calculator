@@ -1,0 +1,104 @@
+{
+  "id": "color_vision_screening",
+  "title": "Color Vision Screening (Ishihara Test)",
+  "description": "Screens for red-green color blindness using an abbreviated 14-plate Ishihara test. Assesses the most common types of color vision deficiency in clinical practice.",
+  "category": "ophthalmology",
+  "version": "2024",
+  "parameters": [
+    {
+      "name": "correct_plates_right_eye",
+      "type": "integer",
+      "required": true,
+      "description": "Number of plates correctly identified by the right eye (out of 14 plates tested)",
+      "validation": {
+        "min": 0,
+        "max": 14
+      },
+      "unit": "plates"
+    },
+    {
+      "name": "correct_plates_left_eye",
+      "type": "integer",
+      "required": true,
+      "description": "Number of plates correctly identified by the left eye (out of 14 plates tested)",
+      "validation": {
+        "min": 0,
+        "max": 14
+      },
+      "unit": "plates"
+    },
+    {
+      "name": "visual_acuity_adequate",
+      "type": "string",
+      "required": true,
+      "description": "Is visual acuity 20/100 or better? Test is less accurate below this threshold",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "patient_age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years. Test is less reliable for children under 5 years old",
+      "validation": {
+        "min": 1,
+        "max": 120
+      },
+      "unit": "years"
+    }
+  ],
+  "result": {
+    "name": "color_vision_assessment",
+    "type": "object",
+    "unit": "assessment",
+    "description": "Color vision screening results with recommendations for both eyes"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 12,
+        "max": 14,
+        "stage": "Normal",
+        "description": "Normal color vision",
+        "interpretation": "12-14 correct plates indicates normal color vision. No further testing needed unless clinical suspicion remains high."
+      },
+      {
+        "min": 8,
+        "max": 11,
+        "stage": "Possible Deficiency",
+        "description": "Possible color vision deficiency",
+        "interpretation": "8-11 correct plates suggests possible color vision deficiency. Consider repeat testing or ophthalmology referral."
+      },
+      {
+        "min": 0,
+        "max": 7,
+        "stage": "Color Vision Deficiency",
+        "description": "Color vision deficiency likely",
+        "interpretation": "0-7 correct plates indicates likely color vision deficiency. Ophthalmology referral recommended for formal evaluation."
+      }
+    ]
+  },
+  "references": [
+    "Ishihara S. Tests for Colour-Blindness. Tokyo: Kanehara Trading Inc; 1917.",
+    "Birch J. Worldwide prevalence of red-green color deficiency. J Opt Soc Am A Opt Image Sci Vis. 2012;29(3):313-20. doi: 10.1364/JOSAA.29.000313.",
+    "Dain SJ. Clinical colour vision tests. Clin Exp Optom. 2004;87(4-5):276-93. doi: 10.1111/j.1444-0938.2004.tb05062.x.",
+    "Perera C, Chakrabarti R, Islam FM, Crowston J. The Eye Phone Study: reliability and accuracy of assessing Neitz color vision with smartphone technology. Am J Ophthalmol. 2015;160(5):944-50.e1. doi: 10.1016/j.ajo.2015.08.014."
+  ],
+  "formula": "Scoring: >2 incorrect plates out of 14 total plates indicates color vision deficiency. Each eye is tested independently.",
+  "notes": [
+    "The Ishihara test is the most widely used screening tool for red-green color blindness",
+    "Abbreviated 14-plate version provides efficient screening while maintaining accuracy",
+    "Test sensitivity approximately 92%, specificity approximately 100% for red-green deficiencies",
+    "Less accurate for patients with visual acuity below 20/100",
+    "Less reliable for children under 5 years old due to attention and comprehension limitations",
+    "Primarily detects protanomaly (red-weak) and deuteranomaly (green-weak) color vision defects",
+    "Does not reliably detect tritanomaly (blue-yellow) color vision defects",
+    "Smartphone/tablet applications can show comparable accuracy to physical plates when properly calibrated",
+    "Patients with suspected color vision deficiency should be referred to ophthalmology for comprehensive evaluation",
+    "Consider occupational counseling for individuals with confirmed color vision deficiency",
+    "Not a definitive diagnostic test - formal color vision assessment may be needed",
+    "Can be used to screen for acute optic neuropathy (such as optic neuritis) in clinical settings"
+  ]
+}

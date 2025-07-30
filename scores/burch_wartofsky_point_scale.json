@@ -1,0 +1,132 @@
+{
+  "id": "burch_wartofsky_point_scale",
+  "title": "Burch-Wartofsky Point Scale (BWPS) for Thyrotoxicosis",
+  "description": "Predicts likelihood that biochemical thyrotoxicosis is thyroid storm by evaluating clinical symptoms and precipitating factors. This empirically derived scoring system assesses multiple organ decompensation including thermoregulatory dysfunction, cardiovascular symptoms, neurological changes, and gastrointestinal symptoms.",
+  "category": "emergency",
+  "version": "1993",
+  "parameters": [
+    {
+      "name": "temperature",
+      "type": "string",
+      "required": true,
+      "description": "Body temperature in Fahrenheit",
+      "options": ["99_100", "100_101", "101_102", "102_103", "103_104", "over_104"],
+      "validation": {
+        "enum": ["99_100", "100_101", "101_102", "102_103", "103_104", "over_104"]
+      },
+      "unit": "°F"
+    },
+    {
+      "name": "cns_effects",
+      "type": "string",
+      "required": true,
+      "description": "Central nervous system effects",
+      "options": ["absent", "mild_agitation", "moderate_delirium_psychosis_extreme_lethargy", "severe_coma_seizure"],
+      "validation": {
+        "enum": ["absent", "mild_agitation", "moderate_delirium_psychosis_extreme_lethargy", "severe_coma_seizure"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "gi_hepatic_dysfunction",
+      "type": "string",
+      "required": true,
+      "description": "Gastrointestinal-hepatic dysfunction",
+      "options": ["absent", "moderate_diarrhea_nausea_vomiting_abdominal_pain", "severe_unexplained_jaundice"],
+      "validation": {
+        "enum": ["absent", "moderate_diarrhea_nausea_vomiting_abdominal_pain", "severe_unexplained_jaundice"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "cardiovascular_dysfunction",
+      "type": "string",
+      "required": true,
+      "description": "Cardiovascular dysfunction",
+      "options": ["absent", "moderate_chf_pedal_edema_pulmonary_edema", "severe_pulmonary_edema"],
+      "validation": {
+        "enum": ["absent", "moderate_chf_pedal_edema_pulmonary_edema", "severe_pulmonary_edema"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "tachycardia",
+      "type": "string",
+      "required": true,
+      "description": "Heart rate (beats per minute)",
+      "options": ["90_109", "110_119", "120_129", "130_139", "over_140"],
+      "validation": {
+        "enum": ["90_109", "110_119", "120_129", "130_139", "over_140"]
+      },
+      "unit": "bpm"
+    },
+    {
+      "name": "atrial_fibrillation",
+      "type": "string",
+      "required": true,
+      "description": "Presence of atrial fibrillation",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "precipitant_history",
+      "type": "string",
+      "required": true,
+      "description": "History of precipitating event",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "bwps_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total Burch-Wartofsky Point Scale score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 24,
+        "stage": "Unlikely_TS",
+        "description": "Thyroid storm unlikely",
+        "interpretation": "Score <25 suggests thyroid storm is unlikely. Continue monitoring but thyroid storm diagnosis is not supported by current clinical findings. Consider alternative diagnoses for thyrotoxic symptoms."
+      },
+      {
+        "min": 25,
+        "max": 44,
+        "stage": "Impending_TS",
+        "description": "Impending thyroid storm",
+        "interpretation": "Score 25-44 suggests impending thyroid storm. High clinical suspicion warranted. Consider immediate treatment while monitoring for progression to overt thyroid storm. Close observation and supportive care recommended."
+      },
+      {
+        "min": 45,
+        "max": 140,
+        "stage": "Highly_Suggestive_TS",
+        "description": "Thyroid storm highly suggestive",
+        "interpretation": "Score ≥45 is highly suggestive of thyroid storm. This is a life-threatening endocrine emergency requiring immediate aggressive treatment including antithyroid drugs, beta-blockers, iodine, corticosteroids, and supportive care."
+      }
+    ]
+  },
+  "references": [
+    "Burch HB, Wartofsky L. Life-threatening thyrotoxicosis. Thyroid storm. Endocrinology and Metabolism Clinics of North America. 1993;22(2):263-277.",
+    "Akamizu T, Satoh T, Isozaki O, et al. Diagnostic criteria, clinical features, and incidence of thyroid storm based on nationwide surveys. Thyroid. 2012;22(7):661-679.",
+    "Chiha M, Samarasinghe S, Kabaker AS. Thyroid storm: an updated review. J Intensive Care Med. 2015;30(3):131-140.",
+    "Ross DS, Burch HB, Cooper DS, et al. 2016 American Thyroid Association guidelines for diagnosis and management of hyperthyroidism and other causes of thyrotoxicosis. Thyroid. 2016;26(10):1343-1421."
+  ],
+  "formula": "BWPS Score = Temperature points + CNS effects points + GI-hepatic dysfunction points + Cardiovascular dysfunction points + Tachycardia points + Atrial fibrillation points + Precipitant history points",
+  "notes": [
+    "Thyroid storm is a life-threatening condition with 10-30% mortality rate",
+    "Clinical diagnosis is often made before laboratory confirmation of thyrotoxicosis",
+    "Treatment should not be delayed while waiting for laboratory results",
+    "Precipitating factors include infection, surgery, trauma, iodine administration, medication noncompliance",
+    "The scale has positive predictive value of 75% and negative predictive value of 100%",
+    "Should be used in conjunction with clinical judgment and laboratory findings"
+  ]
+}

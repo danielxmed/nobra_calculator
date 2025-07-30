@@ -1,0 +1,179 @@
+{
+  "id": "cows_opiate_withdrawal",
+  "title": "Clinical Opiate Withdrawal Scale (COWS) for Opiate Withdrawal",
+  "description": "Quantifies severity of opiate withdrawal symptoms using 11 clinical criteria to guide treatment decisions and assess withdrawal progression",
+  "category": "psychiatry",
+  "version": "2003",
+  "parameters": [
+    {
+      "name": "resting_pulse_rate",
+      "type": "string",
+      "required": true,
+      "description": "Resting pulse rate in beats per minute",
+      "options": ["<=80", "81-100", "101-120", ">120"],
+      "validation": {
+        "enum": ["<=80", "81-100", "101-120", ">120"]
+      }
+    },
+    {
+      "name": "sweating",
+      "type": "string",
+      "required": true,
+      "description": "Sweating severity assessment",
+      "options": ["no_chills_flushing", "subjective_chills", "flushed_moist_face", "beads_on_brow", "streaming_sweat"],
+      "validation": {
+        "enum": ["no_chills_flushing", "subjective_chills", "flushed_moist_face", "beads_on_brow", "streaming_sweat"]
+      }
+    },
+    {
+      "name": "restlessness",
+      "type": "string",
+      "required": true,
+      "description": "Restlessness and motor activity assessment",
+      "options": ["sits_still", "difficulty_sitting", "frequent_shifting", "unable_to_sit"],
+      "validation": {
+        "enum": ["sits_still", "difficulty_sitting", "frequent_shifting", "unable_to_sit"]
+      }
+    },
+    {
+      "name": "pupil_size",
+      "type": "string",
+      "required": true,
+      "description": "Pupil size assessment",
+      "options": ["normal_pinned", "possibly_larger", "moderately_dilated", "extremely_dilated"],
+      "validation": {
+        "enum": ["normal_pinned", "possibly_larger", "moderately_dilated", "extremely_dilated"]
+      }
+    },
+    {
+      "name": "bone_joint_aches",
+      "type": "string",
+      "required": true,
+      "description": "Bone or joint aches and pains",
+      "options": ["not_present", "mild_diffuse", "severe_diffuse", "unable_to_sit_discomfort"],
+      "validation": {
+        "enum": ["not_present", "mild_diffuse", "severe_diffuse", "unable_to_sit_discomfort"]
+      }
+    },
+    {
+      "name": "runny_nose_tearing",
+      "type": "string",
+      "required": true,
+      "description": "Runny nose or tearing",
+      "options": ["not_present", "nasal_stuffiness", "runny_nose_tearing", "constant_streaming"],
+      "validation": {
+        "enum": ["not_present", "nasal_stuffiness", "runny_nose_tearing", "constant_streaming"]
+      }
+    },
+    {
+      "name": "gi_upset",
+      "type": "string",
+      "required": true,
+      "description": "GI upset (stomach cramps, nausea, vomiting, diarrhea)",
+      "options": ["no_symptoms", "stomach_cramps", "nausea_loose_stool", "vomiting_diarrhea", "multiple_episodes"],
+      "validation": {
+        "enum": ["no_symptoms", "stomach_cramps", "nausea_loose_stool", "vomiting_diarrhea", "multiple_episodes"]
+      }
+    },
+    {
+      "name": "tremor",
+      "type": "string",
+      "required": true,
+      "description": "Tremor assessment",
+      "options": ["no_tremor", "barely_perceptible", "moderate_arms_extended", "severe_rest_tremor"],
+      "validation": {
+        "enum": ["no_tremor", "barely_perceptible", "moderate_arms_extended", "severe_rest_tremor"]
+      }
+    },
+    {
+      "name": "anxiety_irritability",
+      "type": "string",
+      "required": true,
+      "description": "Anxiety or irritability",
+      "options": ["none", "occasionally_anxious", "moderately_anxious", "extremely_anxious"],
+      "validation": {
+        "enum": ["none", "occasionally_anxious", "moderately_anxious", "extremely_anxious"]
+      }
+    },
+    {
+      "name": "gooseflesh_skin",
+      "type": "string",
+      "required": true,
+      "description": "Gooseflesh skin (piloerection)",
+      "options": ["no_piloerection", "barely_perceptible", "prominent_arms", "extensive_body"],
+      "validation": {
+        "enum": ["no_piloerection", "barely_perceptible", "prominent_arms", "extensive_body"]
+      }
+    },
+    {
+      "name": "yawning",
+      "type": "string",
+      "required": true,
+      "description": "Yawning during assessment",
+      "options": ["no_yawning", "yawning_once_twice", "yawning_three_times", "unable_to_conduct"],
+      "validation": {
+        "enum": ["no_yawning", "yawning_once_twice", "yawning_three_times", "unable_to_conduct"]
+      }
+    }
+  ],
+  "result": {
+    "name": "cows_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total COWS score indicating withdrawal severity"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 4,
+        "stage": "None to Minimal",
+        "description": "None to minimal withdrawal symptoms",
+        "interpretation": "No withdrawal treatment necessary. Monitor for symptom development."
+      },
+      {
+        "min": 5,
+        "max": 12,
+        "stage": "Mild",
+        "description": "Mild withdrawal symptoms",
+        "interpretation": "Mild withdrawal symptoms. Consider supportive care and comfort medications."
+      },
+      {
+        "min": 13,
+        "max": 24,
+        "stage": "Moderate",
+        "description": "Moderate withdrawal symptoms",
+        "interpretation": "Moderate withdrawal symptoms. Pharmacologic treatment indicated. Consider buprenorphine induction."
+      },
+      {
+        "min": 25,
+        "max": 36,
+        "stage": "Moderately Severe",
+        "description": "Moderately severe withdrawal symptoms",
+        "interpretation": "Moderately severe withdrawal symptoms. Medication-assisted treatment strongly recommended."
+      },
+      {
+        "min": 37,
+        "max": 48,
+        "stage": "Severe",
+        "description": "Severe withdrawal symptoms",
+        "interpretation": "Severe withdrawal symptoms. Immediate medical intervention and intensive treatment required."
+      }
+    ]
+  },
+  "references": [
+    "Wesson DR, Ling W. The Clinical Opiate Withdrawal Scale (COWS). Journal of Psychoactive Drugs. 2003;35(2):253-259. doi:10.1080/02791072.2003.10400007",
+    "Tompkins DA, Bigelow GE, Harrison JA, Johnson RE, Fudala PJ, Strain EC. Concurrent validation of the Clinical Opiate Withdrawal Scale (COWS) and single-item indices against the Clinical Institute Withdrawal Assessment for Alcohol-revised (CIWA-Ar). Drug Alcohol Depend. 2009;105(1-2):154-159."
+  ],
+  "formula": "Sum of individual symptom scores (range 0-48 points)",
+  "notes": [
+    "Developed in 2003 by Wesson and Ling for standardized assessment of opiate withdrawal",
+    "Validated in 2009 using naloxone challenges on opioid-dependent volunteers",
+    "Useful for guiding buprenorphine/naloxone initiation to prevent precipitated withdrawal",
+    "Should be administered by trained healthcare professionals",
+    "Scores guide treatment decisions including medication-assisted treatment (MAT)",
+    "Assessment should be repeated regularly during withdrawal management",
+    "Clinical judgment should always accompany numerical scores",
+    "Tool is in the public domain and widely available from addiction medicine organizations"
+  ]
+}

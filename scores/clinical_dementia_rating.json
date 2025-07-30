@@ -1,0 +1,128 @@
+{
+  "id": "clinical_dementia_rating",
+  "title": "Clinical Dementia Rating (CDR) Scale",
+  "description": "Stages dementia, including Alzheimer's disease, in elderly patients. The CDR assesses cognitive and functional performance across six domains to provide both a global CDR score (0-3) and a sum of boxes score (0-18).",
+  "category": "neurology",
+  "version": "1982",
+  "parameters": [
+    {
+      "name": "memory",
+      "type": "string",
+      "required": true,
+      "description": "Memory domain - Primary category for CDR scoring",
+      "options": ["0", "0.5", "1", "2", "3"],
+      "validation": {
+        "enum": ["0", "0.5", "1", "2", "3"]
+      }
+    },
+    {
+      "name": "orientation",
+      "type": "string",
+      "required": true,
+      "description": "Orientation domain - Temporal and spatial orientation",
+      "options": ["0", "0.5", "1", "2", "3"],
+      "validation": {
+        "enum": ["0", "0.5", "1", "2", "3"]
+      }
+    },
+    {
+      "name": "judgment_problem_solving",
+      "type": "string",
+      "required": true,
+      "description": "Judgment and Problem Solving domain",
+      "options": ["0", "0.5", "1", "2", "3"],
+      "validation": {
+        "enum": ["0", "0.5", "1", "2", "3"]
+      }
+    },
+    {
+      "name": "community_affairs",
+      "type": "string",
+      "required": true,
+      "description": "Community Affairs domain - Function outside the home",
+      "options": ["0", "0.5", "1", "2", "3"],
+      "validation": {
+        "enum": ["0", "0.5", "1", "2", "3"]
+      }
+    },
+    {
+      "name": "home_hobbies",
+      "type": "string",
+      "required": true,
+      "description": "Home and Hobbies domain - Function at home and interests",
+      "options": ["0", "0.5", "1", "2", "3"],
+      "validation": {
+        "enum": ["0", "0.5", "1", "2", "3"]
+      }
+    },
+    {
+      "name": "personal_care",
+      "type": "string",
+      "required": true,
+      "description": "Personal Care domain - Self-care abilities",
+      "options": ["0", "1", "2", "3"],
+      "validation": {
+        "enum": ["0", "1", "2", "3"]
+      }
+    }
+  ],
+  "result": {
+    "name": "cdr_scores",
+    "type": "float",
+    "unit": "points",
+    "description": "CDR Global Score (0-3) and Sum of Boxes score (0-18)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "0",
+        "description": "Normal",
+        "interpretation": "No cognitive impairment. The individual has no consistent or persistent changes in cognitive function."
+      },
+      {
+        "min": 0.5,
+        "max": 0.5,
+        "stage": "0.5",
+        "description": "Very Mild Dementia",
+        "interpretation": "Questionable or very mild dementia. Mild consistent forgetfulness with partial recollection of events. Mild difficulty with time relationships."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "1",
+        "description": "Mild Dementia",
+        "interpretation": "Mild dementia. Moderate memory loss, more marked for recent events. Moderate difficulty with time relationships. Impaired in community affairs."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "2",
+        "description": "Moderate Dementia",
+        "interpretation": "Moderate dementia. Severe memory loss with only highly learned material retained. Severely impaired in handling problems. Cannot function independently outside home."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "3",
+        "description": "Severe Dementia",
+        "interpretation": "Severe dementia. Severe memory loss with only fragments remaining. Unable to handle problems or make judgments. Requires much help with personal care."
+      }
+    ]
+  },
+  "references": [
+    "Morris JC. The Clinical Dementia Rating (CDR): current version and scoring rules. Neurology. 1993 Nov;43(11):2412-4.",
+    "Hughes CP, Berg L, Danziger WL, Coben LA, Martin RL. A new clinical scale for the staging of dementia. Br J Psychiatry. 1982 Jun;140:566-72.",
+    "Berg L. Clinical Dementia Rating (CDR). Psychopharmacol Bull. 1988;24(4):637-9.",
+    "O'Bryant SE, Waring SC, Cullum CM, Hall J, Lacritz L, Massman PJ, Lupo PJ, Reisch JS, Doody R; Texas Alzheimer's Research Consortium. Staging dementia using Clinical Dementia Rating Scale Sum of Boxes scores: a Texas Alzheimer's research consortium study. Arch Neurol. 2008 Aug;65(8):1091-5."
+  ],
+  "formula": "Global CDR = Washington University algorithm based on Memory as primary domain and 5 secondary domains. CDR Sum of Boxes = Sum of all domain scores (range 0-18).",
+  "notes": [
+    "Memory is the primary domain; all others are secondary domains",
+    "Personal Care domain does not have a 0.5 rating option",
+    "When Memory ≥ 1, global CDR cannot be 0",
+    "CDR Sum of Boxes provides additional staging information",
+    "Licensed instrument - use requires permission from Washington University"
+  ]
+}

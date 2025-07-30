@@ -1,0 +1,143 @@
+{
+  "id": "canadian_c_spine_rule",
+  "title": "Canadian C-Spine Rule",
+  "description": "The Canadian C-Spine Rule is a clinical decision tool that helps determine whether cervical spine imaging can be safely avoided in alert and stable trauma patients. It uses high-risk factors, low-risk factors, and range of motion assessment to rule out clinically significant cervical spine injury (CSI) with 100% sensitivity.",
+  "category": "emergency",
+  "version": "2001",
+  "parameters": [
+    {
+      "name": "age_65_or_over",
+      "type": "string",
+      "required": true,
+      "description": "Is the patient aged 65 years or older?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "dangerous_mechanism",
+      "type": "string",
+      "required": true,
+      "description": "Was there a dangerous mechanism of injury? (fall from >3 feet/5 steps, axial load to head e.g. diving, high-speed MVC >100km/hr, rollover MVC, ejection from vehicle, motorized recreational vehicle accident, bicycle collision)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "paresthesias_in_extremities",
+      "type": "string",
+      "required": true,
+      "description": "Are there paresthesias (numbness/tingling) in the extremities?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "simple_rear_end_mvc",
+      "type": "string",
+      "required": true,
+      "description": "Was it a simple rear-end motor vehicle collision? (excludes: pushed into traffic, hit by bus/large truck, rollover, hit by high-speed vehicle)",
+      "options": ["yes", "no", "not_applicable"],
+      "validation": {
+        "enum": ["yes", "no", "not_applicable"]
+      }
+    },
+    {
+      "name": "sitting_position_in_ed",
+      "type": "string",
+      "required": true,
+      "description": "Is the patient sitting upright in the Emergency Department?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "ambulatory_at_any_time",
+      "type": "string",
+      "required": true,
+      "description": "Has the patient been ambulatory (able to walk) at any time since the injury?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "delayed_onset_neck_pain",
+      "type": "string",
+      "required": true,
+      "description": "Was there delayed onset of neck pain (not immediate)?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "absence_midline_tenderness",
+      "type": "string",
+      "required": true,
+      "description": "Is there absence of midline cervical spine tenderness?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "able_to_rotate_neck",
+      "type": "string",
+      "required": false,
+      "description": "Is the patient able to actively rotate neck 45 degrees left AND right? (Only assess if no high-risk factors AND at least one low-risk factor present)",
+      "options": ["yes", "no", "not_assessed"],
+      "validation": {
+        "enum": ["yes", "no", "not_assessed"]
+      }
+    }
+  ],
+  "result": {
+    "name": "imaging_recommendation",
+    "type": "string",
+    "unit": "recommendation",
+    "description": "Recommendation for cervical spine imaging"
+  },
+  "interpretation": {
+    "outcomes": [
+      {
+        "result": "Imaging Required",
+        "description": "Cervical spine imaging is indicated",
+        "interpretation": "The patient has high-risk factors that mandate radiography (age ≥65 years, dangerous mechanism, or paresthesias in extremities). Proceed with cervical spine imaging as clinically indicated."
+      },
+      {
+        "result": "Safe to Clear Clinically",
+        "description": "No cervical spine imaging required",
+        "interpretation": "The patient has low-risk factors allowing safe assessment of range of motion AND can actively rotate neck 45° left and right. The cervical spine can be cleared clinically without imaging."
+      },
+      {
+        "result": "Imaging Required - Unable to Rotate",
+        "description": "Cervical spine imaging is indicated",
+        "interpretation": "Although the patient has low-risk factors, they are unable to actively rotate their neck 45° left and right. Cervical spine imaging is required."
+      },
+      {
+        "result": "Imaging Required - No Low Risk Factors",
+        "description": "Cervical spine imaging is indicated",
+        "interpretation": "The patient has no high-risk factors but also lacks any low-risk factors that would allow safe assessment of range of motion. Cervical spine imaging is required."
+      }
+    ]
+  },
+  "references": [
+    "Stiell IG, Wells GA, Vandemheen KL, Clement CM, Lesiuk H, De Maio VJ, et al. The Canadian C-spine rule for radiography in alert and stable trauma patients. JAMA. 2001 Oct 17;286(15):1841-8. doi: 10.1001/jama.286.15.1841.",
+    "Stiell IG, Clement CM, McKnight RD, Brison R, Schull MJ, Rowe BH, et al. The Canadian C-spine rule versus the NEXUS low-risk criteria in patients with trauma. N Engl J Med. 2003 Dec 25;349(26):2510-8. doi: 10.1056/NEJMoa031375.",
+    "Stiell IG, Clement CM, Grimshaw J, Brison RJ, Rowe BH, Schull MJ, et al. Implementation of the Canadian C-Spine Rule: prospective 12 centre cluster randomised trial. BMJ. 2009 Oct 29;339:b4146. doi: 10.1136/bmj.b4146."
+  ],
+  "formula": "Decision algorithm: 1) If any high-risk factor present → Imaging required; 2) If no high-risk factors AND at least one low-risk factor → Assess range of motion; 3) If able to rotate neck 45° left and right → No imaging; 4) If unable to rotate or no low-risk factors → Imaging required",
+  "notes": [
+    "Only applicable to alert (GCS 15) and stable trauma patients",
+    "Age requirement: ≥16 years (some sources specify 16-64 years)",
+    "Exclusions: penetrating trauma, known vertebral disease, pregnancy",
+    "Injury must be <48 hours old",
+    "100% sensitivity for clinically significant cervical spine injuries in validation studies",
+    "Simple rear-end MVC excludes: pushed into traffic, hit by bus/large truck, rollover, hit by high-speed vehicle"
+  ]
+}

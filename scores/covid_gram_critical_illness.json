@@ -1,0 +1,160 @@
+{
+  "id": "covid_gram_critical_illness",
+  "title": "COVID-GRAM Critical Illness Risk Score",
+  "description": "Predicts risk of critical illness (ICU admission, mechanical ventilation, or death) in hospitalized COVID-19 patients",
+  "category": "emergency",
+  "version": "2020",
+  "parameters": [
+    {
+      "name": "chest_xray_abnormality",
+      "type": "string",
+      "required": true,
+      "description": "Chest X-ray abnormality present",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "hemoptysis",
+      "type": "string",
+      "required": true,
+      "description": "Presence of hemoptysis (coughing up blood)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "dyspnea",
+      "type": "string",
+      "required": true,
+      "description": "Presence of dyspnea (shortness of breath)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "unconsciousness",
+      "type": "string",
+      "required": true,
+      "description": "Presence of unconsciousness or altered mental status",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "number_of_comorbidities",
+      "type": "integer",
+      "required": true,
+      "description": "Number of comorbidities present",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "count"
+    },
+    {
+      "name": "cancer_history",
+      "type": "string",
+      "required": true,
+      "description": "History of cancer",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "neutrophil_lymphocyte_ratio",
+      "type": "float",
+      "required": true,
+      "description": "Neutrophil to lymphocyte ratio",
+      "validation": {
+        "min": 0.5,
+        "max": 50.0
+      },
+      "unit": "ratio"
+    },
+    {
+      "name": "lactate_dehydrogenase",
+      "type": "float",
+      "required": true,
+      "description": "Lactate dehydrogenase (LDH) level",
+      "validation": {
+        "min": 100.0,
+        "max": 2000.0
+      },
+      "unit": "U/L"
+    },
+    {
+      "name": "direct_bilirubin",
+      "type": "float",
+      "required": true,
+      "description": "Direct bilirubin level",
+      "validation": {
+        "min": 0.1,
+        "max": 20.0
+      },
+      "unit": "mg/dL"
+    }
+  ],
+  "result": {
+    "name": "critical_illness_risk",
+    "type": "float",
+    "unit": "%",
+    "description": "Probability of developing critical illness"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": null,
+        "max": 1.7,
+        "stage": "Low Risk",
+        "description": "Low risk of critical illness",
+        "interpretation": "Low probability of requiring ICU admission, mechanical ventilation, or death"
+      },
+      {
+        "min": 1.7,
+        "max": 40.4,
+        "stage": "Medium Risk",
+        "description": "Medium risk of critical illness",
+        "interpretation": "Intermediate probability of requiring ICU admission, mechanical ventilation, or death"
+      },
+      {
+        "min": 40.4,
+        "max": null,
+        "stage": "High Risk",
+        "description": "High risk of critical illness",
+        "interpretation": "High probability of requiring ICU admission, mechanical ventilation, or death"
+      }
+    ]
+  },
+  "references": [
+    "Liang W, Liang H, Ou L, Chen B, Chen A, Li C, et al. Development and Validation of a Clinical Risk Score to Predict the Occurrence of Critical Illness in Hospitalized Patients With COVID-19. JAMA Intern Med. 2020;180(8):1081-1089. doi:10.1001/jamainternmed.2020.2033"
+  ],
+  "formula": "Risk Score = (X-ray abnormality × 27.1464) + (Age × 0.6139) + (Hemoptysis × 33.6210) + (Dyspnea × 14.0569) + (Unconsciousness × 34.4617) + (Number of comorbidities × 10.3826) + (Cancer history × 31.2211) + (Neutrophil-lymphocyte ratio × 1.25) + (LDH × 0.0534) + (Direct bilirubin × 3.0605). Risk = e^x / (1 + e^x)",
+  "notes": [
+    "Developed from 1590 patients in development cohort and 710 in validation cohort from China",
+    "AUC of 0.88 (95% CI, 0.85-0.91) in development cohort",
+    "Critical illness defined as ICU admission, invasive mechanical ventilation, or death",
+    "Outperformed CURB-65 model (AUC 0.75 vs 0.88)",
+    "Limited external validation - developed in Chinese population with specific characteristics",
+    "Requires multiple laboratory values including LDH and direct bilirubin",
+    "May not be directly applicable to all patient populations",
+    "Should be used in conjunction with clinical judgment",
+    "Developed during early pandemic period before widespread treatment advances"
+  ]
+}

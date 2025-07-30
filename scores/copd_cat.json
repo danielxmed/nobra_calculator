@@ -1,0 +1,172 @@
+{
+  "id": "copd_cat",
+  "title": "COPD Assessment Test (CAT)",
+  "description": "Quantifies the impact of COPD symptoms on patients' overall health and quality of life. The CAT is a patient-completed questionnaire that assesses multiple aspects of COPD including respiratory symptoms, activity limitations, confidence, and sleep quality.",
+  "category": "pulmonology",
+  "version": "2009",
+  "parameters": [
+    {
+      "name": "cough",
+      "type": "integer",
+      "required": true,
+      "description": "Frequency of coughing",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "scale": {
+        "0": "I never cough",
+        "5": "I cough all the time"
+      }
+    },
+    {
+      "name": "phlegm",
+      "type": "integer",
+      "required": true,
+      "description": "Amount of phlegm (mucus) in chest",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "scale": {
+        "0": "I have no phlegm in my chest at all",
+        "5": "My chest is completely full of phlegm"
+      }
+    },
+    {
+      "name": "chest_tightness",
+      "type": "integer",
+      "required": true,
+      "description": "Feeling of chest tightness",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "scale": {
+        "0": "My chest does not feel tight at all",
+        "5": "My chest feels very tight"
+      }
+    },
+    {
+      "name": "breathlessness",
+      "type": "integer",
+      "required": true,
+      "description": "Breathlessness when walking up a hill or one flight of stairs",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "scale": {
+        "0": "I am not breathless",
+        "5": "I am very breathless"
+      }
+    },
+    {
+      "name": "activities",
+      "type": "integer",
+      "required": true,
+      "description": "Limitation doing activities at home",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "scale": {
+        "0": "I am not limited doing any activities at home",
+        "5": "I am very limited doing any activities at home"
+      }
+    },
+    {
+      "name": "confidence",
+      "type": "integer",
+      "required": true,
+      "description": "Confidence leaving home despite lung condition",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "scale": {
+        "0": "I am confident leaving my home despite my lung condition",
+        "5": "I am not at all confident leaving my home because of my lung condition"
+      }
+    },
+    {
+      "name": "sleep",
+      "type": "integer",
+      "required": true,
+      "description": "Sleep quality affected by lung condition",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "scale": {
+        "0": "I sleep soundly",
+        "5": "I don't sleep soundly because of my lung condition"
+      }
+    },
+    {
+      "name": "energy",
+      "type": "integer",
+      "required": true,
+      "description": "Energy level",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "scale": {
+        "0": "I have lots of energy",
+        "5": "I have no energy at all"
+      }
+    }
+  ],
+  "result": {
+    "name": "cat_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "COPD Assessment Test total score (0-40 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 10,
+        "stage": "Low impact",
+        "description": "Low COPD impact on health",
+        "interpretation": "COPD has low impact on patient's life. Continue current management with focus on smoking cessation, preventive care, and reduced exposure to exacerbation risk factors. Consider LAMA, LABA, or rescue inhalers as needed."
+      },
+      {
+        "min": 11,
+        "max": 20,
+        "stage": "Medium impact",
+        "description": "Medium COPD impact on health",
+        "interpretation": "COPD has medium impact on patient's life. Optimize bronchodilator therapy with LAMA, LABA, or combination. Ensure smoking cessation, preventive care, and reduced exposure to exacerbation risk factors."
+      },
+      {
+        "min": 21,
+        "max": 30,
+        "stage": "High impact",
+        "description": "High COPD impact on health",
+        "interpretation": "COPD has high impact on patient's life. Consider adding ICS to bronchodilator therapy, evaluate for oxygen supplementation, and refer for pulmonary rehabilitation. Ensure comprehensive management including smoking cessation."
+      },
+      {
+        "min": 31,
+        "max": 40,
+        "stage": "Very high impact",
+        "description": "Very high COPD impact on health",
+        "interpretation": "COPD has very high impact on patient's life. Requires intensive management including triple therapy (LAMA/LABA/ICS), oxygen supplementation evaluation, pulmonary rehabilitation, and consideration for lung transplant evaluation in appropriate candidates."
+      }
+    ]
+  },
+  "references": [
+    "Jones PW, Harding G, Berry P, Wiklund I, Chen WH, Kline Leidy N. Development and first validation of the COPD Assessment Test. Eur Respir J. 2009 Sep;34(3):648-54. doi: 10.1183/09031936.00102509.",
+    "Global Initiative for Chronic Obstructive Lung Disease (GOLD). Global Strategy for the Diagnosis, Management, and Prevention of Chronic Obstructive Pulmonary Disease: 2023 Report.",
+    "Gupta N, Pinto LM, Morogan A, Bourbeau J. The COPD assessment test: a systematic review. Eur Respir J. 2014 Oct;44(4):873-84. doi: 10.1183/09031936.00025214."
+  ],
+  "formula": "CAT Score = Sum of all 8 item scores (each scored 0-5)",
+  "notes": [
+    "CAT is not a diagnostic tool but measures disease impact in diagnosed COPD patients",
+    "A change of 2 points or more is considered clinically significant",
+    "Should be repeated every 2-3 months to monitor progression and treatment response",
+    "Validated for use in multiple languages and cultures",
+    "Higher scores correlate with increased exacerbation risk"
+  ]
+}

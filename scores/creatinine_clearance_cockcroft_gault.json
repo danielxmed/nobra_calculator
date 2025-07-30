@@ -1,0 +1,127 @@
+{
+  "id": "creatinine_clearance_cockcroft_gault",
+  "title": "Creatinine Clearance (Cockcroft-Gault Equation)",
+  "description": "Estimates creatinine clearance for kidney function assessment and medication dosing using patient demographics and serum creatinine",
+  "category": "nephrology",
+  "version": "1973",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "weight",
+      "type": "float",
+      "required": true,
+      "description": "Patient weight in kilograms",
+      "validation": {
+        "min": 30.0,
+        "max": 300.0
+      },
+      "unit": "kg"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient sex",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "serum_creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Serum creatinine level in mg/dL",
+      "validation": {
+        "min": 0.3,
+        "max": 15.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "height",
+      "type": "float",
+      "required": false,
+      "description": "Patient height in centimeters (optional, used for BMI calculation and weight adjustment recommendations)",
+      "validation": {
+        "min": 100.0,
+        "max": 250.0
+      },
+      "unit": "cm"
+    }
+  ],
+  "result": {
+    "name": "creatinine_clearance",
+    "type": "float",
+    "unit": "mL/min",
+    "description": "Estimated creatinine clearance"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 90,
+        "max": null,
+        "stage": "Normal",
+        "description": "Normal kidney function",
+        "interpretation": "Normal creatinine clearance suggesting adequate kidney function for most medications"
+      },
+      {
+        "min": 60,
+        "max": 89,
+        "stage": "Mildly Decreased",
+        "description": "Mildly decreased kidney function",
+        "interpretation": "Mild kidney function impairment. Monitor closely and consider dose adjustments for renally eliminated drugs"
+      },
+      {
+        "min": 30,
+        "max": 59,
+        "stage": "Moderately Decreased",
+        "description": "Moderately decreased kidney function",
+        "interpretation": "Moderate kidney function impairment. Dose adjustments required for many medications"
+      },
+      {
+        "min": 15,
+        "max": 29,
+        "stage": "Severely Decreased",
+        "description": "Severely decreased kidney function",
+        "interpretation": "Severe kidney function impairment. Significant dose reductions or alternative medications required"
+      },
+      {
+        "min": null,
+        "max": 14,
+        "stage": "Kidney Failure",
+        "description": "Kidney failure",
+        "interpretation": "End-stage kidney disease. Dialysis consideration and avoid nephrotoxic medications"
+      }
+    ]
+  },
+  "references": [
+    "Cockcroft DW, Gault MH. Prediction of creatinine clearance from serum creatinine. Nephron. 1976;16(1):31-41. doi:10.1159/000180580",
+    "Stevens LA, Coresh J, Greene T, Levey AS. Assessing kidney function--measured and estimated glomerular filtration rate. N Engl J Med. 2006;354(23):2473-2483.",
+    "Levey AS, Inker LA, Coresh J. GFR estimation: from physiology to public health. Am J Kidney Dis. 2014;63(5):820-834."
+  ],
+  "formula": "CrCl (mL/min) = [(140 - age) × weight(kg) × (0.85 if female)] / (72 × serum creatinine mg/dL)",
+  "notes": [
+    "Developed in 1973 by Cockcroft and Gault from 249 adult patients",
+    "Historically important but now largely superseded by CKD-EPI equations for GFR estimation",
+    "Still used for medication dosing in specific circumstances (e.g., DOACs, some antibiotics)",
+    "Tends to overestimate GFR by 10-20% compared to measured values",
+    "Less accurate at extremes of weight and in elderly patients",
+    "Assumes normal muscle mass and may be inaccurate in patients with altered muscle mass",
+    "Original formula derived from predominantly male population (96% male)",
+    "Consider using ideal body weight for obese patients or adjusted body weight",
+    "Not adjusted for body surface area unlike newer equations",
+    "May be preferred over eGFR for certain drug dosing decisions per regulatory guidance",
+    "Should be interpreted in clinical context with other assessments of kidney function"
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "id": "cincinnati_prehospital_stroke_severity_scale",
+  "title": "Cincinnati Prehospital Stroke Severity Scale (CP-SSS)",
+  "description": "Predicts large vessel occlusion (LVO) and severe stroke in patients with stroke symptoms",
+  "category": "emergency",
+  "version": "2015",
+  "parameters": [
+    {
+      "name": "conjugate_gaze_deviation",
+      "type": "string",
+      "required": true,
+      "description": "Presence of conjugate gaze deviation",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "level_of_consciousness_questions",
+      "type": "string",
+      "required": true,
+      "description": "Patient's ability to answer level of consciousness questions correctly",
+      "options": ["both_correct", "one_correct", "neither_correct"],
+      "validation": {
+        "enum": ["both_correct", "one_correct", "neither_correct"]
+      }
+    },
+    {
+      "name": "following_commands",
+      "type": "string",
+      "required": true,
+      "description": "Patient's ability to follow simple commands",
+      "options": ["both_commands", "one_command", "neither_command"],
+      "validation": {
+        "enum": ["both_commands", "one_command", "neither_command"]
+      }
+    },
+    {
+      "name": "arm_holding_ability",
+      "type": "string",
+      "required": true,
+      "description": "Patient's ability to hold arm up for 10 seconds",
+      "options": ["can_hold", "cannot_hold"],
+      "validation": {
+        "enum": ["can_hold", "cannot_hold"]
+      }
+    }
+  ],
+  "result": {
+    "name": "cp_sss_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Cincinnati Prehospital Stroke Severity Scale score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "LVO and severe stroke less likely",
+        "interpretation": "Low probability of large vessel occlusion and severe stroke (NIHSS <15)"
+      },
+      {
+        "min": 2,
+        "max": 7,
+        "stage": "High Risk",
+        "description": "LVO and severe stroke likely",
+        "interpretation": "High probability of large vessel occlusion and severe stroke (NIHSS ≥15)"
+      }
+    ]
+  },
+  "references": [
+    "Katz BS, McMullan JT, Sucharew H, Adeoye O, Broderick JP. Design and validation of a prehospital scale to predict stroke severity: the Cincinnati Prehospital Stroke Severity Scale. Stroke. 2015 Jun;46(6):1508-12.",
+    "McMullan JT, Katz B, Broderick J, Schmit P, Sucharew H, Adeoye O. Prospective prehospital evaluation of the Cincinnati stroke triage assessment tool. Prehosp Emerg Care. 2017 Jan-Feb;21(1):68-75.",
+    "Zhao H, Coote S, Pesavento L, Churilov L, Dewey HM, Davis SM, et al. Large vessel occlusion scales increase delivery to endovascular centers without excessive harm from misclassifications. Stroke. 2017 Mar;48(3):568-573."
+  ],
+  "formula": "Sum of points: Conjugate gaze deviation (0-2 pts) + LOC questions (0-2 pts) + Following commands (0-2 pts) + Arm holding (0-1 pt)",
+  "notes": [
+    "Designed for use by emergency medical services personnel",
+    "Predicts severe stroke (NIHSS ≥15) with 89% sensitivity and 78% specificity at cut-point ≥2",
+    "AUC for detecting severe stroke: 0.89",
+    "Helps guide decisions for direct transport to comprehensive stroke centers",
+    "Should not replace clinical judgment or delay treatment",
+    "Requires immediate neurological consultation for positive screens"
+  ]
+}

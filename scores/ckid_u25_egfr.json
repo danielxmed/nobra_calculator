@@ -1,0 +1,138 @@
+{
+  "id": "ckid_u25_egfr",
+  "title": "CKiD U25 eGFR Calculator",
+  "description": "Estimates glomerular filtration rate based on creatinine and/or cystatin C in patients aged 1 to 25 years",
+  "category": "nephrology",
+  "version": "2021",
+  "parameters": [
+    {
+      "name": "equation_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of equation to use for eGFR calculation",
+      "options": ["creatinine", "cystatin_c", "creatinine_cystatin_c"],
+      "validation": {
+        "enum": ["creatinine", "cystatin_c", "creatinine_cystatin_c"]
+      }
+    },
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 1,
+        "max": 25
+      },
+      "unit": "years"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient sex",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "height",
+      "type": "float",
+      "required": false,
+      "description": "Patient height in centimeters (required for creatinine-based equations)",
+      "validation": {
+        "min": 50.0,
+        "max": 250.0
+      },
+      "unit": "cm"
+    },
+    {
+      "name": "serum_creatinine",
+      "type": "float",
+      "required": false,
+      "description": "Serum creatinine level in mg/dL (required for creatinine-based equations)",
+      "validation": {
+        "min": 0.1,
+        "max": 20.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "cystatin_c",
+      "type": "float",
+      "required": false,
+      "description": "Cystatin C level in mg/L (required for cystatin C-based equations)",
+      "validation": {
+        "min": 0.1,
+        "max": 10.0
+      },
+      "unit": "mg/L"
+    }
+  ],
+  "result": {
+    "name": "egfr",
+    "type": "float",
+    "unit": "mL/min/1.73m²",
+    "description": "Estimated glomerular filtration rate"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 90,
+        "max": null,
+        "stage": "G1",
+        "description": "Normal or high",
+        "interpretation": "Normal kidney function with kidney damage"
+      },
+      {
+        "min": 60,
+        "max": 89,
+        "stage": "G2",
+        "description": "Mildly decreased",
+        "interpretation": "Mildly decreased kidney function"
+      },
+      {
+        "min": 45,
+        "max": 59,
+        "stage": "G3a",
+        "description": "Mild to moderately decreased",
+        "interpretation": "Mild to moderate reduction in kidney function"
+      },
+      {
+        "min": 30,
+        "max": 44,
+        "stage": "G3b",
+        "description": "Moderately to severely decreased",
+        "interpretation": "Moderate to severe reduction in kidney function"
+      },
+      {
+        "min": 15,
+        "max": 29,
+        "stage": "G4",
+        "description": "Severely decreased",
+        "interpretation": "Severe reduction in kidney function"
+      },
+      {
+        "min": 0,
+        "max": 14,
+        "stage": "G5",
+        "description": "Kidney failure",
+        "interpretation": "Kidney failure requiring dialysis or transplantation"
+      }
+    ]
+  },
+  "references": [
+    "Pierce CB, Muñoz A, Ng DK, Warady BA, Furth SL, Schwartz GJ. Age- and sex-dependent clinical equations to estimate glomerular filtration rates in children and young adults with chronic kidney disease. Kidney Int. 2021 Oct;100(4):948-959.",
+    "Schwartz GJ, Muñoz A, Schneider MF, Mak RH, Kaskel F, Warady BA, et al. New equations to estimate GFR in children with CKD. J Am Soc Nephrol. 2009 Mar;20(3):629-37.",
+    "Levey AS, Stevens LA, Schmid CH, Zhang YL, Castro AF 3rd, Feldman HI, et al. A new equation to estimate glomerular filtration rate. Ann Intern Med. 2009 May 5;150(9):604-12."
+  ],
+  "formula": "Age- and sex-dependent equations: k × (height/sCr) for creatinine-based or k × (1/cysC) for cystatin C-based calculations",
+  "notes": [
+    "Superior to other pediatric equations for ages 1-25 years",
+    "Eliminates 'jumps' in eGFR when transitioning from pediatric to adult equations",
+    "Does not require race-based adjustments",
+    "Can use creatinine alone, cystatin C alone, or both for improved accuracy",
+    "For patients 18-25 years, consider comparing with adult CKD-EPI equations"
+  ]
+}

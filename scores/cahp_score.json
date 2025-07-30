@@ -1,0 +1,125 @@
+{
+  "id": "cahp_score",
+  "title": "CAHP (Cardiac Arrest Hospital Prognosis) Score",
+  "description": "Predicts poor prognosis after out-of-hospital cardiac arrest and guides utility of cardiac catheterization",
+  "category": "cardiology",
+  "version": "2016",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "setting",
+      "type": "string",
+      "required": true,
+      "description": "Setting of cardiac arrest",
+      "options": ["public", "home"],
+      "validation": {
+        "enum": ["public", "home"]
+      }
+    },
+    {
+      "name": "initial_rhythm",
+      "type": "string",
+      "required": true,
+      "description": "Initial cardiac rhythm",
+      "options": ["shockable", "non_shockable"],
+      "validation": {
+        "enum": ["shockable", "non_shockable"]
+      }
+    },
+    {
+      "name": "collapse_to_cpr",
+      "type": "float",
+      "required": true,
+      "description": "Duration from collapse to CPR",
+      "validation": {
+        "min": 0,
+        "max": 60
+      },
+      "unit": "minutes"
+    },
+    {
+      "name": "cpr_to_rosc",
+      "type": "float",
+      "required": true,
+      "description": "Duration from CPR to return of spontaneous circulation (ROSC)",
+      "validation": {
+        "min": 0,
+        "max": 120
+      },
+      "unit": "minutes"
+    },
+    {
+      "name": "admission_ph",
+      "type": "float",
+      "required": true,
+      "description": "Arterial pH on admission",
+      "validation": {
+        "min": 6.5,
+        "max": 7.8
+      }
+    },
+    {
+      "name": "epinephrine_dose",
+      "type": "string",
+      "required": true,
+      "description": "Total epinephrine dose during resuscitation",
+      "options": ["0mg", "1-2mg", ">=3mg"],
+      "validation": {
+        "enum": ["0mg", "1-2mg", ">=3mg"]
+      }
+    }
+  ],
+  "result": {
+    "name": "cahp_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "CAHP score for cardiac arrest prognosis"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 149,
+        "stage": "Low Risk",
+        "description": "Low risk of poor neurological outcome",
+        "interpretation": "39% risk of poor neurological outcome (CPC 3-5) at hospital discharge. Consider aggressive treatment including cardiac catheterization if indicated."
+      },
+      {
+        "min": 150,
+        "max": 200,
+        "stage": "Moderate Risk",
+        "description": "Moderate risk of poor neurological outcome",
+        "interpretation": "81% risk of poor neurological outcome (CPC 3-5) at hospital discharge. Individualized treatment decisions should be made based on clinical context."
+      },
+      {
+        "min": 201,
+        "max": 350,
+        "stage": "High Risk",
+        "description": "High risk of poor neurological outcome",
+        "interpretation": "100% risk of poor neurological outcome (CPC 3-5) at hospital discharge. Consider goals of care discussion, though high scores do not automatically warrant withdrawal of care."
+      }
+    ]
+  },
+  "references": [
+    "Maupain C, Bougouin W, Lamhaut L, Deye N, Diehl JL, Geri G, et al. The CAHP (Cardiac Arrest Hospital Prognosis) score: a tool for risk stratification after out-of-hospital cardiac arrest. Eur Heart J. 2016 Nov 1;37(42):3222-3228. doi: 10.1093/eurheartj/ehv556.",
+    "Bougouin W, Dumas F, Karam N, Maupain C, Marijon E, Lamhaut L, et al. Should We Perform an Immediate Coronary Angiography in All Patients After Cardiac Arrest?: Insights From a Large French Registry. JACC Cardiovasc Interv. 2018 Feb 12;11(3):249-256. doi: 10.1016/j.jcin.2017.09.011."
+  ],
+  "formula": "CAHP Score = 1.1 × (Age - 10) + Setting Points + Rhythm Points + 2.8 × Collapse to CPR + 0.8 × CPR to ROSC + (585 - 77 × pH) + Epinephrine Points",
+  "notes": [
+    "Devised and validated on out-of-hospital cardiac arrest patients with suspected medical/cardiac disease",
+    "Not for use in traumatic arrests, drowning, hanging, or overdose",
+    "CPC = Cerebral Performance Category; CPC 3-5 indicates poor neurological outcome",
+    "High scores do not automatically warrant withdrawal of care; clinical judgment should always be applied",
+    "Score helps guide decisions about cardiac catheterization and aggressive treatment"
+  ]
+}

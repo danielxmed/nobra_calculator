@@ -10,6 +10,9 @@ from .ascod_algorithm import AscodAlgorithmRequest, AscodAlgorithmResponse
 from .astral_score import AstralScoreRequest, AstralScoreResponse
 from .awol_score import AwolScoreRequest, AwolScoreResponse
 from .barnes_jewish_dysphagia import BarnesJewishDysphagiaRequest, BarnesJewishDysphagiaResponse
+from .canadian_tia_score import CanadianTiaScoreRequest, CanadianTiaScoreResponse
+from .cerebral_perfusion_pressure import CerebralPerfusionPressureRequest, CerebralPerfusionPressureResponse
+from .clinical_dementia_rating import ClinicalDementiaRatingRequest, ClinicalDementiaRatingResponse
 
 __all__ = [
     "Abcd2Request",
@@ -28,4 +31,10 @@ __all__ = [
     "AwolScoreResponse",
     "BarnesJewishDysphagiaRequest",
     "BarnesJewishDysphagiaResponse",
+    "CanadianTiaScoreRequest",
+    "CanadianTiaScoreResponse",
+    "CerebralPerfusionPressureRequest",
+    "CerebralPerfusionPressureResponse",
+    "ClinicalDementiaRatingRequest",
+    "ClinicalDementiaRatingResponse",
 ]

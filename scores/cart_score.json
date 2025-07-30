@@ -1,0 +1,97 @@
+{
+  "id": "cart_score",
+  "title": "CART (Cardiac Arrest Risk Triage) Score",
+  "description": "Predicts risk of in-hospital cardiac arrest within 48 hours using vital signs and age. Developed to identify hospitalized patients at high risk for cardiac arrest who may benefit from intensive monitoring or early intervention.",
+  "category": "emergency",
+  "version": "2012",
+  "parameters": [
+    {
+      "name": "respiratory_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Respiratory rate in breaths per minute",
+      "unit": "breaths/min",
+      "validation": {
+        "min": 5,
+        "max": 60
+      }
+    },
+    {
+      "name": "heart_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Heart rate in beats per minute",
+      "unit": "beats/min",
+      "validation": {
+        "min": 30,
+        "max": 250
+      }
+    },
+    {
+      "name": "diastolic_bp",
+      "type": "integer",
+      "required": true,
+      "description": "Diastolic blood pressure in mmHg",
+      "unit": "mmHg",
+      "validation": {
+        "min": 20,
+        "max": 150
+      }
+    },
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "unit": "years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      }
+    }
+  ],
+  "result": {
+    "name": "cart_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "CART Score (0-59 points) predicting 48-hour cardiac arrest risk"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 20,
+        "stage": "Low Risk",
+        "description": "Low risk of cardiac arrest",
+        "interpretation": "CART Score ≤20 indicates low risk of cardiac arrest within 48 hours. Standard monitoring and care appropriate. Continue routine assessments and interventions."
+      },
+      {
+        "min": 21,
+        "max": 59,
+        "stage": "High Risk",
+        "description": "High risk of cardiac arrest",
+        "interpretation": "CART Score >20 indicates high risk of cardiac arrest within 48 hours. Consider intensive monitoring, rapid response team activation, or transfer to higher level of care. Implement aggressive interventions to address abnormal vital signs."
+      }
+    ]
+  },
+  "references": [
+    "Churpek MM, Yuen TC, Park SY, Meltzer DO, Hall JB, Edelson DP. Derivation of a cardiac arrest prediction model using ward vital signs. Crit Care Med. 2012 Jul;40(7):2102-8. doi: 10.1097/CCM.0b013e318250aa5a.",
+    "Churpek MM, Yuen TC, Winslow C, Hall J, Edelson DP. Multicenter development and validation of a risk stratification tool for ward patients. Am J Respir Crit Care Med. 2014 Sep 15;190(6):649-55. doi: 10.1164/rccm.201406-1022OC.",
+    "Churpek MM, Yuen TC, Winslow C, Meltzer DO, Kattan MW, Edelson DP. Multicenter comparison of machine learning methods and conventional regression for predicting clinical deterioration on the wards. Crit Care Med. 2016 Feb;44(2):368-74. doi: 10.1097/CCM.0000000000001571."
+  ],
+  "formula": "CART Score = Respiratory Rate points + Heart Rate points + Diastolic BP points + Age points. RR: <21 (0), 21-23 (8), 24-25 (12), 26-29 (15), >29 (22). HR: <110 (0), 110-139 (4), >139 (13). DBP: >49 (0), 40-49 (4), 35-39 (6), <35 (13). Age: <55 (0), 55-69 (4), >69 (9).",
+  "notes": [
+    "Predicts cardiac arrest risk within 48 hours of assessment",
+    "91.9% specific for predicting cardiac arrest within 48 hours",
+    "Threshold of >20 identifies high-risk patients",
+    "Outperformed MEWS score in predicting cardiac arrest",
+    "Can be used to trigger rapid response team activation",
+    "Not intended for patients already in cardiac arrest",
+    "Not recommended for patients with DNAR (Do Not Attempt Resuscitation) orders",
+    "Should be reassessed when vital signs change",
+    "Electronic version (eCART) with 33 parameters shows higher accuracy",
+    "Validated in multiple hospital settings",
+    "Can guide decisions for intensive monitoring or transfer to ICU",
+    "Consider in conjunction with clinical judgment and other assessment tools"
+  ]
+}

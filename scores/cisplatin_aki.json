@@ -1,0 +1,156 @@
+{
+  "id": "cisplatin_aki",
+  "title": "Cisplatin-Associated Acute Kidney Injury (CP-AKI) Risk Calculator",
+  "description": "Predicts the risk of acute kidney injury in patients treated with intravenous cisplatin. This calculator estimates the probability of moderate to severe AKI (≥2-fold rise in serum creatinine or need for kidney replacement therapy within 14 days of cisplatin administration).",
+  "category": "nephrology",
+  "version": "2024",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 110
+      },
+      "unit": "years"
+    },
+    {
+      "name": "hypertension",
+      "type": "string",
+      "required": true,
+      "description": "History of hypertension",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "diabetes",
+      "type": "string",
+      "required": true,
+      "description": "History of type 2 diabetes mellitus",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "cisplatin_dose",
+      "type": "float",
+      "required": true,
+      "description": "Total cisplatin dose",
+      "validation": {
+        "min": 1,
+        "max": 1000
+      },
+      "unit": "mg"
+    },
+    {
+      "name": "hemoglobin",
+      "type": "float",
+      "required": true,
+      "description": "Hemoglobin level",
+      "validation": {
+        "min": 2.0,
+        "max": 20.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "wbc_count",
+      "type": "float",
+      "required": true,
+      "description": "White blood cell count",
+      "validation": {
+        "min": 1.0,
+        "max": 300.0
+      },
+      "unit": "×10³/µL"
+    },
+    {
+      "name": "platelet_count",
+      "type": "float",
+      "required": true,
+      "description": "Platelet count",
+      "validation": {
+        "min": 1,
+        "max": 1500
+      },
+      "unit": "×10³/µL"
+    },
+    {
+      "name": "albumin",
+      "type": "float",
+      "required": true,
+      "description": "Serum albumin level",
+      "validation": {
+        "min": 0.5,
+        "max": 8.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "magnesium",
+      "type": "float",
+      "required": true,
+      "description": "Serum magnesium level",
+      "validation": {
+        "min": 0.5,
+        "max": 5.0
+      },
+      "unit": "mg/dL"
+    }
+  ],
+  "result": {
+    "name": "cp_aki_risk",
+    "type": "float",
+    "unit": "%",
+    "description": "Estimated risk of moderate to severe acute kidney injury"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 5,
+        "risk_category": "Low",
+        "description": "Low risk",
+        "interpretation": "Low risk of cisplatin-associated acute kidney injury (< 5%). Standard monitoring may be appropriate. Consider baseline and follow-up creatinine measurements."
+      },
+      {
+        "min": 5,
+        "max": 15,
+        "risk_category": "Moderate",
+        "description": "Moderate risk",
+        "interpretation": "Moderate risk of cisplatin-associated acute kidney injury (5-15%). Enhanced monitoring recommended. Consider prophylactic measures such as aggressive hydration and electrolyte repletion."
+      },
+      {
+        "min": 15,
+        "max": 30,
+        "risk_category": "High",
+        "description": "High risk",
+        "interpretation": "High risk of cisplatin-associated acute kidney injury (15-30%). Close monitoring essential. Consider dose modification, alternative chemotherapy regimens, or nephrology consultation."
+      },
+      {
+        "min": 30,
+        "max": 100,
+        "risk_category": "Very High",
+        "description": "Very high risk",
+        "interpretation": "Very high risk of cisplatin-associated acute kidney injury (≥30%). Strong consideration should be given to alternative treatment options. If cisplatin is necessary, intensive monitoring and prophylactic measures are mandatory. Nephrology consultation strongly recommended."
+      }
+    ]
+  },
+  "references": [
+    "Gupta S, Portales-Castillo I, Daher A, Kitchlu A. Derivation and external validation of a simple risk score for predicting severe acute kidney injury after intravenous cisplatin: cohort study. BMJ. 2024 Mar 27;384:e077169. doi: 10.1136/bmj-2023-077169.",
+    "Motwani SS, McMahon GM, Humphreys BD, Partridge AH, Waikar SS, Curhan GC. Development and Validation of a Risk Prediction Model for Acute Kidney Injury After the First Course of Cisplatin. J Clin Oncol. 2018 Mar 1;36(7):682-688. doi: 10.1200/JCO.2017.75.7161."
+  ],
+  "formula": "Risk (%) = 1 / (1 + e^(-X)) × 100, where X is calculated using patient characteristics including age, comorbidities, and laboratory values",
+  "notes": [
+    "This calculator predicts moderate to severe AKI, defined as ≥2-fold rise in serum creatinine or need for kidney replacement therapy within 14 days",
+    "Derived from a cohort of 24,717 patients across 6 US academic cancer centers (2006-2022)",
+    "Model achieved c-statistic of 0.75, outperforming previous risk models",
+    "Risk calculator available at https://kidneycalc.org/cp-aki-calculator/",
+    "Consider alternative chemotherapy regimens in high-risk patients"
+  ]
+}

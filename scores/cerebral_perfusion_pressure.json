@@ -1,0 +1,108 @@
+{
+  "id": "cerebral_perfusion_pressure",
+  "title": "Cerebral Perfusion Pressure",
+  "description": "Calculates cerebral perfusion pressure (CPP), the net pressure gradient that drives oxygen delivery to cerebral tissue. Critical parameter in neurocritical care for monitoring patients with traumatic brain injury, intracranial hypertension, and other neurological conditions.",
+  "category": "neurology",
+  "version": "Standard",
+  "parameters": [
+    {
+      "name": "mean_arterial_pressure",
+      "type": "float",
+      "required": true,
+      "description": "Mean arterial pressure (MAP) measured via arterial line or calculated from blood pressure",
+      "unit": "mmHg",
+      "validation": {
+        "min": 30,
+        "max": 200
+      }
+    },
+    {
+      "name": "intracranial_pressure",
+      "type": "float",
+      "required": true,
+      "description": "Intracranial pressure (ICP) measured via invasive monitoring",
+      "unit": "mmHg",
+      "validation": {
+        "min": 0,
+        "max": 80
+      }
+    }
+  ],
+  "result": {
+    "name": "cerebral_perfusion_pressure_result",
+    "type": "object",
+    "unit": "mmHg",
+    "description": "Cerebral perfusion pressure with clinical interpretation and management recommendations"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 30,
+        "stage": "Critical",
+        "description": "Critically low cerebral perfusion",
+        "interpretation": "CPP <30 mmHg: Critical risk of cerebral ischemia and brain death. Immediate aggressive intervention required to increase MAP and/or reduce ICP."
+      },
+      {
+        "min": 30,
+        "max": 50,
+        "stage": "Severely Low",
+        "description": "High risk of cerebral ischemia",
+        "interpretation": "CPP 30-50 mmHg: High risk of cerebral ischemia and secondary brain injury. Urgent intervention needed to optimize cerebral perfusion."
+      },
+      {
+        "min": 50,
+        "max": 60,
+        "stage": "Low",
+        "description": "Below optimal range",
+        "interpretation": "CPP 50-60 mmHg: Below optimal range. May indicate risk of ischemia. Consider interventions to improve cerebral perfusion."
+      },
+      {
+        "min": 60,
+        "max": 80,
+        "stage": "Optimal",
+        "description": "Target range for cerebral perfusion",
+        "interpretation": "CPP 60-80 mmHg: Optimal range for cerebral perfusion. Maintain current management strategies while monitoring for changes."
+      },
+      {
+        "min": 80,
+        "max": 100,
+        "stage": "Adequate",
+        "description": "Adequate cerebral perfusion",
+        "interpretation": "CPP 80-100 mmHg: Adequate cerebral perfusion. Monitor for potential complications of high pressures while maintaining cerebral blood flow."
+      },
+      {
+        "min": 100,
+        "max": 150,
+        "stage": "High",
+        "description": "Elevated cerebral perfusion pressure",
+        "interpretation": "CPP >100 mmHg: Elevated pressure may increase risk of respiratory complications and cerebral edema. Consider balancing perfusion needs with pressure management."
+      }
+    ]
+  },
+  "references": [
+    "Carney N, Totten AM, O'Reilly C, Ullman JS, Hawryluk GW, Bell MJ, et al. Guidelines for the management of severe traumatic brain injury, fourth edition. Neurosurgery. 2017;80(1):6-15. doi: 10.1227/NEU.0000000000001432.",
+    "Kirkman MA, Smith M. Intracranial pressure monitoring, cerebral perfusion pressure estimation, and ICP/CPP-guided therapy: a standard of care or optional extra after brain injury? Br J Anaesth. 2014;112(1):35-46. doi: 10.1093/bja/aet418.",
+    "Rosner MJ, Rosner SD, Johnson AH. Cerebral perfusion pressure: management protocol and clinical results. J Neurosurg. 1995;83(6):949-62. doi: 10.3171/jns.1995.83.6.0949.",
+    "Steiner LA, Czosnyka M, Piechnik SK, Smielewski P, Chatfield D, Menon DK, et al. Continuous monitoring of cerebrovascular pressure reactivity allows determination of optimal cerebral perfusion pressure in patients with traumatic brain injury. Crit Care Med. 2002;30(4):733-8. doi: 10.1097/00003246-200204000-00002."
+  ],
+  "formula": "CPP = MAP - ICP (where CPP = Cerebral Perfusion Pressure, MAP = Mean Arterial Pressure, ICP = Intracranial Pressure)",
+  "notes": [
+    "Formula: CPP = MAP - ICP (all values in mmHg)",
+    "Normal CPP range: 60-80 mmHg",
+    "Critical threshold: CPP <50 mmHg (high risk of cerebral ischemia)",
+    "Optimal range for TBI management: 60-70 mmHg",
+    "MAP should be measured at the level of the tragus for accuracy",
+    "ICP requires invasive monitoring via intraventricular catheter",
+    "Cerebral autoregulation may be impaired in brain injury",
+    "Individual optimal CPP may vary based on patient factors",
+    "Used primarily in neurocritical care and TBI management",
+    "Guides therapeutic interventions for maintaining cerebral blood flow",
+    "Important for preventing secondary brain injury",
+    "Values <30 mmHg associated with critical ischemia",
+    "Values >100 mmHg may increase risk of complications",
+    "Continuous monitoring preferred over isolated measurements",
+    "Should be interpreted alongside other neurological parameters",
+    "Age-related considerations: children may have different normal ranges"
+  ]
+}

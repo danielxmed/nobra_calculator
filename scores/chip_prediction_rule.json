@@ -1,0 +1,237 @@
+{
+  "id": "chip_prediction_rule",
+  "title": "CHIP (CT in Head Injury Patients) Prediction Rule",
+  "description": "Predicts need for CT imaging in patients with minor head trauma to detect potential intracranial injuries",
+  "category": "emergency",
+  "version": "2007",
+  "parameters": [
+    {
+      "name": "pedestrian_cyclist_vehicle",
+      "type": "string",
+      "required": true,
+      "description": "Pedestrian or cyclist struck by vehicle",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "ejected_from_vehicle",
+      "type": "string",
+      "required": true,
+      "description": "Patient ejected from vehicle during accident",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "vomiting",
+      "type": "string",
+      "required": true,
+      "description": "Post-traumatic vomiting",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "amnesia_4_hours_or_more",
+      "type": "string",
+      "required": true,
+      "description": "Post-traumatic amnesia ≥4 hours",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "clinical_skull_fracture",
+      "type": "string",
+      "required": true,
+      "description": "Clinical signs of skull fracture",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "gcs_less_than_15",
+      "type": "string",
+      "required": true,
+      "description": "Glasgow Coma Scale <15",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "gcs_deterioration_2_points",
+      "type": "string",
+      "required": true,
+      "description": "GCS deterioration ≥2 points",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "anticoagulant_use",
+      "type": "string",
+      "required": true,
+      "description": "Current anticoagulant medication use",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "post_traumatic_seizure",
+      "type": "string",
+      "required": true,
+      "description": "Post-traumatic seizure",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "age_60_or_older",
+      "type": "string",
+      "required": true,
+      "description": "Age ≥60 years",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "fall_from_elevation",
+      "type": "string",
+      "required": true,
+      "description": "Fall from any elevation",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "anterograde_amnesia",
+      "type": "string",
+      "required": true,
+      "description": "Persistent anterograde amnesia",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "amnesia_2_to_4_hours",
+      "type": "string",
+      "required": true,
+      "description": "Post-traumatic amnesia 2 to <4 hours",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "skull_contusion",
+      "type": "string",
+      "required": true,
+      "description": "Skull contusion present",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "neurologic_deficit",
+      "type": "string",
+      "required": true,
+      "description": "Neurologic deficit present",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "loss_of_consciousness",
+      "type": "string",
+      "required": true,
+      "description": "Loss of consciousness",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "gcs_deterioration_1_point",
+      "type": "string",
+      "required": true,
+      "description": "GCS deterioration of 1 point",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "age_40_to_60",
+      "type": "string",
+      "required": true,
+      "description": "Age 40-60 years",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "chip_recommendation",
+    "type": "string",
+    "unit": "",
+    "description": "CT imaging recommendation based on CHIP criteria"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "criteria": "no_major_no_minor",
+        "recommendation": "CT Not Indicated",
+        "description": "Low risk for intracranial injury",
+        "interpretation": "No major or minor criteria met. CT imaging not indicated based on CHIP rule. Continue clinical observation and provide discharge instructions."
+      },
+      {
+        "criteria": "major_present",
+        "recommendation": "CT Recommended",
+        "description": "High risk for intracranial injury",
+        "interpretation": "One or more major criteria present. CT imaging strongly recommended to evaluate for intracranial traumatic findings."
+      },
+      {
+        "criteria": "two_or_more_minor",
+        "recommendation": "CT Recommended", 
+        "description": "Moderate to high risk for intracranial injury",
+        "interpretation": "Two or more minor criteria present. CT imaging recommended to evaluate for potential intracranial traumatic findings."
+      },
+      {
+        "criteria": "one_minor_only",
+        "recommendation": "Clinical Judgment",
+        "description": "Low to moderate risk for intracranial injury",
+        "interpretation": "One minor criterion present. Consider CT imaging based on clinical judgment, patient factors, and physician preference."
+      }
+    ]
+  },
+  "references": [
+    "Smits M, Dippel DW, de Haan GG, Dekker HM, Vos PE, Kool DR, et al. External validation of the Canadian CT Head Rule and the New Orleans Criteria for CT scanning in patients with minor head injury. JAMA. 2005 Sep 28;294(12):1519-25.",
+    "Smits M, Dippel DW, Steyerberg EW, de Haan GG, Dekker HM, Vos PE, et al. Predicting intracranial traumatic findings on computed tomography in patients with minor head injury: the CHIP prediction rule. Ann Intern Med. 2007 Mar 6;146(6):397-405.",
+    "van den Brand CL, Rambach AH, Postma K, et al. Update of the CHIP (CT in Head Injury Patients) decision rule for patients with minor head injury based on a multicenter consecutive case series. Emerg Med J. 2022 Dec;39(12):897-902."
+  ],
+  "formula": "Decision based on presence of major criteria (any one triggers CT) or minor criteria (≥2 trigger CT)",
+  "notes": [
+    "Applicable to patients ≥16 years old with minor head injury",
+    "Should be applied within 24 hours of blunt head trauma",
+    "Designed for patients with GCS 13-15",
+    "Rule should support, not replace, clinical judgment",
+    "Not validated for pediatric populations",
+    "Original sensitivity 100% for neurosurgical interventions with 23-30% specificity"
+  ]
+}

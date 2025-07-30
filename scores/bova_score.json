@@ -1,0 +1,94 @@
+{
+  "id": "bova_score",
+  "title": "Bova Score for Pulmonary Embolism Complications",
+  "description": "Predicts 30-day risk of PE-related complications (death, hemodynamic collapse, or recurrent PE) in hemodynamically stable patients with confirmed pulmonary embolism",
+  "category": "pulmonology",
+  "version": "2014",
+  "parameters": [
+    {
+      "name": "systolic_bp",
+      "type": "integer",
+      "required": true,
+      "description": "Systolic blood pressure in mmHg (must be ≥90 for score eligibility)",
+      "validation": {
+        "min": 90,
+        "max": 300
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "elevated_troponin",
+      "type": "string",
+      "required": true,
+      "description": "Elevated cardiac troponin (any elevation above normal reference range)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "rv_dysfunction",
+      "type": "string",
+      "required": true,
+      "description": "Right ventricular dysfunction on TTE (RV/LV >0.9, sPAP >30, RV EDD >30mm, RV dilation, or free wall hypokinesis) or CT (RV/LV >1)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "heart_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Heart rate in beats per minute",
+      "validation": {
+        "min": 30,
+        "max": 250
+      },
+      "unit": "beats/min"
+    }
+  ],
+  "result": {
+    "name": "bova_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Bova score ranging from 0-7 points"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Stage I",
+        "description": "Low risk",
+        "interpretation": "4.4% risk of PE-related complications and 3.1% PE-related mortality at 30 days. Consider outpatient management if clinically appropriate and no other contraindications."
+      },
+      {
+        "min": 3,
+        "max": 4,
+        "stage": "Stage II",
+        "description": "Intermediate risk",
+        "interpretation": "18% risk of PE-related complications and 6.8% PE-related mortality at 30 days. Consider hospital admission for monitoring. May benefit from closer observation or advanced therapies."
+      },
+      {
+        "min": 5,
+        "max": 7,
+        "stage": "Stage III",
+        "description": "High risk",
+        "interpretation": "42% risk of PE-related complications and 10% PE-related mortality at 30 days. Requires hospital admission and close monitoring. Consider ICU admission and advanced therapies such as thrombolysis or embolectomy."
+      }
+    ]
+  },
+  "references": [
+    "Bova C, Sanchez O, Prandoni P, Lankeit M, Konstantinides S, Vanni S, et al. Identification of intermediate-risk patients with acute symptomatic pulmonary embolism. Eur Respir J. 2014 Sep;44(3):694-703. doi: 10.1183/09031936.00006114.",
+    "Fernández C, Bova C, Sanchez O, Prandoni P, Lankeit M, Konstantinides S, et al. Validation of a Model for Identification of Patients at Intermediate to High Risk for Complications Associated With Acute Symptomatic Pulmonary Embolism. Chest. 2015 Jul;148(1):211-218. doi: 10.1378/chest.14-2551."
+  ],
+  "formula": "Bova Score = (sBP 90-100: 2 points) + (Elevated troponin: 2 points) + (RV dysfunction: 2 points) + (HR ≥110: 1 point)",
+  "notes": [
+    "Only applicable to hemodynamically stable patients (systolic BP ≥90 mmHg)",
+    "Requires cardiac troponin measurement and imaging (TTE or CT) for RV assessment",
+    "PE-related complications include death, hemodynamic collapse, or recurrent PE within 30 days",
+    "Not validated for hemodynamically unstable patients or those with systolic BP <90 mmHg",
+    "Should be used in conjunction with clinical judgment and institutional protocols"
+  ]
+}

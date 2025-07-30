@@ -1,0 +1,192 @@
+{
+  "id": "car_olt",
+  "title": "Cardiovascular Risk in Orthotopic Liver Transplantation (CAR-OLT)",
+  "description": "Predicts cardiovascular risk in orthotopic liver transplantation. The CAR-OLT score predicts the 1-year risk for death or hospitalization related to a major CVD event (myocardial infarction, cardiac revascularization, heart failure, atrial fibrillation, cardiac arrest, pulmonary embolism, or stroke) after liver transplantation.",
+  "category": "gastroenterology",
+  "version": "2017",
+  "parameters": [
+    {
+      "name": "age_category",
+      "type": "string",
+      "required": true,
+      "description": "Patient age category at time of transplant",
+      "options": ["under_45", "45_to_49", "50_to_54", "55_to_59", "60_to_64", "65_or_over"],
+      "validation": {
+        "enum": ["under_45", "45_to_49", "50_to_54", "55_to_59", "60_to_64", "65_or_over"]
+      }
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient sex",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "race",
+      "type": "string",
+      "required": true,
+      "description": "Patient race",
+      "options": ["white", "black", "other"],
+      "validation": {
+        "enum": ["white", "black", "other"]
+      }
+    },
+    {
+      "name": "working_status",
+      "type": "string",
+      "required": true,
+      "description": "Employment status - working for income",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "education",
+      "type": "string",
+      "required": true,
+      "description": "Education level",
+      "options": ["college_or_higher", "high_school_or_less_unknown"],
+      "validation": {
+        "enum": ["college_or_higher", "high_school_or_less_unknown"]
+      }
+    },
+    {
+      "name": "atrial_fibrillation",
+      "type": "string",
+      "required": true,
+      "description": "History of atrial fibrillation",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "respiratory_failure_ventilator",
+      "type": "string",
+      "required": true,
+      "description": "Respiratory failure requiring ventilator support",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "pulmonary_hypertension",
+      "type": "string",
+      "required": true,
+      "description": "Presence of pulmonary hypertension",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hepatocellular_carcinoma",
+      "type": "string",
+      "required": true,
+      "description": "Presence of hepatocellular carcinoma (HCC)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hypertension",
+      "type": "string",
+      "required": true,
+      "description": "History of hypertension",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "diabetes",
+      "type": "string",
+      "required": true,
+      "description": "History of diabetes mellitus",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "heart_failure",
+      "type": "string",
+      "required": true,
+      "description": "History of heart failure",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "car_olt_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "CAR-OLT score indicating cardiovascular risk"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 9,
+        "risk_category": "Very Low",
+        "description": "Very low cardiovascular risk",
+        "interpretation": "Less than 5% 1-year risk of death or hospitalization related to a major cardiovascular event after liver transplantation"
+      },
+      {
+        "min": 10,
+        "max": 12,
+        "risk_category": "Low",
+        "description": "Low cardiovascular risk",
+        "interpretation": "6-8% 1-year risk of death or hospitalization related to a major cardiovascular event after liver transplantation"
+      },
+      {
+        "min": 13,
+        "max": 15,
+        "risk_category": "Low",
+        "description": "Low cardiovascular risk",
+        "interpretation": "8% 1-year risk of death or hospitalization related to a major cardiovascular event after liver transplantation"
+      },
+      {
+        "min": 16,
+        "max": 30,
+        "risk_category": "Moderate",
+        "description": "Moderate cardiovascular risk",
+        "interpretation": "10-26% 1-year risk of death or hospitalization related to a major cardiovascular event after liver transplantation"
+      },
+      {
+        "min": 31,
+        "max": 36,
+        "risk_category": "High",
+        "description": "High cardiovascular risk",
+        "interpretation": "30-38% 1-year risk of death or hospitalization related to a major cardiovascular event after liver transplantation"
+      },
+      {
+        "min": 37,
+        "max": 100,
+        "risk_category": "Very High",
+        "description": "Very high cardiovascular risk",
+        "interpretation": "≥40% 1-year risk of death or hospitalization related to a major cardiovascular event after liver transplantation"
+      }
+    ]
+  },
+  "references": [
+    "VanWagner LB, Serper M, Kang R, Levitsky J, Hohmann S, Abecassis M, Skaro A, Lloyd-Jones DM. Factors Associated With Major Adverse Cardiovascular Events After Liver Transplantation Among a National Sample. Am J Transplant. 2016 Sep;16(9):2684-94.",
+    "VanWagner LB, Ning H, Whitsett M, Levitsky J, Uttal S, Wilkins JT, Abecassis MM, Ladner DP, Skaro AI, Lloyd-Jones DM. A point-based prediction model for cardiovascular risk in orthotopic liver transplantation: The CAR-OLT score. Hepatology. 2017 Dec;66(6):1968-1979."
+  ],
+  "formula": "CAR-OLT Score = Age points + Sex points + Race points + Working status points + Education points + Atrial fibrillation points + Respiratory failure points + Pulmonary hypertension points + HCC points + Hypertension points + Diabetes points + Heart failure points",
+  "notes": [
+    "The CAR-OLT score is available online at www.carolt.us and as mobile apps",
+    "Major CVD events include: MI, cardiac revascularization (PCI or CABG), heart failure, atrial fibrillation, cardiac arrest, pulmonary embolism, or stroke",
+    "Score was developed in 1,024 liver transplant recipients aged 18-75 years",
+    "Higher scores indicate higher 1-year cardiovascular risk after liver transplantation"
+  ]
+}

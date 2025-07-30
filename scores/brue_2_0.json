@@ -1,0 +1,213 @@
+{
+  "id": "brue_2_0",
+  "title": "Brief Resolved Unexplained Events 2.0 (BRUE 2.0) Criteria for Infants",
+  "description": "Classifies unexplained events and improves on the original BRUE criteria by providing sophisticated risk prediction models for serious underlying conditions and event recurrence in infants <1 year old. Uses derived models to predict risk of serious diagnosis and recurrent events.",
+  "category": "pediatrics",
+  "version": "2.0",
+  "parameters": [
+    {
+      "name": "age_under_1_year",
+      "type": "string",
+      "required": true,
+      "description": "Is the infant less than 1 year old?",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"],
+      "unit": ""
+    },
+    {
+      "name": "asymptomatic_on_presentation",
+      "type": "string",
+      "required": true,
+      "description": "Is the infant asymptomatic on presentation (no URI symptoms, no fever)?",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"],
+      "unit": ""
+    },
+    {
+      "name": "no_explanation_after_exam",
+      "type": "string",
+      "required": true,
+      "description": "No explanation for event after history and physical exam?",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"],
+      "unit": ""
+    },
+    {
+      "name": "sudden_brief_resolved_episode",
+      "type": "string",
+      "required": true,
+      "description": "History of sudden, brief, and now resolved episode?",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"],
+      "unit": ""
+    },
+    {
+      "name": "cyanosis_or_pallor",
+      "type": "string",
+      "required": true,
+      "description": "Episode included cyanosis or pallor?",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"],
+      "unit": ""
+    },
+    {
+      "name": "breathing_changes",
+      "type": "string",
+      "required": true,
+      "description": "Episode included absent, decreased, or irregular breathing?",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"],
+      "unit": ""
+    },
+    {
+      "name": "tone_changes",
+      "type": "string",
+      "required": true,
+      "description": "Episode included marked change in tone (hyper or hypotonia)?",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"],
+      "unit": ""
+    },
+    {
+      "name": "altered_responsiveness",
+      "type": "string",
+      "required": true,
+      "description": "Episode included altered level of responsiveness?",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"],
+      "unit": ""
+    },
+    {
+      "name": "age_in_days",
+      "type": "integer",
+      "required": true,
+      "description": "Age of infant in days (for risk prediction models)",
+      "validation": {
+        "min": 0,
+        "max": 365
+      },
+      "unit": "days"
+    },
+    {
+      "name": "history_similar_event",
+      "type": "string",
+      "required": true,
+      "description": "History of similar events in the past?",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"],
+      "unit": ""
+    },
+    {
+      "name": "abnormal_medical_history",
+      "type": "string",
+      "required": true,
+      "description": "Abnormal medical history or concerning findings?",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"],
+      "unit": ""
+    },
+    {
+      "name": "multiple_event_clusters",
+      "type": "string",
+      "required": true,
+      "description": "Multiple event clusters or episodes occurring together?",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"],
+      "unit": ""
+    },
+    {
+      "name": "prematurity",
+      "type": "string",
+      "required": true,
+      "description": "History of prematurity (born <37 weeks gestational age)?",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"],
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "brue_2_0_assessment",
+    "type": "object",
+    "unit": "",
+    "description": "BRUE 2.0 assessment with risk predictions for serious conditions and recurrence"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Not BRUE",
+        "description": "Does not meet BRUE criteria",
+        "interpretation": "The event does not meet the criteria for Brief Resolved Unexplained Event (BRUE). Consider alternative diagnoses and appropriate evaluation based on clinical presentation."
+      },
+      {
+        "min": 1,
+        "max": 5,
+        "stage": "Very Low Risk",
+        "description": "BRUE with very low risk for serious condition or recurrence",
+        "interpretation": "Meets BRUE criteria with very low risk (<2%) for serious underlying condition and low recurrence risk. Appropriate for home management with family education and routine follow-up."
+      },
+      {
+        "min": 6,
+        "max": 15,
+        "stage": "Low Risk",
+        "description": "BRUE with low risk for serious condition or recurrence",
+        "interpretation": "Meets BRUE criteria with low risk (2-10%) for serious underlying condition. Consider brief observation, family education, and shared decision-making about diagnostic testing."
+      },
+      {
+        "min": 16,
+        "max": 30,
+        "stage": "Moderate Risk",
+        "description": "BRUE with moderate risk for serious condition or recurrence",
+        "interpretation": "Meets BRUE criteria with moderate risk (10-20%) for serious underlying condition. Consider extended monitoring, selective diagnostic testing, and close follow-up."
+      },
+      {
+        "min": 31,
+        "max": 100,
+        "stage": "High Risk",
+        "description": "BRUE with high risk for serious condition or recurrence",
+        "interpretation": "Meets BRUE criteria with high risk (>20%) for serious underlying condition. Requires comprehensive evaluation, hospitalization consideration, and extensive diagnostic workup."
+      }
+    ]
+  },
+  "references": [
+    "Tieder JS, Bonkowsky JL, Etzel RA, et al. Brief resolved unexplained events (formerly apparent life-threatening events) and evaluation of lower-risk infants. Pediatrics. 2016;137(5):e20160590. doi: 10.1542/peds.2016-0590.",
+    "Merritt JL, Quinonez RA, Bonkowsky JL, et al. A framework for evaluation of the higher-risk infant after a brief resolved unexplained event. Pediatrics. 2021;148(1):e2021050798. doi: 10.1542/peds.2021-050798.",
+    "Ramgopal S, Karim SA, Subramanian S, Kaderli AA, Fitzgerald M, Ramesh A. Epidemiology of brief resolved unexplained events: a systematic review. Arch Dis Child. 2019;104(11):1074-1081. doi: 10.1136/archdischild-2018-316866."
+  ],
+  "formula": "Risk of Serious Condition = [e^x / (1 + e^x)] * 100, where x = -2.9 - 0.0046*(Age in days) + 1.22*(History of similar event) + 0.35*(Abnormal medical history). Risk of Recurrence calculated using additional factors including multiple event clusters, prematurity, and specific event characteristics.",
+  "notes": [
+    "BRUE 2.0 improves on the original BRUE criteria by providing quantitative risk prediction",
+    "Uses derived models to predict risk of serious underlying diagnosis and event recurrence",
+    "Provides more nuanced risk stratification than the original binary low-risk/higher-risk classification",
+    "Helps guide shared decision-making about diagnostic testing and hospitalization",
+    "Risk models are based on multi-center validation studies",
+    "Particularly useful for infants who don't clearly fit into the original BRUE lower-risk category",
+    "Incorporates age in days as a continuous variable rather than categorical cutoffs",
+    "Addresses limitations of the original AAP guidelines regarding risk stratification"
+  ]
+}

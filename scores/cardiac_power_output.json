@@ -1,0 +1,93 @@
+{
+  "id": "cardiac_power_output",
+  "title": "Cardiac Power Output (CPO)",
+  "description": "Calculates cardiac power output, the rate of energy output of the heart. Integrates both pressure and flow components of cardiac work. Strong hemodynamic predictor of mortality in cardiogenic shock.",
+  "category": "cardiology",
+  "version": "1986",
+  "parameters": [
+    {
+      "name": "mean_arterial_pressure",
+      "type": "float",
+      "required": true,
+      "description": "Mean arterial pressure in mmHg",
+      "unit": "mmHg",
+      "validation": {
+        "min": 30.0,
+        "max": 200.0
+      }
+    },
+    {
+      "name": "cardiac_output",
+      "type": "float",
+      "required": true,
+      "description": "Cardiac output in L/min",
+      "unit": "L/min",
+      "validation": {
+        "min": 1.0,
+        "max": 15.0
+      }
+    },
+    {
+      "name": "right_atrial_pressure",
+      "type": "float",
+      "required": false,
+      "description": "Right atrial pressure in mmHg (optional, for original Tan formula)",
+      "unit": "mmHg",
+      "validation": {
+        "min": 0.0,
+        "max": 30.0
+      }
+    }
+  ],
+  "result": {
+    "name": "cardiac_power_output",
+    "type": "object",
+    "unit": "Watts",
+    "description": "Cardiac power output measurements using standard and original formulas"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0.0,
+        "max": 0.6,
+        "stage": "Severe dysfunction",
+        "description": "Severe ventricular dysfunction",
+        "interpretation": "CPO <0.6W indicates severe ventricular dysfunction with poor prognosis. High risk for mortality in cardiogenic shock. Consider aggressive interventions and mechanical support."
+      },
+      {
+        "min": 0.6,
+        "max": 1.0,
+        "stage": "Moderately reduced",
+        "description": "Moderately reduced cardiac power",
+        "interpretation": "CPO 0.6-1.0W indicates moderately reduced cardiac function. Monitor closely and optimize medical therapy. Consider inotropic support."
+      },
+      {
+        "min": 1.0,
+        "max": 6.0,
+        "stage": "Normal to high",
+        "description": "Normal to high cardiac power",
+        "interpretation": "CPO ≥1.0W indicates adequate cardiac function. Normal resting CPO is approximately 1W. Exercise can increase CPO up to 6W."
+      }
+    ]
+  },
+  "references": [
+    "Tan LB. Cardiac pumping capability and prognosis in heart failure. Lancet. 1986 Dec 13;2(8520):1360-3. doi: 10.1016/s0140-6736(86)92002-6.",
+    "Fincke R, Hochman JS, Lowe AM, et al. Cardiac power is the strongest hemodynamic correlate of mortality in cardiogenic shock: a report from the SHOCK trial registry. J Am Coll Cardiol. 2004 Jul 21;44(2):340-8. doi: 10.1016/j.jacc.2004.03.060.",
+    "Mendoza DD, Cooper HA, Panza JA. Cardiac power output predicts mortality across a broad spectrum of patients with acute cardiac disease. Am Heart J. 2007 Mar;153(3):366-70. doi: 10.1016/j.ahj.2006.11.014.",
+    "Williams SG, Cooke GA, Wright DJ, et al. Peak exercise cardiac power output; a direct indicator of cardiac function strongly predictive of prognosis in chronic heart failure. Eur Heart J. 2001 Aug;22(16):1496-503. doi: 10.1053/euhj.2000.2547."
+  ],
+  "formula": "Standard CPO = (MAP × CO) / 451. Original Tan formula: CPO-RAP = [(MAP - RAP) × CO] / 451. Where MAP = mean arterial pressure (mmHg), CO = cardiac output (L/min), RAP = right atrial pressure (mmHg), 451 = conversion constant",
+  "notes": [
+    "CPO is the strongest hemodynamic predictor of mortality in cardiogenic shock",
+    "Normal resting CPO is approximately 1.0 Watt",
+    "CPO <0.6W indicates severe ventricular dysfunction with poor prognosis",
+    "Exercise can increase CPO reserve up to 6 Watts",
+    "Original Tan 1986 formula included right atrial pressure (RAP) component",
+    "Including RAP provides better prognostic performance, especially in elevated filling pressures",
+    "Standard formula (without RAP) may overestimate CPO in cardiogenic shock",
+    "Used for initial risk stratification and tracking response to therapy",
+    "Not validated for noncardiogenic or pure distributive shock",
+    "Constant 451 converts pressure-flow product to normal resting CPO of 1.0W",
+    "Can guide inotrope titration to achieve target CPO >0.6W"
+  ]
+}

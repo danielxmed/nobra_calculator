@@ -1,0 +1,99 @@
+{
+  "id": "chosen_covid_discharge",
+  "title": "COVID Home Safely Now (CHOSEN) Risk Score for COVID-19 Discharge",
+  "description": "Predicts suitability for discharge in COVID-19 patients by assessing risk of needing supplemental oxygen, ICU-level care, or death within 14 days",
+  "category": "emergency",
+  "version": "2020",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer", 
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "oxygen_saturation",
+      "type": "integer",
+      "required": true,
+      "description": "Oxygen saturation on room air",
+      "validation": {
+        "min": 80,
+        "max": 100
+      },
+      "unit": "%"
+    },
+    {
+      "name": "albumin_level",
+      "type": "float",
+      "required": false,
+      "description": "Serum albumin level (if available for full CHOSEN score)",
+      "validation": {
+        "min": 1.0,
+        "max": 6.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "respiratory_rate",
+      "type": "integer",
+      "required": false,
+      "description": "Respiratory rate (for modified CHOSEN score when albumin unavailable)",
+      "validation": {
+        "min": 8,
+        "max": 50
+      },
+      "unit": "breaths/min"
+    }
+  ],
+  "result": {
+    "name": "chosen_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "CHOSEN Risk Score points"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": null,
+        "max": 19,
+        "stage": "Unlikely Suitable for Discharge",
+        "description": "High risk - consider inpatient management",
+        "interpretation": "Patient unlikely suitable for home discharge - consider continued inpatient monitoring and management"
+      },
+      {
+        "min": 20,
+        "max": 29,
+        "stage": "Borderline Risk",
+        "description": "Intermediate risk - clinical judgment required",
+        "interpretation": "Borderline risk for discharge - clinical judgment and additional factors should be considered"
+      },
+      {
+        "min": 30,
+        "max": null,
+        "stage": "Likely Suitable for Discharge",
+        "description": "Low risk - may be appropriate for home management",
+        "interpretation": "Patient likely suitable for home discharge with appropriate follow-up and monitoring"
+      }
+    ]
+  },
+  "references": [
+    "Levine DM, Ouchi K, Blanchfield B, Diamond A, Licurse A, Pu CT, et al. Hospital-level care at home for acutely ill adults: a pilot randomized controlled trial. J Gen Intern Med. 2018;33(5):729-736.",
+    "Levine DM, Ouchi K, Blanchfield B, Saenz A, Burke K, Paz M, et al. Hospital-Level Care at Home for Acutely Ill Adults: A Randomized Controlled Trial. Ann Intern Med. 2020;172(2):77-85."
+  ],
+  "formula": "CHOSEN Score = Age points + SpO2 points + (Albumin points OR Respiratory Rate points). Age: 18-45=5pts, 46-59=2pts, 60-73=1pt, >73=0pts. SpO2: <94%=0pts, 94-96%=9pts, 97-98%=14pts, >98%=21pts. Albumin: <2.8=0pts, 2.8-3.3=5pts, 3.4-3.7=15pts, >3.7=29pts",
+  "notes": [
+    "Two versions available: Full CHOSEN (with albumin) and Modified CHOSEN (with respiratory rate)",
+    "83% sensitivity and 82% specificity in original validation study",
+    "Most predictive factor is albumin level when available",
+    "Not a replacement for clinical judgment - use as adjunct to clinical assessment",
+    "Best validated during COVID-19 surge periods",
+    "Consider additional factors: social support, comorbidities, patient preference",
+    "Full CHOSEN: 0-29 pts unlikely suitable, 30+ pts likely suitable for discharge",
+    "Modified CHOSEN: 0-19 pts unlikely suitable, 20+ pts likely suitable for discharge"
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "id": "canadian_tia_score",
+  "title": "Canadian Transient Ischemic Attack (TIA) Score",
+  "description": "The Canadian TIA Score identifies risk of stroke, carotid endarterectomy, or carotid artery stenting within 7 days in patients who experienced TIA symptoms. It incorporates 13 predictive variables from history, physical examination, and testing routinely performed in the emergency department.",
+  "category": "neurology",
+  "version": "2014",
+  "parameters": [
+    {
+      "name": "first_tia_lifetime",
+      "type": "string",
+      "required": true,
+      "description": "First TIA episode in patient's lifetime",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "symptoms_ten_minutes",
+      "type": "string",
+      "required": true,
+      "description": "TIA symptoms lasted 10 minutes or longer",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "history_carotid_stenosis",
+      "type": "string",
+      "required": true,
+      "description": "Known history of carotid artery stenosis",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "on_antiplatelet_therapy",
+      "type": "string",
+      "required": true,
+      "description": "Patient already on antiplatelet therapy at time of TIA",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "history_gait_disturbance",
+      "type": "string",
+      "required": true,
+      "description": "History of gait disturbance during the TIA episode",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "history_unilateral_weakness",
+      "type": "string",
+      "required": true,
+      "description": "History of unilateral weakness during the TIA episode",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "history_vertigo",
+      "type": "string",
+      "required": true,
+      "description": "History of vertigo during the TIA episode",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "diastolic_bp_110",
+      "type": "string",
+      "required": true,
+      "description": "Initial triage diastolic blood pressure ≥110 mmHg",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "dysarthria_aphasia",
+      "type": "string",
+      "required": true,
+      "description": "Presence of dysarthria or aphasia during the TIA episode",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "atrial_fibrillation_ecg",
+      "type": "string",
+      "required": true,
+      "description": "Atrial fibrillation detected on ECG in the emergency department",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "infarction_on_ct",
+      "type": "string",
+      "required": true,
+      "description": "Acute infarction visible on CT scan",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "platelet_count_400",
+      "type": "string",
+      "required": true,
+      "description": "Platelet count ≥400×10⁹/L",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "glucose_15_mmol",
+      "type": "string",
+      "required": true,
+      "description": "Blood glucose ≥15 mmol/L (270 mg/dL)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "canadian_tia_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Canadian TIA Score (-3 to 23 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": -3,
+        "max": 3,
+        "stage": "Low Risk",
+        "description": "0.01-0.5% risk of stroke/intervention within 7 days",
+        "interpretation": "Low risk of stroke, carotid endarterectomy, or carotid artery stenting within 7 days. Consider discharge home with outpatient follow-up. Routine investigations and specialist referral can be arranged non-urgently."
+      },
+      {
+        "min": 4,
+        "max": 8,
+        "stage": "Medium Risk",
+        "description": "1-5% risk of stroke/intervention within 7 days",
+        "interpretation": "Medium risk of stroke, carotid endarterectomy, or carotid artery stenting within 7 days. Consider admission or urgent outpatient workup within 24-48 hours. Expedited imaging and specialist consultation recommended."
+      },
+      {
+        "min": 9,
+        "max": 23,
+        "stage": "High Risk",
+        "description": "5.9-27.6% risk of stroke/intervention within 7 days",
+        "interpretation": "High risk of stroke, carotid endarterectomy, or carotid artery stenting within 7 days. Recommend admission for monitoring and urgent evaluation. Immediate imaging, specialist consultation, and consideration of antithrombotic therapy indicated."
+      }
+    ]
+  },
+  "references": [
+    "Perry JJ, Sharma M, Sivilotti ML, Sutherland J, Symington C, Worster A, et al. Prospective validation of the ABCD2 score for patients in the emergency department with transient ischemic attack. CMAJ. 2011 Jul 12;183(10):1137-45. doi: 10.1503/cmaj.101668.",
+    "Perry JJ, Sivilotti ML, Sutherland J, Hohl CM, Émond M, Calder LA, et al. Validation of the Ottawa Subarachnoid Hemorrhage Rule in patients with acute headache. CMAJ. 2013 Nov 19;185(17):E805-12. doi: 10.1503/cmaj.121745.",
+    "Perry JJ, Sharma M, Sivilotti ML, Sutherland J, Worster A, Émond M, et al. A prospective cohort study of patients with transient ischemic attack to identify high-risk clinical characteristics. Stroke. 2014 Jan;45(1):92-100. doi: 10.1161/STROKEAHA.113.003085."
+  ],
+  "formula": "Score = (2 × first_tia_lifetime) + (2 × symptoms_ten_minutes) + (2 × history_carotid_stenosis) + (3 × on_antiplatelet_therapy) + (1 × history_gait_disturbance) + (1 × history_unilateral_weakness) + (-3 × history_vertigo) + (3 × diastolic_bp_110) + (1 × dysarthria_aphasia) + (2 × atrial_fibrillation_ecg) + (1 × infarction_on_ct) + (2 × platelet_count_400) + (3 × glucose_15_mmol)",
+  "notes": [
+    "Use in patients with suspected TIA presenting to the emergency department",
+    "More accurate than ABCD² and ABCD²I scores for 7-day stroke risk prediction",
+    "Score ranges from -3 to 23 points",
+    "Primary outcome: stroke, carotid endarterectomy, or carotid artery stenting within 7 days",
+    "Vertigo is the only variable that subtracts points (-3 points)",
+    "Glucose threshold: 15 mmol/L = 270 mg/dL",
+    "Platelet threshold: 400×10⁹/L = 400,000/μL",
+    "Based on prospective validation in 8,355 patients across multiple centers"
+  ]
+}

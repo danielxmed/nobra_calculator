@@ -1,0 +1,159 @@
+{
+  "id": "crusade_bleeding_risk",
+  "title": "CRUSADE Score for Post-MI Bleeding Risk",
+  "description": "Risk stratifies patients with NSTEMI undergoing anticoagulation to determine their risk of major bleeding during hospitalization",
+  "category": "cardiology",
+  "version": "2010",
+  "parameters": [
+    {
+      "name": "baseline_hematocrit",
+      "type": "float",
+      "required": true,
+      "description": "Baseline hematocrit percentage on admission",
+      "validation": {
+        "min": 15.0,
+        "max": 55.0
+      },
+      "unit": "percentage"
+    },
+    {
+      "name": "creatinine_clearance",
+      "type": "float",
+      "required": true,
+      "description": "Calculated creatinine clearance using Cockcroft-Gault equation",
+      "validation": {
+        "min": 5.0,
+        "max": 200.0
+      },
+      "unit": "mL/min"
+    },
+    {
+      "name": "heart_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Heart rate on admission in beats per minute",
+      "validation": {
+        "min": 30,
+        "max": 200
+      },
+      "unit": "bpm"
+    },
+    {
+      "name": "patient_sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient biological sex (female patients have higher bleeding risk)",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      },
+      "unit": "sex"
+    },
+    {
+      "name": "signs_chf",
+      "type": "string",
+      "required": true,
+      "description": "Signs of congestive heart failure at presentation (dyspnea, rales, elevated JVP, S3 gallop)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": "presence"
+    },
+    {
+      "name": "diabetes_mellitus",
+      "type": "string",
+      "required": true,
+      "description": "History of diabetes mellitus (Type 1 or Type 2)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": "presence"
+    },
+    {
+      "name": "prior_vascular_disease",
+      "type": "string",
+      "required": true,
+      "description": "History of prior vascular disease (PAD, cerebrovascular disease, aortic aneurysm)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": "presence"
+    },
+    {
+      "name": "systolic_blood_pressure",
+      "type": "integer",
+      "required": true,
+      "description": "Systolic blood pressure on admission in mmHg",
+      "validation": {
+        "min": 60,
+        "max": 250
+      },
+      "unit": "mmHg"
+    }
+  ],
+  "result": {
+    "name": "crusade_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total CRUSADE score ranging from 1-100 points predicting major bleeding risk"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 20,
+        "stage": "Very Low Risk",
+        "description": "Very low bleeding risk",
+        "interpretation": "CRUSADE score ≤20 indicates very low bleeding risk (3.1% major bleeding rate). Standard antithrombotic therapy is appropriate. Monitor for bleeding but expect low incidence."
+      },
+      {
+        "min": 21,
+        "max": 30,
+        "stage": "Low Risk",
+        "description": "Low bleeding risk",
+        "interpretation": "CRUSADE score 21-30 indicates low bleeding risk (5.5% major bleeding rate). Standard antithrombotic therapy is appropriate with routine monitoring for bleeding complications."
+      },
+      {
+        "min": 31,
+        "max": 40,
+        "stage": "Moderate Risk",
+        "description": "Moderate bleeding risk",
+        "interpretation": "CRUSADE score 31-40 indicates moderate bleeding risk (8.6% major bleeding rate). Consider reduced-dose antithrombotic therapy and enhanced bleeding monitoring. Balance ischemic vs bleeding risk."
+      },
+      {
+        "min": 41,
+        "max": 50,
+        "stage": "High Risk",
+        "description": "High bleeding risk",
+        "interpretation": "CRUSADE score 41-50 indicates high bleeding risk (11.9% major bleeding rate). Consider reduced-dose antithrombotic regimens, shorter duration therapy, and intensive bleeding monitoring."
+      },
+      {
+        "min": 51,
+        "max": 100,
+        "stage": "Very High Risk",
+        "description": "Very high bleeding risk",
+        "interpretation": "CRUSADE score >50 indicates very high bleeding risk (19.5% major bleeding rate). Strongly consider alternative treatment strategies, minimal effective antithrombotic therapy, and very close monitoring."
+      }
+    ]
+  },
+  "references": [
+    "Subherwal S, Bach RG, Chen AY, et al. Baseline risk of major bleeding in non-ST-segment-elevation myocardial infarction: the CRUSADE (Can Rapid risk stratification of Unstable angina patients Suppress ADverse outcomes with Early implementation of the ACC/AHA Guidelines) Bleeding Score. Circulation. 2009;119(14):1873-1882.",
+    "Abu-Assi E, Raposeiras-Roubin S, Lear P, et al. The risk of bleeding according to the CRUSADE, ACUITY and HAS-BLED scores in acute coronary syndrome patients treated with prasugrel: insights from a four-year registry. Thromb Res. 2013;132(6):652-658.",
+    "Ariza-Solé A, Sánchez-Elvira G, Sánchez-Salado JC, et al. CRUSADE bleeding score validation for ST-segment-elevation myocardial infarction undergoing primary percutaneous coronary intervention. Thromb Res. 2013;132(6):652-658."
+  ],
+  "formula": "Sum of weighted points: Hematocrit + Creatinine Clearance + Heart Rate + Sex + CHF Signs + Diabetes + Vascular Disease + Systolic BP",
+  "notes": [
+    "Developed and validated in NSTEMI patients undergoing antithrombotic therapy",
+    "Major bleeding defined as: hematocrit drop ≥12%, RBC transfusion (if baseline Hct ≥28%), or RBC transfusion with witnessed bleeding (if baseline Hct <28%)",
+    "Score ranges from 1-100 points with higher scores indicating greater bleeding risk",
+    "Validated in both NSTEMI and STEMI patients",
+    "Should be used in conjunction with ischemic risk assessment for optimal decision-making",
+    "Consider patient-specific factors and bleeding history not captured in the score",
+    "Useful for selecting appropriate antithrombotic regimens and monitoring intensity",
+    "Can guide duration of dual antiplatelet therapy",
+    "Female sex independently associated with increased bleeding risk"
+  ]
+}

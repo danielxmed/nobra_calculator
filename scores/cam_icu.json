@@ -1,0 +1,98 @@
+{
+  "id": "cam_icu",
+  "title": "Confusion Assessment Method for the ICU (CAM-ICU)",
+  "description": "Monitors delirium in ICU patients through systematic assessment of consciousness level, attention, and organized thinking.",
+  "category": "emergency",
+  "version": "2024",
+  "parameters": [
+    {
+      "name": "rass_score",
+      "type": "integer",
+      "required": true,
+      "description": "Richmond Agitation-Sedation Scale (RASS) score. Must be ≥-3 for assessment to continue",
+      "validation": {
+        "min": -5,
+        "max": 4
+      },
+      "unit": "points"
+    },
+    {
+      "name": "acute_onset_fluctuating",
+      "type": "string",
+      "required": true,
+      "description": "Is there acute onset of mental status changes or fluctuating course in the past 24 hours?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "attention_errors",
+      "type": "integer",
+      "required": true,
+      "description": "Number of errors in attention test (letters test - count errors when patient should squeeze hand for letter A in CASABLANCA)",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "errors"
+    },
+    {
+      "name": "thinking_errors",
+      "type": "integer",
+      "required": true,
+      "description": "Number of errors in organized thinking test (yes/no questions and simple commands)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "errors"
+    }
+  ],
+  "result": {
+    "name": "cam_icu_assessment",
+    "type": "object",
+    "unit": "assessment",
+    "description": "CAM-ICU delirium assessment with detailed breakdown of each feature"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "CAM-ICU Negative",
+        "description": "No delirium detected",
+        "interpretation": "Patient does not meet criteria for delirium. Continue routine monitoring and reassess regularly."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "CAM-ICU Positive",
+        "description": "Delirium present",
+        "interpretation": "Patient meets criteria for delirium. Implement delirium management protocols and consider underlying causes."
+      }
+    ]
+  },
+  "references": [
+    "Ely EW, Inouye SK, Bernard GR, Gordon S, Francis J, May L, et al. Delirium in mechanically ventilated patients: validity and reliability of the confusion assessment method for the intensive care unit (CAM-ICU). JAMA. 2001 Dec 5;286(21):2703-10. doi: 10.1001/jama.286.21.2703.",
+    "Ely EW, Margolin R, Francis J, May L, Truman B, Dittus R, et al. Evaluation of delirium in critically ill patients: validation of the Confusion Assessment Method for the Intensive Care Unit (CAM-ICU). Crit Care Med. 2001 Jul;29(7):1370-9. doi: 10.1097/00003246-200107000-00012.",
+    "Devlin JW, Skrobik Y, Gélinas C, Needham DM, Slooter AJ, Pandharipande PP, et al. Clinical Practice Guidelines for the Prevention and Management of Pain, Agitation/Sedation, Delirium, Immobility, and Sleep Disruption in Adult Patients in the ICU. Crit Care Med. 2018 Sep;46(9):e825-e873. doi: 10.1097/CCM.0000000000003299.",
+    "Sessler CN, Gosnell MS, Grap MJ, Brophy GM, O'Neal PV, Keane KA, et al. The Richmond Agitation-Sedation Scale: validity and reliability in adult intensive care unit patients. Am J Respir Crit Care Med. 2002 Nov 15;166(10):1338-44. doi: 10.1164/rccm.2107138."
+  ],
+  "formula": "CAM-ICU positive if RASS ≥ -3 AND acute onset/fluctuating course AND >2 attention errors AND (RASS ≠ 0 OR >1 thinking errors)",
+  "notes": [
+    "The CAM-ICU is a validated tool for detecting delirium in critically ill patients",
+    "Requires Richmond Agitation-Sedation Scale (RASS) assessment as prerequisite",
+    "Patient must have RASS ≥ -3 to be assessed (sufficiently awake to participate)",
+    "Letters attention test: recite letters from CASABLANCA, patient squeezes hand for letter A",
+    "Organized thinking test includes yes/no questions and simple commands",
+    "Sensitivity ~95-100% and specificity ~89-93% for delirium detection",
+    "Should be performed by trained healthcare professionals",
+    "Reassessment recommended at least once per shift in ICU patients",
+    "Part of the PADIS guidelines for ICU patient care",
+    "Delirium in ICU patients is associated with increased mortality, longer stays, and cognitive impairment",
+    "Early detection allows for prompt implementation of delirium management strategies",
+    "The tool can be completed in 1-2 minutes by experienced users"
+  ]
+}

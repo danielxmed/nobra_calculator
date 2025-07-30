@@ -1,0 +1,94 @@
+{
+  "id": "bristol_stool_form_scale",
+  "title": "Bristol Stool Form Scale",
+  "description": "Classifies stool form and correlates with intestinal transit time to assess bowel health and identify constipation or diarrhea",
+  "category": "gastroenterology",
+  "version": "1997",
+  "parameters": [
+    {
+      "name": "stool_type",
+      "type": "integer",
+      "required": true,
+      "description": "Bristol Stool Form Scale type (1-7)",
+      "validation": {
+        "min": 1,
+        "max": 7
+      },
+      "unit": "type"
+    }
+  ],
+  "result": {
+    "name": "classification",
+    "type": "string",
+    "unit": "",
+    "description": "Clinical classification and transit time assessment"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Severe Constipation",
+        "description": "Separate hard lumps (nuts)",
+        "interpretation": "Severe constipation. Hard, separate pellets that are difficult to pass. Indicates prolonged colonic transit time with excessive water absorption. Requires dietary modifications (increased fiber and fluids) and possible laxative therapy."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Mild Constipation",
+        "description": "Sausage-like but lumpy",
+        "interpretation": "Mild constipation. Hard, lumpy stools that are somewhat larger but still difficult to pass. Indicates slow colonic transit with increased water absorption. Requires increased fiber intake, hydration, and physical activity."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Normal (Lower Range)",
+        "description": "Sausage-like with cracks",
+        "interpretation": "Normal bowel function (lower normal range). Sausage-shaped with surface cracks. Represents adequate hydration and fiber intake with normal colonic transit time. Generally considered healthy stool consistency."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Normal (Ideal)",
+        "description": "Smooth, soft sausage or snake",
+        "interpretation": "Ideal bowel function. Smooth, soft, sausage-shaped stool that is easy to pass. Represents optimal hydration, diet, and normal colonic transit time. This is the target consistency for healthy bowel movements."
+      },
+      {
+        "min": 5,
+        "max": 5,
+        "stage": "Normal (Upper Range)",
+        "description": "Soft blobs with clear edges",
+        "interpretation": "Normal bowel function (upper normal range). Soft blobs with clear-cut edges that pass easily. May indicate slightly faster colonic transit or higher water content. Generally acceptable but monitor for progression to diarrhea."
+      },
+      {
+        "min": 6,
+        "max": 6,
+        "stage": "Mild Diarrhea",
+        "description": "Fluffy pieces with ragged edges",
+        "interpretation": "Mild diarrhea. Mushy stool with fluffy pieces and ragged edges. Indicates rapid colonic transit with reduced water absorption. May be caused by dietary factors, medications, or mild gastrointestinal conditions."
+      },
+      {
+        "min": 7,
+        "max": 7,
+        "stage": "Severe Diarrhea",
+        "description": "Entirely liquid",
+        "interpretation": "Severe diarrhea. Watery stool with no solid pieces. Indicates very rapid intestinal transit with minimal water absorption. May lead to dehydration and electrolyte imbalance. Requires medical evaluation if persistent."
+      }
+    ]
+  },
+  "references": [
+    "Lewis SJ, Heaton KW. Stool form scale as a useful guide to intestinal transit time. Scand J Gastroenterol. 1997;32(9):920-4. doi: 10.3109/00365529709011203.",
+    "Heaton KW, Radvan J, Cripps H, Mountford RA, Braddon FE, Hughes AO. Defecation frequency and timing, and stool form in the general population: a prospective study. Gut. 1992;33(6):818-24. doi: 10.1136/gut.33.6.818.",
+    "O'Donnell LJ, Virjee J, Heaton KW. Detection of pseudodiarrhoea by simple clinical assessment of intestinal transit rate. BMJ. 1990;300(6722):439-40. doi: 10.1136/bmj.300.6722.439."
+  ],
+  "formula": "Visual classification based on stool morphology: Type 1 (separate hard lumps) to Type 7 (entirely liquid)",
+  "notes": [
+    "Developed at Bristol Royal Infirmary in 1997 by Stephen Lewis and Ken Heaton",
+    "Widely used research tool for evaluating bowel treatments and as clinical communication aid",
+    "Forms part of diagnostic criteria for irritable bowel syndrome (IBS)",
+    "Types 3 and 4 are considered normal and ideal stool consistency",
+    "Scale correlates inversely with colonic transit time",
+    "Validated in multiple languages including Spanish, Brazilian Portuguese, and Polish",
+    "Should be used alongside clinical history and examination for comprehensive assessment"
+  ]
+}

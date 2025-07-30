@@ -1,0 +1,99 @@
+{
+  "id": "caroc_system",
+  "title": "Canadian Association of Radiologists and Osteoporosis Canada (CAROC) System",
+  "description": "Assesses 10-year absolute fracture risk based on age, sex, femoral neck T-score, and clinical risk factors. Stratifies patients into low (<10%), moderate (10-20%), or high (>20%) risk categories for major osteoporotic fractures.",
+  "category": "rheumatology",
+  "version": "2010",
+  "parameters": [
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient's biological sex",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient's age in years",
+      "validation": {
+        "min": 50,
+        "max": 85
+      },
+      "unit": "years"
+    },
+    {
+      "name": "femoral_neck_t_score",
+      "type": "float",
+      "required": true,
+      "description": "Femoral neck T-score from DXA scan. Negative values indicate bone loss relative to young adult reference",
+      "validation": {
+        "min": -5,
+        "max": 2
+      }
+    },
+    {
+      "name": "fragility_fracture",
+      "type": "string",
+      "required": true,
+      "description": "History of fragility fracture after age 40 (fracture from fall at standing height or less)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "glucocorticoid_use",
+      "type": "string",
+      "required": true,
+      "description": "Current systemic glucocorticoid therapy for ≥3 months in the past year at prednisone-equivalent dose ≥7.5 mg daily",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "fracture_risk_category",
+    "type": "string",
+    "unit": "category",
+    "description": "10-year major osteoporotic fracture risk category"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "stage": "Low Risk",
+        "description": "<10% 10-year fracture risk",
+        "interpretation": "Low risk of major osteoporotic fracture over the next 10 years. General lifestyle recommendations including adequate calcium (1200 mg/day), vitamin D (800-2000 IU/day), regular weight-bearing exercise, fall prevention, and avoidance of smoking and excessive alcohol. Repeat BMD in 3-5 years or as clinically indicated."
+      },
+      {
+        "stage": "Moderate Risk",
+        "description": "10-20% 10-year fracture risk",
+        "interpretation": "Moderate risk of major osteoporotic fracture over the next 10 years. Consider pharmacologic therapy based on patient preferences, additional risk factors, and BMD trends. Ensure adequate calcium and vitamin D supplementation. Implement fall prevention strategies. Consider vertebral imaging if height loss or back pain present."
+      },
+      {
+        "stage": "High Risk",
+        "description": ">20% 10-year fracture risk",
+        "interpretation": "High risk of major osteoporotic fracture over the next 10 years. Pharmacologic therapy strongly recommended unless contraindicated. First-line options include bisphosphonates, denosumab, or other approved therapies. Ensure adequate calcium and vitamin D. Implement comprehensive fracture prevention strategies including fall prevention and exercise programs."
+      }
+    ]
+  },
+  "references": [
+    "Siminoski K, Leslie WD, Frame H, Hodsman A, Josse RG, Khan A, et al. Recommendations for bone mineral density reporting in Canada: a shift to absolute fracture risk assessment. J Clin Densitom. 2007 Apr-Jun;10(2):120-3. doi: 10.1016/j.jocd.2007.01.001.",
+    "Leslie WD, Berger C, Langsetmo L, Lix LM, Adachi JD, Hanley DA, et al. Construction and validation of a simplified fracture risk assessment tool for Canadian women and men: results from the CaMos and Manitoba cohorts. Osteoporos Int. 2011 Jun;22(6):1873-83. doi: 10.1007/s00198-010-1445-5.",
+    "Papaioannou A, Morin S, Cheung AM, Atkinson S, Brown JP, Feldman S, et al. 2010 clinical practice guidelines for the diagnosis and management of osteoporosis in Canada: summary. CMAJ. 2010 Nov 23;182(17):1864-73. doi: 10.1503/cmaj.100771."
+  ],
+  "formula": "Risk categorization based on age-specific and sex-specific femoral neck T-score thresholds, with clinical risk factors elevating the risk category",
+  "notes": [
+    "CAROC is a simplified tool that captures major fracture risk factors and does not require computer access",
+    "Any T-score ≤-2.5 at spine, total hip, or femoral neck indicates at least moderate risk regardless of age",
+    "Fragility fracture history elevates risk by one category (low to moderate, moderate to high)",
+    "Glucocorticoid use elevates risk by one category",
+    "Both fragility fracture AND glucocorticoid use indicates high risk regardless of BMD",
+    "Tool is primarily validated for Canadian population and may not generalize to other ethnicities"
+  ]
+}

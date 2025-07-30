@@ -1,0 +1,201 @@
+{
+  "id": "crs_grading",
+  "title": "Cytokine Release Syndrome (CRS) Grading",
+  "description": "Assesses severity of cytokine release syndrome in immunotherapy patients, particularly those receiving CAR-T cell therapy and other immune effector cell therapies. CRS is an acute inflammatory process marked by a spectrum of clinical symptoms and substantial elevations of serum cytokines.",
+  "category": "oncology",
+  "version": "ASTCT_2019",
+  "parameters": [
+    {
+      "name": "fever_present",
+      "type": "string",
+      "required": true,
+      "description": "Presence of fever (≥38°C) or fever suppressed by anti-pyretic/anti-cytokine therapy",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hypotension_status",
+      "type": "string",
+      "required": true,
+      "description": "Hypotension status and intervention requirements",
+      "options": [
+        "none",
+        "responsive_to_fluids",
+        "low_dose_single_pressor",
+        "high_dose_multiple_pressors"
+      ],
+      "validation": {
+        "enum": [
+          "none",
+          "responsive_to_fluids", 
+          "low_dose_single_pressor",
+          "high_dose_multiple_pressors"
+        ]
+      }
+    },
+    {
+      "name": "oxygen_requirement",
+      "type": "string",
+      "required": true,
+      "description": "Oxygen support requirements",
+      "options": [
+        "none",
+        "low_flow_oxygen",
+        "high_flow_oxygen_40_plus",
+        "ventilator_required"
+      ],
+      "validation": {
+        "enum": [
+          "none",
+          "low_flow_oxygen",
+          "high_flow_oxygen_40_plus", 
+          "ventilator_required"
+        ]
+      }
+    },
+    {
+      "name": "organ_toxicity_grade",
+      "type": "integer",
+      "required": true,
+      "description": "Highest grade of organ toxicity (using CTCAE criteria, excluding fever and hypotension)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        {"value": 0, "label": "No organ toxicity", "description": "No evidence of organ dysfunction"},
+        {"value": 1, "label": "Grade 1", "description": "Mild organ toxicity"},
+        {"value": 2, "label": "Grade 2", "description": "Moderate organ toxicity"},
+        {"value": 3, "label": "Grade 3", "description": "Severe organ toxicity"},
+        {"value": 4, "label": "Grade 4", "description": "Life-threatening organ toxicity"}
+      ]
+    },
+    {
+      "name": "patient_age",
+      "type": "integer",
+      "required": false,
+      "description": "Patient age in years (for risk stratification)",
+      "validation": {
+        "min": 0,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "comorbidities_present",
+      "type": "string",
+      "required": false,
+      "description": "Presence of significant comorbidities that may affect CRS management",
+      "options": ["yes", "no", "unknown"],
+      "validation": {
+        "enum": ["yes", "no", "unknown"]
+      }
+    }
+  ],
+  "result": {
+    "name": "crs_assessment",
+    "type": "object",
+    "unit": "grade",
+    "description": "Comprehensive CRS grading with severity assessment and management recommendations"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Grade 1 - Mild",
+        "description": "Mild symptoms",
+        "interpretation": "Symptoms not life-threatening; only symptomatic treatment required. Examples include fever, nausea, fatigue, headache, myalgias, malaise. Supportive care and symptomatic treatment indicated."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Grade 2 - Moderate",
+        "description": "Moderate intervention required",
+        "interpretation": "Moderate intervention required for response. Includes oxygen requirement <40%, hypotension responsive to fluids, low dose single pressor, or Grade 2 organ toxicity. Vigilant supportive care required."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Grade 3 - Severe",
+        "description": "Aggressive intervention required",
+        "interpretation": "Aggressive intervention required for response. Includes oxygen requirement ≥40%, hypotension requiring high-dose/multiple pressors, Grade 3 organ toxicity, or Grade 4 transaminitis. ICU management often required."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Grade 4 - Life-threatening",
+        "description": "Life-threatening symptoms",
+        "interpretation": "Life-threatening symptoms requiring immediate intensive intervention. Includes ventilator requirement or Grade 4 organ toxicity (excluding transaminitis). Intensive care management mandatory."
+      },
+      {
+        "min": 5,
+        "max": 5,
+        "stage": "Grade 5 - Death",
+        "description": "Death related to CRS",
+        "interpretation": "Death directly attributable to cytokine release syndrome. Represents failure of all therapeutic interventions."
+      }
+    ]
+  },
+  "clinical_applications": [
+    "CAR-T cell therapy monitoring",
+    "Immune effector cell therapy complications",
+    "Immunotherapy toxicity assessment",
+    "ICU triage and management decisions",
+    "Clinical trial endpoint assessment",
+    "Treatment response monitoring",
+    "Risk stratification for intervention"
+  ],
+  "treatment_recommendations": {
+    "grade_1": [
+      "Supportive care with symptomatic treatment",
+      "Monitor vital signs and symptoms",
+      "Adequate hydration and fever management",
+      "No specific anti-cytokine therapy required"
+    ],
+    "grade_2": [
+      "Vigilant supportive care with close monitoring",
+      "Consider tocilizumab if extensive comorbidities present",
+      "Fluid management and low-dose vasopressors if needed",
+      "Monitor for progression to higher grades"
+    ],
+    "grade_3": [
+      "Aggressive supportive care, often requiring ICU",
+      "Tocilizumab ± corticosteroids recommended",
+      "High-dose or multiple vasopressors as needed",
+      "Consider corticosteroids if no improvement at 24 hours"
+    ],
+    "grade_4": [
+      "Intensive care management mandatory",
+      "Immediate tocilizumab and corticosteroids",
+      "Mechanical ventilation and advanced organ support",
+      "Multidisciplinary critical care approach"
+    ]
+  },
+  "references": [
+    "Lee DW, Santomasso BD, Locke FL, et al. ASTCT Consensus Grading for Cytokine Release Syndrome and Neurologic Toxicity Associated with Immune Effector Cells. Biol Blood Marrow Transplant. 2019;25(4):625-638. doi: 10.1016/j.bbmt.2018.12.758.",
+    "Porter D, Frey N, Wood PA, Weng Y, Grupp SA. Grading of cytokine release syndrome associated with the CAR T cell therapy tisagenlecleucel. J Hematol Oncol. 2018;11(1):35. doi: 10.1186/s13045-018-0571-y.",
+    "Neelapu SS, Tummala S, Kebriaei P, et al. Chimeric antigen receptor T-cell therapy - assessment and management of toxicities. Nat Rev Clin Oncol. 2018;15(1):47-62. doi: 10.1038/nrclinonc.2017.148.",
+    "Maude SL, Barrett D, Teachey DT, Grupp SA. Managing cytokine release syndrome associated with novel T cell-engaging therapies. Cancer J. 2014;20(2):119-122. doi: 10.1097/PPO.0000000000000035."
+  ],
+  "formula": "CRS Grade determined by highest severity parameter: fever requirement + maximum of (hypotension grade, oxygen requirement grade, organ toxicity grade)",
+  "notes": [
+    "Based on ASTCT (American Society for Transplantation and Cellular Therapy) consensus criteria",
+    "Fever ≥38°C required for Grade 1; not required for Grades 2-4 if anti-pyretic/anti-cytokine therapy given",
+    "Hypotension should be defined case-by-case considering patient's age and baseline",
+    "Organ toxicity graded using Common Terminology Criteria for Adverse Events (CTCAE)",
+    "Grade 4 transaminitis (liver toxicity) is considered Grade 3 CRS, not Grade 4",
+    "Requires specialized clinical expertise and frequent monitoring",
+    "Treatment should be individualized based on patient comorbidities and clinical status",
+    "Early recognition and prompt intervention are critical for optimal outcomes",
+    "Monitor for infection as immunosuppressive treatments may increase infection risk"
+  ],
+  "validation": {
+    "population": "Patients receiving immune effector cell therapies (CAR-T, TCR-T, etc.)",
+    "settings": ["Oncology units", "ICU", "Bone marrow transplant units", "Clinical trials"],
+    "consensus_basis": "ASTCT expert consensus 2019",
+    "clinical_utility": "Standardizes CRS assessment across institutions and clinical trials"
+  }
+}

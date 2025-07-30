@@ -27,6 +27,22 @@ from .benzodiazepine_conversion import router as benzodiazepine_conversion_route
 from .bicarbonate_deficit import router as bicarbonate_deficit_router
 from .bisap_score import router as bisap_score_router
 from .blast_lung_injury_severity import router as blast_lung_injury_severity_router
+from .burch_wartofsky_point_scale import router as burch_wartofsky_point_scale_router
+from .canadian_c_spine_rule import router as canadian_c_spine_rule_router
+from .canadian_ct_head_rule import router as canadian_ct_head_rule_router
+from .canadian_syncope_risk_score import router as canadian_syncope_risk_score_router
+from .caprini_score_2005 import router as caprini_score_2005_router
+from .cart_score import router as cart_score_router
+from .centor_score import router as centor_score_router
+from .cedocs_score import router as cedocs_score_router
+from .chip_prediction_rule import router as chip_prediction_rule_router
+from .chosen_covid_discharge import router as chosen_covid_discharge_router
+from .covid_inpatient_risk_calculator import router as covid_inpatient_risk_calculator_router
+from .cincinnati_prehospital_stroke_severity_scale import router as cincinnati_prehospital_stroke_severity_scale_router
+from .cam_icu import router as cam_icu_router
+from .covid_gram_critical_illness import router as covid_gram_critical_illness_router
+from .cpot_pain_observation import router as cpot_pain_observation_router
+from .danger_assessment_tool import router as danger_assessment_tool_router
 
 # Create main specialty router
 router = APIRouter()
@@ -54,3 +70,19 @@ router.include_router(benzodiazepine_conversion_router)
 router.include_router(bicarbonate_deficit_router)
 router.include_router(bisap_score_router)
 router.include_router(blast_lung_injury_severity_router)
+router.include_router(burch_wartofsky_point_scale_router)
+router.include_router(canadian_c_spine_rule_router)
+router.include_router(canadian_ct_head_rule_router)
+router.include_router(canadian_syncope_risk_score_router)
+router.include_router(caprini_score_2005_router)
+router.include_router(cart_score_router)
+router.include_router(centor_score_router)
+router.include_router(cedocs_score_router)
+router.include_router(chip_prediction_rule_router)
+router.include_router(chosen_covid_discharge_router)
+router.include_router(covid_inpatient_risk_calculator_router)
+router.include_router(cincinnati_prehospital_stroke_severity_scale_router)
+router.include_router(cam_icu_router)
+router.include_router(covid_gram_critical_illness_router)
+router.include_router(cpot_pain_observation_router)
+router.include_router(danger_assessment_tool_router)

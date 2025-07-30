@@ -1,0 +1,174 @@
+{
+  "id": "clinical_frailty_scale",
+  "title": "CSHA Clinical Frailty Scale (CFS)",
+  "description": "Measures frailty to predict survival, mortality, need for institutional care, and other adverse outcomes in older adults aged 65 and over. Uses a 9-point judgement-based scale evaluating comorbidity, function, and cognition.",
+  "category": "geriatrics",
+  "version": "2.0",
+  "parameters": [
+    {
+      "name": "frailty_level",
+      "type": "integer",
+      "required": true,
+      "description": "Clinical Frailty Scale level based on overall assessment of fitness, activity, comorbidity, function, and cognition",
+      "validation": {
+        "min": 1,
+        "max": 9
+      },
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Fit",
+          "description": "People who are robust, active, energetic, and motivated. These people commonly exercise regularly. They are among the fittest for their age."
+        },
+        {
+          "value": 2,
+          "label": "Fit",
+          "description": "People who have no severe disease symptoms but are less fit than category 1. They exercise or are very active occasionally, e.g., seasonally."
+        },
+        {
+          "value": 3,
+          "label": "Managing Well",
+          "description": "People whose medical problems are well-controlled but are not regularly active beyond routine walking."
+        },
+        {
+          "value": 4,
+          "label": "Living with Very Mild Frailty",
+          "description": "Previously named 'Vulnerable'. While not dependent on others for daily help, symptoms often limit activities."
+        },
+        {
+          "value": 5,
+          "label": "Living with Mild Frailty",
+          "description": "These people often have more evident slowing, and need help in high order instrumental activities of daily living (finances, transportation, heavy housework, medications). Typically, mild frailty progressively impairs shopping and walking outside alone, meal preparation, and housework."
+        },
+        {
+          "value": 6,
+          "label": "Living with Moderate Frailty",
+          "description": "People need help with all outside activities and with keeping house. Inside, they often have problems with stairs and need help with bathing and might need minimal assistance (cuing, standby) with dressing."
+        },
+        {
+          "value": 7,
+          "label": "Living with Severe Frailty",
+          "description": "Completely dependent for personal care, from whatever cause (physical or cognitive). Even so, they seem stable and not at high risk of dying (within ~6 months)."
+        },
+        {
+          "value": 8,
+          "label": "Living with Very Severe Frailty",
+          "description": "Completely dependent, approaching the end of life. Typically, they could not recover even from a minor illness."
+        },
+        {
+          "value": 9,
+          "label": "Terminally Ill",
+          "description": "Approaching the end of life. This category applies to people with a life expectancy of under 6 months, who are not otherwise evidently frail."
+        }
+      ]
+    },
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years (CFS is only validated for patients aged 65 and over)",
+      "validation": {
+        "min": 65,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "dementia_present",
+      "type": "string",
+      "required": false,
+      "description": "Presence of dementia or significant cognitive impairment (affects frailty assessment)",
+      "options": ["yes", "no", "unknown"],
+      "validation": {
+        "enum": ["yes", "no", "unknown"]
+      }
+    }
+  ],
+  "result": {
+    "name": "frailty_assessment",
+    "type": "object",
+    "unit": "scale",
+    "description": "Comprehensive frailty assessment with risk stratification and clinical recommendations"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 3,
+        "stage": "Fit to Managing Well",
+        "description": "Low frailty risk",
+        "interpretation": "Low risk of adverse outcomes. Suitable for intensive interventions. Focus on maintaining fitness and preventing decline.",
+        "risk_level": "low",
+        "mortality_risk": "very_low"
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Very Mild Frailty", 
+        "description": "Vulnerable but independent",
+        "interpretation": "Vulnerable to stressors. May benefit from preventive interventions and close monitoring. Still independent in basic daily activities.",
+        "risk_level": "mild",
+        "mortality_risk": "low"
+      },
+      {
+        "min": 5,
+        "max": 6,
+        "stage": "Mild to Moderate Frailty",
+        "description": "Limited independence",
+        "interpretation": "Significant functional limitations. Requires assistance with complex activities. Consider comprehensive geriatric assessment and targeted interventions.",
+        "risk_level": "moderate",
+        "mortality_risk": "moderate"
+      },
+      {
+        "min": 7,
+        "max": 8,
+        "stage": "Severe to Very Severe Frailty",
+        "description": "High dependency",
+        "interpretation": "High risk of adverse outcomes including mortality. Focus on comfort, quality of life, and appropriate care setting. Consider palliative care consultation.",
+        "risk_level": "high",
+        "mortality_risk": "high"
+      },
+      {
+        "min": 9,
+        "max": 9,
+        "stage": "Terminally Ill",
+        "description": "End of life",
+        "interpretation": "Terminal illness with limited life expectancy (<6 months). Focus on end-of-life care, comfort measures, and family support. Palliative care indicated.",
+        "risk_level": "very_high",
+        "mortality_risk": "very_high"
+      }
+    ]
+  },
+  "clinical_applications": [
+    "Predicting mortality in hospitalized older adults",
+    "Assessing suitability for intensive interventions",
+    "Guiding care planning and resource allocation",
+    "Emergency department risk stratification",
+    "Surgical risk assessment",
+    "ICU admission decisions",
+    "Discharge planning",
+    "Long-term care placement decisions"
+  ],
+  "references": [
+    "Rockwood K, Song X, MacKnight C, et al. A global clinical measure of fitness and frailty in elderly people. CMAJ. 2005;173(5):489-495. doi: 10.1503/cmaj.050051.",
+    "Church S, Rogers E, Rockwood K, Theou O. A scoping review of the Clinical Frailty Scale. BMC Geriatr. 2020;20(1):393. doi: 10.1186/s12877-020-01801-7.",
+    "Clegg A, Young J, Iliffe S, Rikkert MO, Rockwood K. Frailty in elderly people. Lancet. 2013;381(9868):752-762. doi: 10.1016/S0140-6736(12)62167-9.",
+    "Dalhousie University. Clinical Frailty Scale. Available at: https://www.dal.ca/sites/gmr/our-tools/clinical-frailty-scale.html",
+    "Canadian Study of Health and Aging Working Group. Canadian study of health and aging: study methods and prevalence of dementia. CMAJ. 1994;150(6):899-913."
+  ],
+  "formula": "Clinical assessment based on 9-point scale (1=Very Fit to 9=Terminally Ill) considering fitness, activity level, comorbidity, function, and cognition",
+  "notes": [
+    "Only validated for patients aged 65 years and older",
+    "Should be assessed by trained healthcare professionals",
+    "Version 2.0 includes updated terminology and clarifications",
+    "Predictive of mortality in 87% of studies",
+    "Associated with length of stay, complications, falls, and functional decline",
+    "Can be used in multiple clinical settings including emergency, surgery, ICU",
+    "Visual chart available to assist with classification"
+  ],
+  "validation": {
+    "population": "Adults aged ≥65 years",
+    "settings": ["Emergency department", "Hospital ward", "ICU", "Surgical units", "Long-term care"],
+    "outcomes_predicted": ["Mortality", "Length of stay", "Complications", "Functional decline", "Need for institutional care"]
+  }
+}

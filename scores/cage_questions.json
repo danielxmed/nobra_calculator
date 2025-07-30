@@ -1,0 +1,88 @@
+{
+  "id": "cage_questions",
+  "title": "CAGE Questions for Alcohol Use",
+  "description": "Screens for excessive drinking and alcoholism. The CAGE questionnaire is a 4-question screening tool used to help assess a patient's alcohol use and determine if they have an alcohol use disorder.",
+  "category": "psychiatry",
+  "version": "1984",
+  "parameters": [
+    {
+      "name": "cut_down",
+      "type": "string",
+      "required": true,
+      "description": "Have you ever felt you needed to Cut down on your drinking?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "annoyed",
+      "type": "string",
+      "required": true,
+      "description": "Have people Annoyed you by criticizing your drinking?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "guilty",
+      "type": "string",
+      "required": true,
+      "description": "Have you ever felt Guilty about drinking?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "eye_opener",
+      "type": "string",
+      "required": true,
+      "description": "Have you ever felt you needed a drink first thing in the morning (Eye-opener) to steady your nerves or to get rid of a hangover?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "cage_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "CAGE score (0-4 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Negative Screen",
+        "description": "Low likelihood of alcohol use disorder",
+        "interpretation": "CAGE score of 0-1 indicates a negative screen. While alcohol use disorder is less likely, clinical judgment should be used, especially if clinical suspicion remains high. Consider discussing safe drinking limits and potential risks with the patient."
+      },
+      {
+        "min": 2,
+        "max": 4,
+        "stage": "Positive Screen",
+        "description": "Higher likelihood of alcohol use disorder",
+        "interpretation": "CAGE score of 2 or more indicates a positive screen with >90% sensitivity for alcohol disorders. Further evaluation is warranted. Consider detailed alcohol history, physical examination, laboratory testing, and potentially referral to addiction specialist. Note that the 'eye-opener' question alone may indicate physiologic dependence even if other questions are negative."
+      }
+    ]
+  },
+  "references": [
+    "Ewing JA. Detecting alcoholism: The CAGE questionnaire. JAMA. 1984 Oct 12;252(14):1905-7. doi: 10.1001/jama.252.14.1905. PMID: 6471323.",
+    "Dhalla S, Kopec JA. The CAGE questionnaire for alcohol misuse: a review of reliability and validity studies. Clin Invest Med. 2007;30(1):33-41. doi: 10.25011/cim.v30i1.447. PMID: 17716538.",
+    "Williams N. The CAGE questionnaire. Occup Med (Lond). 2014 Oct;64(6):473-4. doi: 10.1093/occmed/kqu058. PMID: 25146056."
+  ],
+  "formula": "CAGE Score = Sum of 'Yes' answers (0-4 points)",
+  "notes": [
+    "CAGE is a screening tool, not a diagnostic test for alcohol use disorder",
+    "Designed for adults and adolescents >16 years old",
+    "Takes less than 1 minute to administer",
+    "Recommended for use in primary care, emergency department, psychiatric, and inpatient hospital settings",
+    "Particularly important to screen at-risk populations including pregnant women, college students, and those with legal issues",
+    "A positive screen should prompt further evaluation with tools like AUDIT or clinical interview",
+    "The acronym CAGE stands for Cut down, Annoyed, Guilty, and Eye-opener"
+  ]
+}

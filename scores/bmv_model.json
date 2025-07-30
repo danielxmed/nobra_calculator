@@ -1,0 +1,75 @@
+{
+  "id": "bmv_model",
+  "title": "Brain Metastasis Velocity (BMV) Model",
+  "description": "Calculates rate of distant brain failure after stereotactic radiosurgery for brain metastasis to predict overall survival",
+  "category": "oncology",
+  "version": "2017",
+  "parameters": [
+    {
+      "name": "new_metastases",
+      "type": "integer",
+      "required": true,
+      "description": "Number of new brain metastases since initial stereotactic radiosurgery (SRS)",
+      "validation": {
+        "min": 1,
+        "max": 100
+      },
+      "unit": "metastases"
+    },
+    {
+      "name": "time_interval",
+      "type": "float",
+      "required": true,
+      "description": "Time interval between initial SRS and appearance of new brain metastases, in years",
+      "validation": {
+        "min": 0.01,
+        "max": 10
+      },
+      "unit": "years"
+    }
+  ],
+  "result": {
+    "name": "bmv",
+    "type": "float",
+    "unit": "metastases/year",
+    "description": "Brain metastasis velocity (rate of new brain metastases per year)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 4,
+        "stage": "Low BMV",
+        "description": "Low brain metastasis velocity",
+        "interpretation": "Low BMV (<4 metastases/year). Median overall survival: 12.4 months. Localized therapy such as stereotactic radiosurgery (SRS) might be most appropriate for managing new brain metastases."
+      },
+      {
+        "min": 4,
+        "max": 13,
+        "stage": "Intermediate BMV",
+        "description": "Intermediate brain metastasis velocity",
+        "interpretation": "Intermediate BMV (4-13 metastases/year). Median overall survival: 8.2 months. Consider patient factors including performance status, systemic disease control, and tumor histology when deciding between localized vs. whole brain radiation therapy."
+      },
+      {
+        "min": 13,
+        "max": 999,
+        "stage": "High BMV",
+        "description": "High brain metastasis velocity",
+        "interpretation": "High BMV (>13 metastases/year). Median overall survival: 4.3 months. Increased risk of needing additional therapies. Whole brain radiation therapy should be considered, though treatment decisions should incorporate tumor histology and extracranial disease control."
+      }
+    ]
+  },
+  "references": [
+    "Farris M, McTyre ER, Cramer CK, Hughes R, Randolph DM 2nd, Ayala-Peacock DN, et al. Brain Metastasis Velocity: A Novel Prognostic Metric Predictive of Overall Survival and Freedom From Whole-Brain Radiation Therapy After Distant Brain Failure Following Upfront Radiosurgery Alone. Int J Radiat Oncol Biol Phys. 2017 May 1;98(1):131-141. doi: 10.1016/j.ijrobp.2017.01.201.",
+    "Yamamoto M, Aiyama H, Koiso T, Watanabe S, Kawabe T, Sato Y, et al. Validity of a Recently Proposed Prognostic Grading Index, Brain Metastasis Velocity, for Patients With Brain Metastasis Undergoing Multiple Radiosurgical Procedures. Int J Radiat Oncol Biol Phys. 2019 Mar 15;103(3):631-637. doi: 10.1016/j.ijrobp.2018.10.036."
+  ],
+  "formula": "BMV = Number of new brain metastases / Time interval (years)",
+  "notes": [
+    "BMV is calculated as the number of new brain metastases divided by the time interval in years since initial SRS",
+    "Developed to predict outcomes after upfront stereotactic radiosurgery",
+    "Correlates with overall survival and neurologic death",
+    "Primarily studied in breast, lung, renal cell carcinoma, and melanoma patients",
+    "Should not be the sole guide for treatment decisions - tumor histology and extracranial control should also be considered",
+    "Higher BMV values indicate more rapid development of new brain metastases and worse prognosis"
+  ]
+}

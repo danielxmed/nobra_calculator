@@ -1,0 +1,178 @@
+{
+  "id": "ctcae",
+  "title": "Common Terminology Criteria for Adverse Events (CTCAE) v5.0 - Hematologic",
+  "description": "Grades severity of hematologic and lymphatic adverse events from cancer treatment using standardized criteria. Assesses anemia, neutropenia, thrombocytopenia, and other blood disorders according to laboratory values and clinical presentations.",
+  "category": "oncology",
+  "version": "5.0",
+  "parameters": [
+    {
+      "name": "adverse_event_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of hematologic adverse event to grade",
+      "options": [
+        "anemia",
+        "neutropenia", 
+        "thrombocytopenia",
+        "febrile_neutropenia",
+        "leukocytosis",
+        "lymphopenia"
+      ],
+      "validation": {
+        "enum": ["anemia", "neutropenia", "thrombocytopenia", "febrile_neutropenia", "leukocytosis", "lymphopenia"]
+      }
+    },
+    {
+      "name": "hemoglobin",
+      "type": "float",
+      "required": false,
+      "description": "Hemoglobin level (g/dL) - required for anemia grading",
+      "validation": {
+        "min": 0.0,
+        "max": 25.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "neutrophil_count",
+      "type": "float", 
+      "required": false,
+      "description": "Absolute neutrophil count (ANC) in cells/mm³ or x10⁹/L - required for neutropenia/febrile neutropenia grading",
+      "validation": {
+        "min": 0.0,
+        "max": 50000.0
+      },
+      "unit": "cells/mm³"
+    },
+    {
+      "name": "platelet_count",
+      "type": "float",
+      "required": false,
+      "description": "Platelet count in cells/mm³ or x10⁹/L - required for thrombocytopenia grading",
+      "validation": {
+        "min": 0.0,
+        "max": 2000000.0
+      },
+      "unit": "cells/mm³"
+    },
+    {
+      "name": "wbc_count",
+      "type": "float",
+      "required": false,
+      "description": "White blood cell count in cells/mm³ or x10⁹/L - required for leukocytosis grading",
+      "validation": {
+        "min": 0.0,
+        "max": 500000.0
+      },
+      "unit": "cells/mm³"
+    },
+    {
+      "name": "lymphocyte_count",
+      "type": "float",
+      "required": false,
+      "description": "Absolute lymphocyte count in cells/mm³ or x10⁹/L - required for lymphopenia grading",
+      "validation": {
+        "min": 0.0,
+        "max": 50000.0
+      },
+      "unit": "cells/mm³"
+    },
+    {
+      "name": "temperature",
+      "type": "float",
+      "required": false,
+      "description": "Body temperature in Celsius - required for febrile neutropenia grading",
+      "validation": {
+        "min": 30.0,
+        "max": 45.0
+      },
+      "unit": "°C"
+    },
+    {
+      "name": "patient_sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient biological sex for determining normal ranges",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "transfusion_indicated",
+      "type": "string",
+      "required": false,
+      "description": "Whether transfusion is clinically indicated - helps determine anemia grade 3",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "ctcae_grade",
+    "type": "integer",
+    "unit": "grade",
+    "description": "CTCAE severity grade (0-5) for the specified adverse event"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Grade 0",
+        "description": "Within normal limits",
+        "interpretation": "No adverse event detected. Laboratory values within normal limits for age and sex."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Grade 1",
+        "description": "Mild adverse event",
+        "interpretation": "Mild adverse event; asymptomatic or mild symptoms; clinical or diagnostic observations only; intervention not indicated."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Grade 2",
+        "description": "Moderate adverse event",
+        "interpretation": "Moderate adverse event; minimal, local or noninvasive intervention indicated; limiting age-appropriate instrumental activities of daily living."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Grade 3",
+        "description": "Severe adverse event",
+        "interpretation": "Severe or medically significant but not immediately life-threatening; hospitalization or prolongation of hospitalization indicated; disabling; limiting self-care activities of daily living."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Grade 4",
+        "description": "Life-threatening adverse event",
+        "interpretation": "Life-threatening consequences; urgent intervention indicated."
+      },
+      {
+        "min": 5,
+        "max": 5,
+        "stage": "Grade 5",
+        "description": "Death",
+        "interpretation": "Death related to adverse event."
+      }
+    ]
+  },
+  "references": [
+    "National Cancer Institute. Common Terminology Criteria for Adverse Events (CTCAE) Version 5.0. Published: November 27, 2017. U.S. Department of Health and Human Services, National Institutes of Health, National Cancer Institute.",
+    "Freites-Martinez A, Santana N, Arias-Santiago S, Viera A. Using the Common Terminology Criteria for Adverse Events (CTCAE - Version 5.0) to Evaluate the Severity of Adverse Events of Anticancer Therapies. Actas Dermosifiliogr (Engl Ed). 2021 Feb;112(2):90-92.",
+    "Basch E, Reeve BB, Mitchell SA, et al. Development of the National Cancer Institute's patient-reported outcomes version of the common terminology criteria for adverse events (PRO-CTCAE). J Natl Cancer Inst. 2014;106(9):dju244."
+  ],
+  "formula": "Grade assignment based on laboratory values compared to standardized thresholds for each adverse event type according to CTCAE v5.0 criteria",
+  "notes": [
+    "CTCAE v5.0 is the current standard for grading adverse events in cancer clinical trials",
+    "Normal ranges may vary by laboratory and patient population; use institutional standards when available",
+    "For febrile neutropenia, both neutropenia and fever criteria must be met",
+    "Grade 5 (death) requires clinical determination and cannot be assessed by laboratory values alone",
+    "Consider patient's baseline values and clinical condition when interpreting grades",
+    "This calculator focuses on common hematologic adverse events; full CTCAE includes hundreds of adverse event types"
+  ]
+}

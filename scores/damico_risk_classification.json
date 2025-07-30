@@ -1,0 +1,193 @@
+{
+  "id": "damico_risk_classification",
+  "title": "D'Amico Risk Classification for Prostate Cancer",
+  "description": "Assesses 5-year risk of treatment failure in patients with localized prostate cancer based on clinical factors. Stratifies patients into low, intermediate, or high-risk groups to guide treatment decisions and prognosis estimation.",
+  "category": "oncology",
+  "version": "1998",
+  "parameters": [
+    {
+      "name": "psa_level",
+      "type": "float",
+      "required": true,
+      "description": "Preoperative prostate-specific antigen (PSA) level in ng/mL",
+      "validation": {
+        "min": 0.1,
+        "max": 500.0
+      },
+      "unit": "ng/mL"
+    },
+    {
+      "name": "gleason_score",
+      "type": "integer",
+      "required": true,
+      "description": "Biopsy Gleason score (sum of primary and secondary patterns)",
+      "validation": {
+        "min": 2,
+        "max": 10
+      },
+      "options": [
+        {"value": 2, "label": "Gleason 2", "description": "Extremely well differentiated"},
+        {"value": 3, "label": "Gleason 3", "description": "Extremely well differentiated"},
+        {"value": 4, "label": "Gleason 4", "description": "Extremely well differentiated"},
+        {"value": 5, "label": "Gleason 5", "description": "Well differentiated"},
+        {"value": 6, "label": "Gleason 6", "description": "Well differentiated"},
+        {"value": 7, "label": "Gleason 7", "description": "Moderately differentiated"},
+        {"value": 8, "label": "Gleason 8", "description": "Poorly differentiated"},
+        {"value": 9, "label": "Gleason 9", "description": "Poorly differentiated"},
+        {"value": 10, "label": "Gleason 10", "description": "Undifferentiated"}
+      ]
+    },
+    {
+      "name": "clinical_stage",
+      "type": "string",
+      "required": true,
+      "description": "Clinical tumor (T) stage based on digital rectal examination and imaging",
+      "options": [
+        "T1a",
+        "T1b", 
+        "T1c",
+        "T2a",
+        "T2b",
+        "T2c",
+        "T3a",
+        "T3b",
+        "T4"
+      ],
+      "validation": {
+        "enum": [
+          "T1a",
+          "T1b",
+          "T1c", 
+          "T2a",
+          "T2b",
+          "T2c",
+          "T3a",
+          "T3b",
+          "T4"
+        ]
+      }
+    },
+    {
+      "name": "patient_age",
+      "type": "integer",
+      "required": false,
+      "description": "Patient age in years for additional prognostic context",
+      "validation": {
+        "min": 40,
+        "max": 100
+      },
+      "unit": "years"
+    },
+    {
+      "name": "treatment_planned",
+      "type": "string",
+      "required": false,
+      "description": "Planned treatment modality for additional context",
+      "options": [
+        "radical_prostatectomy",
+        "external_beam_radiation",
+        "brachytherapy",
+        "active_surveillance",
+        "not_specified"
+      ],
+      "validation": {
+        "enum": [
+          "radical_prostatectomy",
+          "external_beam_radiation", 
+          "brachytherapy",
+          "active_surveillance",
+          "not_specified"
+        ]
+      }
+    }
+  ],
+  "result": {
+    "name": "risk_assessment",
+    "type": "object",
+    "unit": "category",
+    "description": "D'Amico risk group classification with 5-year biochemical recurrence risk and treatment recommendations"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "risk_group": "Low Risk",
+        "criteria": "PSA ≤10 ng/mL AND Gleason score ≤6 AND clinical stage T1-T2a",
+        "biochemical_recurrence_risk": "Low (5-15%)",
+        "stage": "Low Risk",
+        "description": "Low risk of treatment failure",
+        "interpretation": "Patients have excellent prognosis with low risk of biochemical recurrence. Active surveillance may be appropriate for select patients. Radical treatment (surgery or radiation) offers excellent cure rates."
+      },
+      {
+        "risk_group": "Intermediate Risk", 
+        "criteria": "PSA 10-20 ng/mL OR Gleason score 7 OR clinical stage T2b",
+        "biochemical_recurrence_risk": "Intermediate (15-45%)",
+        "stage": "Intermediate Risk",
+        "description": "Intermediate risk of treatment failure",
+        "interpretation": "Patients have moderate risk of biochemical recurrence. Definitive local therapy (surgery or radiation) is typically recommended. Consider adjuvant or neoadjuvant therapy based on specific risk factors."
+      },
+      {
+        "risk_group": "High Risk",
+        "criteria": "PSA >20 ng/mL OR Gleason score ≥8 OR clinical stage ≥T2c",
+        "biochemical_recurrence_risk": "High (45-65%)",
+        "stage": "High Risk", 
+        "description": "High risk of treatment failure",
+        "interpretation": "Patients have significant risk of biochemical recurrence and disease progression. Multimodal therapy often recommended, including radiation with androgen deprivation therapy or radical prostatectomy with possible adjuvant treatment."
+      }
+    ]
+  },
+  "clinical_applications": [
+    "Treatment decision making for localized prostate cancer",
+    "Risk stratification for clinical trials",
+    "Patient counseling and prognosis discussion",
+    "Active surveillance eligibility assessment", 
+    "Treatment intensity determination",
+    "Follow-up planning and monitoring strategy",
+    "Quality of life vs. treatment benefit discussions"
+  ],
+  "treatment_recommendations": {
+    "low_risk": [
+      "Active surveillance may be appropriate for select patients",
+      "Radical prostatectomy offers excellent cure rates",
+      "External beam radiation therapy provides equivalent outcomes",
+      "Brachytherapy is an effective option for suitable candidates",
+      "Regular PSA monitoring every 3-6 months if on active surveillance"
+    ],
+    "intermediate_risk": [
+      "Definitive local therapy typically recommended",
+      "Radical prostatectomy with lymph node assessment",
+      "External beam radiation with or without short-term androgen deprivation",
+      "Consider brachytherapy boost in select cases",
+      "Discuss risks and benefits of adjuvant therapy"
+    ],
+    "high_risk": [
+      "Multimodal therapy often recommended",
+      "Radiation therapy with long-term androgen deprivation therapy (18-36 months)",
+      "Radical prostatectomy with extended lymph node dissection",
+      "Consider neoadjuvant or adjuvant systemic therapy",
+      "Close monitoring for local and distant recurrence"
+    ]
+  },
+  "references": [
+    "D'Amico AV, Whittington R, Malkowicz SB, et al. Biochemical outcome after radical prostatectomy, external beam radiation therapy, or interstitial radiation therapy for clinically localized prostate cancer. JAMA. 1998;280(11):969-974. doi: 10.1001/jama.280.11.969.",
+    "D'Amico AV, Whittington R, Malkowicz SB, et al. Clinical utility of the percentage of positive prostate biopsies in defining biochemical outcome after radical prostatectomy for patients with clinically localized prostate cancer. J Clin Oncol. 2000;18(6):1164-1172. doi: 10.1200/JCO.2000.18.6.1164.",
+    "Zumsteg ZS, Spratt DE, Pei I, et al. A new risk classification system for therapeutic decision making with intermediate-risk prostate cancer patients undergoing dose-escalated external-beam radiation therapy. Eur Urol. 2013;64(6):895-902. doi: 10.1016/j.eururo.2013.03.033.",
+    "National Comprehensive Cancer Network. NCCN Clinical Practice Guidelines in Oncology: Prostate Cancer. Version 2.2024. https://www.nccn.org/professionals/physician_gls/pdf/prostate.pdf."
+  ],
+  "formula": "Risk group determined by highest risk factor among: PSA level (≤10, 10-20, >20 ng/mL), Gleason score (≤6, 7, ≥8), and clinical stage (T1-T2a, T2b, ≥T2c)",
+  "notes": [
+    "Originally developed for biochemical recurrence prediction after definitive local therapy",
+    "Widely adopted in clinical practice guidelines (NCCN, EAU, AUA)",
+    "Based on pre-treatment parameters readily available to clinicians",
+    "Does not account for newer imaging modalities or genomic markers",
+    "Intermediate risk group may benefit from further substratification",
+    "Consider patient comorbidities and life expectancy in treatment decisions",
+    "Regular surveillance with PSA testing is essential regardless of risk group",
+    "Risk classification may influence eligibility for clinical trials"
+  ],
+  "validation": {
+    "population": "Men with clinically localized prostate cancer",
+    "settings": ["Urology clinics", "Radiation oncology", "Medical oncology", "Multidisciplinary cancer centers"],
+    "evidence_basis": "Large retrospective cohorts and prospective validation studies",
+    "clinical_utility": "Standard risk stratification tool for treatment planning and patient counseling"
+  }
+}

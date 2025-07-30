@@ -1,0 +1,124 @@
+{
+  "id": "cambridge_diabetes_risk_score",
+  "title": "Cambridge Diabetes Risk Score",
+  "description": "Predicts risk of having previously undiagnosed type 2 diabetes based on clinical and demographic factors. Developed for population screening and identification of high-risk individuals who should undergo diabetes testing.",
+  "category": "endocrinology",
+  "version": "2000",
+  "parameters": [
+    {
+      "name": "gender",
+      "type": "string",
+      "required": true,
+      "description": "Patient's biological sex",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient's age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "bmi_category",
+      "type": "string",
+      "required": true,
+      "description": "Body Mass Index category: <25 (normal), 25-27.5 (overweight), 27.5-30 (overweight), ≥30 (obese)",
+      "options": ["under_25", "25_to_27.5", "27.5_to_30", "30_or_more"],
+      "validation": {
+        "enum": ["under_25", "25_to_27.5", "27.5_to_30", "30_or_more"]
+      }
+    },
+    {
+      "name": "family_history",
+      "type": "string",
+      "required": true,
+      "description": "Family history of diabetes in first-degree relatives",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "smoking_status",
+      "type": "string",
+      "required": true,
+      "description": "Current smoking status",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "antihypertensive_use",
+      "type": "string",
+      "required": true,
+      "description": "Currently prescribed antihypertensive (blood pressure) medication",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "steroid_use",
+      "type": "string",
+      "required": true,
+      "description": "Currently prescribed steroid medication (oral corticosteroids)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "diabetes_risk_probability",
+    "type": "float",
+    "unit": "probability",
+    "description": "Probability of having undiagnosed type 2 diabetes (0-1)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0.11,
+        "stage": "Low Risk",
+        "description": "Low probability of undiagnosed diabetes",
+        "interpretation": "Low risk of undiagnosed type 2 diabetes. At 0.11 cutoff: 85% sensitivity, 51% specificity. Routine screening may still be appropriate based on other clinical factors."
+      },
+      {
+        "min": 0.11,
+        "max": 0.29,
+        "stage": "Moderate Risk",
+        "description": "Moderate probability of undiagnosed diabetes",
+        "interpretation": "Moderate risk of undiagnosed type 2 diabetes. Consider diabetes screening with fasting glucose or HbA1c. This range captures most individuals with undiagnosed diabetes."
+      },
+      {
+        "min": 0.29,
+        "max": 1,
+        "stage": "High Risk",
+        "description": "High probability of undiagnosed diabetes",
+        "interpretation": "High risk of undiagnosed type 2 diabetes. At 0.29 cutoff: 51% sensitivity, 78% specificity. Strongly recommend immediate diabetes screening with fasting glucose, HbA1c, or oral glucose tolerance test."
+      }
+    ]
+  },
+  "references": [
+    "Griffin SJ, Little PS, Hales CN, Kinmonth AL, Wareham NJ. Diabetes risk score: towards earlier detection of type 2 diabetes in general practice. Diabetes Metab Res Rev. 2000 May-Jun;16(3):164-71. doi: 10.1002/1520-7560(200005/06)16:3<164::aid-dmrr103>3.0.co;2-r.",
+    "Wareham NJ, Griffin SJ. Risk scores for predicting type 2 diabetes: comparing axes and spades. Diabetologia. 2011 May;54(5):994-5. doi: 10.1007/s00125-011-2101-0.",
+    "Rahman M, Simmons RK, Harding AH, Wareham NJ, Griffin SJ. A simple risk score identifies individuals at high risk of developing Type 2 diabetes: a prospective cohort study. Fam Pract. 2008 Jun;25(3):191-6. doi: 10.1093/fampra/cmn024."
+  ],
+  "formula": "Probability = 1 / (1 + e^-(α + Σ(βn × xn))), where α = -6.322 and βn are coefficients for each risk factor",
+  "notes": [
+    "Developed and validated primarily in white English populations; may not be generalizable to other ethnic groups",
+    "Predicts current undiagnosed diabetes, not future diabetes risk",
+    "Should not replace clinical judgment or comprehensive diabetes screening in high-risk populations",
+    "Score does not provide absolute 10-year risk predictions like some other diabetes risk calculators",
+    "Particularly useful for population-based screening initiatives"
+  ]
+}

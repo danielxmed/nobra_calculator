@@ -1,0 +1,164 @@
+{
+  "id": "dash_prediction_score",
+  "title": "DASH Prediction Score for Recurrent VTE",
+  "description": "Predicts likelihood of recurrence of first unprovoked venous thromboembolism (VTE) to guide anticoagulation duration decisions. Utilizes D-dimer, Age, Sex, and Hormonal therapy factors.",
+  "category": "hematology",
+  "version": "2012",
+  "parameters": [
+    {
+      "name": "d_dimer_positive",
+      "type": "string",
+      "required": true,
+      "description": "Post-anticoagulation D-dimer result (measured approximately 1 month after stopping anticoagulation)",
+      "options": ["positive", "negative"],
+      "validation": {
+        "enum": ["positive", "negative"]
+      }
+    },
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 100
+      },
+      "unit": "years"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient biological sex",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "hormonal_therapy",
+      "type": "string",
+      "required": true,
+      "description": "Hormonal therapy use at time of initial VTE (applies to women only, select 'not_applicable' for men)",
+      "options": ["yes", "no", "not_applicable"],
+      "validation": {
+        "enum": ["yes", "no", "not_applicable"]
+      }
+    },
+    {
+      "name": "vte_type",
+      "type": "string",
+      "required": false,
+      "description": "Type of initial venous thromboembolism for clinical context",
+      "options": ["dvt_only", "pe_only", "dvt_and_pe", "not_specified"],
+      "validation": {
+        "enum": ["dvt_only", "pe_only", "dvt_and_pe", "not_specified"]
+      }
+    },
+    {
+      "name": "anticoagulation_duration",
+      "type": "integer",
+      "required": false,
+      "description": "Duration of initial anticoagulation treatment in months",
+      "validation": {
+        "min": 3,
+        "max": 24
+      },
+      "unit": "months"
+    }
+  ],
+  "result": {
+    "name": "dash_assessment",
+    "type": "object",
+    "unit": "points",
+    "description": "DASH score with annual recurrence risk and anticoagulation recommendations"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": -2,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "Low annual recurrence risk",
+        "interpretation": "Annual VTE recurrence risk of 3.1% (95% CI 2.3-3.9%). Risk justifies stopping anticoagulation after 3-6 months of treatment. Consider discontinuing anticoagulation if bleeding risk is not elevated.",
+        "annual_risk": "3.1%",
+        "recommendation": "Consider discontinuing anticoagulation"
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Intermediate Risk",
+        "description": "Moderate annual recurrence risk",
+        "interpretation": "Annual VTE recurrence risk of 6.4% (95% CI 4.8-7.9%). Moderate risk suggests need for individualized decision-making considering bleeding risk versus thrombosis risk.",
+        "annual_risk": "6.4%",
+        "recommendation": "Individualized decision based on bleeding risk"
+      },
+      {
+        "min": 3,
+        "max": 6,
+        "stage": "High Risk",
+        "description": "High annual recurrence risk",
+        "interpretation": "Annual VTE recurrence risk of 12.3% (95% CI 9.9-14.7%). High risk warrants prolonged anticoagulation if bleeding risk is acceptable. Consider indefinite anticoagulation.",
+        "annual_risk": "12.3%",
+        "recommendation": "Consider prolonged/indefinite anticoagulation"
+      }
+    ]
+  },
+  "clinical_applications": [
+    "Anticoagulation duration decision-making after first unprovoked VTE",
+    "Risk stratification for VTE recurrence",
+    "Patient counseling about recurrence risk",
+    "Clinical trial enrollment and stratification",
+    "Quality improvement initiatives in VTE management",
+    "Healthcare resource allocation and monitoring",
+    "Shared decision-making for anticoagulation therapy"
+  ],
+  "anticoagulation_guidance": {
+    "low_risk": [
+      "Consider discontinuing anticoagulation after 3-6 months",
+      "Monitor for signs and symptoms of VTE recurrence",
+      "Patient education about VTE risk factors and prevention",
+      "Regular follow-up for risk reassessment",
+      "Consider mechanical prophylaxis during high-risk periods"
+    ],
+    "intermediate_risk": [
+      "Individualized decision-making required",
+      "Assess bleeding risk using validated tools (HAS-BLED, HEMORR2HAGES)",
+      "Consider patient preferences and quality of life factors",
+      "Discuss risks and benefits of continued anticoagulation",
+      "May consider extended anticoagulation (6-12 months) with reassessment"
+    ],
+    "high_risk": [
+      "Strong consideration for prolonged anticoagulation",
+      "Evaluate for indefinite anticoagulation if bleeding risk acceptable",
+      "Regular monitoring for bleeding complications",
+      "Periodic reassessment of risk-benefit ratio",
+      "Consider newer anticoagulants with improved safety profiles"
+    ]
+  },
+  "references": [
+    "Tosetto A, Iorio A, Marcucci M, et al. Predicting disease recurrence in patients with previous unprovoked venous thromboembolism: a proposed prediction score (DASH). J Thromb Haemost. 2012;10(6):1019-1025. doi: 10.1111/j.1538-7836.2012.04735.x.",
+    "Kearon C, Akl EA, Ornelas J, et al. Antithrombotic Therapy for VTE Disease: CHEST Guideline and Expert Panel Report. Chest. 2016;149(2):315-352. doi: 10.1016/j.chest.2015.11.026.",
+    "Ortel TL, Neumann I, Ageno W, et al. American Society of Hematology 2020 guidelines for management of venous thromboembolism: treatment of deep vein thrombosis and pulmonary embolism. Blood Adv. 2020;4(19):4693-4738. doi: 10.1182/bloodadvances.2020001830.",
+    "Eichinger S, Heinze G, Jandeck LM, Kyrle PA. Risk assessment of recurrence in patients with unprovoked deep vein thrombosis or pulmonary embolism: the Vienna prediction model. Circulation. 2010;121(14):1630-1636. doi: 10.1161/CIRCULATIONAHA.109.925214."
+  ],
+  "formula": "DASH Score = (+2 if D-dimer positive) + (+1 if age ≤50 years) + (+1 if male) + (-2 if hormonal therapy in women)",
+  "notes": [
+    "Score applies only to patients with first unprovoked VTE",
+    "D-dimer measured approximately 1 month after stopping anticoagulation",
+    "Hormonal therapy scoring applies only to women (birth control, HRT)",
+    "Excludes VTE during pregnancy, puerperium, trauma, surgery, immobilization, or active cancer",
+    "Original validation used vitamin K antagonists",
+    "External validation showed higher recurrence risk in patients >65 years even with low DASH scores",
+    "Should be used in conjunction with bleeding risk assessment",
+    "Tool aids in shared decision-making but does not replace clinical judgment",
+    "Regular reassessment recommended as patient factors may change over time"
+  ],
+  "validation": {
+    "population": "Patients with first unprovoked venous thromboembolism treated for ≥3 months",
+    "settings": ["Hematology clinics", "Anticoagulation clinics", "Internal medicine", "Emergency departments"],
+    "evidence_basis": "Derived from 1,818 cases with unprovoked VTE, externally validated",
+    "clinical_utility": "Validated tool for VTE recurrence risk prediction and anticoagulation duration decisions"
+  }
+}

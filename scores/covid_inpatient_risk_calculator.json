@@ -1,0 +1,306 @@
+{
+  "id": "covid_inpatient_risk_calculator",
+  "title": "COVID-19 Inpatient Risk Calculator (CIRC)",
+  "description": "Predicts likelihood of inpatient mortality or severe disease progression in COVID-19 patients within 7 days of hospital admission",
+  "category": "emergency",
+  "version": "2020",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient sex",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "race",
+      "type": "string",
+      "required": true,
+      "description": "Patient race",
+      "options": ["white", "non_white"],
+      "validation": {
+        "enum": ["white", "non_white"]
+      }
+    },
+    {
+      "name": "nursing_home_admission",
+      "type": "string",
+      "required": true,
+      "description": "Nursing home admission status",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "bmi",
+      "type": "float",
+      "required": true,
+      "description": "Body Mass Index",
+      "validation": {
+        "min": 15.0,
+        "max": 60.0
+      },
+      "unit": "kg/m²"
+    },
+    {
+      "name": "charlson_score",
+      "type": "integer",
+      "required": true,
+      "description": "Charlson Comorbidity Index score",
+      "validation": {
+        "min": 0,
+        "max": 20
+      },
+      "unit": "points"
+    },
+    {
+      "name": "respiratory_symptoms",
+      "type": "string",
+      "required": true,
+      "description": "Presence of respiratory symptoms",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "gastrointestinal_symptoms",
+      "type": "string",
+      "required": true,
+      "description": "Presence of gastrointestinal symptoms",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "constitutional_symptoms",
+      "type": "string",
+      "required": true,
+      "description": "Presence of constitutional symptoms",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "loss_taste_smell",
+      "type": "string",
+      "required": true,
+      "description": "Loss of taste or smell",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "fever",
+      "type": "string",
+      "required": true,
+      "description": "Presence of fever",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "respiratory_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Respiratory rate",
+      "validation": {
+        "min": 8,
+        "max": 50
+      },
+      "unit": "breaths/min"
+    },
+    {
+      "name": "pulse",
+      "type": "integer",
+      "required": true,
+      "description": "Heart rate/pulse",
+      "validation": {
+        "min": 40,
+        "max": 200
+      },
+      "unit": "bpm"
+    },
+    {
+      "name": "hemoglobin",
+      "type": "float",
+      "required": true,
+      "description": "Hemoglobin level",
+      "validation": {
+        "min": 5.0,
+        "max": 20.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "white_blood_cell_count",
+      "type": "float",
+      "required": true,
+      "description": "White blood cell count",
+      "validation": {
+        "min": 1.0,
+        "max": 50.0
+      },
+      "unit": "×10³/μL"
+    },
+    {
+      "name": "absolute_lymphocyte_count",
+      "type": "float",
+      "required": true,
+      "description": "Absolute lymphocyte count",
+      "validation": {
+        "min": 0.1,
+        "max": 10.0
+      },
+      "unit": "×10³/μL"
+    },
+    {
+      "name": "albumin",
+      "type": "float",
+      "required": true,
+      "description": "Serum albumin level",
+      "validation": {
+        "min": 1.0,
+        "max": 6.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Serum creatinine level",
+      "validation": {
+        "min": 0.5,
+        "max": 15.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "alt",
+      "type": "float",
+      "required": true,
+      "description": "Alanine aminotransferase (ALT)",
+      "validation": {
+        "min": 5.0,
+        "max": 1000.0
+      },
+      "unit": "U/L"
+    },
+    {
+      "name": "d_dimer",
+      "type": "float",
+      "required": true,
+      "description": "D-dimer level",
+      "validation": {
+        "min": 0.1,
+        "max": 50.0
+      },
+      "unit": "mg/L"
+    },
+    {
+      "name": "c_reactive_protein",
+      "type": "float",
+      "required": true,
+      "description": "C-reactive protein level",
+      "validation": {
+        "min": 0.1,
+        "max": 500.0
+      },
+      "unit": "mg/L"
+    },
+    {
+      "name": "ferritin",
+      "type": "float",
+      "required": true,
+      "description": "Ferritin level",
+      "validation": {
+        "min": 10.0,
+        "max": 5000.0
+      },
+      "unit": "ng/mL"
+    },
+    {
+      "name": "troponin_elevated",
+      "type": "string",
+      "required": true,
+      "description": "Elevated troponin levels",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "risk_probability",
+    "type": "float",
+    "unit": "%",
+    "description": "Probability of severe disease progression or death within 7 days"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": null,
+        "max": 10,
+        "stage": "Low Risk",
+        "description": "Low risk of severe disease progression or death",
+        "interpretation": "Low probability of severe disease progression or death within 7 days - standard monitoring may be appropriate"
+      },
+      {
+        "min": 10,
+        "max": 30,
+        "stage": "Intermediate Risk",
+        "description": "Intermediate risk - enhanced monitoring recommended",
+        "interpretation": "Intermediate probability of severe disease progression or death - consider enhanced monitoring and close observation"
+      },
+      {
+        "min": 30,
+        "max": 60,
+        "stage": "High Risk",
+        "description": "High risk - intensive monitoring required",
+        "interpretation": "High probability of severe disease progression or death - intensive monitoring and potential ICU consideration recommended"
+      },
+      {
+        "min": 60,
+        "max": null,
+        "stage": "Very High Risk",
+        "description": "Very high risk - urgent intensive care consideration",
+        "interpretation": "Very high probability of severe disease progression or death - urgent consideration for intensive care and aggressive management"
+      }
+    ]
+  },
+  "references": [
+    "Garibaldi BT, Fiksel J, Muschelli J, Robinson ML, Rouhizadeh M, Perin J, et al. Patient Trajectories Among Persons Hospitalized for COVID-19: A Cohort Study. Ann Intern Med. 2021;174(1):33-41. doi: 10.7326/M20-3905."
+  ],
+  "formula": "Complex logistic regression model using 23 variables with machine learning approach. Predicts probability of severe disease (high-flow nasal cannula, NIPPV, mechanical ventilation, ECMO, vasopressors) or death within 7 days",
+  "notes": [
+    "Developed from 832 patients at Johns Hopkins Health System (March-April 2020)",
+    "AUC: 0.85 at day 2, 0.79 at day 4, 0.79 at day 7",
+    "Performs best in first 2 days of hospitalization",
+    "Severe disease defined as: high-flow nasal cannula, NIPPV, mechanical ventilation, ECMO, or vasopressor support",
+    "Not externally validated - use with clinical judgment",
+    "Developed before widespread vaccine availability",
+    "Excludes patients under 18 years",
+    "Model incorporates 23 demographic and clinical variables available at admission",
+    "Risk probabilities range from 5% to over 90% based on risk factor combinations"
+  ]
+}

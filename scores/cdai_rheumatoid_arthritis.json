@@ -1,0 +1,107 @@
+{
+  "id": "cdai_rheumatoid_arthritis",
+  "title": "Clinical Disease Activity Index (CDAI) for Rheumatoid Arthritis",
+  "description": "Determines severity of rheumatoid arthritis using only clinical data, without laboratory tests",
+  "category": "rheumatology",
+  "version": "2005",
+  "parameters": [
+    {
+      "name": "tender_joint_count",
+      "type": "integer",
+      "required": true,
+      "description": "Number of tender joints (28-joint count)",
+      "validation": {
+        "min": 0,
+        "max": 28
+      },
+      "unit": "joints"
+    },
+    {
+      "name": "swollen_joint_count",
+      "type": "integer",
+      "required": true,
+      "description": "Number of swollen joints (28-joint count)",
+      "validation": {
+        "min": 0,
+        "max": 28
+      },
+      "unit": "joints"
+    },
+    {
+      "name": "patient_global_activity",
+      "type": "float",
+      "required": true,
+      "description": "Patient global assessment of disease activity (0-10 scale)",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "0-10 scale"
+    },
+    {
+      "name": "provider_global_activity",
+      "type": "float",
+      "required": true,
+      "description": "Provider global assessment of disease activity (0-10 scale)",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "0-10 scale"
+    }
+  ],
+  "result": {
+    "name": "cdai_score",
+    "type": "float",
+    "unit": "points",
+    "description": "CDAI score for rheumatoid arthritis disease activity"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2.8,
+        "stage": "Remission",
+        "description": "Disease in remission",
+        "interpretation": "Excellent disease control - maintain current therapy"
+      },
+      {
+        "min": 2.8,
+        "max": 10,
+        "stage": "Low Disease Activity",
+        "description": "Low disease activity",
+        "interpretation": "Good disease control - consider maintaining or tapering therapy"
+      },
+      {
+        "min": 10,
+        "max": 22,
+        "stage": "Moderate Disease Activity",
+        "description": "Moderate disease activity",
+        "interpretation": "Suboptimal control - consider intensifying therapy"
+      },
+      {
+        "min": 22,
+        "max": 76,
+        "stage": "High Disease Activity",
+        "description": "High disease activity",
+        "interpretation": "Poor control - urgent need to intensify therapy"
+      }
+    ]
+  },
+  "references": [
+    "Aletaha D, Nell VP, Stamm T, Uffmann M, Pflugbeil S, Machold K, Smolen JS. Acute phase reactants add little to composite disease activity indices for rheumatoid arthritis: validation of a clinical activity score. Arthritis Res Ther. 2005;7(4):R796-806.",
+    "Smolen JS, Breedveld FC, Schiff MH, Kalden JR, Emery P, Eberl G, van Riel PL, Tugwell P. A simplified disease activity index for rheumatoid arthritis for use in clinical practice. Rheumatology (Oxford). 2003;42(2):244-57.",
+    "Aletaha D, Smolen JS. The Simplified Disease Activity Index (SDAI) and the Clinical Disease Activity Index (CDAI): a review of their usefulness and validity in rheumatoid arthritis. Clin Exp Rheumatol. 2005;23(5 Suppl 39):S100-8."
+  ],
+  "formula": "CDAI = Tender Joint Count (0-28) + Swollen Joint Count (0-28) + Patient Global Activity (0-10) + Provider Global Activity (0-10)",
+  "notes": [
+    "Uses only clinical parameters - no laboratory tests required",
+    "Based on 28-joint count assessment",
+    "Allows immediate treatment decisions without waiting for lab results",
+    "More practical than DAS-28 for routine clinical use",
+    "Patient and provider global assessments use 0-10 visual analog scale",
+    "0 = very well, 10 = very poor for global assessments",
+    "Moderate to good correlation with DAS-28 (Kappa = 0.533)",
+    "Widely accepted for monitoring RA disease activity in clinical practice"
+  ]
+}
