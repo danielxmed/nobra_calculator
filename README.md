@@ -279,6 +279,38 @@ By open-sourcing this calculator API, we're contributing to the global effort to
 - 📢 **Share with colleagues** in the medical community
 - 💼 **Contact us** for enterprise solutions and custom development
 
+## 🔌 MCP (Model Context Protocol) Integration
+
+### About MCP
+The Nobra Calculator API includes built-in MCP server support, allowing AI assistants and other MCP-compatible clients to interact with all medical calculators as native tools.
+
+### Connecting to MCP
+- **MCP Endpoint**: `https://calculator.nobra.app.br/mcp`
+- **Protocol**: Connect via URL using the MCP client of your choice
+- **Authentication**: Same as the main API (rate limits apply)
+
+### Important Considerations
+⚠️ **WARNING**: The MCP server exposes **over 300 medical calculator tools**. When connecting:
+- **Select specific tools** you need in your MCP client interface
+- **Avoid loading all tools** at once - this will exceed most LLM context windows
+- **Use tool filtering** to choose only the medical specialties or specific calculators relevant to your use case
+
+### Example Tool Categories
+- Cardiology scores (CHA2DS2-VASc, HAS-BLED, etc.)
+- Nephrology calculators (CKD-EPI, MDRD, etc.)
+- Pulmonology tools (CURB-65, PSI, etc.)
+- Emergency medicine scores
+- And many more across 15+ medical specialties
+
+### MCP Client Configuration
+When configuring your MCP client, consider:
+1. Setting up tool filters by specialty or score name
+2. Implementing pagination or lazy loading for tool discovery
+3. Caching frequently used calculator tools
+4. Managing context window usage efficiently
+
+For more information about MCP integration, refer to the [MCP documentation](https://modelcontextprotocol.io).
+
 ## ⚠️ Medical Disclaimer
 
 **IMPORTANT**: This API is intended for educational and research purposes only. It should not be used as a substitute for professional clinical judgment. All medical calculations should be verified independently, and clinical decisions should always involve qualified healthcare professionals.
