@@ -16,6 +16,7 @@ router = APIRouter()
     summary="ACEP ED COVID-19 Management Tool",
     description="Determines recommended disposition for suspected or confirmed COVID-19 in adults",
     response_description="Disposition recommendation with interpretation",
+    operation_id="acep_ed_covid19_management_tool",
 )
 async def calculate_acep_ed_covid19_management_tool(
     request: AcepEdCovid19ManagementToolRequest,
