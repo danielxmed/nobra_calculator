@@ -162,7 +162,7 @@ mcp = FastApiMCP(
     app,
     name="Nobra Calculator MCP",
     description="MCP server exposing medical scores and calculators from nobra_calculator API",
-    exclude_operations=["reload_scores"]  # Exclude the reload endpoint to avoid abuse
+    exclude_operations=["reload_scores", "acep_ed_covid19_management_tool"]
 )
 
 # Mount the MCP server onto the same FastAPI app
