@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/duke_activity_status_index", response_model=DukeActivityStatusIndexResponse)
+@router.post(
+    "/duke_activity_status_index",
+    response_model=DukeActivityStatusIndexResponse,
+    summary="Calculate Duke Activity Status Index (DASI)",
+    description="Estimates functional capacity of patients through self-reported activities. A 12-item questionnaire that assesses daily activities with respective metabolic costs to predict maximal oxygen consumption (VO2 max) and maximum metabolic equivalent of tasks (METs).",
+    response_description="The calculated duke activity status index with interpretation",
+    operation_id="calculate_duke_activity_status_index"
+)
 async def calculate_duke_activity_status_index(request: DukeActivityStatusIndexRequest):
     """
     Calculates Duke Activity Status Index (DASI)

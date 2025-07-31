@@ -1,0 +1,178 @@
+{
+  "id": "glasgow_blatchford_bleeding_score",
+  "title": "Glasgow-Blatchford Bleeding Score (GBS)",
+  "description": "Clinical scoring system to assess the risk of upper gastrointestinal bleeding and identify patients who may need medical intervention such as blood transfusion or endoscopic intervention. Used to stratify patients for safe outpatient management versus hospital admission.",
+  "category": "gastroenterology",
+  "version": "2000",
+  "parameters": [
+    {
+      "name": "bun",
+      "type": "float",
+      "required": true,
+      "description": "Blood urea nitrogen level in mg/dL",
+      "validation": {
+        "min": 5,
+        "max": 200
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "hemoglobin",
+      "type": "float",
+      "required": true,
+      "description": "Hemoglobin level in g/dL",
+      "validation": {
+        "min": 3.0,
+        "max": 20.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "gender",
+      "type": "string",
+      "required": true,
+      "description": "Patient gender (affects hemoglobin scoring thresholds)",
+      "validation": {
+        "enum": ["male", "female"]
+      },
+      "options": [
+        "male - Male patient",
+        "female - Female patient"
+      ]
+    },
+    {
+      "name": "systolic_bp",
+      "type": "integer",
+      "required": true,
+      "description": "Systolic blood pressure in mmHg",
+      "validation": {
+        "min": 50,
+        "max": 250
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "heart_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Heart rate in beats per minute",
+      "validation": {
+        "min": 30,
+        "max": 200
+      },
+      "unit": "bpm"
+    },
+    {
+      "name": "melena",
+      "type": "string",
+      "required": true,
+      "description": "Presence of melena (black, tarry stools indicating upper GI bleeding)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": [
+        "yes - Melena present",
+        "no - No melena"
+      ]
+    },
+    {
+      "name": "syncope",
+      "type": "string",
+      "required": true,
+      "description": "History of syncope (fainting) at presentation",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": [
+        "yes - Syncope present",
+        "no - No syncope"
+      ]
+    },
+    {
+      "name": "liver_disease",
+      "type": "string",
+      "required": true,
+      "description": "History of hepatic disease",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": [
+        "yes - History of liver disease",
+        "no - No liver disease"
+      ]
+    },
+    {
+      "name": "heart_failure",
+      "type": "string",
+      "required": true,
+      "description": "History of cardiac failure",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": [
+        "yes - History of heart failure",
+        "no - No heart failure"
+      ]
+    }
+  ],
+  "result": {
+    "name": "gbs_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total Glasgow-Blatchford Bleeding Score (0-23 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "Very low risk - Safe for outpatient management",
+        "interpretation": "Score of 0 indicates very low risk for needing medical intervention. Patient can be safely managed as outpatient with appropriate follow-up. No immediate need for blood transfusion or endoscopic intervention."
+      },
+      {
+        "min": 1,
+        "max": 5,
+        "stage": "Low-Moderate Risk",
+        "description": "Low to moderate risk requiring clinical assessment",
+        "interpretation": "Low to moderate risk for intervention. Consider hospital admission for observation and clinical assessment. Risk for blood transfusion or endoscopic intervention is present but relatively low."
+      },
+      {
+        "min": 6,
+        "max": 11,
+        "stage": "Moderate Risk",
+        "description": "Moderate risk requiring hospital admission",
+        "interpretation": "Moderate risk for needing medical intervention. Hospital admission recommended with close monitoring. Significant risk for blood transfusion or endoscopic intervention. Consider early gastroenterology consultation."
+      },
+      {
+        "min": 12,
+        "max": 23,
+        "stage": "High Risk",
+        "description": "High risk requiring immediate intervention",
+        "interpretation": "High risk for needing immediate medical intervention. Urgent hospital admission required with intensive monitoring. High likelihood of requiring blood transfusion and/or emergency endoscopic intervention. Immediate gastroenterology consultation and ICU consideration."
+      }
+    ]
+  },
+  "references": [
+    "Blatchford O, Murray WR, Blatchford M. A risk score to predict need for treatment for upper-gastrointestinal haemorrhage. Lancet. 2000;356(9238):1318-1321. doi: 10.1016/S0140-6736(00)02816-6.",
+    "Stanley AJ, Ashley D, Dalton HR, et al. Outpatient management of patients with low-risk upper-gastrointestinal haemorrhage: multicentre validation and prospective evaluation. Lancet. 2009;373(9657):42-47. doi: 10.1016/S0140-6736(08)61769-9.",
+    "Saltzman JR, Tabak YP, Hyett BH, Sun X, Travis AC, Johannes RS. A simple risk score accurately predicts in-hospital mortality, length of stay, and cost in acute upper GI bleeding. Gastrointest Endosc. 2011;74(6):1215-1224. doi: 10.1016/j.gie.2011.06.024."
+  ],
+  "formula": "Total GBS = BUN score + Hemoglobin score (gender-specific) + Systolic BP score + Heart rate score + Melena score + Syncope score + Liver disease score + Heart failure score",
+  "notes": [
+    "Originally developed and validated for predicting need for intervention in upper GI bleeding",
+    "Score of 0 indicates very low risk and suitability for outpatient management",
+    "Any score >0 indicates increased risk and potential need for hospital admission",
+    "Superior to Rockall score for predicting need for intervention",
+    "Does not require endoscopy to calculate, unlike Rockall score",
+    "Hemoglobin thresholds differ between men and women",
+    "Recent studies suggest GBS ≤2 may be safe for outpatient management in some populations",
+    "Should be used in conjunction with clinical judgment",
+    "Not validated for variceal bleeding or patients on anticoagulation",
+    "May be less accurate in elderly patients or those with comorbidities",
+    "Score should be recalculated if patient condition changes",
+    "Part of standard care guidelines for upper GI bleeding in UK and Europe",
+    "Modified versions (mGBS) exist but original version most widely used",
+    "Can help reduce unnecessary hospital admissions and healthcare costs"
+  ]
+}

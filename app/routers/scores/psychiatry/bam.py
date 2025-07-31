@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/bam", response_model=BamResponse)
+@router.post(
+    "/bam",
+    response_model=BamResponse,
+    summary="Calculate Brief Addiction Monitor (BAM)",
+    description="Assesses substance use-related behaviors, risk factors, and protective factors over the past 30 days",
+    response_description="The calculated bam with interpretation",
+    operation_id="calculate_bam"
+)
 async def calculate_bam(request: BamRequest):
     """
     Calculates Brief Addiction Monitor (BAM)

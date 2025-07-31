@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/dka_mpm_score", response_model=DkaMpmScoreResponse)
+@router.post(
+    "/dka_mpm_score",
+    response_model=DkaMpmScoreResponse,
+    summary="Calculate Diabetic Ketoacidosis Mortality Prediction Model",
+    description="Predicts in-hospital mortality in patients with diabetic ketoacidosis using clinical and laboratory parameters at presentation, 12 hours, and 24 hours",
+    response_description="The calculated dka mpm score with interpretation",
+    operation_id="calculate_dka_mpm_score"
+)
 async def calculate_dka_mpm_score(request: DkaMpmScoreRequest):
     """
     Calculates Diabetic Ketoacidosis Mortality Prediction Model (DKA MPM) Score

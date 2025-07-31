@@ -1,0 +1,104 @@
+{
+  "id": "gi_gpa",
+  "title": "Graded Prognostic Assessment for Gastrointestinal Cancer (GI-GPA)",
+  "description": "Estimates survival in patients with gastrointestinal cancers and brain metastases. Uses 4 prognostic factors to provide risk stratification and guide treatment decisions for patients with brain metastases from GI cancers.",
+  "category": "oncology",
+  "version": "2019",
+  "parameters": [
+    {
+      "name": "age_category",
+      "type": "string",
+      "required": true,
+      "description": "Patient age category with different prognostic implications",
+      "options": ["under_60", "60_or_over"],
+      "validation": {
+        "enum": ["under_60", "60_or_over"]
+      },
+      "unit": "years"
+    },
+    {
+      "name": "kps",
+      "type": "string",
+      "required": true,
+      "description": "Karnofsky Performance Status reflecting functional capacity",
+      "options": ["under_80", "80", "90_to_100"],
+      "validation": {
+        "enum": ["under_80", "80", "90_to_100"]
+      }
+    },
+    {
+      "name": "extracranial_metastases",
+      "type": "string",
+      "required": true,
+      "description": "Presence of extracranial metastases outside the brain",
+      "options": ["present", "absent"],
+      "validation": {
+        "enum": ["present", "absent"]
+      }
+    },
+    {
+      "name": "number_brain_metastases",
+      "type": "string",
+      "required": true,
+      "description": "Number of brain metastases identified on imaging",
+      "options": ["more_than_3", "2_to_3", "1"],
+      "validation": {
+        "enum": ["more_than_3", "2_to_3", "1"]
+      }
+    }
+  ],
+  "result": {
+    "name": "gi_gpa_score",
+    "type": "float",
+    "unit": "points",
+    "description": "Total GI-GPA score calculated from prognostic factors"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0.0,
+        "max": 1.0,
+        "stage": "Poor Prognosis",
+        "description": "Worst survival group",
+        "interpretation": "3 months median survival. Very poor prognosis with limited treatment options. Consider palliative care focus and comfort measures. Discuss goals of care with patient and family."
+      },
+      {
+        "min": 1.5,
+        "max": 2.0,
+        "stage": "Intermediate-Poor Prognosis",
+        "description": "Below average survival",
+        "interpretation": "9 months median survival. Below average prognosis. Consider limited aggressive interventions with focus on quality of life. Palliative radiation therapy may be appropriate."
+      },
+      {
+        "min": 2.5,
+        "max": 3.0,
+        "stage": "Intermediate Prognosis",
+        "description": "Average survival",
+        "interpretation": "12 months median survival. Moderate prognosis. Consider radiation therapy and/or surgical resection for selected patients. Systemic therapy may be beneficial."
+      },
+      {
+        "min": 3.5,
+        "max": 4.0,
+        "stage": "Good Prognosis",
+        "description": "Best survival group",
+        "interpretation": "17 months median survival. Best prognosis group. Consider aggressive multimodal therapy including surgical resection, stereotactic radiosurgery, and systemic therapy."
+      }
+    ]
+  },
+  "references": [
+    "Sperduto PW, Mesko S, Li J, Cagney D, Aizer A, Lin NU, et al. Estimating survival in patients with gastrointestinal cancers and brain metastases: An update of the graded prognostic assessment for gastrointestinal cancers (GI-GPA). Clin Transl Radiat Oncol. 2019;18:39-45. doi: 10.1016/j.ctro.2019.06.009.",
+    "Sperduto PW, Chao ST, Sneed PK, Luo X, Suh J, Roberge D, et al. Diagnosis-specific prognostic factors, indexes, and treatment outcomes for patients with newly diagnosed brain metastases: a multi-institutional analysis of 4,259 patients. Int J Radiat Oncol Biol Phys. 2010;77(3):655-61. doi: 10.1016/j.ijrobp.2009.08.025.",
+    "Sperduto PW, Yang TJ, Beal K, Pan H, Brown PD, Bangdiwala A, et al. Estimating Survival in Patients With Lung Cancer and Brain Metastases: An Update of the Graded Prognostic Assessment for Lung Cancer Using Molecular Markers (Lung-molGPA). JAMA Oncol. 2017;3(6):827-831. doi: 10.1001/jamaoncol.2016.3834."
+  ],
+  "formula": "GI-GPA Score = Age points (0-0.5) + KPS points (0-2) + Extracranial metastases points (0-0.5) + Number of brain metastases points (0-1)",
+  "notes": [
+    "Developed from multi-institutional cohort of 845 patients with GI cancers and newly diagnosed brain metastases",
+    "Applicable to various gastrointestinal cancer types including colorectal, gastric, esophageal, and hepatobiliary cancers",
+    "Score ranges from 0.0 (worst prognosis) to 4.0 (best prognosis)",
+    "Should be used in conjunction with clinical judgment and patient preferences",
+    "Helps guide treatment selection and end-of-life decision-making",
+    "Useful for stratification in clinical trials involving brain metastases",
+    "Free online calculator available at brainmetgpa.com",
+    "Consider multidisciplinary team approach for treatment planning"
+  ]
+}

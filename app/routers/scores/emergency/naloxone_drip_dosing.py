@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/naloxone_drip_dosing", response_model=NaloxoneDripDosingResponse)
+@router.post(
+    "/naloxone_drip_dosing",
+    response_model=NaloxoneDripDosingResponse,
+    summary="Calculate Naloxone Drip Dosing",
+    description="Doses naloxone for acute opioid overdose. Calculates continuous IV infusion rate based on the initial effective bolus dose, with goal of maintaining same level of opioid reversal.",
+    response_description="The calculated naloxone drip dosing with interpretation",
+    operation_id="calculate_naloxone_drip_dosing"
+)
 async def calculate_naloxone_drip_dosing(request: NaloxoneDripDosingRequest):
     """
     Calculates Naloxone Drip Dosing

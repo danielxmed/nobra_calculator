@@ -30,7 +30,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/reticulocyte_production_index", response_model=ReticulocyteProductionIndexResponse)
+@router.post(
+    "/reticulocyte_production_index",
+    response_model=ReticulocyteProductionIndexResponse,
+    summary="Calculate Corrected Reticulocyte Percentage/Reticulocyte ...",
+    description="Assesses bone marrow response to anemia by correcting reticulocyte count for degree of anemia and maturation time",
+    response_description="The calculated reticulocyte production index with interpretation",
+    operation_id="calculate_reticulocyte_production_index"
+)
 async def calculate_reticulocyte_production_index(request: ReticulocyteProductionIndexRequest):
     """
     Calculates Reticulocyte Production Index (RPI) for Bone Marrow Response Assessment

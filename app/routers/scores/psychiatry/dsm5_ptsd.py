@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/dsm5_ptsd", response_model=Dsm5PtsdResponse)
+@router.post(
+    "/dsm5_ptsd",
+    response_model=Dsm5PtsdResponse,
+    summary="Calculate DSM-5 Criteria for Posttraumatic Stress Disorder",
+    description="Diagnostic criteria for posttraumatic stress disorder (PTSD) based on DSM-5. Evaluates trauma exposure and four symptom clusters: intrusion, avoidance, negative alterations in cognitions/mood, and alterations in arousal/reactivity.",
+    response_description="The calculated dsm5 ptsd with interpretation",
+    operation_id="calculate_dsm5_ptsd"
+)
 async def calculate_dsm5_ptsd(request: Dsm5PtsdRequest):
     """
     Calculates DSM-5 Criteria for Posttraumatic Stress Disorder

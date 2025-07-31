@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/bristol_stool_form_scale", response_model=BristolStoolFormScaleResponse)
+@router.post(
+    "/bristol_stool_form_scale",
+    response_model=BristolStoolFormScaleResponse,
+    summary="Calculate Bristol Stool Form Scale",
+    description="Classifies stool form and correlates with intestinal transit time to assess bowel health and identify constipation or diarrhea",
+    response_description="The calculated bristol stool form scale with interpretation",
+    operation_id="calculate_bristol_stool_form_scale"
+)
 async def calculate_bristol_stool_form_scale(request: BristolStoolFormScaleRequest):
     """
     Calculates Bristol Stool Form Scale classification

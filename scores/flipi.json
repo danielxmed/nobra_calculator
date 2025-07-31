@@ -1,0 +1,104 @@
+{
+  "id": "flipi",
+  "title": "Follicular Lymphoma International Prognostic Index (FLIPI)",
+  "description": "Estimates overall survival in patients with follicular lymphoma based on 5 adverse prognostic factors to stratify patients into risk groups for treatment planning.",
+  "category": "hematology",
+  "version": "2004",
+  "parameters": [
+    {
+      "name": "age_over_60",
+      "type": "string",
+      "required": true,
+      "description": "Patient age greater than 60 years",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "nodal_sites_over_4",
+      "type": "string",
+      "required": true,
+      "description": "More than 4 nodal sites involved",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "ldh_elevated",
+      "type": "string",
+      "required": true,
+      "description": "Serum LDH level above normal",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hemoglobin_below_120",
+      "type": "string",
+      "required": true,
+      "description": "Hemoglobin level below 120 g/L (12 g/dL)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "stage_3_or_4",
+      "type": "string",
+      "required": true,
+      "description": "Ann Arbor stage III or IV disease",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "flipi_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "FLIPI score ranging from 0 to 5 points"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "0-1 adverse factors",
+        "interpretation": "Low risk group with 10-year overall survival of approximately 70%. These patients have a favorable prognosis and may be candidates for watchful waiting or less intensive therapy depending on symptoms and other clinical factors."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Intermediate Risk",
+        "description": "2 adverse factors",
+        "interpretation": "Intermediate risk group with 10-year overall survival of approximately 50%. These patients require careful monitoring and often benefit from systemic therapy. Treatment decisions should consider symptoms, tumor burden, and patient preferences."
+      },
+      {
+        "min": 3,
+        "max": 5,
+        "stage": "High Risk",
+        "description": "3-5 adverse factors",
+        "interpretation": "High risk group with 10-year overall survival of approximately 35%. These patients typically require prompt treatment with combination chemotherapy or immunotherapy. Consider clinical trial enrollment and more intensive monitoring."
+      }
+    ]
+  },
+  "references": [
+    "Solal-Céligny P, Roy P, Colombat P, White J, Armitage JO, Arranz-Saez R, et al. Follicular lymphoma international prognostic index. Blood. 2004 Sep 1;104(5):1258-65.",
+    "van de Schans SA, Steyerberg EW, Nijziel MR, Creemers GJ, Janssen-Heijnen ML, van Spronsen DJ. Validation, revision and extension of the Follicular Lymphoma International Prognostic Index (FLIPI) in a population-based setting. Ann Oncol. 2009 Oct;20(10):1697-702.",
+    "Federico M, Bellei M, Marcheselli L, Luminari S, Lopez-Guillermo A, Vitolo U, et al. Follicular lymphoma international prognostic index 2: a new prognostic index for follicular lymphoma developed by the international follicular lymphoma prognostic factor project. J Clin Oncol. 2009 Sep 20;27(27):4555-62."
+  ],
+  "formula": "Sum of adverse prognostic factors (1 point each): Age >60 years + >4 nodal sites + Elevated LDH + Hemoglobin <120 g/L + Stage III-IV",
+  "notes": [
+    "FLIPI was developed from 4167 patients diagnosed between 1985-1992",
+    "Nodal sites refer to anatomical regions (e.g., cervical, axillary, inguinal, etc.)",
+    "Ann Arbor staging: Stage III involves lymph nodes on both sides of diaphragm; Stage IV involves extralymphatic organs",
+    "LDH elevation is defined as above the upper limit of normal for the testing laboratory",
+    "FLIPI-2 exists with different parameters but original FLIPI remains widely used",
+    "Mnemonic 'NoLaSH': Nodal areas, LDH, Age, Stage, Hemoglobin"
+  ]
+}

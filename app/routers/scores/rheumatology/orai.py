@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/orai", response_model=OraiResponse)
+@router.post(
+    "/orai",
+    response_model=OraiResponse,
+    summary="Calculate Osteoporosis Risk Assessment Instrument (ORAI)",
+    description="Identifies women at risk for osteoporosis and recommends bone densitometry. Uses age, weight, and current estrogen use to stratify risk in postmenopausal women.",
+    response_description="The calculated orai with interpretation",
+    operation_id="calculate_orai"
+)
 async def calculate_orai(request: OraiRequest):
     """
     Calculates Osteoporosis Risk Assessment Instrument (ORAI)

@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/brue", response_model=BrueResponse)
+@router.post(
+    "/brue",
+    response_model=BrueResponse,
+    summary="Calculate Brief Resolved Unexplained Events",
+    description="Classifies unexplained events in infants <1 year old and replaces the Apparent Life-Threatening Events (ALTE) classification. Determines risk stratification and management recommendations for infants who have experienced brief, resolved episodes of concerning symptoms.",
+    response_description="The calculated brue with interpretation",
+    operation_id="calculate_brue"
+)
 async def calculate_brue(request: BrueRequest):
     """
     Calculates Brief Resolved Unexplained Events (BRUE) Criteria

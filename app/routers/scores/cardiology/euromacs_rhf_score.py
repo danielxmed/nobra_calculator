@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/euromacs_rhf_score", response_model=EuromacsRhfScoreResponse)
+@router.post(
+    "/euromacs_rhf_score",
+    response_model=EuromacsRhfScoreResponse,
+    summary="Calculate EUROMACS-RHF Score",
+    description="Determines risk of right ventricular heart failure in patients after left ventricular assist device (LVAD) implantation.",
+    response_description="The calculated euromacs rhf score with interpretation",
+    operation_id="calculate_euromacs_rhf_score"
+)
 async def calculate_euromacs_rhf_score(request: EuromacsRhfScoreRequest):
     """
     Calculates EUROMACS-RHF Score for Right Heart Failure Risk After LVAD Implantation

@@ -17,6 +17,10 @@ from .crs_grading import router as crs_grading_router
 from .damico_risk_classification import router as damico_risk_classification_router
 from .delta_p_score import router as delta_p_score_router
 from .ecog_performance_status import router as ecog_performance_status_router
+from .fong_clinical_risk_score import router as fong_clinical_risk_score_router
+from .gail_model_breast_cancer_risk import router as gail_model_breast_cancer_risk_router
+from .galad_model_hcc import router as galad_model_hcc_router
+from .gi_gpa import router as gi_gpa_router
 
 router = APIRouter()
 
@@ -33,5 +37,9 @@ router.include_router(crs_grading_router)
 router.include_router(damico_risk_classification_router)
 router.include_router(delta_p_score_router)
 router.include_router(ecog_performance_status_router)
+router.include_router(fong_clinical_risk_score_router)
+router.include_router(gail_model_breast_cancer_risk_router)
+router.include_router(galad_model_hcc_router)
+router.include_router(gi_gpa_router)
 
 __all__ = ["router"]

@@ -1,0 +1,150 @@
+{
+  "id": "gupta_postoperative_pneumonia_risk",
+  "title": "Gupta Postoperative Pneumonia Risk Calculator",
+  "description": "Predicts risk of pneumonia after surgery using validated preoperative risk factors from ACS NSQIP data",
+  "category": "emergency",
+  "version": "2013",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years (contributes 0.0144 points per year)",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "copd",
+      "type": "string",
+      "required": true,
+      "description": "Presence of chronic obstructive pulmonary disease",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "functional_status",
+      "type": "string",
+      "required": true,
+      "description": "Functional status based on activities of daily living",
+      "options": ["independent", "partially_dependent", "totally_dependent"],
+      "validation": {
+        "enum": ["independent", "partially_dependent", "totally_dependent"]
+      }
+    },
+    {
+      "name": "asa_class",
+      "type": "string",
+      "required": true,
+      "description": "American Society of Anesthesiologists Physical Status Classification",
+      "options": ["1", "2", "3", "4", "5"],
+      "validation": {
+        "enum": ["1", "2", "3", "4", "5"]
+      }
+    },
+    {
+      "name": "sepsis_status",
+      "type": "string",
+      "required": true,
+      "description": "Preoperative sepsis status",
+      "options": ["none", "sirs", "sepsis", "septic_shock"],
+      "validation": {
+        "enum": ["none", "sirs", "sepsis", "septic_shock"]
+      }
+    },
+    {
+      "name": "smoking",
+      "type": "string",
+      "required": true,
+      "description": "Smoking within the last year before operation",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "procedure_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of surgical procedure being performed",
+      "options": [
+        "aortic", "brain", "breast", "cardiac", "foregut_hepatobiliary",
+        "gallbladder_appendix_adrenals_spleen", "intestinal", "neck",
+        "obstetric_gynecologic", "orthopedic_non_spine", "peripheral_vascular",
+        "renal", "skin", "spine", "thoracic_non_cardiac", "thyroid_parathyroid",
+        "urology_non_renal", "vein", "hernia"
+      ],
+      "validation": {
+        "enum": [
+          "aortic", "brain", "breast", "cardiac", "foregut_hepatobiliary",
+          "gallbladder_appendix_adrenals_spleen", "intestinal", "neck",
+          "obstetric_gynecologic", "orthopedic_non_spine", "peripheral_vascular",
+          "renal", "skin", "spine", "thoracic_non_cardiac", "thyroid_parathyroid",
+          "urology_non_renal", "vein", "hernia"
+        ]
+      }
+    }
+  ],
+  "result": {
+    "name": "pneumonia_risk",
+    "type": "float",
+    "unit": "percentage",
+    "description": "Predicted risk of postoperative pneumonia within 30 days"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Very Low Risk",
+        "description": "Minimal pneumonia risk",
+        "interpretation": "Very low risk of postoperative pneumonia. Standard perioperative care and monitoring appropriate."
+      },
+      {
+        "min": 1,
+        "max": 3,
+        "stage": "Low Risk",
+        "description": "Low pneumonia risk",
+        "interpretation": "Low risk of postoperative pneumonia. Standard care with attention to pulmonary hygiene and early mobilization."
+      },
+      {
+        "min": 3,
+        "max": 6,
+        "stage": "Moderate Risk",
+        "description": "Moderate pneumonia risk",
+        "interpretation": "Moderate risk of postoperative pneumonia. Consider enhanced pulmonary care, chest physiotherapy, and closer monitoring."
+      },
+      {
+        "min": 6,
+        "max": 15,
+        "stage": "High Risk",
+        "description": "High pneumonia risk",
+        "interpretation": "High risk of postoperative pneumonia. Implement aggressive pulmonary prevention strategies, consider pulmonology consultation."
+      },
+      {
+        "min": 15,
+        "max": 100,
+        "stage": "Very High Risk",
+        "description": "Very high pneumonia risk",
+        "interpretation": "Very high risk of postoperative pneumonia. Consider postponing elective surgery for optimization, intensive pulmonary care protocols required."
+      }
+    ]
+  },
+  "references": [
+    "Gupta H, Gupta PK, Fang X, et al. Development and validation of a risk calculator for predicting postoperative pneumonia. Mayo Clin Proc. 2013;88(11):1241-1249. doi: 10.1016/j.mayocp.2013.06.027",
+    "American College of Surgeons National Surgical Quality Improvement Program. ACS NSQIP Risk Calculator. https://riskcalculator.facs.org/",
+    "Smetana GW, Lawrence VA, Cornell JE. American College of Physicians. Preoperative pulmonary risk stratification for noncardiothoracic surgery: systematic review for the American College of Physicians. Ann Intern Med. 2006;144(8):581-595."
+  ],
+  "formula": "Risk (%) = e^x / (1 + e^x) × 100, where x = -2.8977 + age×0.0144 + COPD_points + functional_status_points + ASA_points + sepsis_points + smoking_points + procedure_points",
+  "notes": [
+    "Developed using ACS NSQIP data from 2007-2008 with 211,410 patients in training set and 257,385 in validation set",
+    "Model demonstrated excellent discriminative ability with C-statistic of 0.860 in training and 0.855 in validation sets",
+    "Postoperative pneumonia occurred in 1.8% of patients and was associated with significantly higher 30-day mortality (17.0% vs 1.5%)",
+    "Calculator helps identify patients who may benefit from enhanced pulmonary care and pneumonia prevention strategies",
+    "Should be used in conjunction with clinical judgment and comprehensive patient assessment"
+  ]
+}

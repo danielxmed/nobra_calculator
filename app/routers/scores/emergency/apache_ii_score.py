@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/apache_ii_score", response_model=ApacheIiScoreResponse)
+@router.post(
+    "/apache_ii_score",
+    response_model=ApacheIiScoreResponse,
+    summary="Calculate APACHE II Score",
+    description="Estimates ICU mortality using physiological parameters, age, and chronic health status within 24 hours of ICU admission",
+    response_description="The calculated apache ii score with interpretation",
+    operation_id="calculate_apache_ii_score"
+)
 async def calculate_apache_ii_score(request: ApacheIiScoreRequest):
     """
     Calculates APACHE II Score

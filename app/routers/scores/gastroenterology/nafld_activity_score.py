@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/nafld_activity_score", response_model=NafldActivityScoreResponse)
+@router.post(
+    "/nafld_activity_score",
+    response_model=NafldActivityScoreResponse,
+    summary="Calculate NAFLD",
+    description="Diagnoses steatohepatitis based on histological findings in NAFLD patients. The NAS evaluates disease activity by scoring three histological features: steatosis, lobular inflammation, and hepatocellular ballooning.",
+    response_description="The calculated nafld activity score with interpretation",
+    operation_id="calculate_nafld_activity_score"
+)
 async def calculate_nafld_activity_score(request: NafldActivityScoreRequest):
     """
     Calculates NAFLD (Non-Alcoholic Fatty Liver Disease) Activity Score

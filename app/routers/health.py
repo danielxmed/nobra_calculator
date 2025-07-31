@@ -12,7 +12,7 @@ router = APIRouter(
 )
 
 
-@router.get("/", response_model=HealthResponse)
+@router.get("/", response_model=HealthResponse, summary="Health Check", description="Check if the API is running correctly", response_description="API status", operation_id="health_check")
 async def health_check():
     """
     Endpoint to check API status
@@ -27,7 +27,7 @@ async def health_check():
     )
 
 
-@router.get("/status", response_model=HealthResponse)
+@router.get("/status", response_model=HealthResponse, summary="Status Check", description="Alias for the health check endpoint", response_description="API status", operation_id="status_check")
 async def get_status():
     """
     Alias for the health check endpoint

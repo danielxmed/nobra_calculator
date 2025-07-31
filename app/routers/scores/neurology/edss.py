@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/edss", response_model=EdssResponse)
+@router.post(
+    "/edss",
+    response_model=EdssResponse,
+    summary="Calculate Expanded Disability Status Scale",
+    description="Describes severity of disability in MS patients based on functional systems assessment and ambulatory ability. The most widely used disability scale for multiple sclerosis.",
+    response_description="The calculated edss with interpretation",
+    operation_id="calculate_edss"
+)
 async def calculate_edss(request: EdssRequest):
     """
     Calculates Expanded Disability Status Scale (EDSS) / Functional Systems Score (FSS)

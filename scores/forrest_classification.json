@@ -1,0 +1,102 @@
+{
+  "id": "forrest_classification",
+  "title": "Forrest Classification of Upper GI Bleeding",
+  "description": "Stratifies severity of upper GI bleeding according to endoscopic findings. Helps prognosticate and risk stratify patients, guides endoscopic therapeutic decisions, and assists in determining discharge versus inpatient monitoring.",
+  "category": "gastroenterology",
+  "version": "1974",
+  "parameters": [
+    {
+      "name": "endoscopic_finding",
+      "type": "string",
+      "required": true,
+      "description": "Endoscopic appearance of the bleeding peptic ulcer",
+      "options": [
+        "active_spurting",
+        "active_oozing",
+        "nonbleeding_visible_vessel",
+        "adherent_clot",
+        "flat_pigmented_spot",
+        "clean_ulcer_base"
+      ],
+      "validation": {
+        "enum": [
+          "active_spurting",
+          "active_oozing",
+          "nonbleeding_visible_vessel",
+          "adherent_clot",
+          "flat_pigmented_spot",
+          "clean_ulcer_base"
+        ]
+      }
+    }
+  ],
+  "result": {
+    "name": "forrest_class",
+    "type": "string",
+    "unit": "class",
+    "description": "Forrest classification category based on endoscopic findings"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Class 1A",
+        "description": "Active spurting bleeding",
+        "interpretation": "Active arterial spurting from ulcer base. Highest risk category requiring immediate endoscopic intervention. Rebleeding risk: 55%, mortality risk: 11%. Emergency endoscopic therapy with injection, thermal coagulation, or mechanical therapy indicated."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Class 1B",
+        "description": "Active oozing bleeding",
+        "interpretation": "Active oozing bleeding from ulcer without visible vessel. High risk category requiring endoscopic intervention. Rebleeding risk: 55%, mortality risk: 11%. Endoscopic therapy with injection or thermal coagulation recommended."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Class 2A",
+        "description": "Non-bleeding visible vessel",
+        "interpretation": "Non-bleeding visible vessel or protuberant pigmented spot. High risk of rebleeding. Rebleeding risk: 43%, mortality risk: 11%. Endoscopic therapy strongly recommended to prevent rebleeding."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Class 2B",
+        "description": "Adherent clot",
+        "interpretation": "Adherent clot overlying ulcer base. Intermediate risk of rebleeding. Rebleeding risk: 22%, mortality risk: 7%. Consider endoscopic therapy after clot removal or close monitoring with early intervention if rebleeding occurs."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Class 2C",
+        "description": "Flat pigmented spot",
+        "interpretation": "Flat pigmented spot or hematin on ulcer base. Low risk of rebleeding. Rebleeding risk: 10%, mortality risk: 3%. Endoscopic therapy generally not required. Medical therapy and early discharge may be appropriate."
+      },
+      {
+        "min": 5,
+        "max": 5,
+        "stage": "Class 3",
+        "description": "Clean ulcer base",
+        "interpretation": "Clean ulcer base without stigmata of recent hemorrhage. Lowest risk category. Rebleeding risk: 5%, mortality risk: 2%. No endoscopic therapy required. Early discharge appropriate with medical therapy."
+      }
+    ]
+  },
+  "references": [
+    "Forrest JA, Finlayson ND, Shearman DJ. Endoscopy in gastrointestinal bleeding. Lancet. 1974;2(7877):394-7.",
+    "Laine L, Peterson WL. Bleeding peptic ulcer. N Engl J Med. 1994;331(11):717-27.",
+    "Rockall TA, Logan RF, Devlin HB, Northfield TC. Risk assessment after acute upper gastrointestinal haemorrhage. Gut. 1996;38(3):316-21.",
+    "Sung JJ, Tsoi KK, Ma TK, Yung MY, Lau JY, Chiu PW. Causes of mortality in patients with peptic ulcer bleeding: a prospective cohort study of 10,428 cases. Am J Gastroenterol. 2010;105(1):84-9."
+  ],
+  "formula": "Classification based on direct endoscopic visualization of ulcer appearance: Class 1A/1B (active bleeding), Class 2A/2B/2C (recent bleeding stigmata), Class 3 (clean base)",
+  "notes": [
+    "Originally developed by Dr. John A. H. Forrest in 1974 based on 111 endoscopies",
+    "Classification is based on endoscopic appearance during upper endoscopy",
+    "Higher classes (1A, 1B, 2A) require urgent endoscopic intervention",
+    "Lower classes (2C, 3) may be managed conservatively with medical therapy",
+    "Rebleeding rates and mortality vary significantly between classes",
+    "Classification guides both therapeutic decisions and prognosis",
+    "Should be used in conjunction with clinical assessment and other risk factors",
+    "Class 2B (adherent clot) management remains somewhat controversial - some advocate for clot removal and treatment of underlying lesion"
+  ]
+}

@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/fat_free_mass", response_model=FatFreeMassResponse)
+@router.post(
+    "/fat_free_mass",
+    response_model=FatFreeMassResponse,
+    summary="Calculate Fat Free Mass (FFM)",
+    description="Calculates the predictive value of fat-free mass from body weight and body mass index (BMI). Useful for weight-based medication dosing, especially in anesthesia, and helps calculate body composition.",
+    response_description="The calculated fat free mass with interpretation",
+    operation_id="calculate_fat_free_mass"
+)
 async def calculate_fat_free_mass(request: FatFreeMassRequest):
     """
     Calculates Fat Free Mass (FFM) using the Janmahasatian formula

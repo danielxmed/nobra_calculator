@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/car_olt", response_model=CarOltResponse)
+@router.post(
+    "/car_olt",
+    response_model=CarOltResponse,
+    summary="Calculate Cardiovascular Risk in Orthotopic Liver Transpl...",
+    description="Predicts cardiovascular risk in orthotopic liver transplantation. The CAR-OLT score predicts the 1-year risk for death or hospitalization related to a major CVD event (myocardial infarction, cardiac revascularization, heart failure, atrial fibrillation, cardiac arrest, pulmonary embolism, or stroke) after liver transplantation.",
+    response_description="The calculated car olt with interpretation",
+    operation_id="calculate_car_olt"
+)
 async def calculate_car_olt(request: CarOltRequest):
     """
     Calculates Cardiovascular Risk in Orthotopic Liver Transplantation (CAR-OLT)

@@ -14,6 +14,7 @@ from .das28_crp import router as das28_crp_router
 from .das28_esr import router as das28_esr_router
 from .orai import router as orai_router
 from .ost import router as ost_router
+from .fracture_index import router as fracture_index_router
 
 # Create main specialty router
 router = APIRouter()
@@ -29,3 +30,4 @@ router.include_router(das28_crp_router)
 router.include_router(das28_esr_router)
 router.include_router(orai_router)
 router.include_router(ost_router)
+router.include_router(fracture_index_router)

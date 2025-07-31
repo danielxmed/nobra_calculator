@@ -1,0 +1,162 @@
+{
+  "id": "grace_acs_risk",
+  "title": "GRACE ACS Risk and Mortality Calculator",
+  "description": "Estimates admission to 6-month mortality risk for patients with acute coronary syndrome. Uses 8 clinical variables to provide risk stratification and guide treatment decisions in both ST-elevation and non-ST-elevation ACS.",
+  "category": "cardiology",
+  "version": "2.0",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 20,
+        "max": 100
+      },
+      "unit": "years"
+    },
+    {
+      "name": "heart_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Heart rate in beats per minute",
+      "validation": {
+        "min": 30,
+        "max": 250
+      },
+      "unit": "bpm"
+    },
+    {
+      "name": "systolic_bp",
+      "type": "integer",
+      "required": true,
+      "description": "Systolic blood pressure in mmHg",
+      "validation": {
+        "min": 50,
+        "max": 300
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Serum creatinine level in mg/dL",
+      "validation": {
+        "min": 0.3,
+        "max": 15.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "killip_class",
+      "type": "string",
+      "required": true,
+      "description": "Killip class based on signs of congestive heart failure",
+      "options": ["class_1", "class_2", "class_3", "class_4"],
+      "validation": {
+        "enum": ["class_1", "class_2", "class_3", "class_4"]
+      }
+    },
+    {
+      "name": "cardiac_arrest",
+      "type": "string",
+      "required": true,
+      "description": "Cardiac arrest at admission",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "st_deviation",
+      "type": "string",
+      "required": true,
+      "description": "ST segment deviation on ECG",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "elevated_biomarkers",
+      "type": "string",
+      "required": true,
+      "description": "Elevated cardiac enzymes/biomarkers (troponin, CK-MB)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "grace_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total GRACE score calculated from weighted clinical variables"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 87,
+        "stage": "Very Low Risk",
+        "description": "Excellent prognosis",
+        "interpretation": "0-2% mortality risk. Very low risk of death or major adverse cardiac events. Patients may be suitable for early discharge and conservative management."
+      },
+      {
+        "min": 88,
+        "max": 128,
+        "stage": "Low Risk",
+        "description": "Good prognosis",
+        "interpretation": "3-10% mortality risk. Low risk of adverse outcomes. Standard care with consideration for early invasive strategy based on other clinical factors."
+      },
+      {
+        "min": 129,
+        "max": 149,
+        "stage": "Intermediate Risk",
+        "description": "Moderate prognosis",
+        "interpretation": "10-20% mortality risk. Intermediate risk requiring careful monitoring and consideration for invasive management strategies."
+      },
+      {
+        "min": 150,
+        "max": 173,
+        "stage": "High Risk",
+        "description": "Poor prognosis",
+        "interpretation": "20-30% mortality risk. High risk patients who would benefit from intensive monitoring and aggressive interventional therapy."
+      },
+      {
+        "min": 174,
+        "max": 284,
+        "stage": "Very High Risk",
+        "description": "Very poor prognosis",
+        "interpretation": "40-90% mortality risk. Very high risk patients requiring immediate intensive care, aggressive interventional strategies, and close monitoring."
+      },
+      {
+        "min": 285,
+        "max": 400,
+        "stage": "Extremely High Risk",
+        "description": "Critical prognosis",
+        "interpretation": "≥99% mortality risk. Extremely high risk patients with critical prognosis requiring maximum intensive care and immediate life-saving interventions."
+      }
+    ]
+  },
+  "references": [
+    "Fox KA, Dabbous OH, Goldberg RJ, Pieper KS, Eagle KA, Van de Werf F, et al. Prediction of risk of death and myocardial infarction in the six months after presentation with acute coronary syndrome: prospective multinational observational study (GRACE). BMJ. 2006;333(7578):1091. doi: 10.1136/bmj.38985.646481.55.",
+    "Granger CB, Goldberg RJ, Dabbous O, Pieper KS, Eagle KA, Cannon CP, et al. Predictors of hospital mortality in the global registry of acute coronary events. Arch Intern Med. 2003;163(19):2345-53. doi: 10.1001/archinte.163.19.2345.",
+    "Abu-Assi E, Gracía-Acuña JM, Peña-Gil C, González-Juanatey JR. Validation of the GRACE risk score for predicting death within 6 months of follow-up in a contemporary cohort of patients with acute coronary syndrome. Rev Esp Cardiol (Engl Ed). 2010;63(6):640-8. doi: 10.1016/s1885-5857(10)70139-4.",
+    "NICE Clinical Guideline 167. Myocardial infarction with ST-segment elevation: acute management. National Institute for Health and Care Excellence; 2013."
+  ],
+  "formula": "GRACE Score = Age points + Heart Rate points + Systolic BP points + Creatinine points + Killip Class points + (28 × ST deviation) + (14 × Elevated biomarkers) + (39 × Cardiac arrest)",
+  "notes": [
+    "Validated in over 43,000 patients from 94 hospitals worldwide",
+    "Provides both in-hospital and 6-month mortality estimates",
+    "Recommended by NICE guidelines for ACS risk stratification",
+    "Applicable to both STEMI and NSTEMI patients",
+    "Score should be used in conjunction with clinical judgment",
+    "Higher scores indicate increased need for intensive monitoring and invasive interventions",
+    "Age, heart rate, systolic BP, and creatinine use continuous scoring algorithms",
+    "Consider patient comorbidities and overall clinical picture when interpreting results"
+  ]
+}

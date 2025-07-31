@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/child_pugh_score", response_model=ChildPughScoreResponse)
+@router.post(
+    "/child_pugh_score",
+    response_model=ChildPughScoreResponse,
+    summary="Calculate Child-Pugh Score for Cirrhosis Mortality",
+    description="Estimates severity of cirrhosis and prognosis in patients with chronic liver disease",
+    response_description="The calculated child pugh score with interpretation",
+    operation_id="calculate_child_pugh_score"
+)
 async def calculate_child_pugh_score(request: ChildPughScoreRequest):
     """
     Calculates Child-Pugh Score for Cirrhosis Mortality

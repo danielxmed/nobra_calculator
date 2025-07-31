@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/neonatal_partial_exchange_polycythemia", response_model=NeonatalPartialExchangePolycythemiaResponse)
+@router.post(
+    "/neonatal_partial_exchange_polycythemia",
+    response_model=NeonatalPartialExchangePolycythemiaResponse,
+    summary="Calculate Neonatal Partial Exchange for Polycythemia",
+    description="Estimates total blood volume to remove and crystalloid volume to infuse in neonatal polycythemia",
+    response_description="The calculated neonatal partial exchange polycythemia with interpretation",
+    operation_id="calculate_neonatal_partial_exchange_polycythemia"
+)
 async def calculate_neonatal_partial_exchange_polycythemia(request: NeonatalPartialExchangePolycythemiaRequest):
     """
     Calculates Neonatal Partial Exchange for Polycythemia

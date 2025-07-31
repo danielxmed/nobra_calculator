@@ -1,0 +1,143 @@
+{
+  "id": "has_bled_score",
+  "title": "HAS-BLED Score for Major Bleeding Risk",
+  "description": "Estimates 1-year risk of major bleeding for patients on anticoagulation to assess quality of atrial fibrillation care. Used with CHA2DS2-VASc score to balance stroke vs bleeding risk.",
+  "category": "hematology",
+  "version": "2010",
+  "parameters": [
+    {
+      "name": "hypertension",
+      "type": "string",
+      "required": true,
+      "description": "Hypertension (uncontrolled, systolic blood pressure >160 mmHg)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "abnormal_renal_function",
+      "type": "string",
+      "required": true,
+      "description": "Abnormal renal function (dialysis, renal transplant, or serum creatinine >2.26 mg/dL or >200 μmol/L)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "abnormal_liver_function",
+      "type": "string",
+      "required": true,
+      "description": "Abnormal liver function (cirrhosis or bilirubin >2x normal with AST/ALT/AP >3x normal)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "stroke_history",
+      "type": "string",
+      "required": true,
+      "description": "Previous stroke (ischemic or hemorrhagic)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "bleeding_history",
+      "type": "string",
+      "required": true,
+      "description": "Prior major bleeding or predisposition to bleeding (anemia, bleeding diathesis, etc.)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "labile_inr",
+      "type": "string",
+      "required": true,
+      "description": "Labile INR (unstable/high INRs, time in therapeutic range <60%)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "elderly",
+      "type": "string",
+      "required": true,
+      "description": "Elderly (age >65 years)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "drugs",
+      "type": "string",
+      "required": true,
+      "description": "Drugs predisposing to bleeding (antiplatelet agents, NSAIDs)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "alcohol",
+      "type": "string",
+      "required": true,
+      "description": "Alcohol use (≥8 drinks per week)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "has_bled_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "HAS-BLED score (0-9 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "Low bleeding risk",
+        "interpretation": "Low risk of major bleeding (0.9-3.4% per year). Anticoagulation should be considered if indicated. Regular monitoring and attention to modifiable risk factors recommended."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Moderate Risk",
+        "description": "Moderate bleeding risk",
+        "interpretation": "Moderate risk of major bleeding (approximately 4.1% per year). Caution with anticoagulation, but do not necessarily withhold treatment. Address modifiable risk factors (hypertension, labile INR, concomitant drugs)."
+      },
+      {
+        "min": 3,
+        "max": 9,
+        "stage": "High Risk",
+        "description": "High bleeding risk",
+        "interpretation": "High risk of major bleeding (5.8% to >10% per year). Requires regular clinical review and careful monitoring if anticoagulated. Address all modifiable risk factors. Consider alternatives to anticoagulation if appropriate. Do not use score alone to withhold anticoagulation."
+      }
+    ]
+  },
+  "references": [
+    "Pisters R, Lane DA, Nieuwlaat R, de Vos CB, Crijns HJ, Lip GY. A novel user-friendly score (HAS-BLED) to assess 1-year risk of major bleeding in patients with atrial fibrillation: the Euro Heart Survey. Chest. 2010 Nov;138(5):1093-100. doi: 10.1378/chest.10-0134.",
+    "Lip GY, Frison L, Halperin JL, Lane DA. Comparative validation of a novel risk score for predicting bleeding risk in anticoagulated patients with atrial fibrillation: the HAS-BLED (Hypertension, Abnormal Renal/Liver Function, Stroke, Bleeding History or Predisposition, Labile INR, Elderly, Drugs/Alcohol Concomitantly) score. J Am Coll Cardiol. 2011 Jan 11;57(2):173-80. doi: 10.1016/j.jacc.2010.09.024.",
+    "Apostolakis S, Lane DA, Guo Y, Buller H, Lip GY. Performance of the HEMORR(2)HAGES, ATRIA, and HAS-BLED bleeding risk-prediction scores in patients with atrial fibrillation undergoing anticoagulation: the AMADEUS (evaluating the use of SR34006 compared to warfarin or acenocoumarol in patients with atrial fibrillation) study. J Am Coll Cardiol. 2012 Aug 28;60(9):861-7. doi: 10.1016/j.jacc.2012.06.019."
+  ],
+  "formula": "HAS-BLED Score = Hypertension (1) + Abnormal renal function (1) + Abnormal liver function (1) + Stroke (1) + Bleeding (1) + Labile INR (1) + Elderly (1) + Drugs (1) + Alcohol (1)",
+  "notes": [
+    "Major bleeding defined as intracranial hemorrhage, hospitalization, hemoglobin decrease >2 g/L, or transfusion",
+    "Score ≥3 indicates high risk and need for regular clinical review",
+    "Do not use HAS-BLED alone to withhold anticoagulation",
+    "Consider modifiable risk factors (hypertension, labile INR, concomitant drugs/alcohol)",
+    "Use in conjunction with CHA2DS2-VASc score for comprehensive risk assessment"
+  ]
+}

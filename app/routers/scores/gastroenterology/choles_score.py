@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/choles_score", response_model=CholesScoredResponse)
+@router.post(
+    "/choles_score",
+    response_model=CholesScoredResponse,
+    summary="Calculate CholeS Score for Duration of Laparoscopic Chole...",
+    description="Predicts operative time duration for elective laparoscopic cholecystectomy procedures",
+    response_description="The calculated choles score with interpretation",
+    operation_id="calculate_choles_score"
+)
 async def calculate_choles_score(request: CholesScoredRequest):
     """
     Calculates CholeS Score for Duration of Laparoscopic Cholecystectomy

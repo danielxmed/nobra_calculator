@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/du_bois_ipf_mortality", response_model=DuBoisIpfMortalityResponse)
+@router.post(
+    "/du_bois_ipf_mortality",
+    response_model=DuBoisIpfMortalityResponse,
+    summary="Calculate du Bois Score for Idiopathic Pulmonary Fibrosis",
+    description="Determines 1-year mortality risk in IPF patients using PFT and clinical indicators. Developed from two clinical trials (n=1,099) to identify independent predictors of 1-year mortality in idiopathic pulmonary fibrosis.",
+    response_description="The calculated du bois ipf mortality with interpretation",
+    operation_id="calculate_du_bois_ipf_mortality"
+)
 async def calculate_du_bois_ipf_mortality(request: DuBoisIpfMortalityRequest):
     """
     Calculates du Bois Score for Idiopathic Pulmonary Fibrosis (IPF) Mortality

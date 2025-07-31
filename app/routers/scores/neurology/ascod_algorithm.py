@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/ascod_algorithm", response_model=AscodAlgorithmResponse)
+@router.post(
+    "/ascod_algorithm",
+    response_model=AscodAlgorithmResponse,
+    summary="Calculate ASCOD Algorithm for Ischemic Stroke",
+    description="Assigns phenotype in patients with ischemic stroke of uncertain causes by evaluating five main etiologic categories: Atherothrombosis, Small-vessel disease, Cardiac pathology, Other causes, and Dissection. Provides a comprehensive classification system that captures overlap between multiple underlying stroke mechanisms.",
+    response_description="The calculated ascod algorithm with interpretation",
+    operation_id="calculate_ascod_algorithm"
+)
 async def calculate_ascod_algorithm(request: AscodAlgorithmRequest):
     """
     Calculates ASCOD Algorithm for Ischemic Stroke

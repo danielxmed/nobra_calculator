@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/amt_4", response_model=Amt4Response)
+@router.post(
+    "/amt_4",
+    response_model=Amt4Response,
+    summary="Calculate Abbreviated Mental Test 4 (AMT-4)",
+    description="Assesses mental impairment and cognitive function in elderly patients using four simple questions",
+    response_description="The calculated amt 4 with interpretation",
+    operation_id="calculate_amt_4"
+)
 async def calculate_amt_4(request: Amt4Request):
     """
     Calculates Abbreviated Mental Test 4 (AMT-4)

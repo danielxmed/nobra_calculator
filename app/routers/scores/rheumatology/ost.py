@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/ost", response_model=OstResponse)
+@router.post(
+    "/ost",
+    response_model=OstResponse,
+    summary="Calculate Osteoporosis Self Assessment Tool (OST)",
+    description="Predicts risk of osteoporosis based on age and body weight. Simple screening tool to identify individuals who may benefit from further bone density testing with DXA scanning.",
+    response_description="The calculated ost with interpretation",
+    operation_id="calculate_ost"
+)
 async def calculate_ost(request: OstRequest):
     """
     Calculates Osteoporosis Self Assessment Tool (OST)

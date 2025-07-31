@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/duke_iscvid_2023", response_model=DukeIscvid2023Response)
+@router.post(
+    "/duke_iscvid_2023",
+    response_model=DukeIscvid2023Response,
+    summary="Calculate 2023 Duke-International Society for Cardiovascu...",
+    description="Diagnostic criteria for infective endocarditis, updated from the original Duke criteria with improved sensitivity and specificity.",
+    response_description="The calculated duke iscvid 2023 with interpretation",
+    operation_id="calculate_duke_iscvid_2023"
+)
 async def calculate_duke_iscvid_2023(request: DukeIscvid2023Request):
     """
     Calculates 2023 Duke-ISCVID Criteria for Infective Endocarditis

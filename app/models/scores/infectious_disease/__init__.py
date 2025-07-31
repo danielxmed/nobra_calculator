@@ -10,6 +10,7 @@ from .denver_hiv_risk_score import DenverHivRiskScoreRequest, DenverHivRiskScore
 from .drip_score import DripScoreRequest, DripScoreResponse
 from .duke_criteria_infective_endocarditis import DukeCriteriaInfectiveEndocarditisRequest, DukeCriteriaInfectiveEndocarditisResponse
 from .feverpain_score import FeverpainScoreRequest, FeverpainScoreResponse
+from .vaco_index_covid19 import VacoIndexCovid19Request, VacoIndexCovid19Response
 
 __all__ = [
     "Helps2bRequest",
@@ -28,4 +29,6 @@ __all__ = [
     "DukeCriteriaInfectiveEndocarditisResponse",
     "FeverpainScoreRequest",
     "FeverpainScoreResponse",
+    "VacoIndexCovid19Request",
+    "VacoIndexCovid19Response",
 ]

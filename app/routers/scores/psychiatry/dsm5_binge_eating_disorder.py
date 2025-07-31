@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/dsm5_binge_eating_disorder", response_model=Dsm5BingeEatingDisorderResponse)
+@router.post(
+    "/dsm5_binge_eating_disorder",
+    response_model=Dsm5BingeEatingDisorderResponse,
+    summary="Calculate DSM-5 Criteria for Binge Eating Disorder",
+    description="Diagnostic criteria for binge eating disorder (BED) based on DSM-5. Evaluates presence of binge eating episodes, associated features, distress, frequency/duration, and exclusion criteria.",
+    response_description="The calculated dsm5 binge eating disorder with interpretation",
+    operation_id="calculate_dsm5_binge_eating_disorder"
+)
 async def calculate_dsm5_binge_eating_disorder(request: Dsm5BingeEatingDisorderRequest):
     """
     Evaluates DSM-5 Criteria for Binge Eating Disorder

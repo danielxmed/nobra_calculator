@@ -1,0 +1,215 @@
+{
+  "id": "gds_15",
+  "title": "Geriatric Depression Scale (GDS-15)",
+  "description": "Identifies possible depression in older adults aged 55 and older. The 15-item version is a brief, reliable screening tool that uses simple yes/no questions to assess depressive symptoms specific to the geriatric population over the past week",
+  "category": "psychiatry",
+  "version": "1986",
+  "parameters": [
+    {
+      "name": "q1_satisfied_with_life",
+      "type": "string",
+      "required": true,
+      "description": "Are you basically satisfied with your life?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "q2_dropped_activities",
+      "type": "string",
+      "required": true,
+      "description": "Have you dropped many of your activities and interests?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "q3_life_empty",
+      "type": "string",
+      "required": true,
+      "description": "Do you feel that your life is empty?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "q4_often_bored",
+      "type": "string",
+      "required": true,
+      "description": "Do you often get bored?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "q5_good_spirits",
+      "type": "string",
+      "required": true,
+      "description": "Are you in good spirits most of the time?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "q6_afraid_bad_happen",
+      "type": "string",
+      "required": true,
+      "description": "Are you afraid that something bad is going to happen to you?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "q7_happy_most_time",
+      "type": "string",
+      "required": true,
+      "description": "Do you feel happy most of the time?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "q8_feel_helpless",
+      "type": "string",
+      "required": true,
+      "description": "Do you often feel helpless?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "q9_prefer_stay_home",
+      "type": "string",
+      "required": true,
+      "description": "Do you prefer to stay at home, rather than going out and doing new things?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "q10_memory_problems",
+      "type": "string",
+      "required": true,
+      "description": "Do you feel you have more problems with memory than most?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "q11_wonderful_to_be_alive",
+      "type": "string",
+      "required": true,
+      "description": "Do you think it is wonderful to be alive now?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "q12_feel_worthless",
+      "type": "string",
+      "required": true,
+      "description": "Do you feel pretty worthless the way you are now?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "q13_full_of_energy",
+      "type": "string",
+      "required": true,
+      "description": "Do you feel full of energy?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "q14_situation_hopeless",
+      "type": "string",
+      "required": true,
+      "description": "Do you feel that your situation is hopeless?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "q15_others_better_off",
+      "type": "string",
+      "required": true,
+      "description": "Do you think that most people are better off than you are?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "gds_15_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Geriatric Depression Scale (GDS-15) score (0-15 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 4,
+        "stage": "Normal",
+        "description": "Absence of clinically significant depressive symptoms",
+        "interpretation": "No depression indicated. These are normal scores, depending on age, education, and complaints. Continue routine screening."
+      },
+      {
+        "min": 5,
+        "max": 7,
+        "stage": "Mild Depression",
+        "description": "Suggests mild depression",
+        "interpretation": "Mild depression indicated. Consider formal diagnostic evaluation. Monitor symptoms and consider counseling or supportive interventions."
+      },
+      {
+        "min": 8,
+        "max": 9,
+        "stage": "Moderate Depression",
+        "description": "Suggests moderate depression",
+        "interpretation": "Moderate depression indicated. Formal psychiatric evaluation recommended. Consider pharmacological and/or psychotherapeutic interventions."
+      },
+      {
+        "min": 10,
+        "max": 15,
+        "stage": "Severe Depression",
+        "description": "Suggests severe depression",
+        "interpretation": "Severe depression indicated. Urgent psychiatric evaluation required. Assess suicide risk immediately. Consider intensive treatment including medication and psychotherapy."
+      }
+    ]
+  },
+  "references": [
+    "Yesavage JA, Brink TL, Rose TL, et al. Development and validation of a geriatric depression screening scale: a preliminary report. J Psychiatr Res. 1982-1983;17(1):37-49. doi: 10.1016/0022-3956(82)90033-4.",
+    "Sheikh JI, Yesavage JA. Geriatric Depression Scale (GDS): recent evidence and development of a shorter version. Clin Gerontol. 1986;5(1-2):165-173. doi: 10.1300/J018v05n01_09.",
+    "D'Ath P, Katona P, Mullan E, Evans S, Katona C. Screening, detection and management of depression in elderly primary care attenders. I: The acceptability and performance of the 15 item Geriatric Depression Scale (GDS15) and the development of short versions. Fam Pract. 1994;11(3):260-266. doi: 10.1093/fampra/11.3.260."
+  ],
+  "formula": "Score = Sum of depression-indicating responses: Questions 2,3,4,6,8,9,10,12,14,15 ('Yes' = 1 point each) + Questions 1,5,7,11,13 ('No' = 1 point each)",
+  "notes": [
+    "Designed specifically for adults aged 55 and older",
+    "Based on feelings over the past week",
+    "Uses simple yes/no response format suitable for elderly patients",
+    "Avoids somatic symptoms that may be confounded by medical illness",
+    "Sensitivity 81%, specificity 78% for identifying late-life depression",
+    "Scores ≥5 should prompt formal diagnostic evaluation",
+    "Always assess suicide risk in patients with elevated scores",
+    "Not a diagnostic tool - requires clinical evaluation for definitive diagnosis",
+    "Can be self-administered or conducted by healthcare provider",
+    "Useful for monitoring depression symptoms over time"
+  ]
+}

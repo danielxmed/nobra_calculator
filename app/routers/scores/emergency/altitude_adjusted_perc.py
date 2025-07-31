@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/altitude_adjusted_perc", response_model=AltitudeAdjustedPercResponse)
+@router.post(
+    "/altitude_adjusted_perc",
+    response_model=AltitudeAdjustedPercResponse,
+    summary="Calculate Altitude-Adjusted PERC Rule",
+    description="Rules out pulmonary embolism (PE) if no criteria are present; includes adjustment for high altitude (>4000 ft) by removing oxygen saturation criterion. Used in patients with low pretest probability of PE (<15%) who live at high altitude.",
+    response_description="The calculated altitude adjusted perc with interpretation",
+    operation_id="calculate_altitude_adjusted_perc"
+)
 async def calculate_altitude_adjusted_perc(request: AltitudeAdjustedPercRequest):
     """
     Calculates Altitude-Adjusted PERC Rule

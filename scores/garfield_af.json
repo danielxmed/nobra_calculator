@@ -1,0 +1,219 @@
+{
+  "id": "garfield_af",
+  "title": "GARFIELD-AF Risk Score",
+  "description": "The GARFIELD-AF risk score simultaneously predicts 1- and 2-year risks of mortality, ischemic stroke/systemic embolism, and major bleeding in patients with atrial fibrillation. This contemporary risk stratification tool incorporates 16 clinical variables and has been validated across diverse international populations with both anticoagulated and non-anticoagulated patients.",
+  "category": "cardiology",
+  "version": "2017",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient's age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "weight",
+      "type": "float",
+      "required": true,
+      "description": "Patient's body weight",
+      "validation": {
+        "min": 30,
+        "max": 300
+      },
+      "unit": "kg"
+    },
+    {
+      "name": "race",
+      "type": "string",
+      "required": true,
+      "description": "Patient's race/ethnicity",
+      "options": ["asian", "black", "other"],
+      "validation": {
+        "enum": ["asian", "black", "other"]
+      }
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient's biological sex",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "pulse",
+      "type": "integer",
+      "required": true,
+      "description": "Heart rate in beats per minute",
+      "validation": {
+        "min": 30,
+        "max": 250
+      },
+      "unit": "bpm"
+    },
+    {
+      "name": "diastolic_bp",
+      "type": "integer",
+      "required": true,
+      "description": "Diastolic blood pressure",
+      "validation": {
+        "min": 40,
+        "max": 150
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "history_of_bleeding",
+      "type": "string",
+      "required": true,
+      "description": "History of major bleeding episodes",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "heart_failure",
+      "type": "string",
+      "required": true,
+      "description": "History of heart failure or reduced ejection fraction",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "history_of_stroke",
+      "type": "string",
+      "required": true,
+      "description": "History of stroke or transient ischemic attack",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "chronic_kidney_disease",
+      "type": "string",
+      "required": true,
+      "description": "Chronic kidney disease or renal impairment",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "vascular_disease",
+      "type": "string",
+      "required": true,
+      "description": "Vascular disease (coronary artery disease, peripheral arterial disease, or aortic plaque)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "diabetes_mellitus",
+      "type": "string",
+      "required": true,
+      "description": "Diabetes mellitus requiring medication",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "current_smoking",
+      "type": "string",
+      "required": true,
+      "description": "Current tobacco smoking status",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "dementia",
+      "type": "string",
+      "required": true,
+      "description": "History of dementia or cognitive impairment",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "antiplatelet_use",
+      "type": "string",
+      "required": true,
+      "description": "Current use of antiplatelet medications (aspirin, clopidogrel, etc.)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "carotid_disease",
+      "type": "string",
+      "required": true,
+      "description": "Carotid artery disease or stenosis",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "risk_predictions",
+    "type": "object",
+    "unit": "percentage",
+    "description": "Multi-outcome risk predictions for mortality, stroke/systemic embolism, and major bleeding at 1 and 2 years"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Low Risk",
+        "description": "Low risk across all outcomes",
+        "interpretation": "Low risk for mortality, stroke/systemic embolism, and major bleeding. Standard anticoagulation management appropriate if indicated for stroke prevention."
+      },
+      {
+        "min": 2,
+        "max": 5,
+        "stage": "Moderate Risk",
+        "description": "Moderate risk requiring careful monitoring",
+        "interpretation": "Moderate risk profile. Consider individualized approach to anticoagulation with careful monitoring. Regular follow-up recommended."
+      },
+      {
+        "min": 5,
+        "max": 100,
+        "stage": "High Risk",
+        "description": "High risk requiring intensive management",
+        "interpretation": "High risk profile across multiple outcomes. Requires intensive management, frequent monitoring, and careful consideration of anticoagulation benefits versus bleeding risks. Consider specialist consultation."
+      }
+    ]
+  },
+  "references": [
+    "Fox KAA, Lucas JE, Pieper KS, et al. Improved risk stratification of patients with atrial fibrillation: an integrated GARFIELD-AF tool for the prediction of mortality, stroke and bleed in patients with and without anticoagulation. BMJ Open. 2017;7(12):e017157. doi: 10.1136/bmjopen-2017-017157.",
+    "Apenteng PN, Murray ET, Holder R, et al. An international longitudinal registry of patients with atrial fibrillation at risk of stroke: Global Anticoagulant Registry in the FIELD (GARFIELD). Am Heart J. 2012;163(1):13-19.e1. doi: 10.1016/j.ahj.2011.09.011.",
+    "Camm AJ, Accetta G, Ambrosio G, et al. Evolving antithrombotic treatment patterns for patients with newly diagnosed atrial fibrillation. Heart. 2017;103(4):307-314. doi: 10.1136/heartjnl-2016-309832."
+  ],
+  "formula": "Complex regression model with 16 variables predicting simultaneous risks of mortality, ischemic stroke/systemic embolism, and major bleeding at 1 and 2 years using validated coefficients from GARFIELD-AF registry",
+  "notes": [
+    "The GARFIELD-AF score simultaneously predicts three key outcomes: mortality, ischemic stroke/systemic embolism, and major bleeding",
+    "Risk predictions are provided for both 1-year and 2-year time horizons",
+    "The score has been validated in both anticoagulated and non-anticoagulated patients",
+    "This tool incorporates contemporary clinical variables and is based on a large international registry",
+    "Unlike single-outcome scores (CHA2DS2-VASc, HAS-BLED), GARFIELD-AF provides integrated risk assessment",
+    "The score helps balance anticoagulation benefits against bleeding risks in individual patients",
+    "Regular re-evaluation is recommended as clinical status changes may affect risk predictions"
+  ]
+}

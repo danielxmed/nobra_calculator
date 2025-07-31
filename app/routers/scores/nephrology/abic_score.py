@@ -8,7 +8,14 @@ from app.services.calculator_service import calculator_service
 
 router = APIRouter()
 
-@router.post("/abic_score", response_model=AbicScoreResponse)
+@router.post(
+    "/abic_score",
+    response_model=AbicScoreResponse,
+    summary="Calculate ABIC Score for Alcoholic Hepatitis",
+    description="Predicts survival in patients with alcoholic hepatitis at 90 days and 1 year, based on age, bilirubin, creatinine, and INR",
+    response_description="The calculated abic score with interpretation",
+    operation_id="calculate_abic_score"
+)
 async def calculate_abic_score(request: AbicScoreRequest):
     """
     Calculates ABIC Score for alcoholic hepatitis

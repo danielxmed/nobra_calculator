@@ -1,0 +1,116 @@
+{
+  "id": "func_score",
+  "title": "Functional Outcome in Patients With Primary Intracerebral Hemorrhage (FUNC) Score",
+  "description": "Identifies patients with intracerebral hemorrhage (ICH) who will achieve functional independence at 90 days and aids in clinical decision-making and goals of care discussions.",
+  "category": "neurology",
+  "version": "2008",
+  "parameters": [
+    {
+      "name": "ich_volume",
+      "type": "string",
+      "required": true,
+      "description": "Volume of intracerebral hemorrhage on initial CT scan",
+      "options": ["less_than_30", "30_to_60", "greater_than_60"],
+      "validation": {
+        "enum": ["less_than_30", "30_to_60", "greater_than_60"]
+      }
+    },
+    {
+      "name": "age",
+      "type": "string",
+      "required": true,
+      "description": "Patient age at time of ICH",
+      "options": ["less_than_70", "70_to_79", "80_or_greater"],
+      "validation": {
+        "enum": ["less_than_70", "70_to_79", "80_or_greater"]
+      }
+    },
+    {
+      "name": "ich_location",
+      "type": "string",
+      "required": true,
+      "description": "Location of intracerebral hemorrhage",
+      "options": ["lobar", "deep", "infratentorial"],
+      "validation": {
+        "enum": ["lobar", "deep", "infratentorial"]
+      }
+    },
+    {
+      "name": "glasgow_coma_scale",
+      "type": "string",
+      "required": true,
+      "description": "Glasgow Coma Scale score on admission",
+      "options": ["9_or_greater", "8_or_less"],
+      "validation": {
+        "enum": ["9_or_greater", "8_or_less"]
+      }
+    },
+    {
+      "name": "pre_ich_cognitive_impairment",
+      "type": "string",
+      "required": true,
+      "description": "Presence of cognitive impairment before the ICH",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "func_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "FUNC score (0-11 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 4,
+        "stage": "Very Poor",
+        "description": "0% chance of functional independence",
+        "interpretation": "No patients in this group achieved functional independence (GOS ≥4) at 90 days. Consider comfort care measures and discussion of goals of care with family."
+      },
+      {
+        "min": 5,
+        "max": 7,
+        "stage": "Poor",
+        "description": "13% chance of functional independence",
+        "interpretation": "Only 13% of all patients (29% of survivors) achieved functional independence at 90 days. Most patients will have severe disability or require full-time care."
+      },
+      {
+        "min": 8,
+        "max": 8,
+        "stage": "Moderate",
+        "description": "42% chance of functional independence",
+        "interpretation": "42% of all patients (48% of survivors) achieved functional independence at 90 days. Aggressive supportive care may be warranted."
+      },
+      {
+        "min": 9,
+        "max": 10,
+        "stage": "Good",
+        "description": "66% chance of functional independence",
+        "interpretation": "66% of all patients (75% of survivors) achieved functional independence at 90 days. Aggressive supportive care is recommended."
+      },
+      {
+        "min": 11,
+        "max": 11,
+        "stage": "Excellent",
+        "description": "82% chance of functional independence",
+        "interpretation": "82% of all patients (95% of survivors) achieved functional independence at 90 days. Full supportive care with rehabilitation planning is strongly recommended."
+      }
+    ]
+  },
+  "references": [
+    "Rost NS, Smith EE, Chang Y, Snider RW, Chanderraj R, Schwab K, et al. Prediction of functional outcome in patients with primary intracerebral hemorrhage: the FUNC score. Stroke. 2008 Aug;39(8):2304-9. doi: 10.1161/STROKEAHA.107.512202.",
+    "Garrett JS, Zarghouni M, Layton KF, Graybeal D, Daoud YA. Validation of clinical prediction scores in patients with primary intracerebral hemorrhage. Neurocrit Care. 2013 Dec;19(3):329-35. doi: 10.1007/s12028-013-9926-y."
+  ],
+  "formula": "FUNC Score = ICH Volume points + Age points + ICH Location points + GCS points + Pre-ICH Cognitive Impairment points",
+  "notes": [
+    "For use in primary intracerebral hemorrhage only (not for subarachnoid hemorrhage or other types)",
+    "Should be calculated at initial ICH diagnosis, not for continuous monitoring",
+    "Functional independence defined as Glasgow Outcome Score ≥4 at 90 days",
+    "Deep locations include basal ganglia, thalamus, and internal capsule",
+    "Infratentorial locations include brainstem and cerebellum"
+  ]
+}

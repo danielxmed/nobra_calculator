@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/ain_risk_calculator", response_model=AinRiskCalculatorResponse)
+@router.post(
+    "/ain_risk_calculator",
+    response_model=AinRiskCalculatorResponse,
+    summary="Calculate Acute Interstitial Nephritis (AIN) Risk Calculator",
+    description="Identifies the likelihood of acute interstitial nephritis in at-risk patients undergoing kidney biopsy evaluation. Uses commonly available clinical and laboratory parameters to predict AIN probability.",
+    response_description="The calculated ain risk calculator with interpretation",
+    operation_id="calculate_ain_risk_calculator"
+)
 async def calculate_ain_risk_calculator(request: AinRiskCalculatorRequest):
     """
     Calculates Acute Interstitial Nephritis (AIN) Risk probability

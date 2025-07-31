@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/nexus_chest_blunt_trauma", response_model=NexusChestBluntTraumaResponse)
+@router.post(
+    "/nexus_chest_blunt_trauma",
+    response_model=NexusChestBluntTraumaResponse,
+    summary="Calculate NEXUS Chest Decision Instrument for Blunt Chest...",
+    description="Determines need for chest imaging in blunt trauma patients. Uses 7 criteria to identify patients at very low risk for thoracic injury who can potentially avoid chest x-ray. The score is 99% sensitive for clinically significant thoracic injury.",
+    response_description="The calculated nexus chest blunt trauma with interpretation",
+    operation_id="calculate_nexus_chest_blunt_trauma"
+)
 async def calculate_nexus_chest_blunt_trauma(request: NexusChestBluntTraumaRequest):
     """
     Calculates NEXUS Chest Decision Instrument for Blunt Chest Trauma

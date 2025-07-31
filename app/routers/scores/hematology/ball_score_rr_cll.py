@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/ball_score_rr_cll", response_model=BallScoreRrCllResponse)
+@router.post(
+    "/ball_score_rr_cll",
+    response_model=BallScoreRrCllResponse,
+    summary="Calculate BALL Score for Relapsed/Refractory CLL",
+    description="Assesses prognosis of patients with relapsed/refractory chronic lymphocytic leukemia (R/R CLL) on targeted therapies. The BALL Score (β2-microglobulin, Anemia, LDH, Last Therapy) helps estimate survival outcomes in patients with R/R-CLL who require further treatment with targeted therapies.",
+    response_description="The calculated ball score rr cll with interpretation",
+    operation_id="calculate_ball_score_rr_cll"
+)
 async def calculate_ball_score_rr_cll(request: BallScoreRrCllRequest):
     """
     Calculates BALL Score for Relapsed/Refractory CLL

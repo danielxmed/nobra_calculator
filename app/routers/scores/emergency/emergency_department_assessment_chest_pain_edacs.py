@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/emergency_department_assessment_chest_pain_edacs", response_model=EmergencyDepartmentAssessmentChestPainEdacsResponse)
+@router.post(
+    "/emergency_department_assessment_chest_pain_edacs",
+    response_model=EmergencyDepartmentAssessmentChestPainEdacsResponse,
+    summary="Calculate Emergency Department Assessment of Chest Pain S...",
+    description="Risk stratifies chest pain patients for early discharge based on clinical factors to identify low-risk patients who can be safely discharged from the emergency department without further testing.",
+    response_description="The calculated emergency department assessment chest pain edacs with interpretation",
+    operation_id="calculate_emergency_department_assessment_chest_pain_edacs"
+)
 async def calculate_emergency_department_assessment_chest_pain_edacs(request: EmergencyDepartmentAssessmentChestPainEdacsRequest):
     """
     Calculates Emergency Department Assessment of Chest Pain Score (EDACS)

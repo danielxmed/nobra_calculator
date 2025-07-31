@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/diabetes_distress_scale", response_model=DiabetesDistressScaleResponse)
+@router.post(
+    "/diabetes_distress_scale",
+    response_model=DiabetesDistressScaleResponse,
+    summary="Calculate Diabetes Distress Scale (DDS17)",
+    description="Measures diabetes-related emotional distress across four domains to identify sources of distress and guide targeted interventions for patients with diabetes.",
+    response_description="The calculated diabetes distress scale with interpretation",
+    operation_id="calculate_diabetes_distress_scale"
+)
 async def calculate_diabetes_distress_scale(request: DiabetesDistressScaleRequest):
     """
     Calculates Diabetes Distress Scale (DDS17) for Diabetes-Related Emotional Distress Assessment

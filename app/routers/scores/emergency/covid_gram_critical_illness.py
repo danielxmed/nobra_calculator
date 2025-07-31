@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/covid_gram_critical_illness", response_model=CovidGramCriticalIllnessResponse)
+@router.post(
+    "/covid_gram_critical_illness",
+    response_model=CovidGramCriticalIllnessResponse,
+    summary="Calculate COVID-GRAM Critical Illness Risk Score",
+    description="Predicts risk of critical illness (ICU admission, mechanical ventilation, or death) in hospitalized COVID-19 patients",
+    response_description="The calculated covid gram critical illness with interpretation",
+    operation_id="calculate_covid_gram_critical_illness"
+)
 async def calculate_covid_gram_critical_illness(request: CovidGramCriticalIllnessRequest):
     """
     Calculates COVID-GRAM Critical Illness Risk Score

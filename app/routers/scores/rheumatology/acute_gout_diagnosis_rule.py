@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/acute_gout_diagnosis_rule", response_model=AcuteGoutDiagnosisRuleResponse)
+@router.post(
+    "/acute_gout_diagnosis_rule",
+    response_model=AcuteGoutDiagnosisRuleResponse,
+    summary="Calculate Acute Gout Diagnosis Rule",
+    description="Risk stratifies for gout vs non-gout arthritis and helps determine which patients benefit most from joint aspiration. A diagnostic rule for acute gouty arthritis in primary care without joint fluid analysis.",
+    response_description="The calculated acute gout diagnosis rule with interpretation",
+    operation_id="calculate_acute_gout_diagnosis_rule"
+)
 async def calculate_acute_gout_diagnosis_rule(request: AcuteGoutDiagnosisRuleRequest):
     """
     Calculates Acute Gout Diagnosis Rule

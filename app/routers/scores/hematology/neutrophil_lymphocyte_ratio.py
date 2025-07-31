@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/neutrophil_lymphocyte_ratio", response_model=NeutrophilLymphocyteRatioResponse)
+@router.post(
+    "/neutrophil_lymphocyte_ratio",
+    response_model=NeutrophilLymphocyteRatioResponse,
+    summary="Calculate Neutrophil-Lymphocyte Ratio (NLR) Calculator",
+    description="Calculates neutrophil-lymphocyte ratio",
+    response_description="The calculated neutrophil lymphocyte ratio with interpretation",
+    operation_id="calculate_neutrophil_lymphocyte_ratio"
+)
 async def calculate_neutrophil_lymphocyte_ratio(request: NeutrophilLymphocyteRatioRequest):
     """
     Calculates Neutrophil-Lymphocyte Ratio (NLR)

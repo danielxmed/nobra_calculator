@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/age_adjusted_esr_crp", response_model=AgeAdjustedEsrCrpResponse)
+@router.post(
+    "/age_adjusted_esr_crp",
+    response_model=AgeAdjustedEsrCrpResponse,
+    summary="Calculate Age-Adjusted ESR/CRP for Rheumatoid Arthritis",
+    description="Calculates age-adjusted ESR and CRP in adult rheumatoid arthritis patients to account for age-related increases in inflammatory markers",
+    response_description="The calculated age adjusted esr crp with interpretation",
+    operation_id="calculate_age_adjusted_esr_crp"
+)
 async def calculate_age_adjusted_esr_crp(request: AgeAdjustedEsrCrpRequest):
     """
     Calculates Age-Adjusted ESR/CRP for Rheumatoid Arthritis

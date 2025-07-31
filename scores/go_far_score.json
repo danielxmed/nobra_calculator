@@ -1,0 +1,192 @@
+{
+  "id": "go_far_score",
+  "title": "GO-FAR (Good Outcome Following Attempted Resuscitation) Score",
+  "description": "Predicts survival to discharge with good neurological outcome after in-hospital cardiac arrest. Uses 13 pre-arrest variables to stratify patients into risk categories for shared decision-making regarding resuscitation preferences.",
+  "category": "emergency",
+  "version": "2013",
+  "parameters": [
+    {
+      "name": "age_category",
+      "type": "string",
+      "required": true,
+      "description": "Patient age category with increasing points for older age groups",
+      "options": ["under_70", "70_to_74", "75_to_79", "80_to_84", "85_or_over"],
+      "validation": {
+        "enum": ["under_70", "70_to_74", "75_to_79", "80_to_84", "85_or_over"]
+      },
+      "unit": "years"
+    },
+    {
+      "name": "neurologically_intact",
+      "type": "string",
+      "required": true,
+      "description": "Patient neurologically intact at admission (CPC score of 1)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "major_trauma",
+      "type": "string",
+      "required": true,
+      "description": "Major trauma as primary diagnosis or significant contributing factor",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "acute_stroke",
+      "type": "string",
+      "required": true,
+      "description": "Acute stroke as primary diagnosis or significant contributing factor",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "metastatic_hematologic_cancer",
+      "type": "string",
+      "required": true,
+      "description": "Metastatic cancer or hematologic malignancy",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "septicemia",
+      "type": "string",
+      "required": true,
+      "description": "Septicemia (systemic infection with bacteremia)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "medical_noncardiac_diagnosis",
+      "type": "string",
+      "required": true,
+      "description": "Medical non-cardiac diagnosis as primary reason for admission",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hepatic_insufficiency",
+      "type": "string",
+      "required": true,
+      "description": "Hepatic insufficiency (cirrhosis, acute hepatitis, or liver failure)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "skilled_nursing_facility",
+      "type": "string",
+      "required": true,
+      "description": "Admitted from skilled nursing facility or long-term care facility",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hypotension_hypoperfusion",
+      "type": "string",
+      "required": true,
+      "description": "Hypotension or hypoperfusion requiring vasopressors or inotropes",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "renal_insufficiency",
+      "type": "string",
+      "required": true,
+      "description": "Renal insufficiency (creatinine >2 mg/dL) or dialysis",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "respiratory_insufficiency",
+      "type": "string",
+      "required": true,
+      "description": "Respiratory insufficiency requiring mechanical ventilation or supplemental oxygen",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "pneumonia",
+      "type": "string",
+      "required": true,
+      "description": "Pneumonia (primary or secondary diagnosis)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "go_far_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total GO-FAR score calculated from weighted clinical variables"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": -15,
+        "max": -6,
+        "stage": "Above Average Survival",
+        "description": "Good prognosis",
+        "interpretation": "Above average probability of survival with good neurological outcome (>15%). Resuscitation generally appropriate and should be discussed with patient/family."
+      },
+      {
+        "min": -5,
+        "max": 13,
+        "stage": "Average Survival",
+        "description": "Intermediate prognosis",
+        "interpretation": "Average probability of survival with good neurological outcome (3-15%). Individualized decision-making recommended based on patient values and preferences."
+      },
+      {
+        "min": 14,
+        "max": 23,
+        "stage": "Low Survival",
+        "description": "Poor prognosis",
+        "interpretation": "Low probability of survival with good neurological outcome (1-3%). Consider discussing limitations of resuscitation with patient/family."
+      },
+      {
+        "min": 24,
+        "max": 50,
+        "stage": "Very Low Survival",
+        "description": "Very poor prognosis",
+        "interpretation": "Very low probability of survival with good neurological outcome (<1%). Strong consideration for do-not-attempt-resuscitation (DNAR) order after appropriate discussion."
+      }
+    ]
+  },
+  "references": [
+    "Ebell MH, Jang W, Shen Y, Geocadin RG. Get With the Guidelines-Resuscitation Investigators. Development and validation of the Good Outcome Following Attempted Resuscitation (GO-FAR) score to predict neurologically intact survival after in-hospital cardiopulmonary resuscitation. JAMA Intern Med. 2013;173(20):1872-8. doi: 10.1001/jamainternmed.2013.10037.",
+    "Piscator E, Hedberg P, Göransson K, Djarv T. Prearrest prediction of survival with good neurologic recovery among in-hospital cardiac arrest patients. Resuscitation. 2018;128:63-69. doi: 10.1016/j.resuscitation.2018.05.006.",
+    "Perman SM, Stanton E, Soar J, et al. Location of in-hospital cardiac arrest in the United States—variability in event rate and outcomes. J Am Heart Assoc. 2016;5(10):e003638. doi: 10.1161/JAHA.116.003638."
+  ],
+  "formula": "Sum of weighted points from 13 clinical variables: Age (0-11 pts), Neurologically intact (-15 pts), Major trauma (+10 pts), Acute stroke (+8 pts), Metastatic/hematologic cancer (+7 pts), Septicemia (+7 pts), Medical non-cardiac diagnosis (+7 pts), Hepatic insufficiency (+6 pts), Skilled nursing facility admission (+6 pts), Hypotension/hypoperfusion (+5 pts), Renal insufficiency (+4 pts), Respiratory insufficiency (+4 pts), Pneumonia (+1 pt)",
+  "notes": [
+    "Score ranges from -15 to +50 points (theoretical maximum ~47 points in practice)",
+    "Developed for in-hospital cardiac arrest prediction, not applicable to out-of-hospital arrests",
+    "Should be used as part of shared decision-making, not as sole determinant of resuscitation status",
+    "Neurologically intact survival defined as Cerebral Performance Category (CPC) score of 1 at discharge",
+    "Variables should be assessed at time of hospital admission or current clinical status",
+    "Consider patient and family values and preferences in addition to probability estimates"
+  ]
+}

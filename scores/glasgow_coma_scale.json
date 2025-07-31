@@ -1,0 +1,114 @@
+{
+  "id": "glasgow_coma_scale",
+  "title": "Glasgow Coma Scale (GCS)",
+  "description": "Clinical scale used to assess level of consciousness and neurological function in patients with acute brain injury. Evaluates three components: eye opening response (1-4), verbal response (1-5), and motor response (1-6) for a total score ranging from 3-15",
+  "category": "neurology",
+  "version": "1974",
+  "parameters": [
+    {
+      "name": "eye_opening",
+      "type": "integer",
+      "required": true,
+      "description": "Eye opening response. Assesses level of arousal and brainstem function",
+      "validation": {
+        "min": 1,
+        "max": 4
+      },
+      "options": [
+        "4 - Spontaneous eye opening",
+        "3 - Eye opening to verbal command",
+        "2 - Eye opening to pain",
+        "1 - No eye opening"
+      ],
+      "unit": "points"
+    },
+    {
+      "name": "verbal_response",
+      "type": "integer",
+      "required": true,
+      "description": "Verbal response. Assesses cognitive function, orientation, and language abilities",
+      "validation": {
+        "min": 1,
+        "max": 5
+      },
+      "options": [
+        "5 - Oriented and conversing",
+        "4 - Confused conversation",
+        "3 - Inappropriate words",
+        "2 - Incomprehensible sounds",
+        "1 - No verbal response"
+      ],
+      "unit": "points"
+    },
+    {
+      "name": "motor_response",
+      "type": "integer",
+      "required": true,
+      "description": "Motor response. Assesses motor function and ability to follow commands",
+      "validation": {
+        "min": 1,
+        "max": 6
+      },
+      "options": [
+        "6 - Obeys commands",
+        "5 - Localizes to pain",
+        "4 - Normal flexion (withdrawal)",
+        "3 - Abnormal flexion (decorticate)",
+        "2 - Extension (decerebrate)",
+        "1 - No motor response"
+      ],
+      "unit": "points"
+    }
+  ],
+  "result": {
+    "name": "gcs_total_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total Glasgow Coma Scale score (3-15 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 3,
+        "max": 8,
+        "stage": "Severe Brain Injury",
+        "description": "Comatose state",
+        "interpretation": "Severe brain injury with significant impairment of consciousness. Patient is comatose and unable to follow commands. Requires intensive monitoring and may need intubation and mechanical ventilation."
+      },
+      {
+        "min": 9,
+        "max": 12,
+        "stage": "Moderate Brain Injury",
+        "description": "Stuporous to obtunded",
+        "interpretation": "Moderate brain injury with altered level of consciousness. Patient may be drowsy or obtunded but can open eyes and localize painful stimuli. Close neurological monitoring required."
+      },
+      {
+        "min": 13,
+        "max": 15,
+        "stage": "Mild Brain Injury",
+        "description": "Alert to mildly confused",
+        "interpretation": "Mild brain injury or normal consciousness. Patient is awake and can follow directions. May have mild confusion but maintains ability to communicate and respond appropriately."
+      }
+    ]
+  },
+  "references": [
+    "Teasdale G, Jennett B. Assessment of coma and impaired consciousness. A practical scale. Lancet. 1974;2(7872):81-84. doi: 10.1016/s0140-6736(74)91639-0.",
+    "Teasdale G, Maas A, Lecky F, Manley G, Stocchetti N, Murray G. The Glasgow Coma Scale at 40 years: standing the test of time. Lancet Neurol. 2014;13(8):844-854. doi: 10.1016/S1474-4422(14)70120-6.",
+    "Brennan PM, Murray GD, Teasdale GM. Simplifying the use of prognostic information in traumatic brain injury. Part 1: The GCS-Pupils score: an extended index of clinical severity. J Neurosurg. 2018;128(6):1612-1620. doi: 10.3171/2017.12.JNS172780."
+  ],
+  "formula": "Total GCS = Eye Opening Score (1-4) + Verbal Response Score (1-5) + Motor Response Score (1-6). Range: 3-15 points",
+  "notes": [
+    "Developed by Graham Teasdale and Bryan Jennett in 1974",
+    "Most widely used neurological assessment tool internationally",
+    "Motor component is the most predictive of outcome",
+    "Should be documented showing individual component scores (e.g., GCS 15 [E4, V5, M6])",
+    "Modified versions exist for pediatric patients and intubated patients",
+    "Use modifiers when applicable: T for intubated (unable to assess verbal), C for eyes closed due to swelling",
+    "Serial assessments more valuable than single measurements",
+    "Lower scores indicate more severe neurological impairment",
+    "Score of 8 or less typically indicates need for airway protection",
+    "Limitations include inability to assess in intubated patients or those with language barriers",
+    "Should be performed by trained healthcare professionals",
+    "Part of standard neurological examination in emergency and critical care settings"
+  ]
+}

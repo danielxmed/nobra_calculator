@@ -1,0 +1,137 @@
+{
+  "id": "g8_geriatric_screening_tool",
+  "title": "G8 Geriatric Screening Tool",
+  "description": "Identifies older cancer patients who could benefit from comprehensive geriatric assessment (CGA). The G8 is a validated screening tool that evaluates multiple geriatric domains including nutrition, mobility, cognition, and functional status to determine which elderly cancer patients require full geriatric evaluation.",
+  "category": "geriatrics",
+  "version": "2012",
+  "parameters": [
+    {
+      "name": "age_category",
+      "type": "string",
+      "required": true,
+      "description": "Patient age category in years",
+      "options": ["over_85", "80_to_85", "under_80"],
+      "validation": {
+        "enum": ["over_85", "80_to_85", "under_80"]
+      },
+      "unit": "years"
+    },
+    {
+      "name": "food_intake_decline",
+      "type": "string",
+      "required": true,
+      "description": "Food intake decline over the past 3 months",
+      "options": ["severe_decrease", "moderate_decrease", "no_decrease"],
+      "validation": {
+        "enum": ["severe_decrease", "moderate_decrease", "no_decrease"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "weight_loss",
+      "type": "string",
+      "required": true,
+      "description": "Weight loss during the last 3 months",
+      "options": ["over_3kg", "does_not_know", "1_to_3kg", "no_weight_loss"],
+      "validation": {
+        "enum": ["over_3kg", "does_not_know", "1_to_3kg", "no_weight_loss"]
+      },
+      "unit": "kg"
+    },
+    {
+      "name": "mobility",
+      "type": "string",
+      "required": true,
+      "description": "Patient mobility status",
+      "options": ["bed_chair_bound", "out_of_bed_no_outside", "goes_out"],
+      "validation": {
+        "enum": ["bed_chair_bound", "out_of_bed_no_outside", "goes_out"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "neuropsychological_conditions",
+      "type": "string",
+      "required": true,
+      "description": "Neuropsychological conditions (dementia or depression)",
+      "options": ["severe_dementia_depression", "mild_dementia", "no_psychological_conditions"],
+      "validation": {
+        "enum": ["severe_dementia_depression", "mild_dementia", "no_psychological_conditions"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "bmi_category",
+      "type": "string",
+      "required": true,
+      "description": "Body Mass Index category",
+      "options": ["under_19", "19_to_21", "21_to_23", "23_or_over"],
+      "validation": {
+        "enum": ["under_19", "19_to_21", "21_to_23", "23_or_over"]
+      },
+      "unit": "kg/m²"
+    },
+    {
+      "name": "multiple_medications",
+      "type": "string",
+      "required": true,
+      "description": "Takes more than three prescription drugs per day",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "health_status_vs_peers",
+      "type": "string",
+      "required": true,
+      "description": "Self-perceived health status compared to peers of same age",
+      "options": ["not_as_good", "does_not_know", "as_good", "better"],
+      "validation": {
+        "enum": ["not_as_good", "does_not_know", "as_good", "better"]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "g8_score",
+    "type": "float",
+    "unit": "points",
+    "description": "G8 total score ranging from 0-17 points, where higher scores indicate better health status"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 14,
+        "stage": "High Risk",
+        "description": "Requires comprehensive geriatric assessment",
+        "interpretation": "Patient scored ≤14 points and is at high risk for geriatric impairment. A comprehensive geriatric assessment (CGA) by trained geriatric professionals is strongly recommended to evaluate functional status, comorbidities, cognition, mental health, social support, nutrition, and geriatric syndromes. This will help guide appropriate cancer treatment decisions and identify opportunities for interventions to optimize patient outcomes."
+      },
+      {
+        "min": 14.1,
+        "max": 17,
+        "stage": "Low Risk",
+        "description": "Low risk for geriatric impairment",
+        "interpretation": "Patient scored >14 points and is at low risk for significant geriatric impairment. While a full comprehensive geriatric assessment may not be immediately necessary, continued monitoring during cancer treatment is appropriate. Consider reassessment if clinical status changes or treatment-related complications arise. Standard oncological care may proceed with routine age-appropriate considerations."
+      }
+    ]
+  },
+  "references": [
+    "Bellera CA, Rainfray M, Mathoulin-Pélissier S, et al. Screening older cancer patients: first evaluation of the G-8 geriatric screening tool. Ann Oncol. 2012;23(8):2166-72. doi: 10.1093/annonc/mdr587.",
+    "Soubeyran P, Bellera C, Goyard J, et al. Screening for vulnerability in older cancer patients: the ONCODAGE Prospective Multicenter Cohort Study. PLoS One. 2014;9(12):e115060. doi: 10.1371/journal.pone.0115060.",
+    "Kenis C, Decoster L, Van Puyvelde K, et al. Performance of two geriatric screening tools in older patients with cancer. J Clin Oncol. 2014;32(1):19-26. doi: 10.1200/JCO.2013.51.1345."
+  ],
+  "formula": "G8 Score = Age points + Food intake points + Weight loss points + Mobility points + Neuropsychological points + BMI points + Medication points + Health status points. Total score ranges from 0-17 points.",
+  "notes": [
+    "The G8 tool incorporates 7 items from the Mini Nutritional Assessment (MNA) plus age",
+    "Administration time: approximately 4-10 minutes",
+    "Can be administered by nursing staff or clinical research associates",
+    "Validated in elderly cancer patients aged ≥65 years",
+    "Cut-off score of ≤14 indicates need for comprehensive geriatric assessment",
+    "Higher scores indicate better geriatric health status",
+    "Should be used as part of routine screening in elderly cancer patients",
+    "Not a substitute for comprehensive geriatric assessment when indicated"
+  ]
+}

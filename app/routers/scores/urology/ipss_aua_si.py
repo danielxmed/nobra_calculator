@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/ipss_aua_si", response_model=IpssAuaSiResponse)
+@router.post(
+    "/ipss_aua_si",
+    response_model=IpssAuaSiResponse,
+    summary="Calculate International Prostate Symptom Score",
+    description="Measures severity of benign prostatic hyperplasia (BPH) symptoms using 7 questions about urinary symptoms to guide treatment decisions.",
+    response_description="The calculated ipss aua si with interpretation",
+    operation_id="calculate_ipss_aua_si"
+)
 async def calculate_ipss_aua_si(request: IpssAuaSiRequest):
     """
     Calculates International Prostate Symptom Score (IPSS)/AUA Symptom Index

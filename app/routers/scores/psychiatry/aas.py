@@ -8,7 +8,14 @@ from app.services.calculator_service import calculator_service
 
 router = APIRouter()
 
-@router.post("/aas", response_model=AasResponse)
+@router.post(
+    "/aas",
+    response_model=AasResponse,
+    summary="Calculate Abuse Assessment Screen (AAS)",
+    description="Detects domestic abuse (intimate partner violence) in pregnant and non-pregnant women in healthcare settings",
+    response_description="The calculated aas with interpretation",
+    operation_id="calculate_aas"
+)
 async def calculate_aas(request: AasRequest):
     """
     Calculates Abuse Assessment Screen (AAS)

@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/cahp_score", response_model=CahpScoreResponse)
+@router.post(
+    "/cahp_score",
+    response_model=CahpScoreResponse,
+    summary="Calculate CAHP (Cardiac Arrest Hospital Prognos...",
+    description="Predicts poor prognosis after out-of-hospital cardiac arrest and guides utility of cardiac catheterization",
+    response_description="The calculated cahp score with interpretation",
+    operation_id="calculate_cahp_score"
+)
 async def calculate_cahp_score(request: CahpScoreRequest):
     """
     Calculates CAHP (Cardiac Arrest Hospital Prognosis) Score

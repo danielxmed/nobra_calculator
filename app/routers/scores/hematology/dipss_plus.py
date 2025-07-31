@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/dipss_plus", response_model=DipssPlusResponse)
+@router.post(
+    "/dipss_plus",
+    response_model=DipssPlusResponse,
+    summary="Calculate DIPSS/DIPSS Plus",
+    description="Estimates survival in patients with primary myelofibrosis using clinical and laboratory parameters",
+    response_description="The calculated dipss plus with interpretation",
+    operation_id="calculate_dipss_plus"
+)
 async def calculate_dipss_plus(request: DipssPlusRequest):
     """
     Calculates DIPSS/DIPSS Plus score for Myelofibrosis

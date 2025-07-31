@@ -1,0 +1,132 @@
+{
+  "id": "gupta_postoperative_respiratory_failure_risk",
+  "title": "Gupta Postoperative Respiratory Failure Risk Calculator",
+  "description": "Predicts risk of mechanical ventilation for >48 hours post-op or reintubation within 30 days using validated preoperative risk factors from ACS NSQIP data",
+  "category": "emergency",
+  "version": "2011",
+  "parameters": [
+    {
+      "name": "functional_status",
+      "type": "string",
+      "required": true,
+      "description": "Functional status based on activities of daily living",
+      "options": ["independent", "partially_dependent", "totally_dependent"],
+      "validation": {
+        "enum": ["independent", "partially_dependent", "totally_dependent"]
+      }
+    },
+    {
+      "name": "asa_class",
+      "type": "string",
+      "required": true,
+      "description": "American Society of Anesthesiologists Physical Status Classification",
+      "options": ["1", "2", "3", "4", "5"],
+      "validation": {
+        "enum": ["1", "2", "3", "4", "5"]
+      }
+    },
+    {
+      "name": "sepsis_status",
+      "type": "string",
+      "required": true,
+      "description": "Preoperative sepsis status",
+      "options": ["none", "sirs", "sepsis", "septic_shock"],
+      "validation": {
+        "enum": ["none", "sirs", "sepsis", "septic_shock"]
+      }
+    },
+    {
+      "name": "emergency_case",
+      "type": "string",
+      "required": true,
+      "description": "Whether this is an emergency surgical case",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "procedure_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of surgical procedure being performed",
+      "options": [
+        "aortic", "brain", "breast", "cardiac", "foregut_hepatobiliary",
+        "gallbladder_appendix_adrenals_spleen", "intestinal", "neck",
+        "obstetric_gynecologic", "orthopedic_non_spine", "peripheral_vascular",
+        "renal", "skin", "spine", "thoracic_non_cardiac", "thyroid_parathyroid",
+        "urology_non_renal", "vein", "hernia", "gynecologic_oncology", 
+        "other_abdomen", "other_hematologic"
+      ],
+      "validation": {
+        "enum": [
+          "aortic", "brain", "breast", "cardiac", "foregut_hepatobiliary",
+          "gallbladder_appendix_adrenals_spleen", "intestinal", "neck",
+          "obstetric_gynecologic", "orthopedic_non_spine", "peripheral_vascular",
+          "renal", "skin", "spine", "thoracic_non_cardiac", "thyroid_parathyroid",
+          "urology_non_renal", "vein", "hernia", "gynecologic_oncology", 
+          "other_abdomen", "other_hematologic"
+        ]
+      }
+    }
+  ],
+  "result": {
+    "name": "respiratory_failure_risk",
+    "type": "float",
+    "unit": "percentage",
+    "description": "Predicted risk of postoperative respiratory failure within 30 days"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Very Low Risk",
+        "description": "Minimal respiratory failure risk",
+        "interpretation": "Very low risk of postoperative respiratory failure. Standard perioperative care and monitoring appropriate."
+      },
+      {
+        "min": 1,
+        "max": 3,
+        "stage": "Low Risk",
+        "description": "Low respiratory failure risk",
+        "interpretation": "Low risk of postoperative respiratory failure. Standard care with attention to respiratory status and pain management."
+      },
+      {
+        "min": 3,
+        "max": 8,
+        "stage": "Moderate Risk",
+        "description": "Moderate respiratory failure risk",
+        "interpretation": "Moderate risk of postoperative respiratory failure. Consider enhanced respiratory monitoring and pulmonary care protocols."
+      },
+      {
+        "min": 8,
+        "max": 20,
+        "stage": "High Risk",
+        "description": "High respiratory failure risk",
+        "interpretation": "High risk of postoperative respiratory failure. Implement intensive respiratory monitoring, consider ICU care and pulmonology consultation."
+      },
+      {
+        "min": 20,
+        "max": 100,
+        "stage": "Very High Risk",
+        "description": "Very high respiratory failure risk",
+        "interpretation": "Very high risk of postoperative respiratory failure. Consider postponing elective surgery for optimization, ICU-level care required."
+      }
+    ]
+  },
+  "references": [
+    "Gupta H, Gupta PK, Fang X, et al. Development and validation of a risk calculator predicting postoperative respiratory failure. Chest. 2011;140(5):1207-1215. doi: 10.1378/chest.11-0466",
+    "American College of Surgeons National Surgical Quality Improvement Program. ACS NSQIP Risk Calculator. https://riskcalculator.facs.org/",
+    "Canet J, Gallart L, Gomar C, et al. Prediction of postoperative pulmonary complications in a population-based surgical cohort. Anesthesiology. 2010;113(6):1338-1350."
+  ],
+  "formula": "Risk (%) = e^x / (1 + e^x) × 100, where x = -1.7397 + functional_status_points + ASA_points + sepsis_points + emergency_points + procedure_points",
+  "notes": [
+    "Developed using ACS NSQIP data from 2007 (211,410 patients training) and 2008 (257,385 patients validation)",
+    "Model demonstrated excellent discriminative ability with C-statistic of 0.894 in training and 0.897 in validation sets",
+    "Postoperative respiratory failure occurred in 3.1% of patients and was associated with significantly higher 30-day mortality (25.62% vs 0.98%)",
+    "Respiratory failure defined as requiring mechanical ventilation >48 hours after surgery or unplanned intubation ≤30 days of surgery",
+    "Calculator helps identify patients who may benefit from enhanced respiratory monitoring and ICU-level care",
+    "Should be used in conjunction with clinical judgment and comprehensive patient assessment"
+  ]
+}

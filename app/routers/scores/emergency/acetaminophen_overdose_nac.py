@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/acetaminophen_overdose_nac", response_model=AcetaminophenOverdoseNacResponse)
+@router.post(
+    "/acetaminophen_overdose_nac",
+    response_model=AcetaminophenOverdoseNacResponse,
+    summary="Calculate Acetaminophen Overdose and NAC Dosing",
+    description="Calculates PO/IV N-acetylcysteine (NAC) dosing for acetaminophen overdose and determines toxicity based on the Rumack-Matthew nomogram",
+    response_description="The calculated acetaminophen overdose nac with interpretation",
+    operation_id="calculate_acetaminophen_overdose_nac"
+)
 async def calculate_acetaminophen_overdose_nac(request: AcetaminophenOverdoseNacRequest):
     """
     Calculates N-acetylcysteine (NAC) dosing for acetaminophen overdose

@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/chads_65", response_model=Chads65Response)
+@router.post(
+    "/chads_65",
+    response_model=Chads65Response,
+    summary="Calculate CHADS-65 (Canadian Society of Cardiol...",
+    description="Clinical decision algorithm developed by the Canadian Cardiovascular Society to guide antithrombotic therapy for patients with nonvalvular atrial fibrillation or atrial flutter. Uses age-based approach to determine whether patients should receive oral anticoagulation, antiplatelet therapy, or no antithrombotic therapy for stroke prevention.",
+    response_description="The calculated chads 65 with interpretation",
+    operation_id="calculate_chads_65"
+)
 async def calculate_chads_65(request: Chads65Request):
     """
     Calculates CHADS-65 (Canadian Society of Cardiology Guideline)

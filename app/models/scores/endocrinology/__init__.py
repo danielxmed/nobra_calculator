@@ -15,6 +15,8 @@ from .dka_mpm_score import DkaMpmScoreRequest, DkaMpmScoreResponse
 from .dutch_criteria_familial_hypercholesterolemia import DutchCriteriaFamilialHypercholesterolemiaRequest, DutchCriteriaFamilialHypercholesterolemiaResponse
 from .edmonton_obesity_staging_system import EdmontonObesityStagingSystemRequest, EdmontonObesityStagingSystemResponse
 from .estimated_average_glucose_eag_hba1c import EstimatedAverageGlucoseEagHba1cRequest, EstimatedAverageGlucoseEagHba1cResponse
+from .findrisc import FindriscRequest, FindriscResponse
+from .glucose_infusion_rate import GlucoseInfusionRateRequest, GlucoseInfusionRateResponse
 
 __all__ = [
     "AdaRiskCalculatorRequest",
@@ -43,4 +45,8 @@ __all__ = [
     "EdmontonObesityStagingSystemResponse",
     "EstimatedAverageGlucoseEagHba1cRequest",
     "EstimatedAverageGlucoseEagHba1cResponse",
+    "FindriscRequest",
+    "FindriscResponse",
+    "GlucoseInfusionRateRequest",
+    "GlucoseInfusionRateResponse",
 ]

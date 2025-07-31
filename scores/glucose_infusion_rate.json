@@ -1,0 +1,111 @@
+{
+  "id": "glucose_infusion_rate",
+  "title": "Glucose Infusion Rate (GIR)",
+  "description": "Calculates the rate at which glucose is administered intravenously, particularly important in neonatal and pediatric care to maintain appropriate blood glucose levels. Used to monitor and adjust dextrose infusions to prevent hypoglycemia while avoiding excessive glucose administration.",
+  "category": "endocrinology",
+  "version": "Standard_2024",
+  "parameters": [
+    {
+      "name": "infusion_rate",
+      "type": "float",
+      "required": true,
+      "description": "Intravenous infusion rate of dextrose solution in mL/hr",
+      "validation": {
+        "min": 0.1,
+        "max": 1000.0
+      },
+      "unit": "mL/hr"
+    },
+    {
+      "name": "dextrose_concentration",
+      "type": "float",
+      "required": true,
+      "description": "Concentration of dextrose in the IV solution as percentage (e.g., 5% = 5.0, 10% = 10.0, 12.5% = 12.5)",
+      "validation": {
+        "min": 1.0,
+        "max": 50.0
+      },
+      "unit": "%"
+    },
+    {
+      "name": "weight",
+      "type": "float",
+      "required": true,
+      "description": "Patient weight in kilograms. Essential for calculating per-kilogram dosing in pediatric and neonatal care",
+      "validation": {
+        "min": 0.5,
+        "max": 200.0
+      },
+      "unit": "kg"
+    }
+  ],
+  "result": {
+    "name": "glucose_infusion_rate",
+    "type": "float",
+    "unit": "mg/kg/min",
+    "description": "Glucose infusion rate in milligrams per kilogram per minute"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0.0,
+        "max": 3.9,
+        "stage": "Below Normal Range",
+        "description": "Insufficient glucose delivery",
+        "interpretation": "GIR below 4 mg/kg/min may be insufficient to prevent hypoglycemia in neonates and infants not feeding orally. Risk of hypoglycemia, especially in preterm infants or those with increased metabolic demands. Consider increasing dextrose concentration or infusion rate."
+      },
+      {
+        "min": 4.0,
+        "max": 8.0,
+        "stage": "Normal/Physiologic Range",
+        "description": "Appropriate glucose delivery",
+        "interpretation": "GIR 4-8 mg/kg/min represents normal glucose utilization rate. This range covers baseline glucose needs (4-6 mg/kg/min) and is appropriate for maintaining euglycemia in most neonates and infants receiving IV fluids without enteral nutrition."
+      },
+      {
+        "min": 8.1,
+        "max": 12.0,
+        "stage": "Moderate/Therapeutic Range",
+        "description": "Enhanced glucose delivery",
+        "interpretation": "GIR 8-12 mg/kg/min provides enhanced glucose delivery for growth and anabolism. Common in parenteral nutrition protocols. Monitor for hyperglycemia and adjust as needed. May require level 3 NICU care for close glucose monitoring."
+      },
+      {
+        "min": 12.1,
+        "max": 18.0,
+        "stage": "High Therapeutic Range",
+        "description": "High glucose delivery for nutrition",
+        "interpretation": "GIR 12-18 mg/kg/min represents high glucose delivery typically used in full parenteral nutrition. Optimal for growth in premature infants. Requires frequent glucose monitoring and may need insulin co-administration to prevent hyperglycemia."
+      },
+      {
+        "min": 18.1,
+        "max": 50.0,
+        "stage": "Excessive Range",
+        "description": "Risk of metabolic complications",
+        "interpretation": "GIR >18 mg/kg/min increases risk of hyperglycemia, lipogenesis, and fatty liver deposits. Associated with increased CO2 production and respiratory burden. Requires careful monitoring and likely insulin therapy. Consider reducing glucose load and increasing lipid contribution to calories."
+      }
+    ]
+  },
+  "references": [
+    "Kalhan SC, Parimi PS. Gluconeogenesis in the fetus and neonate. Semin Perinatol. 2000;24(2):94-106. doi: 10.1053/sp.2000.6360.",
+    "Ditzenberger GR, Collins SD, Binder N. Continuous insulin infusion in the management of hyperglycemia in the pediatric intensive care unit. Pediatr Crit Care Med. 2004;5(1):27-32. doi: 10.1097/01.PCC.0000102223.83245.02.",
+    "Sinclair JC, Bottino M, Cowett RM. Interventions for prevention of neonatal hyperglycemia in very low birth weight infants. Cochrane Database Syst Rev. 2011;(10):CD007615. doi: 10.1002/14651858.CD007615.pub3.",
+    "Hay WW Jr, Raju TN, Higgins RD, Kalhan SC, Devaskar SU. Knowledge gaps and research needs for understanding and treating neonatal hypoglycemia: workshop report from Eunice Kennedy Shriver National Institute of Child Health and Human Development. J Pediatr. 2009;155(5):612-617. doi: 10.1016/j.jpeds.2009.06.044."
+  ],
+  "formula": "GIR (mg/kg/min) = [Infusion rate (mL/hr) × Dextrose concentration (%) × 10] / [Weight (kg) × 60]. Simplified: GIR = (D × DIR) / 6, where D = dextrose %, DIR = infusion rate in mL/kg/hr",
+  "notes": [
+    "Standard formula: GIR = [Rate × Concentration × 1000] / [Weight × 60 × 100]",
+    "Simplified mental calculation: GIR = (Dextrose% × mL/kg/hr) / 6",
+    "Normal baseline glucose utilization in term infants: 4-6 mg/kg/min",
+    "Preterm infants typically need 5-8 mg/kg/min initially",
+    "GIR should not fall below 4 mg/kg/min in non-feeding infants",
+    "Target GIR for optimal nutrition in neonates: 14 mg/kg/min",
+    "GIR >10-12 mg/kg/min may require Level 3 NICU care",
+    "GIR >18-20 mg/kg/min increases risk of lipogenesis and liver complications",
+    "Monitor blood glucose every 4-6 hours when adjusting GIR",
+    "Common dextrose concentrations: D5W (5%), D10W (10%), D12.5W (12.5%)",
+    "Central line access often required for dextrose concentrations >12.5%",
+    "Used extensively in parenteral nutrition protocols",
+    "Important for preventing neonatal hypoglycemia",
+    "Consider insulin therapy when GIR >12-15 mg/kg/min with persistent hyperglycemia",
+    "Gradual GIR reduction recommended when transitioning to enteral feeding"
+  ]
+}

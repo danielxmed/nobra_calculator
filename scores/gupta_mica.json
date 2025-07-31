@@ -1,0 +1,132 @@
+{
+  "id": "gupta_mica",
+  "title": "Gupta Perioperative Risk for Myocardial Infarction or Cardiac Arrest (MICA)",
+  "description": "Predicts risk of myocardial infarction or cardiac arrest within 30 days after surgery using five validated perioperative risk factors",
+  "category": "emergency",
+  "version": "2011",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "unit": "years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      }
+    },
+    {
+      "name": "functional_status",
+      "type": "string",
+      "required": true,
+      "description": "Functional status assessment based on activities of daily living",
+      "options": ["independent", "partially_dependent", "totally_dependent"],
+      "validation": {
+        "enum": ["independent", "partially_dependent", "totally_dependent"]
+      }
+    },
+    {
+      "name": "asa_class",
+      "type": "string",
+      "required": true,
+      "description": "American Society of Anesthesiologists Physical Status Classification",
+      "options": ["1", "2", "3", "4", "5"],
+      "validation": {
+        "enum": ["1", "2", "3", "4", "5"]
+      }
+    },
+    {
+      "name": "creatinine_status",
+      "type": "string",
+      "required": true,
+      "description": "Serum creatinine level status",
+      "options": ["normal", "elevated", "unknown"],
+      "validation": {
+        "enum": ["normal", "elevated", "unknown"]
+      }
+    },
+    {
+      "name": "surgery_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of surgical procedure being performed",
+      "options": [
+        "aortic", "brain", "cardiac", "foregut_hepatobiliary", "gallbladder_appendix_adrenals_spleen",
+        "intestinal", "neck", "obstetric_gynecologic", "orthopedic_non_spine", "peripheral_vascular",
+        "skin", "spine", "thoracic_non_cardiac", "urology_non_renal", "renal", "hernia",
+        "thyroid_parathyroid", "breast", "eye", "vein"
+      ],
+      "validation": {
+        "enum": [
+          "aortic", "brain", "cardiac", "foregut_hepatobiliary", "gallbladder_appendix_adrenals_spleen",
+          "intestinal", "neck", "obstetric_gynecologic", "orthopedic_non_spine", "peripheral_vascular",
+          "skin", "spine", "thoracic_non_cardiac", "urology_non_renal", "renal", "hernia",
+          "thyroid_parathyroid", "breast", "eye", "vein"
+        ]
+      }
+    }
+  ],
+  "result": {
+    "name": "cardiac_risk_percentage",
+    "type": "float",
+    "unit": "percentage",
+    "description": "Predicted risk of myocardial infarction or cardiac arrest within 30 days"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0.0,
+        "max": 0.5,
+        "risk_level": "Very Low Risk",
+        "description": "Minimal perioperative cardiac risk",
+        "interpretation": "Very low risk of perioperative cardiac events. Standard perioperative monitoring appropriate. Consider routine postoperative care protocols."
+      },
+      {
+        "min": 0.5,
+        "max": 1.0,
+        "risk_level": "Low Risk", 
+        "description": "Low perioperative cardiac risk",
+        "interpretation": "Low risk of perioperative cardiac events. Standard monitoring with attention to cardiac symptoms. Consider basic cardiac precautions."
+      },
+      {
+        "min": 1.0,
+        "max": 2.0,
+        "risk_level": "Moderate Risk",
+        "description": "Moderate perioperative cardiac risk",
+        "interpretation": "Moderate risk requiring enhanced monitoring. Consider cardiac telemetry, serial troponins, and cardiology consultation for high-risk procedures."
+      },
+      {
+        "min": 2.0,
+        "max": 5.0,
+        "risk_level": "High Risk",
+        "description": "High perioperative cardiac risk",
+        "interpretation": "High risk requiring intensive monitoring and cardiac optimization. Strongly consider preoperative cardiology evaluation, continuous cardiac monitoring, and postoperative ICU care."
+      },
+      {
+        "min": 5.0,
+        "max": 100.0,
+        "risk_level": "Very High Risk",
+        "description": "Very high perioperative cardiac risk",
+        "interpretation": "Very high risk requiring comprehensive cardiac evaluation and optimization. Consider postponing elective surgery for cardiac optimization, preoperative stress testing, and multidisciplinary team approach."
+      }
+    ]
+  },
+  "references": [
+    "Gupta PK, Gupta H, Sundaram A, et al. Development and validation of a risk calculator for prediction of cardiac risk after surgery. Circulation. 2011;124(4):381-387. doi: 10.1161/CIRCULATIONAHA.110.015701",
+    "Bilimoria KY, Liu Y, Paruch JL, et al. Development and evaluation of the universal ACS NSQIP surgical risk calculator: a decision aid and informed consent tool for patients and surgeons. J Am Coll Surg. 2013;217(5):833-842. doi: 10.1016/j.jamcollsurg.2013.07.385",
+    "Ford MK, Beattie WS, Wijeysundera DN. Systematic review: prediction of perioperative cardiac complications and mortality by the revised cardiac risk index. Ann Intern Med. 2010;152(1):26-35. doi: 10.7326/0003-4819-152-1-201001050-00007"
+  ],
+  "formula": "Cardiac risk (%) = e^x / (1 + e^x), where x = -5.25 + (age × 0.02) + functional_status_points + asa_class_points + creatinine_points + surgery_type_points",
+  "notes": [
+    "Developed from >400,000 patients in the American College of Surgeons National Surgical Quality Improvement Program database",
+    "Superior predictive ability (C-statistic 0.88) compared to Revised Cardiac Risk Index (C-statistic 0.75)",
+    "Predicts 30-day perioperative myocardial infarction or cardiac arrest risk",
+    "Applies to both cardiac and non-cardiac surgical procedures",
+    "Should be used in conjunction with clinical judgment and not as absolute predictor",
+    "Does not include stress test results, echocardiography findings, or beta-blocker therapy status",
+    "May underestimate risk in patients with known coronary artery disease not captured in variables",
+    "Useful for preoperative counseling, risk stratification, and postoperative monitoring decisions",
+    "High-risk patients (>1-2%) may benefit from enhanced perioperative monitoring and cardiology consultation"
+  ]
+}

@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/fibrosis_4_index", response_model=Fibrosis4IndexResponse)
+@router.post(
+    "/fibrosis_4_index",
+    response_model=Fibrosis4IndexResponse,
+    summary="Calculate Fibrosis-4 (FIB-4) Index for Liver Fibrosis",
+    description="Non-invasive estimate of liver scarring in HCV and HBV patients, to assess need for biopsy. Calculated as (Age × AST) / (Platelet count × √ALT)",
+    response_description="The calculated fibrosis 4 index with interpretation",
+    operation_id="calculate_fibrosis_4_index"
+)
 async def calculate_fibrosis_4_index(request: Fibrosis4IndexRequest):
     """
     Calculates Fibrosis-4 (FIB-4) Index for Liver Fibrosis

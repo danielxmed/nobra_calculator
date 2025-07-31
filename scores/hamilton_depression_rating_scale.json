@@ -1,0 +1,232 @@
+{
+  "id": "hamilton_depression_rating_scale",
+  "title": "Hamilton Depression Rating Scale (HAM-D)",
+  "description": "Assesses severity of depression symptoms. The 17-item version is a clinician-administered scale that measures depressive symptoms over the past week.",
+  "category": "psychiatry",
+  "version": "1960",
+  "parameters": [
+    {
+      "name": "depressed_mood",
+      "type": "integer",
+      "required": true,
+      "description": "Sadness, hopelessness, helplessness, worthlessness",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "feelings_of_guilt",
+      "type": "integer",
+      "required": true,
+      "description": "Self-reproach, ideas of guilt, delusions of guilt",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "suicide",
+      "type": "integer",
+      "required": true,
+      "description": "Life not worth living, wishes were dead, suicidal ideas or attempts",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "insomnia_early",
+      "type": "integer",
+      "required": true,
+      "description": "Difficulty falling asleep",
+      "validation": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    {
+      "name": "insomnia_middle",
+      "type": "integer",
+      "required": true,
+      "description": "Waking during the night",
+      "validation": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    {
+      "name": "insomnia_late",
+      "type": "integer",
+      "required": true,
+      "description": "Early morning awakening",
+      "validation": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    {
+      "name": "work_and_activities",
+      "type": "integer",
+      "required": true,
+      "description": "Loss of interest, lack of pleasure, decreased activities, productivity",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "retardation",
+      "type": "integer",
+      "required": true,
+      "description": "Slowness of thought/speech, impaired concentration, decreased motor activity",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "agitation",
+      "type": "integer",
+      "required": true,
+      "description": "Restlessness, fidgeting, hand-wringing, nail-biting, hair-pulling",
+      "validation": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    {
+      "name": "anxiety_psychological",
+      "type": "integer",
+      "required": true,
+      "description": "Tension, irritability, worry, apprehension, fears",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "anxiety_somatic",
+      "type": "integer",
+      "required": true,
+      "description": "Physiological concomitants of anxiety (GI, cardiovascular, respiratory symptoms)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "somatic_symptoms_gastrointestinal",
+      "type": "integer",
+      "required": true,
+      "description": "Loss of appetite, GI symptoms",
+      "validation": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    {
+      "name": "somatic_symptoms_general",
+      "type": "integer",
+      "required": true,
+      "description": "Heaviness in limbs/back/head, diffuse backache, fatigue, loss of energy",
+      "validation": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    {
+      "name": "genital_symptoms",
+      "type": "integer",
+      "required": true,
+      "description": "Loss of libido, menstrual disturbances",
+      "validation": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    {
+      "name": "hypochondriasis",
+      "type": "integer",
+      "required": true,
+      "description": "Preoccupation with health, hypochondriacal delusions",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "loss_of_weight",
+      "type": "integer",
+      "required": true,
+      "description": "Weight loss",
+      "validation": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    {
+      "name": "insight",
+      "type": "integer",
+      "required": true,
+      "description": "Awareness of being depressed and ill",
+      "validation": {
+        "min": 0,
+        "max": 2
+      }
+    }
+  ],
+  "result": {
+    "name": "hamd_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "HAM-D total score (0-50 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 7,
+        "stage": "No Depression",
+        "description": "Normal range",
+        "interpretation": "Patient shows no significant depressive symptoms. No specific intervention typically required."
+      },
+      {
+        "min": 8,
+        "max": 16,
+        "stage": "Mild Depression",
+        "description": "Mild depressive symptoms",
+        "interpretation": "Patient experiences mild depressive symptoms that may cause some distress. Consider monitoring and supportive interventions."
+      },
+      {
+        "min": 17,
+        "max": 23,
+        "stage": "Moderate Depression",
+        "description": "Moderate depressive symptoms",
+        "interpretation": "Patient experiences moderate depressive symptoms that interfere with daily functioning. Consider psychotherapy and/or antidepressant medication."
+      },
+      {
+        "min": 24,
+        "max": 50,
+        "stage": "Severe Depression",
+        "description": "Severe depressive symptoms",
+        "interpretation": "Patient experiences severe depressive symptoms that significantly impair functioning. Strongly consider intensive treatment including medication and psychotherapy. Assess suicide risk."
+      }
+    ]
+  },
+  "references": [
+    "Hamilton M. A rating scale for depression. J Neurol Neurosurg Psychiatry. 1960 Feb;23(1):56-62. doi: 10.1136/jnnp.23.1.56.",
+    "Zimmerman M, Martinez JH, Young D, Chelminski I, Dalrymple K. Severity classification on the Hamilton Depression Rating Scale. J Affect Disord. 2013 Sep 5;150(2):384-8. doi: 10.1016/j.jad.2013.04.028.",
+    "Williams JB. A structured interview guide for the Hamilton Depression Rating Scale. Arch Gen Psychiatry. 1988 Aug;45(8):742-7. doi: 10.1001/archpsyc.1988.01800320058007."
+  ],
+  "formula": "HAM-D Score = Sum of all 17 item scores (items scored 0-4 or 0-2 depending on symptom)",
+  "notes": [
+    "Clinician-administered scale requiring structured or semi-structured interview",
+    "Assesses symptoms over the past week",
+    "Administration typically takes 20-30 minutes",
+    "Not intended as a diagnostic tool",
+    "Response to treatment defined as e50% score reduction",
+    "Remission commonly defined as score <7",
+    "Items 18-21 may be recorded for additional clinical information but are not scored"
+  ]
+}

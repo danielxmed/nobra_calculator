@@ -1,0 +1,134 @@
+{
+  "id": "gcs_pupils_score",
+  "title": "GCS-Pupils Score",
+  "description": "The GCS-Pupils Score (GCS-P) combines the Glasgow Coma Scale with pupillary reactivity assessment to provide enhanced prognostic accuracy in traumatic brain injury patients. This extended index offers improved prediction of 6-month mortality and unfavorable outcomes, particularly in patients with severe brain injury where standard GCS may be limited.",
+  "category": "neurology",
+  "version": "2018",
+  "parameters": [
+    {
+      "name": "eye_response",
+      "type": "integer",
+      "required": true,
+      "description": "Eye opening response component of Glasgow Coma Scale",
+      "validation": {
+        "min": 1,
+        "max": 4
+      },
+      "options": [
+        "1 - No eye opening",
+        "2 - Eye opening to pain",
+        "3 - Eye opening to voice",
+        "4 - Eyes open spontaneously"
+      ],
+      "unit": "points"
+    },
+    {
+      "name": "verbal_response",
+      "type": "integer",
+      "required": true,
+      "description": "Verbal response component of Glasgow Coma Scale",
+      "validation": {
+        "min": 1,
+        "max": 5
+      },
+      "options": [
+        "1 - No verbal response",
+        "2 - Incomprehensible sounds",
+        "3 - Inappropriate words",
+        "4 - Confused",
+        "5 - Oriented"
+      ],
+      "unit": "points"
+    },
+    {
+      "name": "motor_response",
+      "type": "integer",
+      "required": true,
+      "description": "Motor response component of Glasgow Coma Scale",
+      "validation": {
+        "min": 1,
+        "max": 6
+      },
+      "options": [
+        "1 - No motor response",
+        "2 - Extension to pain",
+        "3 - Flexion to pain",
+        "4 - Withdrawal from pain",
+        "5 - Localizes pain",
+        "6 - Obeys commands"
+      ],
+      "unit": "points"
+    },
+    {
+      "name": "pupil_reactivity",
+      "type": "string",
+      "required": true,
+      "description": "Pupillary light reflex assessment for both pupils",
+      "options": ["both_reactive", "one_unreactive", "both_unreactive"],
+      "validation": {
+        "enum": ["both_reactive", "one_unreactive", "both_unreactive"]
+      }
+    }
+  ],
+  "result": {
+    "name": "gcs_pupils_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Combined GCS-Pupils score with mortality and outcome predictions"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 3,
+        "stage": "Extremely Severe",
+        "description": "Very poor prognosis",
+        "interpretation": "Extremely severe brain injury with very high mortality risk (>64%) and unfavorable outcome probability (>85%). Requires intensive neurological monitoring and aggressive supportive care. Consider goals of care discussions with family."
+      },
+      {
+        "min": 4,
+        "max": 6,
+        "stage": "Severe",
+        "description": "Poor prognosis",
+        "interpretation": "Severe brain injury with high mortality risk (25-40%) and substantial unfavorable outcome probability (46-69%). Intensive neurological monitoring and comprehensive rehabilitation planning essential."
+      },
+      {
+        "min": 7,
+        "max": 9,
+        "stage": "Moderate",
+        "description": "Guarded prognosis",
+        "interpretation": "Moderate brain injury with intermediate mortality risk (17-20%) and moderate unfavorable outcome probability (30-37%). Close neurological monitoring and early rehabilitation intervention recommended."
+      },
+      {
+        "min": 10,
+        "max": 12,
+        "stage": "Mild-Moderate",
+        "description": "Fair prognosis",
+        "interpretation": "Mild to moderate brain injury with lower mortality risk (9-17%) and reduced unfavorable outcome probability (20-29%). Monitor for complications and initiate appropriate rehabilitation."
+      },
+      {
+        "min": 13,
+        "max": 15,
+        "stage": "Mild",
+        "description": "Good prognosis",
+        "interpretation": "Mild brain injury with low mortality risk (3-7%) and favorable outcome probability (>84%). Monitor for post-concussive symptoms and ensure appropriate follow-up."
+      }
+    ]
+  },
+  "references": [
+    "Brennan PM, Murray GD, Teasdale GM. Simplifying the use of prognostic information in traumatic brain injury. Part 1: The GCS-Pupils score: an extended index of clinical severity. J Neurosurg. 2018;128(6):1612-1620. doi: 10.3171/2017.12.JNS172780.",
+    "Teasdale G, Maas A, Lecky F, et al. The Glasgow Coma Scale at 40 years: standing the test of time. Lancet Neurol. 2014;13(8):844-54. doi: 10.1016/S1474-4422(14)70120-6.",
+    "Steyerberg EW, Mushkudiani N, Perel P, et al. Predicting outcome after traumatic brain injury: development and international validation of prognostic scores based on admission characteristics. PLoS Med. 2008;5(8):e165. doi: 10.1371/journal.pmed.0050165."
+  ],
+  "formula": "GCS-P = GCS Total Score + Pupil Reactivity Score, where GCS = Eye Response + Verbal Response + Motor Response, and Pupil Reactivity Score: Both reactive = 0 points, One unreactive = 1 point, Both unreactive = 2 points",
+  "notes": [
+    "The GCS-Pupils score extends the range of prognostic information beyond standard GCS alone",
+    "Particularly valuable in patients with very low GCS scores (3-4) where pupillary reactivity adds significant prognostic value",
+    "Mortality and outcome predictions are based on 6-month follow-up data from IMPACT and CRASH databases",
+    "Unfavorable outcome is defined as death, vegetative state, or severe disability at 6 months",
+    "The score provides a continuous relationship between injury severity and outcomes",
+    "Should be used in conjunction with other clinical factors and imaging findings for comprehensive assessment",
+    "Regular reassessment is important as neurological status may change over time",
+    "Consider cultural and communication factors when assessing verbal response in non-English speakers"
+  ]
+}

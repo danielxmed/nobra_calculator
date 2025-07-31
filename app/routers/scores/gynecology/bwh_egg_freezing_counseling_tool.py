@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/bwh_egg_freezing_counseling_tool", response_model=BwhEggFreezingCounselingToolResponse)
+@router.post(
+    "/bwh_egg_freezing_counseling_tool",
+    response_model=BwhEggFreezingCounselingToolResponse,
+    summary="Calculate BWH Egg Freezing Counseling Tool (EFCT)",
+    description="Predicts likelihood of live birth for elective egg freezing in women. Developed by Brigham and Women's Hospital to provide evidence-based counseling for women considering elective egg freezing by predicting the probability of at least one, two, or three live births based on age and number of mature eggs.",
+    response_description="The calculated bwh egg freezing counseling tool with interpretation",
+    operation_id="calculate_bwh_egg_freezing_counseling_tool"
+)
 async def calculate_bwh_egg_freezing_counseling_tool(request: BwhEggFreezingCounselingToolRequest):
     """
     Calculates BWH Egg Freezing Counseling Tool (EFCT)

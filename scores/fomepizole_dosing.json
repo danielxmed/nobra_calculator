@@ -1,0 +1,73 @@
+{
+  "id": "fomepizole_dosing",
+  "title": "Fomepizole Dosing Calculator",
+  "description": "Calculates fomepizole (4-methylpyrazole) dosing for treatment of methanol and ethylene glycol poisoning. Provides initial loading dose, maintenance doses, and special hemodialysis considerations.",
+  "category": "emergency",
+  "version": "2021",
+  "parameters": [
+    {
+      "name": "weight",
+      "type": "float",
+      "required": true,
+      "description": "Patient body weight in kilograms",
+      "validation": {
+        "min": 1,
+        "max": 300
+      },
+      "unit": "kg"
+    },
+    {
+      "name": "clinical_scenario", 
+      "type": "string",
+      "required": true,
+      "description": "Clinical scenario for dosing protocol",
+      "options": ["initial_loading", "maintenance_no_dialysis", "during_hemodialysis", "post_hemodialysis"],
+      "validation": {
+        "enum": ["initial_loading", "maintenance_no_dialysis", "during_hemodialysis", "post_hemodialysis"]
+      }
+    },
+    {
+      "name": "hours_since_last_dose",
+      "type": "float",
+      "required": false,
+      "description": "Hours since last fomepizole dose (required for hemodialysis scenarios)",
+      "validation": {
+        "min": 0,
+        "max": 48
+      },
+      "unit": "hours"
+    }
+  ],
+  "result": {
+    "name": "fomepizole_dose",
+    "type": "float", 
+    "unit": "mg",
+    "description": "Calculated fomepizole dose in milligrams"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2000,
+        "stage": "Standard Dosing",
+        "description": "Standard fomepizole dosing protocol",
+        "interpretation": "Follow institutional protocols for IV administration over 30 minutes"
+      }
+    ]
+  },
+  "references": [
+    "Howland MA. Antidotes in Depth: Fomepizole. In: Nelson LS, Howland MA, Lewin NA, Smith SW, Goldfrank LR, Hoffman RS, editors. Goldfrank's Toxicologic Emergencies. 11th ed. New York: McGraw-Hill; 2019.",
+    "Brent J, McMartin K, Phillips S, et al. Fomepizole for the treatment of ethylene glycol poisoning. N Engl J Med. 1999;340(11):832-838.",
+    "Brent J, McMartin K, Phillips S, et al. Fomepizole for the treatment of methanol poisoning. N Engl J Med. 2001;344(6):424-429.",
+    "Antizol (fomepizole) package insert. Cumberland Pharmaceuticals Inc. Nashville, TN; 2020."
+  ],
+  "formula": "Initial: 15 mg/kg IV; Maintenance (no dialysis): 10 mg/kg q12h × 4 doses, then 15 mg/kg q12h; During dialysis: 10 mg/kg q4h or continuous infusion 1-1.5 mg/kg/h; Post-dialysis: depends on time since last dose",
+  "notes": [
+    "All doses should be administered intravenously over 30 minutes",
+    "Mix with at least 100 mL of sterile 0.9% sodium chloride or dextrose 5% injection",
+    "Monitor for side effects including nausea, dizziness, and headache",
+    "Treatment endpoint: ethylene glycol/methanol concentrations undetectable or <20 mg/dL with normal pH and asymptomatic patient",
+    "For hemodialysis patients: dosing frequency changes due to drug removal during dialysis",
+    "Contraindicated in patients with known hypersensitivity to fomepizole or other pyrazoles"
+  ]
+}

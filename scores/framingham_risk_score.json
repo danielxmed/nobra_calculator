@@ -1,0 +1,135 @@
+{
+  "id": "framingham_risk_score",
+  "title": "Framingham Risk Score for Hard Coronary Heart Disease",
+  "description": "Estimates 10-year risk of myocardial infarction in patients aged 30-79 with no history of coronary heart disease or diabetes",
+  "category": "cardiology",
+  "version": "1998",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 30,
+        "max": 79
+      },
+      "unit": "years"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient sex",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "total_cholesterol",
+      "type": "float",
+      "required": true,
+      "description": "Total cholesterol level",
+      "validation": {
+        "min": 100,
+        "max": 400
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "hdl_cholesterol", 
+      "type": "float",
+      "required": true,
+      "description": "HDL cholesterol level",
+      "validation": {
+        "min": 20,
+        "max": 100
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "systolic_bp",
+      "type": "integer",
+      "required": true,
+      "description": "Systolic blood pressure",
+      "validation": {
+        "min": 90,
+        "max": 200
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "bp_treatment",
+      "type": "string", 
+      "required": true,
+      "description": "Currently taking blood pressure medication",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "smoking",
+      "type": "string",
+      "required": true,
+      "description": "Current smoker",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "risk_percentage",
+    "type": "float",
+    "unit": "%",
+    "description": "10-year risk of hard coronary heart disease events"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 5,
+        "stage": "Low Risk",
+        "description": "Low 10-year CHD risk",
+        "interpretation": "Less than 5% 10-year risk of hard coronary heart disease events. Continue standard preventive measures including healthy lifestyle modifications."
+      },
+      {
+        "min": 5,
+        "max": 10,
+        "stage": "Borderline Risk", 
+        "description": "Borderline 10-year CHD risk",
+        "interpretation": "5-10% 10-year risk of hard coronary heart disease events. Consider additional risk factors and intensive lifestyle modifications. May benefit from statin therapy in some cases."
+      },
+      {
+        "min": 10,
+        "max": 20,
+        "stage": "Intermediate Risk",
+        "description": "Intermediate 10-year CHD risk", 
+        "interpretation": "10-20% 10-year risk of hard coronary heart disease events. Strong consideration for pharmacotherapy (statins) in addition to intensive lifestyle modifications."
+      },
+      {
+        "min": 20,
+        "max": 100,
+        "stage": "High Risk",
+        "description": "High 10-year CHD risk",
+        "interpretation": "Greater than 20% 10-year risk of hard coronary heart disease events. Definite indication for pharmacotherapy and aggressive risk factor modification."
+      }
+    ]
+  },
+  "references": [
+    "Wilson PW, D'Agostino RB, Levy D, Belanger AM, Silbershatz H, Kannel WB. Prediction of coronary heart disease using risk factor categories. Circulation. 1998;97(18):1837-47. doi: 10.1161/01.cir.97.18.1837.",
+    "D'Agostino RB Sr, Vasan RS, Pencina MJ, Wolf PA, Cobain M, Massaro JM, Kannel WB. General cardiovascular risk profile for use in primary care: the Framingham Heart Study. Circulation. 2008;117(6):743-53. doi: 10.1161/CIRCULATIONAHA.107.699579.",
+    "Expert Panel on Detection, Evaluation, and Treatment of High Blood Cholesterol in Adults. Executive Summary of The Third Report of The National Cholesterol Education Program (NCEP) Expert Panel on Detection, Evaluation, And Treatment of High Blood Cholesterol In Adults (Adult Treatment Panel III). JAMA. 2001;285(19):2486-97. doi: 10.1001/jama.285.19.2486."
+  ],
+  "formula": "Gender-specific logarithmic regression equation using age, cholesterol levels, blood pressure, smoking status, and treatment history",
+  "notes": [
+    "Not recommended for patients with diabetes or known coronary heart disease",
+    "Uses gender-specific coefficients for calculation",
+    "Based on Framingham Heart Study population data from 1998",
+    "Estimates risk of hard CHD events (MI, coronary death)",
+    "Age range limited to 30-79 years for validation",
+    "Consider newer risk calculators (ASCVD) for more recent population data"
+  ]
+}

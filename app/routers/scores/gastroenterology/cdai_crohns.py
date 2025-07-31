@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/cdai_crohns", response_model=CdaiCrohnsResponse)
+@router.post(
+    "/cdai_crohns",
+    response_model=CdaiCrohnsResponse,
+    summary="Calculate Crohn's Disease Activity Index (CDAI)",
+    description="Quantifies disease activity in Crohn's disease patients using clinical symptoms and laboratory findings over a 7-day period",
+    response_description="The calculated cdai crohns with interpretation",
+    operation_id="calculate_cdai_crohns"
+)
 async def calculate_cdai_crohns(request: CdaiCrohnsRequest):
     """
     Calculates Crohn's Disease Activity Index (CDAI)

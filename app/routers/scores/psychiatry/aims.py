@@ -8,7 +8,14 @@ from app.services.calculator_service import calculator_service
 
 router = APIRouter()
 
-@router.post("/aims", response_model=AimsResponse)
+@router.post(
+    "/aims",
+    response_model=AimsResponse,
+    summary="Calculate Abnormal Involuntary Movement Scale (AIMS)",
+    description="Measures involuntary movements of tardive dyskinesia (TD) in patients receiving neuroleptic medications",
+    response_description="The calculated aims with interpretation",
+    operation_id="calculate_aims"
+)
 async def calculate_aims(request: AimsRequest):
     """
     Calculates AIMS for tardive dyskinesia assessment

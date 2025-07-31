@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/egsys_score_syncope", response_model=EgsysScoreSyncopeResponse)
+@router.post(
+    "/egsys_score_syncope",
+    response_model=EgsysScoreSyncopeResponse,
+    summary="Calculate EGSYS (Evaluation of Guidelines in SY...",
+    description="Predicts likelihood that syncope is of cardiac cause to help emergency clinicians with screening and risk stratification in patients presenting with syncope.",
+    response_description="The calculated egsys score syncope with interpretation",
+    operation_id="calculate_egsys_score_syncope"
+)
 async def calculate_egsys_score_syncope(request: EgsysScoreSyncopeRequest):
     """
     Calculates EGSYS (Evaluation of Guidelines in SYncope Study) Score for Syncope

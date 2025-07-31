@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/creatinine_clearance_cockcroft_gault", response_model=CreatinineClearanceCockcroftGaultResponse)
+@router.post(
+    "/creatinine_clearance_cockcroft_gault",
+    response_model=CreatinineClearanceCockcroftGaultResponse,
+    summary="Calculate Creatinine Clearance (Cockcroft-Gault Equation)",
+    description="Estimates creatinine clearance for kidney function assessment and medication dosing using patient demographics and serum creatinine",
+    response_description="The calculated creatinine clearance cockcroft gault with interpretation",
+    operation_id="calculate_creatinine_clearance_cockcroft_gault"
+)
 async def calculate_creatinine_clearance_cockcroft_gault(request: CreatinineClearanceCockcroftGaultRequest):
     """
     Calculates Creatinine Clearance using the Cockcroft-Gault Equation

@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/comm", response_model=CommResponse)
+@router.post(
+    "/comm",
+    response_model=CommResponse,
+    summary="Calculate Current Opioid Misuse Measure (COMM)",
+    description="Identifies potential medication misuse in patients who are on long-term opioid therapy. The COMM is a validated self-report instrument for identifying and monitoring opioid misuse in chronic pain patients taking prescription opioids for pain management.",
+    response_description="The calculated comm with interpretation",
+    operation_id="calculate_comm"
+)
 async def calculate_comm(request: CommRequest):
     """
     Calculates Current Opioid Misuse Measure (COMM)

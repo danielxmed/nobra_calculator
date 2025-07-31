@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/albi_hcc", response_model=AlbiHccResponse)
+@router.post(
+    "/albi_hcc",
+    response_model=AlbiHccResponse,
+    summary="Calculate ALBI",
+    description="Predicts survival in hepatocellular carcinoma patients based on serum albumin and bilirubin concentrations",
+    response_description="The calculated albi hcc with interpretation",
+    operation_id="calculate_albi_hcc"
+)
 async def calculate_albi_hcc(request: AlbiHccRequest):
     """
     Calculates ALBI (Albumin-Bilirubin) Grade for Hepatocellular Carcinoma (HCC)

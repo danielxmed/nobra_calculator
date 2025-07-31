@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/crusade_bleeding_risk", response_model=CrusadeBleedingRiskResponse)
+@router.post(
+    "/crusade_bleeding_risk",
+    response_model=CrusadeBleedingRiskResponse,
+    summary="Calculate CRUSADE Score for Post-MI Bleeding Risk",
+    description="Risk stratifies patients with NSTEMI undergoing anticoagulation to determine their risk of major bleeding during hospitalization",
+    response_description="The calculated crusade bleeding risk with interpretation",
+    operation_id="calculate_crusade_bleeding_risk"
+)
 async def calculate_crusade_bleeding_risk(request: CrusadeBleedingRiskRequest):
     """
     Calculates CRUSADE Score for Post-MI Bleeding Risk

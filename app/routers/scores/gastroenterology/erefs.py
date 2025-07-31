@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/erefs", response_model=ErefsResponse)
+@router.post(
+    "/erefs",
+    response_model=ErefsResponse,
+    summary="Calculate Eosinophilic Esophagitis Endoscopic Reference S...",
+    description="Assesses severity of endoscopic findings in patients with eosinophilic esophagitis (EoE) using standardized scoring of five major endoscopic features: edema, rings, exudates, furrows, and strictures.",
+    response_description="The calculated erefs with interpretation",
+    operation_id="calculate_erefs"
+)
 async def calculate_erefs(request: ErefsRequest):
     """
     Calculates Eosinophilic Esophagitis Endoscopic Reference Score (EREFS)

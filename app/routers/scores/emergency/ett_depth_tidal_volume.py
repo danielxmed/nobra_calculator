@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/ett_depth_tidal_volume", response_model=EttDepthTidalVolumeResponse)
+@router.post(
+    "/ett_depth_tidal_volume",
+    response_model=EttDepthTidalVolumeResponse,
+    summary="Calculate Endotracheal Tube",
+    description="Estimates optimal ETT placement depth and target tidal volume based on patient height and gender. Uses the Chula formula for depth and ideal body weight for tidal volume calculations.",
+    response_description="The calculated ett depth tidal volume with interpretation",
+    operation_id="calculate_ett_depth_tidal_volume"
+)
 async def calculate_ett_depth_tidal_volume(request: EttDepthTidalVolumeRequest):
     """
     Calculates Endotracheal Tube (ETT) Depth and Tidal Volume

@@ -1,0 +1,147 @@
+{
+  "id": "glasgow_modified_alcohol_withdrawal_scale",
+  "title": "Glasgow Modified Alcohol Withdrawal Scale (GMAWS)",
+  "description": "Clinical scale used to assess and monitor the severity of alcohol withdrawal symptoms. Evaluates five clinical characteristics (tremor, sweating, hallucinations, orientation, agitation) with scores from 0-2 each, for a total score ranging from 0-10 points. Used to guide benzodiazepine treatment dosing and monitoring intervals.",
+  "category": "psychiatry",
+  "version": "Modified",
+  "parameters": [
+    {
+      "name": "tremor",
+      "type": "integer",
+      "required": true,
+      "description": "Assessment of tremor severity in alcohol withdrawal",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "options": [
+        "0 - None",
+        "1 - Present with arms extended",
+        "2 - Present with arms at rest"
+      ],
+      "unit": "points"
+    },
+    {
+      "name": "sweating",
+      "type": "integer",
+      "required": true,
+      "description": "Assessment of sweating/diaphoresis in alcohol withdrawal",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "options": [
+        "0 - None",
+        "1 - Moist skin",
+        "2 - Drenching sweat"
+      ],
+      "unit": "points"
+    },
+    {
+      "name": "hallucinations",
+      "type": "integer",
+      "required": true,
+      "description": "Assessment of hallucinations (visual, auditory, or tactile) in alcohol withdrawal",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "options": [
+        "0 - None",
+        "1 - Uncertain, or patient reports but not distressed",
+        "2 - Present and distressed"
+      ],
+      "unit": "points"
+    },
+    {
+      "name": "orientation",
+      "type": "integer",
+      "required": true,
+      "description": "Assessment of orientation to person, place, and time in alcohol withdrawal",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "options": [
+        "0 - Oriented",
+        "1 - Uncertain or disoriented in one domain",
+        "2 - Disoriented in ≥2 domains"
+      ],
+      "unit": "points"
+    },
+    {
+      "name": "agitation",
+      "type": "integer",
+      "required": true,
+      "description": "Assessment of agitation/anxiety level in alcohol withdrawal",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "options": [
+        "0 - None",
+        "1 - Anxious/restless",
+        "2 - Distressed or pacing"
+      ],
+      "unit": "points"
+    }
+  ],
+  "result": {
+    "name": "gmaws_total_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total Glasgow Modified Alcohol Withdrawal Scale score (0-10 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "No Withdrawal",
+        "description": "No significant withdrawal symptoms",
+        "interpretation": "No benzodiazepines required. Continue monitoring. Reassess in 2 hours. Provide supportive care and consider thiamine supplementation."
+      },
+      {
+        "min": 1,
+        "max": 3,
+        "stage": "Mild Withdrawal",
+        "description": "Mild alcohol withdrawal symptoms",
+        "interpretation": "Mild withdrawal symptoms. Administer Diazepam 10mg PO or Lorazepam 2mg PO. Reassess in 2 hours. Monitor vital signs and provide supportive care."
+      },
+      {
+        "min": 4,
+        "max": 8,
+        "stage": "Moderate to Severe Withdrawal",
+        "description": "Moderate to severe withdrawal symptoms",
+        "interpretation": "Moderate to severe withdrawal requiring immediate treatment. Administer Diazepam 20mg PO or Lorazepam 4mg PO. Reassess in 1 hour. Close monitoring required."
+      },
+      {
+        "min": 9,
+        "max": 10,
+        "stage": "Severe Withdrawal",
+        "description": "Severe withdrawal symptoms with high risk of complications",
+        "interpretation": "Severe withdrawal with high risk of delirium tremens. Administer Diazepam 20mg PO or Lorazepam 4mg PO. Reassess in 1 hour. Consider IV route if unable to take oral. Urgent medical evaluation if score remains ≥8 for >1 hour."
+      }
+    ]
+  },
+  "references": [
+    "Sullivan JT, Sykora K, Schneiderman J, Naranjo CA, Sellers EM. Assessment of alcohol withdrawal: the revised clinical institute withdrawal assessment for alcohol scale (CIWA-Ar). Br J Addict. 1989;84(11):1353-1357.",
+    "Macleod AD, Peden NR, Pryde EA, Proctor SJ. Glasgow assessment and management of alcohol guideline: an evidence-based guideline for the assessment and management of patients with harmful alcohol use in acute medical units. QJM. 2012;105(7):649-666.",
+    "Ferguson C, O'Neill A, Hameed A, Kenny RA, O'Neill D. FAST alcohol screening and the modified Glasgow alcoholic hepatitis score in the general hospital. QJM. 2009;102(4):269-273."
+  ],
+  "formula": "Total GMAWS = Tremor (0-2) + Sweating (0-2) + Hallucinations (0-2) + Orientation (0-2) + Agitation (0-2). Range: 0-10 points",
+  "notes": [
+    "Part of the Glasgow Assessment and Management of Alcohol (GAMA) protocol",
+    "Should not be used in intoxicated patients - must be at least 8 hours since last drink",
+    "Patients may need to be awakened for assessment",
+    "Co-existing illness may affect the score",
+    "Used to guide benzodiazepine dosing and monitoring frequency",
+    "Scores ≥4 require hourly reassessment",
+    "Urgent evaluation needed if GMAWS ≥8 persists for more than 1 hour",
+    "Should be used in conjunction with vital signs monitoring",
+    "Consider thiamine supplementation for all patients at risk of alcohol withdrawal",
+    "Modified version of the Clinical Institute Withdrawal Assessment for Alcohol-Revised (CIWA-Ar)",
+    "Validated for use in general hospital settings",
+    "Part of comprehensive alcohol withdrawal management protocol"
+  ]
+}

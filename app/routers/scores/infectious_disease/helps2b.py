@@ -8,7 +8,14 @@ from app.services.calculator_service import calculator_service
 
 router = APIRouter()
 
-@router.post("/helps2b", response_model=Helps2bResponse)
+@router.post(
+    "/helps2b",
+    response_model=Helps2bResponse,
+    summary="Calculate 2HELPS2B Score",
+    description="Estimates seizure risk in acutely ill patients undergoing continuous EEG (cEEG). Combines clinical factors and EEG findings to guide appropriate monitoring duration.",
+    response_description="The calculated helps2b with interpretation",
+    operation_id="calculate_helps2b"
+)
 async def calculate_helps2b(request: Helps2bRequest):
     """
     Calculates 2HELPS2B Score for seizure risk in cEEG

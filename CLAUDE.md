@@ -520,7 +520,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/{score_id}", response_model={ScoreId}Response)
+@router.post(
+    "/{score_id}",
+    response_model={ScoreId}Response,
+    summary="Calculate {Score Name}",
+    description="{Detailed description of what this calculator does, including its clinical use case and interpretation guidelines}",
+    response_description="The calculated {score name} with clinical interpretation and recommendations",
+    operation_id="calculate_{score_id}"
+)
 async def calculate_{score_id}(request: {ScoreId}Request):
     """
     Calculates {Score Name}
@@ -572,6 +579,39 @@ async def calculate_{score_id}(request: {ScoreId}Request):
                 "details": {"error": str(e)}
             }
         )
+```
+
+### Important: FastAPI Endpoint Metadata
+
+When creating router endpoints, **ALWAYS** include the following tags in the `@router.post` decorator:
+
+1. **`summary`**: A concise one-line description of the calculator (e.g., "Calculate CHA2DS2-VASc Score")
+2. **`description`**: A detailed description that includes:
+   - What the calculator measures
+   - Its clinical purpose and use cases
+   - How to interpret the results
+   - Any important limitations or considerations
+3. **`response_description`**: Description of what the response contains (e.g., "The calculated score with risk stratification and clinical recommendations")
+4. **`operation_id`**: A unique identifier following the pattern `calculate_{score_id}` (e.g., `calculate_cha2ds2_vasc`)
+
+These metadata tags are **essential** for:
+- Auto-generating clear API documentation
+- Enabling conversion to MCP (Model Context Protocol) tools
+- Providing better developer experience
+- Ensuring consistency across all endpoints
+
+Example with actual values:
+```python
+@router.post(
+    "/cha2ds2_vasc",
+    response_model=Cha2ds2VascResponse,
+    summary="Calculate CHA2DS2-VASc Score",
+    description="Calculates the CHA2DS2-VASc score for stroke risk assessment in patients with atrial fibrillation. "
+                "This validated clinical prediction tool helps determine the need for anticoagulation therapy. "
+                "The score ranges from 0-9, with higher scores indicating greater annual stroke risk.",
+    response_description="The calculated CHA2DS2-VASc score with risk percentage and anticoagulation recommendations",
+    operation_id="calculate_cha2ds2_vasc"
+)
 ```
 
 ### STEP 6: Update Specialty Router Imports

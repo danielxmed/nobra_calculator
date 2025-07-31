@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/denver_hiv_risk_score", response_model=DenverHivRiskScoreResponse)
+@router.post(
+    "/denver_hiv_risk_score",
+    response_model=DenverHivRiskScoreResponse,
+    summary="Calculate Denver HIV Risk Score",
+    description="Predicts probability of undiagnosed HIV infection in patients aged 13 and older using demographic and behavioral risk factors.",
+    response_description="The calculated denver hiv risk score with interpretation",
+    operation_id="calculate_denver_hiv_risk_score"
+)
 async def calculate_denver_hiv_risk_score(request: DenverHivRiskScoreRequest):
     """
     Calculates Denver HIV Risk Score for Targeted HIV Screening

@@ -17,6 +17,12 @@ from .evendo_score import router as evendo_score_router
 from .fatty_liver_index import router as fatty_liver_index_router
 from .fibrosis_4_index import router as fibrosis_4_index_router
 from .fibrotic_nash_index import router as fibrotic_nash_index_router
+from .forrest_classification import router as forrest_classification_router
+from .glasgow_alcoholic_hepatitis_score import router as glasgow_alcoholic_hepatitis_score_router
+from .glasgow_blatchford_bleeding_score import router as glasgow_blatchford_bleeding_score_router
+from .glasgow_imrie_pancreatitis import router as glasgow_imrie_pancreatitis_router
+from .haps import router as haps_router
+from .harvey_bradshaw_index import router as harvey_bradshaw_index_router
 
 # Create main specialty router
 router = APIRouter()
@@ -34,3 +40,9 @@ router.include_router(evendo_score_router)
 router.include_router(fatty_liver_index_router)
 router.include_router(fibrosis_4_index_router)
 router.include_router(fibrotic_nash_index_router)
+router.include_router(forrest_classification_router)
+router.include_router(glasgow_alcoholic_hepatitis_score_router)
+router.include_router(glasgow_blatchford_bleeding_score_router)
+router.include_router(glasgow_imrie_pancreatitis_router)
+router.include_router(haps_router)
+router.include_router(harvey_bradshaw_index_router)

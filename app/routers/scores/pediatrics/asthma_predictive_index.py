@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/asthma_predictive_index", response_model=AsthmaPreductiveIndexResponse)
+@router.post(
+    "/asthma_predictive_index",
+    response_model=AsthmaPreductiveIndexResponse,
+    summary="Calculate Asthma Predictive Index (API)",
+    description="Determines likelihood of pediatric patients developing childhood asthma in children ≤3 years old with recurrent wheezing episodes.",
+    response_description="The calculated asthma predictive index with interpretation",
+    operation_id="calculate_asthma_predictive_index"
+)
 async def calculate_asthma_predictive_index(request: AsthmaPreductiveIndexRequest):
     """
     Calculates Asthma Predictive Index (API)

@@ -5,6 +5,8 @@ Cardiology score router endpoints
 from fastapi import APIRouter
 
 from .cha2ds2_vasc import router as cha2ds2_vasc_router
+from .gwtg_heart_failure_risk_score import router as gwtg_heart_failure_risk_score_router
+from .h2fpef_score import router as h2fpef_score_router
 from .acc_aha_hf_staging import router as acc_aha_hf_staging_router
 from .acef_ii import router as acef_ii_router
 from .action_icu_nstemi import router as action_icu_nstemi_router
@@ -34,11 +36,20 @@ from .egsys_score_syncope import router as egsys_score_syncope_router
 from .euromacs_rhf_score import router as euromacs_rhf_score_router
 from .euroscore_ii import router as euroscore_ii_router
 from .nyha_functional_classification import router as nyha_functional_classification_router
+from .framingham_heart_failure_criteria import router as framingham_heart_failure_criteria_router
+from .framingham_risk_score import router as framingham_risk_score_router
+from .garfield_af import router as garfield_af_router
+from .gillmore_staging_attr_cm import router as gillmore_staging_attr_cm_router
+from .grace_acs_risk import router as grace_acs_risk_router
+from .grogan_staging_attr_cm import router as grogan_staging_attr_cm_router
+from .hcm_risk_scd import router as hcm_risk_scd_router
 
 # Create main specialty router
 router = APIRouter()
 
 router.include_router(cha2ds2_vasc_router)
+router.include_router(gwtg_heart_failure_risk_score_router)
+router.include_router(h2fpef_score_router)
 router.include_router(acc_aha_hf_staging_router)
 router.include_router(acef_ii_router)
 router.include_router(action_icu_nstemi_router)
@@ -68,3 +79,10 @@ router.include_router(egsys_score_syncope_router)
 router.include_router(euromacs_rhf_score_router)
 router.include_router(euroscore_ii_router)
 router.include_router(nyha_functional_classification_router)
+router.include_router(framingham_heart_failure_criteria_router)
+router.include_router(framingham_risk_score_router)
+router.include_router(garfield_af_router)
+router.include_router(gillmore_staging_attr_cm_router)
+router.include_router(grace_acs_risk_router)
+router.include_router(grogan_staging_attr_cm_router)
+router.include_router(hcm_risk_scd_router)

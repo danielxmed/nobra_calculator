@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/dsm5_bipolar_disorder", response_model=Dsm5BipolarDisorderResponse)
+@router.post(
+    "/dsm5_bipolar_disorder",
+    response_model=Dsm5BipolarDisorderResponse,
+    summary="Calculate DSM-5 Criteria for Bipolar Disorder",
+    description="Diagnostic criteria for bipolar disorder based on DSM-5. Evaluates criteria for manic episodes, hypomanic episodes, and major depressive episodes to determine bipolar I, bipolar II, or other specified bipolar disorders.",
+    response_description="The calculated dsm5 bipolar disorder with interpretation",
+    operation_id="calculate_dsm5_bipolar_disorder"
+)
 async def calculate_dsm5_bipolar_disorder(request: Dsm5BipolarDisorderRequest):
     """
     Evaluates DSM-5 Criteria for Bipolar Disorder

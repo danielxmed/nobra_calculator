@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/c_ssrs", response_model=CSSRSResponse)
+@router.post(
+    "/c_ssrs",
+    response_model=CSSRSResponse,
+    summary="Calculate Columbia Suicide Severity Rating Scale",
+    description="Screens for suicidal ideation and behavior to assess suicide risk and guide clinical management. The C-SSRS evaluates both the severity of suicidal ideation and the presence of suicidal behaviors, helping stratify patients into low, moderate, or high risk categories.",
+    response_description="The calculated c ssrs with interpretation",
+    operation_id="calculate_c_ssrs"
+)
 async def calculate_c_ssrs(request: CSSRSRequest):
     """
     Calculates Columbia Suicide Severity Rating Scale (C-SSRS) Screener

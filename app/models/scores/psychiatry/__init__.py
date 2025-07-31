@@ -24,6 +24,11 @@ from .dsm5_binge_eating_disorder import Dsm5BingeEatingDisorderRequest, Dsm5Bing
 from .dsm5_bipolar_disorder import Dsm5BipolarDisorderRequest, Dsm5BipolarDisorderResponse
 from .dsm5_major_depressive_disorder import Dsm5MajorDepressiveDisorderRequest, Dsm5MajorDepressiveDisorderResponse
 from .dsm5_ptsd import Dsm5PtsdRequest, Dsm5PtsdResponse
+from .gad_7 import Gad7Request, Gad7Response
+from .gds_15 import Gds15Request, Gds15Response
+from .glasgow_modified_alcohol_withdrawal_scale import GlasgowModifiedAlcoholWithdrawalScaleRequest, GlasgowModifiedAlcoholWithdrawalScaleResponse
+from .hamilton_anxiety_scale import HamiltonAnxietyScaleRequest, HamiltonAnxietyScaleResponse
+from .hamilton_depression_rating_scale import HamiltonDepressionRatingScaleRequest, HamiltonDepressionRatingScaleResponse
 
 __all__ = [
     "AasRequest",
@@ -70,4 +75,14 @@ __all__ = [
     "Dsm5MajorDepressiveDisorderResponse",
     "Dsm5PtsdRequest",
     "Dsm5PtsdResponse",
+    "Gad7Request",
+    "Gad7Response",
+    "Gds15Request",
+    "Gds15Response",
+    "GlasgowModifiedAlcoholWithdrawalScaleRequest",
+    "GlasgowModifiedAlcoholWithdrawalScaleResponse",
+    "HamiltonAnxietyScaleRequest",
+    "HamiltonAnxietyScaleResponse",
+    "HamiltonDepressionRatingScaleRequest",
+    "HamiltonDepressionRatingScaleResponse"
 ]

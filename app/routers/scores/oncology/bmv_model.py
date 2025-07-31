@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/bmv_model", response_model=BmvModelResponse)
+@router.post(
+    "/bmv_model",
+    response_model=BmvModelResponse,
+    summary="Calculate Brain Metastasis Velocity (BMV) Model",
+    description="Calculates rate of distant brain failure after stereotactic radiosurgery for brain metastasis to predict overall survival",
+    response_description="The calculated bmv model with interpretation",
+    operation_id="calculate_bmv_model"
+)
 async def calculate_bmv_model(request: BmvModelRequest):
     """
     Calculates Brain Metastasis Velocity (BMV) Model

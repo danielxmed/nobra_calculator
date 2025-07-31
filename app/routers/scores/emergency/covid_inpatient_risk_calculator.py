@@ -31,7 +31,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/covid_inpatient_risk_calculator", response_model=CovidInpatientRiskCalculatorResponse)
+@router.post(
+    "/covid_inpatient_risk_calculator",
+    response_model=CovidInpatientRiskCalculatorResponse,
+    summary="Calculate COVID-19 Inpatient Risk Calculator (CIRC)",
+    description="Predicts likelihood of inpatient mortality or severe disease progression in COVID-19 patients within 7 days of hospital admission",
+    response_description="The calculated covid inpatient risk calculator with interpretation",
+    operation_id="calculate_covid_inpatient_risk_calculator"
+)
 async def calculate_covid_inpatient_risk_calculator(request: CovidInpatientRiskCalculatorRequest):
     """
     Calculates COVID-19 Inpatient Risk Calculator (CIRC) for Hospitalized Patient Risk Assessment

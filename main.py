@@ -7,6 +7,7 @@ Modular API for medical calculations and scores developed with FastAPI.
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi_mcp import FastApiMCP
 import uvicorn
 import sys
 import os
@@ -156,6 +157,17 @@ app.include_router(api_router)
 # Include specialty scores at root level for individual endpoints
 app.include_router(specialty_scores_router)
 
+# Create and mount the MCP server
+mcp = FastApiMCP(
+    app,
+    name="Nobra Calculator MCP",
+    description="MCP server exposing medical scores and calculators from nobra_calculator API",
+    exclude_operations=["reload_scores"]  # Exclude the reload endpoint to avoid abuse
+)
+
+# Mount the MCP server onto the same FastAPI app
+mcp.mount()
+
 # Root endpoint
 @app.get("/")
 async def root():
@@ -185,6 +197,8 @@ async def startup_event():
     print("📋 Documentation available at: /docs")
     print("🔍 Redoc available at: /redoc")
     print("❤️  Health check available at: /health")
+    print("🔧 MCP server available at: /mcp")
+    print("🛠️  MCP tools: All FastAPI endpoints exposed as MCP tools (except reload_scores)")
 
 # Shutdown event
 @app.on_event("shutdown")

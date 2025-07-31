@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/asymptomatic_myeloma_prognosis", response_model=AsymptomaticMyelomaPrognosisResponse)
+@router.post(
+    "/asymptomatic_myeloma_prognosis",
+    response_model=AsymptomaticMyelomaPrognosisResponse,
+    summary="Calculate Asymptomatic Myeloma Prognosis",
+    description="Predicts risk of progression of asymptomatic (smoldering) multiple myeloma to active myeloma or amyloidosis",
+    response_description="The calculated asymptomatic myeloma prognosis with interpretation",
+    operation_id="calculate_asymptomatic_myeloma_prognosis"
+)
 async def calculate_asymptomatic_myeloma_prognosis(request: AsymptomaticMyelomaPrognosisRequest):
     """
     Calculates Asymptomatic Myeloma Prognosis

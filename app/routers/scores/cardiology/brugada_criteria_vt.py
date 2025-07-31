@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/brugada_criteria_vt", response_model=BrugadaCriteriaVtResponse)
+@router.post(
+    "/brugada_criteria_vt",
+    response_model=BrugadaCriteriaVtResponse,
+    summary="Calculate Brugada Criteria for Ventricular Tach...",
+    description="Distinguishes ventricular tachycardia from supraventricular tachycardia with aberrancy using ECG morphology criteria",
+    response_description="The calculated brugada criteria vt with interpretation",
+    operation_id="calculate_brugada_criteria_vt"
+)
 async def calculate_brugada_criteria_vt(request: BrugadaCriteriaVtRequest):
     """
     Calculates Brugada Criteria for Ventricular Tachycardia

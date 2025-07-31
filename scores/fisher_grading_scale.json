@@ -1,0 +1,69 @@
+{
+  "id": "fisher_grading_scale",
+  "title": "Fisher Grading Scale for Subarachnoid Hemorrhage (SAH)",
+  "description": "Assesses risk of vasospasm in SAH based on amount and distribution of blood on CT",
+  "category": "neurology",
+  "version": "1980",
+  "parameters": [
+    {
+      "name": "ct_findings",
+      "type": "string",
+      "required": true,
+      "description": "CT scan findings for subarachnoid hemorrhage",
+      "options": ["no_sah", "diffuse_thin", "localized_thick", "ich_ivh"],
+      "validation": {
+        "enum": ["no_sah", "diffuse_thin", "localized_thick", "ich_ivh"]
+      }
+    }
+  ],
+  "result": {
+    "name": "fisher_grade",
+    "type": "integer",
+    "unit": "",
+    "description": "Fisher grade (I-IV) indicating severity of SAH and risk of vasospasm"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Grade I",
+        "description": "No SAH detected",
+        "interpretation": "Low risk of vasospasm (0-21%). No blood visualized on non-contrast head CT"
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Grade II",
+        "description": "Diffuse or vertical layer <1mm thick",
+        "interpretation": "Low risk of vasospasm (0-25%). Diffuse deposition or thin layer with vertical layers of blood less than 1mm thick"
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Grade III",
+        "description": "Localized clot or layer >1mm thick",
+        "interpretation": "Low to high risk of vasospasm (23-96%). Localized clots and/or vertical layers of blood 1mm or greater in thickness"
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Grade IV",
+        "description": "ICH or IVH with diffuse or no SAH",
+        "interpretation": "Low to moderate risk of vasospasm (0-35%). Intracerebral or intraventricular hemorrhage with diffuse or no subarachnoid blood"
+      }
+    ]
+  },
+  "references": [
+    "Fisher CM, Kistler JP, Davis JM. Relation of cerebral vasospasm to subarachnoid hemorrhage visualized by computerized tomographic scanning. Neurosurgery. 1980;6(1):1-9. doi: 10.1227/00006123-198001000-00001.",
+    "Kistler JP, Crowell RM, Davis KR, Heros R, Ojemann RG, Zervas T, et al. The relation of cerebral vasospasm to the extent and location of subarachnoid blood visualized by CT scan: a prospective study. Neurology. 1983 Apr;33(4):424-36. doi: 10.1212/wnl.33.4.424."
+  ],
+  "formula": "Grade assignment based on CT findings: Grade I (no SAH), Grade II (diffuse/thin <1mm), Grade III (localized/thick >1mm), Grade IV (ICH/IVH with diffuse or no SAH)",
+  "notes": [
+    "Original scale designed to predict risk of cerebral vasospasm in aneurysmal SAH",
+    "Measurements were originally based on printed CT scans, not scaled to actual thickness",
+    "Modified Fisher Scale is often preferred by neurocritical care providers for better vasospasm prediction",
+    "Risk of vasospasm paradoxically lower in Grade IV than Grade III",
+    "Should be assessed on initial non-contrast head CT"
+  ]
+}

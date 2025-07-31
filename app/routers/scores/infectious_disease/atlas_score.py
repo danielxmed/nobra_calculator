@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/atlas_score", response_model=AtlasScoreResponse)
+@router.post(
+    "/atlas_score",
+    response_model=AtlasScoreResponse,
+    summary="Calculate ATLAS Score for Clostridium Difficile Infection",
+    description="Predicts response to therapy in C. diff patients",
+    response_description="The calculated atlas score with interpretation",
+    operation_id="calculate_atlas_score"
+)
 async def calculate_atlas_score(request: AtlasScoreRequest):
     """
     Calculates ATLAS Score for Clostridium Difficile Infection

@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/nexus_chest_ct", response_model=NexusChestCtResponse)
+@router.post(
+    "/nexus_chest_ct",
+    response_model=NexusChestCtResponse,
+    summary="Calculate NEXUS Chest CT Decision Instrument for CT Imaging",
+    description="Identifies blunt trauma patients with clinically significant chest injuries. The NEXUS Chest CT-All version uses 7 criteria to determine which patients require CT chest imaging after blunt trauma.",
+    response_description="The calculated nexus chest ct with interpretation",
+    operation_id="calculate_nexus_chest_ct"
+)
 async def calculate_nexus_chest_ct(request: NexusChestCtRequest):
     """
     Calculates NEXUS Chest CT Decision Instrument

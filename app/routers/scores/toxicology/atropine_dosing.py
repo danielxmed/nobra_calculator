@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/atropine_dosing", response_model=AtropineDosingResponse)
+@router.post(
+    "/atropine_dosing",
+    response_model=AtropineDosingResponse,
+    summary="Calculate Atropine Dosing for Cholinesterase Inhibitor To...",
+    description="Doses atropine for cholinesterase inhibitor toxicity from prescription drugs, nerve gas, or insecticides",
+    response_description="The calculated atropine dosing with interpretation",
+    operation_id="calculate_atropine_dosing"
+)
 async def calculate_atropine_dosing(request: AtropineDosingRequest):
     """
     Calculates Atropine Dosing for Cholinesterase Inhibitor Toxicity

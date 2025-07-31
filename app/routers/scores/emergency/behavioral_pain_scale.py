@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/behavioral_pain_scale", response_model=BehavioralPainScaleResponse)
+@router.post(
+    "/behavioral_pain_scale",
+    response_model=BehavioralPainScaleResponse,
+    summary="Calculate Behavioral Pain Scale",
+    description="Quantifies pain in critically ill intubated patients who cannot self-report using three behavioral indicators",
+    response_description="The calculated behavioral pain scale with interpretation",
+    operation_id="calculate_behavioral_pain_scale"
+)
 async def calculate_behavioral_pain_scale(request: BehavioralPainScaleRequest):
     """
     Calculates Behavioral Pain Scale (BPS) for Pain Assessment in Intubated Patients

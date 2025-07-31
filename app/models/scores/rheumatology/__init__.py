@@ -13,6 +13,7 @@ from .das28_crp import Das28CrpRequest, Das28CrpResponse
 from .das28_esr import Das28EsrRequest, Das28EsrResponse
 from .orai import OraiRequest, OraiResponse
 from .ost import OstRequest, OstResponse
+from .fracture_index import FractureIndexRequest, FractureIndexResponse
 
 __all__ = [
     "AsdasCrpRequest",
@@ -36,5 +37,7 @@ __all__ = [
     "OraiRequest",
     "OraiResponse",
     "OstRequest",
-    "OstResponse"
+    "OstResponse",
+    "FractureIndexRequest",
+    "FractureIndexResponse"
 ]

@@ -8,7 +8,14 @@ from app.services.calculator_service import calculator_service
 
 router = APIRouter()
 
-@router.post("/curb_65", response_model=Curb65Response)
+@router.post(
+    "/curb_65",
+    response_model=Curb65Response,
+    summary="Calculate CURB-65 Score for Pneumonia Severity",
+    description="Assesses the severity of community-acquired pneumonia (CAP) to determine the need for hospital admission",
+    response_description="The calculated curb 65 with interpretation",
+    operation_id="calculate_curb_65"
+)
 async def calculate_curb_65(request: Curb65Request):
     """
     Calculates the CURB-65 Score for pneumonia severity assessment

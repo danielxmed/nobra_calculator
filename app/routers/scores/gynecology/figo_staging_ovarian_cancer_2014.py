@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/figo_staging_ovarian_cancer_2014", response_model=FigoStagingOvarianCancer2014Response)
+@router.post(
+    "/figo_staging_ovarian_cancer_2014",
+    response_model=FigoStagingOvarianCancer2014Response,
+    summary="Calculate FIGO Staging for Ovarian Cancer (2014)",
+    description="Stages ovarian, fallopian tube, and peritoneal cancer based on anatomical spread of disease",
+    response_description="The calculated figo staging ovarian cancer 2014 with interpretation",
+    operation_id="calculate_figo_staging_ovarian_cancer_2014"
+)
 async def calculate_figo_staging_ovarian_cancer_2014(request: FigoStagingOvarianCancer2014Request):
     """
     Calculates FIGO Staging for Ovarian Cancer (2014)

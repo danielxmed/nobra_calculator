@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/nexus_criteria", response_model=NexusCriteriaResponse)
+@router.post(
+    "/nexus_criteria",
+    response_model=NexusCriteriaResponse,
+    summary="Calculate NEXUS Criteria for C-Spine Imaging",
+    description="Clinically clears cervical spine fracture without imaging in alert, stable trauma patients. The NEXUS (National Emergency X-Radiography Utilization Study) criteria help determine which blunt trauma patients do not require cervical spine imaging.",
+    response_description="The calculated nexus criteria with interpretation",
+    operation_id="calculate_nexus_criteria"
+)
 async def calculate_nexus_criteria(request: NexusCriteriaRequest):
     """
     Calculates NEXUS Criteria for C-Spine Imaging

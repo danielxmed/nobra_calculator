@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/canadian_ct_head_rule", response_model=CanadianCtHeadRuleResponse)
+@router.post(
+    "/canadian_ct_head_rule",
+    response_model=CanadianCtHeadRuleResponse,
+    summary="Calculate Canadian CT Head Injury/Trauma Rule",
+    description="The Canadian CT Head Rule is a clinical decision tool that helps determine which patients with minor head injury require CT head imaging. It uses high-risk and medium-risk criteria to identify patients who may have injuries requiring neurosurgical intervention or admission. The rule is 100% sensitive for detecting neurosurgical lesions and can reduce unnecessary CT scans by approximately 30%.",
+    response_description="The calculated canadian ct head rule with interpretation",
+    operation_id="calculate_canadian_ct_head_rule"
+)
 async def calculate_canadian_ct_head_rule(request: CanadianCtHeadRuleRequest):
     """
     Calculates Canadian CT Head Rule for minor head injury imaging decisions

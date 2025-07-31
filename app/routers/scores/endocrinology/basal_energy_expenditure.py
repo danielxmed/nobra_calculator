@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/basal_energy_expenditure", response_model=BasalEnergyExpenditureResponse)
+@router.post(
+    "/basal_energy_expenditure",
+    response_model=BasalEnergyExpenditureResponse,
+    summary="Calculate Basal Energy Expenditure",
+    description="Calculates daily energy expenditure using the Harris-Benedict equation. Estimates the minimum daily caloric requirements at rest (basal metabolic rate) and can be adjusted for activity level to determine total daily energy needs.",
+    response_description="The calculated basal energy expenditure with interpretation",
+    operation_id="calculate_basal_energy_expenditure"
+)
 async def calculate_basal_energy_expenditure(request: BasalEnergyExpenditureRequest):
     """
     Calculates Basal Energy Expenditure

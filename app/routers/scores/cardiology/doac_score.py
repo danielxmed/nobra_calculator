@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/doac_score", response_model=DoacScoreResponse)
+@router.post(
+    "/doac_score",
+    response_model=DoacScoreResponse,
+    summary="Calculate Direct-Acting Oral Anticoagulants (DO...",
+    description="Predicts bleeding risk in patients with atrial fibrillation on direct-acting oral anticoagulants",
+    response_description="The calculated doac score with interpretation",
+    operation_id="calculate_doac_score"
+)
 async def calculate_doac_score(request: DoacScoreRequest):
     """
     Calculates Direct-Acting Oral Anticoagulants (DOAC) Score

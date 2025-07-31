@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/expected_peak_expiratory_flow", response_model=ExpectedPeakExpiratoryFlowResponse)
+@router.post(
+    "/expected_peak_expiratory_flow",
+    response_model=ExpectedPeakExpiratoryFlowResponse,
+    summary="Calculate Estimated/Expected Peak Expiratory Flow",
+    description="Estimates expected peak expiratory flow rate and quantifies asthma exacerbation severity based on age, height, race, and sex.",
+    response_description="The calculated expected peak expiratory flow with interpretation",
+    operation_id="calculate_expected_peak_expiratory_flow"
+)
 async def calculate_expected_peak_expiratory_flow(request: ExpectedPeakExpiratoryFlowRequest):
     """
     Calculates Estimated/Expected Peak Expiratory Flow (Peak Flow)

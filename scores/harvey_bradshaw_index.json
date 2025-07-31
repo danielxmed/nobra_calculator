@@ -1,0 +1,139 @@
+{
+  "id": "harvey_bradshaw_index",
+  "title": "Harvey-Bradshaw Index (HBI) for Crohn's Disease",
+  "description": "Stratifies severity of Crohn's disease using only clinical parameters. A simplified version of the Crohn's Disease Activity Index (CDAI) that correlates 93% with CDAI but doesn't require laboratory tests.",
+  "category": "gastroenterology",
+  "version": "1980",
+  "parameters": [
+    {
+      "name": "general_wellbeing",
+      "type": "integer",
+      "required": true,
+      "description": "General well-being (assessed for the previous day)",
+      "options": ["0", "1", "2", "3", "4"],
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "labels": {
+        "0": "Very well",
+        "1": "Slightly below par",
+        "2": "Poor",
+        "3": "Very poor",
+        "4": "Terrible"
+      }
+    },
+    {
+      "name": "abdominal_pain",
+      "type": "integer",
+      "required": true,
+      "description": "Abdominal pain (assessed for the previous day)",
+      "options": ["0", "1", "2", "3"],
+      "validation": {
+        "min": 0,
+        "max": 3
+      },
+      "labels": {
+        "0": "None",
+        "1": "Mild",
+        "2": "Moderate",
+        "3": "Severe"
+      }
+    },
+    {
+      "name": "liquid_stools",
+      "type": "integer",
+      "required": true,
+      "description": "Number of liquid or soft stools per day (assessed for the previous day)",
+      "validation": {
+        "min": 0,
+        "max": 50
+      }
+    },
+    {
+      "name": "abdominal_mass",
+      "type": "integer",
+      "required": true,
+      "description": "Abdominal mass on examination",
+      "options": ["0", "1", "2", "3"],
+      "validation": {
+        "min": 0,
+        "max": 3
+      },
+      "labels": {
+        "0": "None",
+        "1": "Dubious",
+        "2": "Definite",
+        "3": "Definite and tender"
+      }
+    },
+    {
+      "name": "complications",
+      "type": "array",
+      "required": true,
+      "description": "Extra-intestinal manifestations (1 point each)",
+      "options": [
+        "none",
+        "arthralgia",
+        "uveitis",
+        "erythema_nodosum",
+        "aphthous_ulcers",
+        "pyoderma_gangrenosum",
+        "anal_fissures",
+        "new_fistula",
+        "abscess"
+      ]
+    }
+  ],
+  "result": {
+    "name": "hbi_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Harvey-Bradshaw Index score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 4,
+        "stage": "Remission",
+        "description": "Disease in remission",
+        "interpretation": "Patient's Crohn's disease is in remission. The score indicates minimal or no disease activity. Continue current maintenance therapy and routine monitoring."
+      },
+      {
+        "min": 5,
+        "max": 7,
+        "stage": "Mild Disease",
+        "description": "Mild disease activity",
+        "interpretation": "Patient has mild Crohn's disease activity. Consider optimization of current therapy or initiation of treatment if not already on therapy. Close monitoring is recommended."
+      },
+      {
+        "min": 8,
+        "max": 16,
+        "stage": "Moderate Disease",
+        "description": "Moderate disease activity",
+        "interpretation": "Patient has moderate Crohn's disease activity. Treatment escalation is typically warranted. Consider systemic corticosteroids, immunomodulators, or biologic therapy depending on current treatment status."
+      },
+      {
+        "min": 17,
+        "max": 100,
+        "stage": "Severe Disease",
+        "description": "Severe disease activity",
+        "interpretation": "Patient has severe Crohn's disease activity. Urgent treatment intensification is needed. Consider hospitalization, intravenous corticosteroids, and/or rapid initiation of biologic therapy. Evaluate for complications."
+      }
+    ]
+  },
+  "references": [
+    "Harvey RF, Bradshaw JM. A simple index of Crohn's-disease activity. Lancet. 1980 Mar 8;1(8167):514. doi: 10.1016/s0140-6736(80)92767-1.",
+    "Peyrin-Biroulet L, Panés J, Sandborn WJ, Vermeire S, Danese S, Feagan BG, et al. Defining Disease Severity in Inflammatory Bowel Diseases: Current and Future Directions. Clin Gastroenterol Hepatol. 2016 Mar;14(3):348-354.e17. doi: 10.1016/j.cgh.2015.06.001.",
+    "Gomes P, du Boulay C, Smith CL, Holdstock G. Relationship between disease activity indices and colonoscopic findings in patients with colonic inflammatory bowel disease. Gut. 1986 Jan;27(1):92-5. doi: 10.1136/gut.27.1.92."
+  ],
+  "formula": "HBI Score = General well-being (0-4) + Abdominal pain (0-3) + Number of liquid stools (1 point per stool) + Abdominal mass (0-3) + Complications (1 point each)",
+  "notes": [
+    "The HBI has a 93% correlation with the CDAI but is much simpler to use",
+    "First three parameters (well-being, pain, stools) are assessed for the previous day",
+    "A reduction of 3 points is considered clinically significant response to treatment",
+    "Patients scoring ≤3 are very likely to be in remission according to CDAI",
+    "Does not require laboratory tests unlike CDAI"
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "id": "galad_model_hcc",
+  "title": "GALAD Model for Hepatocellular Carcinoma (HCC)",
+  "description": "Diagnoses HCC based on serum biomarkers in patients with chronic liver disease (CLD). The GALAD model combines Gender, Age, AFP-L3, AFP, and DCP (des-gamma-carboxy prothrombin) to provide superior diagnostic accuracy compared to individual biomarkers.",
+  "category": "oncology",
+  "version": "2016",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient's age in years",
+      "validation": {
+        "min": 18,
+        "max": 100
+      },
+      "unit": "years"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient's biological sex (males have higher HCC risk)",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "afp",
+      "type": "float",
+      "required": true,
+      "description": "Alpha-fetoprotein level in ng/mL. Standard serum tumor marker for HCC evaluation",
+      "validation": {
+        "min": 0.1,
+        "max": 100000
+      },
+      "unit": "ng/mL"
+    },
+    {
+      "name": "afp_l3_percentage",
+      "type": "float",
+      "required": true,
+      "description": "AFP-L3 percentage (%). Most useful when total AFP ≤200 ng/mL. ≥10% associated with 7-fold increased HCC risk",
+      "validation": {
+        "min": 0,
+        "max": 100
+      },
+      "unit": "percentage"
+    },
+    {
+      "name": "dcp",
+      "type": "float",
+      "required": true,
+      "description": "Des-gamma-carboxy prothrombin (PIVKA-II) level in mAU/mL. Abnormal prothrombin form used as HCC biomarker",
+      "validation": {
+        "min": 1,
+        "max": 100000
+      },
+      "unit": "mAU/mL"
+    }
+  ],
+  "result": {
+    "name": "galad_score",
+    "type": "float",
+    "unit": "score",
+    "description": "GALAD score calculated from demographic data and serum biomarkers"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": -50,
+        "max": -0.63,
+        "stage": "Low Risk",
+        "description": "Low probability of HCC",
+        "interpretation": "GALAD score suggests low probability of hepatocellular carcinoma. Continue routine surveillance in high-risk patients."
+      },
+      {
+        "min": -0.63,
+        "max": 50,
+        "stage": "High Risk",
+        "description": "High probability of HCC",
+        "interpretation": "GALAD score suggests high probability of hepatocellular carcinoma. Consider further diagnostic imaging and evaluation."
+      }
+    ]
+  },
+  "references": [
+    "Johnson PJ, Pirrie SJ, Cox TF, et al. The detection of hepatocellular carcinoma using a prospectively developed and validated model based on serological biomarkers. Cancer Epidemiol Biomarkers Prev. 2014;23(1):144-53. doi: 10.1158/1055-9965.EPI-13-0870.",
+    "Best J, Bechmann LP, Sowa JP, et al. GALAD Score Detects Early Hepatocellular Carcinoma in an International Cohort of Patients With Nonalcoholic Steatohepatitis. Clin Gastroenterol Hepatol. 2020;18(3):728-735.e4. doi: 10.1016/j.cgh.2019.08.012.",
+    "Yang JD, Addissie BD, Mara KC, et al. GALAD Score for Hepatocellular Carcinoma Detection in Comparison with Liver Ultrasound and Proposal of GALADUS Score. Cancer Epidemiol Biomarkers Prev. 2019;28(3):531-538. doi: 10.1158/1055-9965.EPI-18-0281."
+  ],
+  "formula": "Z = -10.08 + 0.09 × age + 1.67 × sex + 2.34 × log₁₀(AFP) + 0.04 × AFP-L3 + 1.33 × log₁₀(DCP), where sex = 1 for males, 0 for females",
+  "notes": [
+    "Validated in patients with chronic liver disease at risk for HCC",
+    "Superior diagnostic accuracy compared to AFP, AFP-L3, or DCP alone (AUC 0.95 vs 0.88, 0.86, 0.87 respectively)",
+    "GALAD score ≥-0.63 suggests high probability of HCC with 85.6% sensitivity and 93.3% specificity",
+    "Performance superior to ultrasound alone for HCC detection (AUC 0.95 vs 0.82)",
+    "Particularly effective for early-stage (BCLC 0/A) HCC detection with AUC 0.92",
+    "Use lower limit of quantitation (LLOQ) when biomarker values are below detection limits",
+    "Model developed in cohorts with HCC prevalence 35-49%; performance may vary in different populations",
+    "Intended for patients with chronic liver disease including cirrhosis, hepatitis B, hepatitis C, NASH"
+  ]
+}

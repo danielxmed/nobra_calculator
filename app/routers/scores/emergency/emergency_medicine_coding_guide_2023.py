@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/emergency_medicine_coding_guide_2023", response_model=EmergencyMedicineCodingGuide2023Response)
+@router.post(
+    "/emergency_medicine_coding_guide_2023",
+    response_model=EmergencyMedicineCodingGuide2023Response,
+    summary="Calculate 2023 Emergency Medicine Coding Guide",
+    description="Rates the level of service required in emergency medicine based on 2023 AMA CPT Evaluation and Management (E/M) coding changes. Determines appropriate emergency department service level (99281-99285) based on medical decision making components.",
+    response_description="The calculated emergency medicine coding guide 2023 with interpretation",
+    operation_id="calculate_emergency_medicine_coding_guide_2023"
+)
 async def calculate_emergency_medicine_coding_guide_2023(request: EmergencyMedicineCodingGuide2023Request):
     """
     Calculates 2023 Emergency Medicine Coding Guide

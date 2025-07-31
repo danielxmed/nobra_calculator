@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/acr_eular_2010_ra", response_model=AcrEular2010RaResponse)
+@router.post(
+    "/acr_eular_2010_ra",
+    response_model=AcrEular2010RaResponse,
+    summary="Calculate ACR/EULAR 2010 Rheumatoid Arthritis Classificat...",
+    description="Diagnoses rheumatoid arthritis (RA) in patients with undifferentiated inflammatory synovitis using joint involvement, serology, acute-phase reactants, and symptom duration",
+    response_description="The calculated acr eular 2010 ra with interpretation",
+    operation_id="calculate_acr_eular_2010_ra"
+)
 async def calculate_acr_eular_2010_ra(request: AcrEular2010RaRequest):
     """
     Calculates ACR/EULAR 2010 Rheumatoid Arthritis Classification Criteria

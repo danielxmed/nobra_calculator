@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/asdas_crp", response_model=AsdasCrpResponse)
+@router.post(
+    "/asdas_crp",
+    response_model=AsdasCrpResponse,
+    summary="Calculate Ankylosing Spondylitis Disease Activity Score w...",
+    description="Stratifies severity of ankylosing spondylitis (AS) using clinical and laboratory data, specifically CRP. ASAS-endorsed disease activity score for monitoring AS treatment response.",
+    response_description="The calculated asdas crp with interpretation",
+    operation_id="calculate_asdas_crp"
+)
 async def calculate_asdas_crp(request: AsdasCrpRequest):
     """
     Calculates Ankylosing Spondylitis Disease Activity Score with CRP (ASDAS-CRP)

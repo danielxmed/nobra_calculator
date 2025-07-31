@@ -1,0 +1,151 @@
+{
+  "id": "glasgow_imrie_pancreatitis",
+  "title": "Glasgow-Imrie Criteria for Severity of Acute Pancreatitis",
+  "description": "Clinical scoring system to assess the severity of acute pancreatitis using 8 laboratory and clinical parameters. Helps predict mortality risk and guide management decisions including ICU admission and treatment intensity. Uses the PANCREAS mnemonic for easy recall.",
+  "category": "gastroenterology",
+  "version": "Modified_1984",
+  "parameters": [
+    {
+      "name": "pao2",
+      "type": "float",
+      "required": true,
+      "description": "Partial pressure of oxygen (PaO2) in mmHg from arterial blood gas",
+      "validation": {
+        "min": 30,
+        "max": 150
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "wbc",
+      "type": "float",
+      "required": true,
+      "description": "White blood cell count (neutrophil count) in cells × 10⁹/L",
+      "validation": {
+        "min": 1.0,
+        "max": 50.0
+      },
+      "unit": "×10⁹/L"
+    },
+    {
+      "name": "calcium",
+      "type": "float",
+      "required": true,
+      "description": "Serum calcium level in mg/dL",
+      "validation": {
+        "min": 4.0,
+        "max": 15.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "urea",
+      "type": "float",
+      "required": true,
+      "description": "Blood urea nitrogen (BUN) level in mg/dL",
+      "validation": {
+        "min": 5,
+        "max": 200
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "ldh",
+      "type": "integer",
+      "required": true,
+      "description": "Lactate dehydrogenase (LDH) level in IU/L",
+      "validation": {
+        "min": 100,
+        "max": 5000
+      },
+      "unit": "IU/L"
+    },
+    {
+      "name": "albumin",
+      "type": "float",
+      "required": true,
+      "description": "Serum albumin level in g/dL",
+      "validation": {
+        "min": 1.0,
+        "max": 6.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "glucose",
+      "type": "float",
+      "required": true,
+      "description": "Blood glucose level in mg/dL",
+      "validation": {
+        "min": 50,
+        "max": 800
+      },
+      "unit": "mg/dL"
+    }
+  ],
+  "result": {
+    "name": "glasgow_imrie_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total Glasgow-Imrie score (0-8 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Mild Pancreatitis",
+        "description": "Low risk for severe pancreatitis",
+        "interpretation": "Low risk for severe pancreatitis (7-16% risk). Typically managed with conservative treatment on general ward. Monitor for clinical deterioration. Consider oral feeding when tolerated."
+      },
+      {
+        "min": 3,
+        "max": 4,
+        "stage": "Moderate Pancreatitis",
+        "description": "Moderate risk for severe pancreatitis",
+        "interpretation": "Moderate risk for severe pancreatitis (20-61% risk). Consider ICU monitoring or high-dependency unit. Aggressive fluid resuscitation, pain management, and close monitoring for complications required."
+      },
+      {
+        "min": 5,
+        "max": 8,
+        "stage": "Severe Pancreatitis",
+        "description": "High risk for severe pancreatitis",
+        "interpretation": "High risk for severe pancreatitis (55-100% risk). ICU admission typically required. Aggressive supportive care, monitor for organ failure and local complications. May require surgical intervention."
+      }
+    ]
+  },
+  "references": [
+    "Imrie CW, Benjamin IS, Ferguson JC, et al. A single-centre double-blind trial of Trasylol therapy in primary acute pancreatitis. Br J Surg. 1978;65(5):337-341.",
+    "Blamey SL, Imrie CW, O'Neill J, Gilmour WH, Carter DC. Prognostic factors in acute pancreatitis. Gut. 1984;25(12):1340-1346. doi: 10.1136/gut.25.12.1340.",
+    "Ranson JH, Rifkind KM, Roses DF, Fink SD, Eng K, Spencer FC. Prognostic signs and the role of operative management in acute pancreatitis. Surg Gynecol Obstet. 1974;139(1):69-81.",
+    "Banks PA, Bollen TL, Dervenis C, et al. Classification of acute pancreatitis--2012: revision of the Atlanta classification and definitions by international consensus. Gut. 2013;62(1):102-111. doi: 10.1136/gutjnl-2012-302779."
+  ],
+  "formula": "Glasgow-Imrie Score = Sum of positive criteria: PaO2 <59.3 mmHg (1 point) + Age >55 years (1 point) + WBC >15×10⁹/L (1 point) + Calcium <8 mg/dL (1 point) + Urea >44.8 mg/dL (1 point) + LDH >600 IU/L (1 point) + Albumin <3.2 g/dL (1 point) + Glucose >180 mg/dL (1 point)",
+  "notes": [
+    "Originally developed as modification of Ranson's criteria for acute pancreatitis",
+    "Uses PANCREAS mnemonic: PaO2, Age, Neutrophils, Calcium, Renal function, Enzymes, Albumin, Sugar",
+    "Should be assessed within 48 hours of admission for accurate prognostication",
+    "Score ≥3 indicates significant likelihood of severe pancreatitis",
+    "More than 3 positive criteria may require ICU transfer",
+    "Developed in 1980s, predating modern pancreatitis management guidelines",
+    "Comparable predictive accuracy to Ranson's criteria",
+    "Does not include imaging findings (unlike modern severity scores)",
+    "Should be used in conjunction with clinical assessment and imaging",
+    "APACHE II score may be more useful for daily monitoring",
+    "Consider modern scoring systems like BISAP or SIRS for additional assessment",
+    "Not recommended as sole determinant for surgical intervention",
+    "Mortality risk correlates with score but also depends on age and comorbidities",
+    "Early identification of severe cases allows for appropriate resource allocation"
+  ]
+}

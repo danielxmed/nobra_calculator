@@ -1,0 +1,156 @@
+{
+  "id": "findrisc",
+  "title": "FINDRISC (Finnish Diabetes Risk Score)",
+  "description": "Identifies patients at high risk for type 2 diabetes within 10 years without the need for laboratory tests",
+  "category": "endocrinology",
+  "version": "2001",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "string",
+      "required": true,
+      "description": "Patient age category",
+      "options": ["under_45", "45_to_54", "55_to_64", "over_64"],
+      "validation": {
+        "enum": ["under_45", "45_to_54", "55_to_64", "over_64"]
+      }
+    },
+    {
+      "name": "bmi",
+      "type": "string",
+      "required": true,
+      "description": "Body Mass Index category",
+      "options": ["under_25", "25_to_30", "over_30"],
+      "validation": {
+        "enum": ["under_25", "25_to_30", "over_30"]
+      }
+    },
+    {
+      "name": "waist_circumference",
+      "type": "string",
+      "required": true,
+      "description": "Waist circumference category",
+      "options": ["normal", "elevated", "high"],
+      "validation": {
+        "enum": ["normal", "elevated", "high"]
+      }
+    },
+    {
+      "name": "gender",
+      "type": "string",
+      "required": true,
+      "description": "Patient gender (needed for waist circumference evaluation)",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "physical_activity",
+      "type": "string",
+      "required": true,
+      "description": "Physical activity at least 30 minutes per day or ≥4 hours per week",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "fruit_vegetable_consumption",
+      "type": "string",
+      "required": true,
+      "description": "Daily consumption of fruits, vegetables, or berries",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "blood_pressure_medication",
+      "type": "string",
+      "required": true,
+      "description": "History of antihypertensive medication",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "high_blood_glucose_history",
+      "type": "string",
+      "required": true,
+      "description": "History of high blood glucose (e.g., during health examination, illness, or pregnancy)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "family_diabetes_history",
+      "type": "string",
+      "required": true,
+      "description": "Family history of diabetes",
+      "options": ["none", "second_degree", "first_degree"],
+      "validation": {
+        "enum": ["none", "second_degree", "first_degree"]
+      }
+    }
+  ],
+  "result": {
+    "name": "risk_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total FINDRISC score indicating 10-year risk of developing type 2 diabetes"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Very Low",
+        "description": "Very low risk",
+        "interpretation": "Estimated 1 in 100 will develop diabetes within 10 years. 10-year risk: Men 0.3%, Women 0.1%"
+      },
+      {
+        "min": 4,
+        "max": 8,
+        "stage": "Low",
+        "description": "Low risk",
+        "interpretation": "Estimated 1 in 25 will develop diabetes within 10 years. 10-year risk: Men 0.8%, Women 0.4%"
+      },
+      {
+        "min": 9,
+        "max": 12,
+        "stage": "Moderate",
+        "description": "Moderate risk",
+        "interpretation": "Estimated 1 in 6 will develop diabetes within 10 years. 10-year risk: Men 2.6%, Women 2.2%"
+      },
+      {
+        "min": 13,
+        "max": 20,
+        "stage": "High",
+        "description": "High risk",
+        "interpretation": "Estimated 1 in 3 will develop diabetes within 10 years. 10-year risk: Men 23.1%, Women 14.1%. Consider lifestyle changes and possibly medication"
+      },
+      {
+        "min": 21,
+        "max": 26,
+        "stage": "Very High",
+        "description": "Very high risk",
+        "interpretation": "Estimated 1 in 2 will develop diabetes within 10 years. 10-year risk: 50%. Lifestyle changes needed; consider medications to prevent diabetes"
+      }
+    ]
+  },
+  "references": [
+    "Lindström J, Tuomilehto J. The diabetes risk score: a practical tool to predict type 2 diabetes risk. Diabetes Care. 2003 Mar;26(3):725-31. doi: 10.2337/diacare.26.3.725.",
+    "Saaristo T, Peltonen M, Lindström J, Saarikoski L, Sundvall J, Eriksson JG, et al. Cross-sectional evaluation of the Finnish Diabetes Risk Score: a tool to identify undetected type 2 diabetes, abnormal glucose tolerance and metabolic syndrome. Diab Vasc Dis Res. 2005 May;2(2):67-72. doi: 10.3132/dvdr.2005.011.",
+    "Tankova T, Chakarova N, Atanassova I, Dakovska L. Evaluation of the Finnish Diabetes Risk Score as a screening tool for impaired fasting glucose, impaired glucose tolerance and undetected diabetes. Diabetes Res Clin Pract. 2011 Apr;92(1):46-52. doi: 10.1016/j.diabres.2010.12.020."
+  ],
+  "formula": "Sum of points based on: Age (0-4 points) + BMI (0-3 points) + Waist circumference (0-4 points) + Physical activity (0-2 points) + Fruit/vegetable consumption (0-1 point) + Blood pressure medication (0-2 points) + High blood glucose history (0-5 points) + Family diabetes history (0-5 points)",
+  "notes": [
+    "First degree relatives include parents, siblings, or children",
+    "Second degree relatives include grandparents, aunts, uncles, or cousins",
+    "Waist circumference thresholds differ by gender: Men (normal <94cm, elevated 94-102cm, high ≥102cm); Women (normal <80cm, elevated 80-88cm, high ≥88cm)",
+    "No laboratory tests required for this assessment"
+  ]
+}

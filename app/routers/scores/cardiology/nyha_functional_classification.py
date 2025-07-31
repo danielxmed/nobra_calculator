@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/nyha_functional_classification", response_model=NyhaFunctionalClassificationResponse)
+@router.post(
+    "/nyha_functional_classification",
+    response_model=NyhaFunctionalClassificationResponse,
+    summary="Calculate New York Heart Association (NYHA) Fun...",
+    description="Stratifies severity of heart failure by symptoms. Provides a simple way of classifying the extent of heart failure based on physical activity limitations and symptoms.",
+    response_description="The calculated nyha functional classification with interpretation",
+    operation_id="calculate_nyha_functional_classification"
+)
 async def calculate_nyha_functional_classification(request: NyhaFunctionalClassificationRequest):
     """
     Calculates New York Heart Association (NYHA) Functional Classification for Heart Failure

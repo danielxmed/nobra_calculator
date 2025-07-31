@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/ace_score", response_model=AceScoreResponse)
+@router.post(
+    "/ace_score",
+    response_model=AceScoreResponse,
+    summary="Calculate Adverse Childhood Experiences (ACE) Score",
+    description="Screens for adverse childhood experiences to assess risk of health problems in adulthood",
+    response_description="The calculated ace score with interpretation",
+    operation_id="calculate_ace_score"
+)
 async def calculate_ace_score(request: AceScoreRequest):
     """
     Calculates Adverse Childhood Experiences (ACE) Score

@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/blast_lung_injury_severity", response_model=BlastLungInjurySeverityResponse)
+@router.post(
+    "/blast_lung_injury_severity",
+    response_model=BlastLungInjurySeverityResponse,
+    summary="Calculate Blast Lung Injury Severity Score",
+    description="Stratifies primary blast lung injuries into three severity categories to guide ventilatory treatment and predict clinical outcomes",
+    response_description="The calculated blast lung injury severity with interpretation",
+    operation_id="calculate_blast_lung_injury_severity"
+)
 async def calculate_blast_lung_injury_severity(request: BlastLungInjurySeverityRequest):
     """
     Calculates Blast Lung Injury Severity Score for Primary Blast Lung Injury Assessment

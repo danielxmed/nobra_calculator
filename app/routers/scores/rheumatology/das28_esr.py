@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/das28_esr", response_model=Das28EsrResponse)
+@router.post(
+    "/das28_esr",
+    response_model=Das28EsrResponse,
+    summary="Calculate Disease Activity Score-28 for Rheumatoid Arthri...",
+    description="Describes severity of rheumatoid arthritis using clinical and laboratory data, specifically ESR",
+    response_description="The calculated das28 esr with interpretation",
+    operation_id="calculate_das28_esr"
+)
 async def calculate_das28_esr(request: Das28EsrRequest):
     """
     Calculates Disease Activity Score-28 for Rheumatoid Arthritis with ESR

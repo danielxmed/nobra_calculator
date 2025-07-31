@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/air_score", response_model=AirScoreResponse)
+@router.post(
+    "/air_score",
+    response_model=AirScoreResponse,
+    summary="Calculate Appendicitis Inflammatory Response (AIR) Score",
+    description="Diagnoses appendicitis based on clinical and laboratory findings using objective inflammatory variables and clinical signs of peritoneal irritation",
+    response_description="The calculated air score with interpretation",
+    operation_id="calculate_air_score"
+)
 async def calculate_air_score(request: AirScoreRequest):
     """
     Calculates Appendicitis Inflammatory Response (AIR) Score

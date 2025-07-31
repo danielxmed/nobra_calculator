@@ -1,0 +1,182 @@
+{
+  "id": "gad_7",
+  "title": "GAD-7 (General Anxiety Disorder-7)",
+  "description": "Measures anxiety severity and screens for generalized anxiety disorder",
+  "category": "psychiatry",
+  "version": "2006",
+  "parameters": [
+    {
+      "name": "nervous_anxious_on_edge",
+      "type": "integer",
+      "required": true,
+      "description": "Feeling nervous, anxious, or on edge (over the past 2 weeks)",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "options": {
+        "0": "Not at all",
+        "1": "Several days", 
+        "2": "More than half the days",
+        "3": "Nearly every day"
+      }
+    },
+    {
+      "name": "not_able_stop_control_worrying",
+      "type": "integer",
+      "required": true,
+      "description": "Not being able to stop or control worrying (over the past 2 weeks)",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "options": {
+        "0": "Not at all",
+        "1": "Several days",
+        "2": "More than half the days", 
+        "3": "Nearly every day"
+      }
+    },
+    {
+      "name": "worrying_too_much_different_things",
+      "type": "integer",
+      "required": true,
+      "description": "Worrying too much about different things (over the past 2 weeks)",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "options": {
+        "0": "Not at all",
+        "1": "Several days",
+        "2": "More than half the days",
+        "3": "Nearly every day"
+      }
+    },
+    {
+      "name": "trouble_relaxing", 
+      "type": "integer",
+      "required": true,
+      "description": "Trouble relaxing (over the past 2 weeks)",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "options": {
+        "0": "Not at all",
+        "1": "Several days",
+        "2": "More than half the days",
+        "3": "Nearly every day"
+      }
+    },
+    {
+      "name": "being_so_restless",
+      "type": "integer",
+      "required": true,
+      "description": "Being so restless that it's hard to sit still (over the past 2 weeks)",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "options": {
+        "0": "Not at all",
+        "1": "Several days",
+        "2": "More than half the days",
+        "3": "Nearly every day"
+      }
+    },
+    {
+      "name": "becoming_easily_annoyed_irritable",
+      "type": "integer", 
+      "required": true,
+      "description": "Becoming easily annoyed or irritable (over the past 2 weeks)",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "options": {
+        "0": "Not at all",
+        "1": "Several days",
+        "2": "More than half the days",
+        "3": "Nearly every day"
+      }
+    },
+    {
+      "name": "feeling_afraid_something_awful",
+      "type": "integer",
+      "required": true,
+      "description": "Feeling afraid as if something awful might happen (over the past 2 weeks)",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "options": {
+        "0": "Not at all",
+        "1": "Several days",
+        "2": "More than half the days",
+        "3": "Nearly every day"
+      }
+    }
+  ],
+  "result": {
+    "name": "gad_7_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total GAD-7 score from 0-21 points"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 4,
+        "stage": "Minimal Anxiety",
+        "description": "Minimal anxiety symptoms",
+        "interpretation": "Minimal anxiety. No intervention necessary. Routine monitoring may be appropriate."
+      },
+      {
+        "min": 5,
+        "max": 9,
+        "stage": "Mild Anxiety",
+        "description": "Mild anxiety symptoms", 
+        "interpretation": "Mild anxiety. Monitor symptoms and provide reassurance. Consider stress management techniques."
+      },
+      {
+        "min": 10,
+        "max": 14,
+        "stage": "Moderate Anxiety",
+        "description": "Moderate anxiety symptoms",
+        "interpretation": "Moderate anxiety. Possible clinically significant condition. Further assessment and/or referral to mental health professional recommended."
+      },
+      {
+        "min": 15,
+        "max": 21,
+        "stage": "Severe Anxiety", 
+        "description": "Severe anxiety symptoms",
+        "interpretation": "Severe anxiety. Active treatment probably warranted. Strongly recommend referral to mental health professional and consider psychotherapy and/or pharmacotherapy."
+      }
+    ]
+  },
+  "references": [
+    "Spitzer RL, Kroenke K, Williams JB, Löwe B. A brief measure for assessing generalized anxiety disorder: the GAD-7. Arch Intern Med. 2006;166(10):1092-7. doi: 10.1001/archinte.166.10.1092.",
+    "Löwe B, Decker O, Müller S, et al. Validation and standardization of the Generalized Anxiety Disorder Screener (GAD-7) in the general population. Med Care. 2008;46(3):266-74. doi: 10.1097/MLR.0b013e318160d093.",
+    "Plummer F, Manea L, Trepel D, McMillan D. Screening for anxiety disorders with the GAD-7 and GAD-2: a systematic review and diagnostic metaanalysis. Gen Hosp Psychiatry. 2016;39:24-31. doi: 10.1016/j.genhosppsych.2015.11.005."
+  ],
+  "formula": "Sum of scores for all 7 items (each scored 0-3 points)",
+  "notes": [
+    "Assesses anxiety symptoms over the past 2 weeks",
+    "Score ≥10 indicates need for further mental health assessment", 
+    "Score ≥8 may indicate probable generalized anxiety disorder (sensitivity 92%, specificity 76%)",
+    "Also screens for panic disorder, social anxiety disorder, and PTSD with good accuracy",
+    "Quick screening tool suitable for primary care settings",
+    "Does not replace comprehensive psychiatric evaluation",
+    "Consider cultural and linguistic factors when interpreting results",
+    "Monitor changes over time to assess treatment response"
+  ]
+}

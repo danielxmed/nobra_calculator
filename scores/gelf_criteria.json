@@ -1,0 +1,137 @@
+{
+  "id": "gelf_criteria",
+  "title": "Groupe d'Etude des Lymphomes Folliculaires (GELF) Criteria",
+  "description": "Determines if immediate therapy for follicular lymphoma is needed by identifying high tumor burden patients requiring treatment rather than active surveillance",
+  "category": "hematology",
+  "version": "1997",
+  "parameters": [
+    {
+      "name": "tumor_mass_over_7cm",
+      "type": "string",
+      "required": true,
+      "description": "Any nodal or extranodal tumor mass > 7 cm diameter",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "three_or_more_nodal_sites",
+      "type": "string",
+      "required": true,
+      "description": "Involvement of ≥3 nodal sites, each > 3 cm diameter",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "systemic_b_symptoms",
+      "type": "string",
+      "required": true,
+      "description": "Presence of systemic or B symptoms (fever, night sweats, weight loss)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "splenic_enlargement",
+      "type": "string",
+      "required": true,
+      "description": "Splenic enlargement with inferior margin below umbilical line",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "compression_syndrome",
+      "type": "string",
+      "required": true,
+      "description": "Compression syndrome (ureteral, orbital, gastrointestinal)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "serous_effusion",
+      "type": "string",
+      "required": true,
+      "description": "Pleural or peritoneal serous effusion",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "leukemic_phase",
+      "type": "string",
+      "required": true,
+      "description": "Leukemic phase: > 5.0 x 10⁹/L circulating malignant cells",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "granulocyte_count_low",
+      "type": "string",
+      "required": true,
+      "description": "Granulocyte count < 1.0 x 10⁹/L",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "platelet_count_low",
+      "type": "string",
+      "required": true,
+      "description": "Platelet count < 100 x 10⁹/L",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "gelf_result",
+    "type": "string",
+    "unit": "recommendation",
+    "description": "GELF criteria assessment with treatment recommendation"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "criteria_met": 0,
+        "stage": "Low Tumor Burden",
+        "description": "Active surveillance appropriate",
+        "interpretation": "No GELF criteria met. Patient has low tumor burden and is appropriate for active surveillance (watch and wait) approach. Regular monitoring recommended with treatment initiation when disease progression or symptoms develop. Consider FLIPI score for additional prognostic stratification."
+      },
+      {
+        "criteria_met": "≥1",
+        "stage": "High Tumor Burden",
+        "description": "Immediate therapy recommended",
+        "interpretation": "One or more GELF criteria met indicating high tumor burden. Immediate therapy is recommended rather than active surveillance. Consider rituximab-based treatment regimens such as R-CHOP, R-CVP, or R-bendamustine based on patient factors and institutional preferences. Multidisciplinary team discussion recommended for treatment planning."
+      }
+    ]
+  },
+  "references": [
+    "Brice P, Bastion Y, Lepage E, et al. Comparison in low-tumor-burden follicular lymphomas between an initial no-treatment policy, prednimustine, or interferon alfa: a randomized study from the Groupe d'Etude des Lymphomes Folliculaires. J Clin Oncol. 1997;15(3):1110-1117. doi: 10.1200/JCO.1997.15.3.1110",
+    "Solal-Céligny P, Roy P, Colombat P, et al. Follicular lymphoma international prognostic index. Blood. 2004;104(5):1258-1265. doi: 10.1182/blood-2003-12-4434",
+    "Ardeshna KM, Smith P, Norton A, et al. Long-term effect of a watch and wait policy versus immediate systemic treatment for asymptomatic advanced-stage non-Hodgkin lymphoma: a randomised controlled trial. Lancet. 2003;362(9383):516-522. doi: 10.1016/S0140-6736(03)14110-4"
+  ],
+  "formula": "Positive if any one or more of the following criteria are present: tumor mass >7cm, ≥3 nodal sites >3cm, B symptoms, splenic enlargement below umbilical line, compression syndrome, serous effusion, leukemic phase >5.0×10⁹/L, granulocytes <1.0×10⁹/L, or platelets <100×10⁹/L",
+  "notes": [
+    "Originally developed by the Groupe d'Etude des Lymphomes Folliculaires to standardize treatment decisions in follicular lymphoma",
+    "Used to distinguish between patients requiring immediate treatment vs. active surveillance (watch and wait)",
+    "Should be used in conjunction with FLIPI score for comprehensive prognostic assessment",
+    "Recent studies suggest some discordance between GELF criteria and actual clinical treatment decisions",
+    "Criteria were developed in the pre-rituximab era but remain relevant in current practice",
+    "Consider patient comorbidities, age, and preferences when making final treatment decisions",
+    "Regular reassessment recommended during active surveillance period",
+    "Multidisciplinary team involvement recommended for complex cases"
+  ]
+}

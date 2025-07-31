@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/crb_65_pneumonia_severity", response_model=Crb65PneumoniaSeverityResponse)
+@router.post(
+    "/crb_65_pneumonia_severity",
+    response_model=Crb65PneumoniaSeverityResponse,
+    summary="Calculate CRB-65 Score for Pneumonia Severity",
+    description="Stratifies severity of community-acquired pneumonia (CAP) to determine outpatient versus inpatient treatment using 4 clinical criteria (without blood urea nitrogen)",
+    response_description="The calculated crb 65 pneumonia severity with interpretation",
+    operation_id="calculate_crb_65_pneumonia_severity"
+)
 async def calculate_crb_65_pneumonia_severity(request: Crb65PneumoniaSeverityRequest):
     """
     Calculates CRB-65 Score for Pneumonia Severity

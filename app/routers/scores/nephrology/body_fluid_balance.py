@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/body_fluid_balance", response_model=BodyFluidBalanceResponse)
+@router.post(
+    "/body_fluid_balance",
+    response_model=BodyFluidBalanceResponse,
+    summary="Calculate Body Fluid Balance Calculator by Inputs and Out...",
+    description="Calculates fluid balance from sodium concentrations indicating 0.9% saline fluid, and free water losses (GI, urine, etc) and gains (IV fluids, PO, etc). Helps track complex fluid dynamics in hospitalized patients by accounting for different sodium concentrations in various fluids.",
+    response_description="The calculated body fluid balance with interpretation",
+    operation_id="calculate_body_fluid_balance"
+)
 async def calculate_body_fluid_balance(request: BodyFluidBalanceRequest):
     """
     Calculates Body Fluid Balance by Inputs and Outputs

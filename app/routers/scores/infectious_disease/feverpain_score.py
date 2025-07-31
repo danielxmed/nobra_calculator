@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/feverpain_score", response_model=FeverpainScoreResponse)
+@router.post(
+    "/feverpain_score",
+    response_model=FeverpainScoreResponse,
+    summary="Calculate FeverPAIN Score for Strep Pharyngitis",
+    description="Predicts likelihood of streptococcal pharyngitis and guides antibiotic prescribing decisions.",
+    response_description="The calculated feverpain score with interpretation",
+    operation_id="calculate_feverpain_score"
+)
 async def calculate_feverpain_score(request: FeverpainScoreRequest):
     """
     Calculates FeverPAIN Score for Strep Pharyngitis

@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/asrs_v1_1_adhd", response_model=AsrsV11AdhdResponse)
+@router.post(
+    "/asrs_v1_1_adhd",
+    response_model=AsrsV11AdhdResponse,
+    summary="Calculate Adult Self-Report Scale (ASRS v1.1) for ADHD",
+    description="Screens and diagnoses adult ADHD based on DSM-IV-TR criteria using an 18-question self-report questionnaire",
+    response_description="The calculated asrs v1 1 adhd with interpretation",
+    operation_id="calculate_asrs_v1_1_adhd"
+)
 async def calculate_asrs_v1_1_adhd(request: AsrsV11AdhdRequest):
     """
     Calculates Adult Self-Report Scale (ASRS v1.1) for ADHD

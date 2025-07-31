@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/abg_analyzer", response_model=AbgAnalyzerResponse)
+@router.post(
+    "/abg_analyzer",
+    response_model=AbgAnalyzerResponse,
+    summary="Calculate Arterial Blood Gas (ABG) Analyzer",
+    description="Interprets arterial blood gas results to determine acid-base status, respiratory compensation, and metabolic derangements",
+    response_description="The calculated abg analyzer with interpretation",
+    operation_id="calculate_abg_analyzer"
+)
 async def calculate_abg_analyzer(request: AbgAnalyzerRequest):
     """
     Calculates Arterial Blood Gas (ABG) Analysis

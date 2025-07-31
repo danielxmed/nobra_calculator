@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/behavioral_activity_rating_scale", response_model=BehavioralActivityRatingScaleResponse)
+@router.post(
+    "/behavioral_activity_rating_scale",
+    response_model=BehavioralActivityRatingScaleResponse,
+    summary="Calculate Behavioral Activity Rating Scale (BARS)",
+    description="Screens patients for agitation in emergency care and psychiatric settings using a 7-point observational scale",
+    response_description="The calculated behavioral activity rating scale with interpretation",
+    operation_id="calculate_behavioral_activity_rating_scale"
+)
 async def calculate_behavioral_activity_rating_scale(request: BehavioralActivityRatingScaleRequest):
     """
     Calculates Behavioral Activity Rating Scale (BARS)

@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/new_orleans_charity_head_trauma", response_model=NewOrleansCharityHeadTraumaResponse)
+@router.post(
+    "/new_orleans_charity_head_trauma",
+    response_model=NewOrleansCharityHeadTraumaResponse,
+    summary="Calculate New Orleans/Charity Head Trauma/Injury Rule",
+    description="Offers criteria for which patients are unlikely to require imaging after head trauma. Use ONLY in patients with head injury and loss of consciousness who are neurologically normal (GCS 15).",
+    response_description="The calculated new orleans charity head trauma with interpretation",
+    operation_id="calculate_new_orleans_charity_head_trauma"
+)
 async def calculate_new_orleans_charity_head_trauma(request: NewOrleansCharityHeadTraumaRequest):
     """
     Calculates New Orleans/Charity Head Trauma/Injury Rule

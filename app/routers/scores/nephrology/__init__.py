@@ -14,6 +14,9 @@ from .ckid_u25_egfr import router as ckid_u25_egfr_router
 from .ckd_prediction_hiv_patients import router as ckd_prediction_hiv_patients_router
 from .cisplatin_aki import router as cisplatin_aki_router
 from .creatinine_clearance_cockcroft_gault import router as creatinine_clearance_cockcroft_gault_router
+from .fractional_excretion_sodium import router as fractional_excretion_sodium_router
+from .fractional_excretion_urea import router as fractional_excretion_urea_router
+from .free_water_deficit import router as free_water_deficit_router
 
 # Create main specialty router
 router = APIRouter()
@@ -28,3 +31,6 @@ router.include_router(ckid_u25_egfr_router)
 router.include_router(ckd_prediction_hiv_patients_router)
 router.include_router(cisplatin_aki_router)
 router.include_router(creatinine_clearance_cockcroft_gault_router)
+router.include_router(fractional_excretion_sodium_router)
+router.include_router(fractional_excretion_urea_router)
+router.include_router(free_water_deficit_router)

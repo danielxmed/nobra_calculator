@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/color_vision_screening", response_model=ColorVisionScreeningResponse)
+@router.post(
+    "/color_vision_screening",
+    response_model=ColorVisionScreeningResponse,
+    summary="Calculate Color Vision Screening (Ishihara Test)",
+    description="Screens for red-green color blindness using an abbreviated 14-plate Ishihara test. Assesses the most common types of color vision deficiency in clinical practice.",
+    response_description="The calculated color vision screening with interpretation",
+    operation_id="calculate_color_vision_screening"
+)
 async def calculate_color_vision_screening(request: ColorVisionScreeningRequest):
     """
     Calculates Color Vision Screening (Ishihara Test) Assessment

@@ -15,7 +15,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/four_peps", response_model=FourPepsResponse)
+@router.post(
+    "/four_peps",
+    response_model=FourPepsResponse,
+    summary="Calculate 4-Level Pulmonary Embolism Clinical Probability...",
+    description="Clinical probability score for suspected pulmonary embolism using 13 clinical variables to safely decrease imaging testing needs",
+    response_description="The calculated four peps with interpretation",
+    operation_id="calculate_four_peps"
+)
 async def calculate_four_peps(request: FourPepsRequest):
     """
     Calculates 4-Level Pulmonary Embolism Clinical Probability Score (4PEPS)

@@ -20,6 +20,12 @@ from .embolic_stroke_undetermined_source_esus_criteria import EmbolicStrokeUndet
 from .neuropathic_pain_scale import NeuropathicPainScaleRequest, NeuropathicPainScaleResponse
 from .new_orleans_charity_head_trauma import NewOrleansCharityHeadTraumaRequest, NewOrleansCharityHeadTraumaResponse
 from .edss import EdssRequest, EdssResponse
+from .fisher_grading_scale import FisherGradingScaleRequest, FisherGradingScaleResponse
+from .four_score import FourScoreRequest, FourScoreResponse
+from .gcs_pupils_score import GcsPupilsScoreRequest, GcsPupilsScoreResponse
+from .glasgow_coma_scale import GlasgowComaScaleRequest, GlasgowComaScaleResponse
+from .func_score import FuncScoreRequest, FuncScoreResponse
+from .hat_score import HatScoreRequest, HatScoreResponse
 
 __all__ = [
     "Abcd2Request",
@@ -58,4 +64,16 @@ __all__ = [
     "NewOrleansCharityHeadTraumaResponse",
     "EdssRequest",
     "EdssResponse",
+    "FisherGradingScaleRequest",
+    "FisherGradingScaleResponse",
+    "FourScoreRequest",
+    "FourScoreResponse",
+    "GcsPupilsScoreRequest",
+    "GcsPupilsScoreResponse",
+    "GlasgowComaScaleRequest",
+    "GlasgowComaScaleResponse",
+    "FuncScoreRequest",
+    "FuncScoreResponse",
+    "HatScoreRequest",
+    "HatScoreResponse",
 ]

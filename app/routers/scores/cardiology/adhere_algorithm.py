@@ -14,7 +14,7 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/adhere_algorithm", response_model=AdhereAlgorithmResponse)
+@router.post("/adhere_algorithm", response_model=AdhereAlgorithmResponse, summary="Calculate ADHERE Algorithm", description="Calculates ADHERE Algorithm for heart failure mortality prediction", response_description="Risk level with clinical interpretation and recommended management approach", operation_id="calculate_adhere_algorithm")
 async def calculate_adhere_algorithm(request: AdhereAlgorithmRequest):
     """
     Calculates Acute Decompensated Heart Failure National Registry (ADHERE) Algorithm

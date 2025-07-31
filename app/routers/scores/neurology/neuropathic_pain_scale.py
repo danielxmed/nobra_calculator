@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/neuropathic_pain_scale", response_model=NeuropathicPainScaleResponse)
+@router.post(
+    "/neuropathic_pain_scale",
+    response_model=NeuropathicPainScaleResponse,
+    summary="Calculate Neuropathic Pain Scale (NPS)",
+    description="Quantifies severity of neuropathic pain using 10 specific pain quality dimensions. Only for patients already diagnosed with neuropathic pain.",
+    response_description="The calculated neuropathic pain scale with interpretation",
+    operation_id="calculate_neuropathic_pain_scale"
+)
 async def calculate_neuropathic_pain_scale(request: NeuropathicPainScaleRequest):
     """
     Calculates Neuropathic Pain Scale (NPS)

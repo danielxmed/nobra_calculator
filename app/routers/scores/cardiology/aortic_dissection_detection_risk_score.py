@@ -14,7 +14,7 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/aortic_dissection_detection_risk_score", response_model=AorticDissectionDetectionRiskScoreResponse)
+@router.post("/aortic_dissection_detection_risk_score", response_model=AorticDissectionDetectionRiskScoreResponse, summary="Calculate Aortic Dissection Detection Risk Score", description="Calculates Aortic Dissection Detection Risk Score", response_description="Risk score with clinical interpretation and recommended care level", operation_id="calculate_aortic_dissection_detection_risk_score")
 async def calculate_aortic_dissection_detection_risk_score(request: AorticDissectionDetectionRiskScoreRequest):
     """
     Calculates Aortic Dissection Detection Risk Score (ADD-RS)

@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/cas", response_model=CasResponse)
+@router.post(
+    "/cas",
+    response_model=CasResponse,
+    summary="Calculate Coronavirus Anxiety Scale (CAS)",
+    description="Assesses dysfunctional anxiety associated with the COVID-19 crisis through a brief 5-item self-report screening tool designed to identify individuals experiencing clinically significant coronavirus-related anxiety symptoms.",
+    response_description="The calculated cas with interpretation",
+    operation_id="calculate_cas"
+)
 async def calculate_cas(request: CasRequest):
     """
     Calculates Coronavirus Anxiety Scale (CAS) Assessment

@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/bode_index_copd", response_model=BodeIndexCopdResponse)
+@router.post(
+    "/bode_index_copd",
+    response_model=BodeIndexCopdResponse,
+    summary="Calculate BODE Index for COPD Survival",
+    description="Predicts survival and mortality risk in patients with Chronic Obstructive Pulmonary Disease (COPD). The BODE Index (Body-Mass Index, Obstruction, Dyspnea, Exercise) is a multidimensional grading system that better predicts survival than FEV1 alone.",
+    response_description="The calculated bode index copd with interpretation",
+    operation_id="calculate_bode_index_copd"
+)
 async def calculate_bode_index_copd(request: BodeIndexCopdRequest):
     """
     Calculates BODE Index for COPD Survival

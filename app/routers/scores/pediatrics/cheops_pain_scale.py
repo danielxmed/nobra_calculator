@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/cheops_pain_scale", response_model=CheopsPainScaleResponse)
+@router.post(
+    "/cheops_pain_scale",
+    response_model=CheopsPainScaleResponse,
+    summary="Calculate Children's Hospital of Eastern Ontario Pain Scale",
+    description="Quantifies post-operative pain in pediatric patients aged 1-5 years using behavioral observations",
+    response_description="The calculated cheops pain scale with interpretation",
+    operation_id="calculate_cheops_pain_scale"
+)
 async def calculate_cheops_pain_scale(request: CheopsPainScaleRequest):
     """
     Calculates Children's Hospital of Eastern Ontario Pain Scale (CHEOPS)

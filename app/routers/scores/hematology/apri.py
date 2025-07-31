@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/apri", response_model=ApriResponse)
+@router.post(
+    "/apri",
+    response_model=ApriResponse,
+    summary="Calculate AST to Platelet Ratio Index (APRI)",
+    description="Determines the likelihood of hepatic fibrosis and cirrhosis in patients with hepatitis C using readily available laboratory values.",
+    response_description="The calculated apri with interpretation",
+    operation_id="calculate_apri"
+)
 async def calculate_apri(request: ApriRequest):
     """
     Calculates AST to Platelet Ratio Index (APRI)

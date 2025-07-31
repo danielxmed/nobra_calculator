@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/duke_treadmill_score", response_model=DukeTreadmillScoreResponse)
+@router.post(
+    "/duke_treadmill_score",
+    response_model=DukeTreadmillScoreResponse,
+    summary="Calculate Duke Treadmill Score",
+    description="Diagnoses and prognoses suspected coronary artery disease (CAD) based on treadmill exercise test. Uses exercise time, ST deviation, and angina to predict prognosis and guide further treatment decisions.",
+    response_description="The calculated duke treadmill score with interpretation",
+    operation_id="calculate_duke_treadmill_score"
+)
 async def calculate_duke_treadmill_score(request: DukeTreadmillScoreRequest):
     """
     Calculates Duke Treadmill Score

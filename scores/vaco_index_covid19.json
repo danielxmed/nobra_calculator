@@ -1,0 +1,222 @@
+{
+  "id": "vaco_index_covid19",
+  "title": "For Patients: VACO Index COVID-19 Mortality Risk",
+  "description": "Estimates 30-day mortality risk after COVID-19 infection using pre-existing health conditions and demographics. Developed by researchers from Yale University and VA Connecticut Healthcare System in collaboration with the US Department of Health and Human Services.",
+  "category": "infectious_disease",
+  "version": "2020",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 20,
+        "max": 115
+      },
+      "unit": "years"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient biological sex",
+      "options": ["female", "male"],
+      "validation": {
+        "enum": ["female", "male"]
+      }
+    },
+    {
+      "name": "diabetes",
+      "type": "string",
+      "required": true,
+      "description": "Diabetes mellitus status and severity (0-2 points)",
+      "options": ["none", "uncomplicated", "complicated"],
+      "validation": {
+        "enum": ["none", "uncomplicated", "complicated"]
+      }
+    },
+    {
+      "name": "chronic_pulmonary_disease",
+      "type": "string",
+      "required": true,
+      "description": "Chronic pulmonary disease status (0-1 point)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "renal_disease",
+      "type": "string",
+      "required": true,
+      "description": "Kidney/renal disease status and severity (0-2 points)",
+      "options": ["none", "mild_moderate", "severe"],
+      "validation": {
+        "enum": ["none", "mild_moderate", "severe"]
+      }
+    },
+    {
+      "name": "peripheral_vascular_disease",
+      "type": "string",
+      "required": true,
+      "description": "Peripheral vascular disease status (0-1 point)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "congestive_heart_failure",
+      "type": "string",
+      "required": true,
+      "description": "Congestive heart failure status (0-1 point)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "dementia",
+      "type": "string",
+      "required": true,
+      "description": "Dementia status (0-1 point)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "cancer",
+      "type": "string",
+      "required": true,
+      "description": "Cancer status and severity (0-6 points)",
+      "options": ["none", "localized_solid", "metastatic_solid", "leukemia", "lymphoma"],
+      "validation": {
+        "enum": ["none", "localized_solid", "metastatic_solid", "leukemia", "lymphoma"]
+      }
+    },
+    {
+      "name": "cerebrovascular_accident",
+      "type": "string",
+      "required": true,
+      "description": "Stroke/cerebrovascular accident history (0-1 point)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "liver_disease",
+      "type": "string",
+      "required": true,
+      "description": "Liver disease status and severity (0-3 points)",
+      "options": ["none", "mild", "moderate_severe"],
+      "validation": {
+        "enum": ["none", "mild", "moderate_severe"]
+      }
+    },
+    {
+      "name": "myocardial_infarction",
+      "type": "string",
+      "required": true,
+      "description": "Myocardial infarction (heart attack) history (0-1 point)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "peptic_ulcer_disease",
+      "type": "string",
+      "required": true,
+      "description": "Peptic ulcer disease history (0-1 point)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "paralysis",
+      "type": "string",
+      "required": true,
+      "description": "Paralysis status (0-1 point)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "aids",
+      "type": "string",
+      "required": true,
+      "description": "AIDS/HIV status (0-6 points)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "rheumatologic_disease",
+      "type": "string",
+      "required": true,
+      "description": "Rheumatologic disease status (0-1 point)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "mortality_risk",
+    "type": "float",
+    "unit": "percentage",
+    "description": "30-day mortality risk percentage after COVID-19 infection"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 8.7,
+        "stage": "Lower Risk",
+        "description": "Lower risk of 30-day mortality",
+        "interpretation": "Lower risk of death within 30 days of COVID-19 infection. Continue standard preventive measures and consult healthcare provider if symptoms develop."
+      },
+      {
+        "min": 8.8,
+        "max": 16.0,
+        "stage": "Moderate Risk",
+        "description": "Moderate risk of 30-day mortality",
+        "interpretation": "Moderate risk of death within 30 days of COVID-19 infection. Enhanced preventive measures recommended. Seek medical attention promptly if COVID-19 symptoms develop."
+      },
+      {
+        "min": 16.1,
+        "max": 21.2,
+        "stage": "High Risk",
+        "description": "High risk of 30-day mortality",
+        "interpretation": "High risk of death within 30 days of COVID-19 infection. Strict preventive measures strongly recommended. Consider discussing additional protective strategies with healthcare provider."
+      },
+      {
+        "min": 21.3,
+        "max": 100,
+        "stage": "Extreme Risk",
+        "description": "Extreme risk of 30-day mortality",
+        "interpretation": "Extreme risk of death within 30 days of COVID-19 infection. Maximum preventive measures essential. Immediate medical consultation recommended for risk mitigation strategies."
+      }
+    ]
+  },
+  "references": [
+    "Justice AC, Freiburg MS, Lopez-Class M, et al. Patient-facing COVID-19 risk tool. Developed in collaboration with US Department of Health and Human Services. Yale University and VA Connecticut Healthcare System; 2020.",
+    "King JT Jr, Yoon JS, Rentsch CT, et al. Development and validation of a 30-day mortality index based on pre-existing medical administrative data from 13,323 COVID-19 patients: The Veterans Health Administration COVID-19 (VACO) Index. PLoS One. 2020;15(11):e0241825.",
+    "Rentsch CT, Kidwai-Khan F, Tate JP, et al. Patterns of COVID-19 testing and mortality by race and ethnicity among United States veterans: A nationwide cohort study. PLoS Med. 2020;17(9):e1003379."
+  ],
+  "formula": "Uses age-specific coefficients, sex coefficients, and Charlson Comorbidity Index points with interaction terms. Final risk = exp(coefficient_sum) / (1 + exp(coefficient_sum))",
+  "notes": [
+    "This calculator estimates mortality risk based on pre-existing health conditions and does not predict risk of contracting COVID-19",
+    "Risk estimates are based on data from veterans and may not be fully generalizable to all populations",
+    "Mortality risk is 8-12 times higher than seasonal influenza mortality",
+    "Does not measure potential long-term health effects from COVID-19 infection",
+    "Results should be interpreted in consultation with healthcare professionals",
+    "Developed for patient-facing use to help individuals understand their risk profile"
+  ]
+}

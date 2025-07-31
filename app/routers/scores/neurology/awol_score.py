@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/awol_score", response_model=AwolScoreResponse)
+@router.post(
+    "/awol_score",
+    response_model=AwolScoreResponse,
+    summary="Calculate AWOL Score for Delirium",
+    description="Predicts risk of delirium during hospitalization using age, cognitive function, orientation, and illness severity",
+    response_description="The calculated awol score with interpretation",
+    operation_id="calculate_awol_score"
+)
 async def calculate_awol_score(request: AwolScoreRequest):
     """
     Calculates AWOL Score for Delirium

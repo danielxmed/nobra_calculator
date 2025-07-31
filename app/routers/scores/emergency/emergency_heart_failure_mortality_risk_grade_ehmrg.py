@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/emergency_heart_failure_mortality_risk_grade_ehmrg", response_model=EmergencyHeartFailureMortalityRiskGradeEhmrgResponse)
+@router.post(
+    "/emergency_heart_failure_mortality_risk_grade_ehmrg",
+    response_model=EmergencyHeartFailureMortalityRiskGradeEhmrgResponse,
+    summary="Calculate Emergency Heart Failure Mortality Risk Grade",
+    description="Estimates 7-day mortality risk in emergency department patients with acute heart failure using clinical variables routinely collected on arrival.",
+    response_description="The calculated emergency heart failure mortality risk grade ehmrg with interpretation",
+    operation_id="calculate_emergency_heart_failure_mortality_risk_grade_ehmrg"
+)
 async def calculate_emergency_heart_failure_mortality_risk_grade_ehmrg(request: EmergencyHeartFailureMortalityRiskGradeEhmrgRequest):
     """
     Calculates Emergency Heart Failure Mortality Risk Grade (EHMRG)

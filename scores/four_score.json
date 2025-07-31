@@ -1,0 +1,116 @@
+{
+  "id": "four_score",
+  "title": "FOUR (Full Outline of UnResponsiveness) Score",
+  "description": "Grades severity of coma; may be more accurate than Glasgow Coma Scale. Evaluates consciousness level through four components: eye response, motor response, brainstem reflexes, and respiration pattern.",
+  "category": "neurology",
+  "version": "2005",
+  "parameters": [
+    {
+      "name": "eye_response",
+      "type": "integer",
+      "required": true,
+      "description": "Eye response component (0-4 points)",
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "motor_response",
+      "type": "integer", 
+      "required": true,
+      "description": "Motor response of upper extremities (0-4 points)",
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "brainstem_reflexes",
+      "type": "integer",
+      "required": true,
+      "description": "Brainstem reflexes assessment (0-4 points)",
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "respiration_pattern",
+      "type": "integer",
+      "required": true,
+      "description": "Respiration pattern assessment (0-4 points)",
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "points"
+    }
+  ],
+  "result": {
+    "name": "four_score_total",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total FOUR Score (sum of all four components, range 0-16)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 4,
+        "stage": "Very Severe Coma",
+        "description": "Very severe impairment of consciousness",
+        "interpretation": "Very severe coma with profound impairment of consciousness. Extensive brainstem dysfunction. Poor prognosis with high mortality risk. Requires intensive neurological monitoring and management."
+      },
+      {
+        "min": 5,
+        "max": 8,
+        "stage": "Severe Coma",
+        "description": "Severe impairment of consciousness",
+        "interpretation": "Severe coma with significant neurological impairment. Substantial brainstem dysfunction present. Guarded prognosis requiring intensive care and frequent neurological assessment."
+      },
+      {
+        "min": 9,
+        "max": 12,
+        "stage": "Moderate Coma",
+        "description": "Moderate impairment of consciousness",
+        "interpretation": "Moderate coma with variable neurological function. Some brainstem reflexes may be preserved. Prognosis depends on underlying etiology and response to treatment."
+      },
+      {
+        "min": 13,
+        "max": 16,
+        "stage": "Mild Impairment",
+        "description": "Mild to minimal impairment of consciousness",
+        "interpretation": "Mild impairment of consciousness with relatively preserved neurological function. Better prognosis with potential for recovery. Continue supportive care and monitor for improvement."
+      }
+    ]
+  },
+  "references": [
+    "Wijdicks EF, Bamlet WR, Maramattom BV, Manno EM, McClelland RL. Validation of a new coma scale: The FOUR score. Ann Neurol. 2005;58(4):585-93.",
+    "Wolf CA, Wijdicks EF, Bamlet WR, McClelland RL. Further validation of the FOUR score coma scale by intensive care unit nurses. Mayo Clin Proc. 2007;82(4):435-8.",
+    "Stead LG, Wijdicks EF, Bhagra A, et al. Validation of a new coma scale, the FOUR score, in the emergency department. Neurocrit Care. 2009;10(1):50-4.",
+    "Kramer AA, Wijdicks EF, Snavely VL, et al. A multicenter prospective study of interobserver agreement using the Full Outline of UnResponsiveness score coma scale in the intensive care unit. Crit Care Med. 2012;40(9):2671-6."
+  ],
+  "formula": "Sum of four components: Eye Response (0-4) + Motor Response (0-4) + Brainstem Reflexes (0-4) + Respiration Pattern (0-4). Total score ranges from 0-16 points.",
+  "notes": [
+    "Developed by Dr. Eelco F.M. Wijdicks to address limitations of the Glasgow Coma Scale",
+    "More accurate than GCS, particularly for patients with lowest GCS scores",
+    "Each component scored from 0-4 points, with higher scores indicating better function",
+    "Eye response assesses eyelid opening and tracking ability",
+    "Motor response evaluates upper extremity motor function and command following",
+    "Brainstem reflexes include pupillary, corneal, and cough reflexes",
+    "Respiration pattern considers breathing patterns and ventilator dependence",
+    "Lower total scores indicate more severe coma and worse prognosis",
+    "Each point increase is associated with decreased mortality and morbidity",
+    "Particularly useful for identifying impending neurological decline",
+    "Can be used by nurses and physicians with high inter-rater reliability",
+    "Validated in emergency department, ICU, and neurological care settings"
+  ]
+}

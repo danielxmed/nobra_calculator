@@ -1,0 +1,115 @@
+{
+  "id": "gipss_primary_myelofibrosis",
+  "title": "GIPSS - Genetically Inspired Prognostic Scoring System for Primary Myelofibrosis",
+  "description": "The GIPSS is a genetically-based prognostic scoring system for primary myelofibrosis that relies exclusively on cytogenetic and molecular genetic markers. This system eliminates subjective clinical variables and provides more accurate risk stratification for treatment planning, particularly for allogeneic stem cell transplant decisions.",
+  "category": "hematology",
+  "version": "2018",
+  "parameters": [
+    {
+      "name": "karyotype_risk",
+      "type": "string",
+      "required": true,
+      "description": "Cytogenetic risk classification based on karyotype analysis",
+      "options": ["favorable", "unfavorable", "very_high_risk"],
+      "validation": {
+        "enum": ["favorable", "unfavorable", "very_high_risk"]
+      }
+    },
+    {
+      "name": "calr_type1_mutation",
+      "type": "string",
+      "required": true,
+      "description": "Presence of type 1/like CALR (calreticulin) mutation",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "asxl1_mutation",
+      "type": "string",
+      "required": true,
+      "description": "Presence of ASXL1 (Additional Sex Combs-Like 1) mutation",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "srsf2_mutation",
+      "type": "string",
+      "required": true,
+      "description": "Presence of SRSF2 (Serine/Arginine-Rich Splicing Factor 2) mutation",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "u2af1q157_mutation",
+      "type": "string",
+      "required": true,
+      "description": "Presence of U2AF1Q157 (U2 Small Nuclear RNA Auxiliary Factor 1) mutation",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "gipss_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "GIPSS total score with risk stratification and survival predictions"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "Excellent prognosis",
+        "interpretation": "Low risk primary myelofibrosis with excellent long-term prognosis. 5-year survival: 94%. Median overall survival: 26.4 years. Consider long-term observation with minimal therapeutic intervention. Regular monitoring recommended."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Intermediate-1 Risk",
+        "description": "Good prognosis",
+        "interpretation": "Intermediate-1 risk primary myelofibrosis with good prognosis. 5-year survival: 73%. Median overall survival: 8.0 years. Consider symptom-directed therapy and regular monitoring. Allogeneic transplant not typically indicated."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Intermediate-2 Risk",
+        "description": "Intermediate prognosis",
+        "interpretation": "Intermediate-2 risk primary myelofibrosis with intermediate prognosis. 5-year survival: 40%. Median overall survival: 4.2 years. Consider active treatment approaches and evaluate for allogeneic stem cell transplant candidacy."
+      },
+      {
+        "min": 3,
+        "max": 6,
+        "stage": "High Risk",
+        "description": "Poor prognosis",
+        "interpretation": "High risk primary myelofibrosis with poor prognosis. 5-year survival: 14%. Median overall survival: 2 years. Strong consideration for allogeneic stem cell transplant if eligible. Aggressive supportive care and symptom management."
+      }
+    ]
+  },
+  "references": [
+    "Tefferi A, Guglielmelli P, Nicolosi M, et al. GIPSS: genetically inspired prognostic scoring system for primary myelofibrosis. Leukemia. 2018;32(7):1631-1642. doi: 10.1038/s41375-018-0107-z.",
+    "Passamonti F, Giorgino T, Mora B, et al. A clinical-molecular prognostic model to predict survival in patients with post polycythemia vera and post essential thrombocythemia myelofibrosis. Leukemia. 2017;31(12):2726-2731. doi: 10.1038/leu.2017.169.",
+    "Guglielmelli P, Lasho TL, Rotunno G, et al. MIPSS70: Mutation-Enhanced International Prognostic Score System for transplantation-age patients with primary myelofibrosis. J Clin Oncol. 2018;36(4):310-318. doi: 10.1200/JCO.2017.76.4886."
+  ],
+  "formula": "GIPSS Score = Karyotype Risk Points + CALR Type 1 Absence Points + ASXL1 Mutation Points + SRSF2 Mutation Points + U2AF1Q157 Mutation Points, where total score ranges from 0-6 points",
+  "notes": [
+    "GIPSS is based exclusively on genetic markers: mutations and karyotype",
+    "This system eliminates subjective clinical variables used in other scoring systems",
+    "Can be performed on peripheral blood samples, avoiding bone marrow aspiration challenges",
+    "Particularly valuable for patients with fibrotic marrows where bone marrow sampling is difficult",
+    "Designed specifically for primary myelofibrosis but may apply to secondary myelofibrosis",
+    "Superior to DIPSS (Dynamic International Prognostic Scoring System) in cases of disagreement",
+    "Primary utility is in identifying candidates for allogeneic stem cell transplant (high-risk)",
+    "Low-risk patients may be managed with observation and minimal intervention",
+    "Should be interpreted in conjunction with patient age, comorbidities, and transplant eligibility",
+    "Regular reassessment may be needed as additional genetic markers are discovered"
+  ]
+}

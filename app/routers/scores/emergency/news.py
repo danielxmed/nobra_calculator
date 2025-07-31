@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/news", response_model=NewsResponse)
+@router.post(
+    "/news",
+    response_model=NewsResponse,
+    summary="Calculate National Early Warning Score (NEWS)",
+    description="Determines the degree of illness of a patient and prompts critical care intervention",
+    response_description="The calculated news with interpretation",
+    operation_id="calculate_news"
+)
 async def calculate_news(request: NewsRequest):
     """
     Calculates National Early Warning Score (NEWS)

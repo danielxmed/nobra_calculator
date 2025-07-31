@@ -1,0 +1,109 @@
+{
+  "id": "ganzoni_equation_iron_deficiency",
+  "title": "Ganzoni Equation for Iron Deficiency Anemia",
+  "description": "Assesses total body iron deficit for iron replacement therapy. Calculates the precise amount of iron needed to replenish body iron stores and correct hemoglobin levels in patients with iron deficiency anemia.",
+  "category": "hematology",
+  "version": "1970",
+  "parameters": [
+    {
+      "name": "body_weight",
+      "type": "float",
+      "required": true,
+      "description": "Patient's body weight in kilograms. Must be ≥35 kg for accurate calculation",
+      "validation": {
+        "min": 35,
+        "max": 200
+      },
+      "unit": "kg"
+    },
+    {
+      "name": "current_hemoglobin",
+      "type": "float",
+      "required": true,
+      "description": "Patient's current hemoglobin level in g/dL",
+      "validation": {
+        "min": 3.0,
+        "max": 12.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "target_hemoglobin",
+      "type": "float",
+      "required": true,
+      "description": "Target hemoglobin level in g/dL. Typically 15 g/dL for adults, may be lower based on clinical judgment",
+      "validation": {
+        "min": 10.0,
+        "max": 18.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "iron_stores",
+      "type": "integer",
+      "required": true,
+      "description": "Iron stores to be replenished in mg. Typically 500 mg for adults (minimum for small women), may be modified based on patient factors",
+      "validation": {
+        "min": 0,
+        "max": 1000
+      },
+      "unit": "mg"
+    }
+  ],
+  "result": {
+    "name": "iron_deficit",
+    "type": "float",
+    "unit": "mg",
+    "description": "Total iron deficit in milligrams requiring replacement"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 500,
+        "stage": "Mild Deficit",
+        "description": "Small iron deficit",
+        "interpretation": "Mild iron deficiency. Consider oral iron therapy or single IV iron infusion."
+      },
+      {
+        "min": 500,
+        "max": 1000,
+        "stage": "Moderate Deficit",
+        "description": "Moderate iron deficit",
+        "interpretation": "Moderate iron deficiency requiring iron replacement therapy. IV iron preferred if oral not tolerated."
+      },
+      {
+        "min": 1000,
+        "max": 2000,
+        "stage": "Severe Deficit",
+        "description": "Significant iron deficit",
+        "interpretation": "Significant iron deficiency requiring IV iron replacement therapy in divided doses."
+      },
+      {
+        "min": 2000,
+        "max": 5000,
+        "stage": "Very Severe Deficit",
+        "description": "Very large iron deficit",
+        "interpretation": "Very severe iron deficiency requiring high-dose IV iron replacement therapy administered over multiple sessions."
+      }
+    ]
+  },
+  "references": [
+    "Ganzoni AM. Intravenous iron-dextran: therapeutic and experimental possibilities. Schweiz Med Wochenschr. 1970;100(7):301-3. (German)",
+    "Auerbach M, Adamson JW. How we diagnose and treat iron deficiency anemia. Am J Hematol. 2016;91(1):31-8. doi: 10.1002/ajh.24201.",
+    "Camaschella C. Iron-deficiency anemia. N Engl J Med. 2015;372(19):1832-43. doi: 10.1056/NEJMra1401038."
+  ],
+  "formula": "Iron deficit (mg) = body weight (kg) × (target Hb - current Hb) (g/dL) × 2.4 + iron stores (mg)",
+  "notes": [
+    "Formula factor 2.4 = 0.0034 × 0.07 × 10,000 (iron content of Hb × blood volume × conversion factor)",
+    "Standard target hemoglobin is 15 g/dL for adults, but may be adjusted based on age, gender, and comorbidities",
+    "Iron stores typically 500 mg for adults; represents minimum iron stores for small women",
+    "MUST NOT be used for patients under 35 kg body weight - formula not validated in this population",
+    "Result represents cumulative iron dose needed for complete iron repletion",
+    "Most adults require at least 1000 mg cumulative elemental iron for complete repletion",
+    "Iron replacement usually done intravenously (iron-dextran, iron sucrose, or ferric carboxymaltose)",
+    "Formula may overestimate needs in patients with chronic kidney disease or inflammation",
+    "Consider modified formula (without iron stores) if transferrin saturation >20% and ferritin >50 ng/mL",
+    "Monitor hemoglobin response and iron parameters during treatment to avoid iron overload"
+  ]
+}

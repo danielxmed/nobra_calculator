@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/cpis", response_model=CpisResponse)
+@router.post(
+    "/cpis",
+    response_model=CpisResponse,
+    summary="Calculate Clinical Pulmonary Infection Score",
+    description="Evaluates objective data in mechanically ventilated patients suspected of ventilator-associated pneumonia (VAP) and stratifies risk of positive diagnosis. The score assists clinicians in determining when to pursue pulmonary cultures and guides antibiotic management decisions.",
+    response_description="The calculated cpis with interpretation",
+    operation_id="calculate_cpis"
+)
 async def calculate_cpis(request: CpisRequest):
     """
     Calculates Clinical Pulmonary Infection Score (CPIS)

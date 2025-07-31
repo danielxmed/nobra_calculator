@@ -1,0 +1,80 @@
+{
+  "id": "grogan_staging_attr_cm",
+  "title": "Grogan Staging System for Transthyretin Amyloid Cardiomyopathy (ATTR-CM)",
+  "description": "Classifies prognosis of patients with wild-type transthyretin amyloid cardiomyopathy using cardiac biomarkers NT-proBNP and troponin T",
+  "category": "cardiology",
+  "version": "2016",
+  "parameters": [
+    {
+      "name": "nt_probnp",
+      "type": "float",
+      "required": true,
+      "description": "N-terminal pro-B-type natriuretic peptide level",
+      "unit": "pg/mL",
+      "validation": {
+        "min": 0,
+        "max": 50000
+      }
+    },
+    {
+      "name": "troponin_t",
+      "type": "float",
+      "required": true,
+      "description": "Troponin T level",
+      "unit": "ng/mL",
+      "validation": {
+        "min": 0,
+        "max": 5.0
+      }
+    }
+  ],
+  "result": {
+    "name": "grogan_stage",
+    "type": "string",
+    "unit": "stage",
+    "description": "Grogan staging classification for ATTR-CM prognosis"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "stage": "Stage I",
+        "description": "Best prognosis",
+        "criteria": "NT-proBNP ≤3000 pg/mL AND Troponin T ≤0.05 ng/mL",
+        "survival": "57% 4-year survival",
+        "median_survival": "66 months",
+        "interpretation": "Excellent prognosis with lowest cardiac biomarker burden. Consider early disease-modifying therapy. Appropriate for aggressive interventions and clinical trial enrollment. Regular monitoring recommended to detect disease progression."
+      },
+      {
+        "stage": "Stage II",
+        "description": "Intermediate prognosis",
+        "criteria": "One biomarker above threshold: (NT-proBNP ≤3000 AND Troponin T >0.05) OR (NT-proBNP >3000 AND Troponin T ≤0.05)",
+        "survival": "42% 4-year survival",
+        "median_survival": "42 months",
+        "interpretation": "Intermediate prognosis with moderate cardiac biomarker elevation. Disease-modifying therapy strongly indicated. Multidisciplinary team approach recommended. Consider supportive heart failure therapies and monitoring for disease progression."
+      },
+      {
+        "stage": "Stage III",
+        "description": "Poor prognosis",
+        "criteria": "NT-proBNP >3000 pg/mL AND Troponin T >0.05 ng/mL",
+        "survival": "18% 4-year survival",
+        "median_survival": "20 months",
+        "interpretation": "Poor prognosis with both biomarkers elevated indicating advanced cardiac involvement. Urgent disease-modifying therapy consideration. Aggressive heart failure management required. Consider advanced therapies including heart transplantation evaluation in appropriate candidates. Focus on symptom management and quality of life."
+      }
+    ]
+  },
+  "references": [
+    "Grogan M, Scott CG, Kyle RA, et al. Natural history of wild-type transthyretin cardiac amyloidosis and risk stratification using a novel staging system. J Am Coll Cardiol. 2016;68(10):1014-1020. doi: 10.1016/j.jacc.2016.06.033",
+    "Cappelli F, Baldasseroni S, Bergesio F, et al. Biomarker-based staging system for cardiac transthyretin-related amyloidosis. Eur J Heart Fail. 2020;22(11):2187-2196. doi: 10.1002/ejhf.1898",
+    "Maurer MS, Hanna M, Grogan M, et al. Genotype and phenotype of transthyretin cardiac amyloidosis: THAOS (Transthyretin Amyloid Outcome Survey). J Am Coll Cardiol. 2016;68(2):161-172. doi: 10.1016/j.jacc.2016.03.596"
+  ],
+  "formula": "Stage I: NT-proBNP ≤3000 pg/mL AND Troponin T ≤0.05 ng/mL; Stage II: One biomarker above threshold; Stage III: Both biomarkers above threshold",
+  "notes": [
+    "Specifically validated for wild-type transthyretin amyloid cardiomyopathy (ATTRwt-CM)",
+    "Should be used in conjunction with clinical assessment and imaging findings",
+    "Regular reassessment recommended as biomarkers may change with disease progression or treatment",
+    "Consider advanced heart failure therapies in Stage III patients",
+    "Disease-modifying therapies (tafamidis, diflunisal) may be most beneficial in earlier stages",
+    "Multidisciplinary team approach recommended for optimal management",
+    "Biomarker thresholds: NT-proBNP >3000 pg/mL and Troponin T >0.05 ng/mL"
+  ]
+}

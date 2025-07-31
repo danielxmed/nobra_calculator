@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/calcium_correction", response_model=CalciumCorrectionResponse)
+@router.post(
+    "/calcium_correction",
+    response_model=CalciumCorrectionResponse,
+    summary="Calculate Calcium Correction for Hypoalbuminemia and Hype...",
+    description="Calculates corrected calcium level for patients with hypoalbuminemia or hyperalbuminemia",
+    response_description="The calculated calcium correction with interpretation",
+    operation_id="calculate_calcium_correction"
+)
 async def calculate_calcium_correction(request: CalciumCorrectionRequest):
     """
     Calculates Calcium Correction for Hypoalbuminemia and Hyperalbuminemia

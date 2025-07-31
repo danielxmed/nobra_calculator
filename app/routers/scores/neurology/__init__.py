@@ -22,6 +22,12 @@ from .embolic_stroke_undetermined_source_esus_criteria import router as embolic_
 from .neuropathic_pain_scale import router as neuropathic_pain_scale_router
 from .new_orleans_charity_head_trauma import router as new_orleans_charity_head_trauma_router
 from .edss import router as edss_router
+from .fisher_grading_scale import router as fisher_grading_scale_router
+from .four_score import router as four_score_router
+from .gcs_pupils_score import router as gcs_pupils_score_router
+from .glasgow_coma_scale import router as glasgow_coma_scale_router
+from .func_score import router as func_score_router
+from .hat_score import router as hat_score_router
 
 # Create main specialty router
 router = APIRouter()
@@ -44,3 +50,9 @@ router.include_router(embolic_stroke_undetermined_source_esus_criteria_router)
 router.include_router(neuropathic_pain_scale_router)
 router.include_router(new_orleans_charity_head_trauma_router)
 router.include_router(edss_router)
+router.include_router(fisher_grading_scale_router)
+router.include_router(four_score_router)
+router.include_router(gcs_pupils_score_router)
+router.include_router(glasgow_coma_scale_router)
+router.include_router(func_score_router)
+router.include_router(hat_score_router)

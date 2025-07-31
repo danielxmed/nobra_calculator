@@ -14,7 +14,7 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/el_ganzouri_risk_index_difficult_airway", response_model=ElGanzouriRiskIndexDifficultAirwayResponse)
+@router.post("/el_ganzouri_risk_index_difficult_airway", response_model=ElGanzouriRiskIndexDifficultAirwayResponse, summary="Calculate El-Ganzouri Risk Index for Difficult Airway", description="Calculates El-Ganzouri Risk Index for Difficult Airway", response_description="EGRI score with airway difficulty prediction and management recommendations", operation_id="calculate_el_ganzouri_risk_index_difficult_airway")
 async def calculate_el_ganzouri_risk_index_difficult_airway(request: ElGanzouriRiskIndexDifficultAirwayRequest):
     """
     Calculates El-Ganzouri Risk Index (EGRI) for Difficult Airway

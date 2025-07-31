@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/ottawa_ankle_rule", response_model=OttawaAnkleRuleResponse)
+@router.post(
+    "/ottawa_ankle_rule",
+    response_model=OttawaAnkleRuleResponse,
+    summary="Calculate Ottawa Ankle Rule",
+    description="Rules out clinically significant foot and ankle fractures to reduce use of x-ray imaging. Provides separate criteria for ankle and foot x-rays based on location of pain and specific clinical findings.",
+    response_description="The calculated ottawa ankle rule with interpretation",
+    operation_id="calculate_ottawa_ankle_rule"
+)
 async def calculate_ottawa_ankle_rule(request: OttawaAnkleRuleRequest):
     """
     Calculates Ottawa Ankle Rule recommendations

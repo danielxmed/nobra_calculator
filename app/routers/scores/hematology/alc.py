@@ -8,7 +8,14 @@ from app.services.calculator_service import calculator_service
 
 router = APIRouter()
 
-@router.post("/alc", response_model=AlcResponse)
+@router.post(
+    "/alc",
+    response_model=AlcResponse,
+    summary="Calculate Absolute Lymphocyte Count (ALC)",
+    description="Assesses lymphocyte count and predicts CD4 count in HIV patients",
+    response_description="The calculated alc with interpretation",
+    operation_id="calculate_alc"
+)
 async def calculate_alc(request: AlcRequest):
     """
     Calculate Absolute Lymphocyte Count (ALC) for HIV Monitoring and Immune Assessment

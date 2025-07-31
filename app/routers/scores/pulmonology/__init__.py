@@ -19,6 +19,10 @@ from .crb_65_pneumonia_severity import router as crb_65_pneumonia_severity_route
 from .decaf_score import router as decaf_score_router
 from .du_bois_ipf_mortality import router as du_bois_ipf_mortality_router
 from .expected_peak_expiratory_flow import router as expected_peak_expiratory_flow_router
+from .fleischner_guidelines import router as fleischner_guidelines_router
+from .gap_index_ipf_mortality import router as gap_index_ipf_mortality_router
+from .geneva_score_revised_pe import router as geneva_score_revised_pe_router
+from .gold_copd_criteria import router as gold_copd_criteria_router
 
 # Create main specialty router
 router = APIRouter()
@@ -38,3 +42,7 @@ router.include_router(crb_65_pneumonia_severity_router)
 router.include_router(decaf_score_router)
 router.include_router(du_bois_ipf_mortality_router)
 router.include_router(expected_peak_expiratory_flow_router)
+router.include_router(fleischner_guidelines_router)
+router.include_router(gap_index_ipf_mortality_router)
+router.include_router(geneva_score_revised_pe_router)
+router.include_router(gold_copd_criteria_router)

@@ -11,7 +11,14 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
-@router.post("/airq", response_model=AIRQResponse, summary="Calculate AIRQ Score")
+@router.post(
+    "/airq",
+    response_model=AIRQResponse,
+    summary="Calculate Asthma Impairment and Risk Questionnaire (AIRQ)",
+    description="Validates asthma control in patients 12 years and older by assessing both symptom impairment and exacerbation risk domains",
+    response_description="The calculated airq with interpretation",
+    operation_id="calculate_airq"
+)
 async def calculate_airq_score(request: AIRQRequest) -> AIRQResponse:
     """
     Calculate the Asthma Impairment and Risk Questionnaire (AIRQ) score.

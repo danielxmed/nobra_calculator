@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/danger_assessment_tool", response_model=DangerAssessmentToolResponse)
+@router.post(
+    "/danger_assessment_tool",
+    response_model=DangerAssessmentToolResponse,
+    summary="Calculate Danger Assessment Tool for Domestic Abuse",
+    description="Predicts risk of death by intimate partner (IP) in violent intimate relationship. Validated lethality risk assessment instrument for intimate partner femicide developed by Dr. Jacquelyn Campbell at Johns Hopkins University.",
+    response_description="The calculated danger assessment tool with interpretation",
+    operation_id="calculate_danger_assessment_tool"
+)
 async def calculate_danger_assessment_tool(request: DangerAssessmentToolRequest):
     """
     Calculates Danger Assessment Tool for Domestic Abuse

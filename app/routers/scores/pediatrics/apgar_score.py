@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/apgar_score", response_model=ApgarScoreResponse)
+@router.post(
+    "/apgar_score",
+    response_model=ApgarScoreResponse,
+    summary="Calculate APGAR Score",
+    description="Assesses neonatal vitality at 1 and 5 minutes after birth using 5 clinical criteria",
+    response_description="The calculated apgar score with interpretation",
+    operation_id="calculate_apgar_score"
+)
 async def calculate_apgar_score(request: ApgarScoreRequest):
     """
     Calculates APGAR Score

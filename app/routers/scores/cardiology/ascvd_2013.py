@@ -15,7 +15,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/ascvd_2013", response_model=Ascvd2013Response)
+@router.post(
+    "/ascvd_2013",
+    response_model=Ascvd2013Response,
+    summary="Calculate ASCVD (Atherosclerotic Cardiovascular...",
+    description="Estimates the 10-year risk of atherosclerotic cardiovascular disease (heart attack, stroke, or death due to coronary heart disease or stroke) using the Pooled Cohort Equations. For patients 40-79 years old with no history of ASCVD.",
+    response_description="The calculated ascvd 2013 with interpretation",
+    operation_id="calculate_ascvd_2013"
+)
 async def calculate_ascvd_2013(request: Ascvd2013Request):
     """
     Calculates 10-year ASCVD Risk using 2013 ACC/AHA Pooled Cohort Equations

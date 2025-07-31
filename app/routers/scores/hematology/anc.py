@@ -8,7 +8,14 @@ from app.services.calculator_service import calculator_service
 
 router = APIRouter()
 
-@router.post("/anc", response_model=AncResponse)
+@router.post(
+    "/anc",
+    response_model=AncResponse,
+    summary="Calculate Absolute Neutrophil Count (ANC)",
+    description="Frequently used to assess febrile neutropenia in chemotherapy patients, by calculating the total number of mature and immature neutrophils",
+    response_description="The calculated anc with interpretation",
+    operation_id="calculate_anc"
+)
 async def calculate_anc(request: AncRequest):
     """
     Calculates ANC (Absolute Neutrophil Count)

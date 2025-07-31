@@ -1,0 +1,128 @@
+{
+  "id": "hacks_impairment_index",
+  "title": "Hack's Impairment Index (HII)",
+  "description": "Provides a quantitative and standardized assessment of the degree of alcohol-induced impairment in emergency department patients. Creates an objective, serializable evaluation of clinical intoxication.",
+  "category": "emergency",
+  "version": "2014",
+  "parameters": [
+    {
+      "name": "speech_mentation",
+      "type": "integer",
+      "required": true,
+      "description": "Speech quality and mentation assessment",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "gross_motor",
+      "type": "integer",
+      "required": true,
+      "description": "Gross motor skills assessment",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "eye_movement",
+      "type": "integer",
+      "required": true,
+      "description": "Eye movement assessment",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "coordination",
+      "type": "integer",
+      "required": true,
+      "description": "Coordination with target pursuit assessment",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "fine_motor",
+      "type": "integer",
+      "required": true,
+      "description": "Fine motor skills assessment",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "tasks_completed",
+      "type": "integer",
+      "required": true,
+      "description": "Number of tasks completed (1-5)",
+      "validation": {
+        "min": 1,
+        "max": 5
+      }
+    }
+  ],
+  "result": {
+    "name": "hii_score",
+    "type": "float",
+    "unit": "points",
+    "description": "HII score (0-15 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Minimal Impairment",
+        "description": "Minimal to no clinically significant impairment",
+        "interpretation": "Patient shows minimal signs of alcohol-induced impairment. Consider evaluation for discharge if other clinical criteria are met."
+      },
+      {
+        "min": 2.01,
+        "max": 4,
+        "stage": "Mild Impairment",
+        "description": "Mild alcohol-induced impairment",
+        "interpretation": "Patient shows mild impairment. Continue monitoring and reassess in 2 hours. Consider evaluation for potential alcohol withdrawal."
+      },
+      {
+        "min": 4.01,
+        "max": 8,
+        "stage": "Moderate Impairment",
+        "description": "Moderate alcohol-induced impairment",
+        "interpretation": "Patient shows moderate impairment. Not safe for discharge. Continue supportive care and reassess every 2 hours."
+      },
+      {
+        "min": 8.01,
+        "max": 12,
+        "stage": "Severe Impairment",
+        "description": "Severe alcohol-induced impairment",
+        "interpretation": "Patient shows severe impairment. Requires close monitoring and supportive care. Reassess frequently."
+      },
+      {
+        "min": 12.01,
+        "max": 15,
+        "stage": "Profound Impairment",
+        "description": "Profound alcohol-induced impairment",
+        "interpretation": "Patient shows profound impairment. May require intensive monitoring and airway protection. Consider ICU level care."
+      }
+    ]
+  },
+  "references": [
+    "Hack JB, Goldlust EJ, Gibbs F, Zink B. The H-Impairment Index (HII): a standardized assessment of alcohol-induced impairment in the Emergency Department. Am J Drug Alcohol Abuse. 2014 Mar;40(2):111-7. doi: 10.3109/00952990.2013.877019.",
+    "Hack JB, Hoffman RS. Thiamine before glucose to prevent Wernicke encephalopathy: examining the conventional wisdom. JAMA. 1998 Feb 25;279(8):583-4. doi: 10.1001/jama.279.8.583.",
+    "Goldlust EJ, Bookstaver AD, Zink BJ, Hack JB. Performance of the Hack's Impairment Index Score: A Novel Tool to Assess Impairment from Alcohol in Emergency Department Patients. Acad Emerg Med. 2017 Oct;24(10):1193-1203. doi: 10.1111/acem.13256."
+  ],
+  "formula": "HII Score = (Sum of all subscores) / (Number of tasks completed × 4)",
+  "notes": [
+    "Each task is scored from 0 (normal/baseline) to 4 (unable to participate)",
+    "Serial assessments should be performed every 2 hours",
+    "Estimated time to resolution (hours) = HII Score / 0.0616",
+    "HII <4 generally indicates readiness for clinical discharge evaluation",
+    "Not intended to determine driving safety or replace clinical judgment",
+    "Superior to blood alcohol levels for assessing clinical impairment"
+  ]
+}

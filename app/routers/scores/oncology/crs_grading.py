@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/crs_grading", response_model=CrsGradingResponse)
+@router.post(
+    "/crs_grading",
+    response_model=CrsGradingResponse,
+    summary="Calculate Cytokine Release Syndrome (CRS) Grading",
+    description="Assesses severity of cytokine release syndrome in immunotherapy patients, particularly those receiving CAR-T cell therapy and other immune effector cell therapies. CRS is an acute inflammatory process marked by a spectrum of clinical symptoms and substantial elevations of serum cytokines.",
+    response_description="The calculated crs grading with interpretation",
+    operation_id="calculate_crs_grading"
+)
 async def calculate_crs_grading(request: CrsGradingRequest):
     """
     Calculates Cytokine Release Syndrome (CRS) Grading using ASTCT Consensus Criteria

@@ -1,0 +1,116 @@
+{
+  "id": "free_water_deficit",
+  "title": "Free Water Deficit in Hypernatremia",
+  "description": "Calculates free water deficit by estimated total body water in patients with hypernatremia or dehydration",
+  "category": "nephrology",
+  "version": "2019",
+  "parameters": [
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient sex (affects total body water percentage)",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "age_category",
+      "type": "string",
+      "required": true,
+      "description": "Patient age category (affects total body water percentage)",
+      "options": ["child", "adult", "elderly"],
+      "validation": {
+        "enum": ["child", "adult", "elderly"]
+      }
+    },
+    {
+      "name": "weight",
+      "type": "float",
+      "required": true,
+      "description": "Patient weight in kilograms",
+      "validation": {
+        "min": 0.226,
+        "max": 226.796
+      },
+      "unit": "kg"
+    },
+    {
+      "name": "current_sodium",
+      "type": "float",
+      "required": true,
+      "description": "Current serum sodium level",
+      "validation": {
+        "min": 100,
+        "max": 200
+      },
+      "unit": "mEq/L"
+    },
+    {
+      "name": "desired_sodium",
+      "type": "float",
+      "required": true,
+      "description": "Desired serum sodium level (typically 140 mEq/L)",
+      "validation": {
+        "min": 135,
+        "max": 145
+      },
+      "unit": "mEq/L"
+    }
+  ],
+  "result": {
+    "name": "free_water_deficit",
+    "type": "float",
+    "unit": "L",
+    "description": "Free water deficit in liters to correct hypernatremia"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Mild Deficit",
+        "description": "Mild free water deficit",
+        "interpretation": "Small free water deficit. Consider oral hydration if patient can tolerate. Monitor serum sodium closely."
+      },
+      {
+        "min": 2,
+        "max": 5,
+        "stage": "Moderate Deficit",
+        "description": "Moderate free water deficit",
+        "interpretation": "Moderate free water deficit. Consider IV fluid replacement with 5% dextrose or hypotonic saline. Correct slowly over 48 hours."
+      },
+      {
+        "min": 5,
+        "max": 10,
+        "stage": "Severe Deficit",
+        "description": "Severe free water deficit",
+        "interpretation": "Severe free water deficit. Requires careful IV fluid management. Correct no faster than 0.5 mEq/L per hour to avoid cerebral edema."
+      },
+      {
+        "min": 10,
+        "max": 100,
+        "stage": "Critical Deficit",
+        "description": "Critical free water deficit",
+        "interpretation": "Critical free water deficit. Requires intensive monitoring and gradual correction. Consider ICU management and nephrology consultation."
+      }
+    ]
+  },
+  "references": [
+    "Adrogue HJ, Madias NE. Hypernatremia. N Engl J Med. 2000;342(20):1493-9. doi: 10.1056/NEJM200005183422006.",
+    "Moritz ML, Ayus JC. The changing pattern of hypernatremia in hospitalized children. Pediatrics. 1999;104(3 Pt 1):435-9. doi: 10.1542/peds.104.3.435.",
+    "Verbalis JG, Goldsmith SR, Greenberg A, et al. Diagnosis, evaluation, and treatment of hyponatremia: expert panel recommendations. Am J Med. 2013;126(10 Suppl 1):S1-42. doi: 10.1016/j.amjmed.2013.07.006."
+  ],
+  "formula": "Free water deficit (L) = Total body water fraction × Weight (kg) × (Current Na/Desired Na - 1)",
+  "notes": [
+    "Total body water fractions: Adult male 0.6, Adult female 0.5, Elderly male 0.5, Elderly female 0.45, Child 0.6",
+    "Correction should not exceed 0.5 mEq/L per hour to prevent cerebral edema",
+    "Target correction of 10 mEq/L in first 24 hours, then 10 mEq/L per day until normal",
+    "Add additional fluid for ongoing losses (insensible, urine, etc.)",
+    "Monitor serum sodium every 12 hours during correction",
+    "May be inaccurate in patients with significant weight changes",
+    "Should only be used when patient is hypernatremic but not volume depleted",
+    "Consider nephrology consultation for severe hypernatremia or complex cases"
+  ]
+}

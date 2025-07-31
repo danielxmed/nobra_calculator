@@ -12,6 +12,7 @@ from .denver_hiv_risk_score import router as denver_hiv_risk_score_router
 from .drip_score import router as drip_score_router
 from .duke_criteria_infective_endocarditis import router as duke_criteria_infective_endocarditis_router
 from .feverpain_score import router as feverpain_score_router
+from .vaco_index_covid19 import router as vaco_index_covid19_router
 
 # Create main specialty router
 router = APIRouter()
@@ -24,3 +25,4 @@ router.include_router(denver_hiv_risk_score_router)
 router.include_router(drip_score_router)
 router.include_router(duke_criteria_infective_endocarditis_router)
 router.include_router(feverpain_score_router)
+router.include_router(vaco_index_covid19_router)

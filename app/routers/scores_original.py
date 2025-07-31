@@ -66,7 +66,8 @@ router = APIRouter(
            response_model=ScoreListResponse,
            summary="List Available Medical Scores",
            description="Retrieve all available medical calculators and scores with optional filtering",
-           response_description="Comprehensive list of available medical scores and calculators")
+           response_description="Comprehensive list of available medical scores and calculators",
+           operation_id="list_scores")
 async def list_scores(
     category: Optional[str] = Query(
         None, 
@@ -144,7 +145,8 @@ async def list_scores(
            response_model=ScoreMetadataResponse,
            summary="Get Score Metadata",
            description="Retrieve comprehensive metadata for a specific medical score",
-           response_description="Complete score information including parameters, interpretation ranges, and references")
+           response_description="Complete score information including parameters, interpretation ranges, and references",
+           operation_id="get_score_metadata")
 async def get_score_metadata(score_id: str):
     """
     **Get Comprehensive Metadata for a Specific Medical Score**
@@ -210,7 +212,8 @@ async def get_score_metadata(score_id: str):
              response_model=CKDEpi2021Response,
              summary="Calculate CKD-EPI 2021 eGFR",
              description="Estimates glomerular filtration rate using the race-free CKD-EPI 2021 equation",
-             response_description="eGFR result with CKD staging and clinical recommendations")
+             response_description="eGFR result with CKD staging and clinical recommendations",
+             operation_id="calculate_ckd_epi_2021")
 async def calculate_ckd_epi_2021(request: CKDEpi2021Request):
     """
     **Calculate CKD-EPI 2021 Estimated Glomerular Filtration Rate**
@@ -293,7 +296,8 @@ async def calculate_ckd_epi_2021(request: CKDEpi2021Request):
              response_model=Cha2ds2VascResponse,
              summary="Calculate CHA₂DS₂-VASc Score",
              description="Assesses stroke risk in atrial fibrillation patients for anticoagulation decisions",
-             response_description="Stroke risk assessment with anticoagulation recommendations")
+             response_description="Stroke risk assessment with anticoagulation recommendations",
+             operation_id="calculate_cha2ds2_vasc")
 async def calculate_cha2ds2_vasc(request: Cha2ds2VascRequest):
     """
     **Calculate CHA₂DS₂-VASc Score for Atrial Fibrillation Stroke Risk**
@@ -378,7 +382,7 @@ async def calculate_cha2ds2_vasc(request: Cha2ds2VascRequest):
         )
 
 
-@router.post("/curb_65", response_model=Curb65Response)
+@router.post("/curb_65", response_model=Curb65Response, summary="Calculate CURB-65 Score", description="Assesses pneumonia severity using the CURB-65 score", response_description="Pneumonia severity assessment with treatment recommendations", operation_id="calculate_curb_65")
 async def calculate_curb_65(request: Curb65Request):
     """
     Calculates the CURB-65 Score for pneumonia severity assessment
@@ -437,7 +441,7 @@ async def calculate_curb_65(request: Curb65Request):
         )
 
 
-@router.post("/{score_id}/calculate")
+@router.post("/{score_id}/calculate", summary="Calculate a Score", description="Calculate a score using the provided parameters", response_description="Calculation result with interpretation", operation_id="calculate_score_generic")
 async def calculate_score_generic(score_id: str, parameters: Dict[str, Any]):
     """
     Generic endpoint to calculate any available score
@@ -509,7 +513,7 @@ async def calculate_score_generic(score_id: str, parameters: Dict[str, Any]):
         )
 
 
-@router.get("/categories")
+@router.get("/categories", summary="List Available Medical Categories", description="Retrieve all available medical categories", response_description="List of unique categories", operation_id="list_scores_categories")
 async def list_categories():
     """
     Lists available medical categories
@@ -538,7 +542,7 @@ async def list_categories():
         )
 
 
-@router.post("/reload")
+@router.post("/reload", summary="Reload Scores and Calculators", description="Reload all scores and calculators in the system", response_description="Status of the reload operation", operation_id="reload_scores")
 async def reload_scores():
     """
     Reloads all scores and calculators in the system
@@ -573,7 +577,7 @@ async def reload_scores():
         )
 
 
-@router.get("/scores/{score_id}/validate")
+@router.get("/scores/{score_id}/validate", summary="Validate Score Calculator", description="Check if a calculator is available for the score", response_description="Validation status", operation_id="validate_score_calculator")
 async def validate_score_calculator(score_id: str):
     """
     Validates if a calculator is available for the score
@@ -619,7 +623,7 @@ async def validate_score_calculator(score_id: str):
         )
 
 
-@router.post("/abcd2_score", response_model=Abcd2Response)
+@router.post("/abcd2_score", response_model=Abcd2Response, summary="Calculate ABCD² Score", description="Estimates stroke risk after TIA", response_description="Stroke risk stratification", operation_id="calculate_abcd2_score")
 async def calculate_abcd2_score(request: Abcd2Request):
     """
     Calculates the ABCD² Score to estimate stroke risk after TIA
@@ -677,7 +681,7 @@ async def calculate_abcd2_score(request: Abcd2Request):
         )
 
 
-@router.post("/4ts_hit", response_model=FourTsResponse)
+@router.post("/4ts_hit", response_model=FourTsResponse, summary="Calculate 4Ts Score", description="Assesses HIT probability", response_description="Probability of heparin-induced thrombocytopenia", operation_id="calculate_4ts_hit")
 async def calculate_4ts_hit(request: FourTsRequest):
     """
     Calculates the 4Ts Score for HIT probability assessment
@@ -734,7 +738,7 @@ async def calculate_4ts_hit(request: FourTsRequest):
         )
 
 
-@router.post("/aims", response_model=AimsResponse)
+@router.post("/aims", response_model=AimsResponse, summary="Calculate AIMS", description="Assesses tardive dyskinesia", response_description="Tardive dyskinesia assessment", operation_id="calculate_aims")
 async def calculate_aims(request: AimsRequest):
     """
     Calculates AIMS for tardive dyskinesia assessment
@@ -799,7 +803,7 @@ async def calculate_aims(request: AimsRequest):
         )
 
 
-@router.post("/4c_mortality_covid19", response_model=FourCMortalityResponse)
+@router.post("/4c_mortality_covid19", response_model=FourCMortalityResponse, summary="Calculate 4C Mortality Score", description="Estimates COVID-19 hospital mortality risk", response_description="Hospital mortality risk stratification", operation_id="calculate_4c_mortality_covid19")
 async def calculate_4c_mortality_covid19(request: FourCMortalityRequest):
     """
     Calculates the 4C Mortality Score for COVID-19
@@ -861,7 +865,7 @@ async def calculate_4c_mortality_covid19(request: FourCMortalityRequest):
         )
 
 
-@router.post("/6_minute_walk_distance", response_model=SixMinuteWalkResponse)
+@router.post("/6_minute_walk_distance", response_model=SixMinuteWalkResponse, summary="Calculate 6 Minute Walk Distance", description="Estimates functional capacity", response_description="Predicted distance and functional capacity analysis", operation_id="calculate_6_minute_walk_distance" )
 async def calculate_6_minute_walk_distance(request: SixMinuteWalkRequest):
     """
     Calculates reference values for 6-minute walk distance
@@ -922,7 +926,7 @@ async def calculate_6_minute_walk_distance(request: SixMinuteWalkRequest):
         )
 
 
-@router.post("/a_a_o2_gradient", response_model=AAO2GradientResponse)
+@router.post("/a_a_o2_gradient", response_model=AAO2GradientResponse, summary="Calculate A-a O₂ Gradient", description="Estimates alveolar-arterial oxygen gradient", response_description="A-a gradient and interpretation of lung function", operation_id="calculate_a_a_o2_gradient")
 async def calculate_a_a_o2_gradient(request: AAO2GradientRequest):
     """
     Calculates the alveolar-arterial oxygen gradient (A-a O₂)
@@ -981,7 +985,7 @@ async def calculate_a_a_o2_gradient(request: AAO2GradientRequest):
         )
 
 
-@router.post("/aas", response_model=AasResponse)
+@router.post("/aas", response_model=AasResponse, summary="Calculate AAS", description="Assesses domestic violence", response_description="Domestic violence screening", operation_id="calculate_aas")
 async def calculate_aas(request: AasRequest):
     """
     Calculates Abuse Assessment Screen (AAS)
@@ -1039,7 +1043,7 @@ async def calculate_aas(request: AasRequest):
         )
 
 
-@router.post("/aap_pediatric_hypertension", response_model=AapPediatricHypertensionResponse)
+@router.post("/aap_pediatric_hypertension", response_model=AapPediatricHypertensionResponse, summary="Calculate AAP Pediatric Hypertension", description="Classifies pediatric blood pressure", response_description="Pediatric BP classification", operation_id="calculate_aap_pediatric_hypertension")
 async def calculate_aap_pediatric_hypertension(request: AapPediatricHypertensionRequest):
     """
     Calculates AAP 2017 pediatric blood pressure classification
@@ -1097,7 +1101,7 @@ async def calculate_aap_pediatric_hypertension(request: AapPediatricHypertension
         )
 
 
-@router.post("/abbey_pain_scale", response_model=AbbeyPainResponse)
+@router.post("/abbey_pain_scale", response_model=AbbeyPainResponse, summary="Calculate Abbey Pain Scale", description="Assesses pain intensity in dementia", response_description="Pain intensity and recommendations", operation_id="calculate_abbey_pain_scale")
 async def calculate_abbey_pain_scale(request: AbbeyPainRequest):
     """
     Calculates Abbey Pain Scale for pain assessment in dementia
@@ -1156,7 +1160,7 @@ async def calculate_abbey_pain_scale(request: AbbeyPainRequest):
         )
 
 
-@router.post("/abic_score", response_model=AbicScoreResponse)
+@router.post("/abic_score", response_model=AbicScoreResponse, summary="Calculate ABIC Score", description="Estimates survival prognosis for alcoholic hepatitis", response_description="Survival prognosis", operation_id="calculate_abic_score")
 async def calculate_abic_score(request: AbicScoreRequest):
     """
     Calculates ABIC Score for alcoholic hepatitis
@@ -1213,7 +1217,7 @@ async def calculate_abic_score(request: AbicScoreRequest):
         )
 
 
-@router.post("/alc", response_model=AlcResponse)
+@router.post("/alc", response_model=AlcResponse, summary="Calculate ALC", description="Assesses alcohol consumption", response_description="Alcohol consumption assessment", operation_id="calculate_alc")
 async def calculate_alc(request: AlcRequest):
     """
     Calculate Absolute Lymphocyte Count (ALC) for HIV Monitoring and Immune Assessment
@@ -1293,7 +1297,7 @@ async def calculate_alc(request: AlcRequest):
         )
 
 
-@router.post("/anc", response_model=AncResponse)
+@router.post("/anc", response_model=AncResponse, summary="Calculate ANC", description="Assesses anemia severity", response_description="Anemia severity assessment", operation_id="calculate_anc")
 async def calculate_anc(request: AncRequest):
     """
     Calculates ANC (Absolute Neutrophil Count)
@@ -1349,7 +1353,7 @@ async def calculate_anc(request: AncRequest):
         )
 
 
-@router.post("/acc_aha_hf_staging", response_model=AccAhaHfStagingResponse)
+@router.post("/acc_aha_hf_staging", response_model=AccAhaHfStagingResponse, summary="Calculate ACC AHA HF Staging", description="Stages heart failure severity", response_description="Heart failure severity staging", operation_id="calculate_acc_aha_hf_staging")
 async def calculate_acc_aha_hf_staging(request: AccAhaHfStagingRequest):
     """
     Calculates ACC/AHA Heart Failure Staging
@@ -1406,7 +1410,7 @@ async def calculate_acc_aha_hf_staging(request: AccAhaHfStagingRequest):
         )
 
 
-@router.post("/eular_acr_2012_pmr", response_model=EularAcrPmrResponse)
+@router.post("/eular_acr_2012_pmr", response_model=EularAcrPmrResponse, summary="Calculate EULAR ACR 2012 PMR", description="Estimates renal function in patients with rheumatoid arthritis", response_description="EULAR ACR 2012 PMR", operation_id="calculate_eular_acr_2012_pmr")
 async def calculate_eular_acr_2012_pmr(request: EularAcrPmrRequest):
     """
     Calculates EULAR/ACR 2012 PMR Classification Criteria
@@ -1463,7 +1467,7 @@ async def calculate_eular_acr_2012_pmr(request: EularAcrPmrRequest):
         )
 
 
-@router.post("/four_at", response_model=FourAtResponse)
+@router.post("/four_at", response_model=FourAtResponse, summary="Calculate 4AT", description="Assesses atrial fibrillation", response_description="Atrial fibrillation assessment", operation_id="calculate_four_at")
 async def calculate_four_at(request: FourAtRequest):
     """
     Calculates 4AT (4 A's Test) for delirium screening
@@ -1518,7 +1522,7 @@ async def calculate_four_at(request: FourAtRequest):
         )
 
 
-@router.post("/helps2b", response_model=Helps2bResponse)
+@router.post("/helps2b", response_model=Helps2bResponse, summary="Calculate HELPS2B", description="Assesses pain intensity", response_description="Pain intensity assessment", operation_id="calculate_helps2b")
 async def calculate_helps2b(request: Helps2bRequest):
     """
     Calculates 2HELPS2B Score for seizure risk in cEEG

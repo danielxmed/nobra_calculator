@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/abc2_ich_volume", response_model=Abc2IchVolumeResponse)
+@router.post(
+    "/abc2_ich_volume",
+    response_model=Abc2IchVolumeResponse,
+    summary="Calculate ABC/2 Formula for Intracerebral Hemorrhage Volume",
+    description="Predicts volume of intracranial hemorrhage from CT measurements using a simplified ellipsoid formula. Widely used bedside method for rapid ICH volume estimation.",
+    response_description="The calculated abc2 ich volume with interpretation",
+    operation_id="calculate_abc2_ich_volume"
+)
 async def calculate_abc2_ich_volume(request: Abc2IchVolumeRequest):
     """
     Calculates ABC/2 Formula for Intracerebral Hemorrhage Volume

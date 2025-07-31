@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/cns_ipi", response_model=CnsIpiResponse)
+@router.post(
+    "/cns_ipi",
+    response_model=CnsIpiResponse,
+    summary="Calculate Central Nervous System International Prognostic...",
+    description="Prognostic scoring system that predicts the risk of central nervous system (CNS) relapse in patients with diffuse large B-cell lymphoma (DLBCL) treated with R-CHOP chemotherapy. Helps identify patients who may benefit from CNS-directed prophylaxis and guides treatment planning decisions.",
+    response_description="The calculated cns ipi with interpretation",
+    operation_id="calculate_cns_ipi"
+)
 async def calculate_cns_ipi(request: CnsIpiRequest):
     """
     Calculates Central Nervous System International Prognostic Index (CNS-IPI)

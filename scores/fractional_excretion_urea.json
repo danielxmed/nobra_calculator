@@ -1,0 +1,103 @@
+{
+  "id": "fractional_excretion_urea",
+  "title": "Fractional Excretion of Urea (FEUrea)",
+  "description": "Determines the cause of renal failure. Similar to FENa, but can be used in patients on diuretics. More sensitive and specific than FENa for differentiating prerenal azotemia from acute tubular necrosis.",
+  "category": "nephrology",
+  "version": "Standard",
+  "parameters": [
+    {
+      "name": "serum_urea",
+      "type": "float",
+      "required": true,
+      "description": "Serum/plasma urea concentration (or Blood Urea Nitrogen - BUN)",
+      "validation": {
+        "min": 5,
+        "max": 300
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "urine_urea",
+      "type": "float",
+      "required": true,
+      "description": "Urine urea concentration",
+      "validation": {
+        "min": 50,
+        "max": 5000
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "serum_creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Serum/plasma creatinine concentration",
+      "validation": {
+        "min": 0.1,
+        "max": 20.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "urine_creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Urine creatinine concentration",
+      "validation": {
+        "min": 1,
+        "max": 500
+      },
+      "unit": "mg/dL"
+    }
+  ],
+  "result": {
+    "name": "feurea_percentage",
+    "type": "float",
+    "unit": "%",
+    "description": "Fractional Excretion of Urea as percentage"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 35,
+        "stage": "Prerenal AKI",
+        "description": "Suggests prerenal azotemia",
+        "interpretation": "FEUrea <35% indicates prerenal cause of acute kidney injury. The kidneys are conserving urea due to decreased blood flow or volume depletion. Common causes include dehydration, heart failure, cirrhosis, or hepatorenal syndrome."
+      },
+      {
+        "min": 35,
+        "max": 50,
+        "stage": "Indeterminate",
+        "description": "Intermediate range requiring clinical correlation",
+        "interpretation": "FEUrea 35-50% is in the intermediate range and may suggest early intrinsic renal disease or mixed conditions. Further clinical correlation and additional testing are needed to determine the underlying cause."
+      },
+      {
+        "min": 50,
+        "max": 100,
+        "stage": "Intrinsic AKI",
+        "description": "Suggests intrinsic renal pathology",
+        "interpretation": "FEUrea >50% indicates intrinsic renal pathology, most commonly acute tubular necrosis (ATN). May also suggest acute interstitial nephritis or other causes of intrinsic kidney failure with impaired urea reabsorption."
+      }
+    ]
+  },
+  "references": [
+    "Carvounis CP, Nisar S, Guro-Razuman S. Significance of the fractional excretion of urea in the differential diagnosis of acute renal failure. Kidney Int. 2002;62(6):2223-9.",
+    "Kaplan AA, Kohn OF. Fractional excretion of urea as a guide to renal dysfunction. Am J Nephrol. 1992;12(1-2):49-54.",
+    "Diskin CJ, Stokes TJ, Dansby LM, et al. The comparative benefits of the fractional excretion of urea and sodium in various azotemic oliguric states. Nephron Clin Pract. 2010;114(2):c145-50.",
+    "Pahwa AK, Sperati CJ. Urinary Fractional Excretion Indices in the Evaluation of Acute Kidney Injury. J Hosp Med. 2016;11(1):77-80."
+  ],
+  "formula": "FEUrea (%) = [(Urine Urea × Serum Creatinine) / (Serum Urea × Urine Creatinine)] × 100",
+  "notes": [
+    "FEUrea can be used in patients who have recently received diuretics (unlike FENa)",
+    "More sensitive and specific than FENa for differentiating prerenal azotemia from ATN",
+    "Urea reabsorption is not significantly affected by most diuretics",
+    "Normal kidneys typically have FEUrea <35% during volume depletion",
+    "Values >70% are typically seen with acute tubular necrosis",
+    "May be elevated in conditions affecting urea handling (protein loading, corticosteroids)",
+    "Should be interpreted with clinical context and other laboratory findings",
+    "Particularly useful when FENa is unreliable due to diuretic use",
+    "Both serum and urine samples should be obtained simultaneously",
+    "Consider using when evaluating AKI in patients with recent diuretic exposure"
+  ]
+}

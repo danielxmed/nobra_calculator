@@ -1,0 +1,82 @@
+{
+  "id": "fleischner_guidelines",
+  "title": "Fleischner Society Guidelines for Incidental Pulmonary Nodules",
+  "description": "Provides guidelines for management of solid and subsolid pulmonary nodules detected incidentally on CT",
+  "category": "pulmonology",
+  "version": "2017",
+  "parameters": [
+    {
+      "name": "nodule_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of pulmonary nodule",
+      "options": ["solid", "subsolid"],
+      "validation": {
+        "enum": ["solid", "subsolid"]
+      }
+    },
+    {
+      "name": "nodule_number",
+      "type": "string",
+      "required": true,
+      "description": "Number of nodules",
+      "options": ["single", "multiple"],
+      "validation": {
+        "enum": ["single", "multiple"]
+      }
+    },
+    {
+      "name": "size_category",
+      "type": "string",
+      "required": true,
+      "description": "Size of the largest nodule",
+      "options": ["less_than_6mm", "6_to_8mm", "greater_than_8mm"],
+      "validation": {
+        "enum": ["less_than_6mm", "6_to_8mm", "greater_than_8mm"]
+      }
+    },
+    {
+      "name": "risk_level",
+      "type": "string",
+      "required": true,
+      "description": "Patient risk level based on clinical factors",
+      "options": ["low", "high"],
+      "validation": {
+        "enum": ["low", "high"]
+      }
+    },
+    {
+      "name": "subsolid_features",
+      "type": "string",
+      "required": false,
+      "description": "Features of subsolid nodule (required if nodule_type is subsolid)",
+      "options": ["ground_glass", "part_solid"],
+      "validation": {
+        "enum": ["ground_glass", "part_solid"]
+      }
+    }
+  ],
+  "result": {
+    "name": "recommendation",
+    "type": "string",
+    "unit": "",
+    "description": "Follow-up recommendation based on Fleischner Society Guidelines"
+  },
+  "interpretation": {
+    "ranges": []
+  },
+  "references": [
+    "MacMahon H, Naidich DP, Goo JM, Lee KS, Leung ANC, Mayo JR, et al. Guidelines for Management of Incidental Pulmonary Nodules Detected on CT Images: From the Fleischner Society 2017. Radiology. 2017 Jul;284(1):228-243. doi: 10.1148/radiol.2017161659.",
+    "Bankier AA, MacMahon H, Goo JM, Rubin GD, Schaefer-Prokop CM, Naidich DP. Recommendations for Measuring Pulmonary Nodules at CT: A Statement from the Fleischner Society. Radiology. 2017 Nov;285(2):584-600. doi: 10.1148/radiol.2017162894."
+  ],
+  "formula": "Recommendation based on nodule type (solid/subsolid), number (single/multiple), size (<6mm, 6-8mm, >8mm), and risk level (low/high)",
+  "notes": [
+    "Guidelines apply to patients ≥35 years old with incidental pulmonary nodules",
+    "Not applicable for lung cancer screening",
+    "Not for patients with known primary cancer or immunosuppression",
+    "Low risk: Minimal or no smoking history, no other risk factors",
+    "High risk: Heavy smoking history, family history, upper lobe location, spiculation, older age",
+    "Nodule size should be measured as average of long and short axis for nodules <10mm",
+    "Consider thin-section CT (≤1.5mm) with multiplanar reconstructions"
+  ]
+}

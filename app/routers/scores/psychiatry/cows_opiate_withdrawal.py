@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/cows_opiate_withdrawal", response_model=CowsOpiateWithdrawalResponse)
+@router.post(
+    "/cows_opiate_withdrawal",
+    response_model=CowsOpiateWithdrawalResponse,
+    summary="Calculate Clinical Opiate Withdrawal Scale",
+    description="Quantifies severity of opiate withdrawal symptoms using 11 clinical criteria to guide treatment decisions and assess withdrawal progression",
+    response_description="The calculated cows opiate withdrawal with interpretation",
+    operation_id="calculate_cows_opiate_withdrawal"
+)
 async def calculate_cows_opiate_withdrawal(request: CowsOpiateWithdrawalRequest):
     """
     Calculates Clinical Opiate Withdrawal Scale (COWS) for Opiate Withdrawal

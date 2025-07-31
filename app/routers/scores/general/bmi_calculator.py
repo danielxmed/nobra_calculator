@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/bmi_calculator", response_model=BmiCalculatorResponse)
+@router.post(
+    "/bmi_calculator",
+    response_model=BmiCalculatorResponse,
+    summary="Calculate BMI Calculator (Body Mass Index and BSA)",
+    description="Calculates body mass index (BMI) and body surface area (BSA) to assess weight appropriateness and determine medication dosages. BMI provides a quick screening tool for weight-related health risks, while BSA is used for calculating drug dosages and cardiac index measurements.",
+    response_description="The calculated bmi calculator with interpretation",
+    operation_id="calculate_bmi_calculator"
+)
 async def calculate_bmi_calculator(request: BmiCalculatorRequest):
     """
     Calculates Body Mass Index (BMI) and Body Surface Area (BSA)

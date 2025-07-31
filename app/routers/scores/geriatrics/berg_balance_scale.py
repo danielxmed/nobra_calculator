@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/berg_balance_scale", response_model=BergBalanceScaleResponse)
+@router.post(
+    "/berg_balance_scale",
+    response_model=BergBalanceScaleResponse,
+    summary="Calculate Berg Balance Scale (BBS)",
+    description="Assesses balance and fall risk in community-dwelling older adults through 14 functional tasks",
+    response_description="The calculated berg balance scale with interpretation",
+    operation_id="calculate_berg_balance_scale"
+)
 async def calculate_berg_balance_scale(request: BergBalanceScaleRequest):
     """
     Calculates Berg Balance Scale (BBS) for Balance and Fall Risk Assessment

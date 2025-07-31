@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/corrected_qt_interval", response_model=CorrectedQtIntervalResponse)
+@router.post(
+    "/corrected_qt_interval",
+    response_model=CorrectedQtIntervalResponse,
+    summary="Calculate Corrected QT Interval (QTc)",
+    description="Corrects QT interval for heart rate extremes using multiple validated formulas (Bazett, Fridericia, Framingham, Hodges, or Rautaharju)",
+    response_description="The calculated corrected qt interval with interpretation",
+    operation_id="calculate_corrected_qt_interval"
+)
 async def calculate_corrected_qt_interval(request: CorrectedQtIntervalRequest):
     """
     Calculates Corrected QT Interval (QTc) using Multiple Validated Formulas

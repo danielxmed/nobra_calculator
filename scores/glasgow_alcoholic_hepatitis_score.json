@@ -1,0 +1,107 @@
+{
+  "id": "glasgow_alcoholic_hepatitis_score",
+  "title": "Glasgow Alcoholic Hepatitis Score (GAHS)",
+  "description": "Prognostic score for mortality prediction in patients with alcoholic hepatitis using five clinical variables: age, white blood cell count, urea, prothrombin time ratio, and bilirubin. More accurate than the modified Discriminant Function for predicting 28-day mortality",
+  "category": "gastroenterology",
+  "version": "2005",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "white_cell_count",
+      "type": "float",
+      "required": true,
+      "description": "White blood cell count",
+      "validation": {
+        "min": 1.0,
+        "max": 100.0
+      },
+      "unit": "×10⁹/L"
+    },
+    {
+      "name": "urea",
+      "type": "float",
+      "required": true,
+      "description": "Blood urea nitrogen (BUN). Urea was chosen over creatinine as marker of renal function to avoid interference from hyperbilirubinaemia",
+      "validation": {
+        "min": 1.0,
+        "max": 50.0
+      },
+      "unit": "mmol/L"
+    },
+    {
+      "name": "prothrombin_time_ratio",
+      "type": "float",
+      "required": true,
+      "description": "Prothrombin time ratio (PT ratio) or INR. Reflects synthetic liver function and coagulopathy",
+      "validation": {
+        "min": 0.8,
+        "max": 10.0
+      },
+      "unit": "ratio"
+    },
+    {
+      "name": "bilirubin",
+      "type": "float",
+      "required": true,
+      "description": "Serum total bilirubin level. Major marker of hepatic dysfunction in alcoholic hepatitis",
+      "validation": {
+        "min": 10.0,
+        "max": 1000.0
+      },
+      "unit": "μmol/L"
+    }
+  ],
+  "result": {
+    "name": "gahs_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Glasgow Alcoholic Hepatitis Score (5-12 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 5,
+        "max": 8,
+        "stage": "Low Risk",
+        "description": "Good prognosis",
+        "interpretation": "GAHS <9 indicates good prognosis with 28-day survival of 87% without treatment. Patients may not require corticosteroid therapy."
+      },
+      {
+        "min": 9,
+        "max": 12,
+        "stage": "High Risk",
+        "description": "Poor prognosis",
+        "interpretation": "GAHS ≥9 indicates poor prognosis with 28-day survival of 46% without treatment, improving to 78% with corticosteroids. Strong indication for corticosteroid therapy."
+      }
+    ]
+  },
+  "references": [
+    "Forrest EH, Evans CD, Stewart S, et al. Analysis of factors predictive of mortality in alcoholic hepatitis and derivation and validation of the Glasgow alcoholic hepatitis score. Gut. 2005;54(8):1174-1179. doi: 10.1136/gut.2004.050781.",
+    "Louvet A, Naveau S, Abdelnour M, et al. The Lille model: a new tool for therapeutic strategy in patients with severe alcoholic hepatitis treated with steroids. Hepatology. 2007;45(6):1348-1354. doi: 10.1002/hep.21607.",
+    "Forrest EH, Morris AJ, Stewart S, et al. The Glasgow alcoholic hepatitis score identifies patients who may benefit from corticosteroids. Gut. 2007;56(12):1743-1746. doi: 10.1136/gut.2006.099226."
+  ],
+  "formula": "Score = Age points + WBC points + Urea points + PT ratio points + Bilirubin points. Total range: 5-12 points. Cutoff: ≥9 indicates high mortality risk",
+  "notes": [
+    "Developed from analysis of 241 patients with alcoholic hepatitis",
+    "More accurate than modified Discriminant Function (mDF) for mortality prediction",
+    "Overall accuracy: 81% on day 1, 93% on day 7 for predicting 28-day outcome",
+    "Sensitivity: 81% (day 1), 93% (day 7); Specificity: 61% (day 1), 68% (day 7)",
+    "First scoring system to include inflammatory parameter (WBC count)",
+    "Score ≥9 identifies patients who benefit from corticosteroid treatment",
+    "Urea preferred over creatinine due to bilirubin interference with creatinine assays",
+    "28-day survival: 87% for GAHS <9, 46% for GAHS ≥9 (untreated), 78% for GAHS ≥9 (treated)",
+    "Validated across different patient populations and healthcare settings",
+    "Should be used in conjunction with comprehensive clinical assessment",
+    "Consider contraindications to corticosteroids before treatment initiation"
+  ]
+}

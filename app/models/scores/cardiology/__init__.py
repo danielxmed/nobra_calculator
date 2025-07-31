@@ -3,6 +3,8 @@ Cardiology score models
 """
 
 from .cha2ds2_vasc import Cha2ds2VascRequest, Cha2ds2VascResponse
+from .gwtg_heart_failure_risk_score import GwtgHeartFailureRiskScoreRequest, GwtgHeartFailureRiskScoreResponse
+from .h2fpef_score import H2fpefScoreRequest, H2fpefScoreResponse
 from .acc_aha_hf_staging import AccAhaHfStagingRequest, AccAhaHfStagingResponse
 from .acef_ii import AcefIiRequest, AcefIiResponse
 from .action_icu_nstemi import ActionIcuNstemiRequest, ActionIcuNstemiResponse
@@ -32,10 +34,21 @@ from .egsys_score_syncope import EgsysScoreSyncopeRequest, EgsysScoreSyncopeResp
 from .euromacs_rhf_score import EuromacsRhfScoreRequest, EuromacsRhfScoreResponse
 from .euroscore_ii import EuroScoreIIRequest, EuroScoreIIResponse
 from .nyha_functional_classification import NyhaFunctionalClassificationRequest, NyhaFunctionalClassificationResponse
+from .framingham_heart_failure_criteria import FraminghamHeartFailureCriteriaRequest, FraminghamHeartFailureCriteriaResponse
+from .framingham_risk_score import FraminghamRiskScoreRequest, FraminghamRiskScoreResponse
+from .garfield_af import GarfieldAfRequest, GarfieldAfResponse
+from .gillmore_staging_attr_cm import GillmoreStagingAttrCmRequest, GillmoreStagingAttrCmResponse
+from .grace_acs_risk import GraceAcsRiskRequest, GraceAcsRiskResponse
+from .grogan_staging_attr_cm import GroganStagingAttrCmRequest, GroganStagingAttrCmResponse
+from .hcm_risk_scd import HcmRiskScdRequest, HcmRiskScdResponse
 
 __all__ = [
     "Cha2ds2VascRequest",
     "Cha2ds2VascResponse",
+    "GwtgHeartFailureRiskScoreRequest",
+    "GwtgHeartFailureRiskScoreResponse",
+    "H2fpefScoreRequest",
+    "H2fpefScoreResponse",
     "AccAhaHfStagingRequest",
     "AccAhaHfStagingResponse",
     "AcefIiRequest",
@@ -93,5 +106,19 @@ __all__ = [
     "EuroScoreIIRequest",
     "EuroScoreIIResponse",
     "NyhaFunctionalClassificationRequest",
-    "NyhaFunctionalClassificationResponse"
+    "NyhaFunctionalClassificationResponse",
+    "FraminghamHeartFailureCriteriaRequest",
+    "FraminghamHeartFailureCriteriaResponse",
+    "FraminghamRiskScoreRequest",
+    "FraminghamRiskScoreResponse",
+    "GarfieldAfRequest",
+    "GarfieldAfResponse",
+    "GillmoreStagingAttrCmRequest",
+    "GillmoreStagingAttrCmResponse",
+    "GraceAcsRiskRequest",
+    "GraceAcsRiskResponse",
+    "GroganStagingAttrCmRequest",
+    "GroganStagingAttrCmResponse",
+    "HcmRiskScdRequest",
+    "HcmRiskScdResponse"
 ]

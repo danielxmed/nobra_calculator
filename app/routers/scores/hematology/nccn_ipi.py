@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/nccn_ipi", response_model=NccnIpiResponse)
+@router.post(
+    "/nccn_ipi",
+    response_model=NccnIpiResponse,
+    summary="Calculate National Comprehensive Cancer Network Internati...",
+    description="Predicts survival in patients with diffuse large B-cell lymphoma (DLBCL) using age, LDH levels, extranodal involvement, Ann Arbor stage, and ECOG performance status. Developed for the rituximab era with enhanced prognostic discrimination.",
+    response_description="The calculated nccn ipi with interpretation",
+    operation_id="calculate_nccn_ipi"
+)
 async def calculate_nccn_ipi(request: NccnIpiRequest):
     """
     Calculates National Comprehensive Cancer Network International Prognostic Index (NCCN-IPI)

@@ -1,0 +1,98 @@
+{
+  "id": "glasgow_prognostic_score",
+  "title": "Glasgow Prognostic Score (GPS)",
+  "description": "Inflammation and nutrition-based prognostic score for cancer patients using serum C-reactive protein and albumin levels. Predicts overall survival and disease-free survival across multiple cancer types including colorectal, hepatocellular carcinoma, sarcoma, and lung cancer.",
+  "category": "hematology",
+  "version": "Original_and_Modified",
+  "parameters": [
+    {
+      "name": "crp",
+      "type": "float",
+      "required": true,
+      "description": "C-reactive protein level in mg/dL. Marker of systemic inflammation",
+      "validation": {
+        "min": 0,
+        "max": 50
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "albumin",
+      "type": "float",
+      "required": true,
+      "description": "Serum albumin level in g/dL. Marker of nutritional status and liver synthetic function",
+      "validation": {
+        "min": 1.0,
+        "max": 6.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "score_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of Glasgow Prognostic Score to calculate",
+      "validation": {
+        "enum": ["original", "modified"]
+      },
+      "options": [
+        "original - Original GPS (considers both CRP and albumin abnormalities)",
+        "modified - Modified GPS (mGPS - prioritizes CRP elevation)"
+      ]
+    }
+  ],
+  "result": {
+    "name": "gps_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Glasgow Prognostic Score (0-2 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "GPS 0",
+        "description": "Low risk - Normal inflammation and nutrition",
+        "interpretation": "Normal C-reactive protein (≤1.0 mg/dL) and normal albumin (≥3.5 g/dL). Indicates minimal systemic inflammatory response and adequate nutritional status. Associated with best prognosis and longest survival in cancer patients."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "GPS 1",
+        "description": "Intermediate risk - Mild inflammation or nutritional compromise",
+        "interpretation": "Either elevated C-reactive protein (>1.0 mg/dL) OR low albumin (<3.5 g/dL). Indicates either systemic inflammatory response or nutritional compromise. Associated with intermediate prognosis. In modified GPS, score 1 is assigned only for elevated CRP."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "GPS 2",
+        "description": "High risk - Severe inflammation and nutritional compromise",
+        "interpretation": "Both elevated C-reactive protein (>1.0 mg/dL) AND low albumin (<3.5 g/dL). Indicates significant systemic inflammatory response combined with nutritional decline. Associated with worst prognosis and shortest survival in cancer patients."
+      }
+    ]
+  },
+  "references": [
+    "Forrest LM, McMillan DC, McArdle CS, Angerson WJ, Dunlop DJ. Evaluation of cumulative prognostic scores based on the systemic inflammatory response in patients with inoperable non-small-cell lung cancer. Br J Cancer. 2003;89(5):1028-1030.",
+    "McMillan DC. The systemic inflammation-based Glasgow Prognostic Score: a decade of experience in patients with cancer. Cancer Treat Rev. 2013;39(5):534-540.",
+    "Roxburgh CS, McMillan DC. Role of systemic inflammatory response in predicting survival in patients with primary operable cancer. Future Oncol. 2010;6(1):149-163.",
+    "Proctor MJ, Morrison DS, Talwar D, et al. A comparison of inflammation-based prognostic scores in patients with cancer. A Glasgow Inflammation Outcome Study. Eur J Cancer. 2011;47(17):2633-2641."
+  ],
+  "formula": "Original GPS: Score 0 (CRP ≤1.0 mg/dL AND albumin ≥3.5 g/dL), Score 1 (CRP >1.0 mg/dL OR albumin <3.5 g/dL), Score 2 (CRP >1.0 mg/dL AND albumin <3.5 g/dL). Modified GPS: Score 0 (CRP ≤1.0 mg/dL), Score 1 (CRP >1.0 mg/dL AND albumin ≥3.5 g/dL), Score 2 (CRP >1.0 mg/dL AND albumin <3.5 g/dL)",
+  "notes": [
+    "Most extensively validated systemic inflammation-based prognostic score",
+    "Validated in >60 studies with >30,000 cancer patients",
+    "Applicable across multiple cancer types: colorectal, hepatocellular, sarcoma, lung, renal, gastric",
+    "Modified GPS (mGPS) assigns intermediate score only for elevated CRP, ignoring isolated low albumin",
+    "Both GPS and mGPS have independent prognostic value in operable and inoperable disease",
+    "Can be used for patient stratification in clinical trials",
+    "May guide treatment intensity and palliative care decisions",
+    "Cost-effective as it uses routine laboratory parameters",
+    "Should be measured before treatment initiation",
+    "Serial measurements may help monitor treatment response",
+    "Reflects both systemic inflammatory response (CRP) and nutritional decline (albumin)",
+    "Higher scores associated with increased mortality and shorter survival",
+    "May help identify patients requiring nutritional support or anti-inflammatory interventions",
+    "Complements other prognostic factors like TNM staging"
+  ]
+}

@@ -1,0 +1,201 @@
+{
+  "id": "hamilton_anxiety_scale",
+  "title": "Hamilton Anxiety Scale",
+  "description": "Rates level of anxiety based on clinical questions. Assesses the severity of anxiety symptoms across 14 domains in patients already diagnosed with anxiety disorders.",
+  "category": "psychiatry",
+  "version": "1959",
+  "parameters": [
+    {
+      "name": "anxious_mood",
+      "type": "integer",
+      "required": true,
+      "description": "Worries, anticipation of worst, fearful anticipation, irritability",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "tension",
+      "type": "integer",
+      "required": true,
+      "description": "Feelings of tension, fatigability, startle response, easily moved to tears, trembling, restlessness, inability to relax",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "fears",
+      "type": "integer",
+      "required": true,
+      "description": "Of dark, strangers, being left alone, animals, traffic, crowds",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "insomnia",
+      "type": "integer",
+      "required": true,
+      "description": "Difficulty falling asleep, broken sleep, unsatisfying sleep, fatigue on waking, dreams, nightmares, night terrors",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "intellectual",
+      "type": "integer",
+      "required": true,
+      "description": "Difficulty concentrating, poor memory",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "depressed_mood",
+      "type": "integer",
+      "required": true,
+      "description": "Loss of interest, lack of pleasure in hobbies, depression, early waking, diurnal swing",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "somatic_muscular",
+      "type": "integer",
+      "required": true,
+      "description": "Pains, aches, twitching, stiffness, myoclonic jerks, teeth grinding, unsteady voice, increased muscle tone",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "somatic_sensory",
+      "type": "integer",
+      "required": true,
+      "description": "Tinnitus, blurring vision, hot/cold flushes, feelings of weakness, pricking sensation",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "cardiovascular",
+      "type": "integer",
+      "required": true,
+      "description": "Tachycardia, palpitations, chest pain, throbbing vessels, fainting feelings, missing heartbeat",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "respiratory",
+      "type": "integer",
+      "required": true,
+      "description": "Pressure/constriction in chest, choking feelings, sighing, dyspnea",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "gastrointestinal",
+      "type": "integer",
+      "required": true,
+      "description": "Swallowing difficulty, wind, abdominal pain, burning sensations, fullness, nausea, vomiting, bowel changes, weight loss, constipation",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "genitourinary",
+      "type": "integer",
+      "required": true,
+      "description": "Urinary frequency/urgency, menstrual changes, sexual dysfunction",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "autonomic_symptoms",
+      "type": "integer",
+      "required": true,
+      "description": "Dry mouth, flushing, pallor, sweating, giddiness, tension headache, hair raising",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "behavior_at_interview",
+      "type": "integer",
+      "required": true,
+      "description": "Fidgeting, restlessness, hand tremor, furrowed brow, strained face, sighing, rapid respiration, facial pallor",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    }
+  ],
+  "result": {
+    "name": "ham_a_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "HAM-A total score (0-56 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 7,
+        "stage": "No/Minimal Anxiety",
+        "description": "No or minimal anxiety symptoms",
+        "interpretation": "Patient reports no significant anxiety symptoms or experiences minimal anxiety that does not interfere with daily functioning. No specific intervention typically required."
+      },
+      {
+        "min": 8,
+        "max": 14,
+        "stage": "Mild Anxiety",
+        "description": "Mild anxiety symptoms",
+        "interpretation": "Patient experiences mild anxiety symptoms that may cause some distress but generally do not significantly impair functioning. Consider monitoring and supportive interventions."
+      },
+      {
+        "min": 15,
+        "max": 23,
+        "stage": "Moderate Anxiety",
+        "description": "Moderate anxiety symptoms",
+        "interpretation": "Patient experiences moderate anxiety symptoms that interfere with daily activities and quality of life. Consider psychotherapy and/or pharmacological intervention."
+      },
+      {
+        "min": 24,
+        "max": 56,
+        "stage": "Severe Anxiety",
+        "description": "Severe anxiety symptoms",
+        "interpretation": "Patient experiences severe anxiety symptoms that significantly impair functioning and quality of life. Strongly consider intensive treatment including medication and psychotherapy."
+      }
+    ]
+  },
+  "references": [
+    "Hamilton M. The assessment of anxiety states by rating. Br J Med Psychol. 1959;32(1):50-5. doi: 10.1111/j.2044-8341.1959.tb00467.x.",
+    "Matza LS, Morlock R, Sexton C, Malley K, Feltner D. Identifying HAM-A cutoffs for mild, moderate, and severe generalized anxiety disorder. Int J Methods Psychiatr Res. 2010 Dec;19(4):223-32. doi: 10.1002/mpr.323.",
+    "Shear MK, Vander Bilt J, Rucci P, Endicott J, Lydiard B, Otto MW, et al. Reliability and validity of a structured interview guide for the Hamilton Anxiety Rating Scale (SIGH-A). Depress Anxiety. 2001;13(4):166-78. doi: 10.1002/da.1033."
+  ],
+  "formula": "HAM-A Score = Sum of all 14 item scores (each rated 0-4)",
+  "notes": [
+    "Each item is rated on a 5-point scale: 0=Not Present, 1=Mild, 2=Moderate, 3=Severe, 4=Very Severe",
+    "Originally designed for patients already diagnosed with anxiety disorders",
+    "Can be used for initial assessment or to monitor treatment response",
+    "Administration typically takes 10-15 minutes",
+    "Clinician-rated scale requiring clinical interview",
+    "Higher scores indicate more severe anxiety symptoms"
+  ]
+}

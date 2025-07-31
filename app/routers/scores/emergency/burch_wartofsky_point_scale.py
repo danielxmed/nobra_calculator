@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/burch_wartofsky_point_scale", response_model=BurchWartofskypointScaleResponse)
+@router.post(
+    "/burch_wartofsky_point_scale",
+    response_model=BurchWartofskypointScaleResponse,
+    summary="Calculate Burch-Wartofsky Point Scale",
+    description="Predicts likelihood that biochemical thyrotoxicosis is thyroid storm by evaluating clinical symptoms and precipitating factors. This empirically derived scoring system assesses multiple organ decompensation including thermoregulatory dysfunction, cardiovascular symptoms, neurological changes, and gastrointestinal symptoms.",
+    response_description="The calculated burch wartofsky point scale with interpretation",
+    operation_id="calculate_burch_wartofsky_point_scale"
+)
 async def calculate_burch_wartofsky_point_scale(request: BurchWartofskypointScaleRequest):
     """
     Calculates Burch-Wartofsky Point Scale (BWPS) for Thyrotoxicosis

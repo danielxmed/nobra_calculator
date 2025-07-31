@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/ottawa_copd_risk_scale", response_model=OttawaCopdRiskScaleResponse)
+@router.post(
+    "/ottawa_copd_risk_scale",
+    response_model=OttawaCopdRiskScaleResponse,
+    summary="Calculate Ottawa COPD Risk Scale",
+    description="Predicts 30-day mortality or serious adverse events (MI, intubation, etc) in emergency department COPD patients. Uses 10 clinical variables to stratify risk from low (2.2%) to very high (75.6%).",
+    response_description="The calculated ottawa copd risk scale with interpretation",
+    operation_id="calculate_ottawa_copd_risk_scale"
+)
 async def calculate_ottawa_copd_risk_scale(request: OttawaCopdRiskScaleRequest):
     """
     Calculates Ottawa COPD Risk Scale

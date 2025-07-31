@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/cardiac_power_output", response_model=CardiacPowerOutputResponse)
+@router.post(
+    "/cardiac_power_output",
+    response_model=CardiacPowerOutputResponse,
+    summary="Calculate Cardiac Power Output (CPO)",
+    description="Calculates cardiac power output, the rate of energy output of the heart. Integrates both pressure and flow components of cardiac work. Strong hemodynamic predictor of mortality in cardiogenic shock.",
+    response_description="The calculated cardiac power output with interpretation",
+    operation_id="calculate_cardiac_power_output"
+)
 async def calculate_cardiac_power_output(request: CardiacPowerOutputRequest):
     """
     Calculates Cardiac Power Output (CPO)

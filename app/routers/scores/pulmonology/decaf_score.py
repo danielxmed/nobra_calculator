@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/decaf_score", response_model=DecafScoreResponse)
+@router.post(
+    "/decaf_score",
+    response_model=DecafScoreResponse,
+    summary="Calculate DECAF Score for Acute Exacerbation of COPD",
+    description="Predicts in-hospital mortality in acute COPD exacerbation using five clinical variables: Dyspnoea, Eosinopenia, Consolidation, Acidaemia, and atrial Fibrillation.",
+    response_description="The calculated decaf score with interpretation",
+    operation_id="calculate_decaf_score"
+)
 async def calculate_decaf_score(request: DecafScoreRequest):
     """
     Calculates DECAF Score for Acute Exacerbation of COPD

@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/eutos_score", response_model=EutosScoreResponse)
+@router.post(
+    "/eutos_score",
+    response_model=EutosScoreResponse,
+    summary="Calculate EUTOS Score for Chronic Myelogenous Leukemia (CML)",
+    description="Predicts outcomes after CML treatments, specifically adjusted for tyrosine kinase inhibitor treatments. Predicts probability of complete cytogenetic response at 18 months and progression-free survival.",
+    response_description="The calculated eutos score with interpretation",
+    operation_id="calculate_eutos_score"
+)
 async def calculate_eutos_score(request: EutosScoreRequest):
     """
     Calculates EUTOS Score for Chronic Myelogenous Leukemia (CML)

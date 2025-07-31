@@ -1,0 +1,135 @@
+{
+  "id": "geneva_score_revised_pe",
+  "title": "Geneva Score (Revised) for Pulmonary Embolism",
+  "description": "Objectifies risk of pulmonary embolism, similar to Wells' score, but without requiring clinical gestalt. Helps determine clinical probability of PE to guide diagnostic workup including D-dimer testing and imaging decisions",
+  "category": "pulmonology",
+  "version": "2006",
+  "parameters": [
+    {
+      "name": "age_over_65",
+      "type": "string",
+      "required": true,
+      "description": "Age greater than 65 years",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "previous_dvt_pe",
+      "type": "string",
+      "required": true,
+      "description": "Previous history of deep vein thrombosis or pulmonary embolism",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "surgery_fracture_past_month",
+      "type": "string",
+      "required": true,
+      "description": "Surgery or lower limb fracture within the past month",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "active_malignancy",
+      "type": "string",
+      "required": true,
+      "description": "Active malignant condition (currently receiving treatment or within past 6 months)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "unilateral_limb_pain",
+      "type": "string",
+      "required": true,
+      "description": "Unilateral lower limb pain",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hemoptysis",
+      "type": "string",
+      "required": true,
+      "description": "Hemoptysis (coughing up blood)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "heart_rate_category",
+      "type": "string",
+      "required": true,
+      "description": "Heart rate category in beats per minute",
+      "options": ["under_75", "75_to_94", "95_or_higher"],
+      "validation": {
+        "enum": ["under_75", "75_to_94", "95_or_higher"]
+      }
+    },
+    {
+      "name": "limb_palpation_edema",
+      "type": "string",
+      "required": true,
+      "description": "Pain on lower limb deep venous palpation and unilateral edema",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "geneva_pe_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Geneva Score (Revised) for Pulmonary Embolism (0-25 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Low Risk",
+        "description": "Low clinical probability of PE",
+        "interpretation": "Less than 10% incidence of pulmonary embolism. D-dimer recommended. If D-dimer negative, PE ruled out. If D-dimer positive, consider CT pulmonary angiogram."
+      },
+      {
+        "min": 4,
+        "max": 10,
+        "stage": "Intermediate Risk",
+        "description": "Intermediate clinical probability of PE",
+        "interpretation": "20-30% incidence of pulmonary embolism. D-dimer recommended. If D-dimer negative, PE unlikely. If D-dimer positive, CT pulmonary angiogram recommended."
+      },
+      {
+        "min": 11,
+        "max": 25,
+        "stage": "High Risk",
+        "description": "High clinical probability of PE",
+        "interpretation": "Greater than 60% incidence of pulmonary embolism. Urgent CT pulmonary angiogram recommended. D-dimer not necessary - proceed directly to imaging."
+      }
+    ]
+  },
+  "references": [
+    "Le Gal G, Righini M, Roy PM, et al. Prediction of pulmonary embolism in the emergency department: the revised Geneva score. Ann Intern Med. 2006;144(3):165-171. doi: 10.7326/0003-4819-144-3-200602070-00004.",
+    "Klok FA, Mos IC, Nijkeuter M, et al. Simplification of the revised Geneva score for assessing clinical probability of pulmonary embolism. Arch Intern Med. 2008;168(19):2131-2136. doi: 10.1001/archinte.168.19.2131.",
+    "Ceriani E, Combescure C, Le Gal G, et al. Clinical prediction rules for pulmonary embolism: a systematic review and meta-analysis. J Thromb Haemost. 2010;8(5):957-970. doi: 10.1111/j.1538-7836.2010.03801.x."
+  ],
+  "formula": "Score = Age >65y (1pt) + Previous DVT/PE (3pts) + Surgery/fracture past month (2pts) + Active malignancy (2pts) + Unilateral limb pain (3pts) + Hemoptysis (2pts) + Heart rate: <75bpm (0pts), 75-94bpm (3pts), ≥95bpm (5pts) + Limb palpation pain and unilateral edema (4pts)",
+  "notes": [
+    "Does not require clinical gestalt, unlike Wells' criteria",
+    "Validated for outpatient and emergency department use",
+    "Not validated in inpatient settings",
+    "Should be used in conjunction with D-dimer testing for low and intermediate risk patients",
+    "High clinical suspicion should always warrant imaging regardless of score",
+    "Comparable performance to Wells' criteria for PE diagnosis",
+    "Consider age-adjusted D-dimer cutoffs in elderly patients"
+  ]
+}

@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/caspar_criteria", response_model=CasparCriteriaResponse)
+@router.post(
+    "/caspar_criteria",
+    response_model=CasparCriteriaResponse,
+    summary="Calculate CASPAR Criteria for Psoriatic Arthritis",
+    description="Provides standardized classification criteria for identifying psoriatic arthritis (PsA) in patients with inflammatory arthritis. Requires presence of inflammatory articular disease plus ≥3 points from additional criteria.",
+    response_description="The calculated caspar criteria with interpretation",
+    operation_id="calculate_caspar_criteria"
+)
 async def calculate_caspar_criteria(request: CasparCriteriaRequest):
     """
     Calculates CASPAR Criteria for Psoriatic Arthritis

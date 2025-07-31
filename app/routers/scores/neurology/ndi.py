@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/ndi", response_model=NdiResponse)
+@router.post(
+    "/ndi",
+    response_model=NdiResponse,
+    summary="Calculate Neck Disability Index (NDI)",
+    description="Assesses disability in patients with neck pain across 10 functional domains",
+    response_description="The calculated ndi with interpretation",
+    operation_id="calculate_ndi"
+)
 async def calculate_ndi(request: NdiRequest):
     """
     Calculates Neck Disability Index (NDI)

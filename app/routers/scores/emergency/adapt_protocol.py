@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/adapt_protocol", response_model=AdaptProtocolResponse)
+@router.post(
+    "/adapt_protocol",
+    response_model=AdaptProtocolResponse,
+    summary="Calculate ADAPT Protocol for Cardiac Event Risk",
+    description="Assesses chest pain patients at 2 hours for risk of cardiac event. Uses elevated troponin, ischemic ECG changes, and TIMI risk factors to stratify patients into low and high risk categories for major adverse cardiac events at 30 days.",
+    response_description="The calculated adapt protocol with interpretation",
+    operation_id="calculate_adapt_protocol"
+)
 async def calculate_adapt_protocol(request: AdaptProtocolRequest):
     """
     Calculates ADAPT Protocol for Cardiac Event Risk

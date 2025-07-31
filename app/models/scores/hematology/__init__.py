@@ -24,6 +24,13 @@ from .dli_volume import DliVolumeRequest, DliVolumeResponse
 from .duval_cibmtr_score_aml_survival import DuvalCibmtrScoreAmlSurvivalRequest, DuvalCibmtrScoreAmlSurvivalResponse
 from .neutrophil_lymphocyte_ratio import NeutrophilLymphocyteRatioRequest, NeutrophilLymphocyteRatioResponse
 from .eutos_score import EutosScoreRequest, EutosScoreResponse
+from .flipi import FlipiRequest, FlipiResponse
+from .ganzoni_equation_iron_deficiency import GanzoniEquationIronDeficiencyRequest, GanzoniEquationIronDeficiencyResponse
+from .gipss_primary_myelofibrosis import GipssPrimaryMyelofibrosisRequest, GipssPrimaryMyelofibrosisResponse
+from .geneva_vte_prophylaxis import GenevaVteProphylaxisRequest, GenevaVteProphylaxisResponse
+from .glasgow_prognostic_score import GlasgowPrognosticScoreRequest, GlasgowPrognosticScoreResponse
+from .gelf_criteria import GelfCriteriaRequest, GelfCriteriaResponse
+from .has_bled_score import HasBledScoreRequest, HasBledScoreResponse
 # from .cryoprecipitate_dosing import CryoprecipitateDosing Request, CryoprecipitateDosing Response
 
 __all__ = [
@@ -65,6 +72,20 @@ __all__ = [
     "NeutrophilLymphocyteRatioResponse",
     "EutosScoreRequest",
     "EutosScoreResponse",
+    "FlipiRequest",
+    "FlipiResponse",
+    "GanzoniEquationIronDeficiencyRequest",
+    "GanzoniEquationIronDeficiencyResponse",
+    "GipssPrimaryMyelofibrosisRequest",
+    "GipssPrimaryMyelofibrosisResponse",
+    "GenevaVteProphylaxisRequest",
+    "GenevaVteProphylaxisResponse",
+    "GlasgowPrognosticScoreRequest",
+    "GlasgowPrognosticScoreResponse",
+    "GelfCriteriaRequest",
+    "GelfCriteriaResponse",
+    "HasBledScoreRequest",
+    "HasBledScoreResponse",
     # "CryoprecipitateDosing Request",
     # "CryoprecipitateDosing Response",
 ]

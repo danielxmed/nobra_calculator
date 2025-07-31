@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/binet_staging_cll", response_model=BinetStagingCllResponse)
+@router.post(
+    "/binet_staging_cll",
+    response_model=BinetStagingCllResponse,
+    summary="Calculate Binet Staging System for Chronic Lymphocytic Le...",
+    description="Stages chronic lymphocytic leukemia based on lymphadenopathy areas and hematologic parameters to predict prognosis and guide treatment decisions",
+    response_description="The calculated binet staging cll with interpretation",
+    operation_id="calculate_binet_staging_cll"
+)
 async def calculate_binet_staging_cll(request: BinetStagingCllRequest):
     """
     Calculates Binet Staging System for Chronic Lymphocytic Leukemia (CLL)

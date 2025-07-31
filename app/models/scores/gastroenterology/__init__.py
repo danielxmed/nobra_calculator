@@ -15,6 +15,12 @@ from .evendo_score import EvendoScoreRequest, EvendoScoreResponse
 from .fatty_liver_index import FattyLiverIndexRequest, FattyLiverIndexResponse
 from .fibrosis_4_index import Fibrosis4IndexRequest, Fibrosis4IndexResponse
 from .fibrotic_nash_index import FibroticNashIndexRequest, FibroticNashIndexResponse
+from .forrest_classification import ForrestClassificationRequest, ForrestClassificationResponse
+from .glasgow_alcoholic_hepatitis_score import GlasgowAlcoholicHepatitisScoreRequest, GlasgowAlcoholicHepatitisScoreResponse
+from .glasgow_blatchford_bleeding_score import GlasgowBlatchfordBleedingScoreRequest, GlasgowBlatchfordBleedingScoreResponse
+from .glasgow_imrie_pancreatitis import GlasgowImriePancreatitisRequest, GlasgowImriePancreatitisResponse
+from .haps import HapsRequest, HapsResponse
+from .harvey_bradshaw_index import HarveyBradshawIndexRequest, HarveyBradshawIndexResponse
 
 __all__ = [
     "BristolStoolFormScaleRequest",
@@ -43,4 +49,16 @@ __all__ = [
     "Fibrosis4IndexResponse",
     "FibroticNashIndexRequest",
     "FibroticNashIndexResponse",
+    "ForrestClassificationRequest",
+    "ForrestClassificationResponse",
+    "GlasgowAlcoholicHepatitisScoreRequest",
+    "GlasgowAlcoholicHepatitisScoreResponse",
+    "GlasgowBlatchfordBleedingScoreRequest",
+    "GlasgowBlatchfordBleedingScoreResponse",
+    "GlasgowImriePancreatitisRequest",
+    "GlasgowImriePancreatitisResponse",
+    "HapsRequest",
+    "HapsResponse",
+    "HarveyBradshawIndexRequest",
+    "HarveyBradshawIndexResponse",
 ]

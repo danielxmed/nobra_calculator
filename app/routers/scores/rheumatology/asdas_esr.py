@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/asdas_esr", response_model=AsdasEsrResponse)
+@router.post(
+    "/asdas_esr",
+    response_model=AsdasEsrResponse,
+    summary="Calculate Ankylosing Spondylitis Disease Activity Score w...",
+    description="Stratifies severity of ankylosing spondylitis (AS) using clinical and laboratory data, specifically ESR. The ASDAS-ESR is a composite index to assess disease activity in axial spondyloarthritis, combining patient-reported outcomes with laboratory measures to provide a comprehensive evaluation of disease activity.",
+    response_description="The calculated asdas esr with interpretation",
+    operation_id="calculate_asdas_esr"
+)
 async def calculate_asdas_esr(request: AsdasEsrRequest):
     """
     Calculates Ankylosing Spondylitis Disease Activity Score with ESR (ASDAS-ESR)

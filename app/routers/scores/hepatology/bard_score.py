@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/bard_score", response_model=BardScoreResponse)
+@router.post(
+    "/bard_score",
+    response_model=BardScoreResponse,
+    summary="Calculate BARD Score for NAFLD Fibrosis",
+    description="Predicts risk of advanced fibrosis in patients with non-alcoholic fatty liver disease (NAFLD). The BARD score uses three simple clinical parameters (BMI, AST/ALT ratio, and diabetes) to identify patients at low risk of advanced fibrosis who may not require liver biopsy.",
+    response_description="The calculated bard score with interpretation",
+    operation_id="calculate_bard_score"
+)
 async def calculate_bard_score(request: BardScoreRequest):
     """
     Calculates BARD Score for NAFLD Fibrosis

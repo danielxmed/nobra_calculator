@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/dapt_score", response_model=DaptScoreResponse)
+@router.post(
+    "/dapt_score",
+    response_model=DaptScoreResponse,
+    summary="Calculate Dual Antiplatelet Therapy (DAPT) Score",
+    description="Predicts which patients will benefit from prolonged DAPT after coronary stent placement. Developed from the DAPT Study randomized trial to predict combined ischemic and bleeding risk for patients being considered for continued thienopyridine therapy beyond 1 year.",
+    response_description="The calculated dapt score with interpretation",
+    operation_id="calculate_dapt_score"
+)
 async def calculate_dapt_score(request: DaptScoreRequest):
     """
     Calculates Dual Antiplatelet Therapy (DAPT) Score

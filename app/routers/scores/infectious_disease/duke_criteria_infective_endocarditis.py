@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/duke_criteria_infective_endocarditis", response_model=DukeCriteriaInfectiveEndocarditisResponse)
+@router.post(
+    "/duke_criteria_infective_endocarditis",
+    response_model=DukeCriteriaInfectiveEndocarditisResponse,
+    summary="Calculate Duke Criteria for Infective Endocarditis",
+    description="Provides standardized diagnostic criteria for infective endocarditis based on clinical, microbiological, and echocardiographic findings. Classifies patients as having definite, possible, or rejected endocarditis.",
+    response_description="The calculated duke criteria infective endocarditis with interpretation",
+    operation_id="calculate_duke_criteria_infective_endocarditis"
+)
 async def calculate_duke_criteria_infective_endocarditis(request: DukeCriteriaInfectiveEndocarditisRequest):
     """
     Calculates Duke Criteria for Infective Endocarditis

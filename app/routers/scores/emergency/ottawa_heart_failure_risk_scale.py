@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/ottawa_heart_failure_risk_scale", response_model=OttawaHeartFailureRiskScaleResponse)
+@router.post(
+    "/ottawa_heart_failure_risk_scale",
+    response_model=OttawaHeartFailureRiskScaleResponse,
+    summary="Calculate Ottawa Heart Failure Risk Scale (OHFRS)",
+    description="Identifies emergency department heart failure patients at high risk for serious adverse events. Uses 10 clinical variables to stratify risk from low (2.8%) to very high (89%+).",
+    response_description="The calculated ottawa heart failure risk scale with interpretation",
+    operation_id="calculate_ottawa_heart_failure_risk_scale"
+)
 async def calculate_ottawa_heart_failure_risk_scale(request: OttawaHeartFailureRiskScaleRequest):
     """
     Calculates Ottawa Heart Failure Risk Scale (OHFRS)

@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/corrected_count_increment", response_model=CorrectedCountIncrementResponse)
+@router.post(
+    "/corrected_count_increment",
+    response_model=CorrectedCountIncrementResponse,
+    summary="Calculate Corrected Count Increment",
+    description="Assesses adequacy of response to platelet transfusion by measuring the expected increase in platelets adjusted for patient size and platelet dose",
+    response_description="The calculated corrected count increment with interpretation",
+    operation_id="calculate_corrected_count_increment"
+)
 async def calculate_corrected_count_increment(request: CorrectedCountIncrementRequest):
     """
     Calculates Corrected Count Increment (CCI) for Platelet Transfusion

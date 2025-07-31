@@ -16,6 +16,8 @@ from .dka_mpm_score import router as dka_mpm_score_router
 from .dutch_criteria_familial_hypercholesterolemia import router as dutch_criteria_familial_hypercholesterolemia_router
 from .edmonton_obesity_staging_system import router as edmonton_obesity_staging_system_router
 from .estimated_average_glucose_eag_hba1c import router as estimated_average_glucose_eag_hba1c_router
+from .findrisc import router as findrisc_router
+from .glucose_infusion_rate import router as glucose_infusion_rate_router
 
 # Create main specialty router
 router = APIRouter()
@@ -33,3 +35,5 @@ router.include_router(dka_mpm_score_router)
 router.include_router(dutch_criteria_familial_hypercholesterolemia_router)
 router.include_router(edmonton_obesity_staging_system_router)
 router.include_router(estimated_average_glucose_eag_hba1c_router)
+router.include_router(findrisc_router)
+router.include_router(glucose_infusion_rate_router)

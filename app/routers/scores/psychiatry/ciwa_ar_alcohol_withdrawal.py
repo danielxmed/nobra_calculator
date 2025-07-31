@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/ciwa_ar_alcohol_withdrawal", response_model=CiwaArAlcoholWithdrawalResponse)
+@router.post(
+    "/ciwa_ar_alcohol_withdrawal",
+    response_model=CiwaArAlcoholWithdrawalResponse,
+    summary="Calculate CIWA-Ar for Alcohol Withdrawal",
+    description="Objectifies severity of alcohol withdrawal symptoms and guides treatment decisions",
+    response_description="The calculated ciwa ar alcohol withdrawal with interpretation",
+    operation_id="calculate_ciwa_ar_alcohol_withdrawal"
+)
 async def calculate_ciwa_ar_alcohol_withdrawal(request: CiwaArAlcoholWithdrawalRequest):
     """
     Calculates CIWA-Ar for Alcohol Withdrawal Assessment

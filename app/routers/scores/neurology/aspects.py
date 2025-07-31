@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/aspects", response_model=AspectsResponse)
+@router.post(
+    "/aspects",
+    response_model=AspectsResponse,
+    summary="Calculate Alberta Stroke Program Early CT Score (ASPECTS)",
+    description="Quantifies early ischemic changes in MCA territory on non-contrast CT to predict stroke outcome and guide treatment decisions",
+    response_description="The calculated aspects with interpretation",
+    operation_id="calculate_aspects"
+)
 async def calculate_aspects(request: AspectsRequest):
     """
     Calculates Alberta Stroke Program Early CT Score (ASPECTS)

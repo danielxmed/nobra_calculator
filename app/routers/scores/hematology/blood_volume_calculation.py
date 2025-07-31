@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/blood_volume_calculation", response_model=BloodVolumeCalculationResponse)
+@router.post(
+    "/blood_volume_calculation",
+    response_model=BloodVolumeCalculationResponse,
+    summary="Calculate Blood Volume Calculation",
+    description="Calculates total blood volume, red blood cell volume, and plasma volume using Nadler equations based on age, sex, height, weight, and hematocrit",
+    response_description="The calculated blood volume calculation with interpretation",
+    operation_id="calculate_blood_volume_calculation"
+)
 async def calculate_blood_volume_calculation(request: BloodVolumeCalculationRequest):
     """
     Calculates Blood Volume Components Using Nadler Equations and Age-Specific Formulas

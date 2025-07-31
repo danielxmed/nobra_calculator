@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/bicarbonate_deficit", response_model=BicarbonateDeficitResponse)
+@router.post(
+    "/bicarbonate_deficit",
+    response_model=BicarbonateDeficitResponse,
+    summary="Calculate Bicarbonate Deficit",
+    description="Calculates total body bicarbonate deficit for assessment of metabolic acidosis severity and bicarbonate replacement therapy planning.",
+    response_description="The calculated bicarbonate deficit with interpretation",
+    operation_id="calculate_bicarbonate_deficit"
+)
 async def calculate_bicarbonate_deficit(request: BicarbonateDeficitRequest):
     """
     Calculates Bicarbonate Deficit for metabolic acidosis assessment

@@ -12,7 +12,7 @@ router = APIRouter(
     tags=["api"]
 )
 
-@router.get("/scores")
+@router.get("/scores", summary="List Available Scores", description="Retrieve all available medical scores and calculators", response_description="List of available scores with metadata", operation_id="list_scores")
 async def list_scores(
     category: Optional[str] = Query(None, description="Filter by medical specialty"),
     search: Optional[str] = Query(None, description="Search scores by keywords")
@@ -58,7 +58,7 @@ async def list_scores(
             }
         )
 
-@router.get("/scores/{score_id}")
+@router.get("/scores/{score_id}", summary="Get Score Metadata", description="Get comprehensive metadata for a specific medical score", response_description="Complete score metadata including parameters and interpretation", operation_id="get_score_metadata")
 async def get_score_metadata(score_id: str):
     """
     Get comprehensive metadata for a specific medical score
@@ -96,7 +96,7 @@ async def get_score_metadata(score_id: str):
             }
         )
 
-@router.post("/reload")
+@router.post("/reload", summary="Reload Scores and Calculators", description="Reload all scores and calculators in the system", response_description="Status of the reload operation", operation_id="reload_scores")
 async def reload_scores():
     """
     Reload all scores and calculators in the system
@@ -129,7 +129,7 @@ async def reload_scores():
             }
         )
 
-@router.get("/categories")
+@router.get("/categories", summary="List Available Medical Categories", description="Retrieve all available medical categories", response_description="List of unique categories", operation_id="list_scores_categories")
 async def list_categories():
     """
     List all available medical categories

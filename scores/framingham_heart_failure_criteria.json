@@ -1,0 +1,185 @@
+{
+  "id": "framingham_heart_failure_criteria",
+  "title": "Framingham Heart Failure Diagnostic Criteria",
+  "description": "Diagnoses heart failure based on major and minor criteria. Requires at least 2 major criteria or 1 major criterion plus 2 minor criteria.",
+  "category": "cardiology",
+  "version": "1971",
+  "parameters": [
+    {
+      "name": "acute_pulmonary_edema",
+      "type": "string",
+      "required": true,
+      "description": "Acute pulmonary edema (major criterion)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "cardiomegaly",
+      "type": "string",
+      "required": true,
+      "description": "Cardiomegaly on chest X-ray (major criterion)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hepatojugular_reflex",
+      "type": "string",
+      "required": true,
+      "description": "Hepatojugular reflex (major criterion)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "neck_vein_distention",
+      "type": "string",
+      "required": true,
+      "description": "Neck vein distention (jugular venous distention) (major criterion)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "paroxysmal_nocturnal_dyspnea_orthopnea",
+      "type": "string",
+      "required": true,
+      "description": "Paroxysmal nocturnal dyspnea or orthopnea (major criterion)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "pulmonary_rales",
+      "type": "string",
+      "required": true,
+      "description": "Pulmonary rales on examination (major criterion)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "third_heart_sound",
+      "type": "string",
+      "required": true,
+      "description": "Third heart sound (S3 gallop rhythm) (major criterion)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "ankle_edema",
+      "type": "string",
+      "required": true,
+      "description": "Ankle edema (minor criterion)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "dyspnea_on_exertion",
+      "type": "string",
+      "required": true,
+      "description": "Dyspnea on exertion (minor criterion)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hepatomegaly",
+      "type": "string",
+      "required": true,
+      "description": "Hepatomegaly (minor criterion)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "nocturnal_cough",
+      "type": "string",
+      "required": true,
+      "description": "Nocturnal cough (minor criterion)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "pleural_effusion",
+      "type": "string",
+      "required": true,
+      "description": "Pleural effusion (minor criterion)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "tachycardia",
+      "type": "string",
+      "required": true,
+      "description": "Tachycardia (heart rate >120 beats per minute) (minor criterion)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "heart_failure_diagnosis",
+    "type": "string",
+    "unit": "diagnosis",
+    "description": "Heart failure diagnosis based on Framingham criteria"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Heart Failure Not Diagnosed",
+        "description": "Criteria not met for heart failure diagnosis",
+        "interpretation": "Framingham criteria not met for heart failure diagnosis. Fewer than 2 major criteria or fewer than 1 major plus 2 minor criteria present. Consider alternative diagnoses and further evaluation if clinical suspicion remains high."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Heart Failure Diagnosed",
+        "description": "Criteria met for heart failure diagnosis",
+        "interpretation": "Framingham criteria met for heart failure diagnosis. At least 2 major criteria or 1 major criterion plus 2 minor criteria present. Initiate appropriate heart failure evaluation and management according to current guidelines."
+      }
+    ]
+  },
+  "references": [
+    "McKee PA, Castelli WP, McNamara PM, Kannel WB. The natural history of congestive heart failure: the Framingham study. N Engl J Med. 1971;285(26):1441-6.",
+    "Carlson KJ, Lee DC, Goroll AH, Leahy M, Johnson RA. An analysis of physicians' reasons for prescribing long-term digitalis therapy in outpatients. J Chronic Dis. 1985;38(9):733-9.",
+    "Marantz PR, Tobin JN, Wassertheil-Smoller S, et al. The relationship between left ventricular systolic function and congestive heart failure diagnosed by clinical criteria. Circulation. 1988;77(3):607-12.",
+    "Remes J, Miettinen H, Reunanen A, Pyörälä K. Validity of clinical diagnosis of heart failure in primary health care. Eur Heart J. 1991;12(3):315-21."
+  ],
+  "formula": "Diagnosis requires: ≥2 major criteria OR 1 major criterion + ≥2 minor criteria. Minor criteria must not be attributable to other medical conditions.",
+  "notes": [
+    "Developed in 1971 from the Framingham Heart Study data",
+    "97% sensitive and 79% specific for definite congestive heart failure diagnosis",
+    "100% sensitive and 78% specific in validation studies",
+    "Higher sensitivity for systolic heart failure (97%) vs diastolic heart failure (89%)",
+    "Negative likelihood ratio of 0.04 effectively rules out heart failure when criteria not met",
+    "Minor criteria acceptable only if not attributable to other conditions",
+    "Other conditions to exclude: pulmonary hypertension, chronic lung disease, cirrhosis, ascites, nephrotic syndrome",
+    "Widely used in clinical practice and research for heart failure diagnosis",
+    "Should be used in conjunction with modern diagnostic tools (echocardiography, BNP/NT-proBNP)",
+    "Particularly useful in resource-limited settings where advanced diagnostics may not be available",
+    "High sensitivity makes it excellent for ruling out heart failure",
+    "Clinical examination skills are essential for accurate assessment",
+    "Consider contemporary heart failure guidelines for comprehensive management"
+  ]
+}

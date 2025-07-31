@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/canrisk", response_model=CanriskResponse)
+@router.post(
+    "/canrisk",
+    response_model=CanriskResponse,
+    summary="Calculate Canadian Diabetes Risk Assessment Questionnaire",
+    description="CANRISK screens for undiagnosed type 2 diabetes mellitus and prediabetes in Canadian adults aged 18-74 years. It was developed by the Canadian Task Force on Preventive Health Care in partnership with the Public Health Agency of Canada and has been validated in Canada's multi-ethnic population.",
+    response_description="The calculated canrisk with interpretation",
+    operation_id="calculate_canrisk"
+)
 async def calculate_canrisk(request: CanriskRequest):
     """
     Calculates Canadian Diabetes Risk Assessment Questionnaire (CANRISK) score

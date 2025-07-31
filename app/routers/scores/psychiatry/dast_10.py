@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/dast_10", response_model=Dast10Response)
+@router.post(
+    "/dast_10",
+    response_model=Dast10Response,
+    summary="Calculate Drug Abuse Screening Test-10 (DAST-10)",
+    description="Brief 10-item assessment tool to measure, evaluate, and identify drug use problems, excluding alcohol and tobacco. Assesses drug use in the past 12 months.",
+    response_description="The calculated dast 10 with interpretation",
+    operation_id="calculate_dast_10"
+)
 async def calculate_dast_10(request: Dast10Request):
     """
     Calculates Drug Abuse Screening Test-10 (DAST-10) Score

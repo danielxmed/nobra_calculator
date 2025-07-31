@@ -1,0 +1,101 @@
+{
+  "id": "gap_index_ipf_mortality",
+  "title": "GAP Index for Idiopathic Pulmonary Fibrosis (IPF) Mortality",
+  "description": "Provides 1, 2, and 3-year mortality estimates for IPF patients. The GAP Index uses Gender, Age, and Physiology (FVC and DLCO) to predict mortality risk and guide clinical management decisions.",
+  "category": "pulmonology",
+  "version": "2012",
+  "parameters": [
+    {
+      "name": "gender",
+      "type": "string",
+      "required": true,
+      "description": "Patient's gender (males have higher mortality risk in IPF)",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient's age in years",
+      "validation": {
+        "min": 18,
+        "max": 100
+      },
+      "unit": "years"
+    },
+    {
+      "name": "fvc_percent_predicted",
+      "type": "float",
+      "required": true,
+      "description": "Forced Vital Capacity (FVC) as percentage of predicted normal value",
+      "validation": {
+        "min": 10,
+        "max": 150
+      },
+      "unit": "percent"
+    },
+    {
+      "name": "dlco_percent_predicted",
+      "type": "float",
+      "required": false,
+      "description": "Diffusing capacity for carbon monoxide (DLCO) as percentage of predicted normal value. Use null if cannot perform test",
+      "validation": {
+        "min": 5,
+        "max": 150
+      },
+      "unit": "percent"
+    }
+  ],
+  "result": {
+    "name": "gap_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "GAP score calculated from gender, age, and physiology parameters (0-8 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "GAP Stage I",
+        "description": "Low mortality risk",
+        "interpretation": "Low mortality risk. Close monitoring every 6 months. Aggressive symptom management and comorbidity treatment. May not require immediate lung transplant listing."
+      },
+      {
+        "min": 4,
+        "max": 5,
+        "stage": "GAP Stage II",
+        "description": "Intermediate mortality risk",
+        "interpretation": "Intermediate mortality risk. Close monitoring every 3-6 months. Consider lung transplant evaluation. Optimize medical management and consider antifibrotic therapy."
+      },
+      {
+        "min": 6,
+        "max": 8,
+        "stage": "GAP Stage III",
+        "description": "High mortality risk",
+        "interpretation": "High mortality risk. Frequent monitoring every 3 months or less. Urgent lung transplant evaluation recommended. Palliative care consultation may be appropriate."
+      }
+    ]
+  },
+  "references": [
+    "Ley B, Ryerson CJ, Vittinghoff E, et al. A multidimensional index and staging system for idiopathic pulmonary fibrosis. Ann Intern Med. 2012;156(10):684-91. doi: 10.7326/0003-4819-156-10-201205150-00004.",
+    "Ryerson CJ, Vittinghoff E, Ley B, et al. Predicting survival across chronic interstitial lung disease: the ILD-GAP model. Chest. 2014;145(4):723-8. doi: 10.1378/chest.13-1474.",
+    "Paterniti MO, Bi Y, Rekić D, et al. Acute Exacerbation and Decline in Forced Vital Capacity Are Associated with Increased Mortality in Idiopathic Pulmonary Fibrosis. Ann Am Thorac Soc. 2017;14(9):1395-1402. doi: 10.1513/AnnalsATS.201606-458OC."
+  ],
+  "formula": "GAP Score = Gender points + Age points + FVC points + DLCO points (0-8 total)",
+  "notes": [
+    "Validated in 558 IPF patients from three academic centers in US and Italy",
+    "Can be used both at presentation and during follow-up throughout disease course",
+    "Stage I (0-3 points): Monitor every 6 months, may not need immediate transplant listing",
+    "Stage II (4-5 points): Monitor every 3-6 months, consider transplant evaluation",
+    "Stage III (6-8 points): Monitor every 3 months, urgent transplant evaluation",
+    "Higher GAP scores associated with significantly poorer prognosis (p<0.001)",
+    "DLCO cannot perform = 3 points (most severe category)",
+    "Antifibrotic therapy may be considered for all stages but especially Stage II-III",
+    "Should be used in conjunction with clinical judgment and other prognostic factors",
+    "Validated for use in idiopathic pulmonary fibrosis specifically"
+  ]
+}

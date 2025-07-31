@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/estimated_ethanol_concentration", response_model=EstimatedEthanolConcentrationResponse)
+@router.post(
+    "/estimated_ethanol_concentration",
+    response_model=EstimatedEthanolConcentrationResponse,
+    summary="Calculate Estimated Ethanol",
+    description="Predicts ethanol and toxic alcohol serum concentration based on amount ingested and patient weight using volume of distribution principles.",
+    response_description="The calculated estimated ethanol concentration with interpretation",
+    operation_id="calculate_estimated_ethanol_concentration"
+)
 async def calculate_estimated_ethanol_concentration(request: EstimatedEthanolConcentrationRequest):
     """
     Calculates Estimated Ethanol (and Toxic Alcohol) Serum Concentration Based on Ingestion

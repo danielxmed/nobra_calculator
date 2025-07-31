@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/bova_score", response_model=BovaScoreResponse)
+@router.post(
+    "/bova_score",
+    response_model=BovaScoreResponse,
+    summary="Calculate Bova Score for Pulmonary Embolism Complications",
+    description="Predicts 30-day risk of PE-related complications (death, hemodynamic collapse, or recurrent PE) in hemodynamically stable patients with confirmed pulmonary embolism",
+    response_description="The calculated bova score with interpretation",
+    operation_id="calculate_bova_score"
+)
 async def calculate_bova_score(request: BovaScoreRequest):
     """
     Calculates Bova Score for Pulmonary Embolism Complications

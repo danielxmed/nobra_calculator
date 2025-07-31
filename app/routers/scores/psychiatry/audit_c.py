@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/audit_c", response_model=AuditCResponse)
+@router.post(
+    "/audit_c",
+    response_model=AuditCResponse,
+    summary="Calculate AUDIT-C for Alcohol Use",
+    description="Identifies at-risk drinkers (i.e., binge drinking) who may not be alcohol dependent. A brief 3-question alcohol screen derived from the full AUDIT questionnaire.",
+    response_description="The calculated audit c with interpretation",
+    operation_id="calculate_audit_c"
+)
 async def calculate_audit_c(request: AuditCRequest):
     """
     Calculates AUDIT-C for Alcohol Use

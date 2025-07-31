@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/cirs_g", response_model=CirsGResponse)
+@router.post(
+    "/cirs_g",
+    response_model=CirsGResponse,
+    summary="Calculate Cumulative Illness Rating Scale-Geriatric (CIRS-G)",
+    description="Quantifies burden of illness in elderly patients by systematically rating the severity of medical conditions across multiple organ systems. The CIRS-G is considered potentially more accurate than the Charlson Comorbidity Index for geriatric patients and provides a comprehensive assessment of overall health status.",
+    response_description="The calculated cirs g with interpretation",
+    operation_id="calculate_cirs_g"
+)
 async def calculate_cirs_g(request: CirsGRequest):
     """
     Calculates Cumulative Illness Rating Scale-Geriatric (CIRS-G)

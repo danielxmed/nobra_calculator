@@ -32,7 +32,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/chosen_covid_discharge", response_model=ChosenCovidDischargeResponse)
+@router.post(
+    "/chosen_covid_discharge",
+    response_model=ChosenCovidDischargeResponse,
+    summary="Calculate COVID Home Safely Now",
+    description="Predicts suitability for discharge in COVID-19 patients by assessing risk of needing supplemental oxygen, ICU-level care, or death within 14 days",
+    response_description="The calculated chosen covid discharge with interpretation",
+    operation_id="calculate_chosen_covid_discharge"
+)
 async def calculate_chosen_covid_discharge(request: ChosenCovidDischargeRequest):
     """
     Calculates COVID Home Safely Now (CHOSEN) Risk Score for Discharge Suitability

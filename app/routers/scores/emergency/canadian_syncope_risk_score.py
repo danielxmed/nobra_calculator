@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/canadian_syncope_risk_score", response_model=CanadianSyncopeRiskScoreResponse)
+@router.post(
+    "/canadian_syncope_risk_score",
+    response_model=CanadianSyncopeRiskScoreResponse,
+    summary="Calculate Canadian Syncope Risk Score",
+    description="The Canadian Syncope Risk Score (CSRS) predicts 30-day serious adverse events in patients presenting with syncope to the emergency department. It helps identify low-risk patients who can be safely discharged and high-risk patients requiring further investigation or admission.",
+    response_description="The calculated canadian syncope risk score with interpretation",
+    operation_id="calculate_canadian_syncope_risk_score"
+)
 async def calculate_canadian_syncope_risk_score(request: CanadianSyncopeRiskScoreRequest):
     """
     Calculates Canadian Syncope Risk Score

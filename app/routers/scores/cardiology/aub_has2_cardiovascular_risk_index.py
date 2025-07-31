@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/aub_has2_cardiovascular_risk_index", response_model=AubHas2CardiovascularRiskIndexResponse)
+@router.post(
+    "/aub_has2_cardiovascular_risk_index",
+    response_model=AubHas2CardiovascularRiskIndexResponse,
+    summary="Calculate American University of Beirut (AUB)-H...",
+    description="Stratifies cardiovascular risk of patients undergoing noncardiac surgery using 6 easily obtainable clinical variables with superior discriminatory power compared to other risk indices.",
+    response_description="The calculated aub has2 cardiovascular risk index with interpretation",
+    operation_id="calculate_aub_has2_cardiovascular_risk_index"
+)
 async def calculate_aub_has2_cardiovascular_risk_index(request: AubHas2CardiovascularRiskIndexRequest):
     """
     Calculates American University of Beirut (AUB)-HAS2 Cardiovascular Risk Index

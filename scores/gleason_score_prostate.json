@@ -1,0 +1,96 @@
+{
+  "id": "gleason_score_prostate",
+  "title": "Gleason Score for Prostate Cancer",
+  "description": "Histologic grading system for prostate cancer based on microscopic tumor architecture patterns. Uses primary and secondary tumor patterns to predict prognosis and guide treatment decisions. The score combines the two most prevalent architectural patterns found in the tumor specimen.",
+  "category": "urology",
+  "version": "Modified_2014",
+  "parameters": [
+    {
+      "name": "primary_grade",
+      "type": "integer",
+      "required": true,
+      "description": "Primary Gleason grade representing the most predominant (>50%) tumor pattern observed microscopically",
+      "options": [3, 4, 5],
+      "validation": {
+        "min": 3,
+        "max": 5,
+        "enum": [3, 4, 5]
+      },
+      "unit": "grade"
+    },
+    {
+      "name": "secondary_grade",
+      "type": "integer",
+      "required": true,
+      "description": "Secondary Gleason grade representing the second most common tumor pattern (at least 5% but <50% of tumor)",
+      "options": [3, 4, 5],
+      "validation": {
+        "min": 3,
+        "max": 5,
+        "enum": [3, 4, 5]
+      },
+      "unit": "grade"
+    }
+  ],
+  "result": {
+    "name": "gleason_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total Gleason score (6-10 points) calculated as primary + secondary grade"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 6,
+        "max": 6,
+        "stage": "Low-Grade Cancer (Grade Group 1)",
+        "description": "Well-differentiated, favorable prognosis",
+        "interpretation": "Low-grade prostate cancer with excellent prognosis. Tumor grows slowly and is less likely to spread. Often managed with active surveillance. 10-year cancer-specific survival >95%. Consider active surveillance, especially in older patients or those with limited life expectancy."
+      },
+      {
+        "min": 7,
+        "max": 7,
+        "stage": "Intermediate-Grade Cancer (Grade Group 2-3)",
+        "description": "Moderately differentiated, intermediate prognosis",
+        "interpretation": "Intermediate-grade prostate cancer with moderate aggressiveness. Prognosis varies significantly based on primary pattern: 3+4=7 (Grade Group 2) has better outcomes than 4+3=7 (Grade Group 3). Treatment typically involves definitive therapy with surgery or radiation. 10-year cancer-specific survival 85-95%."
+      },
+      {
+        "min": 8,
+        "max": 8,
+        "stage": "High-Grade Cancer (Grade Group 4)",
+        "description": "Poorly differentiated, unfavorable prognosis",
+        "interpretation": "High-grade prostate cancer with aggressive behavior and higher metastatic potential. Requires aggressive treatment with multimodal therapy. Consider combination treatments including surgery/radiation with hormone therapy. 10-year cancer-specific survival 60-80%. Close monitoring for disease progression required."
+      },
+      {
+        "min": 9,
+        "max": 10,
+        "stage": "Very High-Grade Cancer (Grade Group 5)",
+        "description": "Very poorly differentiated, very unfavorable prognosis",
+        "interpretation": "Very high-grade prostate cancer with very aggressive behavior and high likelihood of metastasis. Requires immediate aggressive multimodal treatment including systemic therapy. Poor prognosis with 10-year cancer-specific survival 40-60%. Consider clinical trial enrollment. Requires multidisciplinary oncology team management."
+      }
+    ]
+  },
+  "references": [
+    "Gleason DF, Mellinger GT. Prediction of prognosis for prostatic adenocarcinoma by combined histological grading and clinical staging. J Urol. 1974;111(1):58-64.",
+    "Epstein JI, Egevad L, Amin MB, et al. The 2014 International Society of Urological Pathology (ISUP) Consensus Conference on Gleason Grading of Prostatic Carcinoma: Definition of Grading Patterns and Proposal for a New Grading System. Am J Surg Pathol. 2016;40(2):244-252. doi: 10.1097/PAS.0000000000000530.",
+    "Pierorazio PM, Walsh PC, Partin AW, Epstein JI. Prognostic Gleason grade grouping: data based on the modified Gleason scoring system. BJU Int. 2013;111(5):753-760. doi: 10.1111/j.1464-410X.2012.11611.x.",
+    "D'Amico AV, Whittington R, Malkowicz SB, et al. Biochemical outcome after radical prostatectomy, external beam radiation therapy, or interstitial radiation therapy for clinically localized prostate cancer. JAMA. 1998;280(11):969-974. doi: 10.1001/jama.280.11.969."
+  ],
+  "formula": "Gleason Score = Primary Grade + Secondary Grade (range 6-10). Grade Groups: GG1=6, GG2=3+4=7, GG3=4+3=7, GG4=8, GG5=9-10",
+  "notes": [
+    "Currently, the lowest Gleason grade assigned is 3 (grades 1-2 represent normal/benign tissue)",
+    "Primary grade must represent >50% of tumor, secondary grade ≥5% but <50%",
+    "Score of 3+4=7 (Grade Group 2) has better prognosis than 4+3=7 (Grade Group 3)",
+    "Gleason 6 tumors are considered low-grade and may be managed with active surveillance",
+    "Grade Groups (1-5) are increasingly used instead of traditional Gleason scores",
+    "Higher scores correlate with increased risk of metastasis and cancer-specific mortality",
+    "Used in conjunction with PSA levels and clinical stage for risk stratification",
+    "Modern ISUP 2014 guidelines have refined grading criteria for greater consistency",
+    "Tertiary patterns (if >5% of tumor) may influence prognosis but don't change score",
+    "Inter-observer variability exists; expert genitourinary pathology review recommended",
+    "Needle biopsy grades may differ from final prostatectomy specimen grades",
+    "Score influences treatment selection: surgery, radiation, hormone therapy, surveillance",
+    "Essential component of D'Amico risk classification system",
+    "Prognostic value maintained across different treatment modalities and patient populations"
+  ]
+}

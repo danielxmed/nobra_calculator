@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/care_score", response_model=CareScoreResponse)
+@router.post(
+    "/care_score",
+    response_model=CareScoreResponse,
+    summary="Calculate Cardiac Anesthesia Risk Evaluation Sc...",
+    description="The CARE Score predicts mortality and morbidity after cardiac surgery. It is a simple risk classification based on clinical judgment and three clinical variables: comorbid conditions (controlled vs uncontrolled), surgical complexity, and urgency of the procedure.",
+    response_description="The calculated care score with interpretation",
+    operation_id="calculate_care_score"
+)
 async def calculate_care_score(request: CareScoreRequest):
     """
     Calculates Cardiac Anesthesia Risk Evaluation Score (CARE)

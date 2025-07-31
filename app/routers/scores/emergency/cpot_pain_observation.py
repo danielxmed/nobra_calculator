@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/cpot_pain_observation", response_model=CpotPainObservationResponse)
+@router.post(
+    "/cpot_pain_observation",
+    response_model=CpotPainObservationResponse,
+    summary="Calculate Critical Care Pain Observation Tool (CPOT)",
+    description="Pain assessment tool for critically ill adults who are unable to self-report pain, using behavioral indicators across four domains",
+    response_description="The calculated cpot pain observation with interpretation",
+    operation_id="calculate_cpot_pain_observation"
+)
 async def calculate_cpot_pain_observation(request: CpotPainObservationRequest):
     """
     Calculates Critical Care Pain Observation Tool (CPOT) Score

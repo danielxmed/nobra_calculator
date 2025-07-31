@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/dire_score", response_model=DireScoreResponse)
+@router.post(
+    "/dire_score",
+    response_model=DireScoreResponse,
+    summary="Calculate DIRE Score for Opioid Treatment",
+    description="Predicts compliance with opioid treatment for chronic non-cancer pain",
+    response_description="The calculated dire score with interpretation",
+    operation_id="calculate_dire_score"
+)
 async def calculate_dire_score(request: DireScoreRequest):
     """
     Calculates DIRE Score for Opioid Treatment

@@ -68,6 +68,14 @@ from .ottawa_heart_failure_risk_scale import OttawaHeartFailureRiskScaleRequest,
 from .ottawa_knee_rule import OttawaKneeRuleRequest, OttawaKneeRuleResponse
 from .embed import EmbedRequest, EmbedResponse
 from .ett_depth_tidal_volume import EttDepthTidalVolumeRequest, EttDepthTidalVolumeResponse
+from .fast import FastRequest, FastResponse
+from .fomepizole_dosing import FomepizoleDosingRequest, FomepizoleDosingResponse
+from .go_far_score import GoFarScoreRequest, GoFarScoreResponse
+from .gupta_mica import GuptaMicaRequest, GuptaMicaResponse
+from .gupta_postoperative_pneumonia_risk import GuptaPostoperativePneumoniaRiskRequest, GuptaPostoperativePneumoniaRiskResponse
+from .gupta_postoperative_respiratory_failure_risk import GuptaPostoperativeRespiratoryFailureRiskRequest, GuptaPostoperativeRespiratoryFailureRiskResponse
+from .hacor_score import HacorScoreRequest, HacorScoreResponse
+from .hacks_impairment_index import HacksImpairmentIndexRequest, HacksImpairmentIndexResponse
 
 __all__ = [
     "FourCMortalityRequest",
@@ -184,4 +192,20 @@ __all__ = [
     "EmbedResponse",
     "EttDepthTidalVolumeRequest",
     "EttDepthTidalVolumeResponse",
+    "FastRequest",
+    "FastResponse",
+    "FomepizoleDosingRequest",
+    "FomepizoleDosingResponse",
+    "GoFarScoreRequest",
+    "GoFarScoreResponse",
+    "GuptaMicaRequest",
+    "GuptaMicaResponse",
+    "GuptaPostoperativePneumoniaRiskRequest",
+    "GuptaPostoperativePneumoniaRiskResponse",
+    "GuptaPostoperativeRespiratoryFailureRiskRequest",
+    "GuptaPostoperativeRespiratoryFailureRiskResponse",
+    "HacorScoreRequest",
+    "HacorScoreResponse",
+    "HacksImpairmentIndexRequest",
+    "HacksImpairmentIndexResponse",
 ]

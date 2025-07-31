@@ -61,6 +61,14 @@ from .ottawa_heart_failure_risk_scale import router as ottawa_heart_failure_risk
 from .ottawa_knee_rule import router as ottawa_knee_rule_router
 from .embed import router as embed_router
 from .ett_depth_tidal_volume import router as ett_depth_tidal_volume_router
+from .fast import router as fast_router
+from .fomepizole_dosing import router as fomepizole_dosing_router
+from .go_far_score import router as go_far_score_router
+from .gupta_mica import router as gupta_mica_router
+from .gupta_postoperative_pneumonia_risk import router as gupta_postoperative_pneumonia_risk_router
+from .gupta_postoperative_respiratory_failure_risk import router as gupta_postoperative_respiratory_failure_risk_router
+from .hacor_score import router as hacor_score_router
+from .hacks_impairment_index import router as hacks_impairment_index_router
 
 # Create main specialty router
 router = APIRouter()
@@ -122,3 +130,11 @@ router.include_router(ottawa_heart_failure_risk_scale_router)
 router.include_router(ottawa_knee_rule_router)
 router.include_router(embed_router)
 router.include_router(ett_depth_tidal_volume_router)
+router.include_router(fast_router)
+router.include_router(fomepizole_dosing_router)
+router.include_router(go_far_score_router)
+router.include_router(gupta_mica_router)
+router.include_router(gupta_postoperative_pneumonia_risk_router)
+router.include_router(gupta_postoperative_respiratory_failure_risk_router)
+router.include_router(hacor_score_router)
+router.include_router(hacks_impairment_index_router)

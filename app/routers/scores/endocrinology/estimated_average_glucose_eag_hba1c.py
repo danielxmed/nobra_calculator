@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/estimated_average_glucose_eag_hba1c", response_model=EstimatedAverageGlucoseEagHba1cResponse)
+@router.post(
+    "/estimated_average_glucose_eag_hba1c",
+    response_model=EstimatedAverageGlucoseEagHba1cResponse,
+    summary="Calculate Estimated Average Glucose (eAG) From HbA1C",
+    description="Estimates average glucose level from Hemoglobin A1C value using the linear relationship established by the A1c-Derived Average Glucose (ADAG) Study Group.",
+    response_description="The calculated estimated average glucose eag hba1c with interpretation",
+    operation_id="calculate_estimated_average_glucose_eag_hba1c"
+)
 async def calculate_estimated_average_glucose_eag_hba1c(request: EstimatedAverageGlucoseEagHba1cRequest):
     """
     Calculates Estimated Average Glucose (eAG) From HbA1C

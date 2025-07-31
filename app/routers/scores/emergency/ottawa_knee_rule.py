@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/ottawa_knee_rule", response_model=OttawaKneeRuleResponse)
+@router.post(
+    "/ottawa_knee_rule",
+    response_model=OttawaKneeRuleResponse,
+    summary="Calculate Ottawa Knee Rule",
+    description="Describes criteria for low-risk knee trauma patients, not warranting imaging. Rules out clinically significant knee fractures to reduce unnecessary x-rays with high sensitivity (98-100%).",
+    response_description="The calculated ottawa knee rule with interpretation",
+    operation_id="calculate_ottawa_knee_rule"
+)
 async def calculate_ottawa_knee_rule(request: OttawaKneeRuleRequest):
     """
     Calculates Ottawa Knee Rule

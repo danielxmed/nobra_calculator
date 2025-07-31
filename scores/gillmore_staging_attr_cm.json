@@ -1,0 +1,81 @@
+{
+  "id": "gillmore_staging_attr_cm",
+  "title": "Gillmore Staging System for Transthyretin Amyloid Cardiomyopathy (ATTR-CM)",
+  "description": "Staging system for transthyretin amyloid cardiomyopathy using NT-proBNP and estimated glomerular filtration rate (eGFR) to stratify patients into prognostic categories for both wild-type and variant ATTR-CM",
+  "category": "cardiology",
+  "version": "2018",
+  "parameters": [
+    {
+      "name": "nt_probnp",
+      "type": "float",
+      "required": true,
+      "description": "N-terminal pro-B-type natriuretic peptide (NT-proBNP) level",
+      "validation": {
+        "min": 0,
+        "max": 50000
+      },
+      "unit": "ng/L"
+    },
+    {
+      "name": "egfr",
+      "type": "float", 
+      "required": true,
+      "description": "Estimated glomerular filtration rate (eGFR)",
+      "validation": {
+        "min": 5,
+        "max": 150
+      },
+      "unit": "ml/min"
+    }
+  ],
+  "result": {
+    "name": "gillmore_stage",
+    "type": "string",
+    "unit": "stage",
+    "description": "Gillmore staging for ATTR-CM prognosis (Stage I, II, or III)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Stage I",
+        "description": "Best prognosis",
+        "interpretation": "NT-proBNP ≤3000 ng/L and eGFR ≥45 ml/min. Median survival 69.2 months. Best prognostic category with lowest mortality risk."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Stage II",
+        "description": "Intermediate prognosis",
+        "interpretation": "Intermediate biomarker profile not meeting Stage I or III criteria. Median survival 46.7 months. Intermediate prognostic category."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Stage III",
+        "description": "Worst prognosis",
+        "interpretation": "NT-proBNP >3000 ng/L and eGFR <45 ml/min. Median survival 24.1 months. Highest mortality risk requiring intensive management."
+      }
+    ]
+  },
+  "references": [
+    "Gillmore JD, Damy T, Fontana M, et al. A new staging system for cardiac transthyretin amyloidosis. Eur Heart J. 2018;39(30):2799-2806. doi: 10.1093/eurheartj/ehx589.",
+    "Fontana M, Corovic A, Scully P, Moon JC. Myocardial amyloidosis: the exemplar interstitial disease. JACC Cardiovasc Imaging. 2019;12(11 Pt 2):2345-2356. doi: 10.1016/j.jcmg.2019.06.023.",
+    "Grogan M, Scott CG, Kyle RA, et al. Natural history of wild-type transthyretin cardiac amyloidosis and risk stratification using a novel staging system. J Am Coll Cardiol. 2016;68(10):1014-1020. doi: 10.1016/j.jacc.2016.06.033."
+  ],
+  "formula": "Stage I: NT-proBNP ≤3000 ng/L AND eGFR ≥45 ml/min; Stage III: NT-proBNP >3000 ng/L AND eGFR <45 ml/min; Stage II: All other combinations",
+  "notes": [
+    "Developed by the UK National Amyloidosis Centre for both wild-type and variant ATTR-CM",
+    "Based on 869 patients with cardiac ATTR amyloidosis (553 wild-type, 316 variant)",
+    "Validated in a separate cohort of 318 patients",
+    "Uses readily available biomarkers (NT-proBNP and eGFR)",
+    "Stage I patients: 393 (45%) with median survival 69.2 months",
+    "Stage II patients: 334 (38%) with median survival 46.7 months", 
+    "Stage III patients: 142 (16%) with median survival 24.1 months",
+    "Hazard ratios compared to Stage I: Stage II HR 2.05 (95% CI 1.54-2.72), Stage III HR 3.80 (95% CI 2.73-5.28)",
+    "Useful for clinical decision-making and trial design",
+    "Should be used in conjunction with comprehensive clinical evaluation",
+    "Regular monitoring of biomarkers recommended for disease progression assessment"
+  ]
+}

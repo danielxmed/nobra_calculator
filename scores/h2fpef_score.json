@@ -1,0 +1,109 @@
+{
+  "id": "h2fpef_score",
+  "title": "H2FPEF Score for Heart Failure with Preserved Ejection Fraction",
+  "description": "Estimates probability of heart failure with preserved ejection fraction (HFpEF) in euvolemic patients with unexplained exertional dyspnea who have had an echocardiogram. Uses clinical characteristics and echocardiographic parameters to distinguish HFpEF from noncardiac causes of dyspnea.",
+  "category": "cardiology",
+  "version": "2018",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "bmi",
+      "type": "float",
+      "required": true,
+      "description": "Body mass index (BMI) in kg/m²",
+      "validation": {
+        "min": 10.0,
+        "max": 80.0
+      },
+      "unit": "kg/m²"
+    },
+    {
+      "name": "e_e_prime_ratio",
+      "type": "float",
+      "required": true,
+      "description": "Echocardiographic E/e' ratio (early mitral inflow velocity to early diastolic mitral annular velocity ratio)",
+      "validation": {
+        "min": 1.0,
+        "max": 50.0
+      },
+      "unit": "ratio"
+    },
+    {
+      "name": "pasp",
+      "type": "integer",
+      "required": true,
+      "description": "Pulmonary artery systolic pressure by echocardiography",
+      "validation": {
+        "min": 15,
+        "max": 120
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "atrial_fibrillation",
+      "type": "string",
+      "required": true,
+      "description": "History of atrial fibrillation (paroxysmal, persistent, or permanent)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "hfpef_probability",
+    "type": "float",
+    "unit": "percentage",
+    "description": "Probability of heart failure with preserved ejection fraction"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 25,
+        "stage": "Low Probability",
+        "description": "Low probability of HFpEF",
+        "interpretation": "Consider alternate causes of dyspnea. HFpEF unlikely. Evaluate for pulmonary, metabolic, or other cardiac causes of exertional dyspnea."
+      },
+      {
+        "min": 25,
+        "max": 75,
+        "stage": "Intermediate Probability",
+        "description": "Intermediate probability of HFpEF",
+        "interpretation": "Additional testing recommended. Consider invasive hemodynamic exercise testing, natriuretic peptides, or other advanced diagnostic modalities to confirm or rule out HFpEF."
+      },
+      {
+        "min": 75,
+        "max": 100,
+        "stage": "High Probability",
+        "description": "High probability of HFpEF",
+        "interpretation": "HFpEF likely. Consider empiric HFpEF treatment including guideline-directed medical therapy, lifestyle modifications, and management of comorbidities."
+      }
+    ]
+  },
+  "references": [
+    "Reddy YNV, Carter RE, Obokata M, Redfield MM, Borlaug BA. A Simple, Evidence-Based Approach to Help Guide Diagnosis of Heart Failure With Preserved Ejection Fraction. Circulation. 2018;138(9):861-870. doi: 10.1161/CIRCULATIONAHA.118.034646",
+    "Borlaug BA, Reddy YNV. The Role of the Pulmonary Circulation in Heart Failure With Preserved Ejection Fraction. JACC Heart Fail. 2019;7(5):393-403. doi: 10.1016/j.jchf.2019.02.011",
+    "Pieske B, Tschöpe C, de Boer RA, et al. How to diagnose heart failure with preserved ejection fraction: the HFA-PEFF diagnostic algorithm: a consensus recommendation from the Heart Failure Association (HFA) of the European Society of Cardiology (ESC). Eur Heart J. 2019;40(40):3297-3317. doi: 10.1093/eurheartj/ehz641"
+  ],
+  "formula": "Probability = (Z / (1 + Z)) × 100, where Z = e^y and y = -9.1917 + (0.0451 × age) + (0.1307 × BMI) + (0.0859 × E/e' ratio) + (0.0520 × PASP) + (1.6997 × atrial fibrillation)",
+  "notes": [
+    "Use in euvolemic patients with unexplained exertional dyspnea who have had an echocardiogram",
+    "Derived from 414 consecutive patients (267 HFpEF cases, 147 controls) with area under the curve of 0.841",
+    "Superior to consensus-based algorithms for HFpEF diagnosis",
+    "Atrial fibrillation is coded as 1 for Yes and 0 for No in the formula",
+    "Should be used in conjunction with clinical judgment and other diagnostic modalities",
+    "Not validated in patients with reduced ejection fraction or significant valvular disease",
+    "Requires adequate echocardiographic assessment of diastolic function"
+  ]
+}

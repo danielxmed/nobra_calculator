@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/cdai_rheumatoid_arthritis", response_model=CdaiRheumatoidArthritisResponse)
+@router.post(
+    "/cdai_rheumatoid_arthritis",
+    response_model=CdaiRheumatoidArthritisResponse,
+    summary="Calculate Clinical Disease Activity Index",
+    description="Determines severity of rheumatoid arthritis using only clinical data, without laboratory tests",
+    response_description="The calculated cdai rheumatoid arthritis with interpretation",
+    operation_id="calculate_cdai_rheumatoid_arthritis"
+)
 async def calculate_cdai_rheumatoid_arthritis(request: CdaiRheumatoidArthritisRequest):
     """
     Calculates Clinical Disease Activity Index (CDAI) for Rheumatoid Arthritis

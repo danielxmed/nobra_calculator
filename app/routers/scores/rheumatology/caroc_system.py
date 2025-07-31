@@ -15,7 +15,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/caroc_system", response_model=CAROCSystemResponse)
+@router.post(
+    "/caroc_system",
+    response_model=CAROCSystemResponse,
+    summary="Calculate Canadian Association of Radiologists and Osteop...",
+    description="Assesses 10-year absolute fracture risk based on age, sex, femoral neck T-score, and clinical risk factors. Stratifies patients into low (<10%), moderate (10-20%), or high (>20%) risk categories for major osteoporotic fractures.",
+    response_description="The calculated caroc system with interpretation",
+    operation_id="calculate_caroc_system"
+)
 async def calculate_caroc_system(request: CAROCSystemRequest):
     """
     Calculates CAROC System for fracture risk assessment

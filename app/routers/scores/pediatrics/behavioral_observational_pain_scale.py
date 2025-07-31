@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/behavioral_observational_pain_scale", response_model=BehavioralObservationalPainScaleResponse)
+@router.post(
+    "/behavioral_observational_pain_scale",
+    response_model=BehavioralObservationalPainScaleResponse,
+    summary="Calculate Behavioral Observational Pain Scale",
+    description="Quantifies post-operative pain for children aged 1-7 years using observational behavioral indicators",
+    response_description="The calculated behavioral observational pain scale with interpretation",
+    operation_id="calculate_behavioral_observational_pain_scale"
+)
 async def calculate_behavioral_observational_pain_scale(request: BehavioralObservationalPainScaleRequest):
     """
     Calculates Behavioral Observational Pain Scale (BOPS) for Post-Op Pediatric Pain

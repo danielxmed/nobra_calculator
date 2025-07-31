@@ -1,0 +1,237 @@
+{
+  "id": "geneva_vte_prophylaxis",
+  "title": "Geneva Risk Score for Venous Thromboembolism (VTE) Prophylaxis",
+  "description": "Predicts the need for venous thromboembolism (VTE) prophylaxis in hospitalized medical patients by assessing risk factors to identify patients who would benefit from thromboprophylaxis versus those at low risk who may not require anticoagulation",
+  "category": "hematology",
+  "version": "2006",
+  "parameters": [
+    {
+      "name": "cardiac_failure",
+      "type": "string",
+      "required": true,
+      "description": "Presence of cardiac failure",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "respiratory_failure",
+      "type": "string",
+      "required": true,
+      "description": "Presence of respiratory failure",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "recent_stroke",
+      "type": "string",
+      "required": true,
+      "description": "Recent stroke within 3 months",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "recent_myocardial_infarction",
+      "type": "string",
+      "required": true,
+      "description": "Recent myocardial infarction within 4 weeks",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "acute_infectious_disease",
+      "type": "string",
+      "required": true,
+      "description": "Acute infectious disease including sepsis",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "acute_rheumatic_disease",
+      "type": "string",
+      "required": true,
+      "description": "Acute rheumatic disease",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "active_malignancy",
+      "type": "string",
+      "required": true,
+      "description": "Active malignancy",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "myeloproliferative_syndrome",
+      "type": "string",
+      "required": true,
+      "description": "Myeloproliferative syndrome",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "nephrotic_syndrome",
+      "type": "string",
+      "required": true,
+      "description": "Nephrotic syndrome",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "prior_vte_history",
+      "type": "string",
+      "required": true,
+      "description": "Prior history of venous thromboembolism",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "known_hypercoagulable_state",
+      "type": "string",
+      "required": true,
+      "description": "Known hypercoagulable state",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "immobilization",
+      "type": "string",
+      "required": true,
+      "description": "Immobilization for 3 or more days with less than 30 minutes of walking per day",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "recent_travel",
+      "type": "string",
+      "required": true,
+      "description": "Recent travel longer than 6 hours",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "age_over_60",
+      "type": "string",
+      "required": true,
+      "description": "Age greater than 60 years",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "obesity",
+      "type": "string",
+      "required": true,
+      "description": "Obesity with BMI greater than 30 kg/m²",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "chronic_venous_insufficiency",
+      "type": "string",
+      "required": true,
+      "description": "Chronic venous insufficiency",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "pregnancy",
+      "type": "string",
+      "required": true,
+      "description": "Pregnancy",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hormonal_therapy",
+      "type": "string",
+      "required": true,
+      "description": "Hormonal therapy (estrogen-containing contraceptives or hormone replacement therapy)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "dehydration",
+      "type": "string",
+      "required": true,
+      "description": "Dehydration",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "geneva_vte_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Geneva Risk Score for VTE prophylaxis (0-33 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Low Risk",
+        "description": "Low risk for VTE",
+        "interpretation": "No prophylaxis recommended. VTE risk approximately 0.6%. Monitor for changes in clinical status."
+      },
+      {
+        "min": 3,
+        "max": 33,
+        "stage": "High Risk",
+        "description": "High risk for VTE",
+        "interpretation": "Prophylaxis recommended unless contraindicated. VTE risk approximately 3.2%. Consider pharmacological or mechanical prophylaxis."
+      }
+    ]
+  },
+  "references": [
+    "Chopard P, Spirk D, Bounameaux H. Identifying acutely ill medical patients requiring thromboprophylaxis. J Thromb Haemost. 2006;4(4):915-916. doi: 10.1111/j.1538-7836.2006.01818.x.",
+    "Nendaz M, Spirk D, Kucher N, et al. Multicentre validation of the Geneva Risk Score for hospitalised medical patients at risk of venous thromboembolism. Explicit ASsessment of Thromboembolic RIsk and Prophylaxis for Medical PATients in SwitzErland (ESTIMATE). Thromb Haemost. 2014;111(3):531-538. doi: 10.1160/TH13-05-0427.",
+    "Decousus H, Tapson VF, Bergmann JF, et al. Factors at admission associated with bleeding risk in medical patients: findings from the IMPROVE investigators. Chest. 2011;139(1):69-79. doi: 10.1378/chest.09-3081."
+  ],
+  "formula": "Score = Sum of all risk factors (2 points for major factors: cardiac failure, respiratory failure, recent stroke <3mo, recent MI <4wks, acute infectious disease, acute rheumatic disease, active malignancy, myeloproliferative syndrome, nephrotic syndrome, prior VTE, hypercoagulable state; 1 point for minor factors: immobilization ≥3d, recent travel >6h, age >60y, obesity BMI>30, chronic venous insufficiency, pregnancy, hormonal therapy, dehydration)",
+  "notes": [
+    "Validated in hospitalized medical patients for VTE prophylaxis decision-making",
+    "Score ≥3 indicates high risk requiring prophylaxis consideration",
+    "Low-risk patients (score <3) may not require pharmacological prophylaxis",
+    "Consider contraindications to anticoagulation before starting prophylaxis",
+    "Mechanical prophylaxis may be used when pharmacological prophylaxis is contraindicated",
+    "Reassess risk daily during hospitalization as clinical status changes"
+  ]
+}

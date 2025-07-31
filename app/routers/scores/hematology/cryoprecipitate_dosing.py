@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/cryoprecipitate_dosing", response_model=CryoprecipitateDosingResponse)
+@router.post(
+    "/cryoprecipitate_dosing",
+    response_model=CryoprecipitateDosingResponse,
+    summary="Calculate Cryoprecipitate Dosing for Fibrinogen Replacement",
+    description="Calculates the required dose of cryoprecipitate units needed to achieve target fibrinogen levels in patients with fibrinogen deficiency or hypofibrinogenemia",
+    response_description="The calculated cryoprecipitate dosing with interpretation",
+    operation_id="calculate_cryoprecipitate_dosing"
+)
 async def calculate_cryoprecipitate_dosing(request: CryoprecipitateDosIngRequest):
     """
     Calculates Cryoprecipitate Dosing for Fibrinogen Replacement

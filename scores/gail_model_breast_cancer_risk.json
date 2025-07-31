@@ -1,0 +1,137 @@
+{
+  "id": "gail_model_breast_cancer_risk",
+  "title": "Gail Model for Breast Cancer Risk",
+  "description": "Estimates risk for breast cancer based on demographic and clinical data. The Gail Model calculates a woman's absolute risk of developing invasive breast cancer over the next 5 years and up to age 90 (lifetime risk) using personal medical and reproductive history and family history of breast cancer among first-degree relatives.",
+  "category": "oncology",
+  "version": "1999",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Current age of the woman",
+      "validation": {
+        "min": 35,
+        "max": 85
+      },
+      "unit": "years"
+    },
+    {
+      "name": "age_at_menarche",
+      "type": "string",
+      "required": true,
+      "description": "Age at first menstrual period",
+      "options": ["unknown", "7_to_11", "12_to_13", "over_13"],
+      "validation": {
+        "enum": ["unknown", "7_to_11", "12_to_13", "over_13"]
+      },
+      "unit": "years"
+    },
+    {
+      "name": "age_at_first_birth",
+      "type": "string",
+      "required": true,
+      "description": "Age at first live birth or nulliparous status",
+      "options": ["unknown", "no_births", "under_20", "20_to_24", "25_to_29", "30_or_over"],
+      "validation": {
+        "enum": ["unknown", "no_births", "under_20", "20_to_24", "25_to_29", "30_or_over"]
+      },
+      "unit": "years"
+    },
+    {
+      "name": "relatives_with_breast_cancer",
+      "type": "string",
+      "required": true,
+      "description": "Number of first-degree relatives (mother, sisters, daughters) with breast cancer",
+      "options": ["unknown", "0", "1", "more_than_1"],
+      "validation": {
+        "enum": ["unknown", "0", "1", "more_than_1"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "previous_biopsies",
+      "type": "string",
+      "required": true,
+      "description": "Number of previous breast biopsies",
+      "options": ["unknown", "0", "1", "more_than_1"],
+      "validation": {
+        "enum": ["unknown", "0", "1", "more_than_1"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "atypical_hyperplasia",
+      "type": "string",
+      "required": true,
+      "description": "History of atypical hyperplasia on breast biopsy (only relevant if previous biopsies ≥1)",
+      "options": ["unknown", "no", "yes"],
+      "validation": {
+        "enum": ["unknown", "no", "yes"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "race_ethnicity",
+      "type": "string",
+      "required": true,
+      "description": "Race/ethnicity for risk adjustment",
+      "options": ["white", "african_american", "hispanic", "asian_american", "american_indian_alaskan_native", "unknown"],
+      "validation": {
+        "enum": ["white", "african_american", "hispanic", "asian_american", "american_indian_alaskan_native", "unknown"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "asian_subrace",
+      "type": "string",
+      "required": false,
+      "description": "Asian-American sub-race (only required if race_ethnicity is asian_american)",
+      "options": ["chinese", "japanese", "filipino", "hawaiian", "pacific_islander"],
+      "validation": {
+        "enum": ["chinese", "japanese", "filipino", "hawaiian", "pacific_islander"]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "five_year_risk",
+    "type": "float",
+    "unit": "percentage",
+    "description": "5-year absolute risk of developing invasive breast cancer"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1.67,
+        "stage": "Low Risk",
+        "description": "Low risk for breast cancer",
+        "interpretation": "5-year breast cancer risk is below the threshold for chemoprevention consideration. Continue routine screening mammography according to guidelines. Discuss general risk reduction strategies including maintaining healthy weight, regular physical activity, limiting alcohol consumption, and avoiding unnecessary hormone therapy."
+      },
+      {
+        "min": 1.67,
+        "max": 100,
+        "stage": "High Risk",
+        "description": "High risk for breast cancer",
+        "interpretation": "5-year breast cancer risk meets or exceeds 1.67% threshold. Consider discussing chemoprevention options (tamoxifen, raloxifene, or aromatase inhibitors) with patient after evaluating benefits and risks. Enhanced screening strategies may be appropriate including earlier screening initiation, shorter screening intervals, or consideration of breast MRI. Genetic counseling may be considered if family history is significant."
+      }
+    ]
+  },
+  "references": [
+    "Gail MH, Brinton LA, Byar DP, et al. Projecting individualized probabilities of developing breast cancer for white females who are being examined annually. J Natl Cancer Inst. 1989;81(24):1879-86. doi: 10.1093/jnci/81.24.1879.",
+    "Costantino JP, Gail MH, Pee D, et al. Validation studies for models projecting the risk of invasive and total breast cancer incidence. J Natl Cancer Inst. 1999;91(18):1541-8. doi: 10.1093/jnci/91.18.1541.",
+    "Matsuno RK, Costantino JP, Ziegler RG, et al. Projecting individualized absolute invasive breast cancer risk in Asian and Pacific Islander American women. J Natl Cancer Inst. 2011;103(12):951-61. doi: 10.1093/jnci/djr154."
+  ],
+  "formula": "Complex statistical model using logistic regression with race-specific coefficients for age, age at menarche, age at first live birth, number of first-degree relatives with breast cancer, number of breast biopsies, and presence of atypical hyperplasia.",
+  "notes": [
+    "Valid for women aged 35-85 years without personal history of breast cancer",
+    "Validated for White, African-American, Hispanic, and Asian/Pacific Islander women in the US",
+    "May underestimate risk in Black women with previous biopsies and Hispanic women born outside the US",
+    "Cannot be used for women with BRCA1/BRCA2 mutations or previous breast cancer",
+    "Does not include lifestyle factors (alcohol, physical activity, hormone therapy)",
+    "5-year risk ≥1.67% is FDA threshold for chemoprevention consideration",
+    "Also calculates lifetime risk to age 90, but 5-year risk is primary clinical metric",
+    "Should be used as part of comprehensive breast cancer risk assessment"
+  ]
+}

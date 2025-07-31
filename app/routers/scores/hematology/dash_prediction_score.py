@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/dash_prediction_score", response_model=DashPredictionScoreResponse)
+@router.post(
+    "/dash_prediction_score",
+    response_model=DashPredictionScoreResponse,
+    summary="Calculate DASH Prediction Score for Recurrent VTE",
+    description="Predicts likelihood of recurrence of first unprovoked venous thromboembolism (VTE) to guide anticoagulation duration decisions. Utilizes D-dimer, Age, Sex, and Hormonal therapy factors.",
+    response_description="The calculated dash prediction score with interpretation",
+    operation_id="calculate_dash_prediction_score"
+)
 async def calculate_dash_prediction_score(request: DashPredictionScoreRequest):
     """
     Calculates DASH Prediction Score for Recurrent VTE

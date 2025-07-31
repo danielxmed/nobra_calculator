@@ -1,0 +1,110 @@
+{
+  "id": "fast",
+  "title": "Focused Assessment with Sonography for Trauma (FAST)",
+  "description": "Predicts presence of pericardial or intra-abdominal injury after penetrating or blunt trauma based on ultrasound findings.",
+  "category": "emergency",
+  "version": "1993",
+  "parameters": [
+    {
+      "name": "pericardial_fluid",
+      "type": "string",
+      "required": true,
+      "description": "Presence of pericardial fluid on ultrasound",
+      "options": ["absent", "present", "equivocal"],
+      "validation": {
+        "enum": ["absent", "present", "equivocal"]
+      }
+    },
+    {
+      "name": "right_upper_quadrant_fluid",
+      "type": "string",
+      "required": true,
+      "description": "Presence of fluid in right upper quadrant (Morison's pouch) on ultrasound",
+      "options": ["absent", "present", "equivocal"],
+      "validation": {
+        "enum": ["absent", "present", "equivocal"]
+      }
+    },
+    {
+      "name": "left_upper_quadrant_fluid",
+      "type": "string",
+      "required": true,
+      "description": "Presence of fluid in left upper quadrant (splenorenal recess) on ultrasound",
+      "options": ["absent", "present", "equivocal"],
+      "validation": {
+        "enum": ["absent", "present", "equivocal"]
+      }
+    },
+    {
+      "name": "suprapubic_fluid",
+      "type": "string",
+      "required": true,
+      "description": "Presence of suprapubic fluid on ultrasound",
+      "options": ["absent", "present", "equivocal"],
+      "validation": {
+        "enum": ["absent", "present", "equivocal"]
+      }
+    },
+    {
+      "name": "patient_stability",
+      "type": "string",
+      "required": true,
+      "description": "Hemodynamic stability of the patient",
+      "options": ["stable", "unstable"],
+      "validation": {
+        "enum": ["stable", "unstable"]
+      }
+    }
+  ],
+  "result": {
+    "name": "fast_result",
+    "type": "string",
+    "unit": "",
+    "description": "FAST examination result and clinical recommendation"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "stage": "Negative FAST",
+        "description": "No fluid detected",
+        "interpretation": "FAST negative. However, negative FAST does not exclude injury. Clinical correlation and consideration of additional imaging based on mechanism and clinical status is recommended."
+      },
+      {
+        "stage": "Positive FAST - Pericardial",
+        "description": "Pericardial fluid present",
+        "interpretation": "Pericardial fluid detected. Emergent surgical intervention is recommended."
+      },
+      {
+        "stage": "Positive FAST - Abdominal (Unstable)",
+        "description": "Intra-abdominal fluid with hemodynamic instability",
+        "interpretation": "Intra-abdominal fluid detected in hemodynamically unstable patient. Emergent exploratory laparotomy is recommended."
+      },
+      {
+        "stage": "Positive FAST - Abdominal (Stable)",
+        "description": "Intra-abdominal fluid with hemodynamic stability",
+        "interpretation": "Intra-abdominal fluid detected in hemodynamically stable patient. Cross-sectional imaging (CT scan) is recommended for further evaluation."
+      },
+      {
+        "stage": "Equivocal FAST",
+        "description": "Equivocal findings",
+        "interpretation": "Equivocal FAST findings. Consider repeat FAST examination, clinical correlation, and/or additional imaging as indicated."
+      }
+    ]
+  },
+  "references": [
+    "Rozycki GS, Ochsner MG, Jaffin JH, Champion HR. Prospective evaluation of surgeons' use of ultrasound in the evaluation of trauma patients. J Trauma. 1993 Apr;34(4):516-26; discussion 526-7.",
+    "Rozycki GS, Ballard RB, Feliciano DV, Schmidt JA, Pennington SD. Surgeon-performed ultrasound for the assessment of truncal injuries: lessons learned from 1540 patients. Ann Surg. 1998 Oct;228(4):557-67.",
+    "Rozycki GS, Ochsner MG, Schmidt JA, Frankel HL, Davis TP, Wang D, et al. A prospective study of surgeon-performed ultrasound as the primary adjuvant modality for injured patient assessment. J Trauma. 1995 Sep;39(3):492-8; discussion 498-500.",
+    "American College of Emergency Physicians. Emergency ultrasound guidelines. Ann Emerg Med. 2009 Apr;53(4):550-70."
+  ],
+  "formula": "Assessment based on presence/absence of fluid in four anatomical regions: pericardium, right upper quadrant (Morison's pouch), left upper quadrant (splenorenal recess), and suprapubic region.",
+  "notes": [
+    "FAST results alone should not dictate the decision to operate",
+    "Negative FAST does not exclude injury",
+    "Ultrasound is user dependent; clinicians should be cautious in interpretation",
+    "Sensitivities of abdominal and suprapubic views vary widely (22-98%)",
+    "In penetrating thoracic trauma, pericardial view sensitivity approaches 100%",
+    "Extended FAST (eFAST) includes bilateral thoracic views for pneumo- and hemothoraces",
+    "Hemodynamic stability assessment is crucial for management decisions"
+  ]
+}

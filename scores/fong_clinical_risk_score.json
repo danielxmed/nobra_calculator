@@ -1,0 +1,129 @@
+{
+  "id": "fong_clinical_risk_score",
+  "title": "Fong Clinical Risk Score for Colorectal Cancer Recurrence",
+  "description": "Predicts recurrence and survival risk for colorectal cancer patients with liver metastases after hepatic resection. Developed from analysis of 1,001 consecutive cases to identify high-risk patients who may benefit from adjuvant therapy or closer surveillance.",
+  "category": "oncology",
+  "version": "1999",
+  "parameters": [
+    {
+      "name": "node_positive_primary",
+      "type": "string",
+      "required": true,
+      "description": "Node-positive primary tumor (lymph node involvement at primary site)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "disease_free_interval",
+      "type": "string",
+      "required": true,
+      "description": "Disease-free interval from primary tumor resection to liver metastasis detection",
+      "options": ["less_than_12_months", "12_months_or_more"],
+      "validation": {
+        "enum": ["less_than_12_months", "12_months_or_more"]
+      }
+    },
+    {
+      "name": "number_of_tumors",
+      "type": "string",
+      "required": true,
+      "description": "Number of liver metastases",
+      "options": ["single", "multiple"],
+      "validation": {
+        "enum": ["single", "multiple"]
+      }
+    },
+    {
+      "name": "cea_level",
+      "type": "string",
+      "required": true,
+      "description": "Preoperative carcinoembryonic antigen (CEA) level",
+      "options": ["200_or_less", "greater_than_200"],
+      "validation": {
+        "enum": ["200_or_less", "greater_than_200"]
+      },
+      "unit": "ng/mL"
+    },
+    {
+      "name": "largest_tumor_size",
+      "type": "string",
+      "required": true,
+      "description": "Size of largest liver metastasis",
+      "options": ["5_cm_or_less", "greater_than_5_cm"],
+      "validation": {
+        "enum": ["5_cm_or_less", "greater_than_5_cm"]
+      },
+      "unit": "cm"
+    }
+  ],
+  "result": {
+    "name": "fong_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Fong Clinical Risk Score (0-5 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Score 0",
+        "description": "Excellent prognosis",
+        "interpretation": "5-year survival rate approximately 60%. Lowest risk group with best prognosis after hepatic resection."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Score 1",
+        "description": "Good prognosis",
+        "interpretation": "5-year survival rate approximately 44%. Favorable outcome expected after hepatic resection."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Score 2",
+        "description": "Moderate prognosis",
+        "interpretation": "5-year survival rate approximately 30%. Acceptable outcome with potential benefit from hepatic resection."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Score 3",
+        "description": "Poor prognosis",
+        "interpretation": "5-year survival rate approximately 16%. Consider experimental adjuvant therapy or alternative treatment strategies."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Score 4",
+        "description": "Very poor prognosis",
+        "interpretation": "5-year survival rate approximately 11%. Strong consideration for experimental adjuvant therapy or systemic treatment."
+      },
+      {
+        "min": 5,
+        "max": 5,
+        "stage": "Score 5",
+        "description": "Extremely poor prognosis",
+        "interpretation": "5-year survival rate approximately 14%. Highest risk group requiring aggressive adjuvant therapy consideration."
+      }
+    ]
+  },
+  "references": [
+    "Fong Y, Fortner J, Sun RL, Brennan MF, Blumgart LH. Clinical score for predicting recurrence after hepatic resection for metastatic colorectal cancer: analysis of 1001 consecutive cases. Ann Surg. 1999;230(3):309-318.",
+    "Mala T, Bohler G, Mathisen O, Bergan A, Soreide O. Hepatic resection for colorectal metastases: can preoperative scoring predict patient outcome? World J Surg. 2002;26(11):1348-1353.",
+    "Mann CD, Metcalfe MS, Leopardi LN, Maddern GJ. The clinical risk score: emerging as a reliable preoperative prognostic index in hepatectomy for colorectal metastases. Arch Surg. 2004;139(11):1168-1172.",
+    "Nordlinger B, Guiguet M, Vaillant JC, et al. Surgical resection of colorectal carcinoma metastases to the liver. A prognostic scoring system to improve case selection, based on 1568 patients. Cancer. 1996;77(7):1254-1262."
+  ],
+  "formula": "Sum of points: Node-positive primary (1 point) + Disease-free interval <12 months (1 point) + Multiple tumors (1 point) + CEA >200 ng/mL (1 point) + Largest tumor >5 cm (1 point)",
+  "notes": [
+    "Developed from analysis of 1,001 consecutive patients undergoing hepatic resection for colorectal liver metastases at Memorial Sloan-Kettering Cancer Center (1985-1998)",
+    "Not intended to exclude patients from surgery but to stratify risk and guide treatment decisions",
+    "Patients with scores 0-2 have favorable outcomes and should be considered for resection",
+    "Patients with scores ≥3 should be considered for experimental adjuvant therapy",
+    "The score helps predict both overall survival and disease-free survival",
+    "Useful for patient counseling, surveillance planning, and clinical trial stratification",
+    "Validated in multiple independent cohorts and remains widely used despite advances in systemic therapy"
+  ]
+}

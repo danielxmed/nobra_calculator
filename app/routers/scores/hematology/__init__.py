@@ -24,6 +24,13 @@ from .dli_volume import router as dli_volume_router
 from .duval_cibmtr_score_aml_survival import router as duval_cibmtr_score_aml_survival_router
 from .neutrophil_lymphocyte_ratio import router as neutrophil_lymphocyte_ratio_router
 from .eutos_score import router as eutos_score_router
+from .flipi import router as flipi_router
+from .ganzoni_equation_iron_deficiency import router as ganzoni_equation_iron_deficiency_router
+from .gipss_primary_myelofibrosis import router as gipss_primary_myelofibrosis_router
+from .geneva_vte_prophylaxis import router as geneva_vte_prophylaxis_router
+from .glasgow_prognostic_score import router as glasgow_prognostic_score_router
+from .gelf_criteria import router as gelf_criteria_router
+from .has_bled_score import router as has_bled_score_router
 
 # Create main specialty router
 router = APIRouter()
@@ -48,3 +55,10 @@ router.include_router(dli_volume_router)
 router.include_router(duval_cibmtr_score_aml_survival_router)
 router.include_router(neutrophil_lymphocyte_ratio_router)
 router.include_router(eutos_score_router)
+router.include_router(flipi_router)
+router.include_router(ganzoni_equation_iron_deficiency_router)
+router.include_router(gipss_primary_myelofibrosis_router)
+router.include_router(geneva_vte_prophylaxis_router)
+router.include_router(glasgow_prognostic_score_router)
+router.include_router(gelf_criteria_router)
+router.include_router(has_bled_score_router)

@@ -1,0 +1,75 @@
+{
+  "id": "haps",
+  "title": "Harmless Acute Pancreatitis Score (HAPS)",
+  "description": "Identifies patients who do not require intensive care for their first episode of acute pancreatitis. The HAPS enables identification, within approximately 30 minutes after admission, of patients with acute pancreatitis whose disease will run a mild course.",
+  "category": "gastroenterology",
+  "version": "2009",
+  "parameters": [
+    {
+      "name": "peritonitis",
+      "type": "string",
+      "required": true,
+      "description": "Presence of rebound tenderness or guarding on abdominal examination",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      }
+    },
+    {
+      "name": "creatinine_elevated",
+      "type": "string",
+      "required": true,
+      "description": "Serum creatinine ≥2 mg/dL (177 µmol/L)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "hematocrit_elevated",
+      "type": "string",
+      "required": true,
+      "description": "Hematocrit ≥43% (male) or ≥39.6% (female)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "haps_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "HAPS score (0 = harmless, >0 = not harmless)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Harmless",
+        "description": "Low risk for severe pancreatitis",
+        "interpretation": "Patient has a harmless acute pancreatitis. Absence of pancreatic necrosis, need for dialysis, artificial ventilation, or fatal outcome with 97% specificity and 98% positive predictive value. Patient may not require ICU admission and could potentially be managed on a general ward or even at home after short observation."
+      },
+      {
+        "min": 1,
+        "max": 3,
+        "stage": "Not Harmless",
+        "description": "Cannot rule out severe pancreatitis",
+        "interpretation": "Patient does not meet criteria for harmless acute pancreatitis. Cannot exclude severe disease course. Continue standard acute pancreatitis management and monitoring. Consider ICU admission based on clinical assessment and other severity scores."
+      }
+    ]
+  },
+  "references": [
+    "Lankisch PG, Weber-Dany B, Hebel K, Maisonneuve P, Lowenfels AB. The harmless acute pancreatitis score: a clinical algorithm for rapid initial stratification of nonsevere disease. Clin Gastroenterol Hepatol. 2009 Jun;7(6):702-5; quiz 607. doi: 10.1016/j.cgh.2009.02.020.",
+    "Oskarsson V, Mehrabi M, Orsini N, Hammarqvist F, Segersvärd R, Andrén-Sandberg Å, et al. Validation of the harmless acute pancreatitis score in predicting nonsevere course of acute pancreatitis. Pancreatology. 2011;11(5):464-8. doi: 10.1159/000331502."
+  ],
+  "formula": "HAPS Score = Sum of: Peritonitis (0 if absent, 1 if present) + Creatinine ≥2 mg/dL (0 if no, 1 if yes) + Hematocrit elevation (0 if no, 1 if yes)",
+  "notes": [
+    "HAPS is designed to identify LOW-risk patients only, not to identify high-risk patients",
+    "Should not be used in isolation to determine management",
+    "Assessment can be completed within one hour from presentation",
+    "Hematocrit thresholds differ by sex: ≥43% for males, ≥39.6% for females",
+    "Original study excluded patients with recurrent pancreatitis"
+  ]
+}

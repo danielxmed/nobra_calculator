@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/body_roundness_index", response_model=BodyRoundnessIndexResponse)
+@router.post(
+    "/body_roundness_index",
+    response_model=BodyRoundnessIndexResponse,
+    summary="Calculate Body Roundness Index (BRI)",
+    description="Estimates % body fat and % visceral adipose tissue (VAT) based on waist circumference and height. BRI provides a geometric assessment of body shape and correlates with mortality risk and cardiometabolic health outcomes.",
+    response_description="The calculated body roundness index with interpretation",
+    operation_id="calculate_body_roundness_index"
+)
 async def calculate_body_roundness_index(request: BodyRoundnessIndexRequest):
     """
     Calculates Body Roundness Index (BRI)

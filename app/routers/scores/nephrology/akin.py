@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/akin", response_model=AkinResponse)
+@router.post(
+    "/akin",
+    response_model=AkinResponse,
+    summary="Calculate AKIN Classification for Acute Kidney Injury (AKI)",
+    description="Classifies severity of acute kidney injury based on serum creatinine and urine output criteria within 48 hours",
+    response_description="The calculated akin with interpretation",
+    operation_id="calculate_akin"
+)
 async def calculate_akin(request: AkinRequest):
     """
     Calculates AKIN Classification for Acute Kidney Injury

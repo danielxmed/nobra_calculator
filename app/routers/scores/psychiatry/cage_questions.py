@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/cage_questions", response_model=CageQuestionsResponse)
+@router.post(
+    "/cage_questions",
+    response_model=CageQuestionsResponse,
+    summary="Calculate CAGE Questions for Alcohol Use",
+    description="Screens for excessive drinking and alcoholism. The CAGE questionnaire is a 4-question screening tool used to help assess a patient's alcohol use and determine if they have an alcohol use disorder.",
+    response_description="The calculated cage questions with interpretation",
+    operation_id="calculate_cage_questions"
+)
 async def calculate_cage_questions(request: CageQuestionsRequest):
     """
     Calculates CAGE Questions for Alcohol Use

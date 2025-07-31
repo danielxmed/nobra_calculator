@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/dsm5_major_depressive_disorder", response_model=Dsm5MajorDepressiveDisorderResponse)
+@router.post(
+    "/dsm5_major_depressive_disorder",
+    response_model=Dsm5MajorDepressiveDisorderResponse,
+    summary="Calculate DSM-5 Criteria for Major Depressive Disorder",
+    description="Diagnostic criteria for major depressive disorder (MDD) based on DSM-5. Evaluates presence of core symptoms, duration, functional impairment, and exclusion criteria for major depressive episodes.",
+    response_description="The calculated dsm5 major depressive disorder with interpretation",
+    operation_id="calculate_dsm5_major_depressive_disorder"
+)
 async def calculate_dsm5_major_depressive_disorder(request: Dsm5MajorDepressiveDisorderRequest):
     """
     Calculates DSM-5 Criteria for Major Depressive Disorder

@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/dhaka_score", response_model=DhakaScoreResponse)
+@router.post(
+    "/dhaka_score",
+    response_model=DhakaScoreResponse,
+    summary="Calculate Dehydration: Assessing Kids Accurately",
+    description="Classifies dehydration severity in children under 5 years old with acute diarrhea using four clinical assessment parameters.",
+    response_description="The calculated dhaka score with interpretation",
+    operation_id="calculate_dhaka_score"
+)
 async def calculate_dhaka_score(request: DhakaScoreRequest):
     """
     Calculates DHAKA Score for Pediatric Dehydration Assessment

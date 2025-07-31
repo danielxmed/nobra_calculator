@@ -1,0 +1,143 @@
+{
+  "id": "gwtg_heart_failure_risk_score",
+  "title": "GWTG-Heart Failure Risk Score",
+  "description": "Predicts all-cause in-hospital mortality in admitted patients with heart failure using validated AHA Get With The Guidelines data",
+  "category": "cardiology",
+  "version": "2010",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years (older age increases risk score)",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "systolic_bp",
+      "type": "integer",
+      "required": true,
+      "description": "Systolic blood pressure in mmHg (lower values increase risk)",
+      "validation": {
+        "min": 50,
+        "max": 300
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "bun",
+      "type": "integer",
+      "required": true,
+      "description": "Blood urea nitrogen in mg/dL (higher values increase risk)",
+      "validation": {
+        "min": 5,
+        "max": 200
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "heart_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Heart rate in beats per minute (higher values increase risk)",
+      "validation": {
+        "min": 30,
+        "max": 200
+      },
+      "unit": "bpm"
+    },
+    {
+      "name": "sodium",
+      "type": "integer",
+      "required": true,
+      "description": "Serum sodium in mEq/L (lower values increase risk)",
+      "validation": {
+        "min": 110,
+        "max": 160
+      },
+      "unit": "mEq/L"
+    },
+    {
+      "name": "copd",
+      "type": "string",
+      "required": true,
+      "description": "History of chronic obstructive pulmonary disease",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "black_race",
+      "type": "string",
+      "required": true,
+      "description": "Patient race (black race is protective factor in this score)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "mortality_risk",
+    "type": "float",
+    "unit": "percentage",
+    "description": "Predicted in-hospital mortality risk for heart failure patients"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Very Low Risk",
+        "description": "Minimal mortality risk",
+        "interpretation": "Very low risk of in-hospital mortality (<1%). Standard heart failure care protocols appropriate."
+      },
+      {
+        "min": 1,
+        "max": 5,
+        "stage": "Low Risk",
+        "description": "Low mortality risk",
+        "interpretation": "Low risk of in-hospital mortality (1-5%). Standard care with attention to optimization of heart failure therapy."
+      },
+      {
+        "min": 5,
+        "max": 15,
+        "stage": "Moderate Risk",
+        "description": "Moderate mortality risk",
+        "interpretation": "Moderate risk of in-hospital mortality (5-15%). Consider enhanced monitoring and aggressive heart failure management."
+      },
+      {
+        "min": 15,
+        "max": 30,
+        "stage": "High Risk",
+        "description": "High mortality risk",
+        "interpretation": "High risk of in-hospital mortality (15-30%). Implement intensive monitoring, consider advanced therapies and palliative care discussions."
+      },
+      {
+        "min": 30,
+        "max": 100,
+        "stage": "Very High Risk",
+        "description": "Very high mortality risk",
+        "interpretation": "Very high risk of in-hospital mortality (>30%). Intensive care management, advanced heart failure therapies, and end-of-life care planning discussions recommended."
+      }
+    ]
+  },
+  "references": [
+    "Peterson PN, Rumsfeld JS, Liang L, et al. A validated risk score for in-hospital mortality in patients with heart failure from the American Heart Association get with the guidelines program. Circ Cardiovasc Qual Outcomes. 2010;3(1):25-32. doi: 10.1161/CIRCOUTCOMES.109.854877",
+    "Fonarow GC, Adams KF Jr, Abraham WT, Yancy CW, Boscardin WJ; ADHERE Scientific Advisory Committee, Study Group, and Investigators. Risk stratification for in-hospital mortality in acutely decompensated heart failure: classification and regression tree analysis. JAMA. 2005;293(5):572-580.",
+    "American Heart Association Get With The Guidelines - Heart Failure Program. https://www.heart.org/en/professional/quality-improvement/get-with-the-guidelines"
+  ],
+  "formula": "Score (0-100 points) = sum of points from age, systolic BP, BUN, heart rate, sodium, COPD (+2 if yes), and race (+4 if non-black, +1 if black). Mortality risk calculated from score ranges.",
+  "notes": [
+    "Developed using AHA Get With The Guidelines-Heart Failure program data from 39,783 patients from 198 hospitals",
+    "Model demonstrated good discrimination with C-index of 0.75 in both derivation and validation datasets",
+    "In-hospital mortality rate was 2.86% overall, with risk varying 24-fold across score deciles (0.4% to 9.7%)",
+    "Score is applicable to broad spectrum of heart failure patients including those with preserved ejection fraction",
+    "Validated for risk stratification in various clinical settings including cardiac intensive care units",
+    "Should be used in conjunction with clinical judgment for comprehensive heart failure management"
+  ]
+}

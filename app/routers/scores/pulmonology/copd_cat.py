@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/copd_cat", response_model=CopdCatResponse)
+@router.post(
+    "/copd_cat",
+    response_model=CopdCatResponse,
+    summary="Calculate COPD Assessment Test (CAT)",
+    description="Quantifies the impact of COPD symptoms on patients' overall health and quality of life. The CAT is a patient-completed questionnaire that assesses multiple aspects of COPD including respiratory symptoms, activity limitations, confidence, and sleep quality.",
+    response_description="The calculated copd cat with interpretation",
+    operation_id="calculate_copd_cat"
+)
 async def calculate_copd_cat(request: CopdCatRequest):
     """
     Calculates COPD Assessment Test (CAT) score

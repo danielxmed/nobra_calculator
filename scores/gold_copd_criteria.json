@@ -1,0 +1,140 @@
+{
+  "id": "gold_copd_criteria",
+  "title": "Global Initiative for Obstructive Lung Disease (GOLD) Criteria for COPD",
+  "description": "Clinical assessment and staging system for chronic obstructive pulmonary disease (COPD) based on spirometry, symptoms, and exacerbation risk. Provides comprehensive evaluation using FEV1 percentage predicted, symptom assessment, and treatment recommendations according to GOLD 2024-2025 guidelines.",
+  "category": "pulmonology",
+  "version": "GOLD_2025",
+  "parameters": [
+    {
+      "name": "fev1_percent_predicted",
+      "type": "float",
+      "required": true,
+      "description": "Forced expiratory volume in 1 second (FEV1) as percentage of predicted normal value based on post-bronchodilator spirometry",
+      "validation": {
+        "min": 10.0,
+        "max": 120.0
+      },
+      "unit": "% predicted"
+    },
+    {
+      "name": "fvc_fev1_ratio",
+      "type": "float",
+      "required": true,
+      "description": "Post-bronchodilator FEV1/FVC ratio. Values <0.70 confirm airflow obstruction and COPD diagnosis",
+      "validation": {
+        "min": 0.30,
+        "max": 1.00
+      },
+      "unit": "ratio"
+    },
+    {
+      "name": "dyspnea_mmrc",
+      "type": "integer",
+      "required": true,
+      "description": "Modified Medical Research Council (mMRC) Dyspnea Scale: 0=breathless only with strenuous exercise, 1=short of breath when hurrying, 2=walks slower than people of same age, 3=stops for breath after walking ~100m, 4=too breathless to leave house",
+      "options": [0, 1, 2, 3, 4],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "grade"
+    },
+    {
+      "name": "cat_score",
+      "type": "integer",
+      "required": false,
+      "description": "COPD Assessment Test (CAT) score (0-40 points). Alternative to mMRC for symptom assessment. Scores ≥10 indicate significant symptom burden",
+      "validation": {
+        "min": 0,
+        "max": 40
+      },
+      "unit": "points"
+    },
+    {
+      "name": "exacerbations_last_year",
+      "type": "integer",
+      "required": true,
+      "description": "Number of COPD exacerbations in the last 12 months requiring oral corticosteroids and/or antibiotics",
+      "validation": {
+        "min": 0,
+        "max": 20
+      },
+      "unit": "episodes"
+    },
+    {
+      "name": "hospitalizations_last_year",
+      "type": "integer",
+      "required": true,
+      "description": "Number of COPD-related hospitalizations in the last 12 months due to exacerbations",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "admissions"
+    }
+  ],
+  "result": {
+    "name": "gold_classification",
+    "type": "string",
+    "unit": "stage",
+    "description": "GOLD COPD classification stage and group with treatment recommendations"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 80,
+        "max": 120,
+        "stage": "GOLD 1 - Mild COPD",
+        "description": "Mild airflow limitation",
+        "interpretation": "Mild COPD with FEV1 ≥80% predicted. Airflow obstruction present (FEV1/FVC <0.70) but lung function relatively preserved. Often goes unrecognized. May have chronic cough and sputum production. Treatment focuses on smoking cessation, bronchodilator therapy as needed, and vaccination."
+      },
+      {
+        "min": 50,
+        "max": 79,
+        "stage": "GOLD 2 - Moderate COPD",
+        "description": "Moderate airflow limitation",
+        "interpretation": "Moderate COPD with FEV1 50-79% predicted. Progressive worsening of airflow limitation with symptoms typically becoming more prominent. Dyspnea on exertion common. Treatment includes long-acting bronchodilators, pulmonary rehabilitation, and comprehensive management."
+      },
+      {
+        "min": 30,
+        "max": 49,
+        "stage": "GOLD 3 - Severe COPD",
+        "description": "Severe airflow limitation",
+        "interpretation": "Severe COPD with FEV1 30-49% predicted. Significant airflow limitation with increased dyspnea, reduced exercise capacity, and frequent exacerbations. May have fatigue and impact on quality of life. Treatment includes combination therapy, rehabilitation, and management of complications."
+      },
+      {
+        "min": 10,
+        "max": 29,
+        "stage": "GOLD 4 - Very Severe COPD",
+        "description": "Very severe airflow limitation",
+        "interpretation": "Very severe COPD with FEV1 <30% predicted. Life-limiting airflow obstruction with severe symptoms, exercise limitation, and high risk of exacerbations. May develop chronic respiratory failure and require oxygen therapy. Treatment includes intensive medical management and consideration for surgical interventions."
+      }
+    ]
+  },
+  "references": [
+    "Global Initiative for Chronic Obstructive Lung Disease. Global Strategy for the Diagnosis, Management, and Prevention of Chronic Obstructive Pulmonary Disease, 2025 Report. Available from: https://goldcopd.org/",
+    "Singh SJ, Augustin IML, Correia de Sousa R, et al. An official systematic review of the European Respiratory Society/American Thoracic Society: measurement properties of field walking tests in chronic respiratory disease. Eur Respir J. 2014;44(6):1447-1478. doi: 10.1183/09031936.00150414.",
+    "Jones PW, Harding G, Berry P, et al. Development and first validation of the COPD Assessment Test. Eur Respir J. 2009;34(3):648-654. doi: 10.1183/09031936.00102509.",
+    "Bestall JC, Paul EA, Garrod R, et al. Usefulness of the Medical Research Council (MRC) dyspnoea scale as a measure of disability in patients with chronic obstructive pulmonary disease. Thorax. 1999;54(7):581-586. doi: 10.1136/thx.54.7.581."
+  ],
+  "formula": "GOLD Stage = FEV1% predicted category (1-4); COPD Group = Symptoms (mMRC/CAT) + Exacerbation risk assessment; Treatment guided by ABE assessment tool",
+  "notes": [
+    "Post-bronchodilator FEV1/FVC <0.70 required for COPD diagnosis",
+    "GOLD 2025 emphasizes pre-bronchodilator spirometry value for initial screening",
+    "mMRC ≥2 or CAT ≥10 indicates significant symptom burden",
+    "≥2 exacerbations OR ≥1 hospitalization indicates high exacerbation risk",
+    "Blood eosinophil count influences ICS treatment decisions",
+    "Treatment follows ABE (Assessment, Bronchodilator, Exacerbation) framework",
+    "Pulmonary rehabilitation recommended for all symptomatic patients",
+    "Smoking cessation is the most important intervention",
+    "Vaccination (influenza, pneumococcal, COVID-19) strongly recommended",
+    "Comorbidities (cardiovascular disease) common and require management",
+    "Group A: Low symptoms, low exacerbation risk",
+    "Group B: High symptoms, low exacerbation risk", 
+    "Group E: High exacerbation risk (regardless of symptoms)",
+    "Long-acting bronchodilators (LABA/LAMA) are cornerstone therapy",
+    "ICS added based on exacerbation history and eosinophil count",
+    "Oxygen therapy for chronic respiratory failure (PaO2 ≤55 mmHg)"
+  ]
+}

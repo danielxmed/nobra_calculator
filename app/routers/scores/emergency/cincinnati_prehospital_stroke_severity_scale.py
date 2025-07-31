@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/cincinnati_prehospital_stroke_severity_scale", response_model=CincinnatiPrehospitalStrokeSeverityScaleResponse)
+@router.post(
+    "/cincinnati_prehospital_stroke_severity_scale",
+    response_model=CincinnatiPrehospitalStrokeSeverityScaleResponse,
+    summary="Calculate Cincinnati Prehospital Stroke Severity Scale",
+    description="Predicts large vessel occlusion (LVO) and severe stroke in patients with stroke symptoms",
+    response_description="The calculated cincinnati prehospital stroke severity scale with interpretation",
+    operation_id="calculate_cincinnati_prehospital_stroke_severity_scale"
+)
 async def calculate_cincinnati_prehospital_stroke_severity_scale(request: CincinnatiPrehospitalStrokeSeverityScaleRequest):
     """
     Calculates Cincinnati Prehospital Stroke Severity Scale (CP-SSS)

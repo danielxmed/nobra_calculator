@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/crash_score", response_model=CrashScoreResponse)
+@router.post(
+    "/crash_score",
+    response_model=CrashScoreResponse,
+    summary="Calculate Chemotherapy Risk Assessment Scale for High-Age...",
+    description="Assesses the risk of severe chemotherapy toxicity in older cancer patients (≥70 years). Predicts both hematologic (grade 4) and nonhematologic (grade 3/4) toxicities based on patient characteristics and chemotherapy regimen.",
+    response_description="The calculated crash score with interpretation",
+    operation_id="calculate_crash_score"
+)
 async def calculate_crash_score(request: CrashScoreRequest):
     """
     Calculates Chemotherapy Risk Assessment Scale for High-Age Patients (CRASH) Score

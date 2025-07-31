@@ -1,0 +1,104 @@
+{
+  "id": "hacor_score",
+  "title": "HACOR Score",
+  "description": "Predicts non-invasive ventilation (NIV) failure in hypoxemic patients. HACOR stands for Heart rate, Acidosis, Consciousness, Oxygenation, and Respiratory rate. Best used in critically ill patients with acute hypoxic respiratory failure who require NIV, assessed 60 minutes after initiating NIV.",
+  "category": "emergency",
+  "version": "2016",
+  "parameters": [
+    {
+      "name": "heart_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Heart rate in beats per minute",
+      "validation": {
+        "min": 30,
+        "max": 250
+      },
+      "unit": "bpm"
+    },
+    {
+      "name": "ph",
+      "type": "float",
+      "required": true,
+      "description": "Arterial blood gas pH value indicating acidosis level",
+      "validation": {
+        "min": 6.8,
+        "max": 7.8
+      },
+      "unit": "pH units"
+    },
+    {
+      "name": "gcs",
+      "type": "integer",
+      "required": true,
+      "description": "Glasgow Coma Scale score assessing consciousness level",
+      "validation": {
+        "min": 3,
+        "max": 15
+      },
+      "unit": "points"
+    },
+    {
+      "name": "pao2_fio2_ratio",
+      "type": "integer",
+      "required": true,
+      "description": "PaO₂/FiO₂ ratio in mmHg assessing oxygenation status",
+      "validation": {
+        "min": 50,
+        "max": 600
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "respiratory_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Respiratory rate in breaths per minute",
+      "validation": {
+        "min": 8,
+        "max": 80
+      },
+      "unit": "breaths/min"
+    }
+  ],
+  "result": {
+    "name": "hacor_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "HACOR score points (0-28 range) indicating risk of NIV failure"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 5,
+        "stage": "Low Risk",
+        "description": "Low risk of NIV failure",
+        "interpretation": "Continue NIV with standard monitoring. Less than 20% risk of NIV failure. Reassess periodically and monitor for clinical deterioration."
+      },
+      {
+        "min": 6,
+        "max": 28,
+        "stage": "High Risk",
+        "description": "High risk of NIV failure",
+        "interpretation": "High risk of NIV failure (>50% risk). Consider early intubation within 12 hours to reduce hospital mortality. Intensive monitoring and preparation for mechanical ventilation are recommended."
+      }
+    ]
+  },
+  "references": [
+    "Duan J, Han X, Bai L, Zhou L, Huang S. Assessment of heart rate, acidosis, consciousness, oxygenation, and respiratory rate to predict noninvasive ventilation failure in hypoxemic patients. Intensive Care Med. 2017;43(2):192-199. doi: 10.1007/s00134-016-4601-3",
+    "Liu J, Duan J, Bai L, Zhou L. Noninvasive Ventilation Intolerance: Characteristics, Predictors, and Outcomes. Respir Care. 2016;61(3):277-284. doi: 10.4187/respcare.04220",
+    "Carrillo A, Gonzalez-Diaz G, Ferrer M, et al. Non-invasive ventilation in community-acquired pneumonia and severe acute respiratory failure. Intensive Care Med. 2012;38(3):458-466. doi: 10.1007/s00134-012-2504-9"
+  ],
+  "formula": "HACOR Score = Heart Rate Points + Acidosis Points + Consciousness Points + Oxygenation Points + Respiratory Rate Points",
+  "notes": [
+    "Best used in critically ill patients with acute hypoxic respiratory failure requiring NIV",
+    "Should be assessed 60 minutes after initiating NIV for optimal predictive accuracy",
+    "Score >5 indicates high risk of NIV failure and should prompt consideration for early intubation",
+    "Early intubation (within 12 hours) in high-risk patients may reduce hospital mortality",
+    "AUC for predicting NIV failure is 0.88-0.90 in validation studies",
+    "Applicable to various causes of hypoxemic respiratory failure including pneumonia, ARDS, and COPD",
+    "Should be used in conjunction with clinical judgment and overall patient assessment",
+    "Reassessment at 12, 24, and 48 hours may provide additional prognostic information"
+  ]
+}

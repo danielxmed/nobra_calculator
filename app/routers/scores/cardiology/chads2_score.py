@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/chads2_score", response_model=Chads2ScoreResponse)
+@router.post(
+    "/chads2_score",
+    response_model=Chads2ScoreResponse,
+    summary="Calculate CHADS₂ Score for Atrial Fibrillation ...",
+    description="Clinical prediction tool that estimates annual stroke risk in patients with atrial fibrillation. Helps determine whether anticoagulation therapy is warranted based on patient's risk profile for thromboembolic events. Developed from the National Registry of Atrial Fibrillation and validated in multiple populations.",
+    response_description="The calculated chads2 score with interpretation",
+    operation_id="calculate_chads2_score"
+)
 async def calculate_chads2_score(request: Chads2ScoreRequest):
     """
     Calculates CHADS₂ Score for Atrial Fibrillation Stroke Risk

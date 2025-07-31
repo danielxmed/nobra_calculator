@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/atria_stroke", response_model=AtriaStrokeResponse)
+@router.post(
+    "/atria_stroke",
+    response_model=AtriaStrokeResponse,
+    summary="Calculate ATRIA Stroke Risk Score",
+    description="Determines stroke risk in patients with atrial fibrillation. The ATRIA (Anticoagulation and Risk Factors in Atrial Fibrillation) stroke risk score predicts ischemic stroke and other thromboembolism in patients with atrial fibrillation, helping guide anticoagulation decisions.",
+    response_description="The calculated atria stroke with interpretation",
+    operation_id="calculate_atria_stroke"
+)
 async def calculate_atria_stroke(request: AtriaStrokeRequest):
     """
     Calculates ATRIA Stroke Risk Score

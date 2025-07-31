@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/clinical_dementia_rating", response_model=ClinicalDementiaRatingResponse)
+@router.post(
+    "/clinical_dementia_rating",
+    response_model=ClinicalDementiaRatingResponse,
+    summary="Calculate Clinical Dementia Rating (CDR) Scale",
+    description="Stages dementia, including Alzheimer's disease, in elderly patients. The CDR assesses cognitive and functional performance across six domains to provide both a global CDR score (0-3) and a sum of boxes score (0-18).",
+    response_description="The calculated clinical dementia rating with interpretation",
+    operation_id="calculate_clinical_dementia_rating"
+)
 async def calculate_clinical_dementia_rating(request: ClinicalDementiaRatingRequest):
     """
     Calculates Clinical Dementia Rating (CDR) Scale

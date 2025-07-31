@@ -12,6 +12,7 @@ from .charlson_comorbidity_index import CharlsonComorbidityIndexRequest, Charlso
 from .clinical_frailty_scale import ClinicalFrailtyScaleRequest, ClinicalFrailtyScaleResponse
 from .cirs_g import CirsGRequest, CirsGResponse
 from .edmonton_symptom_assessment_system_revised import EdmontonSymptomAssessmentSystemRevisedRequest, EdmontonSymptomAssessmentSystemRevisedResponse
+from .g8_geriatric_screening_tool import G8GeriatricScreeningToolRequest, G8GeriatricScreeningToolResponse
 
 __all__ = [
     "AbbeyPainRequest",
@@ -34,4 +35,6 @@ __all__ = [
     "CirsGResponse",
     "EdmontonSymptomAssessmentSystemRevisedRequest",
     "EdmontonSymptomAssessmentSystemRevisedResponse",
+    "G8GeriatricScreeningToolRequest",
+    "G8GeriatricScreeningToolResponse",
 ]

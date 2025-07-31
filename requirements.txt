@@ -5,13 +5,14 @@ charset-normalizer==3.4.2
 click==8.2.1
 Deprecated==1.2.18
 fastapi==0.115.6
+fastapi-mcp
 gunicorn==21.2.0
 h11==0.16.0
 idna==3.10
 limits==5.4.0
 packaging==25.0
 pydantic==2.10.4
-pydantic-settings==2.1.0
+pydantic-settings>=2.5.2
 pydantic_core==2.27.2
 python-dotenv==1.0.0
 python-multipart==0.0.20

@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/nedocs", response_model=NedocsResponse)
+@router.post(
+    "/nedocs",
+    response_model=NedocsResponse,
+    summary="Calculate NEDOCS Score for Emergency Department Overcrowding",
+    description="Estimates severity of overcrowding in emergency departments using 7 objective parameters including ED and hospital bed capacity, patient volume, ventilator usage, admission counts, and wait times.",
+    response_description="The calculated nedocs with interpretation",
+    operation_id="calculate_nedocs"
+)
 async def calculate_nedocs(request: NedocsRequest):
     """
     Calculates NEDOCS Score for Emergency Department Overcrowding

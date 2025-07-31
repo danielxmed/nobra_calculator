@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/digifab_dosing", response_model=DigifabDosingResponse)
+@router.post(
+    "/digifab_dosing",
+    response_model=DigifabDosingResponse,
+    summary="Calculate DigiFab (Digibind) Dosing for Digoxin Poisoning",
+    description="Doses DigiFab in patients with confirmed digoxin poisoning or overdose",
+    response_description="The calculated digifab dosing with interpretation",
+    operation_id="calculate_digifab_dosing"
+)
 async def calculate_digifab_dosing(request: DigifabDosingRequest):
     """
     Calculates DigiFab (Digibind) Dosing for Digoxin Poisoning

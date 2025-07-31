@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/clinical_frailty_scale", response_model=ClinicalFrailtyScaleResponse)
+@router.post(
+    "/clinical_frailty_scale",
+    response_model=ClinicalFrailtyScaleResponse,
+    summary="Calculate CSHA Clinical Frailty Scale (CFS)",
+    description="Measures frailty to predict survival, mortality, need for institutional care, and other adverse outcomes in older adults aged 65 and over. Uses a 9-point judgement-based scale evaluating comorbidity, function, and cognition.",
+    response_description="The calculated clinical frailty scale with interpretation",
+    operation_id="calculate_clinical_frailty_scale"
+)
 async def calculate_clinical_frailty_scale(request: ClinicalFrailtyScaleRequest):
     """
     Calculates CSHA Clinical Frailty Scale (CFS) Assessment

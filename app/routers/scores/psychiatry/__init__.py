@@ -26,6 +26,11 @@ from .dsm5_binge_eating_disorder import router as dsm5_binge_eating_disorder_rou
 from .dsm5_bipolar_disorder import router as dsm5_bipolar_disorder_router
 from .dsm5_major_depressive_disorder import router as dsm5_major_depressive_disorder_router
 from .dsm5_ptsd import router as dsm5_ptsd_router
+from .gad_7 import router as gad_7_router
+from .gds_15 import router as gds_15_router
+from .glasgow_modified_alcohol_withdrawal_scale import router as glasgow_modified_alcohol_withdrawal_scale_router
+from .hamilton_anxiety_scale import router as hamilton_anxiety_scale_router
+from .hamilton_depression_rating_scale import router as hamilton_depression_rating_scale_router
 
 # Create main specialty router
 router = APIRouter()
@@ -52,3 +57,8 @@ router.include_router(dsm5_binge_eating_disorder_router)
 router.include_router(dsm5_bipolar_disorder_router)
 router.include_router(dsm5_major_depressive_disorder_router)
 router.include_router(dsm5_ptsd_router)
+router.include_router(gad_7_router)
+router.include_router(gds_15_router)
+router.include_router(glasgow_modified_alcohol_withdrawal_scale_router)
+router.include_router(hamilton_anxiety_scale_router)
+router.include_router(hamilton_depression_rating_scale_router)

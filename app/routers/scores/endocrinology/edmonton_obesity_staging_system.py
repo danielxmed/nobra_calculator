@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/edmonton_obesity_staging_system", response_model=EdmontonObesityStagingSystemResponse)
+@router.post(
+    "/edmonton_obesity_staging_system",
+    response_model=EdmontonObesityStagingSystemResponse,
+    summary="Calculate Edmonton Obesity Staging System (EOSS)",
+    description="Stratifies the presence and severity of obesity-related health impairments across medical, functional, and psychological domains to guide treatment decisions and predict outcomes.",
+    response_description="The calculated edmonton obesity staging system with interpretation",
+    operation_id="calculate_edmonton_obesity_staging_system"
+)
 async def calculate_edmonton_obesity_staging_system(request: EdmontonObesityStagingSystemRequest):
     """
     Calculates Edmonton Obesity Staging System (EOSS)

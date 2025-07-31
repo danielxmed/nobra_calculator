@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/drip_score", response_model=DripScoreResponse)
+@router.post(
+    "/drip_score",
+    response_model=DripScoreResponse,
+    summary="Calculate Drug Resistance in Pneumonia (DRIP) Score",
+    description="Predicts risk for community-acquired pneumonia due to drug-resistant pathogens (CAP-DRP). Helps determine when broad-spectrum antibiotics should be used to ensure effective treatment while avoiding unnecessary antibiotic resistance.",
+    response_description="The calculated drip score with interpretation",
+    operation_id="calculate_drip_score"
+)
 async def calculate_drip_score(request: DripScoreRequest):
     """
     Calculates Drug Resistance in Pneumonia (DRIP) Score

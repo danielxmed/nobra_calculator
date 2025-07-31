@@ -1,0 +1,127 @@
+{
+  "id": "fracture_index",
+  "title": "FRACTURE Index",
+  "description": "Predicts 5-year hip fracture risk in postmenopausal women using clinical risk factors with or without bone mineral density measurements.",
+  "category": "rheumatology",
+  "version": "2001",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 50,
+        "max": 100
+      },
+      "unit": "years"
+    },
+    {
+      "name": "fracture_after_50",
+      "type": "string",
+      "required": true,
+      "description": "History of fracture after age 50",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "mother_hip_fracture",
+      "type": "string",
+      "required": true,
+      "description": "Mother's history of hip fracture",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "weight",
+      "type": "float",
+      "required": true,
+      "description": "Patient weight",
+      "validation": {
+        "min": 30,
+        "max": 200
+      },
+      "unit": "kg"
+    },
+    {
+      "name": "current_smoker",
+      "type": "string",
+      "required": true,
+      "description": "Current smoking status",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "arms_to_stand",
+      "type": "string",
+      "required": true,
+      "description": "Need to use arms to stand from chair",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "bmd_t_score",
+      "type": "float",
+      "required": false,
+      "description": "Bone Mineral Density T-score (optional, femoral neck or total hip)",
+      "validation": {
+        "min": -5.0,
+        "max": 3.0
+      },
+      "unit": "T-score"
+    }
+  ],
+  "result": {
+    "name": "fracture_risk_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total FRACTURE Index score predicting 5-year hip fracture risk"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Low Risk",
+        "description": "Low 5-year hip fracture risk",
+        "interpretation": "Score <4 indicates low risk for hip fracture. 5-year hip fracture risk ranges from <0.6% to 2.9%. Continue routine care with lifestyle measures including adequate calcium, vitamin D, weight-bearing exercise, and fall prevention."
+      },
+      {
+        "min": 4,
+        "max": 15,
+        "stage": "Elevated Risk",
+        "description": "Elevated 5-year hip fracture risk requiring evaluation",
+        "interpretation": "Score ≥4 (without BMD) or ≥6 (with BMD) suggests further evaluation is warranted. 5-year hip fracture risk ranges from 3.0% to 8.7%. Consider bone density testing, FRAX assessment, and evaluation for osteoporosis treatment based on clinical judgment and guidelines."
+      }
+    ]
+  },
+  "references": [
+    "Black DM, Palermo L, Nevitt MC, et al. Defining incident vertebral deformity: a prospective comparison of several approaches. The Study of Osteoporotic Fractures Research Group. J Bone Miner Res. 1999;14(1):90-101.",
+    "Black DM, Steinbuch M, Palermo L, et al. An assessment tool for predicting fracture risk in postmenopausal women. Osteoporos Int. 2001;12(7):519-28.",
+    "Cummings SR, Nevitt MC, Browner WS, et al. Risk factors for hip fracture in white women. Study of Osteoporotic Fractures Research Group. N Engl J Med. 1995;332(12):767-73.",
+    "Ensrud KE, Lipschutz RC, Cauley JA, et al. Body size and hip fracture risk in older women: a prospective study. Study of Osteoporotic Fractures Research Group. Am J Med. 1997;103(4):274-80."
+  ],
+  "formula": "Sum of weighted risk factors: Age (0-5 points) + Fracture after 50 (0-1 point) + Mother's hip fracture (0-1 point) + Weight <57.7 kg (1 point) + Current smoker (1 point) + Arms to stand (2 points) + BMD T-score (0-4 points, optional)",
+  "notes": [
+    "Developed primarily for White postmenopausal women aged 65 and older",
+    "Not recommended for use in men or those with secondary causes of osteoporosis",
+    "Can be used with or without bone mineral density measurements",
+    "Score ≥4 (without BMD) or ≥6 (with BMD) suggests need for further evaluation",
+    "Simple, practical tool for outpatient assessment",
+    "Helps identify patients who may benefit from osteoporosis prevention strategies",
+    "Should be used in conjunction with clinical judgment and current guidelines",
+    "Consider FRAX calculator for more comprehensive fracture risk assessment",
+    "Weight threshold of 57.7 kg (127 lbs) used for scoring",
+    "BMD T-score can be from femoral neck or total hip measurement",
+    "Age scoring: 65-69 (1 point), 70-74 (2 points), 75-79 (3 points), 80-84 (4 points), ≥85 (5 points)",
+    "BMD T-score scoring: ≥-1.0 (0 points), -1.1 to -2.0 (1 point), -2.1 to -2.5 (2 points), -2.6 to -3.0 (3 points), <-3.0 (4 points)"
+  ]
+}

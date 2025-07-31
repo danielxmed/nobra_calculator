@@ -1,0 +1,107 @@
+{
+  "id": "hat_score",
+  "title": "HAT (Hemorrhage After Thrombolysis) Score for Predicting Post-tPA Hemorrhage",
+  "description": "Predicts hemorrhage risk after tPA administration in acute ischemic stroke patients. Helps determine risk/benefit of tPA in borderline cases and identify patients needing closest monitoring.",
+  "category": "neurology",
+  "version": "2008",
+  "parameters": [
+    {
+      "name": "diabetes_or_glucose",
+      "type": "string",
+      "required": true,
+      "description": "History of diabetes mellitus OR initial blood glucose >200 mg/dL (>11.1 mmol/L)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "nihss_score",
+      "type": "string",
+      "required": true,
+      "description": "Pre-tPA NIH Stroke Scale score",
+      "options": ["less_than_15", "15_to_20", "greater_than_20"],
+      "validation": {
+        "enum": ["less_than_15", "15_to_20", "greater_than_20"]
+      },
+      "labels": {
+        "less_than_15": "<15",
+        "15_to_20": "15-20",
+        "greater_than_20": ">20"
+      }
+    },
+    {
+      "name": "hypodensity_on_ct",
+      "type": "string",
+      "required": true,
+      "description": "Easily visible hypodensity on initial head CT",
+      "options": ["no", "yes_less_than_one_third", "yes_one_third_or_more"],
+      "validation": {
+        "enum": ["no", "yes_less_than_one_third", "yes_one_third_or_more"]
+      },
+      "labels": {
+        "no": "No",
+        "yes_less_than_one_third": "Yes, <1/3 of MCA territory",
+        "yes_one_third_or_more": "Yes, ≥1/3 of MCA territory"
+      }
+    }
+  ],
+  "result": {
+    "name": "hat_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "HAT score (0-5 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "Low hemorrhage risk",
+        "interpretation": "Low risk of hemorrhage after tPA. Any hemorrhage: 6%, Symptomatic ICH: 2%, Fatal hemorrhage: 0%. Benefits of tPA likely outweigh risks in eligible patients."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Low-Moderate Risk",
+        "description": "Low-moderate hemorrhage risk",
+        "interpretation": "Low-moderate risk of hemorrhage after tPA. Any hemorrhage: 16%, Symptomatic ICH: 5%, Fatal hemorrhage: 3%. Consider benefits vs risks carefully, ensure close monitoring if tPA given."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Moderate Risk",
+        "description": "Moderate hemorrhage risk",
+        "interpretation": "Moderate risk of hemorrhage after tPA. Any hemorrhage: 23%, Symptomatic ICH: 10%, Fatal hemorrhage: 7%. Carefully weigh risks and benefits. Ensure intensive monitoring if tPA given."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "High Risk",
+        "description": "High hemorrhage risk",
+        "interpretation": "High risk of hemorrhage after tPA. Any hemorrhage: 36%, Symptomatic ICH: 15%, Fatal hemorrhage: 6%. Consider alternative treatments. If tPA given, requires intensive monitoring."
+      },
+      {
+        "min": 4,
+        "max": 5,
+        "stage": "Very High Risk",
+        "description": "Very high hemorrhage risk",
+        "interpretation": "Very high risk of hemorrhage after tPA. Any hemorrhage: 78%, Symptomatic ICH: 44%, Fatal hemorrhage: 33%. tPA generally not recommended unless exceptional circumstances. Consider alternative treatments."
+      }
+    ]
+  },
+  "references": [
+    "Lou M, Safdar A, Mehdiratta M, Kumar S, Schlaug G, Caplan L, et al. The HAT Score: a simple grading scale for predicting hemorrhage after thrombolysis. Neurology. 2008 Oct 28;71(18):1417-23. doi: 10.1212/01.wnl.0000330297.58334.dd.",
+    "Tsivgoulis G, Frey JL, Flaster M, Sharma VK, Lao AY, Hoover SL, et al. Pre-tissue plasminogen activator blood pressure levels and risk of symptomatic intracerebral hemorrhage. Stroke. 2009 Nov;40(11):3631-4. doi: 10.1161/STROKEAHA.109.564096.",
+    "Cucchiara B, Kasner SE, Tanne D, Levine SR, Demchuk A, Messe SR, et al. Validation assessment of risk scores to predict postthrombolysis intracerebral haemorrhage. Int J Stroke. 2011 Apr;6(2):109-11. doi: 10.1111/j.1747-4949.2010.00555.x."
+  ],
+  "formula": "HAT Score = Diabetes/Glucose (0-1) + NIHSS Score (0-2) + CT Hypodensity (0-2)",
+  "notes": [
+    "Symptomatic ICH defined as hemorrhage causing clinical deterioration",
+    "Score helps objectify tPA risk beyond clinical gestalt",
+    "Higher scores correlate with increased hemorrhage risk",
+    "If hemorrhage occurs: stop tPA, neurosurgical consult, consider hematology consult",
+    "Should not be used as sole criterion to withhold tPA in eligible patients"
+  ]
+}

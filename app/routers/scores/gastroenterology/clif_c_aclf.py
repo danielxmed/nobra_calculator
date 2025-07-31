@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/clif_c_aclf", response_model=ClifCAclfResponse)
+@router.post(
+    "/clif_c_aclf",
+    response_model=ClifCAclfResponse,
+    summary="Calculate CLIF-C ACLF (Acute-on-Chronic Liver Failure)",
+    description="Predicts mortality in acute-on-chronic liver failure patients",
+    response_description="The calculated clif c aclf with interpretation",
+    operation_id="calculate_clif_c_aclf"
+)
 async def calculate_clif_c_aclf(request: ClifCAclfRequest):
     """
     Calculates CLIF-C ACLF (Acute-on-Chronic Liver Failure) Score

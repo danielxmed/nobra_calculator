@@ -8,7 +8,14 @@ from app.services.calculator_service import calculator_service
 
 router = APIRouter()
 
-@router.post("/four_at", response_model=FourAtResponse)
+@router.post(
+    "/four_at",
+    response_model=FourAtResponse,
+    summary="Calculate 4AT (4 A's Test) for Delirium Screening",
+    description="Rapid clinical test for delirium detection in elderly patients. Includes cognitive test items, also suitable as a quick test for cognitive impairment.",
+    response_description="The calculated four at with interpretation",
+    operation_id="calculate_four_at"
+)
 async def calculate_four_at(request: FourAtRequest):
     """
     Calculates 4AT (4 A's Test) for delirium screening

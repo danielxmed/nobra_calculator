@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/eat_sleep_console", response_model=EatSleepConsoleResponse)
+@router.post(
+    "/eat_sleep_console",
+    response_model=EatSleepConsoleResponse,
+    summary="Calculate Eat, Sleep, Console (ESC)",
+    description="Aids in management of infants with neonatal abstinence syndrome (NAS) by focusing on functional assessment rather than symptom scoring. Emphasizes nonpharmacologic interventions and family-centered care to optimize infant functioning.",
+    response_description="The calculated eat sleep console with interpretation",
+    operation_id="calculate_eat_sleep_console"
+)
 async def calculate_eat_sleep_console(request: EatSleepConsoleRequest):
     """
     Calculates Eat, Sleep, Console (ESC) Assessment

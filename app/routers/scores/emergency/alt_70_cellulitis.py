@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/alt_70_cellulitis", response_model=Alt70CellulitisResponse)
+@router.post(
+    "/alt_70_cellulitis",
+    response_model=Alt70CellulitisResponse,
+    summary="Calculate ALT-70 Score for Cellulitis",
+    description="Predicts likelihood of lower extremity cellulitis over other diagnoses (pseudocellulitis). Helps differentiate true cellulitis from its mimics in adult patients presenting to the emergency department with a red leg and clinical concern for cellulitis.",
+    response_description="The calculated alt 70 cellulitis with interpretation",
+    operation_id="calculate_alt_70_cellulitis"
+)
 async def calculate_alt_70_cellulitis(request: Alt70CellulitisRequest):
     """
     Calculates ALT-70 Score for Cellulitis

@@ -1,0 +1,100 @@
+{
+  "id": "fuhrman_nuclear_grade",
+  "title": "Fuhrman Nuclear Grade for Clear Cell Renal Carcinoma",
+  "description": "Provides prognostic grading system for clear cell renal cell carcinoma (RCC) based on nuclear morphology and cellular appearance. Independent predictor of cancer-specific survival that correlates nuclear grade with prognosis.",
+  "category": "urology",
+  "version": "1982",
+  "parameters": [
+    {
+      "name": "nuclear_diameter",
+      "type": "string",
+      "required": true,
+      "description": "Size of tumor cell nuclei compared to lymphocytes",
+      "options": ["small_10um", "larger_15um", "even_larger_20um"],
+      "validation": {
+        "enum": ["small_10um", "larger_15um", "even_larger_20um"]
+      }
+    },
+    {
+      "name": "nuclear_shape",
+      "type": "string",
+      "required": true,
+      "description": "Shape and regularity of nuclear outline",
+      "options": ["round_uniform", "irregularities", "obvious_irregular"],
+      "validation": {
+        "enum": ["round_uniform", "irregularities", "obvious_irregular"]
+      }
+    },
+    {
+      "name": "nucleoli",
+      "type": "string",
+      "required": true,
+      "description": "Visibility and prominence of nucleoli",
+      "options": ["absent_inconspicuous", "visible_400x", "prominent_100x"],
+      "validation": {
+        "enum": ["absent_inconspicuous", "visible_400x", "prominent_100x"]
+      }
+    },
+    {
+      "name": "bizarre_multilobed_spindle",
+      "type": "string",
+      "required": true,
+      "description": "Presence of bizarre, multilobed nuclei or spindle cells",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "fuhrman_grade",
+    "type": "integer",
+    "unit": "grade",
+    "description": "Fuhrman nuclear grade (1-4)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Grade 1",
+        "description": "Small nuclei, round and uniform",
+        "interpretation": "Small nuclei (<10 µm), hyperchromatic, round (resembling mature lymphocytes), with no visible nucleoli and little detail in the chromatin. Best prognosis among all grades."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Grade 2",
+        "description": "Slightly irregular nuclei with visible nucleoli",
+        "interpretation": "Larger nuclei (15 µm), may be oval with finely granular chromatin. Nucleoli visible at 400x magnification. Intermediate prognosis."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Grade 3",
+        "description": "Obviously irregular nuclei with prominent nucleoli",
+        "interpretation": "Even larger nuclei (20 µm), coarsely granular chromatin, easily recognizable nucleoli at 100x magnification. Worse prognosis than grades 1-2."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Grade 4",
+        "description": "Pleomorphic nuclei with extreme features",
+        "interpretation": "Extreme nuclear pleomorphism, bizarre multilobed nuclei, spindle cells, rhabdoid morphology or sarcomatoid differentiation. Poorest prognosis."
+      }
+    ]
+  },
+  "references": [
+    "Fuhrman SA, Lasky LC, Limas C. Prognostic significance of morphologic parameters in renal cell carcinoma. Am J Surg Pathol. 1982 Oct;6(7):655-63. doi: 10.1097/00000478-198210000-00007.",
+    "Rioux-Leclercq N, Karakiewicz PI, Trinh QD, Ficarra V, Cindolo L, de la Taille A, et al. Prognostic ability of simplified nuclear grading of renal cell carcinoma. Cancer. 2007 Mar 1;109(5):868-74. doi: 10.1002/cncr.22463.",
+    "Delahunt B, Cheville JC, Martignoni G, Humphrey PA, Magi-Galluzzi C, McKenney J, et al. The International Society of Urological Pathology (ISUP) grading system for renal cell carcinoma and other prognostic parameters. Am J Surg Pathol. 2013 Oct;37(10):1490-504. doi: 10.1097/PAS.0b013e318299f0fb."
+  ],
+  "formula": "Grading based on nuclear diameter, shape, nucleoli visibility, and presence of bizarre features. Grade 1-3 determined by worst feature among the first three parameters. Grade 4 if bizarre/multilobed nuclei or spindle cells present.",
+  "notes": [
+    "Grade is assigned based on the highest grade features present in the tumor",
+    "The WHO/ISUP grading system is now recommended over Fuhrman grading for better prognostic accuracy",
+    "Nuclear grade is one of the most important prognostic factors in renal cell carcinoma",
+    "Most tumors are grades 2-3; grade 1 is rare (<5%), grade 4 accounts for 5-10%",
+    "Higher grades correlate with worse cancer-specific survival"
+  ]
+}

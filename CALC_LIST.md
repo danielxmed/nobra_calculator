@@ -798,189 +798,189 @@
 ### ✅ FIGO Staging for Ovarian Cancer (2014)
 **Description:** Stages ovarian, fallopian tube, and peritoneal cancer.
 
-### FINDRISC (Finnish Diabetes Risk Score)
+### ✅ FINDRISC (Finnish Diabetes Risk Score)
 **Description:** Identifies patients at high risk for type 2 diabetes.
 
-### Fisher Grading Scale for Subarachnoid Hemorrhage (SAH)
+### ✅ Fisher Grading Scale for Subarachnoid Hemorrhage (SAH)
 **Description:** Assesses risk of vasospasm in SAH based on amount and distribution of blood on CT.
 
-### Fleischner Society Guidelines for Incidental Pulmonary Nodules
+### ✅ Fleischner Society Guidelines for Incidental Pulmonary Nodules
 **Description:** Provides guidelines for management of solid and subsolid pulmonary nodules.
 
-### Focused Assessment with Sonography for Trauma (FAST)
+### ✅ Focused Assessment with Sonography for Trauma (FAST)
 **Description:** Predicts presence of pericardial or intra-abdominal injury after penetrating or blunt trauma.
 
-### Follicular Lymphoma International Prognostic Index (FLIPI)
+### ✅ Follicular Lymphoma International Prognostic Index (FLIPI)
 **Description:** Estimates overall survival based on clinical information.
 
-### Fomepizole Dosing
+### ✅ Fomepizole Dosing
 **Description:** Doses fomepizole for methanol and ethylene glycol reversal.
 
-### Fong Clinical Risk Score for Colorectal Cancer Recurrence
+### ✅ Fong Clinical Risk Score for Colorectal Cancer Recurrence
 **Description:** Predicts recurrence for colorectal cancer patients with liver metastasis after liver resection.
 
-### For Patients: VACO Index COVID-19 Mortality Risk
+### ✅ For Patients: VACO Index COVID-19 Mortality Risk
 **Description:** For use by non-clinicians. Calculate your or a loved one's risk of dying within 30 days of contracting COVID-19.
 
-### Forrest Classification of Upper GI Bleeding
+### ✅ Forrest Classification of Upper GI Bleeding
 **Description:** Stratifies severity of upper GI bleeding according to endoscopic findings.
 
-### FOUR (Full Outline of UnResponsiveness) Score
+### ✅ FOUR (Full Outline of UnResponsiveness) Score
 **Description:** Grades severity of coma; may be more accurate than Glasgow Coma Scale.
 
-### Fractional Excretion of Sodium (FENa)
+### ✅ Fractional Excretion of Sodium (FENa)
 **Description:** Determines if renal failure is due to pre-renal or intrinsic pathology.
 
-### Fractional Excretion of Urea (FEUrea)
+### ✅ Fractional Excretion of Urea (FEUrea)
 **Description:** Determines the cause of renal failure. Similar to FENa, but can be used in patients on diuretics.
 
-### FRACTURE Index
+### ✅ FRACTURE Index
 **Description:** Predicts fracture risk in postmenopausal women.
 
-### Framingham Heart Failure Diagnostic Criteria
+### ✅ Framingham Heart Failure Diagnostic Criteria
 **Description:** Diagnoses heart failure based on major and minor criteria.
 
-### Framingham Risk Score for Hard Coronary Heart Disease
+### ✅ Framingham Risk Score for Hard Coronary Heart Disease
 **Description:** Estimates 10-year risk of MI in patients aged 30-79 with no history of CHD or diabetes.
 
-### Free Water Deficit in Hypernatremia
+### ✅ Free Water Deficit in Hypernatremia
 **Description:** Calculates free water deficit by estimated total body water in patient with hypernatremia or dehydration.
 
-### Fuhrman Nuclear Grade for Clear Cell Renal Carcinoma
+### Fuhrman Nuclear Grade for Clear Cell Renal Carcinoma ✅
 **Description:** Provides prognostic grading system for tumor cells based on physical cellular appearance.
 
-### Functional Outcome in Patients With Primary Intracerebral Hemorrhage (FUNC) Score
+### Functional Outcome in Patients With Primary Intracerebral Hemorrhage (FUNC) Score ✅
 **Description:** Identifies ICH patients who will achieve functional independence and aids in clinical decision-making.
 
 ---
 
 ## G
 
-### G8 Geriatric Screening Tool
+### ✅ G8 Geriatric Screening Tool
 **Description:** Identifies older cancer patients who could benefit from comprehensive geriatric assessment (CGA).
 
-### GAD-7 (General Anxiety Disorder-7)
+### ✅ GAD-7 (General Anxiety Disorder-7)
 **Description:** Measures anxiety severity.
 
-### Gail Model for Breast Cancer Risk
+### ✅ Gail Model for Breast Cancer Risk
 **Description:** Estimates risk for breast cancer based on demographic and clinical data.
 
-### GALAD Model for Hepatocellular Carcinoma (HCC)
+### ✅ GALAD Model for Hepatocellular Carcinoma (HCC)
 **Description:** Diagnoses HCC based on serum biomarkers in patients with chronic liver disease (CLD).
 
-### Ganzoni Equation for Iron Deficiency Anemia
+### ✅ Ganzoni Equation for Iron Deficiency Anemia
 **Description:** Assesses total body iron deficit for iron replacement therapy.
 
-### GAP Index for Idiopathic Pulmonary Fibrosis (IPF) Mortality
+### ✅ GAP Index for Idiopathic Pulmonary Fibrosis (IPF) Mortality
 **Description:** Provides 1, 2, and 3-year mortality estimates for IPF patients.
 
-### GARFIELD-AF
+### ✅ GARFIELD-AF
 **Description:** Predicts mortality, stroke, and bleeding in patients with and without anticoagulation.
 
-### GCS-Pupils Score
+### ✅ GCS-Pupils Score
 **Description:** Combines GCS and pupillary reactivity for increased accuracy in low GCS.
 
-### Genetically Inspired Prognostic Scoring System (GIPSS) for Primary Myelofibrosis (PMF) - NEW
+### ✅ Genetically Inspired Prognostic Scoring System (GIPSS) for Primary Myelofibrosis (PMF) - NEW
 **Description:** Assesses the prognosis of primary myelofibrosis based exclusively on genomic markers.
 
-### Geneva Risk Score for Venous Thromboembolism (VTE) Prophylaxis
+### ✅ Geneva Risk Score for Venous Thromboembolism (VTE) Prophylaxis
 **Description:** Predicts need for VTE prophylaxis in hospitalized patients.
 
-### Geneva Score (Revised) for Pulmonary Embolism
+### ✅ Geneva Score (Revised) for Pulmonary Embolism
 **Description:** Objectifies PE risk, like Wells score.
 
-### Geriatric Depression Scale (GDS-15) - NEW
+### ✅ Geriatric Depression Scale (GDS-15) - NEW
 **Description:** Identifies possible depression in older adults.
 
-### Gillmore Staging System for Transthyretin Amyloid Cardiomyopathy (ATTR-CM) - NEW
+### ✅ Gillmore Staging System for Transthyretin Amyloid Cardiomyopathy (ATTR-CM) - NEW
 **Description:** Classifies prognosis of patients with transthyretin amyloid cardiomyopathy.
 
-### Glasgow Alcoholic Hepatitis Score
+### ✅ Glasgow Alcoholic Hepatitis Score
 **Description:** Predicts mortality in alcoholic hepatitis patients by lab results and age.
 
-### Glasgow Coma Scale (GCS)
+### ✅ Glasgow Coma Scale (GCS) - NEW
 **Description:** Coma severity based on Eye (4), Verbal (5), and Motor (6) criteria.
 
-### Glasgow Modified Alcohol Withdrawal Scale (GMAWS) - NEW
+### ✅ Glasgow Modified Alcohol Withdrawal Scale (GMAWS) - NEW
 **Description:** Scores symptoms for patients with alcohol withdrawal syndrome (AWS).
 
-### Glasgow Prognostic Score (GPS) for Cancer Outcomes
+### ✅ Glasgow Prognostic Score (GPS) for Cancer Outcomes - NEW
 **Description:** Provides cancer prognosis based on serum biomarkers.
 
-### Glasgow-Blatchford Bleeding Score (GBS)
+### ✅ Glasgow-Blatchford Bleeding Score (GBS) - NEW
 **Description:** Stratifies upper GI bleeding patients who are "low risk" and candidates for outpatient management.
 
-### Glasgow-Imrie Criteria for Severity of Acute Pancreatitis
+### ✅ Glasgow-Imrie Criteria for Severity of Acute Pancreatitis - NEW
 **Description:** Determines severity of pancreatitis based on 8 lab values.
 
-### Gleason Score for Prostate Cancer
+### ✅ Gleason Score for Prostate Cancer - NEW
 **Description:** Prognoses prostate cancer based on microscopic appearance of tumor.
 
-### Global Initiative for Obstructive Lung Disease (GOLD) Criteria for COPD
+### ✅ Global Initiative for Obstructive Lung Disease (GOLD) Criteria for COPD - NEW
 **Description:** Assesses different stages of COPD and provides treatment recommendations.
 
-### Glucose Infusion Rate (GIR)
+### ✅ Glucose Infusion Rate (GIR)
 **Description:** Quantifies the rate at which glucose is administered intravenously.
 
-### GO-FAR (Good Outcome Following Attempted Resuscitation) Score
+### ✅ GO-FAR (Good Outcome Following Attempted Resuscitation) Score
 **Description:** Predicts survival to discharge with good outcome after in-hospital cardiac arrest.
 
-### GRACE ACS Risk and Mortality Calculator
+### ✅ GRACE ACS Risk and Mortality Calculator
 **Description:** Estimates mortality from admission to 6 months for acute coronary syndrome patients.
 
-### Graded Prognostic Assessment for Gastrointestinal Cancer (GI-GPA)
+### ✅ Graded Prognostic Assessment for Gastrointestinal Cancer (GI-GPA)
 **Description:** Estimates survival in patients with gastrointestinal cancers and brain metastases.
 
-### Grogan Staging System for Transthyretin Amyloid Cardiomyopathy (ATTR-CM) - NEW
+### ✅ Grogan Staging System for Transthyretin Amyloid Cardiomyopathy (ATTR-CM) - NEW
 **Description:** Classifies prognosis of patients with wild-type transthyretin amyloid cardiomyopathy.
 
-### Groupe d'Etude des Lymphomes Folliculaires (GELF) Criteria
+### ✅ Groupe d'Etude des Lymphomes Folliculaires (GELF) Criteria
 **Description:** Determines if immediate therapy for follicular lymphoma is needed.
 
-### Gupta Perioperative Risk for Myocardial Infarction or Cardiac Arrest (MICA)
+### ✅ Gupta Perioperative Risk for Myocardial Infarction or Cardiac Arrest (MICA)
 **Description:** Predicts risk of MI or cardiac arrest after surgery.
 
-### Gupta Postoperative Pneumonia Risk
+### ✅ Gupta Postoperative Pneumonia Risk
 **Description:** Predicts risk of pneumonia after surgery.
 
-### Gupta Postoperative Respiratory Failure Risk
+### ✅ Gupta Postoperative Respiratory Failure Risk
 **Description:** Predicts risk of mechanical ventilation for >48 hrs post-op or reintubation within 30 days.
 
-### GWTG-Heart Failure Risk Score
+### ✅ GWTG-Heart Failure Risk Score
 **Description:** Predicts all-cause in-hospital mortality from heart failure.
 
 ---
 
 ## H
 
-### H2FPEF Score for Heart Failure with Preserved Ejection Fraction
+### ✅ H2FPEF Score for Heart Failure with Preserved Ejection Fraction
 **Description:** Estimates likelihood of underlying heart failure in patients with preserved ejection fraction on echo.
 
-### Hack's Impairment Index (HII)
+### Hack's Impairment Index (HII) ✅
 **Description:** Provides quantitative, standardized assessment of the degree of alcohol-induced impairment in emergency department patients.
 
-### HACOR Score
+### ✅ HACOR Score
 **Description:** Predicts non-invasive ventilation (NIV) failure in hypoxemic patients.
 
-### Hamilton Anxiety Scale
+### ✅ Hamilton Anxiety Scale
 **Description:** Assesses anxiety level based on clinical questions.
 
-### Hamilton Depression Rating Scale (HAM-D)
+### ✅ Hamilton Depression Rating Scale (HAM-D)
 **Description:** Stratifies depression severity, similar to PHQ-9.
 
-### Harmless Acute Pancreatitis Score (HAPS)
+### ✅ Harmless Acute Pancreatitis Score (HAPS)
 **Description:** Identifies patients who do not require intensive care for their first episode of acute pancreatitis.
 
-### Harvey-Bradshaw Index (HBI) for Crohn's Disease
+### ✅ Harvey-Bradshaw Index (HBI) for Crohn's Disease
 **Description:** Stratifies severity of Crohn's disease.
 
-### HAS-BLED Score for Major Bleeding Risk
+### ✅ HAS-BLED Score for Major Bleeding Risk
 **Description:** Estimates risk of major bleeding for patients on anticoagulation to assess risk-benefit in atrial fibrillation care.
 
-### HAT (Hemorrhage After Thrombolysis) Score for Predicting Post-tPA Hemorrhage
+### ✅ HAT (Hemorrhage After Thrombolysis) Score for Predicting Post-tPA Hemorrhage
 **Description:** Assesses risk of hemorrhage after tPA.
 
-### HCM Risk-SCD
+### ✅ HCM Risk-SCD
 **Description:** Estimates risk of sudden cardiac death in patients with hypertrophic cardiomyopathy.
 
 ### HEADS-ED

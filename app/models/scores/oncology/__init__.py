@@ -16,6 +16,10 @@ from .crs_grading import CrsGradingRequest, CrsGradingResponse
 from .damico_risk_classification import DamicoRiskClassificationRequest, DamicoRiskClassificationResponse
 from .delta_p_score import DeltaPScoreRequest, DeltaPScoreResponse
 from .ecog_performance_status import EcogPerformanceStatusRequest, EcogPerformanceStatusResponse
+from .fong_clinical_risk_score import FongClinicalRiskScoreRequest, FongClinicalRiskScoreResponse
+from .gail_model_breast_cancer_risk import GailModelBreastCancerRiskRequest, GailModelBreastCancerRiskResponse
+from .galad_model_hcc import GaladModelHccRequest, GaladModelHccResponse
+from .gi_gpa import GiGpaRequest, GiGpaResponse
 
 __all__ = [
     "Leibovich2018RccRequest",
@@ -44,4 +48,12 @@ __all__ = [
     "DeltaPScoreResponse",
     "EcogPerformanceStatusRequest",
     "EcogPerformanceStatusResponse",
+    "FongClinicalRiskScoreRequest",
+    "FongClinicalRiskScoreResponse",
+    "GailModelBreastCancerRiskRequest",
+    "GailModelBreastCancerRiskResponse",
+    "GaladModelHccRequest",
+    "GaladModelHccResponse",
+    "GiGpaRequest",
+    "GiGpaResponse",
 ]

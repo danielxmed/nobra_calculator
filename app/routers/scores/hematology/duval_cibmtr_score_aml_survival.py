@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/duval_cibmtr_score_aml_survival", response_model=DuvalCibmtrScoreAmlSurvivalResponse)
+@router.post(
+    "/duval_cibmtr_score_aml_survival",
+    response_model=DuvalCibmtrScoreAmlSurvivalResponse,
+    summary="Calculate Duval/CIBMTR Score for Acute Myelogenous Leukemia",
+    description="Predicts transplantation survival of AML patients undergoing allogeneic hematopoietic stem cell transplantation (HSCT) based on five pre-transplant risk factors.",
+    response_description="The calculated duval cibmtr score aml survival with interpretation",
+    operation_id="calculate_duval_cibmtr_score_aml_survival"
+)
 async def calculate_duval_cibmtr_score_aml_survival(request: DuvalCibmtrScoreAmlSurvivalRequest):
     """
     Calculates Duval/CIBMTR Score for Acute Myelogenous Leukemia (AML) Survival

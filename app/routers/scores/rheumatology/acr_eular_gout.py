@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/acr_eular_gout", response_model=AcrEularGoutResponse)
+@router.post(
+    "/acr_eular_gout",
+    response_model=AcrEularGoutResponse,
+    summary="Calculate ACR/EULAR Gout Classification Criteria",
+    description="Provides formal diagnostic criteria for gout using a 3-step approach: entry criterion, sufficient criterion, and classification criteria requiring ≥7 points for positive diagnosis",
+    response_description="The calculated acr eular gout with interpretation",
+    operation_id="calculate_acr_eular_gout"
+)
 async def calculate_acr_eular_gout(request: AcrEularGoutRequest):
     """
     Calculates ACR/EULAR Gout Classification Criteria

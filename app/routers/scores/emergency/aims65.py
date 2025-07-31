@@ -14,7 +14,14 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/aims65", response_model=Aims65Response)
+@router.post(
+    "/aims65",
+    response_model=Aims65Response,
+    summary="Calculate AIMS65 Score for Upper GI Bleeding Mortality",
+    description="Predicts in-hospital mortality in patients with acute upper gastrointestinal bleeding using 5 simple clinical variables",
+    response_description="The calculated aims65 with interpretation",
+    operation_id="calculate_aims65"
+)
 async def calculate_aims65(request: Aims65Request):
     """
     Calculates AIMS65 Score for Upper GI Bleeding Mortality

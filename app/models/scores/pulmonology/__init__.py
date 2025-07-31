@@ -17,6 +17,10 @@ from .crb_65_pneumonia_severity import Crb65PneumoniaSeverityRequest, Crb65Pneum
 from .decaf_score import DecafScoreRequest, DecafScoreResponse
 from .du_bois_ipf_mortality import DuBoisIpfMortalityRequest, DuBoisIpfMortalityResponse
 from .expected_peak_expiratory_flow import ExpectedPeakExpiratoryFlowRequest, ExpectedPeakExpiratoryFlowResponse
+from .fleischner_guidelines import FleischnerGuidelinesRequest, FleischnerGuidelinesResponse
+from .gap_index_ipf_mortality import GapIndexIpfMortalityRequest, GapIndexIpfMortalityResponse
+from .geneva_score_revised_pe import GenevaScoreRevisedPeRequest, GenevaScoreRevisedPeResponse
+from .gold_copd_criteria import GoldCopdCriteriaRequest, GoldCopdCriteriaResponse
 
 __all__ = [
     "Curb65Request",
@@ -49,4 +53,12 @@ __all__ = [
     "DuBoisIpfMortalityResponse",
     "ExpectedPeakExpiratoryFlowRequest",
     "ExpectedPeakExpiratoryFlowResponse",
+    "FleischnerGuidelinesRequest",
+    "FleischnerGuidelinesResponse",
+    "GapIndexIpfMortalityRequest",
+    "GapIndexIpfMortalityResponse",
+    "GenevaScoreRevisedPeRequest",
+    "GenevaScoreRevisedPeResponse",
+    "GoldCopdCriteriaRequest",
+    "GoldCopdCriteriaResponse",
 ]

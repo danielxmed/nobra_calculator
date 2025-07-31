@@ -1,0 +1,103 @@
+{
+  "id": "fractional_excretion_sodium",
+  "title": "Fractional Excretion of Sodium (FENa)",
+  "description": "Determines if renal failure is due to pre-renal or intrinsic pathology. Calculates the percentage of filtered sodium that is excreted in the urine.",
+  "category": "nephrology",
+  "version": "Standard",
+  "parameters": [
+    {
+      "name": "serum_sodium",
+      "type": "float",
+      "required": true,
+      "description": "Serum/plasma sodium concentration",
+      "validation": {
+        "min": 120,
+        "max": 180
+      },
+      "unit": "mEq/L"
+    },
+    {
+      "name": "urine_sodium",
+      "type": "float",
+      "required": true,
+      "description": "Urine sodium concentration",
+      "validation": {
+        "min": 1,
+        "max": 300
+      },
+      "unit": "mEq/L"
+    },
+    {
+      "name": "serum_creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Serum/plasma creatinine concentration",
+      "validation": {
+        "min": 0.1,
+        "max": 20.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "urine_creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Urine creatinine concentration",
+      "validation": {
+        "min": 1,
+        "max": 500
+      },
+      "unit": "mg/dL"
+    }
+  ],
+  "result": {
+    "name": "fena_percentage",
+    "type": "float",
+    "unit": "%",
+    "description": "Fractional Excretion of Sodium as percentage"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Prerenal AKI",
+        "description": "Suggests prerenal azotemia",
+        "interpretation": "FENa <1% typically indicates prerenal cause of acute kidney injury. The kidneys are conserving sodium due to decreased blood flow or volume depletion. Common causes include dehydration, heart failure, cirrhosis, or hepatorenal syndrome."
+      },
+      {
+        "min": 1,
+        "max": 2,
+        "stage": "Indeterminate",
+        "description": "Intermediate range requiring clinical correlation",
+        "interpretation": "FENa 1-2% can be seen in both prerenal and intrinsic renal conditions. Further clinical correlation and additional testing are needed to determine the underlying cause of acute kidney injury."
+      },
+      {
+        "min": 2,
+        "max": 100,
+        "stage": "Intrinsic AKI", 
+        "description": "Suggests intrinsic renal pathology",
+        "interpretation": "FENa >2% typically indicates intrinsic renal pathology, most commonly acute tubular necrosis (ATN). May also suggest severe obstruction or other causes of intrinsic kidney failure with impaired sodium reabsorption."
+      }
+    ]
+  },
+  "references": [
+    "Espinel CH. The FENa test. Use in the differential diagnosis of acute renal failure. JAMA. 1976;236(6):579-81.",
+    "Miller TR, Anderson RJ, Linas SL, et al. Urinary diagnostic indices in acute renal failure: a prospective study. Ann Intern Med. 1978;89(1):47-50.",
+    "Steiner RW. Interpreting the fractional excretion of sodium. Am J Med. 1984;77(4):699-702.",
+    "Pahwa AK, Sperati CJ. Urinary Fractional Excretion Indices in the Evaluation of Acute Kidney Injury. J Hosp Med. 2016;11(1):77-80."
+  ],
+  "formula": "FENa (%) = [(Urine Sodium × Serum Creatinine) / (Serum Sodium × Urine Creatinine)] × 100",
+  "notes": [
+    "FENa should not be used in patients who have recently received diuretics",
+    "May be <1% occasionally with oliguric and nonoliguric ATN, urinary tract obstruction, acute glomerulonephritis",
+    "Cannot be used reliably in patients with chronic kidney disease (CKD)",
+    "Best used in conjunction with other clinical data and urine microscopy",
+    "Consider FEUrea if patient has received diuretics within 24-48 hours",
+    "Normal kidney function typically has FENa <1% during periods of volume depletion",
+    "Values >3% are typically seen with acute tubular necrosis",
+    "May be elevated in sepsis due to altered renal hemodynamics",
+    "Kidney injuries that spare tubular function (GN, interstitial nephritis) may have low FENa",
+    "Should be interpreted within appropriate clinical context"
+  ]
+}
