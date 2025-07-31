@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate CEDOCS Score for Emergency Department Overcrowding",
     description="Community Emergency Department Overcrowding Scale (CEDOCS) estimates the severity of overcrowding in community emergency departments. Provides objective quantification for resource allocation, patient flow management, and real-time assessment of ED crowding levels across varying patient volumes.",
     response_description="The calculated cedocs score with interpretation",
-    operation_id="calculate_cedocs_score"
+    operation_id="cedocs_score"
 )
 async def calculate_cedocs_score(request: CedocsScoreRequest):
     """

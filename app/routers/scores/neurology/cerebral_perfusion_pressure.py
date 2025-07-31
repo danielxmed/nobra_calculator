@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Cerebral Perfusion Pressure",
     description="Calculates cerebral perfusion pressure (CPP), the net pressure gradient that drives oxygen delivery to cerebral tissue. Critical parameter in neurocritical care for monitoring patients with traumatic brain injury, intracranial hypertension, and other neurological conditions.",
     response_description="The calculated cerebral perfusion pressure with interpretation",
-    operation_id="calculate_cerebral_perfusion_pressure"
+    operation_id="cerebral_perfusion_pressure"
 )
 async def calculate_cerebral_perfusion_pressure(request: CerebralPerfusionPressureRequest):
     """

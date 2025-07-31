@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate AKIN Classification for Acute Kidney Injury (AKI)",
     description="Classifies severity of acute kidney injury based on serum creatinine and urine output criteria within 48 hours",
     response_description="The calculated akin with interpretation",
-    operation_id="calculate_akin"
+    operation_id="akin"
 )
 async def calculate_akin(request: AkinRequest):
     """

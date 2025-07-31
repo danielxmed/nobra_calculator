@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate CIWA-Ar for Alcohol Withdrawal",
     description="Objectifies severity of alcohol withdrawal symptoms and guides treatment decisions",
     response_description="The calculated ciwa ar alcohol withdrawal with interpretation",
-    operation_id="calculate_ciwa_ar_alcohol_withdrawal"
+    operation_id="ciwa_ar_alcohol_withdrawal"
 )
 async def calculate_ciwa_ar_alcohol_withdrawal(request: CiwaArAlcoholWithdrawalRequest):
     """

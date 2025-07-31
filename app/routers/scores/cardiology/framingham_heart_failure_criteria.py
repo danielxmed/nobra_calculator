@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Framingham Heart Failure Diagnostic C...",
     description="Diagnoses heart failure based on major and minor criteria. Requires at least 2 major criteria or 1 major criterion plus 2 minor criteria.",
     response_description="The calculated framingham heart failure criteria with interpretation",
-    operation_id="calculate_framingham_heart_failure_criteria"
+    operation_id="framingham_heart_failure_criteria"
 )
 async def calculate_framingham_heart_failure_criteria(request: FraminghamHeartFailureCriteriaRequest):
     """

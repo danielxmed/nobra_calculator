@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate AUDIT-C for Alcohol Use",
     description="Identifies at-risk drinkers (i.e., binge drinking) who may not be alcohol dependent. A brief 3-question alcohol screen derived from the full AUDIT questionnaire.",
     response_description="The calculated audit c with interpretation",
-    operation_id="calculate_audit_c"
+    operation_id="audit_c"
 )
 async def calculate_audit_c(request: AuditCRequest):
     """

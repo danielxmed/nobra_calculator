@@ -14,7 +14,7 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/ariscat_score", response_model=AriscatScoreResponse, summary="Calculate ARISCAT Score", description="Calculates ARISCAT Score for Postoperative Pulmonary Complications", response_description="ARISCAT score with risk stratification and clinical interpretation", operation_id="calculate_ariscat_score")
+@router.post("/ariscat_score", response_model=AriscatScoreResponse, summary="Calculate ARISCAT Score", description="Calculates ARISCAT Score for Postoperative Pulmonary Complications", response_description="ARISCAT score with risk stratification and clinical interpretation", operation_id="ariscat_score")
 async def calculate_ariscat_score(request: AriscatScoreRequest):
     """
     Calculates ARISCAT Score for Postoperative Pulmonary Complications

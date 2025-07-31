@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate BeAM Value",
     description="Calculates the difference between bedtime and morning fasting blood glucose to guide prandial insulin therapy decisions in patients with type 2 diabetes",
     response_description="The calculated beam value with interpretation",
-    operation_id="calculate_beam_value"
+    operation_id="beam_value"
 )
 async def calculate_beam_value(request: BeamValueRequest):
     """

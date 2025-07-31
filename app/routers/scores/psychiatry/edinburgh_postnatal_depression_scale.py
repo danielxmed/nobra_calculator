@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Edinburgh Postnatal Depression Scale (EPDS)",
     description="Screens for depression in the postnatal period through a validated 10-item self-report questionnaire. The most widely used postpartum depression screening tool worldwide, also valid for antenatal screening.",
     response_description="The calculated edinburgh postnatal depression scale with interpretation",
-    operation_id="calculate_edinburgh_postnatal_depression_scale"
+    operation_id="edinburgh_postnatal_depression_scale"
 )
 async def calculate_edinburgh_postnatal_depression_scale(request: EdinburghPostnatalDepressionScaleRequest):
     """

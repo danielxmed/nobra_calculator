@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate CHIP (CT in Head Injury Patients) Prediction Rule",
     description="Predicts need for CT imaging in patients with minor head trauma to detect potential intracranial injuries",
     response_description="The calculated chip prediction rule with interpretation",
-    operation_id="calculate_chip_prediction_rule"
+    operation_id="chip_prediction_rule"
 )
 async def calculate_chip_prediction_rule(request: ChipPredictionRuleRequest):
     """

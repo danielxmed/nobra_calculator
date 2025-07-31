@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Caprini Score for Venous Thromboembolism (2005)",
     description="The Caprini Score stratifies risk of venous thromboembolism (VTE) in surgical patients, guiding prophylaxis decisions. It assesses multiple risk factors including age, surgery type, medical conditions, and mobility status to predict VTE risk and inform appropriate prevention strategies.",
     response_description="The calculated caprini score 2005 with interpretation",
-    operation_id="calculate_caprini_score_2005"
+    operation_id="caprini_score_2005"
 )
 async def calculate_caprini_score_2005(request: CapriniScore2005Request):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate New York Heart Association (NYHA) Fun...",
     description="Stratifies severity of heart failure by symptoms. Provides a simple way of classifying the extent of heart failure based on physical activity limitations and symptoms.",
     response_description="The calculated nyha functional classification with interpretation",
-    operation_id="calculate_nyha_functional_classification"
+    operation_id="nyha_functional_classification"
 )
 async def calculate_nyha_functional_classification(request: NyhaFunctionalClassificationRequest):
     """

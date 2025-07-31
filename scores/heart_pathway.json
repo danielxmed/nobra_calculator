@@ -1,0 +1,140 @@
+{
+  "id": "heart_pathway",
+  "title": "HEART Pathway for Early Discharge in Acute Chest Pain",
+  "description": "Identifies emergency department patients with acute chest pain for early discharge. Combines HEART score with serial troponin measurements to risk-stratify patients.",
+  "category": "cardiology",
+  "version": "2015",
+  "parameters": [
+    {
+      "name": "history",
+      "type": "integer",
+      "required": true,
+      "description": "Clinical history",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "options": [
+        {"value": 0, "label": "Slightly suspicious"},
+        {"value": 1, "label": "Moderately suspicious"},
+        {"value": 2, "label": "Highly suspicious"}
+      ]
+    },
+    {
+      "name": "ecg",
+      "type": "integer",
+      "required": true,
+      "description": "ECG findings",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "options": [
+        {"value": 0, "label": "Normal"},
+        {"value": 1, "label": "Non-specific repolarization disturbance"},
+        {"value": 2, "label": "Significant ST depression"}
+      ]
+    },
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "options": [
+        {"value": 0, "label": "<45 years"},
+        {"value": 1, "label": "45-64 years"},
+        {"value": 2, "label": "≥65 years"}
+      ]
+    },
+    {
+      "name": "risk_factors",
+      "type": "integer",
+      "required": true,
+      "description": "Cardiovascular risk factors",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "options": [
+        {"value": 0, "label": "No known risk factors"},
+        {"value": 1, "label": "1-2 risk factors"},
+        {"value": 2, "label": "≥3 risk factors or history of atherosclerotic disease"}
+      ]
+    },
+    {
+      "name": "initial_troponin",
+      "type": "integer",
+      "required": true,
+      "description": "Initial troponin level",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "options": [
+        {"value": 0, "label": "≤normal limit"},
+        {"value": 1, "label": "1-3x normal limit"},
+        {"value": 2, "label": ">3x normal limit"}
+      ]
+    },
+    {
+      "name": "repeat_troponin_negative",
+      "type": "string",
+      "required": false,
+      "description": "3-hour repeat troponin result (only for low-risk patients)",
+      "validation": {
+        "enum": ["yes", "no", "not_done"]
+      },
+      "options": [
+        {"value": "yes", "label": "Negative at 3 hours"},
+        {"value": "no", "label": "Positive at 3 hours"},
+        {"value": "not_done", "label": "Not performed yet"}
+      ]
+    }
+  ],
+  "result": {
+    "name": "heart_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "HEART score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Low Risk",
+        "description": "0.9-1.7% 30-day MACE risk",
+        "interpretation": "Low risk for major adverse cardiac events. With negative initial troponin, repeat troponin at 3 hours. If both troponins negative, safe for early discharge with outpatient follow-up."
+      },
+      {
+        "min": 4,
+        "max": 10,
+        "stage": "High Risk",
+        "description": "12-65% 30-day MACE risk",
+        "interpretation": "High risk for major adverse cardiac events. Admit to hospital or observation unit for further cardiac evaluation, serial troponins, and objective cardiac testing."
+      }
+    ],
+    "special_rules": [
+      "HEART score ≤3 AND initial troponin negative: Obtain 3-hour troponin",
+      "HEART score ≤3 AND both troponins negative: Safe for early discharge",
+      "HEART score ≥4 OR any positive troponin: Admit for further evaluation",
+      "Initial troponin score 1-2 points (elevated): High risk regardless of total score"
+    ]
+  },
+  "references": [
+    "Mahler SA, Riley RF, Hiestand BC, Russell GB, Hoekstra JW, Lefebvre CW, et al. The HEART Pathway randomized trial: identifying emergency department patients with acute chest pain for early discharge. Circ Cardiovasc Qual Outcomes. 2015 Mar;8(2):195-203. doi: 10.1161/CIRCOUTCOMES.114.001384.",
+    "Mahler SA, Stopyra JP, Apple FS, Riley RF, Russell GB, Hiestand BC, et al. Use of the HEART Pathway with high sensitivity cardiac troponins: a secondary analysis. Clin Biochem. 2017 May;50(7-8):401-407. doi: 10.1016/j.clinbiochem.2016.11.018.",
+    "Backus BE, Six AJ, Kelder JC, Bosschaert MA, Mast EG, Mosterd A, et al. A prospective validation of the HEART score for chest pain patients at the emergency department. Int J Cardiol. 2013 Oct 3;168(3):2153-8. doi: 10.1016/j.ijcard.2013.01.255."
+  ],
+  "formula": "HEART Score = History + ECG + Age + Risk Factors + Initial Troponin (Range: 0-10)",
+  "notes": [
+    "Risk factors include: hypertension, hypercholesterolemia, diabetes mellitus, obesity (BMI >30), smoking (current or quit <3 months), positive family history (parent or sibling with CVD <65 years), atherosclerotic disease (prior MI, PCI/CABG, CVA/TIA, or peripheral arterial disease)",
+    "The HEART Pathway requires serial troponin measurements at 0 and 3 hours",
+    "Designed for patients presenting to ED with acute chest pain",
+    "Not validated for patients with STEMI, hemodynamic instability, or life-threatening causes of chest pain"
+  ]
+}

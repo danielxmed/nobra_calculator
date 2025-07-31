@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate EUTOS Score for Chronic Myelogenous Leukemia (CML)",
     description="Predicts outcomes after CML treatments, specifically adjusted for tyrosine kinase inhibitor treatments. Predicts probability of complete cytogenetic response at 18 months and progression-free survival.",
     response_description="The calculated eutos score with interpretation",
-    operation_id="calculate_eutos_score"
+    operation_id="eutos_score"
 )
 async def calculate_eutos_score(request: EutosScoreRequest):
     """

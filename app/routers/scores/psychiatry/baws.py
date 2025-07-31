@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Brief Alcohol Withdrawal Scale (BAWS)",
     description="Assesses alcohol withdrawal symptoms using 5 simple criteria: agitation, sweats, tremor, orientation, and hallucinations. A simplified alternative to CIWA-Ar that provides rapid assessment in clinical settings.",
     response_description="The calculated baws with interpretation",
-    operation_id="calculate_baws"
+    operation_id="baws"
 )
 async def calculate_baws(request: BawsRequest):
     """

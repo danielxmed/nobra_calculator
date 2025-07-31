@@ -177,7 +177,7 @@ async def get_score_metadata(score_id: str):
         )
 
 
-@router.post("/{score_id}/calculate", summary="Calculate a Score", description="Calculate a score using the provided parameters", response_description="Calculation result with interpretation", operation_id="calculate_score_generic")
+@router.post("/{score_id}/calculate", summary="Calculate a Score", description="Calculate a score using the provided parameters", response_description="Calculation result with interpretation", operation_id="score_generic")
 async def calculate_score_generic(score_id: str, parameters: Dict[str, Any]):
     """
     Generic endpoint to calculate any available score

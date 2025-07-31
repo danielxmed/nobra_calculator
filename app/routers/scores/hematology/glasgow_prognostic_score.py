@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Glasgow Prognostic Score (GPS)",
     description="Inflammation and nutrition-based prognostic score for cancer patients using serum C-reactive protein and albumin levels. Predicts overall survival and disease-free survival across multiple cancer types including colorectal, hepatocellular carcinoma, sarcoma, and lung cancer.",
     response_description="The calculated glasgow prognostic score with interpretation",
-    operation_id="calculate_glasgow_prognostic_score"
+    operation_id="glasgow_prognostic_score"
 )
 async def calculate_glasgow_prognostic_score(request: GlasgowPrognosticScoreRequest):
     """

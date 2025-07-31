@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate BISAP Score for Pancreatitis Mortality",
     description="Predicts mortality risk in pancreatitis with fewer variables than Ranson's. The Bedside Index for Severity in Acute Pancreatitis (BISAP) allows for early identification of patients at increased risk for in-hospital mortality.",
     response_description="The calculated bisap score with interpretation",
-    operation_id="calculate_bisap_score"
+    operation_id="bisap_score"
 )
 async def calculate_bisap_score(request: BisapScoreRequest):
     """

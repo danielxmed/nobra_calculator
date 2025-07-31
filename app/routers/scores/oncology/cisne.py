@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Clinical Index of Stable Febrile Neutropenia",
     description="Identifies febrile neutropenia patients at low risk for serious complications. Used for adult outpatients with solid tumor, fever ≥38°C (100.4°F), and neutropenia (≤500 cells/mm³ or ≤1,000 cells/mm³ with expected decrease to 500).",
     response_description="The calculated cisne with interpretation",
-    operation_id="calculate_cisne"
+    operation_id="cisne"
 )
 async def calculate_cisne(request: CisneRequest):
     """

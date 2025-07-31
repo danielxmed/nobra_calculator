@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Fatty Liver Index",
     description="Diagnoses fatty liver using lab and exam findings. A simple and accurate predictor of hepatic steatosis in the general population.",
     response_description="The calculated fatty liver index with interpretation",
-    operation_id="calculate_fatty_liver_index"
+    operation_id="fatty_liver_index"
 )
 async def calculate_fatty_liver_index(request: FattyLiverIndexRequest):
     """

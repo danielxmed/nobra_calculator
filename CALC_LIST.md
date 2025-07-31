@@ -983,10 +983,10 @@
 ### ✅ HCM Risk-SCD
 **Description:** Estimates risk of sudden cardiac death in patients with hypertrophic cardiomyopathy.
 
-### HEADS-ED
+### ✅ HEADS-ED
 **Description:** Screens for pediatric mental health needs.
 
-### HEART Pathway for Early Discharge in Acute Chest Pain
+### ✅ HEART Pathway for Early Discharge in Acute Chest Pain
 **Description:** Identifies emergency department patients with acute chest pain for early discharge.
 
 ### HEART Score for Major Cardiac Events

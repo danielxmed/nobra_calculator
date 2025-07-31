@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Gupta Postoperative Respiratory Failure Risk Ca...",
     description="Predicts risk of mechanical ventilation for >48 hours post-op or reintubation within 30 days using validated preoperative risk factors from ACS NSQIP data",
     response_description="The calculated gupta postoperative respiratory failure risk with interpretation",
-    operation_id="calculate_gupta_postoperative_respiratory_failure_risk"
+    operation_id="gupta_postoperative_respiratory_failure_risk"
 )
 async def calculate_gupta_postoperative_respiratory_failure_risk(request: GuptaPostoperativeRespiratoryFailureRiskRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Bastion Classification of Lower Limb Blast Inju...",
     description="Stratifies lower limb blast injuries to guide treatment. Developed by military surgeons at Camp Bastion, Afghanistan, to classify explosion-related lower extremity injuries and correlate with treatment needs.",
     response_description="The calculated bastion classification with interpretation",
-    operation_id="calculate_bastion_classification"
+    operation_id="bastion_classification"
 )
 async def calculate_bastion_classification(request: BastionClassificationRequest):
     """

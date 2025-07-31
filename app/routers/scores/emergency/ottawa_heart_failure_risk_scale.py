@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Ottawa Heart Failure Risk Scale (OHFRS)",
     description="Identifies emergency department heart failure patients at high risk for serious adverse events. Uses 10 clinical variables to stratify risk from low (2.8%) to very high (89%+).",
     response_description="The calculated ottawa heart failure risk scale with interpretation",
-    operation_id="calculate_ottawa_heart_failure_risk_scale"
+    operation_id="ottawa_heart_failure_risk_scale"
 )
 async def calculate_ottawa_heart_failure_risk_scale(request: OttawaHeartFailureRiskScaleRequest):
     """

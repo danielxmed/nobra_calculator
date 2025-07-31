@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate CKiD U25 eGFR Calculator",
     description="Estimates glomerular filtration rate based on creatinine and/or cystatin C in patients aged 1 to 25 years",
     response_description="The calculated ckid u25 egfr with interpretation",
-    operation_id="calculate_ckid_u25_egfr"
+    operation_id="ckid_u25_egfr"
 )
 async def calculate_ckid_u25_egfr(request: CkidU25EgfrRequest):
     """

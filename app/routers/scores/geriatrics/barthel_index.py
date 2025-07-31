@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Barthel Index for Activities of Daily Living (ADL)",
     description="Assesses functional independence in activities of daily living, particularly useful in stroke patients and rehabilitation settings. The index evaluates 10 basic activities to determine the level of assistance required, with higher scores indicating greater independence.",
     response_description="The calculated barthel index with interpretation",
-    operation_id="calculate_barthel_index"
+    operation_id="barthel_index"
 )
 async def calculate_barthel_index(request: BarthelIndexRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Geneva Score (Revised) for Pulmonary Embolism",
     description="Objectifies risk of pulmonary embolism, similar to Wells' score, but without requiring clinical gestalt. Helps determine clinical probability of PE to guide diagnostic workup including D-dimer testing and imaging decisions",
     response_description="The calculated geneva score revised pe with interpretation",
-    operation_id="calculate_geneva_score_revised_pe"
+    operation_id="geneva_score_revised_pe"
 )
 async def calculate_geneva_score_revised_pe(request: GenevaScoreRevisedPeRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Gail Model for Breast Cancer Risk",
     description="Estimates risk for breast cancer based on demographic and clinical data. The Gail Model calculates a woman's absolute risk of developing invasive breast cancer over the next 5 years and up to age 90 (lifetime risk) using personal medical and reproductive history and family history of breast cancer among first-degree relatives.",
     response_description="The calculated gail model breast cancer risk with interpretation",
-    operation_id="calculate_gail_model_breast_cancer_risk"
+    operation_id="gail_model_breast_cancer_risk"
 )
 async def calculate_gail_model_breast_cancer_risk(request: GailModelBreastCancerRiskRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Bacterial Meningitis Score for Children",
     description="Predicts likelihood of bacterial (versus aseptic) meningitis in children with CSF pleocytosis. The score helps clinicians distinguish between bacterial and aseptic meningitis to support safe discharge decisions while maintaining appropriate caution for this serious condition.",
     response_description="The calculated bacterial meningitis score with interpretation",
-    operation_id="calculate_bacterial_meningitis_score"
+    operation_id="bacterial_meningitis_score"
 )
 async def calculate_bacterial_meningitis_score(request: BacterialMeningitisScoreRequest):
     """

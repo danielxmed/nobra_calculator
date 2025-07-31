@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Denver HIV Risk Score",
     description="Predicts probability of undiagnosed HIV infection in patients aged 13 and older using demographic and behavioral risk factors.",
     response_description="The calculated denver hiv risk score with interpretation",
-    operation_id="calculate_denver_hiv_risk_score"
+    operation_id="denver_hiv_risk_score"
 )
 async def calculate_denver_hiv_risk_score(request: DenverHivRiskScoreRequest):
     """

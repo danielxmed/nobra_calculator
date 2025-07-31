@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate 2023 Duke-International Society for Cardiovascu...",
     description="Diagnostic criteria for infective endocarditis, updated from the original Duke criteria with improved sensitivity and specificity.",
     response_description="The calculated duke iscvid 2023 with interpretation",
-    operation_id="calculate_duke_iscvid_2023"
+    operation_id="duke_iscvid_2023"
 )
 async def calculate_duke_iscvid_2023(request: DukeIscvid2023Request):
     """

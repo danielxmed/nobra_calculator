@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Cambridge Diabetes Risk Score",
     description="Predicts risk of having previously undiagnosed type 2 diabetes based on clinical and demographic factors. Developed for population screening and identification of high-risk individuals who should undergo diabetes testing.",
     response_description="The calculated cambridge diabetes risk score with interpretation",
-    operation_id="calculate_cambridge_diabetes_risk_score"
+    operation_id="cambridge_diabetes_risk_score"
 )
 async def calculate_cambridge_diabetes_risk_score(request: CambridgeDiabetesRiskScoreRequest):
     """

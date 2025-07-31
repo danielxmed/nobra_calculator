@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate FeverPAIN Score for Strep Pharyngitis",
     description="Predicts likelihood of streptococcal pharyngitis and guides antibiotic prescribing decisions.",
     response_description="The calculated feverpain score with interpretation",
-    operation_id="calculate_feverpain_score"
+    operation_id="feverpain_score"
 )
 async def calculate_feverpain_score(request: FeverpainScoreRequest):
     """

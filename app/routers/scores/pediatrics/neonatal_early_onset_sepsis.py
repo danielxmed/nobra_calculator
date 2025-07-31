@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Neonatal Early-Onset Sepsis Calculator",
     description="Calculates risk of early-onset neonatal sepsis based on maternal intrapartum risk factors for newborns ≥34 weeks gestation. Uses multivariate predictive model to estimate probability of culture-positive sepsis within 72 hours of birth.",
     response_description="The calculated neonatal early onset sepsis with interpretation",
-    operation_id="calculate_neonatal_early_onset_sepsis"
+    operation_id="neonatal_early_onset_sepsis"
 )
 async def calculate_neonatal_early_onset_sepsis(request: NeonatalEarlyOnsetSepsisRequest):
     """

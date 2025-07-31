@@ -43,6 +43,8 @@ from .gillmore_staging_attr_cm import router as gillmore_staging_attr_cm_router
 from .grace_acs_risk import router as grace_acs_risk_router
 from .grogan_staging_attr_cm import router as grogan_staging_attr_cm_router
 from .hcm_risk_scd import router as hcm_risk_scd_router
+from .heart_pathway import router as heart_pathway_router
+from .heart_score import router as heart_score_router
 
 # Create main specialty router
 router = APIRouter()
@@ -86,3 +88,5 @@ router.include_router(gillmore_staging_attr_cm_router)
 router.include_router(grace_acs_risk_router)
 router.include_router(grogan_staging_attr_cm_router)
 router.include_router(hcm_risk_scd_router)
+router.include_router(heart_pathway_router)
+router.include_router(heart_score_router)

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Brugada Criteria for Ventricular Tach...",
     description="Distinguishes ventricular tachycardia from supraventricular tachycardia with aberrancy using ECG morphology criteria",
     response_description="The calculated brugada criteria vt with interpretation",
-    operation_id="calculate_brugada_criteria_vt"
+    operation_id="brugada_criteria_vt"
 )
 async def calculate_brugada_criteria_vt(request: BrugadaCriteriaVtRequest):
     """

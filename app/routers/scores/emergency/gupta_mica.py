@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Gupta Perioperative Risk for Myocardial Infarct...",
     description="Predicts risk of myocardial infarction or cardiac arrest within 30 days after surgery using five validated perioperative risk factors",
     response_description="The calculated gupta mica with interpretation",
-    operation_id="calculate_gupta_mica"
+    operation_id="gupta_mica"
 )
 async def calculate_gupta_mica(request: GuptaMicaRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Benzodiazepine Conversion Calculator",
     description="Provides equivalents between different benzodiazepines for safe medication interchanging",
     response_description="The calculated benzodiazepine conversion with interpretation",
-    operation_id="calculate_benzodiazepine_conversion"
+    operation_id="benzodiazepine_conversion"
 )
 async def calculate_benzodiazepine_conversion(request: BenzodiazepineConversionRequest):
     """

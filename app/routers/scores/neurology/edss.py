@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Expanded Disability Status Scale",
     description="Describes severity of disability in MS patients based on functional systems assessment and ambulatory ability. The most widely used disability scale for multiple sclerosis.",
     response_description="The calculated edss with interpretation",
-    operation_id="calculate_edss"
+    operation_id="edss"
 )
 async def calculate_edss(request: EdssRequest):
     """

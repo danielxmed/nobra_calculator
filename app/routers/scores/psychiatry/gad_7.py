@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate GAD-7 (General Anxiety Disorder-7)",
     description="Measures anxiety severity and screens for generalized anxiety disorder",
     response_description="The calculated gad 7 with interpretation",
-    operation_id="calculate_gad_7"
+    operation_id="gad_7"
 )
 async def calculate_gad_7(request: Gad7Request):
     """

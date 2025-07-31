@@ -1,0 +1,153 @@
+{
+  "id": "heads_ed",
+  "title": "HEADS-ED",
+  "description": "Screens for pediatric mental health needs in the emergency department. Evaluates 7 domains: Home, Education/employment, Activities/peers, Drugs/alcohol, Suicidality, Emotions/behaviors, and Discharge resources.",
+  "category": "psychiatry",
+  "version": "2012",
+  "parameters": [
+    {
+      "name": "home",
+      "type": "integer",
+      "required": true,
+      "description": "Home environment assessment",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "options": [
+        {"value": 0, "label": "Supportive family environment"},
+        {"value": 1, "label": "Family conflicts"},
+        {"value": 2, "label": "Chaotic/dysfunctional home"}
+      ]
+    },
+    {
+      "name": "education",
+      "type": "integer",
+      "required": true,
+      "description": "Education/employment status",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "options": [
+        {"value": 0, "label": "On track"},
+        {"value": 1, "label": "Grades dropping or absenteeism"},
+        {"value": 2, "label": "Failing/not attending"}
+      ]
+    },
+    {
+      "name": "activities",
+      "type": "integer",
+      "required": true,
+      "description": "Activities and peer relationships",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "options": [
+        {"value": 0, "label": "No change in social interactions"},
+        {"value": 1, "label": "Reduction in activities/increased peer conflicts"},
+        {"value": 2, "label": "Increasingly withdrawn/significant peer conflicts"}
+      ]
+    },
+    {
+      "name": "drugs",
+      "type": "integer",
+      "required": true,
+      "description": "Drugs and alcohol use",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "options": [
+        {"value": 0, "label": "None or infrequent use"},
+        {"value": 1, "label": "Occasional use"},
+        {"value": 2, "label": "Frequent/daily use"}
+      ]
+    },
+    {
+      "name": "suicidality",
+      "type": "integer",
+      "required": true,
+      "description": "Suicidality assessment",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "options": [
+        {"value": 0, "label": "No suicidal thoughts"},
+        {"value": 1, "label": "Suicidal ideation"},
+        {"value": 2, "label": "Suicide plan or gesture"}
+      ]
+    },
+    {
+      "name": "emotions",
+      "type": "integer",
+      "required": true,
+      "description": "Emotions and behaviors",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "options": [
+        {"value": 0, "label": "Mildly anxious/sad/acting out"},
+        {"value": 1, "label": "Moderately anxious/sad/acting out"},
+        {"value": 2, "label": "Significantly distressed/unable to function"}
+      ]
+    },
+    {
+      "name": "discharge",
+      "type": "integer",
+      "required": true,
+      "description": "Discharge resources availability",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "options": [
+        {"value": 0, "label": "Ongoing/well-connected support"},
+        {"value": 1, "label": "Some support, not meeting needs"},
+        {"value": 2, "label": "No resources/waitlisted/noncompliant"}
+      ]
+    }
+  ],
+  "result": {
+    "name": "heads_ed_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "HEADS-ED total score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 7,
+        "stage": "Low Risk",
+        "description": "Low mental health needs",
+        "interpretation": "Consider community resources and routine follow-up. No immediate psychiatric consultation needed unless other concerning factors present."
+      },
+      {
+        "min": 8,
+        "max": 14,
+        "stage": "High Risk",
+        "description": "Significant mental health needs",
+        "interpretation": "Referral for specialized mental health assessment is recommended. Consider psychiatric consultation and appropriate level of care based on clinical presentation."
+      }
+    ],
+    "special_rules": [
+      "If Suicidality score = 2, immediate psychiatric consultation is recommended regardless of total score",
+      "Total score ≥8 OR Suicidality = 2 triggers recommendation for specialized mental health assessment"
+    ]
+  },
+  "references": [
+    "Cappelli M, Gray C, Zemek R, Cloutier P, Kennedy A, Glennie E, et al. The HEADS-ED: a rapid mental health screening tool for pediatric patients in the emergency department. Pediatrics. 2012 Aug;130(2):e321-7. doi: 10.1542/peds.2011-3798.",
+    "Cappelli M, Zemek R, Polihronis C, Thibedeau NR, Kennedy A, Gray C, et al. The HEADS-ED: Evaluating the Clinical Use of a Brief, Action-Oriented, Pediatric Mental Health Screening Tool. Pediatr Emerg Care. 2017 May;33(5):316-321. doi: 10.1097/PEC.0000000000000803."
+  ],
+  "formula": "Total Score = Home + Education + Activities + Drugs + Suicidality + Emotions + Discharge (Range: 0-14)",
+  "notes": [
+    "Designed for pediatric patients presenting to the emergency department with mental health concerns",
+    "Each domain scored 0-2 points: 0 = No action needed, 1 = Needs non-urgent action, 2 = Immediate action required",
+    "Suicidality score of 2 always warrants immediate psychiatric consultation",
+    "Higher scores correlate with increased likelihood of admission and psychiatric consultation"
+  ]
+}

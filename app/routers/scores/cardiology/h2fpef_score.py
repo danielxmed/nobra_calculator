@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate H2FPEF Score for Heart Failure with P...",
     description="Estimates probability of heart failure with preserved ejection fraction (HFpEF) in euvolemic patients with unexplained exertional dyspnea who have had an echocardiogram. Uses clinical characteristics and echocardiographic parameters to distinguish HFpEF from noncardiac causes of dyspnea.",
     response_description="The calculated h2fpef score with interpretation",
-    operation_id="calculate_h2fpef_score"
+    operation_id="h2fpef_score"
 )
 async def calculate_h2fpef_score(request: H2fpefScoreRequest):
     """

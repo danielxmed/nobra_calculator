@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Naloxone Drip Dosing",
     description="Doses naloxone for acute opioid overdose. Calculates continuous IV infusion rate based on the initial effective bolus dose, with goal of maintaining same level of opioid reversal.",
     response_description="The calculated naloxone drip dosing with interpretation",
-    operation_id="calculate_naloxone_drip_dosing"
+    operation_id="naloxone_drip_dosing"
 )
 async def calculate_naloxone_drip_dosing(request: NaloxoneDripDosingRequest):
     """

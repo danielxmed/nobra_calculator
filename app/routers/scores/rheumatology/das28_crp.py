@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Disease Activity Score-28 for Rheumatoid Arthri...",
     description="Describes severity of rheumatoid arthritis using clinical and laboratory data, specifically CRP",
     response_description="The calculated das28 crp with interpretation",
-    operation_id="calculate_das28_crp"
+    operation_id="das28_crp"
 )
 async def calculate_das28_crp(request: Das28CrpRequest):
     """

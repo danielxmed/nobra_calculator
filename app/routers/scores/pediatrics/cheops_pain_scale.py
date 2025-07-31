@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Children's Hospital of Eastern Ontario Pain Scale",
     description="Quantifies post-operative pain in pediatric patients aged 1-5 years using behavioral observations",
     response_description="The calculated cheops pain scale with interpretation",
-    operation_id="calculate_cheops_pain_scale"
+    operation_id="cheops_pain_scale"
 )
 async def calculate_cheops_pain_scale(request: CheopsPainScaleRequest):
     """

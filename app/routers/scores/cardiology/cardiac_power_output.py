@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Cardiac Power Output (CPO)",
     description="Calculates cardiac power output, the rate of energy output of the heart. Integrates both pressure and flow components of cardiac work. Strong hemodynamic predictor of mortality in cardiogenic shock.",
     response_description="The calculated cardiac power output with interpretation",
-    operation_id="calculate_cardiac_power_output"
+    operation_id="cardiac_power_output"
 )
 async def calculate_cardiac_power_output(request: CardiacPowerOutputRequest):
     """

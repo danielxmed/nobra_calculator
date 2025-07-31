@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Dehydration: Assessing Kids Accurately",
     description="Classifies dehydration severity in children under 5 years old with acute diarrhea using four clinical assessment parameters.",
     response_description="The calculated dhaka score with interpretation",
-    operation_id="calculate_dhaka_score"
+    operation_id="dhaka_score"
 )
 async def calculate_dhaka_score(request: DhakaScoreRequest):
     """

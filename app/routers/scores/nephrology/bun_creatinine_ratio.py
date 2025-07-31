@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate BUN Creatinine Ratio",
     description="Evaluates kidney function by calculating the ratio of blood urea nitrogen (BUN) to serum creatinine, helping to distinguish between prerenal, intrinsic renal, and postrenal causes of kidney dysfunction.",
     response_description="The calculated bun creatinine ratio with interpretation",
-    operation_id="calculate_bun_creatinine_ratio"
+    operation_id="bun_creatinine_ratio"
 )
 async def calculate_bun_creatinine_ratio(request: BunCreatinineRatioRequest):
     """

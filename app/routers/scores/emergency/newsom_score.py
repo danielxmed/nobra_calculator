@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Newsom Score for Non-traumatic Chest Pain",
     description="Rules out need for chest X-ray in patients with chest pain (non-traumatic). The score uses 12 clinical criteria to identify low-risk patients who do not require chest radiography, with a sensitivity of 92.9% and negative predictive value of 98.4%.",
     response_description="The calculated newsom score with interpretation",
-    operation_id="calculate_newsom_score"
+    operation_id="newsom_score"
 )
 async def calculate_newsom_score(request: NewsomScoreRequest):
     """

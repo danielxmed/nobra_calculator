@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Diabetes Distress Scale (DDS17)",
     description="Measures diabetes-related emotional distress across four domains to identify sources of distress and guide targeted interventions for patients with diabetes.",
     response_description="The calculated diabetes distress scale with interpretation",
-    operation_id="calculate_diabetes_distress_scale"
+    operation_id="diabetes_distress_scale"
 )
 async def calculate_diabetes_distress_scale(request: DiabetesDistressScaleRequest):
     """

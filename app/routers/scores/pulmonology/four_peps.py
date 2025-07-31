@@ -21,7 +21,7 @@ router = APIRouter()
     summary="Calculate 4-Level Pulmonary Embolism Clinical Probability...",
     description="Clinical probability score for suspected pulmonary embolism using 13 clinical variables to safely decrease imaging testing needs",
     response_description="The calculated four peps with interpretation",
-    operation_id="calculate_four_peps"
+    operation_id="four_peps"
 )
 async def calculate_four_peps(request: FourPepsRequest):
     """

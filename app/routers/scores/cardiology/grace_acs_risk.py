@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate GRACE ACS Risk and Mortality Calculator",
     description="Estimates admission to 6-month mortality risk for patients with acute coronary syndrome. Uses 8 clinical variables to provide risk stratification and guide treatment decisions in both ST-elevation and non-ST-elevation ACS.",
     response_description="The calculated grace acs risk with interpretation",
-    operation_id="calculate_grace_acs_risk"
+    operation_id="grace_acs_risk"
 )
 async def calculate_grace_acs_risk(request: GraceAcsRiskRequest):
     """

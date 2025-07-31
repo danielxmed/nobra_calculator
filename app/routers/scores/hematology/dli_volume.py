@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Donor Lymphocyte Infusion (DLI) Volume",
     description="Estimates total blood volume to process by apheresis to produce appropriate DLI dosage",
     response_description="The calculated dli volume with interpretation",
-    operation_id="calculate_dli_volume"
+    operation_id="dli_volume"
 )
 async def calculate_dli_volume(request: DliVolumeRequest):
     """

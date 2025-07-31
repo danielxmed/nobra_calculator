@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Endotracheal Tube",
     description="Estimates optimal ETT placement depth and target tidal volume based on patient height and gender. Uses the Chula formula for depth and ideal body weight for tidal volume calculations.",
     response_description="The calculated ett depth tidal volume with interpretation",
-    operation_id="calculate_ett_depth_tidal_volume"
+    operation_id="ett_depth_tidal_volume"
 )
 async def calculate_ett_depth_tidal_volume(request: EttDepthTidalVolumeRequest):
     """

@@ -12,7 +12,7 @@ router = APIRouter()
     summary="Calculate ACEF II Risk Score",
     description="Predicts 30-day mortality after cardiac surgery",
     response_description="Calculated ACEF II score with risk interpretation",
-    operation_id="calculate_acef_ii"
+    operation_id="acef_ii"
 )
 async def calculate_acef_ii(request: AcefIiRequest):
     """Calculate ACEF II Risk Score"""

@@ -51,12 +51,12 @@ async def list_categories():
     ...
 
 # app/routers/scores/geriatrics/amt_10.py
-@router.post("/amt_10", response_model=Amt10Response, operation_id="calculate_amt_10")
+@router.post("/amt_10", response_model=Amt10Response, operation_id="amt_10")
 async def calculate_amt_10(request: Amt10Request):
     ...
 
 # app/routers/scores/psychiatry/aims.py
-@router.post("/aims", response_model=AimsResponse, operation_id="calculate_aims")
+@router.post("/aims", response_model=AimsResponse, operation_id="aims")
 async def calculate_aims(request: AimsRequest):
     ...
 Adding operation IDs improves the readability of tool names

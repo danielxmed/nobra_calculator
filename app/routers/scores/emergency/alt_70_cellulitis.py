@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate ALT-70 Score for Cellulitis",
     description="Predicts likelihood of lower extremity cellulitis over other diagnoses (pseudocellulitis). Helps differentiate true cellulitis from its mimics in adult patients presenting to the emergency department with a red leg and clinical concern for cellulitis.",
     response_description="The calculated alt 70 cellulitis with interpretation",
-    operation_id="calculate_alt_70_cellulitis"
+    operation_id="alt_70_cellulitis"
 )
 async def calculate_alt_70_cellulitis(request: Alt70CellulitisRequest):
     """

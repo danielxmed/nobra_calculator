@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Canadian Cardiovascular Society (CCS)...",
     description="The Canadian Cardiovascular Society (CCS) Angina Grade classifies the severity of exertional angina based on the degree of effort necessary to induce angina symptoms. This standardized grading system helps clinicians communicate about functional limitations and symptom severity in patients with coronary artery disease.",
     response_description="The calculated ccs angina grade with interpretation",
-    operation_id="calculate_ccs_angina_grade"
+    operation_id="ccs_angina_grade"
 )
 async def calculate_ccs_angina_grade(request: CcsAnginaGradeRequest):
     """

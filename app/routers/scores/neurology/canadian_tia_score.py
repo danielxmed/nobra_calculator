@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Canadian Transient Ischemic Attack (TIA) Score",
     description="The Canadian TIA Score identifies risk of stroke, carotid endarterectomy, or carotid artery stenting within 7 days in patients who experienced TIA symptoms. It incorporates 13 predictive variables from history, physical examination, and testing routinely performed in the emergency department.",
     response_description="The calculated canadian tia score with interpretation",
-    operation_id="calculate_canadian_tia_score"
+    operation_id="canadian_tia_score"
 )
 async def calculate_canadian_tia_score(request: CanadianTiaScoreRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Cornell Assessment of Pediatric Delirium (CAPD)",
     description="Screens for delirium in pediatric patients through behavioral assessment of awareness, cognition, and psychomotor symptoms.",
     response_description="The calculated capd with interpretation",
-    operation_id="calculate_capd"
+    operation_id="capd"
 )
 async def calculate_capd(request: CapdRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate C-Peptide to Glucose Ratio",
     description="Assesses beta cell secretory function in patients with diabetes/pre-diabetes. The C-peptide to glucose ratio (CGR) is a simple marker that helps evaluate endogenous insulin secretion capacity and can guide diabetes management decisions.",
     response_description="The calculated c peptide to glucose ratio with interpretation",
-    operation_id="calculate_c_peptide_to_glucose_ratio"
+    operation_id="c_peptide_to_glucose_ratio"
 )
 async def calculate_c_peptide_to_glucose_ratio(request: CPeptideToGlucoseRatioRequest):
     """

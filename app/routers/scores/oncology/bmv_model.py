@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Brain Metastasis Velocity (BMV) Model",
     description="Calculates rate of distant brain failure after stereotactic radiosurgery for brain metastasis to predict overall survival",
     response_description="The calculated bmv model with interpretation",
-    operation_id="calculate_bmv_model"
+    operation_id="bmv_model"
 )
 async def calculate_bmv_model(request: BmvModelRequest):
     """

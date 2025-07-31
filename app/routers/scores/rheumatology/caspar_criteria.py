@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate CASPAR Criteria for Psoriatic Arthritis",
     description="Provides standardized classification criteria for identifying psoriatic arthritis (PsA) in patients with inflammatory arthritis. Requires presence of inflammatory articular disease plus ≥3 points from additional criteria.",
     response_description="The calculated caspar criteria with interpretation",
-    operation_id="calculate_caspar_criteria"
+    operation_id="caspar_criteria"
 )
 async def calculate_caspar_criteria(request: CasparCriteriaRequest):
     """

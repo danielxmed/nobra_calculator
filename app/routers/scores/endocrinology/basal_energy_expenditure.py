@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Basal Energy Expenditure",
     description="Calculates daily energy expenditure using the Harris-Benedict equation. Estimates the minimum daily caloric requirements at rest (basal metabolic rate) and can be adjusted for activity level to determine total daily energy needs.",
     response_description="The calculated basal energy expenditure with interpretation",
-    operation_id="calculate_basal_energy_expenditure"
+    operation_id="basal_energy_expenditure"
 )
 async def calculate_basal_energy_expenditure(request: BasalEnergyExpenditureRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate CHADS₂ Score for Atrial Fibrillation ...",
     description="Clinical prediction tool that estimates annual stroke risk in patients with atrial fibrillation. Helps determine whether anticoagulation therapy is warranted based on patient's risk profile for thromboembolic events. Developed from the National Registry of Atrial Fibrillation and validated in multiple populations.",
     response_description="The calculated chads2 score with interpretation",
-    operation_id="calculate_chads2_score"
+    operation_id="chads2_score"
 )
 async def calculate_chads2_score(request: Chads2ScoreRequest):
     """

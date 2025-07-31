@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Drug Abuse Screening Test-10 (DAST-10)",
     description="Brief 10-item assessment tool to measure, evaluate, and identify drug use problems, excluding alcohol and tobacco. Assesses drug use in the past 12 months.",
     response_description="The calculated dast 10 with interpretation",
-    operation_id="calculate_dast_10"
+    operation_id="dast_10"
 )
 async def calculate_dast_10(request: Dast10Request):
     """

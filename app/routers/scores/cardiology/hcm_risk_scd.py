@@ -26,7 +26,7 @@ router = APIRouter()
                 "Developed from a multicenter cohort of 3,675 patients and validated internationally, "
                 "it represents the first validated SCD risk model for HCM patients.",
     response_description="The calculated 5-year SCD risk percentage with risk stratification and ICD recommendations",
-    operation_id="calculate_hcm_risk_scd"
+    operation_id="hcm_risk_scd"
 )
 async def calculate_hcm_risk_scd(request: HcmRiskScdRequest):
     """

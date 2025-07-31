@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate GWTG-Heart Failure Risk Score",
     description="Predicts all-cause in-hospital mortality in admitted patients with heart failure using validated AHA Get With The Guidelines data",
     response_description="The calculated gwtg heart failure risk score with interpretation",
-    operation_id="calculate_gwtg_heart_failure_risk_score"
+    operation_id="gwtg_heart_failure_risk_score"
 )
 async def calculate_gwtg_heart_failure_risk_score(request: GwtgHeartFailureRiskScoreRequest):
     """

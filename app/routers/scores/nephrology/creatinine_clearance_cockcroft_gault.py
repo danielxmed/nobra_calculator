@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Creatinine Clearance (Cockcroft-Gault Equation)",
     description="Estimates creatinine clearance for kidney function assessment and medication dosing using patient demographics and serum creatinine",
     response_description="The calculated creatinine clearance cockcroft gault with interpretation",
-    operation_id="calculate_creatinine_clearance_cockcroft_gault"
+    operation_id="creatinine_clearance_cockcroft_gault"
 )
 async def calculate_creatinine_clearance_cockcroft_gault(request: CreatinineClearanceCockcroftGaultRequest):
     """

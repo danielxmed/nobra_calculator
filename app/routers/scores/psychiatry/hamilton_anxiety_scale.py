@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Hamilton Anxiety Scale",
     description="Rates level of anxiety based on clinical questions. Assesses the severity of anxiety symptoms across 14 domains in patients already diagnosed with anxiety disorders.",
     response_description="The calculated hamilton anxiety scale with interpretation",
-    operation_id="calculate_hamilton_anxiety_scale"
+    operation_id="hamilton_anxiety_scale"
 )
 async def calculate_hamilton_anxiety_scale(request: HamiltonAnxietyScaleRequest):
     """

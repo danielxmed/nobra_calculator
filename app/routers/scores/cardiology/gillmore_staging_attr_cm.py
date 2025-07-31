@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Gillmore Staging System for Transthyr...",
     description="Staging system for transthyretin amyloid cardiomyopathy using NT-proBNP and estimated glomerular filtration rate (eGFR) to stratify patients into prognostic categories for both wild-type and variant ATTR-CM",
     response_description="The calculated gillmore staging attr cm with interpretation",
-    operation_id="calculate_gillmore_staging_attr_cm"
+    operation_id="gillmore_staging_attr_cm"
 )
 async def calculate_gillmore_staging_attr_cm(request: GillmoreStagingAttrCmRequest):
     """

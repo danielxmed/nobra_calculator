@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Child-Pugh Score for Cirrhosis Mortality",
     description="Estimates severity of cirrhosis and prognosis in patients with chronic liver disease",
     response_description="The calculated child pugh score with interpretation",
-    operation_id="calculate_child_pugh_score"
+    operation_id="child_pugh_score"
 )
 async def calculate_child_pugh_score(request: ChildPughScoreRequest):
     """

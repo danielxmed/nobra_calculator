@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Graded Prognostic Assessment for Gastrointestin...",
     description="Estimates survival in patients with gastrointestinal cancers and brain metastases. Uses 4 prognostic factors to provide risk stratification and guide treatment decisions for patients with brain metastases from GI cancers.",
     response_description="The calculated gi gpa with interpretation",
-    operation_id="calculate_gi_gpa"
+    operation_id="gi_gpa"
 )
 async def calculate_gi_gpa(request: GiGpaRequest):
     """

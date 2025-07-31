@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate DIPSS/DIPSS Plus",
     description="Estimates survival in patients with primary myelofibrosis using clinical and laboratory parameters",
     response_description="The calculated dipss plus with interpretation",
-    operation_id="calculate_dipss_plus"
+    operation_id="dipss_plus"
 )
 async def calculate_dipss_plus(request: DipssPlusRequest):
     """

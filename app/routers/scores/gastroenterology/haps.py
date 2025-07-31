@@ -26,7 +26,7 @@ router = APIRouter()
                 "This rapid assessment tool can be completed within 30-60 minutes of admission and may help identify "
                 "patients suitable for management on general wards or early discharge.",
     response_description="The calculated HAPS score with risk stratification and clinical management recommendations",
-    operation_id="calculate_haps"
+    operation_id="haps"
 )
 async def calculate_haps(request: HapsRequest):
     """

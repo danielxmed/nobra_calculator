@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate CLIF-C ACLF (Acute-on-Chronic Liver Failure)",
     description="Predicts mortality in acute-on-chronic liver failure patients",
     response_description="The calculated clif c aclf with interpretation",
-    operation_id="calculate_clif_c_aclf"
+    operation_id="clif_c_aclf"
 )
 async def calculate_clif_c_aclf(request: ClifCAclfRequest):
     """

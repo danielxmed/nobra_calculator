@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Cincinnati Prehospital Stroke Severity Scale",
     description="Predicts large vessel occlusion (LVO) and severe stroke in patients with stroke symptoms",
     response_description="The calculated cincinnati prehospital stroke severity scale with interpretation",
-    operation_id="calculate_cincinnati_prehospital_stroke_severity_scale"
+    operation_id="cincinnati_prehospital_stroke_severity_scale"
 )
 async def calculate_cincinnati_prehospital_stroke_severity_scale(request: CincinnatiPrehospitalStrokeSeverityScaleRequest):
     """

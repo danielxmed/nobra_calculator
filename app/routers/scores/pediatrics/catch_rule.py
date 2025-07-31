@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate CATCH",
     description="Predicts clinically significant head injuries in children aged 0-16 years to guide CT imaging decisions. Identifies high-risk factors for neurologic intervention and medium-risk factors for brain injury on CT.",
     response_description="The calculated catch rule with interpretation",
-    operation_id="calculate_catch_rule"
+    operation_id="catch_rule"
 )
 async def calculate_catch_rule(request: CatchRuleRequest):
     """

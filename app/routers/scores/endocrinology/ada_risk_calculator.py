@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate American Diabetes Association",
     description="Predicts risk of undiagnosed diabetes to determine who should be screened. Uses demographic and clinical factors to identify individuals at high risk for type 2 diabetes mellitus.",
     response_description="The calculated ada risk calculator with interpretation",
-    operation_id="calculate_ada_risk_calculator"
+    operation_id="ada_risk_calculator"
 )
 async def calculate_ada_risk_calculator(request: AdaRiskCalculatorRequest):
     """

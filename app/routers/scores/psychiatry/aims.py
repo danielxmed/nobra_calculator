@@ -14,7 +14,7 @@ router = APIRouter()
     summary="Calculate Abnormal Involuntary Movement Scale (AIMS)",
     description="Measures involuntary movements of tardive dyskinesia (TD) in patients receiving neuroleptic medications",
     response_description="The calculated aims with interpretation",
-    operation_id="calculate_aims"
+    operation_id="aims"
 )
 async def calculate_aims(request: AimsRequest):
     """

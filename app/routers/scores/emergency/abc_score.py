@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate ABC Score for Massive Transfusion",
     description="Predicts the necessity for massive transfusion in trauma patients using clinical variables available at initial assessment",
     response_description="The calculated abc score with interpretation",
-    operation_id="calculate_abc_score"
+    operation_id="abc_score"
 )
 async def calculate_abc_score(request: AbcScoreRequest):
     """

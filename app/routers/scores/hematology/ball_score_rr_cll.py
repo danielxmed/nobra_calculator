@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate BALL Score for Relapsed/Refractory CLL",
     description="Assesses prognosis of patients with relapsed/refractory chronic lymphocytic leukemia (R/R CLL) on targeted therapies. The BALL Score (β2-microglobulin, Anemia, LDH, Last Therapy) helps estimate survival outcomes in patients with R/R-CLL who require further treatment with targeted therapies.",
     response_description="The calculated ball score rr cll with interpretation",
-    operation_id="calculate_ball_score_rr_cll"
+    operation_id="ball_score_rr_cll"
 )
 async def calculate_ball_score_rr_cll(request: BallScoreRrCllRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Glucose Infusion Rate (GIR)",
     description="Calculates the rate at which glucose is administered intravenously, particularly important in neonatal and pediatric care to maintain appropriate blood glucose levels. Used to monitor and adjust dextrose infusions to prevent hypoglycemia while avoiding excessive glucose administration.",
     response_description="The calculated glucose infusion rate with interpretation",
-    operation_id="calculate_glucose_infusion_rate"
+    operation_id="glucose_infusion_rate"
 )
 async def calculate_glucose_infusion_rate(request: GlucoseInfusionRateRequest):
     """

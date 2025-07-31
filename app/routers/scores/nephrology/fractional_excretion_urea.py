@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Fractional Excretion of Urea (FEUrea)",
     description="Determines the cause of renal failure. Similar to FENa, but can be used in patients on diuretics. More sensitive and specific than FENa for differentiating prerenal azotemia from acute tubular necrosis.",
     response_description="The calculated fractional excretion urea with interpretation",
-    operation_id="calculate_fractional_excretion_urea"
+    operation_id="fractional_excretion_urea"
 )
 async def calculate_fractional_excretion_urea(request: FractionalExcretionUreaRequest):
     """

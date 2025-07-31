@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Fleischner Society Guidelines for Incidental Pu...",
     description="Provides guidelines for management of solid and subsolid pulmonary nodules detected incidentally on CT",
     response_description="The calculated fleischner guidelines with interpretation",
-    operation_id="calculate_fleischner_guidelines"
+    operation_id="fleischner_guidelines"
 )
 async def calculate_fleischner_guidelines(request: FleischnerGuidelinesRequest):
     """

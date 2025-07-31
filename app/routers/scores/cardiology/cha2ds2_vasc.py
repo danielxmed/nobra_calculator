@@ -13,7 +13,7 @@ router = APIRouter()
              summary="Calculate CHA₂DS₂-VASc Score",
              description="Assesses stroke risk in atrial fibrillation patients for anticoagulation decisions",
              response_description="Stroke risk assessment with anticoagulation recommendations",
-             operation_id="calculate_cha2ds2_vasc")
+             operation_id="cha2ds2_vasc")
 async def calculate_cha2ds2_vasc(request: Cha2ds2VascRequest):
     """
     **Calculate CHA₂DS₂-VASc Score for Atrial Fibrillation Stroke Risk**

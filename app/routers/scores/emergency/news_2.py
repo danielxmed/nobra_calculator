@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate National Early Warning Score (NEWS) 2",
     description="Determines the degree of illness of a patient and prompts critical care intervention. Recommended by NHS over original NEWS with improved oxygen saturation scoring for hypercapnic respiratory failure patients.",
     response_description="The calculated news 2 with interpretation",
-    operation_id="calculate_news_2"
+    operation_id="news_2"
 )
 async def calculate_news_2(request: News2Request):
     """

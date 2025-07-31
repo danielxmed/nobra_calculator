@@ -14,7 +14,7 @@ router = APIRouter()
     summary="Calculate Absolute Neutrophil Count (ANC)",
     description="Frequently used to assess febrile neutropenia in chemotherapy patients, by calculating the total number of mature and immature neutrophils",
     response_description="The calculated anc with interpretation",
-    operation_id="calculate_anc"
+    operation_id="anc"
 )
 async def calculate_anc(request: AncRequest):
     """

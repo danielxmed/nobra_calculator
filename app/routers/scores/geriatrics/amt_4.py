@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Abbreviated Mental Test 4 (AMT-4)",
     description="Assesses mental impairment and cognitive function in elderly patients using four simple questions",
     response_description="The calculated amt 4 with interpretation",
-    operation_id="calculate_amt_4"
+    operation_id="amt_4"
 )
 async def calculate_amt_4(request: Amt4Request):
     """

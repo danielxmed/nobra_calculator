@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Glasgow-Blatchford Bleeding Score (GBS)",
     description="Clinical scoring system to assess the risk of upper gastrointestinal bleeding and identify patients who may need medical intervention such as blood transfusion or endoscopic intervention. Used to stratify patients for safe outpatient management versus hospital admission.",
     response_description="The calculated glasgow blatchford bleeding score with interpretation",
-    operation_id="calculate_glasgow_blatchford_bleeding_score"
+    operation_id="glasgow_blatchford_bleeding_score"
 )
 async def calculate_glasgow_blatchford_bleeding_score(request: GlasgowBlatchfordBleedingScoreRequest):
     """

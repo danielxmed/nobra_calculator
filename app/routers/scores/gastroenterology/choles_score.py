@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate CholeS Score for Duration of Laparoscopic Chole...",
     description="Predicts operative time duration for elective laparoscopic cholecystectomy procedures",
     response_description="The calculated choles score with interpretation",
-    operation_id="calculate_choles_score"
+    operation_id="choles_score"
 )
 async def calculate_choles_score(request: CholesScoredRequest):
     """

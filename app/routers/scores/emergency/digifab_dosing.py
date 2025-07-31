@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate DigiFab (Digibind) Dosing for Digoxin Poisoning",
     description="Doses DigiFab in patients with confirmed digoxin poisoning or overdose",
     response_description="The calculated digifab dosing with interpretation",
-    operation_id="calculate_digifab_dosing"
+    operation_id="digifab_dosing"
 )
 async def calculate_digifab_dosing(request: DigifabDosingRequest):
     """

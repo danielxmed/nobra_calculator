@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Alvarado Score for Acute Appendicitis",
     description="Predicts likelihood of acute appendicitis based on clinical symptoms, signs, and laboratory findings. Uses the MANTRELS mnemonic to assess 8 clinical factors for diagnosis of appendicitis.",
     response_description="The calculated alvarado score with interpretation",
-    operation_id="calculate_alvarado_score"
+    operation_id="alvarado_score"
 )
 async def calculate_alvarado_score(request: AlvaradoScoreRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate D'Amico Risk Classification for Prostate Cancer",
     description="Assesses 5-year risk of treatment failure in patients with localized prostate cancer based on clinical factors. Stratifies patients into low, intermediate, or high-risk groups to guide treatment decisions and prognosis estimation.",
     response_description="The calculated damico risk classification with interpretation",
-    operation_id="calculate_damico_risk_classification"
+    operation_id="damico_risk_classification"
 )
 async def calculate_damico_risk_classification(request: DamicoRiskClassificationRequest):
     """

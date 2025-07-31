@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate CKD Prediction in HIV+ Patients",
     description="Determines likelihood of HIV patients developing CKD in the next 5 years, whether they take tenofovir or not",
     response_description="The calculated ckd prediction hiv patients with interpretation",
-    operation_id="calculate_ckd_prediction_hiv_patients"
+    operation_id="ckd_prediction_hiv_patients"
 )
 async def calculate_ckd_prediction_hiv_patients(request: CkdPredictionHivPatientsRequest):
     """

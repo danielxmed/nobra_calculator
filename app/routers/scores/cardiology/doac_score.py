@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Direct-Acting Oral Anticoagulants (DO...",
     description="Predicts bleeding risk in patients with atrial fibrillation on direct-acting oral anticoagulants",
     response_description="The calculated doac score with interpretation",
-    operation_id="calculate_doac_score"
+    operation_id="doac_score"
 )
 async def calculate_doac_score(request: DoacScoreRequest):
     """

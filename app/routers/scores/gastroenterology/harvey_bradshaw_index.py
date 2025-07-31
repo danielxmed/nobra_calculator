@@ -27,7 +27,7 @@ router = APIRouter()
                 "disease. A reduction of ≥3 points is considered a clinically significant response. "
                 "This tool enables rapid bedside assessment of disease activity for treatment decisions.",
     response_description="The calculated HBI score with disease activity classification and treatment recommendations",
-    operation_id="calculate_harvey_bradshaw_index"
+    operation_id="harvey_bradshaw_index"
 )
 async def calculate_harvey_bradshaw_index(request: HarveyBradshawIndexRequest):
     """

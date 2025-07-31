@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Ottawa COPD Risk Scale",
     description="Predicts 30-day mortality or serious adverse events (MI, intubation, etc) in emergency department COPD patients. Uses 10 clinical variables to stratify risk from low (2.2%) to very high (75.6%).",
     response_description="The calculated ottawa copd risk scale with interpretation",
-    operation_id="calculate_ottawa_copd_risk_scale"
+    operation_id="ottawa_copd_risk_scale"
 )
 async def calculate_ottawa_copd_risk_scale(request: OttawaCopdRiskScaleRequest):
     """

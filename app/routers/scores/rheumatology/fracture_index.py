@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate FRACTURE Index",
     description="Predicts 5-year hip fracture risk in postmenopausal women using clinical risk factors with or without bone mineral density measurements.",
     response_description="The calculated fracture index with interpretation",
-    operation_id="calculate_fracture_index"
+    operation_id="fracture_index"
 )
 async def calculate_fracture_index(request: FractureIndexRequest):
     """

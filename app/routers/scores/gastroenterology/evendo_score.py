@@ -21,7 +21,7 @@ router = APIRouter()
     summary="Calculate EVendo Score for Esophageal Varices",
     description="Predicts presence and size of esophageal varices prior to screening endoscopy in patients with cirrhosis. Helps identify patients who may safely defer endoscopic screening.",
     response_description="The calculated evendo score with interpretation",
-    operation_id="calculate_evendo_score"
+    operation_id="evendo_score"
 )
 async def calculate_evendo_score(request: EvendoScoreRequest):
     """

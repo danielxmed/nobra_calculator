@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Disease Steps for Multiple Sclerosis",
     description="Assesses MS disease progression based on patient's ambulatory ability",
     response_description="The calculated disease steps ms with interpretation",
-    operation_id="calculate_disease_steps_ms"
+    operation_id="disease_steps_ms"
 )
 async def calculate_disease_steps_ms(request: DiseaseStepsMsRequest):
     """

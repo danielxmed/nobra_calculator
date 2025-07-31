@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Geneva Risk Score for Venous Thromboembolism",
     description="Predicts the need for venous thromboembolism (VTE) prophylaxis in hospitalized medical patients by assessing risk factors to identify patients who would benefit from thromboprophylaxis versus those at low risk who may not require anticoagulation",
     response_description="The calculated geneva vte prophylaxis with interpretation",
-    operation_id="calculate_geneva_vte_prophylaxis"
+    operation_id="geneva_vte_prophylaxis"
 )
 async def calculate_geneva_vte_prophylaxis(request: GenevaVteProphylaxisRequest):
     """

@@ -21,7 +21,7 @@ router = APIRouter()
     summary="Calculate ASTRAL Score for Ischemic Stroke",
     description="Predicts 90-day poor outcome (mRS >2) in patients with acute ischemic stroke. The score combines age, NIHSS, timing, visual defects, glucose levels, and consciousness to stratify prognosis.",
     response_description="The calculated astral score with interpretation",
-    operation_id="calculate_astral_score"
+    operation_id="astral_score"
 )
 async def calculate_astral_score(request: AstralScoreRequest):
     """

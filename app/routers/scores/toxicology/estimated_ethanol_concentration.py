@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Estimated Ethanol",
     description="Predicts ethanol and toxic alcohol serum concentration based on amount ingested and patient weight using volume of distribution principles.",
     response_description="The calculated estimated ethanol concentration with interpretation",
-    operation_id="calculate_estimated_ethanol_concentration"
+    operation_id="estimated_ethanol_concentration"
 )
 async def calculate_estimated_ethanol_concentration(request: EstimatedEthanolConcentrationRequest):
     """

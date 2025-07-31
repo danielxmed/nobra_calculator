@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Eosinophilic Esophagitis Endoscopic Reference S...",
     description="Assesses severity of endoscopic findings in patients with eosinophilic esophagitis (EoE) using standardized scoring of five major endoscopic features: edema, rings, exudates, furrows, and strictures.",
     response_description="The calculated erefs with interpretation",
-    operation_id="calculate_erefs"
+    operation_id="erefs"
 )
 async def calculate_erefs(request: ErefsRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate GALAD Model for Hepatocellular Carcinoma (HCC)",
     description="Diagnoses HCC based on serum biomarkers in patients with chronic liver disease (CLD). The GALAD model combines Gender, Age, AFP-L3, AFP, and DCP (des-gamma-carboxy prothrombin) to provide superior diagnostic accuracy compared to individual biomarkers.",
     response_description="The calculated galad model hcc with interpretation",
-    operation_id="calculate_galad_model_hcc"
+    operation_id="galad_model_hcc"
 )
 async def calculate_galad_model_hcc(request: GaladModelHccRequest):
     """

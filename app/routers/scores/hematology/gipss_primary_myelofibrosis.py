@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate GIPSS - Genetically Inspired Prognostic Scoring...",
     description="The GIPSS is a genetically-based prognostic scoring system for primary myelofibrosis that relies exclusively on cytogenetic and molecular genetic markers. This system eliminates subjective clinical variables and provides more accurate risk stratification for treatment planning, particularly for allogeneic stem cell transplant decisions.",
     response_description="The calculated gipss primary myelofibrosis with interpretation",
-    operation_id="calculate_gipss_primary_myelofibrosis"
+    operation_id="gipss_primary_myelofibrosis"
 )
 async def calculate_gipss_primary_myelofibrosis(request: GipssPrimaryMyelofibrosisRequest):
     """

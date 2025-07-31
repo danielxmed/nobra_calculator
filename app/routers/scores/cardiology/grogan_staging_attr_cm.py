@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Grogan Staging System for Transthyret...",
     description="Classifies prognosis of patients with wild-type transthyretin amyloid cardiomyopathy using cardiac biomarkers NT-proBNP and troponin T",
     response_description="The calculated grogan staging attr cm with interpretation",
-    operation_id="calculate_grogan_staging_attr_cm"
+    operation_id="grogan_staging_attr_cm"
 )
 async def calculate_grogan_staging_attr_cm(request: GroganStagingAttrCmRequest):
     """

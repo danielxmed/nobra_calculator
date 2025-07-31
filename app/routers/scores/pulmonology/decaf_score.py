@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate DECAF Score for Acute Exacerbation of COPD",
     description="Predicts in-hospital mortality in acute COPD exacerbation using five clinical variables: Dyspnoea, Eosinopenia, Consolidation, Acidaemia, and atrial Fibrillation.",
     response_description="The calculated decaf score with interpretation",
-    operation_id="calculate_decaf_score"
+    operation_id="decaf_score"
 )
 async def calculate_decaf_score(request: DecafScoreRequest):
     """

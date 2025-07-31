@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Acute Interstitial Nephritis (AIN) Risk Calculator",
     description="Identifies the likelihood of acute interstitial nephritis in at-risk patients undergoing kidney biopsy evaluation. Uses commonly available clinical and laboratory parameters to predict AIN probability.",
     response_description="The calculated ain risk calculator with interpretation",
-    operation_id="calculate_ain_risk_calculator"
+    operation_id="ain_risk_calculator"
 )
 async def calculate_ain_risk_calculator(request: AinRiskCalculatorRequest):
     """

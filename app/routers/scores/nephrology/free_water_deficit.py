@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Free Water Deficit in Hypernatremia",
     description="Calculates free water deficit by estimated total body water in patients with hypernatremia or dehydration",
     response_description="The calculated free water deficit with interpretation",
-    operation_id="calculate_free_water_deficit"
+    operation_id="free_water_deficit"
 )
 async def calculate_free_water_deficit(request: FreeWaterDeficitRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Dutch-English LEMS Tumor Association Prediction",
     description="Predicts small-cell lung cancer (SCLC) in patients with Lambert-Eaton myasthenic syndrome (LEMS) using clinical parameters assessed at or within 3 months of onset. The score helps identify high-risk patients requiring intensive cancer screening.",
     response_description="The calculated delta p score with interpretation",
-    operation_id="calculate_delta_p_score"
+    operation_id="delta_p_score"
 )
 async def calculate_delta_p_score(request: DeltaPScoreRequest):
     """

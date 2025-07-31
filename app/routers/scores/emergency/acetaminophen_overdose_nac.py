@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Acetaminophen Overdose and NAC Dosing",
     description="Calculates PO/IV N-acetylcysteine (NAC) dosing for acetaminophen overdose and determines toxicity based on the Rumack-Matthew nomogram",
     response_description="The calculated acetaminophen overdose nac with interpretation",
-    operation_id="calculate_acetaminophen_overdose_nac"
+    operation_id="acetaminophen_overdose_nac"
 )
 async def calculate_acetaminophen_overdose_nac(request: AcetaminophenOverdoseNacRequest):
     """

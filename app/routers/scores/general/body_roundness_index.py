@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Body Roundness Index (BRI)",
     description="Estimates % body fat and % visceral adipose tissue (VAT) based on waist circumference and height. BRI provides a geometric assessment of body shape and correlates with mortality risk and cardiometabolic health outcomes.",
     response_description="The calculated body roundness index with interpretation",
-    operation_id="calculate_body_roundness_index"
+    operation_id="body_roundness_index"
 )
 async def calculate_body_roundness_index(request: BodyRoundnessIndexRequest):
     """

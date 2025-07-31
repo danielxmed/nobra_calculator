@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Abbreviated Injury Score",
     description="Classifies inhalation injury severity based on bronchoscopic findings in adult patients with suspected inhalation injury undergoing flexible bronchoscopy",
     response_description="The calculated ais inhalation injury with interpretation",
-    operation_id="calculate_ais_inhalation_injury"
+    operation_id="ais_inhalation_injury"
 )
 async def calculate_ais_inhalation_injury(request: AisInhalationInjuryRequest):
     """

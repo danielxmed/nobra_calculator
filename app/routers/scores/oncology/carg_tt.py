@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Cancer and Aging Research Group Chemotherapy To...",
     description="The CARG-TT estimates the risk of severe chemotherapy-related side effects (Grade 3 or greater toxicity) in older cancer patients (age >65). It uses 11 geriatric assessment variables, laboratory values, and patient characteristics to predict chemotherapy toxicity risk.",
     response_description="The calculated carg tt with interpretation",
-    operation_id="calculate_carg_tt"
+    operation_id="carg_tt"
 )
 async def calculate_carg_tt(request: CargTtRequest):
     """

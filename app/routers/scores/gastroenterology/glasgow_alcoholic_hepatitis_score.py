@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Glasgow Alcoholic Hepatitis Score (GAHS)",
     description="Prognostic score for mortality prediction in patients with alcoholic hepatitis using five clinical variables: age, white blood cell count, urea, prothrombin time ratio, and bilirubin. More accurate than the modified Discriminant Function for predicting 28-day mortality",
     response_description="The calculated glasgow alcoholic hepatitis score with interpretation",
-    operation_id="calculate_glasgow_alcoholic_hepatitis_score"
+    operation_id="glasgow_alcoholic_hepatitis_score"
 )
 async def calculate_glasgow_alcoholic_hepatitis_score(request: GlasgowAlcoholicHepatitisScoreRequest):
     """

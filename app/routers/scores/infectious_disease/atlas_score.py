@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate ATLAS Score for Clostridium Difficile Infection",
     description="Predicts response to therapy in C. diff patients",
     response_description="The calculated atlas score with interpretation",
-    operation_id="calculate_atlas_score"
+    operation_id="atlas_score"
 )
 async def calculate_atlas_score(request: AtlasScoreRequest):
     """

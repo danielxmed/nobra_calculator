@@ -36,7 +36,7 @@ router = APIRouter()
     summary="Calculate Corrected Reticulocyte Percentage/Reticulocyte ...",
     description="Assesses bone marrow response to anemia by correcting reticulocyte count for degree of anemia and maturation time",
     response_description="The calculated reticulocyte production index with interpretation",
-    operation_id="calculate_reticulocyte_production_index"
+    operation_id="reticulocyte_production_index"
 )
 async def calculate_reticulocyte_production_index(request: ReticulocyteProductionIndexRequest):
     """

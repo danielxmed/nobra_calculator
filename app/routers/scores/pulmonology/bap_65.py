@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate BAP-65 Score for Acute Exacerbation of COPD",
     description="Predicts mortality in acute COPD exacerbation using BUN, Altered mental status, Pulse rate, and age ≥65 years",
     response_description="The calculated bap 65 with interpretation",
-    operation_id="calculate_bap_65"
+    operation_id="bap_65"
 )
 async def calculate_bap_65(request: Bap65Request):
     """

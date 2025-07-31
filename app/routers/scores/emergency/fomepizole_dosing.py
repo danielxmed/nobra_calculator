@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Fomepizole Dosing Calculator",
     description="Calculates fomepizole (4-methylpyrazole) dosing for treatment of methanol and ethylene glycol poisoning. Provides initial loading dose, maintenance doses, and special hemodialysis considerations.",
     response_description="The calculated fomepizole dosing with interpretation",
-    operation_id="calculate_fomepizole_dosing"
+    operation_id="fomepizole_dosing"
 )
 async def calculate_fomepizole_dosing(request: FomepizoleDosingRequest):
     """

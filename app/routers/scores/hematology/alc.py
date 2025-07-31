@@ -14,7 +14,7 @@ router = APIRouter()
     summary="Calculate Absolute Lymphocyte Count (ALC)",
     description="Assesses lymphocyte count and predicts CD4 count in HIV patients",
     response_description="The calculated alc with interpretation",
-    operation_id="calculate_alc"
+    operation_id="alc"
 )
 async def calculate_alc(request: AlcRequest):
     """

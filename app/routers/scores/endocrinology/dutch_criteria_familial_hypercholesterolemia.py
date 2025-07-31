@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Dutch Criteria for Familial Hypercholesterolemia",
     description="Diagnoses familial hypercholesterolemia (FH) based on clinical, genetic, and family history using the Dutch Lipid Clinic Network (DLCN) point-based scoring system. Provides stratification into possible, probable, or definite FH categories.",
     response_description="The calculated dutch criteria familial hypercholesterolemia with interpretation",
-    operation_id="calculate_dutch_criteria_familial_hypercholesterolemia"
+    operation_id="dutch_criteria_familial_hypercholesterolemia"
 )
 async def calculate_dutch_criteria_familial_hypercholesterolemia(request: DutchCriteriaFamilialHypercholesterolemiaRequest):
     """

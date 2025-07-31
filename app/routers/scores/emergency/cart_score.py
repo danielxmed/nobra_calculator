@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate CART (Cardiac Arrest Risk Triage) Score",
     description="Predicts risk of in-hospital cardiac arrest within 48 hours using vital signs and age. Developed to identify hospitalized patients at high risk for cardiac arrest who may benefit from intensive monitoring or early intervention.",
     response_description="The calculated cart score with interpretation",
-    operation_id="calculate_cart_score"
+    operation_id="cart_score"
 )
 async def calculate_cart_score(request: CartScoreRequest):
     """

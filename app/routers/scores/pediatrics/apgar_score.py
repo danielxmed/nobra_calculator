@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate APGAR Score",
     description="Assesses neonatal vitality at 1 and 5 minutes after birth using 5 clinical criteria",
     response_description="The calculated apgar score with interpretation",
-    operation_id="calculate_apgar_score"
+    operation_id="apgar_score"
 )
 async def calculate_apgar_score(request: ApgarScoreRequest):
     """

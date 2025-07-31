@@ -8,7 +8,7 @@ from app.services.calculator_service import calculator_service
 
 router = APIRouter()
 
-@router.post("/acc_aha_hf_staging", response_model=AccAhaHfStagingResponse, summary="Calculate ACC/AHA HF Staging", description="Calculates ACC/AHA Heart Failure Staging", response_description="HF stage and recommendations", operation_id="calculate_acc_aha_hf_staging")
+@router.post("/acc_aha_hf_staging", response_model=AccAhaHfStagingResponse, summary="Calculate ACC/AHA HF Staging", description="Calculates ACC/AHA Heart Failure Staging", response_description="HF stage and recommendations", operation_id="acc_aha_hf_staging")
 async def calculate_acc_aha_hf_staging(request: AccAhaHfStagingRequest):
     """
     Calculates ACC/AHA Heart Failure Staging

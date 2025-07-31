@@ -21,7 +21,7 @@ router = APIRouter(
 calculator_service = CalculatorService()
 
 
-@router.post("/asa-physical-status", response_model=AsaPhysicalStatusResponse, summary="Calculate ASA Physical Status", description="Calculates ASA Physical Status Classification System", response_description="ASA classification with risk level assessment and clinical interpretation", operation_id="calculate_asa_physical_status")
+@router.post("/asa-physical-status", response_model=AsaPhysicalStatusResponse, summary="Calculate ASA Physical Status", description="Calculates ASA Physical Status Classification System", response_description="ASA classification with risk level assessment and clinical interpretation", operation_id="asa_physical_status")
 async def calculate_asa_physical_status(request: AsaPhysicalStatusRequest):
     """
     Calculate ASA Physical Status Classification

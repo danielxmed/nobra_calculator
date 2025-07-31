@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Fong Clinical Risk Score for Colorectal Cancer ...",
     description="Predicts recurrence and survival risk for colorectal cancer patients with liver metastases after hepatic resection. Developed from analysis of 1,001 consecutive cases to identify high-risk patients who may benefit from adjuvant therapy or closer surveillance.",
     response_description="The calculated fong clinical risk score with interpretation",
-    operation_id="calculate_fong_clinical_risk_score"
+    operation_id="fong_clinical_risk_score"
 )
 async def calculate_fong_clinical_risk_score(request: FongClinicalRiskScoreRequest):
     """

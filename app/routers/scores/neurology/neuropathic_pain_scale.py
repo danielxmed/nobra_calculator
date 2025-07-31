@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Neuropathic Pain Scale (NPS)",
     description="Quantifies severity of neuropathic pain using 10 specific pain quality dimensions. Only for patients already diagnosed with neuropathic pain.",
     response_description="The calculated neuropathic pain scale with interpretation",
-    operation_id="calculate_neuropathic_pain_scale"
+    operation_id="neuropathic_pain_scale"
 )
 async def calculate_neuropathic_pain_scale(request: NeuropathicPainScaleRequest):
     """

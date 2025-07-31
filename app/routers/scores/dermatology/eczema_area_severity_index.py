@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Eczema Area and Severity Index (EASI)",
     description="Stratifies eczema severity by assessing area involvement and severity signs across four body regions (head/neck, upper extremities, trunk, lower extremities) with validated clinical scoring.",
     response_description="The calculated eczema area severity index with interpretation",
-    operation_id="calculate_eczema_area_severity_index"
+    operation_id="eczema_area_severity_index"
 )
 async def calculate_eczema_area_severity_index(request: EczemaAreaSeverityIndexRequest):
     """

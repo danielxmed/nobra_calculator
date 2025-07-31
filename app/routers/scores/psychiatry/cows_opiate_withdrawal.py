@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Clinical Opiate Withdrawal Scale",
     description="Quantifies severity of opiate withdrawal symptoms using 11 clinical criteria to guide treatment decisions and assess withdrawal progression",
     response_description="The calculated cows opiate withdrawal with interpretation",
-    operation_id="calculate_cows_opiate_withdrawal"
+    operation_id="cows_opiate_withdrawal"
 )
 async def calculate_cows_opiate_withdrawal(request: CowsOpiateWithdrawalRequest):
     """

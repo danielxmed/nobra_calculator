@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate G8 Geriatric Screening Tool",
     description="Identifies older cancer patients who could benefit from comprehensive geriatric assessment (CGA). The G8 is a validated screening tool that evaluates multiple geriatric domains including nutrition, mobility, cognition, and functional status to determine which elderly cancer patients require full geriatric evaluation.",
     response_description="The calculated g8 geriatric screening tool with interpretation",
-    operation_id="calculate_g8_geriatric_screening_tool"
+    operation_id="g8_geriatric_screening_tool"
 )
 async def calculate_g8_geriatric_screening_tool(request: G8GeriatricScreeningToolRequest):
     """

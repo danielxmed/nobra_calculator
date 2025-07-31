@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Appendicitis Inflammatory Response (AIR) Score",
     description="Diagnoses appendicitis based on clinical and laboratory findings using objective inflammatory variables and clinical signs of peritoneal irritation",
     response_description="The calculated air score with interpretation",
-    operation_id="calculate_air_score"
+    operation_id="air_score"
 )
 async def calculate_air_score(request: AirScoreRequest):
     """

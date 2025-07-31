@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Bristol Stool Form Scale",
     description="Classifies stool form and correlates with intestinal transit time to assess bowel health and identify constipation or diarrhea",
     response_description="The calculated bristol stool form scale with interpretation",
-    operation_id="calculate_bristol_stool_form_scale"
+    operation_id="bristol_stool_form_scale"
 )
 async def calculate_bristol_stool_form_scale(request: BristolStoolFormScaleRequest):
     """

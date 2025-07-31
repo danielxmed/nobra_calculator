@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Ganzoni Equation for Iron Deficiency Anemia",
     description="Assesses total body iron deficit for iron replacement therapy. Calculates the precise amount of iron needed to replenish body iron stores and correct hemoglobin levels in patients with iron deficiency anemia.",
     response_description="The calculated ganzoni equation iron deficiency with interpretation",
-    operation_id="calculate_ganzoni_equation_iron_deficiency"
+    operation_id="ganzoni_equation_iron_deficiency"
 )
 async def calculate_ganzoni_equation_iron_deficiency(request: GanzoniEquationIronDeficiencyRequest):
     """

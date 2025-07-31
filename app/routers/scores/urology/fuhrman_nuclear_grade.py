@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Fuhrman Nuclear Grade for Clear Cell Renal Carc...",
     description="Provides prognostic grading system for clear cell renal cell carcinoma (RCC) based on nuclear morphology and cellular appearance. Independent predictor of cancer-specific survival that correlates nuclear grade with prognosis.",
     response_description="The calculated fuhrman nuclear grade with interpretation",
-    operation_id="calculate_fuhrman_nuclear_grade"
+    operation_id="fuhrman_nuclear_grade"
 )
 async def calculate_fuhrman_nuclear_grade(request: FuhrmanNuclearGradeRequest):
     """

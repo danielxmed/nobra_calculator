@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate ED-SAFE Patient Safety Screener 3 (PSS-3)",
     description="Screens for suicidality in emergency patients through universal screening with a validated 3-question tool. Designed for rapid assessment of suicide risk in the emergency department setting for patients with any chief complaint.",
     response_description="The calculated ed safe patient safety screener with interpretation",
-    operation_id="calculate_ed_safe_patient_safety_screener"
+    operation_id="ed_safe_patient_safety_screener"
 )
 async def calculate_ed_safe_patient_safety_screener(request: EdSafePatientSafetyScreenerRequest):
     """

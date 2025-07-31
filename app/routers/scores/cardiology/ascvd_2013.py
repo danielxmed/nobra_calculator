@@ -21,7 +21,7 @@ router = APIRouter()
     summary="Calculate ASCVD (Atherosclerotic Cardiovascular...",
     description="Estimates the 10-year risk of atherosclerotic cardiovascular disease (heart attack, stroke, or death due to coronary heart disease or stroke) using the Pooled Cohort Equations. For patients 40-79 years old with no history of ASCVD.",
     response_description="The calculated ascvd 2013 with interpretation",
-    operation_id="calculate_ascvd_2013"
+    operation_id="ascvd_2013"
 )
 async def calculate_ascvd_2013(request: Ascvd2013Request):
     """

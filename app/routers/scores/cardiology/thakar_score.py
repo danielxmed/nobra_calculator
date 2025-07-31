@@ -22,7 +22,7 @@ router = APIRouter()
                 "The score was developed and validated in over 33,000 patients at the Cleveland Clinic Foundation "
                 "and stratifies patients into five risk categories from very low (0.3-0.5%) to very high (>22%) risk.",
     response_description="The calculated Thakar score with risk stratification and clinical recommendations",
-    operation_id="calculate_thakar_score"
+    operation_id="thakar_score"
 )
 async def calculate_thakar_score(request: ThakarScoreRequest):
     """

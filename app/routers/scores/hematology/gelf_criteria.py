@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Groupe d'Etude des Lymphomes Folliculaires",
     description="Determines if immediate therapy for follicular lymphoma is needed by identifying high tumor burden patients requiring treatment rather than active surveillance",
     response_description="The calculated gelf criteria with interpretation",
-    operation_id="calculate_gelf_criteria"
+    operation_id="gelf_criteria"
 )
 async def calculate_gelf_criteria(request: GelfCriteriaRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Follicular Lymphoma International Prognostic Index",
     description="Estimates overall survival in patients with follicular lymphoma based on 5 adverse prognostic factors to stratify patients into risk groups for treatment planning.",
     response_description="The calculated flipi with interpretation",
-    operation_id="calculate_flipi"
+    operation_id="flipi"
 )
 async def calculate_flipi(request: FlipiRequest):
     """

@@ -1,0 +1,127 @@
+{
+  "id": "heart_score",
+  "title": "HEART Score for Major Cardiac Events",
+  "description": "Predicts 6-week risk of major adverse cardiac events in patients presenting with chest pain in the emergency department.",
+  "category": "cardiology",
+  "version": "2008",
+  "parameters": [
+    {
+      "name": "history",
+      "type": "integer",
+      "required": true,
+      "description": "Clinical history",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "options": [
+        {"value": 0, "label": "Slightly suspicious"},
+        {"value": 1, "label": "Moderately suspicious"},
+        {"value": 2, "label": "Highly suspicious"}
+      ]
+    },
+    {
+      "name": "ekg",
+      "type": "integer",
+      "required": true,
+      "description": "EKG findings",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "options": [
+        {"value": 0, "label": "Normal"},
+        {"value": 1, "label": "Non-specific repolarization disturbance"},
+        {"value": 2, "label": "Significant ST deviation"}
+      ]
+    },
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "options": [
+        {"value": 0, "label": "<45 years"},
+        {"value": 1, "label": "45-64 years"},
+        {"value": 2, "label": "≥65 years"}
+      ]
+    },
+    {
+      "name": "risk_factors",
+      "type": "integer",
+      "required": true,
+      "description": "Cardiovascular risk factors",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "options": [
+        {"value": 0, "label": "No known risk factors"},
+        {"value": 1, "label": "1-2 risk factors"},
+        {"value": 2, "label": "≥3 risk factors or history of atherosclerotic disease"}
+      ]
+    },
+    {
+      "name": "troponin",
+      "type": "integer",
+      "required": true,
+      "description": "Initial troponin level",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "options": [
+        {"value": 0, "label": "≤normal limit"},
+        {"value": 1, "label": "1-3× normal limit"},
+        {"value": 2, "label": ">3× normal limit"}
+      ]
+    }
+  ],
+  "result": {
+    "name": "heart_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "HEART score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Low Risk",
+        "description": "0.9-1.7% 6-week MACE risk",
+        "interpretation": "Low risk for major adverse cardiac events. Safe for discharge from the emergency department with outpatient follow-up. Consider stress testing within 72 hours if clinically indicated."
+      },
+      {
+        "min": 4,
+        "max": 6,
+        "stage": "Moderate Risk",
+        "description": "12-16.6% 6-week MACE risk",
+        "interpretation": "Moderate risk for major adverse cardiac events. Admission for clinical observation recommended with serial troponins and telemetry monitoring. Consider stress testing or advanced cardiac imaging."
+      },
+      {
+        "min": 7,
+        "max": 10,
+        "stage": "High Risk",
+        "description": "50-65% 6-week MACE risk",
+        "interpretation": "High risk for major adverse cardiac events. Consider early invasive strategies including coronary angiography. Cardiology consultation recommended for risk stratification and management."
+      }
+    ]
+  },
+  "references": [
+    "Six AJ, Backus BE, Kelder JC. Chest pain in the emergency room: value of the HEART score. Neth Heart J. 2008 Jun;16(6):191-6. doi: 10.1007/BF03086144.",
+    "Backus BE, Six AJ, Kelder JC, Bosschaert MA, Mast EG, Mosterd A, et al. A prospective validation of the HEART score for chest pain patients at the emergency department. Int J Cardiol. 2013 Oct 3;168(3):2153-8. doi: 10.1016/j.ijcard.2013.01.255.",
+    "Poldervaart JM, Reitsma JB, Backus BE, Koffijberg H, Veldkamp RF, Ten Haaf ME, et al. Effect of Using the HEART Score in Patients With Chest Pain in the Emergency Department: A Stepped-Wedge, Cluster Randomized Trial. Ann Intern Med. 2017 May 16;166(10):689-697. doi: 10.7326/M16-1600."
+  ],
+  "formula": "HEART Score = History + EKG + Age + Risk Factors + Troponin (Range: 0-10)",
+  "notes": [
+    "Risk factors include: hypertension, hypercholesterolemia, diabetes mellitus, obesity (BMI >30), smoking (current or quit ≤3 months), positive family history (CVD before age 65), atherosclerotic disease (prior MI, PCI/CABG, CVA/TIA, or PAD)",
+    "MACE includes all-cause mortality, myocardial infarction, or coronary revascularization within 6 weeks",
+    "Not for use in patients with new ST-elevation ≥1 mm, hypotension, life expectancy <1 year, or noncardiac illness requiring admission",
+    "The HEART score has better performance (c-statistic 0.83) compared to TIMI (0.75) and GRACE (0.70) scores"
+  ]
+}

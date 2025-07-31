@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate AST to Platelet Ratio Index (APRI)",
     description="Determines the likelihood of hepatic fibrosis and cirrhosis in patients with hepatitis C using readily available laboratory values.",
     response_description="The calculated apri with interpretation",
-    operation_id="calculate_apri"
+    operation_id="apri"
 )
 async def calculate_apri(request: ApriRequest):
     """

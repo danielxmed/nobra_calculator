@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate APACHE II Score",
     description="Estimates ICU mortality using physiological parameters, age, and chronic health status within 24 hours of ICU admission",
     response_description="The calculated apache ii score with interpretation",
-    operation_id="calculate_apache_ii_score"
+    operation_id="apache_ii_score"
 )
 async def calculate_apache_ii_score(request: ApacheIiScoreRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate International Prostate Symptom Score",
     description="Measures severity of benign prostatic hyperplasia (BPH) symptoms using 7 questions about urinary symptoms to guide treatment decisions.",
     response_description="The calculated ipss aua si with interpretation",
-    operation_id="calculate_ipss_aua_si"
+    operation_id="ipss_aua_si"
 )
 async def calculate_ipss_aua_si(request: IpssAuaSiRequest):
     """

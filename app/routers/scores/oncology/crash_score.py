@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Chemotherapy Risk Assessment Scale for High-Age...",
     description="Assesses the risk of severe chemotherapy toxicity in older cancer patients (≥70 years). Predicts both hematologic (grade 4) and nonhematologic (grade 3/4) toxicities based on patient characteristics and chemotherapy regimen.",
     response_description="The calculated crash score with interpretation",
-    operation_id="calculate_crash_score"
+    operation_id="crash_score"
 )
 async def calculate_crash_score(request: CrashScoreRequest):
     """

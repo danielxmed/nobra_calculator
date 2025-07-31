@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate GO-FAR",
     description="Predicts survival to discharge with good neurological outcome after in-hospital cardiac arrest. Uses 13 pre-arrest variables to stratify patients into risk categories for shared decision-making regarding resuscitation preferences.",
     response_description="The calculated go far score with interpretation",
-    operation_id="calculate_go_far_score"
+    operation_id="go_far_score"
 )
 async def calculate_go_far_score(request: GoFarScoreRequest):
     """

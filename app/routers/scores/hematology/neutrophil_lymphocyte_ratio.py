@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Neutrophil-Lymphocyte Ratio (NLR) Calculator",
     description="Calculates neutrophil-lymphocyte ratio",
     response_description="The calculated neutrophil lymphocyte ratio with interpretation",
-    operation_id="calculate_neutrophil_lymphocyte_ratio"
+    operation_id="neutrophil_lymphocyte_ratio"
 )
 async def calculate_neutrophil_lymphocyte_ratio(request: NeutrophilLymphocyteRatioRequest):
     """

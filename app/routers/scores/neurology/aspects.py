@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Alberta Stroke Program Early CT Score (ASPECTS)",
     description="Quantifies early ischemic changes in MCA territory on non-contrast CT to predict stroke outcome and guide treatment decisions",
     response_description="The calculated aspects with interpretation",
-    operation_id="calculate_aspects"
+    operation_id="aspects"
 )
 async def calculate_aspects(request: AspectsRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate National Early Warning Score (NEWS)",
     description="Determines the degree of illness of a patient and prompts critical care intervention",
     response_description="The calculated news with interpretation",
-    operation_id="calculate_news"
+    operation_id="news"
 )
 async def calculate_news(request: NewsRequest):
     """

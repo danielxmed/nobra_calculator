@@ -14,7 +14,7 @@ router = APIRouter()
     summary="Calculate ABIC Score for Alcoholic Hepatitis",
     description="Predicts survival in patients with alcoholic hepatitis at 90 days and 1 year, based on age, bilirubin, creatinine, and INR",
     response_description="The calculated abic score with interpretation",
-    operation_id="calculate_abic_score"
+    operation_id="abic_score"
 )
 async def calculate_abic_score(request: AbicScoreRequest):
     """

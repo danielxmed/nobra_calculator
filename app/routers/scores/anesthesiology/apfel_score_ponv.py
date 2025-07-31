@@ -14,7 +14,7 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/apfel_score_ponv", response_model=ApfelScorePonvResponse, summary="Calculate Apfel Score for PONV", description="Calculates Apfel Score for Postoperative Nausea and Vomiting", response_description="Apfel Score result with clinical interpretation and prophylactic recommendations", operation_id="calculate_apfel_score_ponv")
+@router.post("/apfel_score_ponv", response_model=ApfelScorePonvResponse, summary="Calculate Apfel Score for PONV", description="Calculates Apfel Score for Postoperative Nausea and Vomiting", response_description="Apfel Score result with clinical interpretation and prophylactic recommendations", operation_id="apfel_score_ponv")
 async def calculate_apfel_score_ponv(request: ApfelScorePonvRequest):
     """
     Calculates Apfel Score for Postoperative Nausea and Vomiting

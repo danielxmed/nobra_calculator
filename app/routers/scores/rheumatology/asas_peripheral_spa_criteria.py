@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate ASAS Criteria for Peripheral SpondyloArthritis",
     description="Classifies peripheral spondyloarthritis according to the Assessment of SpondyloArthritis International Society (ASAS) criteria",
     response_description="The calculated asas peripheral spa criteria with interpretation",
-    operation_id="calculate_asas_peripheral_spa_criteria"
+    operation_id="asas_peripheral_spa_criteria"
 )
 async def calculate_asas_peripheral_spa_criteria(request: AsasPeripheralSpaCriteriaRequest):
     """

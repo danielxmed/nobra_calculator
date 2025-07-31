@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate DASH Prediction Score for Recurrent VTE",
     description="Predicts likelihood of recurrence of first unprovoked venous thromboembolism (VTE) to guide anticoagulation duration decisions. Utilizes D-dimer, Age, Sex, and Hormonal therapy factors.",
     response_description="The calculated dash prediction score with interpretation",
-    operation_id="calculate_dash_prediction_score"
+    operation_id="dash_prediction_score"
 )
 async def calculate_dash_prediction_score(request: DashPredictionScoreRequest):
     """

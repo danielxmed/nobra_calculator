@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate CSHA Clinical Frailty Scale (CFS)",
     description="Measures frailty to predict survival, mortality, need for institutional care, and other adverse outcomes in older adults aged 65 and over. Uses a 9-point judgement-based scale evaluating comorbidity, function, and cognition.",
     response_description="The calculated clinical frailty scale with interpretation",
-    operation_id="calculate_clinical_frailty_scale"
+    operation_id="clinical_frailty_scale"
 )
 async def calculate_clinical_frailty_scale(request: ClinicalFrailtyScaleRequest):
     """

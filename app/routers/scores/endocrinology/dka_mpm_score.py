@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Diabetic Ketoacidosis Mortality Prediction Model",
     description="Predicts in-hospital mortality in patients with diabetic ketoacidosis using clinical and laboratory parameters at presentation, 12 hours, and 24 hours",
     response_description="The calculated dka mpm score with interpretation",
-    operation_id="calculate_dka_mpm_score"
+    operation_id="dka_mpm_score"
 )
 async def calculate_dka_mpm_score(request: DkaMpmScoreRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Behavioral Observational Pain Scale",
     description="Quantifies post-operative pain for children aged 1-7 years using observational behavioral indicators",
     response_description="The calculated behavioral observational pain scale with interpretation",
-    operation_id="calculate_behavioral_observational_pain_scale"
+    operation_id="behavioral_observational_pain_scale"
 )
 async def calculate_behavioral_observational_pain_scale(request: BehavioralObservationalPainScaleRequest):
     """

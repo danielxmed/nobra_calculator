@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Color Vision Screening (Ishihara Test)",
     description="Screens for red-green color blindness using an abbreviated 14-plate Ishihara test. Assesses the most common types of color vision deficiency in clinical practice.",
     response_description="The calculated color vision screening with interpretation",
-    operation_id="calculate_color_vision_screening"
+    operation_id="color_vision_screening"
 )
 async def calculate_color_vision_screening(request: ColorVisionScreeningRequest):
     """

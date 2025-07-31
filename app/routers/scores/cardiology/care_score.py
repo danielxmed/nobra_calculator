@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Cardiac Anesthesia Risk Evaluation Sc...",
     description="The CARE Score predicts mortality and morbidity after cardiac surgery. It is a simple risk classification based on clinical judgment and three clinical variables: comorbid conditions (controlled vs uncontrolled), surgical complexity, and urgency of the procedure.",
     response_description="The calculated care score with interpretation",
-    operation_id="calculate_care_score"
+    operation_id="care_score"
 )
 async def calculate_care_score(request: CareScoreRequest):
     """

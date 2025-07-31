@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate CHA₂DS₂-VA Score for Atrial Fibrillat...",
     description="Calculates stroke risk for patients with atrial fibrillation; similar to CHA₂DS₂-VASc Score but without considering sex. Simplified version recommended in 2024 ESC guidelines to remove complexity of gender-based scoring.",
     response_description="The calculated cha2ds2 va score with interpretation",
-    operation_id="calculate_cha2ds2_va_score"
+    operation_id="cha2ds2_va_score"
 )
 async def calculate_cha2ds2_va_score(request: Cha2ds2VaScoreRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Gleason Score for Prostate Cancer",
     description="Histologic grading system for prostate cancer based on microscopic tumor architecture patterns. Uses primary and secondary tumor patterns to predict prognosis and guide treatment decisions. The score combines the two most prevalent architectural patterns found in the tumor specimen.",
     response_description="The calculated gleason score prostate with interpretation",
-    operation_id="calculate_gleason_score_prostate"
+    operation_id="gleason_score_prostate"
 )
 async def calculate_gleason_score_prostate(request: GleasonScoreProstateRequest):
     """

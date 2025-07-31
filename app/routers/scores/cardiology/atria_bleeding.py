@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate ATRIA Bleeding Risk Score",
     description="Determines bleeding risk for patients on warfarin therapy for atrial fibrillation. The score was developed and validated in the ATRIA (Anticoagulation and Risk Factors in Atrial Fibrillation) cohort and helps stratify patients into low, intermediate, and high risk categories for major hemorrhage.",
     response_description="The calculated atria bleeding with interpretation",
-    operation_id="calculate_atria_bleeding"
+    operation_id="atria_bleeding"
 )
 async def calculate_atria_bleeding(request: AtriaBleedingRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Common Terminology Criteria for Adverse Events",
     description="Grades severity of hematologic and lymphatic adverse events from cancer treatment using standardized criteria. Assesses anemia, neutropenia, thrombocytopenia, and other blood disorders according to laboratory values and clinical presentations.",
     response_description="The calculated ctcae with interpretation",
-    operation_id="calculate_ctcae"
+    operation_id="ctcae"
 )
 async def calculate_ctcae(request: CtcaeRequest):
     """

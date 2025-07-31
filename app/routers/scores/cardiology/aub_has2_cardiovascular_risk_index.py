@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate American University of Beirut (AUB)-H...",
     description="Stratifies cardiovascular risk of patients undergoing noncardiac surgery using 6 easily obtainable clinical variables with superior discriminatory power compared to other risk indices.",
     response_description="The calculated aub has2 cardiovascular risk index with interpretation",
-    operation_id="calculate_aub_has2_cardiovascular_risk_index"
+    operation_id="aub_has2_cardiovascular_risk_index"
 )
 async def calculate_aub_has2_cardiovascular_risk_index(request: AubHas2CardiovascularRiskIndexRequest):
     """

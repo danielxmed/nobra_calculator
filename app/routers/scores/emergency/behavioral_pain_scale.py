@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Behavioral Pain Scale",
     description="Quantifies pain in critically ill intubated patients who cannot self-report using three behavioral indicators",
     response_description="The calculated behavioral pain scale with interpretation",
-    operation_id="calculate_behavioral_pain_scale"
+    operation_id="behavioral_pain_scale"
 )
 async def calculate_behavioral_pain_scale(request: BehavioralPainScaleRequest):
     """

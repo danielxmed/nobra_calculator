@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Confusion Assessment Method for the ICU (CAM-ICU)",
     description="Monitors delirium in ICU patients through systematic assessment of consciousness level, attention, and organized thinking.",
     response_description="The calculated cam icu with interpretation",
-    operation_id="calculate_cam_icu"
+    operation_id="cam_icu"
 )
 async def calculate_cam_icu(request: CamIcuRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Osteoporosis Self Assessment Tool (OST)",
     description="Predicts risk of osteoporosis based on age and body weight. Simple screening tool to identify individuals who may benefit from further bone density testing with DXA scanning.",
     response_description="The calculated ost with interpretation",
-    operation_id="calculate_ost"
+    operation_id="ost"
 )
 async def calculate_ost(request: OstRequest):
     """

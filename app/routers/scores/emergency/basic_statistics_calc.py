@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Basic Statistics Calculator",
     description="Calculates common epidemiological values for diagnostic tests and treatments, including sensitivity, specificity, predictive values, likelihood ratios, and treatment effectiveness measures.",
     response_description="The calculated basic statistics calc with interpretation",
-    operation_id="calculate_basic_statistics_calc"
+    operation_id="basic_statistics_calc"
 )
 async def calculate_basic_statistics_calc(request: BasicStatisticsCalcRequest):
     """

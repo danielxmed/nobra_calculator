@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Crohn's Disease Activity Index (CDAI)",
     description="Quantifies disease activity in Crohn's disease patients using clinical symptoms and laboratory findings over a 7-day period",
     response_description="The calculated cdai crohns with interpretation",
-    operation_id="calculate_cdai_crohns"
+    operation_id="cdai_crohns"
 )
 async def calculate_cdai_crohns(request: CdaiCrohnsRequest):
     """

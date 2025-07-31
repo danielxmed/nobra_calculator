@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Barcelona-Clinic Liver Cancer",
     description="Determines disease progression and appropriate treatment course for hepatocellular carcinoma (HCC) patients. The BCLC staging system integrates tumor characteristics, liver function status, and performance status to classify patients into five stages (0, A, B, C, D) with specific treatment recommendations for each stage.",
     response_description="The calculated bclc staging with interpretation",
-    operation_id="calculate_bclc_staging"
+    operation_id="bclc_staging"
 )
 async def calculate_bclc_staging(request: BclcStagingRequest):
     """

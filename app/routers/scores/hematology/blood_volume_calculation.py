@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Blood Volume Calculation",
     description="Calculates total blood volume, red blood cell volume, and plasma volume using Nadler equations based on age, sex, height, weight, and hematocrit",
     response_description="The calculated blood volume calculation with interpretation",
-    operation_id="calculate_blood_volume_calculation"
+    operation_id="blood_volume_calculation"
 )
 async def calculate_blood_volume_calculation(request: BloodVolumeCalculationRequest):
     """

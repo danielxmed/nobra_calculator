@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Framingham Risk Score for Hard Corona...",
     description="Estimates 10-year risk of myocardial infarction in patients aged 30-79 with no history of coronary heart disease or diabetes",
     response_description="The calculated framingham risk score with interpretation",
-    operation_id="calculate_framingham_risk_score"
+    operation_id="framingham_risk_score"
 )
 async def calculate_framingham_risk_score(request: FraminghamRiskScoreRequest):
     """

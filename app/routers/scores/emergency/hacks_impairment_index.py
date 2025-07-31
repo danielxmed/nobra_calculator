@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Hack's Impairment Index (HII)",
     description="Provides a quantitative and standardized assessment of the degree of alcohol-induced impairment in emergency department patients. Creates an objective, serializable evaluation of clinical intoxication.",
     response_description="The calculated hacks impairment index with interpretation",
-    operation_id="calculate_hacks_impairment_index"
+    operation_id="hacks_impairment_index"
 )
 async def calculate_hacks_impairment_index(request: HacksImpairmentIndexRequest):
     """

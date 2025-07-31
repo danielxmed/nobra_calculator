@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Bush-Francis Catatonia Rating Scale",
     description="Assesses severity of catatonia and screens for catatonia in psychiatric and neurological conditions. The first 14 items comprise the screening instrument. If 2 or more of the first 14 items are positive, this indicates a positive screening and should prompt completion of 9 additional items.",
     response_description="The calculated bush francis catatonia rating scale with interpretation",
-    operation_id="calculate_bush_francis_catatonia_rating_scale"
+    operation_id="bush_francis_catatonia_rating_scale"
 )
 async def calculate_bush_francis_catatonia_rating_scale(request: BushFrancisCatatoniaRatingScaleRequest):
     """

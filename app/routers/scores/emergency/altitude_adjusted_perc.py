@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Altitude-Adjusted PERC Rule",
     description="Rules out pulmonary embolism (PE) if no criteria are present; includes adjustment for high altitude (>4000 ft) by removing oxygen saturation criterion. Used in patients with low pretest probability of PE (<15%) who live at high altitude.",
     response_description="The calculated altitude adjusted perc with interpretation",
-    operation_id="calculate_altitude_adjusted_perc"
+    operation_id="altitude_adjusted_perc"
 )
 async def calculate_altitude_adjusted_perc(request: AltitudeAdjustedPercRequest):
     """

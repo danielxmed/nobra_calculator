@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate HACOR Score",
     description="Predicts non-invasive ventilation (NIV) failure in hypoxemic patients. HACOR stands for Heart rate, Acidosis, Consciousness, Oxygenation, and Respiratory rate. Best used in critically ill patients with acute hypoxic respiratory failure who require NIV, assessed 60 minutes after initiating NIV.",
     response_description="The calculated hacor score with interpretation",
-    operation_id="calculate_hacor_score"
+    operation_id="hacor_score"
 )
 async def calculate_hacor_score(request: HacorScoreRequest):
     """

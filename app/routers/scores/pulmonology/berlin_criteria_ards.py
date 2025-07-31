@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Berlin Criteria for Acute Respiratory Distress ...",
     description="Provides diagnostic criteria for acute respiratory distress syndrome (ARDS) and classifies severity based on oxygenation",
     response_description="The calculated berlin criteria ards with interpretation",
-    operation_id="calculate_berlin_criteria_ards"
+    operation_id="berlin_criteria_ards"
 )
 async def calculate_berlin_criteria_ards(request: BerlinCriteriaArdsRequest):
     """

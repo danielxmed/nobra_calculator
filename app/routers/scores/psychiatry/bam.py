@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Brief Addiction Monitor (BAM)",
     description="Assesses substance use-related behaviors, risk factors, and protective factors over the past 30 days",
     response_description="The calculated bam with interpretation",
-    operation_id="calculate_bam"
+    operation_id="bam"
 )
 async def calculate_bam(request: BamRequest):
     """

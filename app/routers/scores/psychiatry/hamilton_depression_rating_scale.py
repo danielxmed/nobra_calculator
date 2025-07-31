@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Hamilton Depression Rating Scale (HAM-D)",
     description="Assesses severity of depression symptoms. The 17-item version is a clinician-administered scale that measures depressive symptoms over the past week.",
     response_description="The calculated hamilton depression rating scale with interpretation",
-    operation_id="calculate_hamilton_depression_rating_scale"
+    operation_id="hamilton_depression_rating_scale"
 )
 async def calculate_hamilton_depression_rating_scale(request: HamiltonDepressionRatingScaleRequest):
     """

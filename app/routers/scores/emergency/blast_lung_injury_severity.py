@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Blast Lung Injury Severity Score",
     description="Stratifies primary blast lung injuries into three severity categories to guide ventilatory treatment and predict clinical outcomes",
     response_description="The calculated blast lung injury severity with interpretation",
-    operation_id="calculate_blast_lung_injury_severity"
+    operation_id="blast_lung_injury_severity"
 )
 async def calculate_blast_lung_injury_severity(request: BlastLungInjurySeverityRequest):
     """

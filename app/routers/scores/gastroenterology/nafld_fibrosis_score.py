@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate NAFLD",
     description="Estimates amount of scarring in the liver based on various lab tests. Distinguishes between patients with nonalcoholic fatty liver disease who have (F3-F4) and do not have (F0-F2) advanced fibrosis.",
     response_description="The calculated nafld fibrosis score with interpretation",
-    operation_id="calculate_nafld_fibrosis_score"
+    operation_id="nafld_fibrosis_score"
 )
 async def calculate_nafld_fibrosis_score(request: NafldFibroseScoreRequest):
     """

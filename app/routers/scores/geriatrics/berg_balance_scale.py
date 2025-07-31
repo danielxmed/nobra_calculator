@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Berg Balance Scale (BBS)",
     description="Assesses balance and fall risk in community-dwelling older adults through 14 functional tasks",
     response_description="The calculated berg balance scale with interpretation",
-    operation_id="calculate_berg_balance_scale"
+    operation_id="berg_balance_scale"
 )
 async def calculate_berg_balance_scale(request: BergBalanceScaleRequest):
     """

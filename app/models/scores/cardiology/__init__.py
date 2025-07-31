@@ -41,6 +41,8 @@ from .gillmore_staging_attr_cm import GillmoreStagingAttrCmRequest, GillmoreStag
 from .grace_acs_risk import GraceAcsRiskRequest, GraceAcsRiskResponse
 from .grogan_staging_attr_cm import GroganStagingAttrCmRequest, GroganStagingAttrCmResponse
 from .hcm_risk_scd import HcmRiskScdRequest, HcmRiskScdResponse
+from .heart_pathway import HeartPathwayRequest, HeartPathwayResponse
+from .heart_score import HeartScoreRequest, HeartScoreResponse
 
 __all__ = [
     "Cha2ds2VascRequest",
@@ -120,5 +122,9 @@ __all__ = [
     "GroganStagingAttrCmRequest",
     "GroganStagingAttrCmResponse",
     "HcmRiskScdRequest",
-    "HcmRiskScdResponse"
+    "HcmRiskScdResponse",
+    "HeartPathwayRequest",
+    "HeartPathwayResponse",
+    "HeartScoreRequest",
+    "HeartScoreResponse"
 ]

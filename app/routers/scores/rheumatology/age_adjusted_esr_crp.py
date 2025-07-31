@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Age-Adjusted ESR/CRP for Rheumatoid Arthritis",
     description="Calculates age-adjusted ESR and CRP in adult rheumatoid arthritis patients to account for age-related increases in inflammatory markers",
     response_description="The calculated age adjusted esr crp with interpretation",
-    operation_id="calculate_age_adjusted_esr_crp"
+    operation_id="age_adjusted_esr_crp"
 )
 async def calculate_age_adjusted_esr_crp(request: AgeAdjustedEsrCrpRequest):
     """

@@ -14,7 +14,7 @@ router = APIRouter()
     summary="Calculate Abuse Assessment Screen (AAS)",
     description="Detects domestic abuse (intimate partner violence) in pregnant and non-pregnant women in healthcare settings",
     response_description="The calculated aas with interpretation",
-    operation_id="calculate_aas"
+    operation_id="aas"
 )
 async def calculate_aas(request: AasRequest):
     """

@@ -38,7 +38,7 @@ router = APIRouter()
     summary="Calculate COVID Home Safely Now",
     description="Predicts suitability for discharge in COVID-19 patients by assessing risk of needing supplemental oxygen, ICU-level care, or death within 14 days",
     response_description="The calculated chosen covid discharge with interpretation",
-    operation_id="calculate_chosen_covid_discharge"
+    operation_id="chosen_covid_discharge"
 )
 async def calculate_chosen_covid_discharge(request: ChosenCovidDischargeRequest):
     """

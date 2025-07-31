@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Emergency Department-Initiated Buprenorphine fo...",
     description="Assesses OUD, opioid withdrawal severity, and readiness for ED-initiated buprenorphine treatment using DSM-5 criteria, COWS scale, and treatment readiness assessment.",
     response_description="The calculated embed with interpretation",
-    operation_id="calculate_embed"
+    operation_id="embed"
 )
 async def calculate_embed(request: EmbedRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate ASAS Criteria for Axial Spondyloarthritis (SpA)",
     description="Classifies axial spondyloarthritis according to Assessment of Spondyloarthritis International Society (ASAS) criteria. This classification system allows for early diagnosis of axial SpA by incorporating both clinical and imaging features.",
     response_description="The calculated asas axial spa criteria with interpretation",
-    operation_id="calculate_asas_axial_spa_criteria"
+    operation_id="asas_axial_spa_criteria"
 )
 async def calculate_asas_axial_spa_criteria(request: AsasAxialSpaCriteriaRequest):
     """

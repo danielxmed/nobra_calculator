@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Critical Care Pain Observation Tool (CPOT)",
     description="Pain assessment tool for critically ill adults who are unable to self-report pain, using behavioral indicators across four domains",
     response_description="The calculated cpot pain observation with interpretation",
-    operation_id="calculate_cpot_pain_observation"
+    operation_id="cpot_pain_observation"
 )
 async def calculate_cpot_pain_observation(request: CpotPainObservationRequest):
     """

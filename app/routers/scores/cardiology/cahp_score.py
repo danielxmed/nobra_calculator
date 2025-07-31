@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate CAHP (Cardiac Arrest Hospital Prognos...",
     description="Predicts poor prognosis after out-of-hospital cardiac arrest and guides utility of cardiac catheterization",
     response_description="The calculated cahp score with interpretation",
-    operation_id="calculate_cahp_score"
+    operation_id="cahp_score"
 )
 async def calculate_cahp_score(request: CahpScoreRequest):
     """

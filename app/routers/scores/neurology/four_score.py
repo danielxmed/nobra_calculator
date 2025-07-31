@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate FOUR (Full Outline of UnResponsiveness) Score",
     description="Grades severity of coma; may be more accurate than Glasgow Coma Scale. Evaluates consciousness level through four components: eye response, motor response, brainstem reflexes, and respiration pattern.",
     response_description="The calculated four score with interpretation",
-    operation_id="calculate_four_score"
+    operation_id="four_score"
 )
 async def calculate_four_score(request: FourScoreRequest):
     """

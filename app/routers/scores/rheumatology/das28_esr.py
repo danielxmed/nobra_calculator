@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Disease Activity Score-28 for Rheumatoid Arthri...",
     description="Describes severity of rheumatoid arthritis using clinical and laboratory data, specifically ESR",
     response_description="The calculated das28 esr with interpretation",
-    operation_id="calculate_das28_esr"
+    operation_id="das28_esr"
 )
 async def calculate_das28_esr(request: Das28EsrRequest):
     """

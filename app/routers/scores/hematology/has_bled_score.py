@@ -27,7 +27,7 @@ router = APIRouter()
                 "hospitalization for bleeding, hemoglobin drop >2 g/L, or transfusion. Use alongside "
                 "CHA2DS2-VASc score to balance stroke and bleeding risks in anticoagulation decisions.",
     response_description="The calculated HAS-BLED score with bleeding risk stratification and management recommendations",
-    operation_id="calculate_has_bled_score"
+    operation_id="has_bled_score"
 )
 async def calculate_has_bled_score(request: HasBledScoreRequest):
     """

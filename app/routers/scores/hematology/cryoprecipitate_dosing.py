@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Cryoprecipitate Dosing for Fibrinogen Replacement",
     description="Calculates the required dose of cryoprecipitate units needed to achieve target fibrinogen levels in patients with fibrinogen deficiency or hypofibrinogenemia",
     response_description="The calculated cryoprecipitate dosing with interpretation",
-    operation_id="calculate_cryoprecipitate_dosing"
+    operation_id="cryoprecipitate_dosing"
 )
 async def calculate_cryoprecipitate_dosing(request: CryoprecipitateDosIngRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate GARFIELD-AF Risk Score",
     description="The GARFIELD-AF risk score simultaneously predicts 1- and 2-year risks of mortality, ischemic stroke/systemic embolism, and major bleeding in patients with atrial fibrillation. This contemporary risk stratification tool incorporates 16 clinical variables and has been validated across diverse international populations with both anticoagulated and non-anticoagulated patients.",
     response_description="The calculated garfield af with interpretation",
-    operation_id="calculate_garfield_af"
+    operation_id="garfield_af"
 )
 async def calculate_garfield_af(request: GarfieldAfRequest):
     """

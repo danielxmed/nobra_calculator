@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Duke Treadmill Score",
     description="Diagnoses and prognoses suspected coronary artery disease (CAD) based on treadmill exercise test. Uses exercise time, ST deviation, and angina to predict prognosis and guide further treatment decisions.",
     response_description="The calculated duke treadmill score with interpretation",
-    operation_id="calculate_duke_treadmill_score"
+    operation_id="duke_treadmill_score"
 )
 async def calculate_duke_treadmill_score(request: DukeTreadmillScoreRequest):
     """

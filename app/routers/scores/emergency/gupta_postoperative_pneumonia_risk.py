@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Gupta Postoperative Pneumonia Risk Calculator",
     description="Predicts risk of pneumonia after surgery using validated preoperative risk factors from ACS NSQIP data",
     response_description="The calculated gupta postoperative pneumonia risk with interpretation",
-    operation_id="calculate_gupta_postoperative_pneumonia_risk"
+    operation_id="gupta_postoperative_pneumonia_risk"
 )
 async def calculate_gupta_postoperative_pneumonia_risk(request: GuptaPostoperativePneumoniaRiskRequest):
     """

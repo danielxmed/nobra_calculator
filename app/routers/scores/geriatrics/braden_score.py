@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Braden Score for Pressure Ulcers",
     description="Identifies patients at risk for pressure ulcers by assessing six key factors: sensory perception, moisture, activity, mobility, nutrition, and friction/shear",
     response_description="The calculated braden score with interpretation",
-    operation_id="calculate_braden_score"
+    operation_id="braden_score"
 )
 async def calculate_braden_score(request: BradenScoreRequest):
     """

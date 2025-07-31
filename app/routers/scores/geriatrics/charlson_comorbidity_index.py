@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Charlson Comorbidity Index (CCI)",
     description="Predicts 10-year survival in patients with multiple comorbidities. Uses 19 weighted comorbidity categories plus age adjustment to estimate mortality risk and guide clinical decision-making.",
     response_description="The calculated charlson comorbidity index with interpretation",
-    operation_id="calculate_charlson_comorbidity_index"
+    operation_id="charlson_comorbidity_index"
 )
 async def calculate_charlson_comorbidity_index(request: CharlsonComorbidityIndexRequest):
     """

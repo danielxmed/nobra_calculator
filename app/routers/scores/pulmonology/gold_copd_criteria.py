@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Global Initiative for Obstructive Lung Disease",
     description="Clinical assessment and staging system for chronic obstructive pulmonary disease (COPD) based on spirometry, symptoms, and exacerbation risk. Provides comprehensive evaluation using FEV1 percentage predicted, symptom assessment, and treatment recommendations according to GOLD 2024-2025 guidelines.",
     response_description="The calculated gold copd criteria with interpretation",
-    operation_id="calculate_gold_copd_criteria"
+    operation_id="gold_copd_criteria"
 )
 async def calculate_gold_copd_criteria(request: GoldCopdCriteriaRequest):
     """

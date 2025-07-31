@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Edmonton Obesity Staging System (EOSS)",
     description="Stratifies the presence and severity of obesity-related health impairments across medical, functional, and psychological domains to guide treatment decisions and predict outcomes.",
     response_description="The calculated edmonton obesity staging system with interpretation",
-    operation_id="calculate_edmonton_obesity_staging_system"
+    operation_id="edmonton_obesity_staging_system"
 )
 async def calculate_edmonton_obesity_staging_system(request: EdmontonObesityStagingSystemRequest):
     """

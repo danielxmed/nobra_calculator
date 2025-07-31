@@ -14,7 +14,7 @@ from app.services.calculator_service import calculator_service
 router = APIRouter()
 
 
-@router.post("/action_icu_nstemi", response_model=ActionIcuNstemiResponse, summary="Calculate ACTION ICU Score for Intensive Care in NSTEMI", description="Calculates ACTION ICU Score for Intensive Care in NSTEMI", response_description="Risk score with clinical interpretation and recommended care level", operation_id="calculate_action_icu_nstemi")
+@router.post("/action_icu_nstemi", response_model=ActionIcuNstemiResponse, summary="Calculate ACTION ICU Score for Intensive Care in NSTEMI", description="Calculates ACTION ICU Score for Intensive Care in NSTEMI", response_description="Risk score with clinical interpretation and recommended care level", operation_id="action_icu_nstemi")
 async def calculate_action_icu_nstemi(request: ActionIcuNstemiRequest):
     """
     Calculates ACTION ICU Score for Intensive Care in NSTEMI

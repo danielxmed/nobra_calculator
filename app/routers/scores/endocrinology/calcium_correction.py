@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Calcium Correction for Hypoalbuminemia and Hype...",
     description="Calculates corrected calcium level for patients with hypoalbuminemia or hyperalbuminemia",
     response_description="The calculated calcium correction with interpretation",
-    operation_id="calculate_calcium_correction"
+    operation_id="calcium_correction"
 )
 async def calculate_calcium_correction(request: CalciumCorrectionRequest):
     """

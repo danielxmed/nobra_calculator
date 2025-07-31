@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Glasgow Coma Scale (GCS)",
     description="Clinical scale used to assess level of consciousness and neurological function in patients with acute brain injury. Evaluates three components: eye opening response (1-4), verbal response (1-5), and motor response (1-6) for a total score ranging from 3-15",
     response_description="The calculated glasgow coma scale with interpretation",
-    operation_id="calculate_glasgow_coma_scale"
+    operation_id="glasgow_coma_scale"
 )
 async def calculate_glasgow_coma_scale(request: GlasgowComaScaleRequest):
     """

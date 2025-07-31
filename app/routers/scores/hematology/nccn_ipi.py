@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate National Comprehensive Cancer Network Internati...",
     description="Predicts survival in patients with diffuse large B-cell lymphoma (DLBCL) using age, LDH levels, extranodal involvement, Ann Arbor stage, and ECOG performance status. Developed for the rituximab era with enhanced prognostic discrimination.",
     response_description="The calculated nccn ipi with interpretation",
-    operation_id="calculate_nccn_ipi"
+    operation_id="nccn_ipi"
 )
 async def calculate_nccn_ipi(request: NccnIpiRequest):
     """

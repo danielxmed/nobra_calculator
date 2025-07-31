@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Bishop Score for Vaginal Delivery and Induction...",
     description="Predicts likelihood of successful vaginal delivery and determines favorable cervical conditions for labor induction in pregnant women at term",
     response_description="The calculated bishop score with interpretation",
-    operation_id="calculate_bishop_score"
+    operation_id="bishop_score"
 )
 async def calculate_bishop_score(request: BishopScoreRequest):
     """

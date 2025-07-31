@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Asthma Predictive Index (API)",
     description="Determines likelihood of pediatric patients developing childhood asthma in children ≤3 years old with recurrent wheezing episodes.",
     response_description="The calculated asthma predictive index with interpretation",
-    operation_id="calculate_asthma_predictive_index"
+    operation_id="asthma_predictive_index"
 )
 async def calculate_asthma_predictive_index(request: AsthmaPreductiveIndexRequest):
     """

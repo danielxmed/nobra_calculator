@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Geriatric Depression Scale (GDS-15)",
     description="Identifies possible depression in older adults aged 55 and older. The 15-item version is a brief, reliable screening tool that uses simple yes/no questions to assess depressive symptoms specific to the geriatric population over the past week",
     response_description="The calculated gds 15 with interpretation",
-    operation_id="calculate_gds_15"
+    operation_id="gds_15"
 )
 async def calculate_gds_15(request: Gds15Request):
     """

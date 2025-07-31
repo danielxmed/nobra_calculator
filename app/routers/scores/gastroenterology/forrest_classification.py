@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Forrest Classification of Upper GI Bleeding",
     description="Stratifies severity of upper GI bleeding according to endoscopic findings. Helps prognosticate and risk stratify patients, guides endoscopic therapeutic decisions, and assists in determining discharge versus inpatient monitoring.",
     response_description="The calculated forrest classification with interpretation",
-    operation_id="calculate_forrest_classification"
+    operation_id="forrest_classification"
 )
 async def calculate_forrest_classification(request: ForrestClassificationRequest):
     """

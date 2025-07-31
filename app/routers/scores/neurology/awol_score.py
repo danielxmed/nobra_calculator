@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate AWOL Score for Delirium",
     description="Predicts risk of delirium during hospitalization using age, cognitive function, orientation, and illness severity",
     response_description="The calculated awol score with interpretation",
-    operation_id="calculate_awol_score"
+    operation_id="awol_score"
 )
 async def calculate_awol_score(request: AwolScoreRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate European System for Cardiac Operative...",
     description="Predicts risk of in-hospital mortality after major cardiac surgery using logistic regression model with 18 validated variables.",
     response_description="The calculated euroscore ii with interpretation",
-    operation_id="calculate_euroscore_ii"
+    operation_id="euroscore_ii"
 )
 async def calculate_euroscore_ii(request: EuroScoreIIRequest):
     """

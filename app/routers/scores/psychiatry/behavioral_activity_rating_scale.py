@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Behavioral Activity Rating Scale (BARS)",
     description="Screens patients for agitation in emergency care and psychiatric settings using a 7-point observational scale",
     response_description="The calculated behavioral activity rating scale with interpretation",
-    operation_id="calculate_behavioral_activity_rating_scale"
+    operation_id="behavioral_activity_rating_scale"
 )
 async def calculate_behavioral_activity_rating_scale(request: BehavioralActivityRatingScaleRequest):
     """

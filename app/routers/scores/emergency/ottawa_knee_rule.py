@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Ottawa Knee Rule",
     description="Describes criteria for low-risk knee trauma patients, not warranting imaging. Rules out clinically significant knee fractures to reduce unnecessary x-rays with high sensitivity (98-100%).",
     response_description="The calculated ottawa knee rule with interpretation",
-    operation_id="calculate_ottawa_knee_rule"
+    operation_id="ottawa_knee_rule"
 )
 async def calculate_ottawa_knee_rule(request: OttawaKneeRuleRequest):
     """

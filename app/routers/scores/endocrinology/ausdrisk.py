@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Australian Type 2 Diabetes Risk",
     description="Estimates 5-year risk of developing type 2 diabetes in Australian patients based on demographic, lifestyle and simple anthropometric measures",
     response_description="The calculated ausdrisk with interpretation",
-    operation_id="calculate_ausdrisk"
+    operation_id="ausdrisk"
 )
 async def calculate_ausdrisk(request: AusdriskRequest):
     """

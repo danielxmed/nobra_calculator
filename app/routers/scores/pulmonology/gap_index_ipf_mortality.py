@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate GAP Index for Idiopathic Pulmonary Fibrosis",
     description="Provides 1, 2, and 3-year mortality estimates for IPF patients. The GAP Index uses Gender, Age, and Physiology (FVC and DLCO) to predict mortality risk and guide clinical management decisions.",
     response_description="The calculated gap index ipf mortality with interpretation",
-    operation_id="calculate_gap_index_ipf_mortality"
+    operation_id="gap_index_ipf_mortality"
 )
 async def calculate_gap_index_ipf_mortality(request: GapIndexIpfMortalityRequest):
     """

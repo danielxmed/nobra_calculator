@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Clinical Pulmonary Infection Score",
     description="Evaluates objective data in mechanically ventilated patients suspected of ventilator-associated pneumonia (VAP) and stratifies risk of positive diagnosis. The score assists clinicians in determining when to pursue pulmonary cultures and guides antibiotic management decisions.",
     response_description="The calculated cpis with interpretation",
-    operation_id="calculate_cpis"
+    operation_id="cpis"
 )
 async def calculate_cpis(request: CpisRequest):
     """

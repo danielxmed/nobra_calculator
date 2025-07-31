@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Antivenom Dosing Algorithm",
     description="Doses antivenom (CroFab only, not Anavip) for pit viper snakebites. This unified treatment algorithm assists with quick identification and management of patients who may benefit from treatment with Crotalidae Polyvalent Immune Fab (CroFab®).",
     response_description="The calculated antivenom dosing algorithm with interpretation",
-    operation_id="calculate_antivenom_dosing_algorithm"
+    operation_id="antivenom_dosing_algorithm"
 )
 async def calculate_antivenom_dosing_algorithm(request: AntivenomDosingAlgorithmRequest):
     """

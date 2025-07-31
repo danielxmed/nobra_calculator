@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Osteoporosis Risk Assessment Instrument (ORAI)",
     description="Identifies women at risk for osteoporosis and recommends bone densitometry. Uses age, weight, and current estrogen use to stratify risk in postmenopausal women.",
     response_description="The calculated orai with interpretation",
-    operation_id="calculate_orai"
+    operation_id="orai"
 )
 async def calculate_orai(request: OraiRequest):
     """

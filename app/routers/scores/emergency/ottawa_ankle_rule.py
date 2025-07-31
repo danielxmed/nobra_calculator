@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Ottawa Ankle Rule",
     description="Rules out clinically significant foot and ankle fractures to reduce use of x-ray imaging. Provides separate criteria for ankle and foot x-rays based on location of pain and specific clinical findings.",
     response_description="The calculated ottawa ankle rule with interpretation",
-    operation_id="calculate_ottawa_ankle_rule"
+    operation_id="ottawa_ankle_rule"
 )
 async def calculate_ottawa_ankle_rule(request: OttawaAnkleRuleRequest):
     """

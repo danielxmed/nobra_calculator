@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Acute Gout Diagnosis Rule",
     description="Risk stratifies for gout vs non-gout arthritis and helps determine which patients benefit most from joint aspiration. A diagnostic rule for acute gouty arthritis in primary care without joint fluid analysis.",
     response_description="The calculated acute gout diagnosis rule with interpretation",
-    operation_id="calculate_acute_gout_diagnosis_rule"
+    operation_id="acute_gout_diagnosis_rule"
 )
 async def calculate_acute_gout_diagnosis_rule(request: AcuteGoutDiagnosisRuleRequest):
     """

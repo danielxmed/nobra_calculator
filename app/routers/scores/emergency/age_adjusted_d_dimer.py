@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Age-Adjusted D-dimer for Venous Thromboembolism",
     description="Adjusts D-dimer cutoffs to help rule out VTE in patients ≥50 years old, improving specificity while maintaining sensitivity",
     response_description="The calculated age adjusted d dimer with interpretation",
-    operation_id="calculate_age_adjusted_d_dimer"
+    operation_id="age_adjusted_d_dimer"
 )
 async def calculate_age_adjusted_d_dimer(request: AgeAdjustedDDimerRequest):
     """

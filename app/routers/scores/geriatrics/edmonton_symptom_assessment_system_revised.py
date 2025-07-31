@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Edmonton Symptom Assessment System-revised",
     description="Assesses symptoms of patients receiving palliative care through a standardized 9-item self-report symptom intensity tool with improved clarity and definitions.",
     response_description="The calculated edmonton symptom assessment system revised with interpretation",
-    operation_id="calculate_edmonton_symptom_assessment_system_revised"
+    operation_id="edmonton_symptom_assessment_system_revised"
 )
 async def calculate_edmonton_symptom_assessment_system_revised(request: EdmontonSymptomAssessmentSystemRevisedRequest):
     """

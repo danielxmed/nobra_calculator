@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Embolic Stroke of Undetermined Source",
     description="Diagnostic criteria for identifying embolic stroke of undetermined source after comprehensive evaluation excluding other specific stroke etiologies.",
     response_description="The calculated embolic stroke undetermined source esus criteria with interpretation",
-    operation_id="calculate_embolic_stroke_undetermined_source_esus_criteria"
+    operation_id="embolic_stroke_undetermined_source_esus_criteria"
 )
 async def calculate_embolic_stroke_undetermined_source_esus_criteria(request: EmbolicStrokeUndeterminedSourceEsusCriteriaRequest):
     """

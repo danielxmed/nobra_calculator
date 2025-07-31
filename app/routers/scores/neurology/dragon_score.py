@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate DRAGON Score for Post-TPA Stroke Outcome",
     description="Predicts 3-month outcome (functional independence vs dependency) in ischemic stroke patients treated with tissue plasminogen activator (tPA). Helps identify patients who may benefit from additional therapeutic interventions.",
     response_description="The calculated dragon score with interpretation",
-    operation_id="calculate_dragon_score"
+    operation_id="dragon_score"
 )
 async def calculate_dragon_score(request: DragonScoreRequest):
     """

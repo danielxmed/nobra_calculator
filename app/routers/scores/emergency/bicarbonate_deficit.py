@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Bicarbonate Deficit",
     description="Calculates total body bicarbonate deficit for assessment of metabolic acidosis severity and bicarbonate replacement therapy planning.",
     response_description="The calculated bicarbonate deficit with interpretation",
-    operation_id="calculate_bicarbonate_deficit"
+    operation_id="bicarbonate_deficit"
 )
 async def calculate_bicarbonate_deficit(request: BicarbonateDeficitRequest):
     """

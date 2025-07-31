@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Canadian C-Spine Rule",
     description="The Canadian C-Spine Rule is a clinical decision tool that helps determine whether cervical spine imaging can be safely avoided in alert and stable trauma patients. It uses high-risk factors, low-risk factors, and range of motion assessment to rule out clinically significant cervical spine injury (CSI) with 100% sensitivity.",
     response_description="The calculated canadian c spine rule with interpretation",
-    operation_id="calculate_canadian_c_spine_rule"
+    operation_id="canadian_c_spine_rule"
 )
 async def calculate_canadian_c_spine_rule(request: CanadianCSpineRuleRequest):
     """

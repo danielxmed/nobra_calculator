@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Arterial Blood Gas (ABG) Analyzer",
     description="Interprets arterial blood gas results to determine acid-base status, respiratory compensation, and metabolic derangements",
     response_description="The calculated abg analyzer with interpretation",
-    operation_id="calculate_abg_analyzer"
+    operation_id="abg_analyzer"
 )
 async def calculate_abg_analyzer(request: AbgAnalyzerRequest):
     """

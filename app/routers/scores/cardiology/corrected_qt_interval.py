@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Corrected QT Interval (QTc)",
     description="Corrects QT interval for heart rate extremes using multiple validated formulas (Bazett, Fridericia, Framingham, Hodges, or Rautaharju)",
     response_description="The calculated corrected qt interval with interpretation",
-    operation_id="calculate_corrected_qt_interval"
+    operation_id="corrected_qt_interval"
 )
 async def calculate_corrected_qt_interval(request: CorrectedQtIntervalRequest):
     """

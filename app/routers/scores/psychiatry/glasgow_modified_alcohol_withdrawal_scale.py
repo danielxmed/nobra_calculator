@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Glasgow Modified Alcohol Withdrawal Scale (GMAWS)",
     description="Clinical scale used to assess and monitor the severity of alcohol withdrawal symptoms. Evaluates five clinical characteristics (tremor, sweating, hallucinations, orientation, agitation) with scores from 0-2 each, for a total score ranging from 0-10 points. Used to guide benzodiazepine treatment dosing and monitoring intervals.",
     response_description="The calculated glasgow modified alcohol withdrawal scale with interpretation",
-    operation_id="calculate_glasgow_modified_alcohol_withdrawal_scale"
+    operation_id="glasgow_modified_alcohol_withdrawal_scale"
 )
 async def calculate_glasgow_modified_alcohol_withdrawal_scale(request: GlasgowModifiedAlcoholWithdrawalScaleRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Glasgow-Imrie Criteria for Severity of Acute Pa...",
     description="Clinical scoring system to assess the severity of acute pancreatitis using 8 laboratory and clinical parameters. Helps predict mortality risk and guide management decisions including ICU admission and treatment intensity. Uses the PANCREAS mnemonic for easy recall.",
     response_description="The calculated glasgow imrie pancreatitis with interpretation",
-    operation_id="calculate_glasgow_imrie_pancreatitis"
+    operation_id="glasgow_imrie_pancreatitis"
 )
 async def calculate_glasgow_imrie_pancreatitis(request: GlasgowImriePancreatitisRequest):
     """

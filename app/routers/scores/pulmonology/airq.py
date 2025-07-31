@@ -17,7 +17,7 @@ router = APIRouter()
     summary="Calculate Asthma Impairment and Risk Questionnaire (AIRQ)",
     description="Validates asthma control in patients 12 years and older by assessing both symptom impairment and exacerbation risk domains",
     response_description="The calculated airq with interpretation",
-    operation_id="calculate_airq"
+    operation_id="airq"
 )
 async def calculate_airq_score(request: AIRQRequest) -> AIRQResponse:
     """

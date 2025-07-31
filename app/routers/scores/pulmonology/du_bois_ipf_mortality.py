@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate du Bois Score for Idiopathic Pulmonary Fibrosis",
     description="Determines 1-year mortality risk in IPF patients using PFT and clinical indicators. Developed from two clinical trials (n=1,099) to identify independent predictors of 1-year mortality in idiopathic pulmonary fibrosis.",
     response_description="The calculated du bois ipf mortality with interpretation",
-    operation_id="calculate_du_bois_ipf_mortality"
+    operation_id="du_bois_ipf_mortality"
 )
 async def calculate_du_bois_ipf_mortality(request: DuBoisIpfMortalityRequest):
     """

@@ -526,7 +526,7 @@ router = APIRouter()
     summary="Calculate {Score Name}",
     description="{Detailed description of what this calculator does, including its clinical use case and interpretation guidelines}",
     response_description="The calculated {score name} with clinical interpretation and recommendations",
-    operation_id="calculate_{score_id}"
+    operation_id="{score_id}"
 )
 async def calculate_{score_id}(request: {ScoreId}Request):
     """
@@ -610,7 +610,7 @@ Example with actual values:
                 "This validated clinical prediction tool helps determine the need for anticoagulation therapy. "
                 "The score ranges from 0-9, with higher scores indicating greater annual stroke risk.",
     response_description="The calculated CHA2DS2-VASc score with risk percentage and anticoagulation recommendations",
-    operation_id="calculate_cha2ds2_vasc"
+    operation_id="cha2ds2_vasc"
 )
 ```
 

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Focused Assessment with Sonography for Trauma",
     description="Predicts presence of pericardial or intra-abdominal injury after penetrating or blunt trauma based on ultrasound findings.",
     response_description="The calculated fast with interpretation",
-    operation_id="calculate_fast"
+    operation_id="fast"
 )
 async def calculate_fast(request: FastRequest):
     """

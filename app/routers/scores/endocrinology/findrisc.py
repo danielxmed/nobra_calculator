@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate FINDRISC (Finnish Diabetes Risk Score)",
     description="Identifies patients at high risk for type 2 diabetes within 10 years without the need for laboratory tests",
     response_description="The calculated findrisc with interpretation",
-    operation_id="calculate_findrisc"
+    operation_id="findrisc"
 )
 async def calculate_findrisc(request: FindriscRequest):
     """

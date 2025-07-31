@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate COVID-GRAM Critical Illness Risk Score",
     description="Predicts risk of critical illness (ICU admission, mechanical ventilation, or death) in hospitalized COVID-19 patients",
     response_description="The calculated covid gram critical illness with interpretation",
-    operation_id="calculate_covid_gram_critical_illness"
+    operation_id="covid_gram_critical_illness"
 )
 async def calculate_covid_gram_critical_illness(request: CovidGramCriticalIllnessRequest):
     """

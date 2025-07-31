@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Duke Criteria for Infective Endocarditis",
     description="Provides standardized diagnostic criteria for infective endocarditis based on clinical, microbiological, and echocardiographic findings. Classifies patients as having definite, possible, or rejected endocarditis.",
     response_description="The calculated duke criteria infective endocarditis with interpretation",
-    operation_id="calculate_duke_criteria_infective_endocarditis"
+    operation_id="duke_criteria_infective_endocarditis"
 )
 async def calculate_duke_criteria_infective_endocarditis(request: DukeCriteriaInfectiveEndocarditisRequest):
     """

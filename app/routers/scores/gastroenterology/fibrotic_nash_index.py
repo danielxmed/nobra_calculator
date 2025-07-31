@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Fibrotic NASH Index (FNI)",
     description="Screens for fibrotic NASH in individuals at high risk for NAFLD. Uses AST, HbA1c, and HDL cholesterol to calculate probability of fibrotic nonalcoholic steatohepatitis.",
     response_description="The calculated fibrotic nash index with interpretation",
-    operation_id="calculate_fibrotic_nash_index"
+    operation_id="fibrotic_nash_index"
 )
 async def calculate_fibrotic_nash_index(request: FibroticNashIndexRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Fisher Grading Scale for Subarachnoid Hemorrhage",
     description="Assesses risk of vasospasm in SAH based on amount and distribution of blood on CT",
     response_description="The calculated fisher grading scale with interpretation",
-    operation_id="calculate_fisher_grading_scale"
+    operation_id="fisher_grading_scale"
 )
 async def calculate_fisher_grading_scale(request: FisherGradingScaleRequest):
     """

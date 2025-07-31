@@ -14,7 +14,7 @@ router = APIRouter()
     summary="Calculate AAP Pediatric Hypertension Guidelines",
     description="Diagnoses hypertension in pediatric patients based on the 2017 guidelines from the American Academy of Pediatrics",
     response_description="The calculated aap pediatric hypertension with interpretation",
-    operation_id="calculate_aap_pediatric_hypertension"
+    operation_id="aap_pediatric_hypertension"
 )
 async def calculate_aap_pediatric_hypertension(request: AapPediatricHypertensionRequest):
     """

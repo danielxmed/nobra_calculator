@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Cisplatin-Associated Acute Kidney Injury",
     description="Predicts the risk of acute kidney injury in patients treated with intravenous cisplatin. This calculator estimates the probability of moderate to severe AKI (≥2-fold rise in serum creatinine or need for kidney replacement therapy within 14 days of cisplatin administration).",
     response_description="The calculated cisplatin aki with interpretation",
-    operation_id="calculate_cisplatin_aki"
+    operation_id="cisplatin_aki"
 )
 async def calculate_cisplatin_aki(request: CisplatinAkiRequest):
     """

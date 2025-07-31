@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Fibrosis-4 (FIB-4) Index for Liver Fibrosis",
     description="Non-invasive estimate of liver scarring in HCV and HBV patients, to assess need for biopsy. Calculated as (Age × AST) / (Platelet count × √ALT)",
     response_description="The calculated fibrosis 4 index with interpretation",
-    operation_id="calculate_fibrosis_4_index"
+    operation_id="fibrosis_4_index"
 )
 async def calculate_fibrosis_4_index(request: Fibrosis4IndexRequest):
     """

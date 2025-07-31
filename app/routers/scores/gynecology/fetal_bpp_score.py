@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Fetal Biophysical Profile (BPP) Score",
     description="Predicts need for urgent delivery based on sonographic and non-stress test. Assesses for fetal distress in high-risk pregnancies.",
     response_description="The calculated fetal bpp score with interpretation",
-    operation_id="calculate_fetal_bpp_score"
+    operation_id="fetal_bpp_score"
 )
 async def calculate_fetal_bpp_score(request: FetalBppScoreRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate EGSYS (Evaluation of Guidelines in SY...",
     description="Predicts likelihood that syncope is of cardiac cause to help emergency clinicians with screening and risk stratification in patients presenting with syncope.",
     response_description="The calculated egsys score syncope with interpretation",
-    operation_id="calculate_egsys_score_syncope"
+    operation_id="egsys_score_syncope"
 )
 async def calculate_egsys_score_syncope(request: EgsysScoreSyncopeRequest):
     """

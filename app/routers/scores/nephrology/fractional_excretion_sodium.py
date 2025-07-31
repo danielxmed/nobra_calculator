@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Fractional Excretion of Sodium (FENa)",
     description="Determines if renal failure is due to pre-renal or intrinsic pathology. Calculates the percentage of filtered sodium that is excreted in the urine.",
     response_description="The calculated fractional excretion sodium with interpretation",
-    operation_id="calculate_fractional_excretion_sodium"
+    operation_id="fractional_excretion_sodium"
 )
 async def calculate_fractional_excretion_sodium(request: FractionalExcretionSodiumRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Atropine Dosing for Cholinesterase Inhibitor To...",
     description="Doses atropine for cholinesterase inhibitor toxicity from prescription drugs, nerve gas, or insecticides",
     response_description="The calculated atropine dosing with interpretation",
-    operation_id="calculate_atropine_dosing"
+    operation_id="atropine_dosing"
 )
 async def calculate_atropine_dosing(request: AtropineDosingRequest):
     """

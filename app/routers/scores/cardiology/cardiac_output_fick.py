@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Cardiac Output (Fick's Formula)",
     description="Calculates cardiac output, cardiac index, and stroke volume using Fick's principle. The gold standard method for measuring cardiac output based on oxygen consumption and arteriovenous oxygen difference.",
     response_description="The calculated cardiac output fick with interpretation",
-    operation_id="calculate_cardiac_output_fick"
+    operation_id="cardiac_output_fick"
 )
 async def calculate_cardiac_output_fick(request: CardiacOutputFickRequest):
     """

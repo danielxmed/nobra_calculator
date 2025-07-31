@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Functional Outcome in Patients With Primary Int...",
     description="Identifies patients with intracerebral hemorrhage (ICH) who will achieve functional independence at 90 days and aids in clinical decision-making and goals of care discussions.",
     response_description="The calculated func score with interpretation",
-    operation_id="calculate_func_score"
+    operation_id="func_score"
 )
 async def calculate_func_score(request: FuncScoreRequest):
     """

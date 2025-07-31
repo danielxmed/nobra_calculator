@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Clinical Disease Activity Index",
     description="Determines severity of rheumatoid arthritis using only clinical data, without laboratory tests",
     response_description="The calculated cdai rheumatoid arthritis with interpretation",
-    operation_id="calculate_cdai_rheumatoid_arthritis"
+    operation_id="cdai_rheumatoid_arthritis"
 )
 async def calculate_cdai_rheumatoid_arthritis(request: CdaiRheumatoidArthritisRequest):
     """

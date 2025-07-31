@@ -29,6 +29,7 @@ from .gds_15 import Gds15Request, Gds15Response
 from .glasgow_modified_alcohol_withdrawal_scale import GlasgowModifiedAlcoholWithdrawalScaleRequest, GlasgowModifiedAlcoholWithdrawalScaleResponse
 from .hamilton_anxiety_scale import HamiltonAnxietyScaleRequest, HamiltonAnxietyScaleResponse
 from .hamilton_depression_rating_scale import HamiltonDepressionRatingScaleRequest, HamiltonDepressionRatingScaleResponse
+from .heads_ed import HeadsEdRequest, HeadsEdResponse
 
 __all__ = [
     "AasRequest",
@@ -84,5 +85,7 @@ __all__ = [
     "HamiltonAnxietyScaleRequest",
     "HamiltonAnxietyScaleResponse",
     "HamiltonDepressionRatingScaleRequest",
-    "HamiltonDepressionRatingScaleResponse"
+    "HamiltonDepressionRatingScaleResponse",
+    "HeadsEdRequest",
+    "HeadsEdResponse"
 ]

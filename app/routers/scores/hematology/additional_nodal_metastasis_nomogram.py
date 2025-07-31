@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Additional Nodal Metastasis Nomogram",
     description="Predicts probability of additional non-sentinel lymph node metastases in breast cancer patients with a positive sentinel node biopsy",
     response_description="The calculated additional nodal metastasis nomogram with interpretation",
-    operation_id="calculate_additional_nodal_metastasis_nomogram"
+    operation_id="additional_nodal_metastasis_nomogram"
 )
 async def calculate_additional_nodal_metastasis_nomogram(request: AdditionalNodalMetastasisNomogramRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate EUROMACS-RHF Score",
     description="Determines risk of right ventricular heart failure in patients after left ventricular assist device (LVAD) implantation.",
     response_description="The calculated euromacs rhf score with interpretation",
-    operation_id="calculate_euromacs_rhf_score"
+    operation_id="euromacs_rhf_score"
 )
 async def calculate_euromacs_rhf_score(request: EuromacsRhfScoreRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Centor Score",
     description="Estimates likelihood that pharyngitis is streptococcal and suggests management course. Modified version includes age adjustment and provides evidence-based approach to antibiotic prescribing and testing decisions.",
     response_description="The calculated centor score with interpretation",
-    operation_id="calculate_centor_score"
+    operation_id="centor_score"
 )
 async def calculate_centor_score(request: CentorScoreRequest):
     """

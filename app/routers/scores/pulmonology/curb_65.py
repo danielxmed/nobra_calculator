@@ -14,7 +14,7 @@ router = APIRouter()
     summary="Calculate CURB-65 Score for Pneumonia Severity",
     description="Assesses the severity of community-acquired pneumonia (CAP) to determine the need for hospital admission",
     response_description="The calculated curb 65 with interpretation",
-    operation_id="calculate_curb_65"
+    operation_id="curb_65"
 )
 async def calculate_curb_65(request: Curb65Request):
     """

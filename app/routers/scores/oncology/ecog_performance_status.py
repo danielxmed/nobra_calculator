@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Eastern Cooperative Oncology Group",
     description="Determines patient's ability to tolerate therapies in severe illness, specifically for chemotherapy. Simple 5-point scale that describes patient's level of functioning in terms of their ability to care for themselves, daily activity, and physical ability.",
     response_description="The calculated ecog performance status with interpretation",
-    operation_id="calculate_ecog_performance_status"
+    operation_id="ecog_performance_status"
 )
 async def calculate_ecog_performance_status(request: EcogPerformanceStatusRequest):
     """

@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate GCS-Pupils Score",
     description="The GCS-Pupils Score (GCS-P) combines the Glasgow Coma Scale with pupillary reactivity assessment to provide enhanced prognostic accuracy in traumatic brain injury patients. This extended index offers improved prediction of 6-month mortality and unfavorable outcomes, particularly in patients with severe brain injury where standard GCS may be limited.",
     response_description="The calculated gcs pupils score with interpretation",
-    operation_id="calculate_gcs_pupils_score"
+    operation_id="gcs_pupils_score"
 )
 async def calculate_gcs_pupils_score(request: GcsPupilsScoreRequest):
     """

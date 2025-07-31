@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Neck Disability Index (NDI)",
     description="Assesses disability in patients with neck pain across 10 functional domains",
     response_description="The calculated ndi with interpretation",
-    operation_id="calculate_ndi"
+    operation_id="ndi"
 )
 async def calculate_ndi(request: NdiRequest):
     """

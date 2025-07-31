@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Asymptomatic Myeloma Prognosis",
     description="Predicts risk of progression of asymptomatic (smoldering) multiple myeloma to active myeloma or amyloidosis",
     response_description="The calculated asymptomatic myeloma prognosis with interpretation",
-    operation_id="calculate_asymptomatic_myeloma_prognosis"
+    operation_id="asymptomatic_myeloma_prognosis"
 )
 async def calculate_asymptomatic_myeloma_prognosis(request: AsymptomaticMyelomaPrognosisRequest):
     """

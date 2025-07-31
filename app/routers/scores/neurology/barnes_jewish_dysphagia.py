@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate Barnes Jewish Hospital Stroke Dysphagia Screen",
     description="Assesses ability to swallow without aspiration after stroke. This screening tool helps identify stroke patients at risk for dysphagia and aspiration, allowing safe initiation of oral intake while preventing aspiration complications.",
     response_description="The calculated barnes jewish dysphagia with interpretation",
-    operation_id="calculate_barnes_jewish_dysphagia"
+    operation_id="barnes_jewish_dysphagia"
 )
 async def calculate_barnes_jewish_dysphagia(request: BarnesJewishDysphagiaRequest):
     """

@@ -27,7 +27,7 @@ router = APIRouter()
                 "3 points (15%), >3 points (44%). Helps clinicians assess risk/benefit of tPA in "
                 "borderline cases and identify patients requiring intensive monitoring.",
     response_description="The calculated HAT score with hemorrhage risk percentages and clinical recommendations",
-    operation_id="calculate_hat_score"
+    operation_id="hat_score"
 )
 async def calculate_hat_score(request: HatScoreRequest):
     """

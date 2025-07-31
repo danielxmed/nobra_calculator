@@ -20,7 +20,7 @@ router = APIRouter()
     summary="Calculate For Patients: VACO Index COVID-19 Mortality Risk",
     description="Estimates 30-day mortality risk after COVID-19 infection using pre-existing health conditions and demographics. Developed by researchers from Yale University and VA Connecticut Healthcare System in collaboration with the US Department of Health and Human Services.",
     response_description="The calculated vaco index covid19 with interpretation",
-    operation_id="calculate_vaco_index_covid19"
+    operation_id="vaco_index_covid19"
 )
 async def calculate_vaco_index_covid19(request: VacoIndexCovid19Request):
     """
