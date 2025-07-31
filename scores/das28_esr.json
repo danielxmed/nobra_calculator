@@ -1,0 +1,107 @@
+{
+  "id": "das28_esr",
+  "title": "Disease Activity Score-28 for Rheumatoid Arthritis with ESR (DAS28-ESR)",
+  "description": "Describes severity of rheumatoid arthritis using clinical and laboratory data, specifically ESR",
+  "category": "rheumatology",
+  "version": "1990",
+  "parameters": [
+    {
+      "name": "tender_joint_count",
+      "type": "integer",
+      "required": true,
+      "description": "Number of tender joints (0-28)",
+      "validation": {
+        "min": 0,
+        "max": 28
+      },
+      "unit": "joints"
+    },
+    {
+      "name": "swollen_joint_count",
+      "type": "integer",
+      "required": true,
+      "description": "Number of swollen joints (0-28)",
+      "validation": {
+        "min": 0,
+        "max": 28
+      },
+      "unit": "joints"
+    },
+    {
+      "name": "esr_level",
+      "type": "integer",
+      "required": true,
+      "description": "Erythrocyte sedimentation rate in mm/hr",
+      "validation": {
+        "min": 1,
+        "max": 200
+      },
+      "unit": "mm/hr"
+    },
+    {
+      "name": "patient_global_health",
+      "type": "integer",
+      "required": true,
+      "description": "Patient's global assessment of disease activity (0-10 scale, where 0 = very well, 10 = very poor)",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "scale"
+    }
+  ],
+  "result": {
+    "name": "das28_esr_score",
+    "type": "float",
+    "unit": "points",
+    "description": "DAS28-ESR score (range 0-10)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2.6,
+        "stage": "Remission",
+        "description": "Disease remission",
+        "interpretation": "Remission. Patient is in remission with minimal or no disease activity. Continue current therapy and monitor."
+      },
+      {
+        "min": 2.6,
+        "max": 3.2,
+        "stage": "Low",
+        "description": "Low disease activity",
+        "interpretation": "Low disease activity. Current therapy is effective. Continue monitoring and may consider treatment optimization for remission target."
+      },
+      {
+        "min": 3.2,
+        "max": 5.1,
+        "stage": "Moderate",
+        "description": "Moderate disease activity",
+        "interpretation": "Moderate disease activity. Consider treatment intensification or modification. Reassess treatment strategy to achieve lower disease activity."
+      },
+      {
+        "min": 5.1,
+        "max": 10,
+        "stage": "High",
+        "description": "High disease activity",
+        "interpretation": "High disease activity. Treatment intensification or change is strongly recommended. Consider combination therapy or biologic agents."
+      }
+    ]
+  },
+  "references": [
+    "van der Heijde DM, van 't Hof MA, van Riel PL, et al. Judging disease activity in clinical practice in rheumatoid arthritis: first step in the development of a disease activity score. Ann Rheum Dis. 1990 Nov;49(11):916-20. doi: 10.1136/ard.49.11.916.",
+    "Prevoo ML, van 't Hof MA, Kuper HH, van Leeuwen MA, van de Putte LB, van Riel PL. Modified disease activity scores that include twenty-eight-joint counts. Development and validation in a prospective longitudinal study of patients with rheumatoid arthritis. Arthritis Rheum. 1995 Jan;38(1):44-8. doi: 10.1002/art.1780380107.",
+    "Tamhane A, Redden DT, McGwin G Jr, Brown EE, Westfall AO, Reynolds RJ, Callahan L, Conn DL, Jonas BL, Smith RP, Brasington RD Jr, Moreland LW, Bridges SL Jr. Comparison of the disease activity score using erythrocyte sedimentation rate and C-reactive protein in African Americans with rheumatoid arthritis. J Rheumatol. 2013 Nov;40(11):1812-22. doi: 10.3899/jrheum.121225."
+  ],
+  "formula": "DAS28-ESR = 0.56*√(tender joint count) + 0.28*√(swollen joint count) + 0.70*ln(ESR) + 0.014*patient global health*10",
+  "notes": [
+    "The 28 joints assessed include: shoulders (2), elbows (2), wrists (2), MCPs (10), PIPs (8), knees (2), and thumb IPs (2)",
+    "Patient global health is assessed on 0-10 scale where 0 = very well and 10 = very poor",
+    "ESR must be at least 1 mm/hr for calculation (cannot be 0 due to natural logarithm)",
+    "DAS28-ESR tends to give higher scores than DAS28-CRP for the same disease activity level",
+    "A change of ≥0.6 represents moderate improvement, ≥1.2 represents major improvement",
+    "Used as part of 'treat-to-target' approach in rheumatoid arthritis management",
+    "Should be used in conjunction with clinical judgment and other assessment tools",
+    "ESR may be elevated by conditions other than RA (age, gender, anemia, infection, etc.)"
+  ]
+}

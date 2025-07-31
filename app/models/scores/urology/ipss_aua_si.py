@@ -173,7 +173,7 @@ class IpssAuaSiRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "incomplete_emptying": 1,
                 "frequency": 2,
@@ -272,7 +272,7 @@ class IpssAuaSiResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 12,
                 "unit": "points",

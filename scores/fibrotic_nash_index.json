@@ -1,0 +1,84 @@
+{
+  "id": "fibrotic_nash_index",
+  "title": "Fibrotic NASH Index (FNI)",
+  "description": "Screens for fibrotic NASH in individuals at high risk for NAFLD. Uses AST, HbA1c, and HDL cholesterol to calculate probability of fibrotic nonalcoholic steatohepatitis.",
+  "category": "gastroenterology",
+  "version": "2023",
+  "parameters": [
+    {
+      "name": "ast",
+      "type": "float",
+      "required": true,
+      "description": "Aspartate aminotransferase (AST) level",
+      "validation": {
+        "min": 5,
+        "max": 1000
+      },
+      "unit": "U/L"
+    },
+    {
+      "name": "hba1c",
+      "type": "float",
+      "required": true,
+      "description": "Hemoglobin A1c (glycated hemoglobin)",
+      "validation": {
+        "min": 3,
+        "max": 20
+      },
+      "unit": "%"
+    },
+    {
+      "name": "hdl",
+      "type": "float",
+      "required": true,
+      "description": "HDL cholesterol level",
+      "validation": {
+        "min": 10,
+        "max": 200
+      },
+      "unit": "mg/dL"
+    }
+  ],
+  "result": {
+    "name": "fni_score",
+    "type": "float",
+    "unit": "probability",
+    "description": "FNI score representing probability of fibrotic NASH (0-1)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0.10,
+        "stage": "Low Risk",
+        "description": "Fibrotic NASH ruled out",
+        "interpretation": "Fibrotic NASH can be confidently ruled out. Negative predictive value 0.93. No immediate need for liver specialist referral. Continue routine monitoring in primary care."
+      },
+      {
+        "min": 0.10,
+        "max": 0.33,
+        "stage": "Indeterminate Risk",
+        "description": "Further evaluation needed",
+        "interpretation": "Cannot rule in or rule out fibrotic NASH. Consider additional non-invasive tests (e.g., FIB-4, NAFLD fibrosis score). May warrant referral to hepatology for further evaluation."
+      },
+      {
+        "min": 0.33,
+        "max": 1.0,
+        "stage": "High Risk",
+        "description": "Likely fibrotic NASH",
+        "interpretation": "High probability of fibrotic NASH. Specificity ≥0.90, positive predictive value 0.57. Refer to liver specialist for further investigation. Consider liver biopsy or advanced imaging."
+      }
+    ]
+  },
+  "references": [
+    "Tavaglione F, Jamialahmadi O, De Vincentis A, Qadri S, Mowlaei ME, Mancina RM, et al. Development and Validation of a Score for Fibrotic Nonalcoholic Steatohepatitis. Clin Gastroenterol Hepatol. 2023 Jun;21(6):1523-1532.e1. doi: 10.1016/j.cgh.2022.03.044."
+  ],
+  "formula": "FNI = e^x / (1 + e^x), where x = -10.33 + 2.54 × ln(AST) + 3.86 × ln(HbA1c) - 1.66 × ln(HDL)",
+  "notes": [
+    "Designed for primary care and endocrinology/diabetology settings",
+    "Performance maintained in patients with diabetes (AUROC 0.78-0.95)",
+    "Should NOT be used in patients with alcohol use disorder or known chronic liver disease",
+    "Best for ruling out rather than diagnosing fibrotic NASH",
+    "FNI > 0.1 indicates 4-fold increased risk of severe liver disease vs general population"
+  ]
+}

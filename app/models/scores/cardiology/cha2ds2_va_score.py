@@ -204,7 +204,7 @@ class Cha2ds2VaScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 68,
                 "congestive_heart_failure": "no",
@@ -396,7 +396,7 @@ class Cha2ds2VaScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "total_score": 2,

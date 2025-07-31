@@ -130,7 +130,7 @@ class CrsGradingRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "fever_present": "yes",
                 "hypotension_status": "none",
@@ -294,7 +294,7 @@ class CrsGradingResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 1,
                 "unit": "CRS grade",

@@ -1,0 +1,251 @@
+{
+  "id": "euroscore_ii",
+  "title": "European System for Cardiac Operative Risk Evaluation (EuroSCORE) II",
+  "description": "Predicts risk of in-hospital mortality after major cardiac surgery using logistic regression model with 18 validated variables.",
+  "category": "cardiology",
+  "version": "2012",
+  "parameters": [
+    {
+      "name": "age_years",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 110
+      },
+      "unit": "years"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient biological sex",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "insulin_dependent_diabetes",
+      "type": "string",
+      "required": true,
+      "description": "Insulin-dependent diabetes mellitus",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "chronic_pulmonary_dysfunction",
+      "type": "string",
+      "required": true,
+      "description": "Chronic pulmonary dysfunction requiring bronchodilators or steroids",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "mobility_dysfunction",
+      "type": "string",
+      "required": true,
+      "description": "Neurological or musculoskeletal dysfunction severely affecting mobility",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "creatinine_clearance",
+      "type": "string",
+      "required": true,
+      "description": "Creatinine clearance or dialysis status",
+      "options": ["greater_than_85", "51_to_85", "50_or_less", "on_dialysis"],
+      "validation": {
+        "enum": ["greater_than_85", "51_to_85", "50_or_less", "on_dialysis"]
+      }
+    },
+    {
+      "name": "critical_preoperative_state",
+      "type": "string",
+      "required": true,
+      "description": "Critical preoperative state (mechanical ventilation, inotropes, IABP, or renal failure)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "nyha_class",
+      "type": "string",
+      "required": true,
+      "description": "NYHA functional classification",
+      "options": ["class_1", "class_2", "class_3", "class_4"],
+      "validation": {
+        "enum": ["class_1", "class_2", "class_3", "class_4"]
+      }
+    },
+    {
+      "name": "ccs_class_4",
+      "type": "string",
+      "required": true,
+      "description": "Canadian Cardiovascular Society Class 4 angina",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "extracardiac_arteriopathy",
+      "type": "string",
+      "required": true,
+      "description": "Extracardiac arteriopathy (claudication, carotid occlusion, or stroke)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "previous_cardiac_surgery",
+      "type": "string",
+      "required": true,
+      "description": "Previous cardiac surgery opening the pericardium",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "active_endocarditis",
+      "type": "string",
+      "required": true,
+      "description": "Active endocarditis requiring antimicrobial treatment",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "left_ventricular_function",
+      "type": "string",
+      "required": true,
+      "description": "Left ventricular ejection fraction category",
+      "options": ["good_51_or_more", "moderate_31_to_50", "poor_21_to_30", "very_poor_20_or_less"],
+      "validation": {
+        "enum": ["good_51_or_more", "moderate_31_to_50", "poor_21_to_30", "very_poor_20_or_less"]
+      }
+    },
+    {
+      "name": "recent_mi",
+      "type": "string",
+      "required": true,
+      "description": "Recent myocardial infarction within 90 days",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "pulmonary_hypertension",
+      "type": "string",
+      "required": true,
+      "description": "Pulmonary hypertension (systolic PAP >60 mmHg)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "urgency",
+      "type": "string",
+      "required": true,
+      "description": "Surgery urgency level",
+      "options": ["elective", "urgent", "emergency", "salvage"],
+      "validation": {
+        "enum": ["elective", "urgent", "emergency", "salvage"]
+      }
+    },
+    {
+      "name": "weight_of_intervention",
+      "type": "string",
+      "required": true,
+      "description": "Weight/complexity of cardiac surgical intervention",
+      "options": ["single_non_cabg", "two_procedures", "three_or_more_procedures"],
+      "validation": {
+        "enum": ["single_non_cabg", "two_procedures", "three_or_more_procedures"]
+      }
+    },
+    {
+      "name": "surgery_on_thoracic_aorta",
+      "type": "string",
+      "required": true,
+      "description": "Surgery on thoracic aorta",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "mortality_risk",
+    "type": "object",
+    "unit": "percentage",
+    "description": "Predicted in-hospital mortality risk percentage and risk stratification"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Low Risk",
+        "description": "Low operative risk",
+        "interpretation": "Low risk of in-hospital mortality. Standard perioperative care and monitoring recommended."
+      },
+      {
+        "min": 2,
+        "max": 5,
+        "stage": "Medium Risk",
+        "description": "Medium operative risk",
+        "interpretation": "Medium risk of in-hospital mortality. Enhanced perioperative monitoring and care planning recommended."
+      },
+      {
+        "min": 5,
+        "max": 10,
+        "stage": "High Risk",
+        "description": "High operative risk",
+        "interpretation": "High risk of in-hospital mortality. Intensive perioperative care, multidisciplinary team approach, and careful risk-benefit assessment recommended."
+      },
+      {
+        "min": 10,
+        "max": 100,
+        "stage": "Very High Risk",
+        "description": "Very high operative risk",
+        "interpretation": "Very high risk of in-hospital mortality. Consider alternative treatments, intensive perioperative support, and detailed discussion with patient and family regarding risks and benefits."
+      }
+    ]
+  },
+  "references": [
+    "Nashef SA, Roques F, Sharples LD, Nilsson J, Smith C, Goldstone AR, Lockowandt U. EuroSCORE II. Eur J Cardiothorac Surg. 2012 Apr;41(4):734-44; discussion 744-5. doi: 10.1093/ejcts/ezs043.",
+    "Roques F, Michel P, Goldstone AR, Nashef SA. The logistic EuroSCORE. Eur Heart J. 2003 May;24(9):881-2. doi: 10.1016/s0195-668x(02)00799-6.",
+    "Nashef SA, Roques F, Michel P, Gauducheau E, Lemeshow S, Salamon R. European system for cardiac operative risk evaluation (EuroSCORE). Eur J Cardiothorac Surg. 1999 Jul;16(1):9-13. doi: 10.1016/s1010-7940(99)00134-7.",
+    "Grant SW, Hickey GL, Dimarakis I, Trivedi U, Bryan A, Treasure T, Cooper G, Pagano D, McCollum C, Bridgewater B. How does EuroSCORE II perform in UK cardiac surgery; an analysis of 23 740 patients from the Society for Cardiothoracic Surgery in Great Britain and Ireland National Database. Heart. 2012 Dec;98(21):1568-72. doi: 10.1136/heartjnl-2012-302483."
+  ],
+  "formula": "EuroSCORE II uses logistic regression: Predicted mortality (%) = 100 × e^y / (1 + e^y), where y = -5.324537 + Σ(coefficient × variable)",
+  "notes": [
+    "Based on 22,381 patients undergoing cardiac surgery in 154 hospitals across 43 countries",
+    "Uses logistic regression model with constant β0 = -5.324537",
+    "Well calibrated with area under ROC curve of 0.8095",
+    "Significant improvement over original EuroSCORE in contemporary practice",
+    "Reduces overestimation of mortality risk by approximately 50%",
+    "Age coefficient increases by 1 point per year after age 60",
+    "Creatinine clearance is better predictor than absolute serum creatinine",
+    "Includes insulin-dependent diabetes as separate risk factor",
+    "Surgery urgency and complexity are key procedural factors",
+    "Should be used in conjunction with clinical judgment",
+    "Validated for in-hospital mortality, not long-term outcomes",
+    "May need local calibration in specific populations",
+    "Regular updates recommended as surgical practices evolve",
+    "Not applicable to transcatheter procedures or minimally invasive surgery"
+  ]
+}

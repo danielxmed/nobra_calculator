@@ -1,0 +1,72 @@
+{
+  "id": "figo_staging_ovarian_cancer_2014",
+  "title": "FIGO Staging for Ovarian Cancer (2014)",
+  "description": "Stages ovarian, fallopian tube, and peritoneal cancer based on anatomical spread of disease",
+  "category": "gynecology",
+  "version": "2014",
+  "parameters": [
+    {
+      "name": "tumor_location",
+      "type": "string",
+      "required": true,
+      "description": "Location and extent of primary tumor",
+      "options": [
+        "confined_one_ovary_tube_intact",
+        "confined_both_ovaries_tubes_intact",
+        "confined_surgical_spill",
+        "confined_capsule_rupture_or_surface",
+        "confined_positive_washings",
+        "pelvic_extension_uterus_tubes_ovaries",
+        "pelvic_extension_other_tissues",
+        "positive_retroperitoneal_nodes_only_10mm_or_less",
+        "positive_retroperitoneal_nodes_only_more_than_10mm",
+        "microscopic_extrapelvic_peritoneal",
+        "macroscopic_peritoneal_2cm_or_less",
+        "macroscopic_peritoneal_more_than_2cm",
+        "pleural_effusion_positive_cytology",
+        "parenchymal_or_extra_abdominal_metastases"
+      ],
+      "validation": {
+        "enum": [
+          "confined_one_ovary_tube_intact",
+          "confined_both_ovaries_tubes_intact",
+          "confined_surgical_spill",
+          "confined_capsule_rupture_or_surface",
+          "confined_positive_washings",
+          "pelvic_extension_uterus_tubes_ovaries",
+          "pelvic_extension_other_tissues",
+          "positive_retroperitoneal_nodes_only_10mm_or_less",
+          "positive_retroperitoneal_nodes_only_more_than_10mm",
+          "microscopic_extrapelvic_peritoneal",
+          "macroscopic_peritoneal_2cm_or_less",
+          "macroscopic_peritoneal_more_than_2cm",
+          "pleural_effusion_positive_cytology",
+          "parenchymal_or_extra_abdominal_metastases"
+        ]
+      }
+    }
+  ],
+  "result": {
+    "name": "figo_stage",
+    "type": "string",
+    "unit": "",
+    "description": "FIGO stage classification"
+  },
+  "interpretation": {
+    "ranges": []
+  },
+  "references": [
+    "Prat J; FIGO Committee on Gynecologic Oncology. Staging classification for cancer of the ovary, fallopian tube, and peritoneum. Int J Gynaecol Obstet. 2014 Jan;124(1):1-5.",
+    "Mutch DG, Prat J. 2014 FIGO staging for ovarian, fallopian tube and peritoneal cancer. Gynecol Oncol. 2014 Jun;133(3):401-4.",
+    "Berek JS, Kehoe ST, Kumar L, Friedlander M. Cancer of the ovary, fallopian tube, and peritoneum. Int J Gynaecol Obstet. 2018 Oct;143 Suppl 2:59-78."
+  ],
+  "formula": "Based on anatomical spread: Stage I (confined to ovaries/tubes), Stage II (pelvic extension), Stage III (peritoneal/nodal spread), Stage IV (distant metastases)",
+  "notes": [
+    "Primary site (ovary, fallopian tube, or peritoneum) must be designated",
+    "Histologic type should be recorded",
+    "Lymph node involvement must be proven cytologically or histologically",
+    "Staging is based on findings at laparotomy",
+    "If pleural effusion is present, cytology must be positive to assign stage IVA",
+    "Liver capsule involvement = Stage IIIC; liver parenchymal metastases = Stage IVB"
+  ]
+}

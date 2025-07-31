@@ -14,6 +14,8 @@ from .cisne import CisneRequest, CisneResponse
 from .ctcae import CtcaeRequest, CtcaeResponse
 from .crs_grading import CrsGradingRequest, CrsGradingResponse
 from .damico_risk_classification import DamicoRiskClassificationRequest, DamicoRiskClassificationResponse
+from .delta_p_score import DeltaPScoreRequest, DeltaPScoreResponse
+from .ecog_performance_status import EcogPerformanceStatusRequest, EcogPerformanceStatusResponse
 
 __all__ = [
     "Leibovich2018RccRequest",
@@ -38,4 +40,8 @@ __all__ = [
     "CrsGradingResponse",
     "DamicoRiskClassificationRequest",
     "DamicoRiskClassificationResponse",
+    "DeltaPScoreRequest",
+    "DeltaPScoreResponse",
+    "EcogPerformanceStatusRequest",
+    "EcogPerformanceStatusResponse",
 ]

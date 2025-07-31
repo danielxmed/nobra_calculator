@@ -279,7 +279,7 @@ class CkdPredictionHivPatientsRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age_category": "50_to_59",
                 "glucose_elevated": "no",
@@ -475,7 +475,7 @@ class CkdPredictionHivPatientsResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 11.9,
                 "unit": "percent",

@@ -1,0 +1,42 @@
+{
+  "id": "naloxone_drip_dosing",
+  "title": "Naloxone Drip Dosing",
+  "description": "Doses naloxone for acute opioid overdose. Calculates continuous IV infusion rate based on the initial effective bolus dose, with goal of maintaining same level of opioid reversal.",
+  "category": "emergency",
+  "version": "2023",
+  "parameters": [
+    {
+      "name": "bolus_dose",
+      "type": "float",
+      "required": true,
+      "description": "Total naloxone dose required in the first hour to achieve adequate reversal (mg)",
+      "validation": {
+        "min": 0.1,
+        "max": 10
+      },
+      "unit": "mg"
+    }
+  ],
+  "result": {
+    "name": "infusion_rate",
+    "type": "float",
+    "unit": "mg/hr",
+    "description": "Continuous IV infusion starting rate"
+  },
+  "interpretation": {
+    "general": "Start continuous IV infusion at calculated rate. Administer half of the bolus dose 15 minutes after starting drip. Titrate based on respiratory rate, hypoxia, and CNS depression. Decrease rate if withdrawal symptoms occur.",
+    "monitoring": "Requires intensive care monitoring. Naloxone half-life (30-100 minutes) is shorter than most opioids, necessitating continuous infusion for sustained reversal."
+  },
+  "references": [
+    "Boyer EW. Management of opioid analgesic overdose. N Engl J Med. 2012 Jul 12;367(2):146-55.",
+    "Clarke SF, Dargan PI, Jones AL. Naloxone in opioid poisoning: walking the tightrope. Emerg Med J. 2005 Sep;22(9):612-6.",
+    "Connors NJ, Nelson LS. The Evolution of Recommended Naloxone Dosing for Opioid Overdose by Medical Specialty. J Med Toxicol. 2016 Sep;12(3):276-81."
+  ],
+  "formula": "Continuous IV infusion rate (mg/hr) = (2/3) × bolus dose (mg)",
+  "notes": [
+    "Bolus dose should be determined clinically based on patient response",
+    "May require repeated administration or higher doses for synthetic opioids (e.g., fentanyl)",
+    "Monitor for recurrent respiratory depression as opioid effects may outlast naloxone",
+    "Consider admission for patients requiring continuous naloxone infusion"
+  ]
+}

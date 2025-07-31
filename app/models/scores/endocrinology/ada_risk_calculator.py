@@ -139,7 +139,7 @@ class AdaRiskCalculatorRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age_category": "40_49",
                 "gender": "male",
@@ -224,7 +224,7 @@ class AdaRiskCalculatorResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 5,
                 "unit": "points", 

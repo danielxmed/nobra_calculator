@@ -1,0 +1,126 @@
+{
+  "id": "estimated_ethanol_concentration",
+  "title": "Estimated Ethanol (and Toxic Alcohol) Serum Concentration Based on Ingestion",
+  "description": "Predicts ethanol and toxic alcohol serum concentration based on amount ingested and patient weight using volume of distribution principles.",
+  "category": "toxicology",
+  "version": "2016",
+  "parameters": [
+    {
+      "name": "alcohol_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of alcohol ingested",
+      "options": ["ethanol", "methanol", "ethylene_glycol", "isopropanol"],
+      "validation": {
+        "enum": ["ethanol", "methanol", "ethylene_glycol", "isopropanol"]
+      }
+    },
+    {
+      "name": "amount_ingested_ml",
+      "type": "float",
+      "required": true,
+      "description": "Amount of pure alcohol ingested in milliliters",
+      "validation": {
+        "min": 0,
+        "max": 1000
+      },
+      "unit": "mL"
+    },
+    {
+      "name": "weight_kg",
+      "type": "float",
+      "required": true,
+      "description": "Patient body weight in kilograms",
+      "validation": {
+        "min": 1,
+        "max": 300
+      },
+      "unit": "kg"
+    },
+    {
+      "name": "alcohol_percentage",
+      "type": "float",
+      "required": false,
+      "description": "Percentage of alcohol in the consumed beverage (optional, defaults to 100% for pure alcohol)",
+      "validation": {
+        "min": 0,
+        "max": 100
+      },
+      "unit": "%"
+    }
+  ],
+  "result": {
+    "name": "serum_concentration",
+    "type": "object",
+    "unit": "various",
+    "description": "Estimated serum concentration and clinical interpretation"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "alcohol_type": "ethanol",
+        "ranges": [
+          {
+            "min": 0,
+            "max": 50,
+            "stage": "Mild Intoxication",
+            "description": "Mild effects",
+            "interpretation": "Mild intoxication. May cause euphoria, decreased inhibition, and mild impairment of judgment and coordination."
+          },
+          {
+            "min": 50,
+            "max": 100,
+            "stage": "Moderate Intoxication", 
+            "description": "Moderate effects",
+            "interpretation": "Moderate intoxication. Significant impairment of motor control, reaction time, and judgment. Legal intoxication in most jurisdictions."
+          },
+          {
+            "min": 100,
+            "max": 300,
+            "stage": "Severe Intoxication",
+            "description": "Severe effects",
+            "interpretation": "Severe intoxication. Risk of respiratory depression, coma, and death. Requires immediate medical attention."
+          },
+          {
+            "min": 300,
+            "max": 9999,
+            "stage": "Life-threatening",
+            "description": "Critical level",
+            "interpretation": "Life-threatening alcohol poisoning. High risk of respiratory failure, coma, and death. Requires emergency intervention."
+          }
+        ]
+      },
+      {
+        "alcohol_type": "methanol",
+        "treatment_threshold": 20,
+        "interpretation": "Methanol is highly toxic. Serum levels ≥20 mg/dL require immediate treatment with fomepizole or ethanol and hemodialysis."
+      },
+      {
+        "alcohol_type": "ethylene_glycol",
+        "treatment_threshold": 20,
+        "interpretation": "Ethylene glycol is highly toxic. Serum levels ≥20 mg/dL require immediate treatment with fomepizole or ethanol and hemodialysis."
+      }
+    ]
+  },
+  "references": [
+    "Baselt RC. Disposition of toxic drugs and chemicals in man. 11th ed. Seal Beach, CA: Biomedical Publications; 2017.",
+    "Barceloux DG, Bond GR, Krenzelok EP, Cooper H, Vale JA; American Academy of Clinical Toxicology Ad Hoc Committee on the Treatment Guidelines for Methanol Poisoning. American Academy of Clinical Toxicology practice guidelines on the treatment of methanol poisoning. J Toxicol Clin Toxicol. 2002;40(4):415-46. doi: 10.1081/clt-120006745.",
+    "Brent J, McMartin K, Phillips S, Aaron C, Kulig K; Methylpyrazole for Toxic Alcohols Study Group. Fomepizole for the treatment of methanol poisoning. N Engl J Med. 2001 Feb 8;344(6):424-9. doi: 10.1056/NEJM200102083440605.",
+    "Watson WA, Litovitz TL, Rodgers GC Jr, Klein-Schwartz W, Reid N, Youniss J, et al. 2004 annual report of the American Association of Poison Control Centers Toxic Exposure Surveillance System. Am J Emerg Med. 2005 Sep;23(5):589-666. doi: 10.1016/j.ajem.2005.05.001."
+  ],
+  "formula": "Serum Concentration (mg/L) = [Amount ingested (mg)] / [Volume of distribution (0.6 L/kg) × Weight (kg)]",
+  "notes": [
+    "Formula assumes complete alcohol absorption",
+    "Disregards alcohol metabolism and elimination",
+    "Uses standard volume of distribution of 0.6 L/kg",
+    "Estimates are approximations only",
+    "Actual serum concentrations may vary significantly based on individual factors",
+    "Does not account for time since ingestion",
+    "Methanol and ethylene glycol levels ≥20 mg/dL require immediate treatment",
+    "Ethanol levels >300 mg/dL are potentially fatal",
+    "Consider co-ingestion of multiple substances",
+    "Always obtain actual serum levels when available",
+    "Use in conjunction with clinical assessment and osmolar gap",
+    "Isopropanol is less toxic but can cause significant CNS depression"
+  ]
+}

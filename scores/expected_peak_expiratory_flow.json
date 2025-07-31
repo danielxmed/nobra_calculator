@@ -1,0 +1,114 @@
+{
+  "id": "expected_peak_expiratory_flow",
+  "title": "Estimated/Expected Peak Expiratory Flow (Peak Flow)",
+  "description": "Estimates expected peak expiratory flow rate and quantifies asthma exacerbation severity based on age, height, race, and sex.",
+  "category": "pulmonology",
+  "version": "2018",
+  "parameters": [
+    {
+      "name": "age_years",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 5,
+        "max": 80
+      },
+      "unit": "years"
+    },
+    {
+      "name": "height_cm",
+      "type": "float",
+      "required": true,
+      "description": "Patient height in centimeters",
+      "validation": {
+        "min": 100,
+        "max": 220
+      },
+      "unit": "cm"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient biological sex",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "race_ethnicity",
+      "type": "string",
+      "required": true,
+      "description": "Patient race/ethnicity for appropriate formula selection",
+      "options": ["caucasian", "african_american", "mexican_american", "other"],
+      "validation": {
+        "enum": ["caucasian", "african_american", "mexican_american", "other"]
+      }
+    },
+    {
+      "name": "measured_pef",
+      "type": "float",
+      "required": false,
+      "description": "Measured peak expiratory flow (optional, for comparison and zone calculation)",
+      "validation": {
+        "min": 50,
+        "max": 800
+      },
+      "unit": "L/min"
+    }
+  ],
+  "result": {
+    "name": "peak_flow_results",
+    "type": "object",
+    "unit": "L/min",
+    "description": "Expected peak expiratory flow and zone assessment"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "zone": "Green Zone",
+        "percentage_range": "≥80%",
+        "stage": "Normal",
+        "description": "Good control",
+        "interpretation": "Peak flow in normal range. Continue current treatment plan."
+      },
+      {
+        "zone": "Yellow Zone", 
+        "percentage_range": "50-79%",
+        "stage": "Caution",
+        "description": "Reduced lung function",
+        "interpretation": "Peak flow below normal. May indicate developing exacerbation. Consider increasing treatment."
+      },
+      {
+        "zone": "Red Zone",
+        "percentage_range": "<50%",
+        "stage": "Emergency",
+        "description": "Severe obstruction",
+        "interpretation": "Dangerously low peak flow. Severe asthma exacerbation. Seek immediate medical attention."
+      }
+    ]
+  },
+  "references": [
+    "Hankinson JL, Odencrantz JR, Fedan KB. Spirometric reference values from a sample of the general U.S. population. Am J Respir Crit Care Med. 1999 Jan;159(1):179-87. doi: 10.1164/ajrccm.159.1.9712108.",
+    "Nunn AJ, Gregg I. New regression equations for predicting peak expiratory flow in adults. BMJ. 1989 Apr 22;298(6680):1068-70. doi: 10.1136/bmj.298.6680.1068.",
+    "Godfrey S, Kamburoff PL, Nairn JR. Spirometry, lung volumes and airway resistance in normal children aged 5 to 18 years. Br J Dis Chest. 1970 Jan;64(1):15-24. doi: 10.1016/s0007-0971(70)80045-0.",
+    "Global Initiative for Asthma. Global Strategy for Asthma Management and Prevention, 2023. Available from: www.ginasthma.org"
+  ],
+  "formula": "Variable formulas based on age and ethnicity: Ages 5-7 and 8-17 non-Caucasian: PEFR = [(Height, cm - 100) × 5] + 100; Adults 18-80 non-Caucasian: Male PEFR = {[(Height, m × 5.48) + 1.58] - [Age × 0.041]} × 60, Female PEFR = {[(Height, m × 3.72) + 2.24] - [Age × 0.03]} × 60; Caucasian/African American/Mexican American: Hankinson 1999 NHANES III equations",
+  "notes": [
+    "Formulas vary by age group and race/ethnicity",
+    "Height and sex are most strongly correlated with peak flow",
+    "Not a standalone diagnostic tool - must be combined with clinical assessment", 
+    "Green zone: ≥80% of expected (good control)",
+    "Yellow zone: 50-79% of expected (caution, may need treatment adjustment)",
+    "Red zone: <50% of expected (emergency, seek immediate medical attention)",
+    "Peak flow variability >20% may suggest asthma diagnosis",
+    "Regular monitoring helps assess treatment effectiveness",
+    "Useful for patients without known baseline peak flow",
+    "Most accurate when compared to patient's personal best value",
+    "Environmental factors and technique can affect measurements",
+    "Consider diurnal variation in peak flow measurements"
+  ]
+}

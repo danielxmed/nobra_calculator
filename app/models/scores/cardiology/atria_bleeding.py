@@ -79,7 +79,7 @@ class AtriaBleedingRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "anemia": "no",
                 "severe_renal_disease": "no",
@@ -136,7 +136,7 @@ class AtriaBleedingResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 3,
                 "unit": "points",

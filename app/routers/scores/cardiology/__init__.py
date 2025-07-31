@@ -26,6 +26,14 @@ from .chads2_score import router as chads2_score_router
 from .cha2ds2_va_score import router as cha2ds2_va_score_router
 from .corrected_qt_interval import router as corrected_qt_interval_router
 from .crusade_bleeding_risk import router as crusade_bleeding_risk_router
+from .dapt_score import router as dapt_score_router
+from .doac_score import router as doac_score_router
+from .duke_activity_status_index import router as duke_activity_status_index_router
+from .duke_treadmill_score import router as duke_treadmill_score_router
+from .egsys_score_syncope import router as egsys_score_syncope_router
+from .euromacs_rhf_score import router as euromacs_rhf_score_router
+from .euroscore_ii import router as euroscore_ii_router
+from .nyha_functional_classification import router as nyha_functional_classification_router
 
 # Create main specialty router
 router = APIRouter()
@@ -52,3 +60,11 @@ router.include_router(chads2_score_router)
 router.include_router(cha2ds2_va_score_router)
 router.include_router(corrected_qt_interval_router)
 router.include_router(crusade_bleeding_risk_router)
+router.include_router(dapt_score_router)
+router.include_router(doac_score_router)
+router.include_router(duke_activity_status_index_router)
+router.include_router(duke_treadmill_score_router)
+router.include_router(egsys_score_syncope_router)
+router.include_router(euromacs_rhf_score_router)
+router.include_router(euroscore_ii_router)
+router.include_router(nyha_functional_classification_router)

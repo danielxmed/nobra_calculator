@@ -210,7 +210,7 @@ class ColorVisionScreeningRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "correct_plates_right_eye": 13,
                 "correct_plates_left_eye": 12,
@@ -433,7 +433,7 @@ class ColorVisionScreeningResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "right_eye": {

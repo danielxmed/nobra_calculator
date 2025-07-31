@@ -71,7 +71,7 @@ class AasRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "emotional_physical_abuse": "no",
                 "physical_hurt_recently": "no",
@@ -146,7 +146,7 @@ class AasResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "Negative",
                 "unit": "result",

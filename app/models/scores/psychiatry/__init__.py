@@ -17,6 +17,13 @@ from .c_ssrs import CSSRSRequest, CSSRSResponse
 from .cas import CasRequest, CasResponse
 from .cows_opiate_withdrawal import CowsOpiateWithdrawalRequest, CowsOpiateWithdrawalResponse
 from .comm import CommRequest, CommResponse
+from .dire_score import DireScoreRequest, DireScoreResponse
+from .edinburgh_postnatal_depression_scale import EdinburghPostnatalDepressionScaleRequest, EdinburghPostnatalDepressionScaleResponse
+from .dast_10 import Dast10Request, Dast10Response
+from .dsm5_binge_eating_disorder import Dsm5BingeEatingDisorderRequest, Dsm5BingeEatingDisorderResponse
+from .dsm5_bipolar_disorder import Dsm5BipolarDisorderRequest, Dsm5BipolarDisorderResponse
+from .dsm5_major_depressive_disorder import Dsm5MajorDepressiveDisorderRequest, Dsm5MajorDepressiveDisorderResponse
+from .dsm5_ptsd import Dsm5PtsdRequest, Dsm5PtsdResponse
 
 __all__ = [
     "AasRequest",
@@ -49,4 +56,18 @@ __all__ = [
     "CowsOpiateWithdrawalResponse",
     "CommRequest",
     "CommResponse",
+    "DireScoreRequest",
+    "DireScoreResponse",
+    "EdinburghPostnatalDepressionScaleRequest",
+    "EdinburghPostnatalDepressionScaleResponse",
+    "Dast10Request",
+    "Dast10Response",
+    "Dsm5BingeEatingDisorderRequest",
+    "Dsm5BingeEatingDisorderResponse",
+    "Dsm5BipolarDisorderRequest",
+    "Dsm5BipolarDisorderResponse",
+    "Dsm5MajorDepressiveDisorderRequest",
+    "Dsm5MajorDepressiveDisorderResponse",
+    "Dsm5PtsdRequest",
+    "Dsm5PtsdResponse",
 ]

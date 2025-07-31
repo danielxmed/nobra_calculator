@@ -26,7 +26,7 @@ plus anthropometric data (weight). It remains the gold standard for assessing
 Crohn's disease activity in clinical trials and research.
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Literal, Dict, List, Any
 
 
@@ -180,7 +180,7 @@ class CdaiCrohnsRequest(BaseModel):
         example=65.0
     )
     
-    @validator('ideal_weight')
+    @field_validator('ideal_weight')
     def validate_weight_relationship(cls, v, values):
         if 'current_weight' in values and v < values['current_weight'] * 0.5:
             raise ValueError('Ideal weight seems too low compared to current weight')
@@ -189,7 +189,7 @@ class CdaiCrohnsRequest(BaseModel):
         return v
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "liquid_stools_week": 14,
                 "abdominal_pain_score": "moderate",
@@ -351,7 +351,7 @@ class CdaiCrohnsResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 287,
                 "unit": "points",

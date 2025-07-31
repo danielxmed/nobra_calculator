@@ -22,7 +22,7 @@ The CPOT is part of the ABCDEF bundle for ICU pain management and has been valid
 across multiple critical care settings for both conscious and unconscious patients.
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Literal, Optional, List, Dict, Any
 
 
@@ -114,7 +114,7 @@ class CpotPainObservationRequest(BaseModel):
         example="sighing_moaning"
     )
     
-    @validator('ventilator_compliance')
+    @field_validator('ventilator_compliance')
     def validate_intubated_requires_ventilator_compliance(cls, v, values):
         if values.get('patient_status') == 'intubated' and v is None:
             raise ValueError('ventilator_compliance is required when patient_status is intubated')
@@ -122,7 +122,7 @@ class CpotPainObservationRequest(BaseModel):
             raise ValueError('ventilator_compliance should not be provided when patient_status is extubated')
         return v
     
-    @validator('vocalization')
+    @field_validator('vocalization')
     def validate_extubated_requires_vocalization(cls, v, values):
         if values.get('patient_status') == 'extubated' and v is None:
             raise ValueError('vocalization is required when patient_status is extubated')
@@ -131,7 +131,7 @@ class CpotPainObservationRequest(BaseModel):
         return v
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "facial_expression": "tense",
                 "body_movements": "protection",
@@ -255,7 +255,7 @@ class CpotPainObservationResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 4,
                 "unit": "points",

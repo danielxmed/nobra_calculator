@@ -369,7 +369,7 @@ class CasRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "dizzy_news": 1,
                 "sleep_problems": 2,
@@ -657,7 +657,7 @@ class CasResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 6,
                 "unit": "points",

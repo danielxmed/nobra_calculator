@@ -1,0 +1,179 @@
+{
+  "id": "dsm5_binge_eating_disorder",
+  "title": "DSM-5 Criteria for Binge Eating Disorder",
+  "description": "Diagnostic criteria for binge eating disorder (BED) based on DSM-5. Evaluates presence of binge eating episodes, associated features, distress, frequency/duration, and exclusion criteria.",
+  "category": "psychiatry",
+  "version": "DSM-5",
+  "parameters": [
+    {
+      "name": "binge_eating_episodes",
+      "type": "string",
+      "required": true,
+      "description": "Recurrent episodes of binge eating characterized by eating unusually large amounts of food while experiencing a feeling of loss of control",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "eating_rapidly",
+      "type": "string",
+      "required": true,
+      "description": "Eating much more rapidly than normal during binge episodes",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "eating_until_uncomfortably_full",
+      "type": "string",
+      "required": true,
+      "description": "Eating until feeling uncomfortably full during binge episodes",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "eating_when_not_hungry",
+      "type": "string",
+      "required": true,
+      "description": "Eating large amounts when not feeling physically hungry",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "eating_alone_embarrassment",
+      "type": "string",
+      "required": true,
+      "description": "Eating alone due to embarrassment about how much one is eating",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "negative_feelings_after",
+      "type": "string",
+      "required": true,
+      "description": "Feeling disgusted, depressed, or very guilty afterward",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "marked_distress",
+      "type": "string",
+      "required": true,
+      "description": "Marked distress regarding binge eating is present",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "frequency_duration",
+      "type": "string",
+      "required": true,
+      "description": "Binge eating occurs, on average, at least once a week for 3 months",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "no_compensatory_behaviors",
+      "type": "string",
+      "required": true,
+      "description": "Binge eating is NOT associated with recurrent use of inappropriate compensatory behavior (e.g., purging)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "not_during_other_disorders",
+      "type": "string",
+      "required": true,
+      "description": "Does NOT occur exclusively during anorexia nervosa, bulimia nervosa, or avoidant/restrictive food intake disorder",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "weekly_frequency",
+      "type": "string",
+      "required": true,
+      "description": "Average frequency of binge eating episodes per week (for severity assessment)",
+      "options": ["1_3_per_week", "4_7_per_week", "8_13_per_week", "14_or_more_per_week"],
+      "validation": {
+        "enum": ["1_3_per_week", "4_7_per_week", "8_13_per_week", "14_or_more_per_week"]
+      }
+    }
+  ],
+  "result": {
+    "name": "dsm5_bed_diagnosis",
+    "type": "string",
+    "unit": "diagnosis",
+    "description": "DSM-5 Binge Eating Disorder diagnostic result"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Criteria Not Met",
+        "description": "Does not meet DSM-5 criteria",
+        "interpretation": "The individual does not meet the diagnostic criteria for Binge Eating Disorder according to DSM-5. Consider other eating disorders or refer for comprehensive evaluation if clinical concerns persist."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Criteria Met - Mild",
+        "description": "Meets DSM-5 criteria - Mild severity",
+        "interpretation": "Meets DSM-5 criteria for Binge Eating Disorder, Mild severity (1-3 episodes per week). Treatment recommendations include psychotherapy, nutritional counseling, and consideration of medication if indicated."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Criteria Met - Moderate",
+        "description": "Meets DSM-5 criteria - Moderate severity",
+        "interpretation": "Meets DSM-5 criteria for Binge Eating Disorder, Moderate severity (4-7 episodes per week). Intensive treatment recommended including specialized eating disorder therapy and comprehensive medical evaluation."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Criteria Met - Severe",
+        "description": "Meets DSM-5 criteria - Severe severity",
+        "interpretation": "Meets DSM-5 criteria for Binge Eating Disorder, Severe severity (8-13 episodes per week). Urgent referral to specialized eating disorder treatment program with intensive therapeutic intervention."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Criteria Met - Extreme",
+        "description": "Meets DSM-5 criteria - Extreme severity",
+        "interpretation": "Meets DSM-5 criteria for Binge Eating Disorder, Extreme severity (14+ episodes per week). Immediate specialized eating disorder treatment with potential consideration of higher levels of care including intensive outpatient or inpatient treatment."
+      }
+    ]
+  },
+  "references": [
+    "American Psychiatric Association. Diagnostic and statistical manual of mental disorders: DSM-5. 5th ed. Washington, DC: American Psychiatric Association; 2013.",
+    "Grilo CM, Ivezaj V, White MA. Evaluation of the DSM-5 severity indicator for binge eating disorder in a clinical sample. Behav Res Ther. 2015;71:110-4. doi: 10.1016/j.brat.2015.05.003.",
+    "Wonderlich SA, Gordon KH, Mitchell JE, et al. The validity and clinical utility of binge eating disorder. Int J Eat Disord. 2009;42(8):687-705. doi: 10.1002/eat.20719."
+  ],
+  "formula": "Diagnostic evaluation based on DSM-5 criteria: (A) Recurrent binge eating episodes, (B) ≥3 associated features, (C) Marked distress, (D) ≥1 episode/week for 3 months, (E) No compensatory behaviors and not exclusively during other eating disorders. Severity based on episode frequency per week.",
+  "notes": [
+    "This is a diagnostic tool, not a screening instrument. Clinical judgment is essential.",
+    "Weight or appearance is NOT part of the diagnostic criteria for binge eating disorder.",
+    "All core criteria (A-E) must be met for diagnosis; severity is determined by episode frequency.",
+    "Requires at least 3 of the 5 associated features in criterion B.",
+    "Distinguished from bulimia nervosa by absence of compensatory behaviors.",
+    "Consider medical complications of binge eating and associated psychiatric comorbidities.",
+    "Comprehensive clinical evaluation by qualified mental health professional is recommended."
+  ]
+}

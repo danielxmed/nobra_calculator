@@ -18,6 +18,12 @@ from .cns_ipi import CnsIpiRequest, CnsIpiResponse
 from .corrected_count_increment import CorrectedCountIncrementRequest, CorrectedCountIncrementResponse
 from .reticulocyte_production_index import ReticulocyteProductionIndexRequest, ReticulocyteProductionIndexResponse
 from .dash_prediction_score import DashPredictionScoreRequest, DashPredictionScoreResponse
+from .nccn_ipi import NccnIpiRequest, NccnIpiResponse
+from .dipss_plus import DipssPlusRequest, DipssPlusResponse
+from .dli_volume import DliVolumeRequest, DliVolumeResponse
+from .duval_cibmtr_score_aml_survival import DuvalCibmtrScoreAmlSurvivalRequest, DuvalCibmtrScoreAmlSurvivalResponse
+from .neutrophil_lymphocyte_ratio import NeutrophilLymphocyteRatioRequest, NeutrophilLymphocyteRatioResponse
+from .eutos_score import EutosScoreRequest, EutosScoreResponse
 # from .cryoprecipitate_dosing import CryoprecipitateDosing Request, CryoprecipitateDosing Response
 
 __all__ = [
@@ -47,6 +53,18 @@ __all__ = [
     "ReticulocyteProductionIndexResponse",
     "DashPredictionScoreRequest",
     "DashPredictionScoreResponse",
+    "NccnIpiRequest",
+    "NccnIpiResponse",
+    "DipssPlusRequest",
+    "DipssPlusResponse",
+    "DliVolumeRequest",
+    "DliVolumeResponse",
+    "DuvalCibmtrScoreAmlSurvivalRequest",
+    "DuvalCibmtrScoreAmlSurvivalResponse",
+    "NeutrophilLymphocyteRatioRequest",
+    "NeutrophilLymphocyteRatioResponse",
+    "EutosScoreRequest",
+    "EutosScoreResponse",
     # "CryoprecipitateDosing Request",
     # "CryoprecipitateDosing Response",
 ]

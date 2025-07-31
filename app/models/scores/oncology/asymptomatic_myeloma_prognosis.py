@@ -71,7 +71,7 @@ class AsymptomaticMyelomaPrognosisRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "bone_marrow_plasmacytosis": "<10%",
                 "serum_monoclonal_protein": "<3"
@@ -125,7 +125,7 @@ class AsymptomaticMyelomaPrognosisResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "Low Risk",
                 "unit": "",

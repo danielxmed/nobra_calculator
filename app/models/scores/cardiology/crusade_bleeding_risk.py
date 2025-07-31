@@ -177,7 +177,7 @@ class CrusadeBleedingRiskRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "baseline_hematocrit": 35.2,
                 "creatinine_clearance": 65.8,
@@ -327,7 +327,7 @@ class CrusadeBleedingRiskResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 42,
                 "unit": "points",

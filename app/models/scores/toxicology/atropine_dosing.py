@@ -22,7 +22,7 @@ The calculator provides initial dosing recommendations and a protocol for dose e
 until atropinization is achieved.
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Literal, Optional, List, Dict
 
 
@@ -80,7 +80,7 @@ class AtropineDosingRequest(BaseModel):
         example="severe"
     )
     
-    @validator('weight')
+    @field_validator('weight')
     def validate_weight_for_pediatric(cls, v, values):
         """Ensure weight is provided for pediatric patients"""
         if 'patient_type' in values and values['patient_type'] == 'pediatric' and v is None:
@@ -88,7 +88,7 @@ class AtropineDosingRequest(BaseModel):
         return v
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "patient_type": "adult",
                 "severity": "severe",
@@ -198,7 +198,7 @@ class AtropineDosingResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "initial_dose": "3-5 mg",

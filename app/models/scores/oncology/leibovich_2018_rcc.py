@@ -93,7 +93,7 @@ class Leibovich2018RccRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 65,
                 "ecog_status": "0",
@@ -196,7 +196,7 @@ class Leibovich2018RccResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "pfs_score": 5,

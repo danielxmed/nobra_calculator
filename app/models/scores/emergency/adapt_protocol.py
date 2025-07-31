@@ -112,7 +112,7 @@ class AdaptProtocolRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "abnormal_troponin": "no",
                 "ischemic_changes_ecg": "no",
@@ -170,7 +170,7 @@ class AdaptProtocolResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "Low Risk",
                 "unit": "",

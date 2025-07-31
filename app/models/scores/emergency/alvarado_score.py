@@ -126,7 +126,7 @@ class AlvaradoScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "migration_to_rlq": "yes",
                 "anorexia": "yes", 
@@ -214,7 +214,7 @@ class AlvaradoScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 6,
                 "unit": "points",

@@ -87,7 +87,7 @@ class AbcScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "penetrating_mechanism": "no",
                 "systolic_bp_90_or_less": "yes",
@@ -145,7 +145,7 @@ class AbcScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 2,
                 "unit": "points",

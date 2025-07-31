@@ -75,7 +75,7 @@ class AAO2GradientRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 45,
                 "fio2": 0.21,
@@ -142,7 +142,7 @@ class AAO2GradientResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 15.2,
                 "unit": "mmHg",

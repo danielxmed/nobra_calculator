@@ -95,7 +95,7 @@ class BrugadaCriteriaVtRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "absence_rs_precordial": "no",
                 "r_to_s_interval_100ms": "no",
@@ -221,7 +221,7 @@ class BrugadaCriteriaVtResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "VT",
                 "unit": "",

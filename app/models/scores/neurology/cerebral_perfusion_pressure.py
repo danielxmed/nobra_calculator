@@ -103,7 +103,7 @@ class CerebralPerfusionPressureRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "mean_arterial_pressure": 85.0,
                 "intracranial_pressure": 15.0
@@ -241,7 +241,7 @@ class CerebralPerfusionPressureResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "cpp_value": 70.0,

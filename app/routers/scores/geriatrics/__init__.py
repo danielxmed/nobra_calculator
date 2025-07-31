@@ -13,6 +13,7 @@ from .braden_score import router as braden_score_router
 from .charlson_comorbidity_index import router as charlson_comorbidity_index_router
 from .clinical_frailty_scale import router as clinical_frailty_scale_router
 from .cirs_g import router as cirs_g_router
+from .edmonton_symptom_assessment_system_revised import router as edmonton_symptom_assessment_system_revised_router
 
 # Create main specialty router
 router = APIRouter()
@@ -26,3 +27,4 @@ router.include_router(braden_score_router)
 router.include_router(charlson_comorbidity_index_router)
 router.include_router(clinical_frailty_scale_router)
 router.include_router(cirs_g_router)
+router.include_router(edmonton_symptom_assessment_system_revised_router)

@@ -1,0 +1,130 @@
+{
+  "id": "neonatal_early_onset_sepsis",
+  "title": "Neonatal Early-Onset Sepsis Calculator",
+  "description": "Calculates risk of early-onset neonatal sepsis based on maternal intrapartum risk factors for newborns ≥34 weeks gestation. Uses multivariate predictive model to estimate probability of culture-positive sepsis within 72 hours of birth.",
+  "category": "pediatrics",
+  "version": "2011",
+  "parameters": [
+    {
+      "name": "gestational_age_weeks",
+      "type": "float",
+      "required": true,
+      "description": "Gestational age in weeks (e.g., 38.5 for 38 weeks 3 days)",
+      "validation": {
+        "min": 34,
+        "max": 43
+      },
+      "unit": "weeks"
+    },
+    {
+      "name": "maternal_temp_celsius",
+      "type": "float",
+      "required": true,
+      "description": "Highest maternal antepartum temperature in Celsius",
+      "validation": {
+        "min": 35,
+        "max": 42
+      },
+      "unit": "°C"
+    },
+    {
+      "name": "rom_hours",
+      "type": "float",
+      "required": true,
+      "description": "Duration of rupture of membranes (ROM) in hours",
+      "validation": {
+        "min": 0,
+        "max": 240
+      },
+      "unit": "hours"
+    },
+    {
+      "name": "gbs_status",
+      "type": "string",
+      "required": true,
+      "description": "Maternal Group B Streptococcus (GBS) status",
+      "options": ["negative", "positive", "unknown"],
+      "validation": {
+        "enum": ["negative", "positive", "unknown"]
+      }
+    },
+    {
+      "name": "antibiotics_type",
+      "type": "string",
+      "required": true,
+      "description": "Type and timing of intrapartum antibiotics",
+      "options": [
+        "broad_spectrum_gt_4hrs",
+        "broad_spectrum_2_to_4hrs",
+        "gbs_specific_gt_2hrs",
+        "no_antibiotics_or_lt_2hrs"
+      ],
+      "validation": {
+        "enum": [
+          "broad_spectrum_gt_4hrs",
+          "broad_spectrum_2_to_4hrs", 
+          "gbs_specific_gt_2hrs",
+          "no_antibiotics_or_lt_2hrs"
+        ]
+      }
+    }
+  ],
+  "result": {
+    "name": "eos_risk_per_1000",
+    "type": "float",
+    "unit": "per 1000 births",
+    "description": "Early-onset sepsis risk per 1000 live births"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0.5,
+        "stage": "Very Low Risk",
+        "description": "Risk <0.5 per 1000",
+        "interpretation": "Very low risk of early-onset sepsis. Routine care appropriate with continued observation for clinical signs."
+      },
+      {
+        "min": 0.5,
+        "max": 1.0,
+        "stage": "Low Risk",
+        "description": "Risk 0.5-1.0 per 1000",
+        "interpretation": "Low risk of early-onset sepsis. Enhanced observation may be considered based on clinical judgment."
+      },
+      {
+        "min": 1.0,
+        "max": 3.0,
+        "stage": "Intermediate Risk",
+        "description": "Risk 1.0-3.0 per 1000",
+        "interpretation": "Intermediate risk of early-onset sepsis. Enhanced observation recommended. Consider blood culture and empiric antibiotics based on clinical examination."
+      },
+      {
+        "min": 3.0,
+        "max": 10.0,
+        "stage": "High Risk",
+        "description": "Risk 3.0-10.0 per 1000",
+        "interpretation": "High risk of early-onset sepsis. Blood culture and empiric antibiotics strongly recommended unless infant is well-appearing with normal vital signs."
+      },
+      {
+        "min": 10.0,
+        "max": 1000,
+        "stage": "Very High Risk",
+        "description": "Risk ≥10.0 per 1000",
+        "interpretation": "Very high risk of early-onset sepsis. Blood culture and empiric antibiotics recommended. Close monitoring in NICU setting may be warranted."
+      }
+    ]
+  },
+  "references": [
+    "Puopolo KM, Draper D, Wi S, et al. Estimating the probability of neonatal early-onset infection on the basis of maternal risk factors. Pediatrics. 2011;128(5):e1155-1163.",
+    "Kuzniewicz MW, Walsh EM, Li S, Fischer A, Escobar GJ. Development and implementation of an early-onset sepsis calculator to guide antibiotic management in late preterm and term neonates. Jt Comm J Qual Patient Saf. 2016;42(5):232-239.",
+    "Puopolo KM, Benitz WE, Zaoutis TE; Committee on Fetus and Newborn; Committee on Infectious Diseases. Management of Neonates Born at ≥35 0/7 Weeks' Gestation With Suspected or Proven Early-Onset Bacterial Sepsis. Pediatrics. 2018;142(6):e20182894."
+  ],
+  "formula": "EOS risk = 1/(1 + e^(-x)), where x = -6.9325×GA + 0.0877×GA² + 0.8680×Temp(F) + 1.2256×(ROM+0.05)^0.2 + GBS coefficients + Antibiotic coefficients + 40.5656",
+  "notes": [
+    "This calculator is intended for infants born at ≥34 weeks gestation",
+    "The calculator estimates risk at birth; clinical examination findings can modify this risk",
+    "Temperature should be the highest maternal temperature documented",
+    "ROM duration is from time of rupture to delivery",
+    "If both broad-spectrum and GBS-specific antibiotics were given, select the broad-spectrum category with appropriate timing"
+  ]
+}

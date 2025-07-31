@@ -1,0 +1,142 @@
+{
+  "id": "news_2",
+  "title": "National Early Warning Score (NEWS) 2",
+  "description": "Determines the degree of illness of a patient and prompts critical care intervention. Recommended by NHS over original NEWS with improved oxygen saturation scoring for hypercapnic respiratory failure patients.",
+  "category": "emergency",
+  "version": "2017",
+  "parameters": [
+    {
+      "name": "respiratory_rate",
+      "type": "string",
+      "required": true,
+      "description": "Respiratory rate in breaths per minute",
+      "options": ["8_or_less", "9_to_11", "12_to_20", "21_to_24", "25_or_more"],
+      "validation": {
+        "enum": ["8_or_less", "9_to_11", "12_to_20", "21_to_24", "25_or_more"]
+      }
+    },
+    {
+      "name": "hypercapnic_respiratory_failure",
+      "type": "string",
+      "required": true,
+      "description": "Whether patient has hypercapnic respiratory failure (Type 2 respiratory failure, typically with CO2 retention)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "oxygen_saturation",
+      "type": "string",
+      "required": true,
+      "description": "Oxygen saturation percentage (SpO2). Scoring differs based on hypercapnic respiratory failure status",
+      "options": ["83_or_less", "84_to_85", "86_to_87", "88_to_92", "91_or_less", "92_to_93", "93_to_94", "94_to_95", "95_to_96", "96_or_more", "97_or_more"],
+      "validation": {
+        "enum": ["83_or_less", "84_to_85", "86_to_87", "88_to_92", "91_or_less", "92_to_93", "93_to_94", "94_to_95", "95_to_96", "96_or_more", "97_or_more"]
+      }
+    },
+    {
+      "name": "supplemental_oxygen",
+      "type": "string",
+      "required": true,
+      "description": "Whether patient is receiving any supplemental oxygen",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "temperature",
+      "type": "string",
+      "required": true,
+      "description": "Body temperature",
+      "options": ["35_or_less", "35_1_to_36", "36_1_to_38", "38_1_to_39", "39_1_or_more"],
+      "validation": {
+        "enum": ["35_or_less", "35_1_to_36", "36_1_to_38", "38_1_to_39", "39_1_or_more"]
+      },
+      "unit": "°C"
+    },
+    {
+      "name": "systolic_bp",
+      "type": "string",
+      "required": true,
+      "description": "Systolic blood pressure",
+      "options": ["90_or_less", "91_to_100", "101_to_110", "111_to_219", "220_or_more"],
+      "validation": {
+        "enum": ["90_or_less", "91_to_100", "101_to_110", "111_to_219", "220_or_more"]
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "heart_rate",
+      "type": "string",
+      "required": true,
+      "description": "Heart rate in beats per minute",
+      "options": ["40_or_less", "41_to_50", "51_to_90", "91_to_110", "111_to_130", "131_or_more"],
+      "validation": {
+        "enum": ["40_or_less", "41_to_50", "51_to_90", "91_to_110", "111_to_130", "131_or_more"]
+      },
+      "unit": "bpm"
+    },
+    {
+      "name": "consciousness",
+      "type": "string",
+      "required": true,
+      "description": "Level of consciousness (including new-onset confusion)",
+      "options": ["alert", "altered"],
+      "validation": {
+        "enum": ["alert", "altered"]
+      }
+    }
+  ],
+  "result": {
+    "name": "news_2_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total NEWS 2 score (0-20 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "Very low early warning score",
+        "interpretation": "Continue routine monitoring. Minimum monitoring frequency every 12 hours."
+      },
+      {
+        "min": 1,
+        "max": 4,
+        "stage": "Low Risk",
+        "description": "Low early warning score",
+        "interpretation": "Assessment by competent registered nurse. Minimum monitoring frequency every 4-6 hours."
+      },
+      {
+        "min": 5,
+        "max": 6,
+        "stage": "Medium Risk",
+        "description": "Medium early warning score",
+        "interpretation": "Urgent review by ward-based doctor or acute team nurse to decide if critical care team assessment needed."
+      },
+      {
+        "min": 7,
+        "max": 20,
+        "stage": "High Risk",
+        "description": "High early warning score",
+        "interpretation": "Emergent assessment by clinical team or critical care team. Continuous monitoring of vital signs. Usually requires transfer to higher level of care."
+      }
+    ]
+  },
+  "references": [
+    "Royal College of Physicians. National Early Warning Score (NEWS) 2: Standardising the assessment of acute-illness severity in the NHS. Updated report of a working party. London: RCP, 2017.",
+    "Pimentel MAF, Redfern OC, Gerry S, Collins GS, Malycha J, Prytherch D, et al. A comparison of the ability of the National Early Warning Score and the National Early Warning Score 2 to identify patients at risk of in-hospital mortality: A multi-centre database study. Resuscitation. 2019 Jan;134:147-156. doi: 10.1016/j.resuscitation.2018.09.026.",
+    "Smith GB, Redfern OC, Pimentel MA, Gerry S, Collins GS, Malycha J, et al. The National Early Warning Score 2 (NEWS2). Clin Med (Lond). 2019 May;19(3):260. doi: 10.7861/clinmedicine.19-3-260."
+  ],
+  "formula": "Sum of points from: Respiratory Rate + Oxygen Saturation (adjusted for hypercapnic respiratory failure) + Supplemental Oxygen + Temperature + Systolic BP + Heart Rate + Consciousness. A RED score indicates any single parameter scoring 3 points.",
+  "notes": [
+    "NEWS 2 differs from original NEWS by adjusting oxygen saturation scoring for patients with hypercapnic respiratory failure",
+    "A score of 3 in any individual parameter triggers a low-medium risk response requiring urgent review",
+    "Hypercapnic respiratory failure patients have lower oxygen saturation targets (88-92%)",
+    "New-onset confusion is now included in the consciousness assessment"
+  ]
+}

@@ -485,7 +485,7 @@ class CorrectedQtIntervalRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "qt_interval": 420,
                 "heart_rate": 75,
@@ -745,7 +745,7 @@ class CorrectedQtIntervalResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 469.4,
                 "unit": "ms",

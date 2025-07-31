@@ -1,0 +1,169 @@
+{
+  "id": "ottawa_copd_risk_scale",
+  "title": "Ottawa COPD Risk Scale",
+  "description": "Predicts 30-day mortality or serious adverse events (MI, intubation, etc) in emergency department COPD patients. Uses 10 clinical variables to stratify risk from low (2.2%) to very high (75.6%).",
+  "category": "emergency",
+  "version": "2014",
+  "parameters": [
+    {
+      "name": "coronary_bypass_graft",
+      "type": "string",
+      "required": true,
+      "description": "History of coronary bypass graft (CABG)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "peripheral_vascular_intervention",
+      "type": "string",
+      "required": true,
+      "description": "History of intervention for peripheral vascular disease",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "intubation_respiratory_distress",
+      "type": "string",
+      "required": true,
+      "description": "History of intubation for respiratory distress",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "heart_rate_110_or_higher",
+      "type": "string",
+      "required": true,
+      "description": "Heart rate ≥110 beats per minute on ED arrival",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "too_ill_for_walk_test",
+      "type": "string",
+      "required": true,
+      "description": "Too ill to do walk test after ED treatment",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "acute_ischemic_changes_ecg",
+      "type": "string",
+      "required": true,
+      "description": "Acute ischemic changes on ECG (clinician interpretation)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "pulmonary_congestion_xray",
+      "type": "string",
+      "required": true,
+      "description": "Pulmonary congestion on chest x-ray (clinician interpretation)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hemoglobin_less_than_10",
+      "type": "string",
+      "required": true,
+      "description": "Hemoglobin <10 g/dL",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "urea_12_or_higher",
+      "type": "string",
+      "required": true,
+      "description": "Urea ≥12 mmol/L (≥33.6 mg/dL)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "serum_co2_35_or_higher",
+      "type": "string",
+      "required": true,
+      "description": "Serum CO2 ≥35 mEq/L",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "ottawa_copd_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total Ottawa COPD Risk Scale score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low risk",
+        "description": "2.2% risk of serious adverse events",
+        "interpretation": "This patient has a low risk (2.2%) of serious adverse events within 30 days. Serious adverse events include death, admission to monitored unit, intubation, noninvasive ventilation, myocardial infarction, or relapse requiring hospital admission within 14 days."
+      },
+      {
+        "min": 1,
+        "max": 2,
+        "stage": "Medium risk",
+        "description": "4.0-7.2% risk of serious adverse events",
+        "interpretation": "This patient has a medium risk (4.0-7.2%) of serious adverse events within 30 days. Consider closer monitoring and follow-up arrangements. Serious adverse events include death, admission to monitored unit, intubation, noninvasive ventilation, myocardial infarction, or relapse requiring hospital admission within 14 days."
+      },
+      {
+        "min": 3,
+        "max": 4,
+        "stage": "High risk",
+        "description": "12.5-20.9% risk of serious adverse events",
+        "interpretation": "This patient has a high risk (12.5-20.9%) of serious adverse events within 30 days. Strong consideration should be given to admission or intensive outpatient monitoring. Serious adverse events include death, admission to monitored unit, intubation, noninvasive ventilation, myocardial infarction, or relapse requiring hospital admission within 14 days."
+      },
+      {
+        "min": 5,
+        "max": 8,
+        "stage": "Very high risk",
+        "description": "32.9-75.6% risk of serious adverse events",
+        "interpretation": "This patient has a very high risk (32.9-75.6%) of serious adverse events within 30 days. Admission is strongly recommended with close monitoring and aggressive treatment. Serious adverse events include death, admission to monitored unit, intubation, noninvasive ventilation, myocardial infarction, or relapse requiring hospital admission within 14 days."
+      },
+      {
+        "min": 9,
+        "max": 10,
+        "stage": "Extremely high risk",
+        "description": "Risk >75% (not well studied)",
+        "interpretation": "This patient has an extremely high risk (>75%) of serious adverse events within 30 days. Immediate admission with intensive monitoring is indicated. Note: Scores of 9-10 were not well studied in the original derivation and validation cohorts."
+      }
+    ]
+  },
+  "references": [
+    "Stiell IG, Clement CM, Aaron SD, Rowe BH, Perry JJ, Brison RJ, et al. Clinical characteristics associated with adverse events in patients with exacerbation of chronic obstructive pulmonary disease: a prospective cohort study. CMAJ. 2014 Oct 7;186(15):E563-73. doi: 10.1503/cmaj.140677.",
+    "Stiell IG, Perry JJ, Clement CM, Brison RJ, Rowe BH, Aaron SD, et al. Clinical validation of a risk scale for serious outcomes among patients with chronic obstructive pulmonary disease managed in the emergency department. CMAJ. 2018 Oct 15;190(41):E1202-E1211. doi: 10.1503/cmaj.180232."
+  ],
+  "formula": "OCRS = (CABG × 1) + (PVD intervention × 1) + (Intubation history × 2) + (HR ≥110 × 2) + (Too ill for walk test × 2) + (Acute ischemic ECG × 2) + (Pulmonary congestion × 1) + (Hgb <10 × 3) + (Urea ≥12 × 1) + (CO2 ≥35 × 1)",
+  "notes": [
+    "Designed for ED patients with COPD exacerbation",
+    "Score of 0 has 2.2% risk of serious adverse events",
+    "Score of 1-2 is considered cutoff for low vs medium risk",
+    "Allows for clinician judgment in ECG and chest x-ray interpretation",
+    "Serious adverse events: death, monitored unit admission, intubation, MI, major procedure, or ED return with admission within 14 days",
+    "Scores 9-10 not well studied in original research",
+    "Should be used in conjunction with clinical judgment",
+    "May help guide disposition decisions and follow-up planning"
+  ]
+}

@@ -87,7 +87,7 @@ class AorticDissectionDetectionRiskScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "predisposing_conditions": "none",
                 "pain_features": "present", 
@@ -145,7 +145,7 @@ class AorticDissectionDetectionRiskScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 1,
                 "unit": "points",

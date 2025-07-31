@@ -1,0 +1,137 @@
+{
+  "id": "el_ganzouri_risk_index_difficult_airway",
+  "title": "El-Ganzouri Risk Index (EGRI) for Difficult Airway",
+  "description": "Predicts risk of difficult airway using seven clinical parameters to guide anesthesia management and intubation strategy planning.",
+  "category": "anesthesiology",
+  "version": "1996",
+  "parameters": [
+    {
+      "name": "mouth_opening",
+      "type": "string",
+      "required": true,
+      "description": "Inter-incisor mouth opening distance",
+      "options": ["≥4 cm", "<4 cm"],
+      "validation": {
+        "enum": ["≥4 cm", "<4 cm"]
+      },
+      "unit": null
+    },
+    {
+      "name": "thyromental_distance",
+      "type": "string",
+      "required": true,
+      "description": "Thyromental distance (distance from thyroid notch to tip of mandible with neck extended)",
+      "options": [">6.5 cm", "6.0-6.5 cm", "<6.0 cm"],
+      "validation": {
+        "enum": [">6.5 cm", "6.0-6.5 cm", "<6.0 cm"]
+      },
+      "unit": null
+    },
+    {
+      "name": "mallampati_class",
+      "type": "string",
+      "required": true,
+      "description": "Modified Mallampati Classification (visualization of pharyngeal structures)",
+      "options": ["Class I", "Class II", "Class III", "Class IV"],
+      "validation": {
+        "enum": ["Class I", "Class II", "Class III", "Class IV"]
+      },
+      "unit": null
+    },
+    {
+      "name": "neck_movement",
+      "type": "string",
+      "required": true,
+      "description": "Neck extension/flexion movement range",
+      "options": [">90°", "80-90°", "<80°"],
+      "validation": {
+        "enum": [">90°", "80-90°", "<80°"]
+      },
+      "unit": null
+    },
+    {
+      "name": "ability_to_prognath",
+      "type": "string",
+      "required": true,
+      "description": "Ability to advance lower jaw (prognathism) beyond upper teeth",
+      "options": ["Yes", "No"],
+      "validation": {
+        "enum": ["Yes", "No"]
+      },
+      "unit": null
+    },
+    {
+      "name": "weight",
+      "type": "string",
+      "required": true,
+      "description": "Patient body weight category",
+      "options": ["<90 kg", "90-110 kg", ">110 kg"],
+      "validation": {
+        "enum": ["<90 kg", "90-110 kg", ">110 kg"]
+      },
+      "unit": null
+    },
+    {
+      "name": "history_difficult_intubation",
+      "type": "string",
+      "required": true,
+      "description": "Previous history of difficult intubation",
+      "options": ["None", "Questionable", "Definite"],
+      "validation": {
+        "enum": ["None", "Questionable", "Definite"]
+      },
+      "unit": null
+    }
+  ],
+  "result": {
+    "name": "egri_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "El-Ganzouri Risk Index score for difficult airway prediction (range: 0-12 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Low Risk",
+        "description": "Low risk of difficult airway",
+        "interpretation": "Low risk of difficult airway. Conventional laryngoscopy and standard intubation techniques are likely to be successful. Routine airway management protocol can be followed with standard preparation and equipment readily available."
+      },
+      {
+        "min": 4,
+        "max": 12,
+        "stage": "High Risk",
+        "description": "High risk of difficult airway",
+        "interpretation": "High risk of difficult airway (93.8% specificity). Consider precautions such as video-assisted laryngoscopy, awake intubation, or fiberoptic intubation. Ensure experienced anesthesiologist, difficult airway equipment available, and backup plans prepared. Consider regional anesthesia if appropriate for the procedure."
+      }
+    ]
+  },
+  "references": [
+    "El-Ganzouri AR, McCarthy RJ, Tuman KJ, Tanck EN, Ivankovich AD. Preoperative airway assessment: predictive value of a multivariate risk index. Anesth Analg. 1996;82(6):1197-204. doi: 10.1097/00000539-199606000-00017.",
+    "Cortellazzi P, Caldiroli D, Byrne A, Sommariva A, Orena EF, Tramacere I. Defining and developing expertise in tracheal intubation using a GlideScope for anaesthetists with expertise in Macintosh direct laryngoscopy: an in-vivo longitudinal study. Anaesthesia. 2015;70(3):290-5. doi: 10.1111/anae.12878.",
+    "Caldiroli D, Cortellazzi P. A new difficult airway management algorithm based upon the El Ganzouri Risk Index and GlideScope® videolaryngoscope. A new look for intubation? Minerva Anestesiol. 2011;77(6):637-45.",
+    "Lundstrøm LH, Vester-Andersen M, Møller AM, Charuluxananan S, L'hermite J, Wetterslev J. Poor prognostic value of the modified Mallampati score: a meta-analysis involving 177,088 patients. Br J Anaesth. 2011;107(5):659-67. doi: 10.1093/bja/aer292."
+  ],
+  "formula": "EGRI Score = mouth_opening_points + thyromental_distance_points + mallampati_points + neck_movement_points + prognath_points + weight_points + history_points. Score ≥4 indicates high risk of difficult airway.",
+  "notes": [
+    "The El-Ganzouri Risk Index (EGRI) is also known as the Simplified Airway Risk Index (SARI).",
+    "Score ≥4 has 93.8% specificity for predicting difficult airway.",
+    "The index evaluates seven anatomical and historical factors associated with difficult intubation.",
+    "Mouth opening <4 cm significantly increases difficulty of laryngoscopy and intubation.",
+    "Thyromental distance <6 cm is associated with anterior laryngeal position and difficult visualization.",
+    "Modified Mallampati Class III-IV indicates limited pharyngeal space and tongue obstruction.",
+    "Reduced neck extension (<80°) limits optimal positioning for intubation.",
+    "Inability to prognath (advance lower jaw) suggests limited mandibular mobility.",
+    "Higher body weight (>110 kg) is associated with increased soft tissue mass and airway difficulty.",
+    "Previous difficult intubation history is a strong predictor of future difficulty.",
+    "The score helps guide selection of intubation technique: conventional, video laryngoscopy, or awake intubation.",
+    "High-risk patients (score ≥4) should have experienced anesthesiologist and difficult airway equipment available.",
+    "The tool is particularly useful in preoperative assessment and anesthesia planning.",
+    "Consider awake fiberoptic intubation for scores ≥7 in some practice guidelines.",
+    "Video laryngoscopy may be preferred for intermediate scores (4-6) in many centers.",
+    "The index should be used in conjunction with clinical judgment and institutional protocols.",
+    "Regional or local anesthesia may be considered as alternatives in high-risk patients when appropriate.",
+    "The score has been validated in various patient populations including head and neck cancer patients."
+  ]
+}

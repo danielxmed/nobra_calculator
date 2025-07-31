@@ -6,8 +6,17 @@ from .bwh_egg_freezing_counseling_tool import (
     BwhEggFreezingCounselingToolRequest,
     BwhEggFreezingCounselingToolResponse
 )
+from .fetal_bpp_score import FetalBppScoreRequest, FetalBppScoreResponse
+from .figo_staging_ovarian_cancer_2014 import (
+    FigoStagingOvarianCancer2014Request,
+    FigoStagingOvarianCancer2014Response
+)
 
 __all__ = [
     "BwhEggFreezingCounselingToolRequest",
     "BwhEggFreezingCounselingToolResponse",
+    "FetalBppScoreRequest",
+    "FetalBppScoreResponse",
+    "FigoStagingOvarianCancer2014Request",
+    "FigoStagingOvarianCancer2014Response",
 ]

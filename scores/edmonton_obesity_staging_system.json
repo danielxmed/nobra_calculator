@@ -1,0 +1,131 @@
+{
+  "id": "edmonton_obesity_staging_system",
+  "title": "Edmonton Obesity Staging System (EOSS)",
+  "description": "Stratifies the presence and severity of obesity-related health impairments across medical, functional, and psychological domains to guide treatment decisions and predict outcomes.",
+  "category": "endocrinology",
+  "version": "2009",
+  "parameters": [
+    {
+      "name": "obesity_risk_factors",
+      "type": "integer",
+      "required": true,
+      "description": "Obesity-related medical risk factors and comorbidities",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        "Stage 0: No risk factors present",
+        "Stage 1: Subclinical risk factors (borderline hypertension, impaired fasting glucose, elevated liver enzymes, arthralgia)",
+        "Stage 2: Established obesity-related chronic disease (hypertension, type 2 diabetes, sleep apnea, osteoarthritis, reflux disease, gallbladder disease, gout)",
+        "Stage 3: End-organ damage (myocardial infarction, heart failure, diabetic complications, osteoarthritis requiring joint replacement, non-alcoholic steatohepatitis)",
+        "Stage 4: Severe, potentially end-stage chronic disease (advanced heart failure, stroke, severe diabetic complications, severe osteoarthritis, cirrhosis)"
+      ],
+      "unit": "stage"
+    },
+    {
+      "name": "physical_symptoms",
+      "type": "integer",
+      "required": true,
+      "description": "Physical symptoms and functional limitations related to obesity",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        "Stage 0: No physical symptoms or functional limitations",
+        "Stage 1: Mild physical symptoms or limitations with activities of daily living",
+        "Stage 2: Moderate physical symptoms or limitations with activities of daily living",
+        "Stage 3: Significant physical symptoms or limitations with activities of daily living",
+        "Stage 4: Severe physical symptoms or limitations with activities of daily living"
+      ],
+      "unit": "stage"
+    },
+    {
+      "name": "psychological_symptoms",
+      "type": "integer",
+      "required": true,
+      "description": "Psychological symptoms and mental health impact related to obesity",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": [
+        "Stage 0: No psychological symptoms or mental health impact",
+        "Stage 1: Mild psychological symptoms or mental health impact",
+        "Stage 2: Moderate psychological symptoms or mental health impact",
+        "Stage 3: Significant psychological symptoms or mental health impact",
+        "Stage 4: Severe psychological symptoms or mental health impact"
+      ],
+      "unit": "stage"
+    }
+  ],
+  "result": {
+    "name": "eoss_stage",
+    "type": "integer",
+    "unit": "stage",
+    "description": "Edmonton Obesity Staging System stage (0-4) determined by highest severity across all domains"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Stage 0",
+        "description": "No obesity-related health impairments",
+        "interpretation": "No obesity-related health impairments present. Focus on lifestyle counseling for healthy eating, regular physical activity, and weight maintenance. Prevention strategies to avoid future obesity-related complications."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Stage 1",
+        "description": "Mild obesity-related health impairments",
+        "interpretation": "Mild obesity-related health impairments. Investigate and monitor subclinical risk factors. Implement intensive lifestyle interventions including structured dietary counseling, exercise programs, and behavioral modification. Regular monitoring for progression of risk factors."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Stage 2",
+        "description": "Moderate obesity-related health impairments",
+        "interpretation": "Moderate obesity-related health impairments with established chronic disease. Initiate comprehensive obesity treatment including pharmacotherapy consideration if appropriate. Actively manage comorbidities and functional limitations. Consider referral to obesity specialist."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Stage 3",
+        "description": "Severe obesity-related health impairments",
+        "interpretation": "Severe obesity-related health impairments with end-organ damage or significant functional impairment. Aggressive obesity management required including consideration of bariatric surgery if appropriate. Intensive management of comorbidities and psychological support. Multidisciplinary care team approach."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Stage 4",
+        "description": "End-stage obesity-related health impairments",
+        "interpretation": "End-stage obesity-related health impairments with severe, potentially life-threatening conditions. Pursue most aggressive management options available including bariatric surgery evaluation. Palliative care considerations may be appropriate. Comprehensive support services and end-of-life planning discussions if indicated."
+      }
+    ]
+  },
+  "references": [
+    "Sharma AM, Kushner RF. A proposed clinical staging system for obesity. Int J Obes (Lond). 2009;33(3):289-95. doi: 10.1038/ijo.2009.2.",
+    "Padwal RS, Pajewski NM, Allison DB, Sharma AM. Using the Edmonton obesity staging system to predict mortality in a population-representative cohort of people with overweight and obesity. CMAJ. 2011;183(14):E1059-66. doi: 10.1503/cmaj.110387.",
+    "Aasheim ET, Aylwin SJ, Radhakrishnan ST, Sood AS, Jovanovic Z, Olbers T, et al. Assessment of Obesity Beyond Body Mass Index to Guide Treatment. Curr Cardiol Rep. 2017;19(5):33. doi: 10.1007/s11886-017-0849-1.",
+    "Canning KL, Brown RE, Jamnik VK, Salmon A, Ardern CI, Kuk JL. Individuals with obesity and type 2 diabetes have additional immune dysfunction compared with obese individuals who are metabolically healthy. BMJ Open Diabetes Res Care. 2017;5(1):e000379. doi: 10.1136/bmjdrc-2016-000379."
+  ],
+  "formula": "EOSS Stage = max(obesity_risk_factors, physical_symptoms, psychological_symptoms). The highest stage rating across all three domains determines the final EOSS stage.",
+  "notes": [
+    "The EOSS provides a more comprehensive assessment of obesity-related health risk than BMI alone.",
+    "The system evaluates obesity across three key domains: medical risk factors, physical function, and psychological health.",
+    "Each domain is independently assessed and scored from 0-4, with the highest score determining the overall stage.",
+    "Stage determination is based on the most severe impairment across any domain, not an average.",
+    "Higher EOSS stages are associated with increased mortality risk independent of BMI.",
+    "The system can help guide treatment intensity and resource allocation for obesity management.",
+    "EOSS staging has been validated for predicting surgical outcomes and long-term mortality.",
+    "The tool is designed to be used in conjunction with, not as a replacement for, BMI classification.",
+    "Clinical assessment should consider individual patient factors beyond EOSS staging.",
+    "Regular reassessment is recommended as obesity-related health status may change over time.",
+    "The system can help identify patients who may benefit from more aggressive interventions.",
+    "EOSS staging may be particularly useful for prioritizing patients for bariatric surgery evaluation.",
+    "The framework encourages comprehensive evaluation of obesity-related health impacts.",
+    "Patients with higher EOSS stages require more intensive, multidisciplinary management approaches."
+  ]
+}

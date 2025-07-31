@@ -1,0 +1,94 @@
+{
+  "id": "disease_steps_ms",
+  "title": "Disease Steps for Multiple Sclerosis",
+  "description": "Assesses MS disease progression based on patient's ambulatory ability",
+  "category": "neurology",
+  "version": "1995",
+  "parameters": [
+    {
+      "name": "disease_step",
+      "type": "string",
+      "required": true,
+      "description": "Patient's current disease step based on ambulatory ability assessment",
+      "options": ["normal", "mild_disability", "moderate_disability", "early_cane", "late_cane", "bilateral_support", "wheelchair", "unclassifiable"],
+      "validation": {
+        "enum": ["normal", "mild_disability", "moderate_disability", "early_cane", "late_cane", "bilateral_support", "wheelchair", "unclassifiable"]
+      }
+    }
+  ],
+  "result": {
+    "name": "disease_step_score",
+    "type": "integer",
+    "unit": "step",
+    "description": "Disease Steps score (0-6 or U for unclassifiable)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Normal",
+        "description": "Normal function",
+        "interpretation": "Normal neurologic function with no activity limitations. Patient functions normally in all activities of daily living."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Mild disability",
+        "description": "Mild symptoms or signs",
+        "interpretation": "Mild disability with minimal symptoms or neurologic signs. Patient may have minor complaints but maintains normal function in most activities."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Moderate disability",
+        "description": "Visible abnormality of gait",
+        "interpretation": "Moderate disability with visibly abnormal gait. Patient has noticeable walking difficulties but remains ambulatory without assistance."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Early cane",
+        "description": "Intermittent unilateral support",
+        "interpretation": "Early cane use with intermittent need for unilateral support. Patient requires walking aid occasionally but not continuously."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Late cane",
+        "description": "Dependent on unilateral support",
+        "interpretation": "Late cane stage with continuous dependence on unilateral support. Patient requires walking aid for most or all ambulation."
+      },
+      {
+        "min": 5,
+        "max": 5,
+        "stage": "Bilateral support",
+        "description": "Requires bilateral support",
+        "interpretation": "Bilateral support required with need for two canes, crutches, or walker. Patient has significant mobility impairment but remains ambulatory."
+      },
+      {
+        "min": 6,
+        "max": 6,
+        "stage": "Wheelchair",
+        "description": "Confined to wheelchair",
+        "interpretation": "Wheelchair dependent with severely limited mobility. Patient requires wheelchair for most activities and has minimal ambulatory function."
+      }
+    ]
+  },
+  "references": [
+    "Hohol MJ, Orav EJ, Weiner HL. Disease steps in multiple sclerosis: a simple approach to evaluate disease progression. Neurology. 1995 Feb;45(2):251-5. doi: 10.1212/wnl.45.2.251.",
+    "Learmonth YC, Motl RW, Sandroff BM, Pula JH, Cadavid D. Validation of patient determined disease steps (PDDS) scale scores in persons with multiple sclerosis. BMC Neurol. 2013 Apr 25;13:37. doi: 10.1186/1471-2377-13-37.",
+    "Hohol MJ, Orav EJ, Weiner HL. Disease steps in multiple sclerosis: a longitudinal study comparing disease steps and EDSS to evaluate disease progression. Mult Scler. 1999 Oct;5(5):349-54. doi: 10.1177/135245859900500508."
+  ],
+  "formula": "Direct mapping of patient's ambulatory ability to corresponding Disease Steps category (0-6 or U for unclassifiable)",
+  "notes": [
+    "Designed as a simpler alternative to the Expanded Disability Status Scale (EDSS)",
+    "Excellent inter-rater reliability (kappa = 0.8) compared to EDSS (kappa = 0.54)",
+    "Provides more uniform patient distribution across disability levels",
+    "Can be used for therapeutic decision-making and monitoring treatment response",
+    "Patient-Determined Disease Steps (PDDS) version allows for self-assessment",
+    "Focuses specifically on mobility and ambulatory function",
+    "Scale correlates well with quality of life and functional status measures",
+    "Useful for tracking disease progression over time in clinical and research settings"
+  ]
+}

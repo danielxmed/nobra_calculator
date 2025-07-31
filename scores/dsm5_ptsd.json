@@ -1,0 +1,311 @@
+{
+  "id": "dsm5_ptsd",
+  "title": "DSM-5 Criteria for Posttraumatic Stress Disorder",
+  "description": "Diagnostic criteria for posttraumatic stress disorder (PTSD) based on DSM-5. Evaluates trauma exposure and four symptom clusters: intrusion, avoidance, negative alterations in cognitions/mood, and alterations in arousal/reactivity.",
+  "category": "psychiatry",
+  "version": "DSM-5",
+  "parameters": [
+    {
+      "name": "trauma_exposure",
+      "type": "string",
+      "required": true,
+      "description": "Exposure to actual or threatened death, serious injury, or sexual violence through direct experience, witnessing, learning it happened to close family/friend, or repeated/extreme exposure to aversive details",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "intrusive_memories",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION B1: Recurrent, involuntary, and intrusive distressing memories of the traumatic event(s)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "traumatic_nightmares",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION B2: Recurrent distressing dreams in which the content and/or affect of the dream are related to the traumatic event(s)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "dissociative_reactions",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION B3: Dissociative reactions (e.g., flashbacks) in which the individual feels or acts as if the traumatic event(s) were recurring",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "psychological_distress",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION B4: Intense or prolonged psychological distress at exposure to internal or external cues that symbolize or resemble an aspect of the traumatic event(s)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "physiological_reactions",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION B5: Marked physiological reactions to internal or external cues that symbolize or resemble an aspect of the traumatic event(s)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "avoidance_thoughts",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION C1: Avoidance of or efforts to avoid distressing memories, thoughts, or feelings about or closely associated with the traumatic event(s)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "avoidance_reminders",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION C2: Avoidance of or efforts to avoid external reminders (people, places, conversations, activities, objects, situations) that arouse distressing memories, thoughts, or feelings about or closely associated with the traumatic event(s)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "inability_remember",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION D1: Inability to remember an important aspect of the traumatic event(s) (typically due to dissociative amnesia and not to head injury, alcohol, or drugs)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "negative_beliefs",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION D2: Persistent and exaggerated negative beliefs or expectations about oneself, others, or the world (e.g., 'I am bad,' 'No one can be trusted,' 'The world is completely dangerous')",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "distorted_blame",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION D3: Persistent, distorted cognitions about the cause or consequences of the traumatic event that lead the individual to blame himself/herself or others",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "negative_emotional_state",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION D4: Persistent negative emotional state (e.g., fear, horror, anger, guilt, or shame)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "diminished_interest",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION D5: Markedly diminished interest or participation in significant activities",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "detachment_estrangement",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION D6: Feelings of detachment or estrangement from others",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "inability_positive_emotions",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION D7: Persistent inability to experience positive emotions (e.g., happiness, satisfaction, love, joy)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "irritability_aggression",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION E1: Irritable behavior and angry outbursts (with little or no provocation) typically expressed as verbal or physical aggression toward people or objects",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "reckless_behavior",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION E2: Reckless or self-destructive behavior",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hypervigilance",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION E3: Hypervigilance",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "exaggerated_startle",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION E4: Exaggerated startle response",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "concentration_problems",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION E5: Problems with concentration",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "sleep_disturbance",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION E6: Sleep disturbance (e.g., difficulty falling or staying asleep or restless sleep)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "duration_one_month",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION F: Duration of the disturbance is more than 1 month",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "functional_impairment",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION G: The disturbance causes clinically significant distress or impairment in social, occupational, or other important areas of functioning",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "not_substance_medical",
+      "type": "string",
+      "required": true,
+      "description": "CRITERION H: The disturbance is NOT attributable to the physiological effects of a substance (e.g., medication, alcohol) or another medical condition",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "dissociative_symptoms",
+      "type": "string",
+      "required": true,
+      "description": "DISSOCIATIVE SUBTYPE: Persistent or recurrent symptoms of depersonalization (feelings of unreality, detachment from oneself) or derealization (feelings of unreality about surroundings)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "dsm5_ptsd_diagnosis",
+    "type": "string",
+    "unit": "diagnosis",
+    "description": "DSM-5 PTSD diagnostic result"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Criteria Not Met",
+        "description": "Does not meet DSM-5 PTSD criteria",
+        "interpretation": "Does not meet DSM-5 criteria for PTSD. Consider other trauma-related disorders, acute stress disorder, or subclinical PTSD symptoms. Refer for comprehensive trauma evaluation if clinical concerns persist."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "PTSD",
+        "description": "Meets criteria for PTSD",
+        "interpretation": "Meets DSM-5 criteria for Posttraumatic Stress Disorder. Requires comprehensive trauma-informed psychiatric evaluation and treatment planning. Consider evidence-based treatments such as trauma-focused psychotherapy (CPT, PE, EMDR) and/or pharmacotherapy."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "PTSD with Dissociative Subtype",
+        "description": "Meets criteria for PTSD with dissociative features",
+        "interpretation": "Meets DSM-5 criteria for PTSD with Dissociative Subtype. This more severe form includes depersonalization or derealization symptoms. Requires specialized trauma treatment with attention to dissociative symptoms and safety planning."
+      }
+    ]
+  },
+  "references": [
+    "American Psychiatric Association. Diagnostic and statistical manual of mental disorders: DSM-5. 5th ed. Washington, DC: American Psychiatric Association; 2013.",
+    "Weathers FW, Litz BT, Keane TM, Palmieri PA, Marx BP, Schnurr PP. The PTSD Checklist for DSM-5 (PCL-5). National Center for PTSD; 2013.",
+    "Bovin MJ, Marx BP, Weathers FW, Gallagher MW, Rodriguez P, Schnurr PP, Keane TM. Psychometric properties of the PTSD Checklist for Diagnostic and Statistical Manual of Mental Disorders-Fifth Edition (PCL-5) in veterans. Psychol Assess. 2016;28(11):1379-1391. doi: 10.1037/pas0000254."
+  ],
+  "formula": "DSM-5 PTSD diagnosis requires: A) Trauma exposure + B) At least 1 intrusion symptom (B1-B5) + C) At least 1 avoidance symptom (C1-C2) + D) At least 2 negative alterations in cognitions/mood (D1-D7) + E) At least 2 alterations in arousal/reactivity (E1-E6) + F) Duration >1 month + G) Functional impairment + H) Not due to substance/medical condition. Dissociative subtype diagnosed if dissociative symptoms also present.",
+  "notes": [
+    "This is a diagnostic aid for clinical evaluation, not a substitute for comprehensive trauma assessment.",
+    "Criterion A (trauma exposure) is mandatory for PTSD diagnosis.",
+    "At least 1 symptom from Criterion B (intrusion) is required.",
+    "At least 1 symptom from Criterion C (avoidance) is required.",
+    "At least 2 symptoms from Criterion D (negative cognitions/mood) are required.",
+    "At least 2 symptoms from Criterion E (arousal/reactivity) are required.",
+    "Symptoms must persist for more than 1 month (distinguishes from Acute Stress Disorder).",
+    "Functional impairment is required for diagnosis.",
+    "Must rule out substance-induced or medical condition-related symptoms.",
+    "Dissociative subtype applies when depersonalization or derealization symptoms are present.",
+    "Consider delayed onset specifier if criteria not met until ≥6 months after trauma.",
+    "Assess suicide risk and safety planning immediately in all trauma survivors.",
+    "Use validated instruments like PCL-5 for comprehensive symptom assessment."
+  ]
+}

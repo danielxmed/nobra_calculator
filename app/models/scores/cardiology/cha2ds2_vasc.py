@@ -71,7 +71,7 @@ class Cha2ds2VascRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 75,
                 "sex": "female",
@@ -147,7 +147,7 @@ class Cha2ds2VascResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 5,
                 "unit": "points",

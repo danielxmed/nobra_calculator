@@ -26,7 +26,7 @@ myocardial infarction or coronary heart disease death, or fatal or nonfatal stro
 This calculator is intended for patients aged 40-79 years with no prior history of ASCVD.
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Literal
 
 
@@ -121,7 +121,7 @@ class Ascvd2013Request(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 55,
                 "sex": "male",
@@ -195,7 +195,7 @@ class Ascvd2013Response(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 5.3,
                 "unit": "%",

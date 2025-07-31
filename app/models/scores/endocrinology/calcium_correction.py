@@ -22,7 +22,7 @@ evidence suggests this formula has significant limitations and ionized calcium
 measurement is preferred when available.
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Literal, Dict, Any, Optional
 
 
@@ -84,20 +84,20 @@ class CalciumCorrectionRequest(BaseModel):
         example="us"
     )
     
-    @validator('calcium')
+    @field_validator('calcium')
     def validate_calcium(cls, v, values):
         # Since unit_system comes after calcium, we can't validate here
         # We'll handle unit-specific validation in the calculator
         return v
     
-    @validator('albumin')
+    @field_validator('albumin')
     def validate_albumin(cls, v, values):
         # Since unit_system comes after albumin, we can't validate here
         # We'll handle unit-specific validation in the calculator
         return v
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "calcium": 7.8,
                 "albumin": 2.5,
@@ -183,7 +183,7 @@ class CalciumCorrectionResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 9.0,
                 "unit": "mg/dL",

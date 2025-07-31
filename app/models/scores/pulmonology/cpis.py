@@ -88,7 +88,7 @@ class CpisRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "temperature": "38.5-38.9",
                 "white_blood_cells": "<4 or >11",
@@ -160,7 +160,7 @@ class CpisResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 8,
                 "unit": "points",

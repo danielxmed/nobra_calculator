@@ -197,7 +197,7 @@ class CirsGRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "heart": 1,
                 "vascular": 2,
@@ -350,7 +350,7 @@ class CirsGResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 11,
                 "unit": "points",

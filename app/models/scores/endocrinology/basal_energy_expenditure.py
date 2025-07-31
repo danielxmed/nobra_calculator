@@ -18,7 +18,7 @@ represents the minimum daily caloric requirements at rest. This can be adjusted
 by activity factors to calculate total daily energy expenditure (TDEE).
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Literal, Optional
 
 
@@ -79,20 +79,20 @@ class BasalEnergyExpenditureRequest(BaseModel):
         example="moderate"
     )
     
-    @validator('weight')
+    @field_validator('weight')
     def validate_weight(cls, v):
         if v <= 20 or v >= 300:
             raise ValueError('Weight must be between 20 and 300 kg')
         return v
     
-    @validator('height')
+    @field_validator('height')
     def validate_height(cls, v):
         if v <= 100 or v >= 250:
             raise ValueError('Height must be between 100 and 250 cm')
         return v
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "sex": "male",
                 "weight": 70.0,
@@ -145,7 +145,7 @@ class BasalEnergyExpenditureResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 2418.0,
                 "unit": "kcal/day",

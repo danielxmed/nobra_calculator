@@ -7,6 +7,9 @@ from .duke_iscvid_2023 import DukeIscvid2023Request, DukeIscvid2023Response
 from .atlas_score import AtlasScoreRequest, AtlasScoreResponse
 from .bacterial_meningitis_score import BacterialMeningitisScoreRequest, BacterialMeningitisScoreResponse
 from .denver_hiv_risk_score import DenverHivRiskScoreRequest, DenverHivRiskScoreResponse
+from .drip_score import DripScoreRequest, DripScoreResponse
+from .duke_criteria_infective_endocarditis import DukeCriteriaInfectiveEndocarditisRequest, DukeCriteriaInfectiveEndocarditisResponse
+from .feverpain_score import FeverpainScoreRequest, FeverpainScoreResponse
 
 __all__ = [
     "Helps2bRequest",
@@ -19,4 +22,10 @@ __all__ = [
     "BacterialMeningitisScoreResponse",
     "DenverHivRiskScoreRequest",
     "DenverHivRiskScoreResponse",
+    "DripScoreRequest",
+    "DripScoreResponse",
+    "DukeCriteriaInfectiveEndocarditisRequest",
+    "DukeCriteriaInfectiveEndocarditisResponse",
+    "FeverpainScoreRequest",
+    "FeverpainScoreResponse",
 ]

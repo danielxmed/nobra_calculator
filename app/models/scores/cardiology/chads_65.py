@@ -138,7 +138,7 @@ class Chads65Request(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age_65_or_older": "no",
                 "congestive_heart_failure": "no",
@@ -279,7 +279,7 @@ class Chads65Response(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "therapy_recommendation": "Oral Anticoagulation",

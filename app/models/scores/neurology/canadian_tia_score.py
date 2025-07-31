@@ -149,7 +149,7 @@ class CanadianTiaScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "first_tia_lifetime": "no",
                 "symptoms_ten_minutes": "yes",
@@ -226,7 +226,7 @@ class CanadianTiaScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 5,
                 "unit": "points",

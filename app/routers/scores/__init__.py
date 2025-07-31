@@ -26,6 +26,7 @@ from .gastroenterology import router as gastroenterology_router
 from .general import router as general_router
 from .gynecology import router as gynecology_router
 from .ophthalmology import router as ophthalmology_router
+from .dermatology import router as dermatology_router
 
 # Create main scores router
 router = APIRouter()
@@ -52,3 +53,4 @@ router.include_router(gastroenterology_router, tags=["gastroenterology"])
 router.include_router(general_router, tags=["general"])
 router.include_router(gynecology_router, tags=["gynecology"])
 router.include_router(ophthalmology_router, tags=["ophthalmology"])
+router.include_router(dermatology_router, tags=["dermatology"])

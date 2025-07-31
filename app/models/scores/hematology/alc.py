@@ -55,7 +55,7 @@ class AlcRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "white_blood_cells": 6.5,
                 "lymphocyte_percentage": 25.0
@@ -103,7 +103,7 @@ class AlcResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 1625,
                 "unit": "cells/mm³",

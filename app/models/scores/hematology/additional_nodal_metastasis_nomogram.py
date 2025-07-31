@@ -112,7 +112,7 @@ class AdditionalNodalMetastasisNomogramRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "nuclear_grade": "ductal_ii",
                 "lymphovascular_invasion": "no",
@@ -174,7 +174,7 @@ class AdditionalNodalMetastasisNomogramResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 25.7,
                 "unit": "%",

@@ -335,7 +335,7 @@ class CdaiRheumatoidArthritisRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "tender_joint_count": 8,
                 "swollen_joint_count": 5,
@@ -579,7 +579,7 @@ class CdaiRheumatoidArthritisResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 25.3,
                 "unit": "points",

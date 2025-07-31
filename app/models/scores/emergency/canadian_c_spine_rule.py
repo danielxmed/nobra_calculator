@@ -118,7 +118,7 @@ class CanadianCSpineRuleRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age_65_or_over": "no",
                 "dangerous_mechanism": "no",
@@ -183,7 +183,7 @@ class CanadianCSpineRuleResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "Safe to Clear Clinically",
                 "unit": "recommendation",

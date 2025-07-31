@@ -12,6 +12,9 @@ from .cambridge_diabetes_risk_score import CambridgeDiabetesRiskScoreRequest, Ca
 from .canrisk import CanriskRequest, CanriskResponse
 from .diabetes_distress_scale import DiabetesDistressScaleRequest, DiabetesDistressScaleResponse
 from .dka_mpm_score import DkaMpmScoreRequest, DkaMpmScoreResponse
+from .dutch_criteria_familial_hypercholesterolemia import DutchCriteriaFamilialHypercholesterolemiaRequest, DutchCriteriaFamilialHypercholesterolemiaResponse
+from .edmonton_obesity_staging_system import EdmontonObesityStagingSystemRequest, EdmontonObesityStagingSystemResponse
+from .estimated_average_glucose_eag_hba1c import EstimatedAverageGlucoseEagHba1cRequest, EstimatedAverageGlucoseEagHba1cResponse
 
 __all__ = [
     "AdaRiskCalculatorRequest",
@@ -34,4 +37,10 @@ __all__ = [
     "DiabetesDistressScaleResponse",
     "DkaMpmScoreRequest",
     "DkaMpmScoreResponse",
+    "DutchCriteriaFamilialHypercholesterolemiaRequest",
+    "DutchCriteriaFamilialHypercholesterolemiaResponse",
+    "EdmontonObesityStagingSystemRequest",
+    "EdmontonObesityStagingSystemResponse",
+    "EstimatedAverageGlucoseEagHba1cRequest",
+    "EstimatedAverageGlucoseEagHba1cResponse",
 ]

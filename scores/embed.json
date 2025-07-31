@@ -1,0 +1,207 @@
+{
+  "id": "embed",
+  "title": "Emergency Department-Initiated Buprenorphine for Opioid Use Disorder (EMBED)",
+  "description": "Assesses OUD, opioid withdrawal severity, and readiness for ED-initiated buprenorphine treatment using DSM-5 criteria, COWS scale, and treatment readiness assessment.",
+  "category": "emergency",
+  "version": "2021",
+  "parameters": [
+    {
+      "name": "opioid_larger_amounts",
+      "type": "string",
+      "required": true,
+      "description": "Taking opioids in larger amounts or for longer than intended?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "unsuccessful_cut_down",
+      "type": "string",
+      "required": true,
+      "description": "Persistent desire or unsuccessful efforts to cut down or control opioid use?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "time_obtaining_using",
+      "type": "string",
+      "required": true,
+      "description": "Spending a lot of time obtaining, using, or recovering from opioid effects?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "craving_desire",
+      "type": "string",
+      "required": true,
+      "description": "Craving or strong desire to use opioids?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "failure_obligations",
+      "type": "string",
+      "required": true,
+      "description": "Failure to fulfill major obligations at work, school, or home due to opioid use?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "continued_despite_problems",
+      "type": "string",
+      "required": true,
+      "description": "Continued opioid use despite persistent social or interpersonal problems?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "activities_given_up",
+      "type": "string",
+      "required": true,
+      "description": "Important social, occupational, or recreational activities given up or reduced due to opioid use?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hazardous_situations",
+      "type": "string",
+      "required": true,
+      "description": "Recurrent opioid use in physically hazardous situations?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "physical_psychological_problems",
+      "type": "string",
+      "required": true,
+      "description": "Continued opioid use despite physical or psychological problems caused or worsened by opioids?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "tolerance",
+      "type": "string",
+      "required": true,
+      "description": "Tolerance (need for increased amounts or diminished effect with same amount)?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "withdrawal",
+      "type": "string",
+      "required": true,
+      "description": "Withdrawal syndrome or using opioids to avoid withdrawal symptoms?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "cows_score",
+      "type": "integer",
+      "required": true,
+      "description": "Clinical Opiate Withdrawal Scale (COWS) score (0-48 points)",
+      "validation": {
+        "min": 0,
+        "max": 48
+      },
+      "unit": "points"
+    },
+    {
+      "name": "treatment_readiness",
+      "type": "string",
+      "required": true,
+      "description": "Patient readiness for treatment (assessed via brief negotiation interview)",
+      "options": ["ready", "not_ready"],
+      "validation": {
+        "enum": ["ready", "not_ready"]
+      }
+    },
+    {
+      "name": "pregnancy_status",
+      "type": "string",
+      "required": true,
+      "description": "Is the patient pregnant?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "buprenorphine_waiver",
+      "type": "string",
+      "required": true,
+      "description": "Does provider have buprenorphine prescription waiver/certification?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "embed_result",
+    "type": "string",
+    "unit": "recommendation",
+    "description": "EMBED assessment result and buprenorphine initiation recommendation"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "result": "not_candidate",
+        "stage": "Not Candidate",
+        "description": "Not candidate for ED-initiated buprenorphine",
+        "interpretation": "Patient does not meet criteria for ED-initiated buprenorphine treatment. Consider alternative treatment options, referral to addiction medicine, or reassessment when circumstances change."
+      },
+      {
+        "result": "candidate_home_induction",
+        "stage": "Candidate - Home Induction",
+        "description": "Candidate for home induction protocol",
+        "interpretation": "Patient meets criteria for buprenorphine treatment but withdrawal severity (COWS ≤12) or insufficient time since last opioid use indicates home induction protocol. Provide patient education, prescription for home induction, and follow-up arrangements."
+      },
+      {
+        "result": "candidate_ed_induction",
+        "stage": "Candidate - ED Induction",
+        "description": "Candidate for emergency department induction",
+        "interpretation": "Patient meets all criteria for ED-initiated buprenorphine induction. COWS >12 indicates moderate to severe withdrawal suitable for immediate induction. Proceed with ED induction protocol and arrange follow-up care."
+      }
+    ]
+  },
+  "references": [
+    "D'Onofrio G, Chawarski MC, O'Connor PG, Pantalon MV, Busch SH, Owens PH, et al. Emergency department-initiated buprenorphine for opioid dependence with continuation in primary care: outcomes during and after intervention. J Gen Intern Med. 2017 Jun;32(6):660-666. doi: 10.1007/s11606-017-3993-2.",
+    "Hawk K, D'Onofrio G, Chawarski MC, O'Connor PG, Cowan E, Lyons MS, et al. Barriers and facilitators to clinician readiness to provide emergency department-initiated buprenorphine. JAMA Netw Open. 2020 May 1;3(5):e204561. doi: 10.1001/jamanetworkopen.2020.4561.",
+    "American Psychiatric Association. Diagnostic and statistical manual of mental disorders (5th ed.). Arlington, VA: American Psychiatric Publishing; 2013.",
+    "Wesson DR, Ling W. The Clinical Opiate Withdrawal Scale (COWS). J Psychoactive Drugs. 2003 Apr-Jun;35(2):253-9. doi: 10.1080/02791072.2003.10400007."
+  ],
+  "formula": "DSM-5 OUD diagnosis (≥2 criteria) + COWS assessment + Treatment readiness + Clinical factors → Treatment recommendation",
+  "notes": [
+    "DSM-5 OUD severity: Mild (2-3 criteria), Moderate (4-5 criteria), Severe (≥6 criteria)",
+    "COWS interpretation: <8 (None to Mild), 8-12 (Mild to Moderate), >12 (Moderate to Severe)",
+    "ED induction recommended for COWS >12 and sufficient time since last opioid use",
+    "Home induction recommended for COWS ≤12 or insufficient time since last opioid use",
+    "Tolerance and withdrawal criteria not met if opioids taken under appropriate medical supervision",
+    "Pregnancy requires specialized consultation and modified treatment approach",
+    "Provider must have appropriate buprenorphine waiver/certification",
+    "Risk of precipitated withdrawal decreased with COWS >12",
+    "Follow evidence-based protocols for safe buprenorphine induction",
+    "Arrange appropriate follow-up care and addiction treatment referral"
+  ]
+}

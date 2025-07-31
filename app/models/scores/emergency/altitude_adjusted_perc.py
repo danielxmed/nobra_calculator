@@ -116,7 +116,7 @@ class AltitudeAdjustedPercRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "high_altitude": "yes",
                 "age_50_or_older": "no",
@@ -200,7 +200,7 @@ class AltitudeAdjustedPercResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "PERC Negative",
                 "unit": "recommendation",

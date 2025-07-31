@@ -21,7 +21,7 @@ score helps clinicians distinguish between bacterial and aseptic meningitis to s
 discharge decisions while maintaining appropriate caution for this serious condition.
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Literal
 
 
@@ -91,26 +91,26 @@ class BacterialMeningitisScoreRequest(BaseModel):
         example="no"
     )
     
-    @validator('csf_anc')
+    @field_validator('csf_anc')
     def validate_csf_anc(cls, v):
         if v > 50000:
             raise ValueError("CSF ANC value seems unusually high (>50,000 cells/µL). Please verify.")
         return v
     
-    @validator('csf_protein')
+    @field_validator('csf_protein')
     def validate_csf_protein(cls, v):
         if v > 1000:
             raise ValueError("CSF protein value seems unusually high (>1000 mg/dL). Please verify.")
         return v
     
-    @validator('peripheral_blood_anc')
+    @field_validator('peripheral_blood_anc')
     def validate_peripheral_anc(cls, v):
         if v > 100000:
             raise ValueError("Peripheral blood ANC value seems unusually high (>100,000 cells/µL). Please verify.")
         return v
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "csf_gram_stain": "negative",
                 "csf_anc": 500,
@@ -170,7 +170,7 @@ class BacterialMeningitisScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 0,
                 "unit": "points",

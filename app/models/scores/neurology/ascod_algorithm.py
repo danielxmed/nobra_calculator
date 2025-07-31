@@ -122,7 +122,7 @@ class AscodAlgorithmRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "atherosclerosis": "grade_1",
                 "small_vessel_disease": "grade_0",
@@ -182,7 +182,7 @@ class AscodAlgorithmResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "A1-S0-C2-O0-D0",
                 "unit": "phenotype",

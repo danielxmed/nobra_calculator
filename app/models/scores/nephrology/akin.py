@@ -153,7 +153,7 @@ class AkinRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "current_creatinine": 2.5,
                 "baseline_creatinine": 1.0,
@@ -275,7 +275,7 @@ class AkinResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "Stage 1",
                 "unit": "stage",

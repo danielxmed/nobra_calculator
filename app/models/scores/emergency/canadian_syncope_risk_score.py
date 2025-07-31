@@ -119,7 +119,7 @@ class CanadianSyncopeRiskScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "vasovagal_predisposition": "no",
                 "heart_disease_history": "no",
@@ -188,7 +188,7 @@ class CanadianSyncopeRiskScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 0,
                 "unit": "points",

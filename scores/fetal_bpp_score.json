@@ -1,0 +1,136 @@
+{
+  "id": "fetal_bpp_score",
+  "title": "Fetal Biophysical Profile (BPP) Score",
+  "description": "Predicts need for urgent delivery based on sonographic and non-stress test. Assesses for fetal distress in high-risk pregnancies.",
+  "category": "gynecology",
+  "version": "1980",
+  "parameters": [
+    {
+      "name": "fetal_breathing",
+      "type": "integer",
+      "required": true,
+      "description": "Fetal breathing movements",
+      "options": ["0", "2"],
+      "validation": {
+        "enum": [0, 2]
+      },
+      "labels": {
+        "0": "< 30 sec of breathing within 30 min",
+        "2": "≥1 episode of rhythmic breathing lasting ≥30 sec within 30 min"
+      }
+    },
+    {
+      "name": "fetal_movement",
+      "type": "integer",
+      "required": true,
+      "description": "Gross body movements",
+      "options": ["0", "2"],
+      "validation": {
+        "enum": [0, 2]
+      },
+      "labels": {
+        "0": "< 3 discrete movements",
+        "2": "≥3 discrete body or limb movements within 30 min"
+      }
+    },
+    {
+      "name": "fetal_tone",
+      "type": "integer",
+      "required": true,
+      "description": "Fetal muscle tone",
+      "options": ["0", "2"],
+      "validation": {
+        "enum": [0, 2]
+      },
+      "labels": {
+        "0": "0 extension/flexion events",
+        "2": "≥1 episode of extremity extension and subsequent return to flexion"
+      }
+    },
+    {
+      "name": "amniotic_fluid",
+      "type": "integer",
+      "required": true,
+      "description": "Amniotic fluid volume",
+      "options": ["0", "2"],
+      "validation": {
+        "enum": [0, 2]
+      },
+      "labels": {
+        "0": "Largest single vertical pocket ≤2 cm",
+        "2": "A pocket of amniotic fluid ≥2 cm in 2 perpendicular planes"
+      }
+    },
+    {
+      "name": "nonstress_test",
+      "type": "integer",
+      "required": true,
+      "description": "Non-stress test (NST)",
+      "options": ["0", "2"],
+      "validation": {
+        "enum": [0, 2]
+      },
+      "labels": {
+        "0": "0 or 1 acceleration within 20-40 min",
+        "2": "≥2 accelerations of ≥15 beats/min for ≥15 sec within 20-40 min"
+      }
+    }
+  ],
+  "result": {
+    "name": "bpp_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Biophysical Profile score (0-10)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Almost Certain Asphyxia",
+        "description": "High risk",
+        "interpretation": "Almost certain fetal asphyxia. Immediate delivery indicated."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Probable Asphyxia",
+        "description": "High risk",
+        "interpretation": "Probable fetal asphyxia. Repeat testing immediately. If persistent, delivery indicated."
+      },
+      {
+        "min": 6,
+        "max": 6,
+        "stage": "Possible Asphyxia",
+        "description": "Equivocal",
+        "interpretation": "Possible fetal asphyxia. If abnormal fluid, delivery indicated. If normal fluid, repeat test in 24 hours."
+      },
+      {
+        "min": 8,
+        "max": 8,
+        "stage": "Normal",
+        "description": "Low risk",
+        "interpretation": "Normal, non-asphyxiated fetus. No intervention required. Repeat test per protocol."
+      },
+      {
+        "min": 10,
+        "max": 10,
+        "stage": "Normal",
+        "description": "Low risk",
+        "interpretation": "Normal, non-asphyxiated fetus. No intervention required. Repeat test weekly."
+      }
+    ]
+  },
+  "references": [
+    "Manning FA, Platt LD, Sipos L. Antepartum fetal evaluation: development of a fetal biophysical profile. Am J Obstet Gynecol. 1980 Mar 15;136(6):787-95.",
+    "Kim SY, Khandelwal M, Gaughan JP, Agar MH, Reece EA. Is the intrapartum biophysical profile useful? Obstet Gynecol. 2003 Sep;102(3):471-6."
+  ],
+  "formula": "BPP Score = Fetal Breathing + Fetal Movement + Fetal Tone + Amniotic Fluid + NST (each parameter scores 0 or 2)",
+  "notes": [
+    "Typically performed after 28-32 weeks of pregnancy",
+    "Test duration is 30 minutes minimum",
+    "Score of 8/10 with normal fluid requires no intervention",
+    "Score of 8/10 with oligohydramnios may require delivery",
+    "May be repeated once or twice weekly in high-risk pregnancies"
+  ]
+}

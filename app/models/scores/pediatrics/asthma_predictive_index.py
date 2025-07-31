@@ -97,7 +97,7 @@ class AsthmaPreductiveIndexRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "wheezing_episodes": "less_than_3",
                 "family_history_asthma": "no",
@@ -154,7 +154,7 @@ class AsthmaPreductiveIndexResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "Positive Loose",
                 "unit": "classification",

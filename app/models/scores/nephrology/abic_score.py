@@ -58,7 +58,7 @@ class AbicScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 50,
                 "serum_bilirubin": 8.5,
@@ -79,7 +79,7 @@ class AbicScoreResponse(BaseModel):
     survival_1_year: str = Field(..., description="1-year survival")
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 7.5,
                 "unit": "points",

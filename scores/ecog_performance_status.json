@@ -1,0 +1,88 @@
+{
+  "id": "ecog_performance_status",
+  "title": "Eastern Cooperative Oncology Group (ECOG) Performance Status",
+  "description": "Determines patient's ability to tolerate therapies in severe illness, specifically for chemotherapy. Simple 5-point scale that describes patient's level of functioning in terms of their ability to care for themselves, daily activity, and physical ability.",
+  "category": "oncology",
+  "version": "1982",
+  "parameters": [
+    {
+      "name": "performance_status",
+      "type": "string",
+      "required": true,
+      "description": "Patient's current performance status based on functional assessment",
+      "options": ["ecog_0", "ecog_1", "ecog_2", "ecog_3", "ecog_4"],
+      "validation": {
+        "enum": ["ecog_0", "ecog_1", "ecog_2", "ecog_3", "ecog_4"]
+      }
+    }
+  ],
+  "result": {
+    "name": "ecog_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "ECOG Performance Status score (0-4)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "ECOG 0",
+        "description": "Fully active",
+        "interpretation": "Fully active, able to carry on all pre-disease performance without restriction. Excellent candidate for chemotherapy with optimal tolerance expected. Suitable for all clinical trials and aggressive treatment regimens. Prognosis is generally favorable."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "ECOG 1",
+        "description": "Restricted in strenuous activity",
+        "interpretation": "Restricted in physically strenuous activity but ambulatory and able to carry out work of a light or sedentary nature (e.g., light house work, office work). Good candidate for chemotherapy with acceptable tolerance. Suitable for most clinical trials. Generally good prognosis with appropriate treatment."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "ECOG 2",
+        "description": "Ambulatory but unable to work",
+        "interpretation": "Ambulatory and capable of all self-care but unable to carry out any work activities. Up and about more than 50% of waking hours. Borderline candidate for chemotherapy - requires careful evaluation. May benefit from supportive care and nutrition optimization. Consider less intensive treatment regimens. Prognosis varies significantly."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "ECOG 3",
+        "description": "Limited self-care",
+        "interpretation": "Capable of only limited self-care, confined to bed or chair more than 50% of waking hours. Generally NOT suitable for cytotoxic chemotherapy per clinical guidelines. Focus should be on palliative care and symptom management. May consider targeted therapy or immunotherapy in select cases. Poor prognosis."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "ECOG 4",
+        "description": "Completely disabled",
+        "interpretation": "Completely disabled. Cannot carry on any self-care. Totally confined to bed or chair. NOT suitable for chemotherapy - focus on comfort care and hospice services. Symptom management and quality of life are primary goals. Very poor prognosis with life expectancy typically measured in weeks to months."
+      }
+    ]
+  },
+  "references": [
+    "Oken MM, Creech RH, Tormey DC, Horton J, Davis TE, McFadden ET, et al. Toxicity and response criteria of the Eastern Cooperative Oncology Group. Am J Clin Oncol. 1982;5(6):649-55. doi: 10.1097/00000421-198212000-00014.",
+    "Zubrod CG, Schneiderman M, Frei E, Brindley C, Gold GL, Shnider B, et al. Appraisal of methods for the study of chemotherapy of cancer in man: comparative therapeutic trial of nitrogen mustard and triethylene thiophosphoramide. J Chronic Dis. 1960;11:7-33. doi: 10.1016/0021-9681(60)90137-5.",
+    "Buccheri G, Ferrigno D, Tamburini M. Karnofsky and ECOG performance status scoring in lung cancer: a prospective, longitudinal study of 536 patients from a single institution. Eur J Cancer. 1996;32A(7):1135-41. doi: 10.1016/0959-8049(95)00664-8.",
+    "Ma C, Bandukwala S, Burman D, Bryson J, Seccareccia D, Banerjee S, et al. Interconversion of three measures of performance status: an empirical analysis. Eur J Cancer. 2010;46(18):3175-83. doi: 10.1016/j.ejca.2010.06.126."
+  ],
+  "formula": "Direct assessment scale with 5 defined levels (0-4) based on patient's functional status and ability to perform activities of daily living. No mathematical calculation required - clinician selects appropriate level based on patient assessment.",
+  "notes": [
+    "Originally developed by the Eastern Cooperative Oncology Group in 1982.",
+    "Simpler alternative to the Karnofsky Performance Scale (0-100 scale).",
+    "Widely used for determining eligibility for clinical trials and treatment decisions.",
+    "ECOG 0-1 patients are generally considered good candidates for chemotherapy.",
+    "ECOG 2 patients require careful evaluation - may benefit from optimization before treatment.",
+    "ECOG 3-4 patients should generally NOT receive cytotoxic chemotherapy per guidelines.",
+    "ASCO and MOGA recommend against chemotherapy in ECOG 3-4 patients with advanced cancer.",
+    "Nurse-rated ECOG scores may be stronger predictors of outcomes than physician-rated scores.",
+    "Inter-rater reliability can vary - training and standardization are important.",
+    "Should be assessed regularly as performance status can change with disease progression or treatment.",
+    "Conversion formulas exist for Karnofsky Performance Scale: ECOG 0=KPS 90-100, ECOG 1=KPS 70-80, ECOG 2=KPS 50-60, ECOG 3=KPS 30-40, ECOG 4=KPS 10-20.",
+    "Performance status is a strong prognostic factor independent of other clinical variables.",
+    "Can be used to stratify patients in clinical trials and epidemiological studies.",
+    "Important for quality of life assessments and end-of-life care planning.",
+    "May guide decisions about aggressive interventions, hospice referral, and advance directives."
+  ]
+}

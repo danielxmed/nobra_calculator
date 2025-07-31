@@ -1,0 +1,127 @@
+{
+  "id": "duval_cibmtr_score_aml_survival",
+  "title": "Duval/CIBMTR Score for Acute Myelogenous Leukemia (AML) Survival",
+  "description": "Predicts transplantation survival of AML patients undergoing allogeneic hematopoietic stem cell transplantation (HSCT) based on five pre-transplant risk factors.",
+  "category": "hematology",
+  "version": "2010",
+  "parameters": [
+    {
+      "name": "disease_group",
+      "type": "string",
+      "required": true,
+      "description": "Disease status at time of transplantation",
+      "options": ["Primary induction failure or first CR >6 months", "First CR <6 months"],
+      "validation": {
+        "enum": ["Primary induction failure or first CR >6 months", "First CR <6 months"]
+      },
+      "unit": null
+    },
+    {
+      "name": "cytogenetics",
+      "type": "string",
+      "required": true,
+      "description": "Cytogenetic risk category prior to HSCT",
+      "options": ["Good or intermediate", "Poor"],
+      "validation": {
+        "enum": ["Good or intermediate", "Poor"]
+      },
+      "unit": null
+    },
+    {
+      "name": "hla_match_group",
+      "type": "string",
+      "required": true,
+      "description": "HLA matching status between donor and recipient",
+      "options": ["HLA identical sibling or well/partially matched unrelated", "Mismatched unrelated", "Related other than HLA identical sibling"],
+      "validation": {
+        "enum": ["HLA identical sibling or well/partially matched unrelated", "Mismatched unrelated", "Related other than HLA identical sibling"]
+      },
+      "unit": null
+    },
+    {
+      "name": "circulating_blasts",
+      "type": "string",
+      "required": true,
+      "description": "Presence of circulating blasts at time of transplantation",
+      "options": ["Absent", "Present"],
+      "validation": {
+        "enum": ["Absent", "Present"]
+      },
+      "unit": null
+    },
+    {
+      "name": "karnofsky_lansky_scale",
+      "type": "string",
+      "required": true,
+      "description": "Karnofsky (adults) or Lansky (pediatric) performance status scale",
+      "options": ["90-100", "<90"],
+      "validation": {
+        "enum": ["90-100", "<90"]
+      },
+      "unit": null
+    }
+  ],
+  "result": {
+    "name": "duval_cibmtr_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Duval/CIBMTR score for AML transplant survival prediction (range: 0-5 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Score 0",
+        "description": "Excellent prognosis",
+        "interpretation": "42% 3-year overall survival. Excellent prognosis for AML patients undergoing allogeneic HSCT. Proceed with transplantation as planned with standard supportive care protocols."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Score 1",
+        "description": "Good prognosis",
+        "interpretation": "28% 3-year overall survival. Good prognosis for AML patients undergoing allogeneic HSCT. Consider enhanced supportive care measures and close monitoring post-transplant."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Score 2",
+        "description": "Intermediate prognosis",
+        "interpretation": "15% 3-year overall survival. Intermediate prognosis for AML patients undergoing allogeneic HSCT. Careful risk-benefit analysis needed. Consider intensive supportive care and early intervention strategies."
+      },
+      {
+        "min": 3,
+        "max": 5,
+        "stage": "Score ≥3",
+        "description": "Poor prognosis",
+        "interpretation": "6% 3-year overall survival. Poor prognosis for AML patients undergoing allogeneic HSCT. Consider alternative treatment strategies, palliative care discussions, and comprehensive family counseling. Transplant decision requires multidisciplinary team consensus."
+      }
+    ]
+  },
+  "references": [
+    "Duval M, Klein JP, He W, Cahn JY, Cairo M, Camitta BM, et al. Hematopoietic stem-cell transplantation for acute leukemia in relapse or primary induction failure. J Clin Oncol. 2010;28(23):3730-8. doi: 10.1200/JCO.2010.28.8852.",
+    "Oran B, de Lima M, Garcia-Manero G, Thall PF, Lin R, Popat U, et al. A phase 3 randomized study of 5-azacytidine vs physicians' choice as maintenance therapy for patients with AML in first remission after intensive chemotherapy ineligible for stem cell transplantation. Blood. 2013;121(24):4906-14.",
+    "Ruggeri A, Labopin M, Ciceri F, Mohty M, Nagler A. Definition of GvHD-free, relapse-free survival for registry-based studies: an ALWP-EBMT analysis on patients with AML in remission. Bone Marrow Transplant. 2016;51(4):610-1.",
+    "Cornelissen JJ, Gratwohl A, Schlenk RF, Sierra J, Bornhäuser M, Juliusson G, et al. The European LeukemiaNet AML Working Party consensus statement on allogeneic HSCT for patients with AML in remission: an integrated-risk adapted approach. Nat Rev Clin Oncol. 2012;9(10):579-90. doi: 10.1038/nrclinonc.2012.150."
+  ],
+  "formula": "Score = disease_group_points + cytogenetics_points + hla_match_points + circulating_blasts_points + karnofsky_points. Total score ranges from 0-5 points with lower scores indicating better prognosis.",
+  "notes": [
+    "The Duval/CIBMTR Score was developed from analysis of 1,673 AML patients undergoing allogeneic HSCT.",
+    "The score is specifically designed for patients with active AML disease at time of conditioning.",
+    "Only busulfan and TBI-based myeloablative conditioning regimens were studied in the original validation.",
+    "Reduced-intensity conditioning, syngeneic, and cord blood transplants were excluded from the original study.",
+    "First complete remission (CR) duration <6 months indicates higher risk compared to longer CR duration.",
+    "Primary induction failure refers to failure to achieve complete remission after initial induction chemotherapy.",
+    "Poor cytogenetics includes complex karyotype (≥3 abnormalities), -5/del(5q), -7/del(7q), inv(3q), t(6;9), t(9;22), 11q23 abnormalities.",
+    "Good cytogenetics includes t(8;21), inv(16)/t(16;16), t(15;17). Intermediate includes normal karyotype and other abnormalities.",
+    "HLA identical sibling donors provide the best outcomes, followed by well-matched unrelated donors.",
+    "Presence of circulating blasts at transplant indicates active disease and worse prognosis.",
+    "Karnofsky Performance Status <90 indicates functional impairment that negatively impacts outcomes.",
+    "The score helps guide transplant decision-making and patient counseling regarding expected outcomes.",
+    "Post-transplant complications including graft-versus-host disease may be higher in poor prognostic groups.",
+    "Score should be used in conjunction with other clinical factors and institutional experience.",
+    "Regular reassessment of disease status and performance status is recommended during pre-transplant evaluation.",
+    "The score has been validated in multiple international cohorts and remains relevant for contemporary practice."
+  ]
+}

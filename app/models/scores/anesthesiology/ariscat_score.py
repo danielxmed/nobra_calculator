@@ -112,7 +112,7 @@ class AriscatScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": "51_to_80",
                 "preoperative_spo2": "96_or_higher",
@@ -168,7 +168,7 @@ class AriscatScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 34,
                 "unit": "points",

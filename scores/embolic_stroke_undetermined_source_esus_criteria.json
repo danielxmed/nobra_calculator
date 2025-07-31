@@ -1,0 +1,144 @@
+{
+  "id": "embolic_stroke_undetermined_source_esus_criteria",
+  "title": "Embolic Stroke of Undetermined Source (ESUS) Criteria",
+  "description": "Diagnostic criteria for identifying embolic stroke of undetermined source after comprehensive evaluation excluding other specific stroke etiologies.",
+  "category": "neurology",
+  "version": "2014",
+  "parameters": [
+    {
+      "name": "stroke_type_non_lacunar",
+      "type": "string",
+      "required": true,
+      "description": "Non-lacunar stroke detected by CT or MRI (lacunar defined as subcortical infarct ≤1.5 cm or ≤2.0 cm on MRI diffusion images)",
+      "options": ["Yes", "No"],
+      "validation": {
+        "enum": ["Yes", "No"]
+      },
+      "unit": null
+    },
+    {
+      "name": "no_significant_atherosclerosis",
+      "type": "string",
+      "required": true,
+      "description": "Absence of extracranial or intracranial atherosclerosis causing ≥50% luminal stenosis in arteries supplying the area of ischemia",
+      "options": ["Yes", "No"],
+      "validation": {
+        "enum": ["Yes", "No"]
+      },
+      "unit": null
+    },
+    {
+      "name": "no_major_cardioembolic_source",
+      "type": "string",
+      "required": true,
+      "description": "No major cardioembolic sources identified (atrial fibrillation, intracardiac thrombus, prosthetic valve, cardiac tumors, mitral stenosis, recent MI <4 weeks, LVEF <30%, valvular vegetations, infective endocarditis)",
+      "options": ["Yes", "No"],
+      "validation": {
+        "enum": ["Yes", "No"]
+      },
+      "unit": null
+    },
+    {
+      "name": "no_other_specific_cause",
+      "type": "string",
+      "required": true,
+      "description": "No other specific cause of stroke identified (arteritis, dissection, migraine/vasospasm, drug misuse, genetic disorders)",
+      "options": ["Yes", "No"],
+      "validation": {
+        "enum": ["Yes", "No"]
+      },
+      "unit": null
+    },
+    {
+      "name": "adequate_cardiac_monitoring",
+      "type": "string",
+      "required": true,
+      "description": "Cardiac rhythm monitoring for ≥24 hours with automated rhythm detection completed",
+      "options": ["Yes", "No"],
+      "validation": {
+        "enum": ["Yes", "No"]
+      },
+      "unit": null
+    },
+    {
+      "name": "adequate_vascular_imaging",
+      "type": "string",
+      "required": true,
+      "description": "Adequate vascular imaging completed (catheter angiography, MR/CT angiography, or cervical duplex plus transcranial Doppler ultrasonography)",
+      "options": ["Yes", "No"],
+      "validation": {
+        "enum": ["Yes", "No"]
+      },
+      "unit": null
+    },
+    {
+      "name": "adequate_cardiac_imaging",
+      "type": "string",
+      "required": true,
+      "description": "Adequate cardiac imaging completed (transthoracic echocardiography and/or transesophageal echocardiography)",
+      "options": ["Yes", "No"],
+      "validation": {
+        "enum": ["Yes", "No"]
+      },
+      "unit": null
+    }
+  ],
+  "result": {
+    "name": "esus_diagnosis",
+    "type": "string",
+    "unit": null,
+    "description": "ESUS diagnostic determination based on criteria fulfillment"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": null,
+        "max": null,
+        "stage": "ESUS Diagnosis Confirmed",
+        "description": "Meets all ESUS criteria",
+        "interpretation": "Patient meets all diagnostic criteria for Embolic Stroke of Undetermined Source (ESUS). This diagnosis applies when all four clinical criteria are satisfied AND adequate diagnostic evaluation has been completed. Consider anticoagulation strategies, extended cardiac monitoring, and targeted embolic source investigation. Patient may be eligible for ESUS-specific clinical trials and treatment protocols."
+      },
+      {
+        "min": null,
+        "max": null,
+        "stage": "ESUS Diagnosis Not Met",
+        "description": "Does not meet ESUS criteria",
+        "interpretation": "Patient does not meet diagnostic criteria for Embolic Stroke of Undetermined Source (ESUS). Either clinical criteria are not fulfilled or adequate diagnostic evaluation is incomplete. Complete recommended diagnostic evaluation and identify specific stroke etiology. Consider alternative stroke classifications such as large artery atherosclerosis, cardioembolic stroke, small vessel disease, or other determined etiology."
+      },
+      {
+        "min": null,
+        "max": null,
+        "stage": "Inadequate Evaluation",
+        "description": "Insufficient diagnostic workup",
+        "interpretation": "Diagnostic evaluation is inadequate to determine ESUS status. Complete the minimum required diagnostic evaluation including: ≥24-hour cardiac monitoring with automated rhythm detection, comprehensive vascular imaging of extracranial and intracranial arteries, and adequate cardiac imaging (TTE and/or TEE). Reassess ESUS criteria after completing appropriate diagnostic workup."
+      }
+    ]
+  },
+  "references": [
+    "Hart RG, Diener HC, Coutts SB, Easton JD, Granger CB, O'Donnell MJ, et al. Embolic strokes of undetermined source: the case for a new clinical construct. Lancet Neurol. 2014;13(4):429-38. doi: 10.1016/S1474-4422(13)70310-7.",
+    "Adams HP Jr, Bendixen BH, Kappelle LJ, Biller J, Love BB, Gordon DL, et al. Classification of subtype of acute ischemic stroke. Definitions for use in a multicenter clinical trial. TOAST. Trial of Org 10172 in Acute Stroke Treatment. Stroke. 1993;24(1):35-41.",
+    "Ntaios G, Papavasileiou V, Milionis H, Makaritsis K, Manios E, Spengos K, et al. Embolic strokes of undetermined source in the Athens stroke registry: an outcome analysis. Stroke. 2015;46(8):2087-93. doi: 10.1161/STROKEAHA.115.009334.",
+    "Perera KS, Vanassche T, Bosch J, Swaminathan B, Mundl H, Giruparajah M, et al. Embolic strokes of undetermined source: prevalence and patient features in the ESUS Global Registry. Int J Stroke. 2016;11(5):526-33. doi: 10.1177/1747493016641967.",
+    "Diener HC, Bernstein R, Butcher K, Campbell B, Cloud G, Davalos A, et al. Dabigatran for prevention of stroke after embolic stroke of undetermined source. N Engl J Med. 2019;380(20):1906-17. doi: 10.1056/NEJMoa1813959."
+  ],
+  "formula": "ESUS diagnosis requires ALL criteria to be met: (1) Non-lacunar stroke on imaging, (2) No significant atherosclerosis (≥50% stenosis), (3) No major cardioembolic source, (4) No other specific stroke cause, AND adequate diagnostic evaluation completed.",
+  "notes": [
+    "ESUS represents 15-25% of all ischemic strokes, with higher prevalence in younger patients.",
+    "Lacunar stroke is defined as subcortical infarct ≤1.5 cm (≤2.0 cm on MRI diffusion images) in small penetrating artery distribution.",
+    "Major cardioembolic sources include: permanent/paroxysmal atrial fibrillation, sustained atrial flutter, intracardiac thrombus, prosthetic cardiac valve, atrial myxoma, mitral stenosis, recent MI (<4 weeks), LVEF <30%, valvular vegetations, infective endocarditis.",
+    "Minimum diagnostic evaluation requires: 12-lead ECG, ≥24-hour cardiac monitoring with automated rhythm detection, echocardiography (TTE and/or TEE), vascular imaging of both extracranial and intracranial arteries.",
+    "Vascular imaging methods include catheter angiography, MR/CT angiography, or cervical duplex plus transcranial Doppler ultrasonography.",
+    "Other specific causes to exclude: arteritis, dissection, migraine/vasospasm, drug misuse, genetic disorders, hypercoagulable states.",
+    "ESUS patients tend to be younger (mean age 65) with milder strokes (mean NIHSS 5) compared to other stroke subtypes.",
+    "Stroke recurrence rate in ESUS is approximately 4.5% per year, similar to cardioembolic stroke.",
+    "Extended cardiac monitoring (>24 hours) may detect paroxysmal atrial fibrillation in 5-15% of ESUS patients.",
+    "The term ESUS replaced 'cryptogenic stroke' to provide standardized criteria for clinical trials and research.",
+    "ESUS criteria enable enrollment in specific clinical trials investigating anticoagulation strategies.",
+    "Patients meeting ESUS criteria may benefit from extended cardiac monitoring, cardiac MRI, or genetic testing.",
+    "The diagnosis has implications for secondary stroke prevention strategies and treatment selection.",
+    "ESUS classification facilitates targeted research into stroke mechanisms and therapeutic interventions.",
+    "Regular reassessment may be needed as new diagnostic technologies become available.",
+    "The criteria should be applied only after completion of adequate diagnostic evaluation as defined.",
+    "ESUS diagnosis does not preclude investigation of rare or uncommon stroke etiologies when clinically indicated."
+  ]
+}

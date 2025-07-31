@@ -15,6 +15,8 @@ from .cisne import router as cisne_router
 from .ctcae import router as ctcae_router
 from .crs_grading import router as crs_grading_router
 from .damico_risk_classification import router as damico_risk_classification_router
+from .delta_p_score import router as delta_p_score_router
+from .ecog_performance_status import router as ecog_performance_status_router
 
 router = APIRouter()
 
@@ -29,5 +31,7 @@ router.include_router(cisne_router)
 router.include_router(ctcae_router)
 router.include_router(crs_grading_router)
 router.include_router(damico_risk_classification_router)
+router.include_router(delta_p_score_router)
+router.include_router(ecog_performance_status_router)
 
 __all__ = ["router"]

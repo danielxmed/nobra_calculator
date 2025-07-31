@@ -1,0 +1,99 @@
+{
+  "id": "ottawa_knee_rule",
+  "title": "Ottawa Knee Rule",
+  "description": "Describes criteria for low-risk knee trauma patients, not warranting imaging. Rules out clinically significant knee fractures to reduce unnecessary x-rays with high sensitivity (98-100%).",
+  "category": "emergency",
+  "version": "1995",
+  "parameters": [
+    {
+      "name": "age_55_or_older",
+      "type": "string",
+      "required": true,
+      "description": "Is the patient age 55 years or older?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "isolated_patellar_tenderness",
+      "type": "string",
+      "required": true,
+      "description": "Is there isolated tenderness of the patella (no other bone tenderness)?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "fibular_head_tenderness",
+      "type": "string",
+      "required": true,
+      "description": "Is there tenderness at the fibular head?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "unable_to_flex_90_degrees",
+      "type": "string",
+      "required": true,
+      "description": "Is the patient unable to flex the knee to 90 degrees?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "unable_to_bear_weight",
+      "type": "string",
+      "required": true,
+      "description": "Is the patient unable to bear weight both immediately after injury and in the emergency department (unable to take 4 steps, limping is okay)?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "ottawa_knee_result",
+    "type": "string",
+    "unit": "recommendation",
+    "description": "X-ray recommendation based on Ottawa Knee Rule"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "result": "no_xray_needed",
+        "stage": "No imaging required",
+        "description": "No x-ray needed",
+        "interpretation": "Based on the Ottawa Knee Rule, no knee x-ray is required. The absence of all clinical criteria suggests a very low probability of clinically significant fracture. The rule has 98-100% sensitivity for detecting fractures. Provide written instructions and encourage follow-up in 5-7 days if pain or walking does not improve."
+      },
+      {
+        "result": "xray_indicated",
+        "stage": "X-ray indicated",
+        "description": "Knee x-ray series required",
+        "interpretation": "Based on the Ottawa Knee Rule, a knee x-ray series is indicated. The presence of one or more clinical criteria suggests possible knee fracture requiring radiographic evaluation. The rule has high sensitivity for detecting clinically significant fractures."
+      }
+    ]
+  },
+  "references": [
+    "Stiell IG, Greenberg GH, Wells GA, McDowell I, Cwinn AA, Smith NA, et al. Prospective validation of a decision rule for the use of radiography in acute knee injuries. JAMA. 1996 Feb 28;275(8):611-5. PMID: 8594242.",
+    "Stiell IG, Wells GA, Hoag RH, Sivilotti ML, Cacciotti TF, Verbeek PR, et al. Implementation of the Ottawa Knee Rule for the use of radiography in acute knee injuries. JAMA. 1997 Dec 17;278(23):2075-9. doi: 10.1001/jama.278.23.2075.",
+    "Bachmann LM, Haberzeth S, Steurer J, ter Riet G. The accuracy of the Ottawa knee rule to rule out knee fractures: a systematic review. Ann Intern Med. 2004 Jan 6;140(1):121-4. doi: 10.7326/0003-4819-140-1-200401060-00013.",
+    "Seaberg DC, Yealy DM, Lukens T, Auble T, Mathias S. Multicenter comparison of two clinical decision rules for the use of radiography in acute, high-risk knee injuries. Ann Emerg Med. 1998 Jan;31(1):22-8. doi: 10.1016/s0196-0644(98)70277-9."
+  ],
+  "formula": "X-ray indicated if ANY criterion present: Age ≥55 OR Isolated patellar tenderness OR Fibular head tenderness OR Unable to flex to 90° OR Unable to bear weight",
+  "notes": [
+    "High sensitivity (98-100%) for clinically significant knee fractures",
+    "Can reduce unnecessary x-rays by 20-30%",
+    "Rule applies to patients aged 2 and older with acute knee trauma",
+    "Injuries must be less than 7 days old",
+    "Unable to bear weight means unable to take 4 steps (limping is okay)",
+    "Not applicable if examination unreliable due to intoxication, uncooperative patient, distracting injuries, or diminished leg sensation",
+    "Provide written instructions and encourage follow-up in 5-7 days if symptoms persist",
+    "Clinical judgment should always prevail",
+    "Should be applied within context of clinical assessment"
+  ]
+}

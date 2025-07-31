@@ -1,0 +1,297 @@
+{
+  "id": "eczema_area_severity_index",
+  "title": "Eczema Area and Severity Index (EASI)",
+  "description": "Stratifies eczema severity by assessing area involvement and severity signs across four body regions (head/neck, upper extremities, trunk, lower extremities) with validated clinical scoring.",
+  "category": "dermatology",
+  "version": "2001",
+  "parameters": [
+    {
+      "name": "age_category",
+      "type": "string",
+      "required": true,
+      "description": "Patient age category for regional multiplier calculation",
+      "options": ["child_0_7", "adult_8_plus"],
+      "validation": {
+        "enum": ["child_0_7", "adult_8_plus"]
+      }
+    },
+    {
+      "name": "head_neck_area",
+      "type": "integer",
+      "required": true,
+      "description": "Head and neck area involvement score (0=0%, 1=1-9%, 2=10-29%, 3=30-49%, 4=50-69%, 5=70-89%, 6=90-100%)",
+      "validation": {
+        "min": 0,
+        "max": 6
+      }
+    },
+    {
+      "name": "head_neck_erythema",
+      "type": "integer", 
+      "required": true,
+      "description": "Head and neck erythema severity (0=absent, 1=mild, 2=moderate, 3=severe)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "head_neck_edema",
+      "type": "integer",
+      "required": true, 
+      "description": "Head and neck edema/papulation severity (0=absent, 1=mild, 2=moderate, 3=severe)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "head_neck_excoriation",
+      "type": "integer",
+      "required": true,
+      "description": "Head and neck excoriation severity (0=absent, 1=mild, 2=moderate, 3=severe)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "head_neck_lichenification",
+      "type": "integer",
+      "required": true,
+      "description": "Head and neck lichenification severity (0=absent, 1=mild, 2=moderate, 3=severe)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "upper_extremities_area",
+      "type": "integer",
+      "required": true,
+      "description": "Upper extremities area involvement score (0=0%, 1=1-9%, 2=10-29%, 3=30-49%, 4=50-69%, 5=70-89%, 6=90-100%)",
+      "validation": {
+        "min": 0,
+        "max": 6
+      }
+    },
+    {
+      "name": "upper_extremities_erythema",
+      "type": "integer",
+      "required": true,
+      "description": "Upper extremities erythema severity (0=absent, 1=mild, 2=moderate, 3=severe)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "upper_extremities_edema",
+      "type": "integer",
+      "required": true,
+      "description": "Upper extremities edema/papulation severity (0=absent, 1=mild, 2=moderate, 3=severe)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "upper_extremities_excoriation",
+      "type": "integer",
+      "required": true,
+      "description": "Upper extremities excoriation severity (0=absent, 1=mild, 2=moderate, 3=severe)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "upper_extremities_lichenification",
+      "type": "integer",
+      "required": true,
+      "description": "Upper extremities lichenification severity (0=absent, 1=mild, 2=moderate, 3=severe)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "trunk_area",
+      "type": "integer",
+      "required": true,
+      "description": "Trunk area involvement score (0=0%, 1=1-9%, 2=10-29%, 3=30-49%, 4=50-69%, 5=70-89%, 6=90-100%)",
+      "validation": {
+        "min": 0,
+        "max": 6
+      }
+    },
+    {
+      "name": "trunk_erythema",
+      "type": "integer",
+      "required": true,
+      "description": "Trunk erythema severity (0=absent, 1=mild, 2=moderate, 3=severe)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "trunk_edema",
+      "type": "integer",
+      "required": true,
+      "description": "Trunk edema/papulation severity (0=absent, 1=mild, 2=moderate, 3=severe)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "trunk_excoriation",
+      "type": "integer",
+      "required": true,
+      "description": "Trunk excoriation severity (0=absent, 1=mild, 2=moderate, 3=severe)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "trunk_lichenification",
+      "type": "integer",
+      "required": true,
+      "description": "Trunk lichenification severity (0=absent, 1=mild, 2=moderate, 3=severe)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "lower_extremities_area",
+      "type": "integer",
+      "required": true,
+      "description": "Lower extremities area involvement score (0=0%, 1=1-9%, 2=10-29%, 3=30-49%, 4=50-69%, 5=70-89%, 6=90-100%)",
+      "validation": {
+        "min": 0,
+        "max": 6
+      }
+    },
+    {
+      "name": "lower_extremities_erythema",
+      "type": "integer",
+      "required": true,
+      "description": "Lower extremities erythema severity (0=absent, 1=mild, 2=moderate, 3=severe)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "lower_extremities_edema",
+      "type": "integer",
+      "required": true,
+      "description": "Lower extremities edema/papulation severity (0=absent, 1=mild, 2=moderate, 3=severe)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "lower_extremities_excoriation",
+      "type": "integer",
+      "required": true,
+      "description": "Lower extremities excoriation severity (0=absent, 1=mild, 2=moderate, 3=severe)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "lower_extremities_lichenification",
+      "type": "integer",
+      "required": true,
+      "description": "Lower extremities lichenification severity (0=absent, 1=mild, 2=moderate, 3=severe)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    }
+  ],
+  "result": {
+    "name": "easi_score",
+    "type": "float",
+    "unit": "points",
+    "description": "EASI total score ranging from 0 to 72 points"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Clear",
+        "description": "No eczema",
+        "interpretation": "Clear skin with no signs of atopic dermatitis. Continue maintenance skincare routine and environmental management."
+      },
+      {
+        "min": 0.1,
+        "max": 1.0,
+        "stage": "Almost Clear",
+        "description": "Almost clear eczema",
+        "interpretation": "Almost clear atopic dermatitis with minimal residual signs. Continue current treatment and monitor for improvement or relapse."
+      },
+      {
+        "min": 1.1,
+        "max": 7.0,
+        "stage": "Mild",
+        "description": "Mild eczema",
+        "interpretation": "Mild atopic dermatitis. First-line treatment with topical moisturizers, low-potency topical corticosteroids, and trigger avoidance."
+      },
+      {
+        "min": 7.1,
+        "max": 21.0,
+        "stage": "Moderate",
+        "description": "Moderate eczema",
+        "interpretation": "Moderate atopic dermatitis. Consider medium-potency topical corticosteroids, topical calcineurin inhibitors, or systemic therapy if topical treatments inadequate."
+      },
+      {
+        "min": 21.1,
+        "max": 50.0,
+        "stage": "Severe",
+        "description": "Severe eczema",
+        "interpretation": "Severe atopic dermatitis. High-potency topical corticosteroids, topical calcineurin inhibitors, systemic immunosuppressants, or biologic therapy may be indicated."
+      },
+      {
+        "min": 50.1,
+        "max": 72.0,
+        "stage": "Very Severe",
+        "description": "Very severe eczema",
+        "interpretation": "Very severe atopic dermatitis requiring aggressive treatment. Consider systemic immunosuppressants, biologic therapy, or referral to dermatology specialist for comprehensive management."
+      }
+    ]
+  },
+  "references": [
+    "Hanifin JM, Thurston M, Omoto M, Cherill R, Tofte SJ, Graeber M. The eczema area and severity index (EASI): assessment of reliability in atopic dermatitis. EASI Evaluator Group. Exp Dermatol. 2001;10(1):11-8. doi: 10.1034/j.1600-0625.2001.100102.x.",
+    "Schmitt J, Langan S, Deckert S, Svensson A, von Kobyletzki L, Thomas K, et al. Assessment of clinical signs of atopic dermatitis: a systematic review and recommendation. J Allergy Clin Immunol. 2013;132(6):1337-47. doi: 10.1016/j.jaci.2013.07.008.",
+    "Barbarot S, Auziere S, Gadkari A, Girolomoni G, Puig L, Simpson EL, et al. Epidemiology of atopic dermatitis in adults: Results from an international survey. Allergy. 2018;73(6):1284-1293. doi: 10.1111/all.13401.",
+    "Silverberg JI, Paller AS, Fishbein AB, Kaplan DH, Simpson EL. Eczema prevalence, severity and impact in the United States. Dermatitis. 2019;30(1):66-72. doi: 10.1097/DER.0000000000000408."
+  ],
+  "formula": "EASI = 0.1 × (erythema + edema + excoriation + lichenification) × area_score × head_neck_multiplier + 0.2 × (erythema + edema + excoriation + lichenification) × area_score × upper_extremities_multiplier + 0.3 × (erythema + edema + excoriation + lichenification) × area_score × trunk_multiplier + 0.4 × (erythema + edema + excoriation + lichenification) × area_score × lower_extremities_multiplier. Regional multipliers: Head/neck = 0.1 (adults), 0.2 (children 0-7); Upper extremities = 0.2; Trunk = 0.3; Lower extremities = 0.4.",
+  "notes": [
+    "The EASI is the most validated and widely used assessment tool for atopic dermatitis severity.",
+    "Assessment requires approximately 6 minutes when performed by a trained investigator.",
+    "Area involvement: 0=0%, 1=1-9%, 2=10-29%, 3=30-49%, 4=50-69%, 5=70-89%, 6=90-100%",
+    "Severity signs rated 0-3: 0=absent, 1=mild, 2=moderate, 3=severe",
+    "Four severity signs assessed: erythema (redness), edema/papulation (swelling/bumps), excoriation (scratching marks), lichenification (thickening)",
+    "Regional multipliers reflect relative contribution to total body surface area.",
+    "Head/neck multiplier: 0.1 for adults (>8 years), 0.2 for children (0-7 years)",
+    "Upper extremities multiplier: 0.2 for all ages",
+    "Trunk multiplier: 0.3 for all ages (includes axilla and groin)",
+    "Lower extremities multiplier: 0.4 for all ages (includes feet and buttocks)",
+    "Total score ranges from 0 to 72 points.",
+    "Common pitfall: underestimating erythema severity in patients with darker skin pigmentation.",
+    "EASI should be completed independently of previous assessments - it is a static tool.",
+    "Does not include assessment of dryness or scaling.",
+    "Severity strata validated with substantial inter-rater agreement (κ = 0.75).",
+    "Clinical correlation: Higher EASI scores associated with increased pruritus, sleep disturbance, and quality of life impairment.",
+    "Recommended for clinical trials and research as primary efficacy endpoint."
+  ]
+}

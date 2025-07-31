@@ -134,7 +134,7 @@ class DashPredictionScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "d_dimer_positive": "negative",
                 "age": 55,
@@ -268,7 +268,7 @@ class DashPredictionScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 1,
                 "unit": "DASH score",

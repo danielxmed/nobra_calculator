@@ -27,7 +27,7 @@ class AcefIiRequest(BaseModel):
                               description="Pre-operative hematocrit percentage")
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 70,
                 "ejection_fraction": 45.0,
@@ -48,7 +48,7 @@ class AcefIiResponse(BaseModel):
     stage_description: str = Field(..., description="Risk description")
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 1.8,
                 "unit": "points",

@@ -43,6 +43,24 @@ from .cam_icu import router as cam_icu_router
 from .covid_gram_critical_illness import router as covid_gram_critical_illness_router
 from .cpot_pain_observation import router as cpot_pain_observation_router
 from .danger_assessment_tool import router as danger_assessment_tool_router
+from .ed_safe_patient_safety_screener import router as ed_safe_patient_safety_screener_router
+from .naloxone_drip_dosing import router as naloxone_drip_dosing_router
+from .news import router as news_router
+from .news_2 import router as news_2_router
+from .nedocs import router as nedocs_router
+from .digifab_dosing import router as digifab_dosing_router
+from .emergency_department_assessment_chest_pain_edacs import router as emergency_department_assessment_chest_pain_edacs_router
+from .emergency_heart_failure_mortality_risk_grade_ehmrg import router as emergency_heart_failure_mortality_risk_grade_ehmrg_router
+from .nexus_criteria import router as nexus_criteria_router
+from .newsom_score import router as newsom_score_router
+from .nexus_chest_ct import router as nexus_chest_ct_router
+from .nexus_chest_blunt_trauma import router as nexus_chest_blunt_trauma_router
+from .ottawa_ankle_rule import router as ottawa_ankle_rule_router
+from .ottawa_copd_risk_scale import router as ottawa_copd_risk_scale_router
+from .ottawa_heart_failure_risk_scale import router as ottawa_heart_failure_risk_scale_router
+from .ottawa_knee_rule import router as ottawa_knee_rule_router
+from .embed import router as embed_router
+from .ett_depth_tidal_volume import router as ett_depth_tidal_volume_router
 
 # Create main specialty router
 router = APIRouter()
@@ -86,3 +104,21 @@ router.include_router(cam_icu_router)
 router.include_router(covid_gram_critical_illness_router)
 router.include_router(cpot_pain_observation_router)
 router.include_router(danger_assessment_tool_router)
+router.include_router(ed_safe_patient_safety_screener_router)
+router.include_router(naloxone_drip_dosing_router)
+router.include_router(news_router)
+router.include_router(news_2_router)
+router.include_router(nedocs_router)
+router.include_router(digifab_dosing_router)
+router.include_router(emergency_department_assessment_chest_pain_edacs_router)
+router.include_router(emergency_heart_failure_mortality_risk_grade_ehmrg_router)
+router.include_router(nexus_criteria_router)
+router.include_router(newsom_score_router)
+router.include_router(nexus_chest_ct_router)
+router.include_router(nexus_chest_blunt_trauma_router)
+router.include_router(ottawa_ankle_rule_router)
+router.include_router(ottawa_copd_risk_scale_router)
+router.include_router(ottawa_heart_failure_risk_scale_router)
+router.include_router(ottawa_knee_rule_router)
+router.include_router(embed_router)
+router.include_router(ett_depth_tidal_volume_router)

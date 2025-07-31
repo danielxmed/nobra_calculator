@@ -114,7 +114,7 @@ class CareScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "cardiac_disease_status": "stable",
                 "other_medical_problems": "controlled",
@@ -194,7 +194,7 @@ class CareScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 2,
                 "unit": "category",

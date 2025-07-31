@@ -382,7 +382,7 @@ class ReticulocyteProductionIndexRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "reticulocyte_percentage": 2.5,
                 "measured_hematocrit": 25.0,
@@ -685,7 +685,7 @@ class ReticulocyteProductionIndexResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 0.93,
                 "unit": "index",

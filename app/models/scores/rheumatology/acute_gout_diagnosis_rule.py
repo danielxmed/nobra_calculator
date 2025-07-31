@@ -128,7 +128,7 @@ class AcuteGoutDiagnosisRuleRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "male_sex": "yes",
                 "previous_arthritis_attack": "no",
@@ -192,7 +192,7 @@ class AcuteGoutDiagnosisRuleResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 9.5,
                 "unit": "points",

@@ -1,0 +1,139 @@
+{
+  "id": "dragon_score",
+  "title": "DRAGON Score for Post-TPA Stroke Outcome",
+  "description": "Predicts 3-month outcome (functional independence vs dependency) in ischemic stroke patients treated with tissue plasminogen activator (tPA). Helps identify patients who may benefit from additional therapeutic interventions.",
+  "category": "neurology",
+  "version": "2012",
+  "parameters": [
+    {
+      "name": "hyperdense_artery_infarct",
+      "type": "string",
+      "required": true,
+      "description": "Hyperdense cerebral artery sign or early infarct signs on admission CT scan",
+      "options": ["none", "either", "both"],
+      "validation": {
+        "enum": ["none", "either", "both"]
+      }
+    },
+    {
+      "name": "prestroke_mrs",
+      "type": "string",
+      "required": true,
+      "description": "Pre-stroke modified Rankin Scale (mRS) score greater than 1",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "glucose",
+      "type": "float",
+      "required": true,
+      "description": "Baseline glucose level",
+      "validation": {
+        "min": 50,
+        "max": 800
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "onset_to_treatment",
+      "type": "integer",
+      "required": true,
+      "description": "Time from symptom onset to treatment initiation",
+      "validation": {
+        "min": 0,
+        "max": 480
+      },
+      "unit": "minutes"
+    },
+    {
+      "name": "nihss",
+      "type": "integer",
+      "required": true,
+      "description": "Baseline National Institutes of Health Stroke Scale (NIHSS) score",
+      "validation": {
+        "min": 0,
+        "max": 42
+      }
+    }
+  ],
+  "result": {
+    "name": "dragon_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "DRAGON score (0-10 points) predicting stroke outcome"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Excellent Prognosis",
+        "description": "Very low risk",
+        "interpretation": "96% chance of good outcome (mRS 0-2 at 3 months). Excellent functional prognosis with near-certain functional independence."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Good Prognosis",
+        "description": "Low risk",
+        "interpretation": "88% chance of good outcome (mRS 0-2 at 3 months). Good functional prognosis with high likelihood of functional independence."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Moderate Prognosis",
+        "description": "Moderate risk",
+        "interpretation": "74% chance of good outcome (mRS 0-2 at 3 months). Moderate functional prognosis with considerable chance of functional independence."
+      },
+      {
+        "min": 4,
+        "max": 7,
+        "stage": "Poor Prognosis",
+        "description": "High risk",
+        "interpretation": "Progressively decreasing chance of good outcome. Consider additional therapeutic interventions or advanced stroke care strategies."
+      },
+      {
+        "min": 8,
+        "max": 8,
+        "stage": "Very Poor Prognosis",
+        "description": "Very high risk",
+        "interpretation": "0% chance of good outcome (mRS 0-2). 70% chance of miserable outcome (mRS 5-6). Strong consideration for additional rescue therapies."
+      },
+      {
+        "min": 9,
+        "max": 10,
+        "stage": "Miserable Prognosis",
+        "description": "Extremely high risk",
+        "interpretation": "0% chance of good outcome (mRS 0-2). 100% chance of miserable outcome (mRS 5-6: bedridden, incontinent, requiring constant care, or death)."
+      }
+    ]
+  },
+  "references": [
+    "Strbian D, Meretoja A, Ahlhelm FJ, et al. Predicting outcome of IV thrombolysis-treated ischemic stroke patients: the DRAGON score. Neurology. 2012;78(6):427-432. doi: 10.1212/WNL.0b013e318245d2a9.",
+    "Turc G, Maïer B, Naggara O, et al. Clinical scales do not reliably identify acute ischemic stroke patients with large-artery occlusion. Stroke. 2016;47(6):1466-1472. doi: 10.1161/STROKEAHA.115.011336.",
+    "Saposnik G, Guzik AK, Reeves M, et al. Stroke Prognosis Assessment Scale (SPAS) to predict mortality and functional outcome. Stroke. 2014;45(7):2018-2024. doi: 10.1161/STROKEAHA.114.004667."
+  ],
+  "formula": "DRAGON Score = D (Dense artery/early infarct: 0-2) + R (mRS >1: 0-1) + A (Age: 0-2) + G (Glucose >144 mg/dL: 0-1) + O (Onset >90 min: 0-1) + N (NIHSS: 0-3)",
+  "notes": [
+    "The DRAGON score uses only information available shortly after hospital arrival",
+    "Higher scores indicate worse prognosis and lower likelihood of functional independence",
+    "Score helps identify patients who may benefit from additional therapeutic interventions",
+    "Not yet validated in prospective studies, based on retrospective analyses",
+    "AUC-ROC consistently around 0.84 in validation studies",
+    "May not be applicable to patients with basilar artery occlusion",
+    "Most useful for patients receiving IV tPA treatment within treatment window"
+  ]
+}

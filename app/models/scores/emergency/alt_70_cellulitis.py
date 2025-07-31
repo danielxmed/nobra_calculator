@@ -95,7 +95,7 @@ class Alt70CellulitisRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "asymmetric": "yes",
                 "leukocytosis": "no",
@@ -177,7 +177,7 @@ class Alt70CellulitisResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 4,
                 "unit": "points",

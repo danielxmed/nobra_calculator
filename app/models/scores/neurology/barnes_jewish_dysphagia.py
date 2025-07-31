@@ -20,7 +20,7 @@ preliminary neurological screening questions followed by a water swallow test if
 the preliminary screen is passed.
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Literal, Optional
 
 
@@ -118,7 +118,7 @@ class BarnesJewishDysphagiaRequest(BaseModel):
         example="no"
     )
     
-    @validator('throat_clearing_initial', 'cough_initial', 'voice_change_initial',
+    @field_validator('throat_clearing_initial', 'cough_initial', 'voice_change_initial',
                'throat_clearing_delayed', 'cough_delayed', 'voice_change_delayed')
     def validate_water_test_fields(cls, v, values):
         """Ensure water test fields are provided if water test was performed"""
@@ -128,7 +128,7 @@ class BarnesJewishDysphagiaRequest(BaseModel):
         return v
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "gcs_less_than_13": "no",
                 "facial_asymmetry": "no",
@@ -187,7 +187,7 @@ class BarnesJewishDysphagiaResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "Pass",
                 "unit": "",

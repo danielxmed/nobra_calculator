@@ -141,7 +141,7 @@ class CowsOpiateWithdrawalRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "resting_pulse_rate": "81-100",
                 "sweating": "subjective_chills",
@@ -237,7 +237,7 @@ class CowsOpiateWithdrawalResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 15,
                 "unit": "points",

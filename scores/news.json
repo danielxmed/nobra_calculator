@@ -1,0 +1,128 @@
+{
+  "id": "news",
+  "title": "National Early Warning Score (NEWS)",
+  "description": "Determines the degree of illness of a patient and prompts critical care intervention",
+  "category": "emergency",
+  "version": "2012",
+  "parameters": [
+    {
+      "name": "respiratory_rate",
+      "type": "string",
+      "required": true,
+      "description": "Respiratory rate in breaths per minute",
+      "options": ["8_or_less", "9_to_11", "12_to_20", "21_to_24", "25_or_more"],
+      "validation": {
+        "enum": ["8_or_less", "9_to_11", "12_to_20", "21_to_24", "25_or_more"]
+      }
+    },
+    {
+      "name": "oxygen_saturation",
+      "type": "string",
+      "required": true,
+      "description": "Oxygen saturation percentage",
+      "options": ["91_or_less", "92_to_93", "94_to_95", "96_or_more"],
+      "validation": {
+        "enum": ["91_or_less", "92_to_93", "94_to_95", "96_or_more"]
+      }
+    },
+    {
+      "name": "supplemental_oxygen",
+      "type": "string",
+      "required": true,
+      "description": "Whether patient is on any supplemental oxygen",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "temperature",
+      "type": "string",
+      "required": true,
+      "description": "Body temperature",
+      "options": ["35_or_less", "35_1_to_36", "36_1_to_38", "38_1_to_39", "39_1_or_more"],
+      "validation": {
+        "enum": ["35_or_less", "35_1_to_36", "36_1_to_38", "38_1_to_39", "39_1_or_more"]
+      }
+    },
+    {
+      "name": "systolic_bp",
+      "type": "string",
+      "required": true,
+      "description": "Systolic blood pressure in mmHg",
+      "options": ["90_or_less", "91_to_100", "101_to_110", "111_to_219", "220_or_more"],
+      "validation": {
+        "enum": ["90_or_less", "91_to_100", "101_to_110", "111_to_219", "220_or_more"]
+      }
+    },
+    {
+      "name": "heart_rate",
+      "type": "string",
+      "required": true,
+      "description": "Heart rate in beats per minute",
+      "options": ["40_or_less", "41_to_50", "51_to_90", "91_to_110", "111_to_130", "131_or_more"],
+      "validation": {
+        "enum": ["40_or_less", "41_to_50", "51_to_90", "91_to_110", "111_to_130", "131_or_more"]
+      }
+    },
+    {
+      "name": "avpu_score",
+      "type": "string",
+      "required": true,
+      "description": "AVPU neurological assessment (Alert, Voice, Pain, Unresponsive)",
+      "options": ["alert", "voice_pain_unresponsive"],
+      "validation": {
+        "enum": ["alert", "voice_pain_unresponsive"]
+      }
+    }
+  ],
+  "result": {
+    "name": "news_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "NEWS score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "Very low early warning score",
+        "interpretation": "Continue routine monitoring."
+      },
+      {
+        "min": 1,
+        "max": 4,
+        "stage": "Low Risk",
+        "description": "Low early warning score",
+        "interpretation": "Assessment by a competent registered nurse should decide if a change to frequency of clinical monitoring or an escalation of clinical care is required."
+      },
+      {
+        "min": 5,
+        "max": 6,
+        "stage": "Medium Risk",
+        "description": "Medium early warning score",
+        "interpretation": "Urgent review by a clinician skilled with competencies in the assessment of acute illness – usually a ward-based doctor or acute team nurse, who should consider whether escalation of care to a team with critical-care skills is required."
+      },
+      {
+        "min": 7,
+        "max": 20,
+        "stage": "High Risk",
+        "description": "High early warning score",
+        "interpretation": "Emergency assessment by a clinical team/critical care outreach team with critical-care competencies and usually transfer of the patient to a higher dependency care area."
+      }
+    ]
+  },
+  "references": [
+    "Royal College of Physicians. National Early Warning Score (NEWS): Standardising the assessment of acute-illness severity in the NHS. Report of a working party. London: RCP, 2012.",
+    "Smith GB, Prytherch DR, Meredith P, Schmidt PE, Featherstone PI. The ability of the National Early Warning Score (NEWS) to discriminate patients at risk of early cardiac arrest, unanticipated intensive care unit admission, and death. Resuscitation. 2013 Apr;84(4):465-70.",
+    "Prytherch DR, Smith GB, Schmidt PE, Featherstone PI. ViEWS--Towards a national early warning score for detecting adult inpatient deterioration. Resuscitation. 2010 Aug;81(8):932-7."
+  ],
+  "formula": "Sum of points assigned to 7 physiological parameters: respiratory rate (0-3), oxygen saturation (0-3), supplemental oxygen (0-2), temperature (0-3), systolic BP (0-3), heart rate (0-3), and AVPU score (0-3)",
+  "notes": [
+    "A RED score refers to an extreme variation in a single physiological parameter (a score of 3 in any one parameter)",
+    "NEWS is designed for use in acute and ambulatory care settings",
+    "NEWS 2 is now endorsed by the NHS (UK) as an updated version of the original NEWS"
+  ]
+}

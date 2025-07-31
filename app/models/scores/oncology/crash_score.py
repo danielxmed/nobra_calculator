@@ -99,7 +99,7 @@ class CrashScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "diastolic_bp": "gt_72",
                 "iadl_score": "26_to_29",
@@ -203,7 +203,7 @@ class CrashScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "combined_score": 5,

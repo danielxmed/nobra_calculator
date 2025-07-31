@@ -1,0 +1,191 @@
+{
+  "id": "dsm5_major_depressive_disorder",
+  "title": "DSM-5 Criteria for Major Depressive Disorder",
+  "description": "Diagnostic criteria for major depressive disorder (MDD) based on DSM-5. Evaluates presence of core symptoms, duration, functional impairment, and exclusion criteria for major depressive episodes.",
+  "category": "psychiatry",
+  "version": "DSM-5",
+  "parameters": [
+    {
+      "name": "depressed_mood",
+      "type": "string",
+      "required": true,
+      "description": "Depressed mood most of the day, nearly every day",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "anhedonia",
+      "type": "string",
+      "required": true,
+      "description": "Markedly diminished interest or pleasure in all, or almost all, activities most of the day, nearly every day",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "weight_appetite_change",
+      "type": "string",
+      "required": true,
+      "description": "Significant weight loss/gain (>5% body weight in a month) or decrease/increase in appetite nearly every day",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "sleep_disturbance",
+      "type": "string",
+      "required": true,
+      "description": "Insomnia or hypersomnia nearly every day",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "psychomotor_changes",
+      "type": "string",
+      "required": true,
+      "description": "Psychomotor agitation or retardation nearly every day (observable by others)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "fatigue_energy_loss",
+      "type": "string",
+      "required": true,
+      "description": "Fatigue or loss of energy nearly every day",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "worthlessness_guilt",
+      "type": "string",
+      "required": true,
+      "description": "Feelings of worthlessness or excessive/inappropriate guilt nearly every day",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "concentration_problems",
+      "type": "string",
+      "required": true,
+      "description": "Diminished ability to think or concentrate, or indecisiveness, nearly every day",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "suicidal_thoughts",
+      "type": "string",
+      "required": true,
+      "description": "Recurrent thoughts of death, recurrent suicidal ideation, suicide attempt, or specific plan for suicide",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "duration_two_weeks",
+      "type": "string",
+      "required": true,
+      "description": "Symptoms present for at least 2 weeks, most of the day, nearly every day",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "functional_impairment",
+      "type": "string",
+      "required": true,
+      "description": "Symptoms cause clinically significant distress or impairment in social, occupational, or other important areas of functioning",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "not_substance_medical",
+      "type": "string",
+      "required": true,
+      "description": "Episode NOT attributable to physiological effects of substance use or medical condition",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "not_better_explained",
+      "type": "string",
+      "required": true,
+      "description": "NOT better explained by schizoaffective disorder, schizophrenia, delusional disorder, or other specified/unspecified schizophrenia spectrum disorders",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "no_manic_hypomanic_history",
+      "type": "string",
+      "required": true,
+      "description": "Has NEVER had a manic episode or hypomanic episode",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "dsm5_mdd_diagnosis",
+    "type": "string",
+    "unit": "diagnosis",
+    "description": "DSM-5 Major Depressive Disorder diagnostic result"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Criteria Not Met",
+        "description": "Does not meet DSM-5 criteria",
+        "interpretation": "Does not meet DSM-5 criteria for Major Depressive Disorder. Consider other mood disorders, adjustment disorders, or subclinical depression. Refer for comprehensive evaluation if clinical concerns persist."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Major Depressive Episode",
+        "description": "Meets criteria for major depressive episode",
+        "interpretation": "Meets DSM-5 criteria for Major Depressive Disorder. Requires comprehensive psychiatric evaluation and treatment planning. Consider psychotherapy, medication, or combination treatment based on severity and patient preferences."
+      }
+    ]
+  },
+  "references": [
+    "American Psychiatric Association. Diagnostic and statistical manual of mental disorders: DSM-5. 5th ed. Washington, DC: American Psychiatric Association; 2013.",
+    "Uher R, Payne JL, Pavlova B, Perlis RH. Major depressive disorder in DSM-5: implications for clinical practice and research of changes from DSM-IV. Depress Anxiety. 2014;31(6):459-71. doi: 10.1002/da.22217.",
+    "Fried EI, Nesse RM. Depression sum-scores don't add up: why analyzing specific depression symptoms is essential. BMC Med. 2015;13:72. doi: 10.1186/s12916-015-0325-4."
+  ],
+  "formula": "Diagnostic evaluation based on DSM-5 criteria: ≥5 symptoms including at least one core symptom (depressed mood OR anhedonia) + 2-week duration + functional impairment + exclusion of substance/medical causes and other psychiatric conditions. Core symptoms: depressed mood, anhedonia. Additional symptoms: weight/appetite change, sleep disturbance, psychomotor changes, fatigue, worthlessness/guilt, concentration problems, suicidal thoughts.",
+  "notes": [
+    "This is a diagnostic aid for clinical evaluation, not a substitute for comprehensive psychiatric assessment.",
+    "At least ONE core symptom (depressed mood OR anhedonia) MUST be present.",
+    "Requires at least 5 total symptoms from the 9-symptom list for diagnosis.",
+    "Symptoms must be present most of the day, nearly every day for at least 2 weeks.",
+    "Functional impairment and clinical distress are required for diagnosis.",
+    "Must rule out substance-induced mood disorder and mood disorder due to medical condition.",
+    "Excludes bipolar disorder (no history of manic or hypomanic episodes).",
+    "Consider bereavement exclusion and normal grief reactions in context of significant loss.",
+    "Assess suicide risk immediately if suicidal ideation is present.",
+    "Severity specifiers (mild, moderate, severe) and other specifiers should be considered."
+  ]
+}

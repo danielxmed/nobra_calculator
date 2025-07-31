@@ -1,0 +1,65 @@
+{
+  "id": "ett_depth_tidal_volume",
+  "title": "Endotracheal Tube (ETT) Depth and Tidal Volume Calculator",
+  "description": "Estimates optimal ETT placement depth and target tidal volume based on patient height and gender. Uses the Chula formula for depth and ideal body weight for tidal volume calculations.",
+  "category": "emergency",
+  "version": "2016",
+  "parameters": [
+    {
+      "name": "height_cm",
+      "type": "float",
+      "required": true,
+      "description": "Patient height in centimeters (must be ≥152.4 cm or 60 inches)",
+      "validation": {
+        "min": 152.4,
+        "max": 250
+      },
+      "unit": "cm"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient biological sex for ideal body weight calculation",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    }
+  ],
+  "result": {
+    "name": "ett_calculations",
+    "type": "object",
+    "unit": "various",
+    "description": "ETT depth and tidal volume calculations"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "result": "normal_calculations",
+        "stage": "Calculated Values",
+        "description": "ETT depth and tidal volume recommendations",
+        "interpretation": "Calculated ETT depth from front teeth and recommended tidal volume range for lung-protective ventilation. Verify ETT position with chest radiograph, auscultation, or ultrasound for extended intubation."
+      }
+    ]
+  },
+  "references": [
+    "Techanivate A, Kumwilaisak K, Samranrean S. Estimation of the proper length of orotracheal intubation by Chula formula. J Med Assoc Thai. 2005 Dec;88(12):1838-46. PMID: 16518984.",
+    "Acute Respiratory Distress Syndrome Network, Brower RG, Matthay MA, Morris A, Schoenfeld D, Thompson BT, Wheeler A. Ventilation with lower tidal volumes as compared with traditional tidal volumes for acute lung injury and the acute respiratory distress syndrome. N Engl J Med. 2000 May 4;342(18):1301-8. doi: 10.1056/NEJM200005043421801.",
+    "Devine BJ. Gentamicin therapy. Drug Intell Clin Pharm. 1974;8:650-655.",
+    "Roberts CM, Franklin JA, Morris AJ, Spiro SG, MacFarlane JT. Intravenous salbutamol bolus compared with an aminophylline infusion in children with severe asthma: a randomized controlled trial. Thorax. 2003 Jul;58(7):618-22. doi: 10.1136/thorax.58.7.618."
+  ],
+  "formula": "ETT depth (cm) = 0.1 × Height (cm) + 4; IBW male = 50 + 2.3 × (height in inches - 60); IBW female = 45.5 + 2.3 × (height in inches - 60); Tidal volume = 6-8 mL/kg × IBW",
+  "notes": [
+    "Use for patients over 20 years old",
+    "Patient must be at least 60 inches (152.4 cm) tall",
+    "ETT depth measured from front teeth to optimal position",
+    "Tidal volume range 6-8 mL/kg ideal body weight for lung-protective ventilation",
+    "Always verify ETT position with chest radiograph for extended intubation",
+    "Auscultation and/or ultrasound can also confirm proper placement",
+    "The Chula formula helps prevent right mainstem intubation",
+    "Calculator provides immediate safe positioning estimate",
+    "Does not replace clinical assessment and imaging confirmation",
+    "Particularly useful in emergency intubation scenarios"
+  ]
+}

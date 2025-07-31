@@ -226,7 +226,7 @@ class CheopsPainScaleRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "cry": "moaning_crying",
                 "facial": "composed", 
@@ -410,7 +410,7 @@ class CheopsPainScaleResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "total_score": 7,

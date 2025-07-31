@@ -19,7 +19,7 @@ class AisInhalationInjuryRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "bronchoscopic_findings": "grade_2"
             }
@@ -57,7 +57,7 @@ class AisInhalationInjuryResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 2,
                 "unit": "points",

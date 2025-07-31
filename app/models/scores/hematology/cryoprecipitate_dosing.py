@@ -150,7 +150,7 @@ class CryoprecipitateDosIngRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "patient_weight": 70.0,
                 "patient_sex": "female",
@@ -280,7 +280,7 @@ class CryoprecipitateDosingResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 13,
                 "unit": "units",

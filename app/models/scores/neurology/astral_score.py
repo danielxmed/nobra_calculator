@@ -101,7 +101,7 @@ class AstralScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 75,
                 "nihss_score": 12,
@@ -162,7 +162,7 @@ class AstralScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 89,
                 "unit": "points",

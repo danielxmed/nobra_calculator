@@ -1,0 +1,126 @@
+{
+  "id": "egsys_score_syncope",
+  "title": "EGSYS (Evaluation of Guidelines in SYncope Study) Score for Syncope",
+  "description": "Predicts likelihood that syncope is of cardiac cause to help emergency clinicians with screening and risk stratification in patients presenting with syncope.",
+  "category": "cardiology",
+  "version": "2008",
+  "parameters": [
+    {
+      "name": "abnormal_ecg_heart_disease",
+      "type": "string",
+      "required": true,
+      "description": "Abnormal EKG and/or heart disease present",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "palpitations_before_syncope",
+      "type": "string",
+      "required": true,
+      "description": "Palpitations before syncope episode",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "syncope_during_effort",
+      "type": "string",
+      "required": true,
+      "description": "Syncope occurred during physical effort or exertion",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "syncope_supine_position",
+      "type": "string",
+      "required": true,
+      "description": "Syncope occurred while in supine (lying down) position",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "autonomic_prodromes",
+      "type": "string",
+      "required": true,
+      "description": "Autonomic prodromes present (nausea, vomiting, feeling warm/cold)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "precipitating_factors",
+      "type": "string",
+      "required": true,
+      "description": "Predisposing or precipitating factors present (fear, pain, emotion, orthostasis)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    }
+  ],
+  "result": {
+    "name": "egsys_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "EGSYS score for predicting cardiac cause of syncope (range: -2 to +16 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": -2,
+        "max": 2,
+        "stage": "Low Risk",
+        "description": "Cardiac syncope less likely",
+        "interpretation": "Score <3 suggests cardiac syncope is less likely. 21-24 month mortality risk approximately 3%. Continue standard syncope evaluation and consider non-cardiac causes. Outpatient follow-up may be appropriate for stable patients without high-risk features."
+      },
+      {
+        "min": 3,
+        "max": 16,
+        "stage": "High Risk",
+        "description": "Cardiac syncope likely",
+        "interpretation": "Score ≥3 suggests cardiac syncope is likely with 95% sensitivity. 21-24 month mortality risk approximately 17%. Consider hospital admission for diagnostic confirmation. Recommend cardiology consultation and further cardiac evaluation including echocardiogram, telemetry monitoring, and appropriate cardiac testing."
+      }
+    ]
+  },
+  "references": [
+    "Del Rosso A, Ungar A, Maggi R, Giada F, Petix NR, De Santo T, et al. Clinical predictors of cardiac syncope at initial evaluation in patients referred urgently to a general hospital: the EGSYS score. Heart. 2008;94(12):1620-6. doi: 10.1136/hrt.2008.143123.",
+    "Kariman H, Harati S, Safari S, Baratloo A, Pishgahi M, Ardalani AR. Validation of EGSYS Score in Prediction of Cardiogenic Syncope. Emerg Med Int. 2015;2015:515370. doi: 10.1155/2015/515370.",
+    "Task Force for the Diagnosis and Management of Syncope; European Society of Cardiology (ESC); European Heart Rhythm Association (EHRA); Heart Failure Association (HFA); Heart Rhythm Society (HRS). Guidelines for the diagnosis and management of syncope (version 2009). Eur Heart J. 2009;30(21):2631-71. doi: 10.1093/eurheartj/ehp298.",
+    "Brignole M, Moya A, de Lange FJ, Deharo JC, Elliott PM, Fanciulli A, et al. 2018 ESC Guidelines for the diagnosis and management of syncope. Eur Heart J. 2018;39(21):1883-1948. doi: 10.1093/eurheartj/ehy037."
+  ],
+  "formula": "EGSYS Score = (+3 if abnormal EKG/heart disease) + (+4 if palpitations before syncope) + (+3 if syncope during effort) + (+2 if syncope in supine position) + (-1 if autonomic prodromes present) + (-1 if precipitating factors present). Score ≥3 indicates likely cardiac syncope.",
+  "notes": [
+    "The EGSYS score is designed for emergency department screening, not as a substitute for clinical judgment.",
+    "Score ≥3 has 95% sensitivity and 61% specificity for cardiac syncope with positive predictive value of 33% and negative predictive value of 99%.",
+    "Patients with score ≥3 should be considered for hospital admission and cardiology consultation.",
+    "The score helps differentiate between cardiac and non-cardiac causes of syncope.",
+    "Higher scores favor cardiac etiology, while lower scores suggest non-cardiac causes.",
+    "Autonomic prodromes and precipitating factors actually reduce the likelihood of cardiac cause (negative points).",
+    "EKG abnormalities and heart disease are strong predictors of cardiac syncope (+3 points).",
+    "Palpitations before syncope are the strongest predictor (+4 points).",
+    "Syncope during physical effort suggests cardiac cause (+3 points).",
+    "Syncope in supine position is less common in vasovagal syncope (+2 points).",
+    "The score has been validated in multiple studies with consistent performance characteristics.",
+    "21-24 month mortality is significantly higher in patients with scores ≥3 (17% vs 3%).",
+    "The tool is most useful in emergency department settings for initial risk stratification.",
+    "Some experts prefer the San Francisco Syncope Rule for syncope risk stratification.",
+    "Clinical assessment should always complement the score rather than be replaced by it.",
+    "Patients with high-risk features may need admission regardless of EGSYS score.",
+    "The score helps guide the intensity of cardiac evaluation needed.",
+    "Follow-up studies show sustained prognostic value over extended periods."
+  ]
+}

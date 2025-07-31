@@ -83,7 +83,7 @@ class CcsAnginaGradeRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "angina_symptoms": "moderate_exertion_limitation"
             }
@@ -141,7 +141,7 @@ class CcsAnginaGradeResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "Grade II",
                 "unit": "grade",

@@ -111,7 +111,7 @@ class CreatinineClearanceCockcroftGaultRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 65,
                 "weight": 70.0,
@@ -204,7 +204,7 @@ class CreatinineClearanceCockcroftGaultResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 52.3,
                 "unit": "mL/min",

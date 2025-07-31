@@ -19,7 +19,7 @@ Nitrogen), Altered mental status, Pulse rate, and age ≥65 years. This score he
 clinicians identify high-risk patients who may require intensive monitoring or ICU care.
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Literal
 
 
@@ -82,7 +82,7 @@ class Bap65Request(BaseModel):
         example=68
     )
     
-    @validator('age')
+    @field_validator('age')
     def validate_age(cls, v):
         """Validates that age is within acceptable range"""
         if v < 41:
@@ -92,7 +92,7 @@ class Bap65Request(BaseModel):
         return v
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "bun": "no",
                 "altered_mental_status": "no",
@@ -153,7 +153,7 @@ class Bap65Response(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 2,
                 "unit": "points",

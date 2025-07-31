@@ -126,7 +126,7 @@ class CnsIpiRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age_over_60": "no",
                 "elevated_ldh": "yes",
@@ -210,7 +210,7 @@ class CnsIpiResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 2,
                 "unit": "points",

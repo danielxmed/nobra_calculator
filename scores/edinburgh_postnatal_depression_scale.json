@@ -1,0 +1,168 @@
+{
+  "id": "edinburgh_postnatal_depression_scale",
+  "title": "Edinburgh Postnatal Depression Scale (EPDS)",
+  "description": "Screens for depression in the postnatal period through a validated 10-item self-report questionnaire. The most widely used postpartum depression screening tool worldwide, also valid for antenatal screening.",
+  "category": "psychiatry",
+  "version": "1987",
+  "parameters": [
+    {
+      "name": "able_to_laugh",
+      "type": "integer",
+      "required": true,
+      "description": "I have been able to laugh and see the funny side of things",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "looked_forward",
+      "type": "integer",
+      "required": true,
+      "description": "I have looked forward with enjoyment to things",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "blamed_myself",
+      "type": "integer",
+      "required": true,
+      "description": "I have blamed myself unnecessarily when things went wrong",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "anxious_worried",
+      "type": "integer",
+      "required": true,
+      "description": "I have been anxious or worried for no good reason",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "scared_panicky",
+      "type": "integer",
+      "required": true,
+      "description": "I have felt scared or panicky for no very good reason",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "things_on_top",
+      "type": "integer",
+      "required": true,
+      "description": "Things have been getting on top of me",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "unhappy_sleeping",
+      "type": "integer",
+      "required": true,
+      "description": "I have been so unhappy that I have had difficulty sleeping",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "sad_miserable",
+      "type": "integer",
+      "required": true,
+      "description": "I have felt sad or miserable",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "unhappy_crying",
+      "type": "integer",
+      "required": true,
+      "description": "I have been so unhappy that I have been crying",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "self_harm_thoughts",
+      "type": "integer",
+      "required": true,
+      "description": "The thought of harming myself has occurred to me",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    }
+  ],
+  "result": {
+    "name": "epds_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "EPDS total score ranging from 0 to 30 points"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 9,
+        "stage": "Low Risk",
+        "description": "Minimal depression symptoms",
+        "interpretation": "Low risk for depression. Score suggests minimal depressive symptoms. Continue routine care and screening. Provide general postpartum support and education about warning signs of depression."
+      },
+      {
+        "min": 10,
+        "max": 12,
+        "stage": "Moderate Risk",
+        "description": "Possible depression - further assessment needed",
+        "interpretation": "Moderate risk for depression. Score suggests possible depressive symptoms requiring further evaluation. Consider clinical assessment by healthcare provider within 2 weeks. Provide mental health resources and support information."
+      },
+      {
+        "min": 13,
+        "max": 30,
+        "stage": "High Risk",
+        "description": "Likely depression - clinical assessment recommended",
+        "interpretation": "High risk for depression. Score indicates likely depressive symptoms requiring clinical assessment and potential intervention. Refer to healthcare provider, preferably general practitioner or mental health professional, for comprehensive evaluation and treatment planning."
+      }
+    ]
+  },
+  "references": [
+    "Cox JL, Holden JM, Sagovsky R. Detection of postnatal depression. Development of the 10-item Edinburgh Postnatal Depression Scale. Br J Psychiatry. 1987;150:782-6. doi: 10.1192/bjp.150.6.782.",
+    "Levis B, Negeri Z, Sun Y, Benedetti A, Thombs BD; DEPRESsion Screening Data (DEPRESSD) EPDS Group. Accuracy of the Edinburgh Postnatal Depression Scale (EPDS) for screening to detect major depression among pregnant and postpartum women: systematic review and meta-analysis of individual participant data. BMJ. 2020;371:m4022. doi: 10.1136/bmj.m4022.",
+    "Gibson J, McKenzie-McHarg K, Shakespeare J, Price J, Gray R. A systematic review of studies validating the Edinburgh Postnatal Depression Scale in antepartum and postpartum women. Acta Psychiatr Scand. 2009;119(5):350-64. doi: 10.1111/j.1600-0447.2009.01363.x.",
+    "Matthey S, Henshaw C, Elliott S, Barnett B. Variability in use of cut-off scores and formats on the Edinburgh Postnatal Depression Scale: implications for clinical and research practice. Arch Womens Ment Health. 2006;9(6):309-15. doi: 10.1007/s00737-006-0152-x."
+  ],
+  "formula": "Total EPDS score = sum of responses to all 10 items (each scored 0-3). Items 1, 2, and 4 are reverse scored. Items 3, 5-10 are scored as marked. Higher scores indicate greater likelihood of depression.",
+  "notes": [
+    "The EPDS is not a diagnostic tool but a screening instrument to identify women who may benefit from follow-up care.",
+    "Validated for use in both antenatal (pregnancy) and postnatal (postpartum) periods.",
+    "Can be self-administered or administered by healthcare professionals.",
+    "Each item asks about feelings 'in the past 7 days' to capture recent mood state.",
+    "Items 1, 2, and 4 are reverse scored (3=0, 2=1, 1=2, 0=3).",
+    "Items 3, 5, 6, 7, 8, 9, and 10 are scored as marked (0=0, 1=1, 2=2, 3=3).",
+    "Cut-off scores: ≥10 (good sensitivity), ≥11 (optimal balance), ≥13 (high specificity).",
+    "Question 10 (self-harm thoughts) requires immediate attention if scored 1, 2, or 3.",
+    "Translated into over 25 languages with validation studies worldwide.",
+    "Should be completed at least once in antenatal period and once in postnatal period (6-12 weeks postpartum).",
+    "Sensitivity and specificity: 85% and 84% (cut-off ≥10), 81% and 88% (cut-off ≥11), 66% and 95% (cut-off ≥13).",
+    "Recent studies suggest EPDS-9 (without self-harm item) performs nearly identically to full scale.",
+    "All women should be rescreened in 2-4 weeks if initial score is ≥13.",
+    "Positive screens should lead to clinical assessment, not automatic diagnosis.",
+    "Tool also has adequate sensitivity for identifying anxiety symptoms.",
+    "Postpartum depression affects approximately 13% of mothers, with higher rates in women of color (18-22%).",
+    "Early identification through screening can improve outcomes for mothers and children.",
+    "Consider cultural factors and language barriers when administering and interpreting results.",
+    "Training for healthcare providers recommended for optimal implementation and follow-up care."
+  ]
+}

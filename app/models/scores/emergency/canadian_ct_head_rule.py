@@ -107,7 +107,7 @@ class CanadianCtHeadRuleRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "gcs_less_than_15_at_2hrs": "no",
                 "suspected_skull_fracture": "no",
@@ -174,7 +174,7 @@ class CanadianCtHeadRuleResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "CT Not Required",
                 "unit": "recommendation",

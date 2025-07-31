@@ -99,7 +99,7 @@ class ApgarScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "activity_muscle_tone": "active",
                 "pulse": ">=100_bpm",
@@ -156,7 +156,7 @@ class ApgarScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 9,
                 "unit": "points",

@@ -155,7 +155,7 @@ and providing evidence-based tools for optimal patient management across the
 challenging transition from pediatric to adult healthcare.
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Literal, Dict, Any, Optional
 
 
@@ -305,7 +305,7 @@ class CkidU25EgfrRequest(BaseModel):
         example=1.5
     )
     
-    @validator('height')
+    @field_validator('height')
     def validate_height_for_creatinine(cls, v, values):
         """Validate height is provided for creatinine-based equations"""
         equation_type = values.get('equation_type')
@@ -313,7 +313,7 @@ class CkidU25EgfrRequest(BaseModel):
             raise ValueError('Height is required for creatinine-based equations')
         return v
     
-    @validator('serum_creatinine')
+    @field_validator('serum_creatinine')
     def validate_creatinine_for_creatinine_equations(cls, v, values):
         """Validate serum creatinine is provided for creatinine-based equations"""
         equation_type = values.get('equation_type')
@@ -321,7 +321,7 @@ class CkidU25EgfrRequest(BaseModel):
             raise ValueError('Serum creatinine is required for creatinine-based equations')
         return v
     
-    @validator('cystatin_c')
+    @field_validator('cystatin_c')
     def validate_cystatin_for_cystatin_equations(cls, v, values):
         """Validate cystatin C is provided for cystatin C-based equations"""
         equation_type = values.get('equation_type')
@@ -330,7 +330,7 @@ class CkidU25EgfrRequest(BaseModel):
         return v
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "equation_type": "creatinine",
                 "age": 12,
@@ -521,7 +521,7 @@ class CkidU25EgfrResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 65.2,
                 "unit": "mL/min/1.73m²",

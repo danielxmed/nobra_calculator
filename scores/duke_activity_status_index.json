@@ -1,0 +1,180 @@
+{
+  "id": "duke_activity_status_index",
+  "title": "Duke Activity Status Index (DASI)",
+  "description": "Estimates functional capacity of patients through self-reported activities. A 12-item questionnaire that assesses daily activities with respective metabolic costs to predict maximal oxygen consumption (VO2 max) and maximum metabolic equivalent of tasks (METs).",
+  "category": "cardiology",
+  "version": "1989",
+  "parameters": [
+    {
+      "name": "personal_care",
+      "type": "string",
+      "required": true,
+      "description": "Can you take care of yourself, that is, eating, dressing, bathing, or using the toilet?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "walk_indoors",
+      "type": "string",
+      "required": true,
+      "description": "Can you walk indoors, such as around your house?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "walk_1_2_blocks",
+      "type": "string",
+      "required": true,
+      "description": "Can you walk a block or two on level ground?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "climb_stairs",
+      "type": "string",
+      "required": true,
+      "description": "Can you climb a flight of stairs or walk up a hill?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "run_short_distance",
+      "type": "string",
+      "required": true,
+      "description": "Can you run a short distance?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "light_housework",
+      "type": "string",
+      "required": true,
+      "description": "Can you do light work around the house like dusting or washing dishes?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "moderate_housework",
+      "type": "string",
+      "required": true,
+      "description": "Can you do moderate work around the house like vacuuming, sweeping floors, or carrying in groceries?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "heavy_housework",
+      "type": "string",
+      "required": true,
+      "description": "Can you do heavy work around the house like scrubbing floors or lifting or moving heavy furniture?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "yard_work",
+      "type": "string",
+      "required": true,
+      "description": "Can you do yard work like raking leaves, weeding, or pushing a power mower?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "sexual_relations",
+      "type": "string",
+      "required": true,
+      "description": "Can you have sexual relations?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "moderate_recreation",
+      "type": "string",
+      "required": true,
+      "description": "Can you participate in moderate recreational activities like golf, bowling, dancing, doubles tennis, or throwing a baseball or football?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "strenuous_sports",
+      "type": "string",
+      "required": true,
+      "description": "Can you participate in strenuous sports like swimming, singles tennis, football, basketball, or skiing?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "dasi_score",
+    "type": "float",
+    "unit": "points",
+    "description": "Duke Activity Status Index score and estimated METs"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 19,
+        "stage": "Poor Functional Capacity",
+        "description": "Limited functional capacity (<4 METs)",
+        "interpretation": "Poor functional capacity with estimated <4 METs. High perioperative risk. Consider cardiopulmonary exercise testing and optimization before major surgery. May require intensive perioperative monitoring and care."
+      },
+      {
+        "min": 20,
+        "max": 33,
+        "stage": "Moderate Functional Capacity",
+        "description": "Moderate functional capacity (4-7 METs)",
+        "interpretation": "Moderate functional capacity with estimated 4-7 METs. Intermediate perioperative risk. Consider further cardiovascular evaluation if planning major surgery. May benefit from preoperative optimization."
+      },
+      {
+        "min": 34,
+        "max": 58.2,
+        "stage": "Good Functional Capacity",
+        "description": "Good functional capacity (>7 METs)",
+        "interpretation": "Good functional capacity with estimated >7 METs. Lower perioperative risk. DASI score ≥34 associated with reduced odds of 30-day death, myocardial injury, and 1-year death or new disability. Generally adequate for major surgery."
+      }
+    ]
+  },
+  "references": [
+    "Hlatky MA, Boineau RE, Higginbotham MB, Lee KL, Mark DB, Califf RM, et al. A brief self-administered questionnaire to determine functional capacity (the Duke Activity Status Index). Am J Cardiol. 1989;64(10):651-4. doi: 10.1016/0002-9149(89)90496-7.",
+    "Wijeysundera DN, Pearse RM, Shulman MA, Abbott TEF, Torres E, Ambosta A, et al. Assessment of functional capacity before major non-cardiac surgery: an international, prospective cohort study. Lancet. 2018;391(10140):2631-2640. doi: 10.1016/S0140-6736(18)31131-0.",
+    "Struthers R, Erasmus P, Holmes K, Warman P, Collingwood A, Sneyd JR. Assessing fitness for surgery: a comparison of questionnaire, incremental shuttle walk, and cardiopulmonary exercise testing in general surgical patients. Br J Anaesth. 2008;101(6):774-80. doi: 10.1093/bja/aen310."
+  ],
+  "formula": "DASI Score = Sum of weighted activities. Personal care (2.75), Walk indoors (1.75), Walk 1-2 blocks (2.75), Climb stairs (5.50), Run short distance (8.00), Light housework (2.70), Moderate housework (3.50), Heavy housework (8.00), Yard work (4.50), Sexual relations (5.25), Moderate recreation (6.00), Strenuous sports (7.50). Estimated METs = (DASI + 43.24) / 9.6.",
+  "notes": [
+    "Developed in 1989 as a brief self-administered questionnaire to determine functional capacity.",
+    "Score ranges from 0 to 58.2 points, with higher scores indicating better functional capacity.",
+    "Each activity has a specific weight based on its metabolic cost (MET value).",
+    "DASI score correlates with VO2 max and estimated METs from cardiopulmonary exercise testing.",
+    "Score of ≥34 represents threshold for reduced perioperative risk and complications.",
+    "Estimated METs calculated using formula: (DASI + 43.24) / 9.6.",
+    "Widely used in preoperative risk assessment for intermediate and major surgery.",
+    "Can be used to assess quality of life and evaluate treatment results.",
+    "Simplified versions (M-DASI-5Q, M-DASI-4Q) exist for screening purposes.",
+    "Consider cardiopulmonary exercise testing for scores <34 before major surgery.",
+    "Useful alternative when formal exercise testing is not feasible.",
+    "Should be interpreted in conjunction with clinical judgment and other risk factors."
+  ]
+}

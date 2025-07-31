@@ -99,7 +99,7 @@ class Crb65PneumoniaSeverityRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "confusion": "no",
                 "respiratory_rate": ">=30",
@@ -181,7 +181,7 @@ class Crb65PneumoniaSeverityResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 3,
                 "unit": "points",

@@ -21,7 +21,7 @@ given within 8 hours of ingestion. The Rumack-Matthew nomogram helps determine
 the need for NAC treatment in single acute ingestions between 4-24 hours.
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Literal, Optional, Dict, Any
 
 
@@ -84,7 +84,7 @@ class AcetaminophenOverdoseNacRequest(BaseModel):
         le=1000
     )
     
-    @validator('acetaminophen_level')
+    @field_validator('acetaminophen_level')
     def validate_nomogram_parameters(cls, v, values):
         """Ensure both nomogram parameters are provided together"""
         hours = values.get('hours_since_ingestion')
@@ -93,7 +93,7 @@ class AcetaminophenOverdoseNacRequest(BaseModel):
         return v
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "route": "IV",
                 "weight": 70.0,
@@ -209,7 +209,7 @@ class AcetaminophenOverdoseNacResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "dosing_regimen": {

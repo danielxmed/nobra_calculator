@@ -67,7 +67,7 @@ class SixMinuteWalkRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 65,
                 "sex": "male",
@@ -133,7 +133,7 @@ class SixMinuteWalkResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 485.3,
                 "unit": "meters",

@@ -144,7 +144,7 @@ class Brue20Request(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age_under_1_year": "yes",
                 "asymptomatic_on_presentation": "yes",
@@ -245,7 +245,7 @@ class Brue20Response(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 6,
                 "unit": "",

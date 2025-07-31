@@ -137,7 +137,7 @@ class CovidGramCriticalIllnessRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "chest_xray_abnormality": "yes",
                 "age": 65,
@@ -217,7 +217,7 @@ class CovidGramCriticalIllnessResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 25.3,
                 "unit": "%",

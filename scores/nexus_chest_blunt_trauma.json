@@ -1,0 +1,116 @@
+{
+  "id": "nexus_chest_blunt_trauma",
+  "title": "NEXUS Chest Decision Instrument for Blunt Chest Trauma",
+  "description": "Determines need for chest imaging in blunt trauma patients. Uses 7 criteria to identify patients at very low risk for thoracic injury who can potentially avoid chest x-ray. The score is 99% sensitive for clinically significant thoracic injury.",
+  "category": "emergency",
+  "version": "2013",
+  "parameters": [
+    {
+      "name": "age_over_60",
+      "type": "string",
+      "required": true,
+      "description": "Is the patient older than 60 years?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "rapid_deceleration",
+      "type": "string",
+      "required": true,
+      "description": "Rapid deceleration mechanism: fall from >20 feet (>6 meters) OR motor vehicle crash >40 mph (>64 km/h)?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "chest_pain",
+      "type": "string",
+      "required": true,
+      "description": "Does the patient have chest pain?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "intoxication",
+      "type": "string",
+      "required": true,
+      "description": "Is the patient intoxicated (alcohol or drugs)?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "altered_mental_status",
+      "type": "string",
+      "required": true,
+      "description": "Does the patient have altered mental status (altered alertness/cognition)?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "distracting_injury",
+      "type": "string",
+      "required": true,
+      "description": "Does the patient have a distracting painful injury?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "chest_wall_tenderness",
+      "type": "string",
+      "required": true,
+      "description": "Does the patient have tenderness to chest wall palpation?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "nexus_chest_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total NEXUS Chest score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Very low risk",
+        "description": "Consider no imaging",
+        "interpretation": "No NEXUS Chest criteria are present. This patient is at very low risk for thoracic injury. Chest imaging can potentially be avoided. The negative predictive value is 98.5% for thoracic injury and 99.9% for clinically major injury."
+      },
+      {
+        "min": 1,
+        "max": 7,
+        "stage": "Not low risk",
+        "description": "Consider chest imaging",
+        "interpretation": "One or more NEXUS Chest criteria are present. Cannot rule out thoracic injury. In well-appearing patients, consider chest x-ray only. In ill-appearing patients or those with multi-organ injury, consider chest CT. The score is 99% sensitive for clinically significant thoracic injury."
+      }
+    ]
+  },
+  "references": [
+    "Rodriguez RM, Hendey GW, Mower W, Kea B, Fortman J, Merchant G, et al. Derivation of a decision instrument for selective chest radiography in blunt trauma. J Trauma. 2011 Sep;71(3):549-53. doi: 10.1097/TA.0b013e3181f2ac9d.",
+    "Rodriguez RM, Anglin D, Langdorf MI, Baumann BM, Hendey GW, Bradley RN, et al. NEXUS chest: validation of a decision instrument for selective chest imaging in blunt trauma. JAMA Surg. 2013 Oct;148(10):940-6. doi: 10.1001/jamasurg.2013.2757.",
+    "Rodriguez RM, Hendey GW, Marek G, Dery RA, Bjoring A. A pilot study to derive clinical variables for selective chest radiography in blunt trauma patients. Ann Emerg Med. 2006 May;47(5):415-8. doi: 10.1016/j.annemergmed.2005.10.001."
+  ],
+  "formula": "NEXUS Chest Score = Sum of positive criteria (1 point each)",
+  "notes": [
+    "Applies to patients ≥15 years old with blunt trauma within 24 hours",
+    "Designed to reduce unnecessary imaging and radiation exposure",
+    "One isolated rib fracture was not considered a thoracic injury in the validation study",
+    "99% sensitive for clinically significant thoracic injury",
+    "Always use clinical judgment alongside this score"
+  ]
+}

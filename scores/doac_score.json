@@ -1,0 +1,167 @@
+{
+  "id": "doac_score",
+  "title": "Direct-Acting Oral Anticoagulants (DOAC) Score",
+  "description": "Predicts bleeding risk in patients with atrial fibrillation on direct-acting oral anticoagulants",
+  "category": "cardiology",
+  "version": "2023",
+  "parameters": [
+    {
+      "name": "age_category",
+      "type": "string",
+      "required": true,
+      "description": "Patient age category for bleeding risk assessment",
+      "options": ["under_65", "65_to_69", "70_to_74", "75_to_79", "80_or_over"],
+      "validation": {
+        "enum": ["under_65", "65_to_69", "70_to_74", "75_to_79", "80_or_over"]
+      }
+    },
+    {
+      "name": "creatinine_clearance_category",
+      "type": "string",
+      "required": true,
+      "description": "Creatinine clearance category",
+      "options": ["over_60", "30_to_60", "under_30"],
+      "validation": {
+        "enum": ["over_60", "30_to_60", "under_30"]
+      }
+    },
+    {
+      "name": "underweight",
+      "type": "string",
+      "required": true,
+      "description": "BMI <18.5 kg/m²",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "stroke_tia_embolism_history",
+      "type": "string",
+      "required": true,
+      "description": "History of stroke, TIA, or systemic embolism",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "diabetes",
+      "type": "string",
+      "required": true,
+      "description": "Diabetes mellitus",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hypertension",
+      "type": "string",
+      "required": true,
+      "description": "Hypertension",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "antiplatelet_use",
+      "type": "string",
+      "required": true,
+      "description": "Current antiplatelet agent use (aspirin, clopidogrel, etc.)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "nsaid_use",
+      "type": "string",
+      "required": true,
+      "description": "Current NSAID use",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "bleeding_history",
+      "type": "string",
+      "required": true,
+      "description": "History of major bleeding",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "liver_disease",
+      "type": "string",
+      "required": true,
+      "description": "Liver disease",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "doac_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total DOAC score (range 0-10)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Very Low",
+        "description": "Very low bleeding risk",
+        "interpretation": "Very low bleeding risk. Patient may continue DOAC therapy with standard monitoring. Annual bleeding rate approximately 0.3-0.8%."
+      },
+      {
+        "min": 4,
+        "max": 5,
+        "stage": "Low",
+        "description": "Low bleeding risk",
+        "interpretation": "Low bleeding risk. Patient may continue DOAC therapy with standard monitoring. Annual bleeding rate approximately 1.1-1.9%."
+      },
+      {
+        "min": 6,
+        "max": 7,
+        "stage": "Moderate",
+        "description": "Moderate bleeding risk",
+        "interpretation": "Moderate bleeding risk. Consider more frequent monitoring and bleeding risk reduction strategies. Annual bleeding rate approximately 2.5-4.1%."
+      },
+      {
+        "min": 8,
+        "max": 9,
+        "stage": "High",
+        "description": "High bleeding risk",
+        "interpretation": "High bleeding risk. Consider bleeding risk reduction strategies, more frequent monitoring, and evaluate risk-benefit ratio. Annual bleeding rate approximately 5.2-8.1%."
+      },
+      {
+        "min": 10,
+        "max": 10,
+        "stage": "Very High",
+        "description": "Very high bleeding risk",
+        "interpretation": "Very high bleeding risk. Careful evaluation of risk-benefit ratio required. Consider bleeding risk reduction strategies and frequent monitoring. Annual bleeding rate approximately 10.8%."
+      }
+    ]
+  },
+  "references": [
+    "Aggarwal A, Wang TY, Rumsfeld JS, et al. Development and Validation of the DOAC Score: A Novel Bleeding Risk Prediction Tool for Patients With Atrial Fibrillation on Direct-Acting Oral Anticoagulants. Circulation. 2023 Nov 7;148(19):1482-1492. doi: 10.1161/CIRCULATIONAHA.123.064556.",
+    "Costa OS, Beyer-Westendorf J, Ashton V, et al. Performance of HAS-BLED and DOAC scores to predict major bleeding events in atrial fibrillation patients treated with direct oral anticoagulants: A report from a prospective European observational registry. Thromb Res. 2024 Aug;240:109063. doi: 10.1016/j.thromres.2024.109063."
+  ],
+  "formula": "DOAC Score = Age points + Creatinine clearance points + Sum of risk factors (underweight, stroke/TIA/embolism history, diabetes, hypertension, antiplatelet use, NSAID use, bleeding history, liver disease). Maximum score is capped at 10 points.",
+  "notes": [
+    "Developed specifically for patients on direct oral anticoagulants (DOACs)",
+    "Superior performance compared to HAS-BLED score in DOAC-treated patients",
+    "Each additional point associated with 48.7% increase in major bleeding risk",
+    "Validated in multiple international cohorts including RE-LY, GARFIELD-AF, COMBINE-AF, and RAMQ",
+    "Should be used to guide clinical decision-making regarding anticoagulation therapy",
+    "Consider bleeding risk reduction strategies for moderate to very high risk patients"
+  ]
+}

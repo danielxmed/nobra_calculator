@@ -192,7 +192,7 @@ class CommRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "thinking_clearly": 1,
                 "not_completing_tasks": 0,
@@ -340,7 +340,7 @@ class CommResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 8,
                 "unit": "points",

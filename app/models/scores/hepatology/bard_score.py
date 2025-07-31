@@ -24,7 +24,7 @@ value (96%) for scores 0-1, making it useful for identifying patients who are
 unlikely to have advanced fibrosis and may not require liver biopsy.
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Literal
 
 
@@ -82,20 +82,20 @@ class BardScoreRequest(BaseModel):
         example="yes"
     )
     
-    @validator('alt')
+    @field_validator('alt')
     def validate_alt_not_zero(cls, v):
         if v == 0:
             raise ValueError('ALT cannot be zero (division by zero in AST/ALT ratio)')
         return v
     
-    @validator('ast', 'alt')
+    @field_validator('ast', 'alt')
     def validate_liver_enzymes(cls, v):
         if v <= 0:
             raise ValueError('Liver enzymes must be positive values')
         return v
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "bmi": 29.5,
                 "ast": 45,
@@ -149,7 +149,7 @@ class BardScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 3,
                 "unit": "points",

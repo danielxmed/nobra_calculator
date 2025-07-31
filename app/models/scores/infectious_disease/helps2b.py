@@ -85,7 +85,7 @@ class Helps2bRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "seizure_history": "no",
                 "epileptiform_discharges": "absent",
@@ -146,7 +146,7 @@ class Helps2bResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 0,
                 "unit": "points",

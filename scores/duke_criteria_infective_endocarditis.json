@@ -1,0 +1,130 @@
+{
+  "id": "duke_criteria_infective_endocarditis",
+  "title": "Duke Criteria for Infective Endocarditis",
+  "description": "Provides standardized diagnostic criteria for infective endocarditis based on clinical, microbiological, and echocardiographic findings. Classifies patients as having definite, possible, or rejected endocarditis.",
+  "category": "infectious_disease",
+  "version": "1994",
+  "parameters": [
+    {
+      "name": "blood_culture_major",
+      "type": "string",
+      "required": true,
+      "description": "Blood culture positive for IE - typical microorganisms from 2 separate cultures OR persistently positive cultures OR single positive culture for Coxiella burnetii",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "endocardial_involvement",
+      "type": "string",
+      "required": true,
+      "description": "Evidence of endocardial involvement - positive echocardiogram (vegetation, abscess, prosthetic valve dehiscence) OR new valvular regurgitation",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "predisposition",
+      "type": "string",
+      "required": true,
+      "description": "Predisposing heart condition or injection drug use",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "fever",
+      "type": "string",
+      "required": true,
+      "description": "Fever > 38°C (100.4°F)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "vascular_phenomena",
+      "type": "string",
+      "required": true,
+      "description": "Vascular phenomena - major arterial emboli, septic pulmonary infarcts, mycotic aneurysm, intracranial hemorrhage, conjunctival hemorrhages, Janeway lesions",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "immunologic_phenomena",
+      "type": "string",
+      "required": true,
+      "description": "Immunologic phenomena - glomerulonephritis, Osler nodes, Roth spots, rheumatoid factor",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "microbiological_evidence",
+      "type": "string",
+      "required": true,
+      "description": "Microbiological evidence - positive blood culture that does not meet major criterion or serological evidence of active infection with organism consistent with IE",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "diagnosis",
+    "type": "string",
+    "unit": "category",
+    "description": "Duke Criteria diagnostic classification for infective endocarditis"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Rejected",
+        "description": "IE rejected",
+        "interpretation": "Infective endocarditis is rejected. Consider alternative diagnoses. Criteria not met for possible or definite IE, or firm alternate diagnosis established, or resolution with ≤4 days antibiotic therapy."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Possible",
+        "description": "Possible IE",
+        "interpretation": "Possible infective endocarditis. Findings are consistent with IE but do not meet criteria for definite IE. Consider further diagnostic workup including repeat echocardiography, additional blood cultures, and specialist consultation."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Definite",
+        "description": "Definite IE",
+        "interpretation": "Definite infective endocarditis. Immediate antimicrobial therapy indicated. Cardiology and infectious disease consultation recommended. Consider surgical evaluation if complicated IE."
+      }
+    ]
+  },
+  "references": [
+    "Durack DT, Lukes AS, Bright DK. New criteria for diagnosis of infective endocarditis: utilization of specific echocardiographic findings. Duke Endocarditis Service. Am J Med. 1994;96(3):200-9. doi: 10.1016/0002-9343(94)90143-0.",
+    "Li JS, Sexton DJ, Mick N, Nettles R, Fowler VG Jr, Ryan T, et al. Proposed modifications to the Duke criteria for the diagnosis of infective endocarditis. Clin Infect Dis. 2000;30(4):633-8. doi: 10.1086/313753.",
+    "Habib G, Lancellotti P, Antunes MJ, Bongiorni MG, Casalta JP, Del Zotti F, et al. 2015 ESC Guidelines for the management of infective endocarditis: The Task Force for the Management of Infective Endocarditis of the European Society of Cardiology (ESC). Eur Heart J. 2015;36(44):3075-3128. doi: 10.1093/eurheartj/ehv319."
+  ],
+  "formula": "Major criteria: (1) Blood culture positive for IE with typical organisms, persistently positive cultures, or Coxiella burnetii; (2) Evidence of endocardial involvement by echocardiography or new valvular regurgitation. Minor criteria: (1) Predisposition; (2) Fever >38°C; (3) Vascular phenomena; (4) Immunologic phenomena; (5) Microbiological evidence not meeting major criteria. Definite IE: 2 major OR 1 major + 3 minor OR 5 minor criteria. Possible IE: 1 major + 1 minor OR 3 minor criteria.",
+  "notes": [
+    "Developed in 1994 and modified in 2000 to provide standardized diagnostic criteria for infective endocarditis.",
+    "Major criteria carry more diagnostic weight than minor criteria in the classification system.",
+    "Blood cultures should be obtained before antibiotic therapy when possible for optimal diagnostic yield.",
+    "Echocardiography (transthoracic or transesophageal) is essential for detecting endocardial involvement.",
+    "TEE (transesophageal echocardiography) is more sensitive than TTE for detecting vegetations and complications.",
+    "Positive blood cultures with skin contaminants (e.g., coagulase-negative staphylococci) require careful interpretation.",
+    "The criteria have been updated in 2023 (Duke-ISCVID criteria) to include new diagnostic modalities.",
+    "Prosthetic valve endocarditis may require modified interpretation of echocardiographic findings.",
+    "Culture-negative endocarditis remains challenging and may require molecular diagnostic methods.",
+    "Early diagnosis and treatment are crucial for patient outcomes and prevention of complications.",
+    "Multidisciplinary team approach with cardiology, infectious disease, and sometimes cardiac surgery is recommended.",
+    "Consider alternative diagnoses if criteria are not met, including non-infectious causes of valve disease."
+  ]
+}

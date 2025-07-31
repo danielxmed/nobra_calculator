@@ -1,0 +1,193 @@
+{
+  "id": "dsm5_bipolar_disorder",
+  "title": "DSM-5 Criteria for Bipolar Disorder",
+  "description": "Diagnostic criteria for bipolar disorder based on DSM-5. Evaluates criteria for manic episodes, hypomanic episodes, and major depressive episodes to determine bipolar I, bipolar II, or other specified bipolar disorders.",
+  "category": "psychiatry",
+  "version": "DSM-5",
+  "parameters": [
+    {
+      "name": "elevated_expansive_irritable_mood",
+      "type": "string",
+      "required": true,
+      "description": "Elevated, expansive, or irritable mood present",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "increased_activity_energy",
+      "type": "string",
+      "required": true,
+      "description": "Abnormally and persistently increased goal-directed activity or energy",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "inflated_self_esteem",
+      "type": "string",
+      "required": true,
+      "description": "Inflated self-esteem or grandiosity",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "decreased_need_sleep",
+      "type": "string",
+      "required": true,
+      "description": "Decreased need for sleep (feels rested after only 3 hours)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "more_talkative",
+      "type": "string",
+      "required": true,
+      "description": "More talkative than usual or pressure to keep talking",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "flight_of_ideas",
+      "type": "string",
+      "required": true,
+      "description": "Flight of ideas or racing thoughts",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "distractibility",
+      "type": "string",
+      "required": true,
+      "description": "Distractibility (attention easily drawn to unimportant stimuli)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "increased_goal_directed_activity",
+      "type": "string",
+      "required": true,
+      "description": "Increase in goal-directed activity or psychomotor agitation",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "excessive_risky_behavior",
+      "type": "string",
+      "required": true,
+      "description": "Excessive involvement in risky activities with high potential for painful consequences",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "episode_duration",
+      "type": "string",
+      "required": true,
+      "description": "Duration of mood episode",
+      "options": ["less_than_4_days", "4_to_6_days", "7_days_or_more", "hospitalization_required"],
+      "validation": {
+        "enum": ["less_than_4_days", "4_to_6_days", "7_days_or_more", "hospitalization_required"]
+      }
+    },
+    {
+      "name": "functional_impairment",
+      "type": "string",
+      "required": true,
+      "description": "Level of functional impairment",
+      "options": ["none", "mild_noticeable", "marked_impairment", "psychotic_hospitalization"],
+      "validation": {
+        "enum": ["none", "mild_noticeable", "marked_impairment", "psychotic_hospitalization"]
+      }
+    },
+    {
+      "name": "substance_medical_cause",
+      "type": "string",
+      "required": true,
+      "description": "Episode NOT better explained by substance use or medical condition",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "history_major_depressive_episode",
+      "type": "string",
+      "required": true,
+      "description": "History of at least one major depressive episode",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "dsm5_bipolar_diagnosis",
+    "type": "string",
+    "unit": "diagnosis",
+    "description": "DSM-5 Bipolar Disorder diagnostic result"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Criteria Not Met",
+        "description": "Does not meet DSM-5 criteria",
+        "interpretation": "Does not meet DSM-5 criteria for Bipolar Disorder. Consider other mood disorders, substance-induced conditions, or refer for comprehensive psychiatric evaluation if clinical concerns persist."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Hypomanic Episode",
+        "description": "Meets criteria for hypomanic episode",
+        "interpretation": "Meets criteria for a hypomanic episode. If history of major depressive episode exists, consider Bipolar II Disorder. Requires comprehensive evaluation for full bipolar disorder assessment."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Manic Episode",
+        "description": "Meets criteria for manic episode",
+        "interpretation": "Meets criteria for a manic episode, indicating Bipolar I Disorder. Requires immediate psychiatric evaluation and treatment. Consider hospitalization if psychotic features or significant functional impairment present."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Bipolar II Disorder",
+        "description": "Meets criteria for Bipolar II",
+        "interpretation": "Meets criteria for Bipolar II Disorder (hypomanic episode + major depressive episode history). Requires specialized psychiatric treatment including mood stabilizers and psychotherapy."
+      }
+    ]
+  },
+  "references": [
+    "American Psychiatric Association. Diagnostic and statistical manual of mental disorders: DSM-5. 5th ed. Washington, DC: American Psychiatric Association; 2013.",
+    "Youngstrom EA, Birmaher B, Findling RL. Pediatric bipolar disorder: validity, phenomenology, and recommendations for diagnosis. Bipolar Disord. 2008;10(1 Pt 2):194-214. doi: 10.1111/j.1399-5618.2007.00563.x.",
+    "Angst J, Azorin JM, Bowden CL, et al. Prevalence and characteristics of undiagnosed bipolar disorders in patients with a major depressive episode. Arch Gen Psychiatry. 2011;68(8):791-8. doi: 10.1001/archgenpsychiatry.2011.87."
+  ],
+  "formula": "Diagnostic evaluation based on DSM-5 criteria: Core symptoms (elevated mood + increased activity/energy) + ≥3 additional symptoms + duration requirements + functional impact + exclusion of substance/medical causes. Manic episode (≥7 days/hospitalization) = Bipolar I; Hypomanic episode (4-6 days) + depressive history = Bipolar II.",
+  "notes": [
+    "This is a diagnostic aid for clinical evaluation, not a substitute for comprehensive psychiatric assessment.",
+    "Manic episodes require ≥7 days duration or hospitalization; hypomanic episodes require 4-6 days.",
+    "DSM-5 added 'increased activity/energy' as core criterion alongside mood symptoms.",
+    "Bipolar I requires only one manic episode; Bipolar II requires hypomanic + depressive episodes.",
+    "Mixed features specifier can be applied to manic, hypomanic, or depressive episodes.",
+    "Consider cyclothymic disorder for subsyndromal symptoms over ≥2 years.",
+    "Substance-induced mood episodes and medical conditions must be ruled out.",
+    "Risk assessment for suicide and psychotic features is essential in acute episodes."
+  ]
+}

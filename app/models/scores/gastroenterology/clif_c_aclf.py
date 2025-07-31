@@ -402,7 +402,7 @@ class ClifCAclfRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 65,
                 "white_blood_cell_count": 12.5,
@@ -646,7 +646,7 @@ class ClifCAclfResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 52.3,
                 "unit": "points",

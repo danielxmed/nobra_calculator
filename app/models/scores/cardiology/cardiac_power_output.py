@@ -84,7 +84,7 @@ class CardiacPowerOutputRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "mean_arterial_pressure": 85.0,
                 "cardiac_output": 5.0,
@@ -150,7 +150,7 @@ class CardiacPowerOutputResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "cpo_standard": 0.942,

@@ -17,6 +17,9 @@ from .chalice_rule import router as chalice_rule_router
 from .cheops_pain_scale import router as cheops_pain_scale_router
 from .capd import router as capd_router
 from .dhaka_score import router as dhaka_score_router
+from .eat_sleep_console import router as eat_sleep_console_router
+from .neonatal_early_onset_sepsis import router as neonatal_early_onset_sepsis_router
+from .neonatal_partial_exchange_polycythemia import router as neonatal_partial_exchange_polycythemia_router
 
 # Create main specialty router
 router = APIRouter()
@@ -34,3 +37,6 @@ router.include_router(chalice_rule_router)
 router.include_router(cheops_pain_scale_router)
 router.include_router(capd_router)
 router.include_router(dhaka_score_router)
+router.include_router(eat_sleep_console_router)
+router.include_router(neonatal_early_onset_sepsis_router)
+router.include_router(neonatal_partial_exchange_polycythemia_router)

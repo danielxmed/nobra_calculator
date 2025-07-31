@@ -86,7 +86,7 @@ class CisneRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "ecog_performance_status": "<2",
                 "stress_induced_hyperglycemia": "no",
@@ -144,7 +144,7 @@ class CisneResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 0,
                 "unit": "points",

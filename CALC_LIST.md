@@ -594,7 +594,7 @@
 ### Cumulative Illness Rating Scale-Geriatric (CIRS-G) ✅
 **Description:** Quantifies burden of illness in elderly patients (comorbidity scale).
 
-### CURB-65 Score for Pneumonia Severity -> (CHECK) IMPLEMENTED
+### CURB-65 Score for Pneumonia Severity -> (CHECK) IMPLEMENTED ✅
 **Description:** Estimates mortality of community-acquired pneumonia to help determine outpatient vs. inpatient treatment.
 
 ### Current Opioid Misuse Measure (COMM) ✅
@@ -631,171 +631,171 @@
 ### ✅ Diabetic Ketoacidosis Mortality Prediction Model (DKA MPM) Score
 **Description:** Predicts in-hospital mortality in DKA.
 
-### DigiFab (Digibind) Dosing for Digoxin Poisoning
+### ✅ DigiFab (Digibind) Dosing for Digoxin Poisoning
 **Description:** Doses DigiFab in patients with confirmed digoxin toxicity or overdose.
 
-### DIPSS/DIPSS Plus (Dynamic International Prognostic Scoring System) for Myelofibrosis
+### ✅ DIPSS/DIPSS Plus (Dynamic International Prognostic Scoring System) for Myelofibrosis
 **Description:** Estimates survival in patients with primary myelofibrosis.
 
-### DIRE Score for Opioid Treatment
+### ✅ DIRE Score for Opioid Treatment
 **Description:** Predicts compliance with opioid treatment for chronic non-cancer pain.
 
-### Direct-Acting Oral Anticoagulants (DOAC) Score - NEW
+### ✅ Direct-Acting Oral Anticoagulants (DOAC) Score - NEW
 **Description:** Predicts bleeding risk in patients with atrial fibrillation on DOAC.
 
-### Disease Activity Score-28 for Rheumatoid Arthritis with CRP (DAS28-CRP)
+### ✅ Disease Activity Score-28 for Rheumatoid Arthritis with CRP (DAS28-CRP)
 **Description:** Describes severity of rheumatoid arthritis using clinical and laboratory data, specifically CRP.
 
-### Disease Activity Score-28 for Rheumatoid Arthritis with ESR (DAS28-ESR)
+### ✅ Disease Activity Score-28 for Rheumatoid Arthritis with ESR (DAS28-ESR)
 **Description:** Describes severity of rheumatoid arthritis using clinical and laboratory data, specifically ESR.
 
-### Disease Steps for Multiple Sclerosis
+### ✅ Disease Steps for Multiple Sclerosis
 **Description:** Assesses MS disease progression based on patient's ambulatory ability.
 
-### Donor Lymphocyte Infusion (DLI) Volume
+### ✅ Donor Lymphocyte Infusion (DLI) Volume
 **Description:** Estimates total blood volume to process by apheresis to produce appropriate DLI dosage.
 
-### DRAGON Score for Post-TPA Stroke Outcome
+### ✅ DRAGON Score for Post-TPA Stroke Outcome
 **Description:** Predicts 3-month outcome in ischemic stroke patients receiving TPA.
 
-### Drug Abuse Screening Test-10 (DAST-10)
+### ✅ Drug Abuse Screening Test-10 (DAST-10)
 **Description:** Assesses illicit drug use in the past year.
 
-### Drug Resistance in Pneumonia (DRIP) Score
+### ✅ Drug Resistance in Pneumonia (DRIP) Score
 **Description:** Predicts risk for community-acquired pneumonia due to drug-resistant pathogens.
 
-### DSM-5 Criteria for Binge Eating Disorder
+### ✅ DSM-5 Criteria for Binge Eating Disorder
 **Description:** Diagnostic criteria for binge eating disorder (BED).
 
-### DSM-5 Criteria for Bipolar Disorder
+### ✅ DSM-5 Criteria for Bipolar Disorder
 **Description:** Diagnostic criteria for bipolar disorder (BD).
 
-### DSM-5 Criteria for Major Depressive Disorder
+### ✅ DSM-5 Criteria for Major Depressive Disorder
 **Description:** Diagnostic criteria for major depressive disorder (MDD).
 
-### DSM-5 Criteria for Posttraumatic Stress Disorder
+### ✅ DSM-5 Criteria for Posttraumatic Stress Disorder
 **Description:** Diagnostic criteria for posttraumatic stress disorder (PTSD).
 
-### du Bois Score for Idiopathic Pulmonary Fibrosis (IPF) Mortality
+### ✅ du Bois Score for Idiopathic Pulmonary Fibrosis (IPF) Mortality
 **Description:** Determines 1-year mortality in IPF patients using PFT and clinical indicators.
 
-### Dual Antiplatelet Therapy (DAPT) Score
+### ✅ Dual Antiplatelet Therapy (DAPT) Score
 **Description:** Predicts which patients will benefit from prolonged DAPT after coronary stent placement.
 
-### Duke Activity Status Index (DASI)
+### ✅ Duke Activity Status Index (DASI)
 **Description:** Estimates functional capacity.
 
-### Duke Criteria for Infective Endocarditis
+### ✅ Duke Criteria for Infective Endocarditis
 **Description:** Diagnostic criteria for endocarditis.
 
-### Duke Treadmill Score
+### ✅ Duke Treadmill Score
 **Description:** Diagnoses and prognoses suspected CAD based on treadmill exercise test.
 
-### Dutch Criteria for Familial Hypercholesterolemia (FH)
+### ✅ Dutch Criteria for Familial Hypercholesterolemia (FH)
 **Description:** Diagnoses familial hypercholesterolemia (FH) based on clinical, genetic, and family history.
 
-### Dutch-English LEMS Tumor Association Prediction (DELTA-P) Score - NEW
+### ✅ Dutch-English LEMS Tumor Association Prediction (DELTA-P) Score - NEW
 **Description:** Predicts small cell lung cancer in patients with Lambert-Eaton myasthenic syndrome.
 
-### Duval/CIBMTR Score for Acute Myelogenous Leukemia (AML) Survival
+### ✅ Duval/CIBMTR Score for Acute Myelogenous Leukemia (AML) Survival
 **Description:** Predicts overall survival in AML patients with relapsed/refractory disease undergoing myeloablative transplant.
 
 ---
 
 ## E
 
-### Eastern Cooperative Oncology Group (ECOG) Performance Status
+### ✅ Eastern Cooperative Oncology Group (ECOG) Performance Status
 **Description:** Determines patient's ability to tolerate therapies in severe illness, specifically for chemotherapy, simpler than Karnofsky Scale.
 
-### Eat, Sleep, Console (ESC)
+### ✅ Eat, Sleep, Console (ESC)
 **Description:** Aids in management of infants with neonatal abstinence syndrome (NAS).
 
-### Eczema Area and Severity Index (EASI)
+### ✅ Eczema Area and Severity Index (EASI)
 **Description:** Stratifies eczema severity.
 
-### ED-SAFE Patient Safety Screener 3 (PSS-3)
+### ✅ ED-SAFE Patient Safety Screener 3 (PSS-3)
 **Description:** Screens for suicidality in emergency patients.
 
-### Edinburgh Postnatal Depression Scale (EPDS)
+### ✅ Edinburgh Postnatal Depression Scale (EPDS)
 **Description:** Screens for depression in the postnatal period.
 
-### Edmonton Obesity Staging System (EOSS)
+### ✅ Edmonton Obesity Staging System (EOSS)
 **Description:** Stratifies the presence and severity of obesity-related health impairments.
 
-### Edmonton Symptom Assessment System-revised (ESAS-r)
+### ✅ Edmonton Symptom Assessment System-revised (ESAS-r)
 **Description:** Assesses symptoms of patients receiving palliative care.
 
-### EGSYS (Evaluation of Guidelines in SYncope Study) Score for Syncope
+### ✅ EGSYS (Evaluation of Guidelines in SYncope Study) Score for Syncope
 **Description:** Predicts likelihood that syncope is of cardiac cause.
 
-### El-Ganzouri Risk Index (EGRI) for Difficult Airway
+### ✅ El-Ganzouri Risk Index (EGRI) for Difficult Airway
 **Description:** Predicts risk of difficult airway.
 
-### Embolic Stroke of Undetermined Source (ESUS) Criteria
+### ✅ Embolic Stroke of Undetermined Source (ESUS) Criteria
 **Description:** Diagnoses embolic stroke of undetermined source.
 
-### Emergency Department Assessment of Chest Pain Score (EDACS)
+### ✅ Emergency Department Assessment of Chest Pain Score (EDACS)
 **Description:** Identifies chest pain patients at low risk for major adverse cardiac event.
 
-### Emergency Department-Initiated Buprenorphine for Opioid Use Disorder (EMBED)
+### ✅ Emergency Department-Initiated Buprenorphine for Opioid Use Disorder (EMBED)
 **Description:** Assesses OUD, opioid withdrawal, and readiness for ED-initiated buprenorphine treatment.
 
-### Emergency Heart Failure Mortality Risk Grade (EHMRG)
+### ✅ Emergency Heart Failure Mortality Risk Grade (EHMRG)
 **Description:** Estimates 7-day mortality of emergency HF patients.
 
-### Endotracheal Tube (ETT) Depth and Tidal Volume Calculator
+### ✅ Endotracheal Tube (ETT) Depth and Tidal Volume Calculator
 **Description:** Estimates optimal ETT placement depth and target tidal volume by height.
 
-### Eosinophilic Esophagitis Endoscopic Reference Score (EREFS) - NEW
+### ✅ Eosinophilic Esophagitis Endoscopic Reference Score (EREFS) - NEW
 **Description:** Assesses severity of endoscopic findings in patients with eosinophilic esophagitis (EoE).
 
-### Estimated Average Glucose (eAG) From HbA1C
+### ✅ Estimated Average Glucose (eAG) From HbA1C
 **Description:** Estimates average glucose level from Hemoglobin A1C value.
 
-### Estimated Ethanol (and Toxic Alcohol) Serum Concentration Based on Ingestion
+### ✅ Estimated Ethanol (and Toxic Alcohol) Serum Concentration Based on Ingestion
 **Description:** Predicts ethanol concentration based on alcohol ingestion.
 
-### Estimated/Expected Peak Expiratory Flow (Peak Flow)
+### ✅ Estimated/Expected Peak Expiratory Flow (Peak Flow)  
 **Description:** Quantifies severity of asthma exacerbation.
 
-### EUROMACS-RHF Score
+### ✅ EUROMACS-RHF Score
 **Description:** Determines risk of right ventricular HF in patients after LVAD implantation.
 
-### European System for Cardiac Operative Risk Evaluation (EuroSCORE) II
+### ✅ European System for Cardiac Operative Risk Evaluation (EuroSCORE) II
 **Description:** Predicts risk of in-hospital mortality after major cardiac surgery.
 
-### EUTOS Score for Chronic Myelogenous Leukemia (CML)
+### EUTOS Score for Chronic Myelogenous Leukemia (CML) ✅
 **Description:** Predicts outcomes after CML treatments, specifically adjusted for tyrosine kinase inhibitor treatments.
 
-### EVendo Score for Esophageal Varices
+### EVendo Score for Esophageal Varices ✅
 **Description:** Predicts presence and size of esophageal varices prior to screening endoscopy.
 
-### Expanded Disability Status Scale (EDSS) / Functional Systems Score (FSS)
+### ✅ Expanded Disability Status Scale (EDSS) / Functional Systems Score (FSS)
 **Description:** Describes severity of disability in MS patients.
 
 ---
 
 ## F
 
-### Fat Free Mass (FFM) - NEW
+### Fat Free Mass (FFM) - NEW ✅
 **Description:** Calculates the predictive value of fat-free mass from body weight and body mass index (BMI).
 
-### Fatty Liver Index
+### ✅ Fatty Liver Index
 **Description:** Diagnoses fatty liver using lab and exam findings.
 
-### Fetal Biophysical Profile (BPP) Score
+### ✅ Fetal Biophysical Profile (BPP) Score
 **Description:** Predicts need for urgent delivery based on sonographic and non-stress test.
 
-### FeverPAIN Score for Strep Pharyngitis
+### ✅ FeverPAIN Score for Strep Pharyngitis
 **Description:** Predicts likelihood of streptococcal pharyngitis.
 
-### Fibrosis-4 (FIB-4) Index for Liver Fibrosis
+### ✅ Fibrosis-4 (FIB-4) Index for Liver Fibrosis
 **Description:** Non-invasive estimate of liver scarring in HCV and HBV patients, to assess need for biopsy.
 
-### Fibrotic NASH Index (FNI)
+### ✅ Fibrotic NASH Index (FNI)
 **Description:** Screens for fibrotic NASH in individuals at high risk for NAFLD.
 
-### FIGO Staging for Ovarian Cancer (2014)
+### ✅ FIGO Staging for Ovarian Cancer (2014)
 **Description:** Stages ovarian, fallopian tube, and peritoneal cancer.
 
 ### FINDRISC (Finnish Diabetes Risk Score)
@@ -1481,76 +1481,76 @@
 
 ## N
 
-### NAFLD (Non-Alcoholic Fatty Liver Disease) Activity Score
+### ✅ NAFLD (Non-Alcoholic Fatty Liver Disease) Activity Score
 **Description:** Diagnoses steatohepatitis, based on histology, in NAFLD patients.
 
-### NAFLD (Non-Alcoholic Fatty Liver Disease) Fibrosis Score
+### ✅ NAFLD (Non-Alcoholic Fatty Liver Disease) Fibrosis Score
 **Description:** Estimates amount of scarring in the liver based on various lab tests.
 
-### Naloxone Drip Dosing
+### ✅ Naloxone Drip Dosing
 **Description:** Doses naloxone for acute opioid overdose.
 
-### National Comprehensive Cancer Network International Prognostic Index (NCCN-IPI)
+### ✅ National Comprehensive Cancer Network International Prognostic Index (NCCN-IPI)
 **Description:** Predicts survival in diffuse large B-cell lymphoma (DLBCL) patients.
 
-### National Early Warning Score (NEWS)
+### ✅ National Early Warning Score (NEWS)
 **Description:** Determines the degree of illness of a patient and promotes critical care intervention.
 
-### National Early Warning Score (NEWS) 2
+### ✅ National Early Warning Score (NEWS) 2
 **Description:** Determines the degree of illness of a patient and promotes critical care intervention (recommended by NHS over original NEWS).
 
-### Neck Disability Index (NDI)
+### ✅ Neck Disability Index (NDI)
 **Description:** Assesses disability in patients with neck pain.
 
-### NEDOCS Score for Emergency Department Overcrowding
+### ✅ NEDOCS Score for Emergency Department Overcrowding
 **Description:** Estimates severity of overcrowding in emergency departments.
 
-### Neonatal Early-Onset Sepsis Calculator
+### ✅ Neonatal Early-Onset Sepsis Calculator
 **Description:** Calculates risk of early-onset neonatal sepsis based on maternal intrapartum risk factors.
 
-### Neonatal Partial Exchange for Polycythemia
+### ✅ Neonatal Partial Exchange for Polycythemia
 **Description:** Estimates total blood volume to remove and crystalloid volume to infuse in neonatal polycythemia.
 
-### Neuropathic Pain Scale (NPS)
+### ✅ Neuropathic Pain Scale (NPS)
 **Description:** Quantifies severity of neuropathic pain.
 
-### Neutrophil-Lymphocyte Ratio (NLR) Calculator
+### ✅ Neutrophil-Lymphocyte Ratio (NLR) Calculator
 **Description:** Calculates neutrophil-lymphocyte ratio.
 
-### New Orleans/Charity Head Trauma/Injury Rule
+### ✅ New Orleans/Charity Head Trauma/Injury Rule
 **Description:** Criteria for which patients likely do not require imaging after head trauma.
 
-### New York Heart Association (NYHA) Functional Classification for Heart Failure
+### ✅ New York Heart Association (NYHA) Functional Classification for Heart Failure
 **Description:** Stratifies heart failure severity by symptoms.
 
-### Newsom Score for Non-traumatic Chest Pain
+### ✅ Newsom Score for Non-traumatic Chest Pain
 **Description:** Rules out need for chest X-ray in patients with chest pain (non-traumatic).
 
-### NEXUS Chest CT Decision Instrument for CT Imaging
+### ✅ NEXUS Chest CT Decision Instrument for CT Imaging
 **Description:** Identifies blunt trauma patients with clinically significant chest injuries.
 
-### NEXUS Chest Decision Instrument for Blunt Chest Trauma
+### ✅ NEXUS Chest Decision Instrument for Blunt Chest Trauma
 **Description:** Determines need for chest imaging in blunt trauma patients.
 
-### NEXUS Criteria for C-Spine Imaging
+### ✅ NEXUS Criteria for C-Spine Imaging
 **Description:** Clinically clears cervical spine fracture patients, without imaging.
 
-### Osteoporosis Risk Assessment Instrument (ORAI)
+### ✅ Osteoporosis Risk Assessment Instrument (ORAI)
 **Description:** Identifies women at risk for osteoporosis and recommends bone densitometry.
 
-### Osteoporosis Self Assessment Tool (OST)
+### ✅ Osteoporosis Self Assessment Tool (OST)
 **Description:** Classifies osteoporosis risk in women and men.
 
-### Ottawa Ankle Rule
+### ✅ Ottawa Ankle Rule
 **Description:** Rules out clinically significant foot and ankle fractures to reduce radiography use.
 
-### Ottawa COPD Risk Scale
+### ✅ Ottawa COPD Risk Scale
 **Description:** Predicts 30-day mortality or serious adverse events (MI, intubation, etc) in ED COPD patients.
 
-### Ottawa Heart Failure Risk Scale (OHFRS)
+### ✅ Ottawa Heart Failure Risk Scale (OHFRS)
 **Description:** Identifies ED heart failure patients at high risk for serious adverse events.
 
-### Ottawa Knee Rule
+### ✅ Ottawa Knee Rule
 **Description:** Describes criteria for low-risk knee trauma patients, not warranting imaging.
 
 ### Ottawa Subarachnoid Hemorrhage (SAH) Rule for Headache Evaluation

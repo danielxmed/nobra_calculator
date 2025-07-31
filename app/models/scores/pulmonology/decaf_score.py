@@ -138,7 +138,7 @@ class DecafScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "emrcd_dyspnea": "too_dyspneic_independent",
                 "eosinopenia": "no",
@@ -279,7 +279,7 @@ class DecafScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 2,
                 "unit": "DECAF score",

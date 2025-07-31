@@ -1,0 +1,81 @@
+{
+  "id": "neonatal_partial_exchange_polycythemia",
+  "title": "Neonatal Partial Exchange for Polycythemia",
+  "description": "Estimates total blood volume to remove and crystalloid volume to infuse in neonatal polycythemia",
+  "category": "pediatrics",
+  "version": "2014",
+  "parameters": [
+    {
+      "name": "weight",
+      "type": "float",
+      "required": true,
+      "description": "Patient weight",
+      "validation": {
+        "min": 0.5,
+        "max": 10
+      },
+      "unit": "kg"
+    },
+    {
+      "name": "gestational_age",
+      "type": "string",
+      "required": true,
+      "description": "Gestational age at birth",
+      "options": ["preterm", "term"],
+      "validation": {
+        "enum": ["preterm", "term"]
+      }
+    },
+    {
+      "name": "initial_hematocrit",
+      "type": "float",
+      "required": true,
+      "description": "Initial hematocrit percentage",
+      "validation": {
+        "min": 0,
+        "max": 100
+      },
+      "unit": "%"
+    },
+    {
+      "name": "goal_hematocrit",
+      "type": "float",
+      "required": true,
+      "description": "Goal hematocrit percentage (recommended: 55-60%)",
+      "validation": {
+        "min": 40,
+        "max": 80
+      },
+      "unit": "%"
+    }
+  ],
+  "result": {
+    "name": "exchange_volume",
+    "type": "float",
+    "unit": "mL",
+    "description": "Volume of blood to remove and crystalloid to infuse"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 99999,
+        "stage": "Exchange Volume",
+        "description": "Calculated exchange volume",
+        "interpretation": "This is the volume of whole blood to withdraw and the volume of crystalloid (normal saline) to infuse simultaneously. Crystalloid replacement is used to avoid necrotizing enterocolitis (NEC). The procedure should be performed by experienced clinical team members following institutional policies."
+      }
+    ]
+  },
+  "references": [
+    "Black VD, Lubchenco LO, Koops BL, Poland RL, Powell DP. Neonatal hyperviscosity: randomized study of effect of partial plasma exchange transfusion on long-term outcome. Pediatrics. 1985 Aug;76(2):225-31.",
+    "Roback JD, editor. Technical Manual. 18th ed. Bethesda, MD: American Association of Blood Banks (AABB); 2014."
+  ],
+  "formula": "Volume of replacement fluid = [blood volume (mL) × (initial Hct - goal Hct)] / initial Hct",
+  "notes": [
+    "Polycythemia is defined as a central venous hematocrit level greater than 65%",
+    "Consider partial exchange transfusion in infants with Hct >65% who are symptomatic",
+    "Consider partial exchange transfusion in asymptomatic infants with Hct >75%",
+    "Blood volume estimates: Preterm infants = 100 mL/kg, Term infants = 85 mL/kg",
+    "Normal saline has been shown to be as effective as albumin for the exchange fluid"
+  ]
+}

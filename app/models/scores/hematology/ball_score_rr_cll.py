@@ -23,7 +23,7 @@ Beta-2-microglobulin, Anemia, LDH, and Last therapy. The score stratifies patien
 into three risk groups with different 24-month overall survival rates.
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Literal
 
 
@@ -94,20 +94,20 @@ class BallScoreRrCllRequest(BaseModel):
         le=600
     )
     
-    @validator('beta2_microglobulin')
+    @field_validator('beta2_microglobulin')
     def validate_beta2_microglobulin(cls, v):
         if v > 20:
             raise ValueError("Beta-2-microglobulin >20 mg/dL is extremely elevated. Please verify the value.")
         return v
     
-    @validator('ldh')
+    @field_validator('ldh')
     def validate_ldh(cls, v, values):
         if 'ldh_upper_limit' in values and v > values['ldh_upper_limit'] * 10:
             raise ValueError("LDH is >10x upper limit of normal. Please verify the value.")
         return v
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "beta2_microglobulin": 4.5,
                 "hemoglobin": 11.5,
@@ -162,7 +162,7 @@ class BallScoreRrCllResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 2,
                 "unit": "points",

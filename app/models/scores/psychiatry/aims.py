@@ -127,7 +127,7 @@ class AimsRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "facial_muscles": 2,
                 "lips_perioral": 1,
@@ -196,7 +196,7 @@ class AimsResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 12,
                 "unit": "points",

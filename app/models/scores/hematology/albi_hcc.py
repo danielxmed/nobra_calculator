@@ -89,7 +89,7 @@ class AlbiHccRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "albumin": 3.5,
                 "bilirubin": 25.0
@@ -169,7 +169,7 @@ class AlbiHccResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": -2.85,
                 "unit": "score", 

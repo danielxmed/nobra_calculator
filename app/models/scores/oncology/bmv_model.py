@@ -21,7 +21,7 @@ It is defined as the number of new brain metastases divided by the time interval
 treatment decisions between localized therapy (SRS) and whole brain radiation therapy.
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Union
 
 
@@ -68,7 +68,7 @@ class BmvModelRequest(BaseModel):
         example=0.5
     )
     
-    @validator('time_interval')
+    @field_validator('time_interval')
     def validate_time_interval(cls, v):
         """Ensures time interval is reasonable"""
         if v < 0.01:
@@ -76,7 +76,7 @@ class BmvModelRequest(BaseModel):
         return v
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "new_metastases": 6,
                 "time_interval": 0.5
@@ -134,7 +134,7 @@ class BmvModelResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 12.0,
                 "unit": "metastases/year",

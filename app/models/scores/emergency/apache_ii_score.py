@@ -211,7 +211,7 @@ class ApacheIiScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 65,
                 "temperature": 38.5,
@@ -291,7 +291,7 @@ class ApacheIiScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 18,
                 "unit": "points",

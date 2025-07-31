@@ -81,7 +81,7 @@ class CageQuestionsRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "cut_down": "no",
                 "annoyed": "no",
@@ -164,7 +164,7 @@ class CageQuestionsResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 1,
                 "unit": "points",

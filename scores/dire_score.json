@@ -1,0 +1,118 @@
+{
+  "id": "dire_score",
+  "title": "DIRE Score for Opioid Treatment",
+  "description": "Predicts compliance with opioid treatment for chronic non-cancer pain",
+  "category": "psychiatry",
+  "version": "2006",
+  "parameters": [
+    {
+      "name": "diagnosis",
+      "type": "integer",
+      "required": true,
+      "description": "Diagnosis category based on condition severity and objective findings",
+      "options": [1, 2, 3],
+      "validation": {
+        "min": 1,
+        "max": 3,
+        "enum": [1, 2, 3]
+      }
+    },
+    {
+      "name": "intractability",
+      "type": "integer",
+      "required": true,
+      "description": "Treatment response and patient engagement level",
+      "options": [1, 2, 3],
+      "validation": {
+        "min": 1,
+        "max": 3,
+        "enum": [1, 2, 3]
+      }
+    },
+    {
+      "name": "psychological_risk",
+      "type": "integer",
+      "required": true,
+      "description": "Psychological risk factors and mental health status",
+      "options": [1, 2, 3],
+      "validation": {
+        "min": 1,
+        "max": 3,
+        "enum": [1, 2, 3]
+      }
+    },
+    {
+      "name": "chemical_health_risk",
+      "type": "integer",
+      "required": true,
+      "description": "Chemical dependency and substance use history",
+      "options": [1, 2, 3],
+      "validation": {
+        "min": 1,
+        "max": 3,
+        "enum": [1, 2, 3]
+      }
+    },
+    {
+      "name": "reliability_risk",
+      "type": "integer",
+      "required": true,
+      "description": "Reliability with medications and appointments",
+      "options": [1, 2, 3],
+      "validation": {
+        "min": 1,
+        "max": 3,
+        "enum": [1, 2, 3]
+      }
+    },
+    {
+      "name": "social_support_risk",
+      "type": "integer",
+      "required": true,
+      "description": "Social support system and life stability",
+      "options": [1, 2, 3],
+      "validation": {
+        "min": 1,
+        "max": 3,
+        "enum": [1, 2, 3]
+      }
+    }
+  ],
+  "result": {
+    "name": "dire_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total DIRE score (range 7-21)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 7,
+        "max": 13,
+        "stage": "Not suitable",
+        "description": "Not a suitable candidate",
+        "interpretation": "Not a suitable candidate for long-term opioid analgesia. Consider alternative pain management strategies, address psychological/social issues, and consider addiction medicine consultation if substance use concerns."
+      },
+      {
+        "min": 14,
+        "max": 21,
+        "stage": "Good candidate",
+        "description": "Good candidate",
+        "interpretation": "Good candidate for long-term opioid analgesia. May proceed with opioid therapy with appropriate monitoring, treatment agreement, and regular follow-up."
+      }
+    ]
+  },
+  "references": [
+    "Belgrade MJ, Schamber CD, Lindgren BR. The DIRE score: predicting outcomes of opioid prescribing for chronic pain. J Pain. 2006;7(9):671-81.",
+    "Chou R, Fanciullo GJ, Fine PG, et al. Clinical guidelines for the use of chronic opioid therapy in chronic noncancer pain. J Pain. 2009;10(2):113-30."
+  ],
+  "formula": "DIRE Score = Diagnosis + Intractability + Psychological Risk + Chemical Health Risk + Reliability Risk + Social Support Risk. Each parameter scored 1-3 points. Total range: 7-21 points.",
+  "notes": [
+    "DIRE stands for: Diagnosis, Intractability, Risk, and Efficacy",
+    "Each parameter is scored from 1 (unfavorable) to 3 (favorable)",
+    "No prospective external validation exists for this tool",
+    "Should be used alongside clinical judgment and other risk assessment tools",
+    "American Academy of Pain Medicine has recommended it as a potential tool to assess abuse risk",
+    "Higher scores indicate better suitability for opioid therapy"
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "id": "duke_treadmill_score",
+  "title": "Duke Treadmill Score",
+  "description": "Diagnoses and prognoses suspected coronary artery disease (CAD) based on treadmill exercise test. Uses exercise time, ST deviation, and angina to predict prognosis and guide further treatment decisions.",
+  "category": "cardiology",
+  "version": "1987",
+  "parameters": [
+    {
+      "name": "exercise_time",
+      "type": "float",
+      "required": true,
+      "description": "Exercise time in minutes using standard Bruce protocol",
+      "validation": {
+        "min": 0,
+        "max": 30
+      },
+      "unit": "minutes"
+    },
+    {
+      "name": "st_deviation",
+      "type": "float",
+      "required": true,
+      "description": "Maximum ST change (elevation or depression) in mm in any lead except aVR",
+      "validation": {
+        "min": -10,
+        "max": 10
+      },
+      "unit": "mm"
+    },
+    {
+      "name": "angina_index",
+      "type": "integer",
+      "required": true,
+      "description": "Angina during exercise: 0 = none, 1 = non-limiting, 2 = exercise-limiting",
+      "options": [0, 1, 2],
+      "validation": {
+        "min": 0,
+        "max": 2
+      }
+    }
+  ],
+  "result": {
+    "name": "duke_treadmill_score",
+    "type": "float",
+    "unit": "points",
+    "description": "Duke Treadmill Score for CAD risk stratification"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": -25,
+        "max": -11,
+        "stage": "High Risk",
+        "description": "High risk for CAD",
+        "interpretation": "High risk for coronary artery disease with 5-year survival of 65%. Strong indication for coronary angiography. 74% of patients have 3-vessel or left main coronary disease. Consider cardiology consultation and invasive evaluation."
+      },
+      {
+        "min": -10,
+        "max": 4,
+        "stage": "Intermediate Risk",
+        "description": "Intermediate risk for CAD",
+        "interpretation": "Intermediate risk for coronary artery disease with 5-year survival of 90%. Consider further non-invasive testing (stress imaging, coronary CT angiography) or cardiology consultation based on clinical context and risk factors."
+      },
+      {
+        "min": 5,
+        "max": 15,
+        "stage": "Low Risk",
+        "description": "Low risk for CAD",
+        "interpretation": "Low risk for coronary artery disease with 5-year survival of 97%. Most patients have no coronary disease or single-vessel disease. Conservative management appropriate with medical therapy and risk factor modification."
+      }
+    ]
+  },
+  "references": [
+    "Mark DB, Shaw L, Harrell FE Jr, Hlatky MA, Lee KL, Bengtson JR, et al. Prognostic value of a treadmill exercise score in outpatients with suspected coronary artery disease. N Engl J Med. 1991;325(12):849-53. doi: 10.1056/NEJM199109193251204.",
+    "Mark DB, Hlatky MA, Harrell FE Jr, Lee KL, Califf RM, Pryor DB. Exercise treadmill score for predicting prognosis in coronary artery disease. Ann Intern Med. 1987;106(6):793-800. doi: 10.7326/0003-4819-106-6-793.",
+    "Shaw LJ, Peterson ED, Shaw LK, Kesler KL, DeLong ER, Harrell FE Jr, et al. Use of a prognostic treadmill score in identifying diagnostic coronary disease subgroups. Circulation. 1998;98(16):1622-30. doi: 10.1161/01.cir.98.16.1622."
+  ],
+  "formula": "Duke Treadmill Score = Exercise time (minutes) - (5 × ST deviation in mm) - (4 × angina index). Angina index: 0 = none, 1 = non-limiting, 2 = exercise-limiting. Range: -25 (highest risk) to +15 (lowest risk).",
+  "notes": [
+    "Developed in 1987 and validated for prognostic assessment in suspected coronary artery disease.",
+    "Based on standard Bruce protocol exercise testing with 12-lead ECG monitoring.",
+    "Score ranges from -25 (highest risk) to +15 (lowest risk) with typical observed values.",
+    "High-risk patients (score < -11) have 74% probability of 3-vessel or left main coronary disease.",
+    "Low-risk patients (score > 5) typically have no coronary disease or single-vessel disease.",
+    "Exercise time component reflects functional capacity and cardiopulmonary fitness.",
+    "ST deviation measured as maximum change in any lead except aVR during exercise or recovery.",
+    "Angina index captures symptom severity and exercise limitation during testing.",
+    "Widely used in clinical practice for risk stratification and treatment planning.",
+    "Results should be interpreted in conjunction with clinical data and other risk factors.",
+    "May not be reliable in presence of significant valvular disease, previous cardiac surgery, or uninterpretable ECG.",
+    "1997 ACC/AHA guidelines recommend coronary angiography for high-risk patients.",
+    "Cost-effective tool for initial risk assessment in patients with suspected CAD.",
+    "Can guide decisions regarding need for further testing or invasive procedures."
+  ]
+}

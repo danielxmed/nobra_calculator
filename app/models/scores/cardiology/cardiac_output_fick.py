@@ -130,7 +130,7 @@ class CardiacOutputFickRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "height_cm": 175.0,
                 "weight_kg": 70.0,
@@ -238,7 +238,7 @@ class CardiacOutputFickResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "cardiac_output": 5.25,

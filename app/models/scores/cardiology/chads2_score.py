@@ -135,7 +135,7 @@ class Chads2ScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "congestive_heart_failure": "no",
                 "hypertension": "yes",
@@ -254,7 +254,7 @@ class Chads2ScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "total_score": 2,

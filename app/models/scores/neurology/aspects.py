@@ -166,7 +166,7 @@ class AspectsRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "caudate": "normal",
                 "lentiform": "normal", 
@@ -290,7 +290,7 @@ class AspectsResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 7,
                 "unit": "points",

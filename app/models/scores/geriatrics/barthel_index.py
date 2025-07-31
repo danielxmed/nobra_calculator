@@ -110,7 +110,7 @@ class BarthelIndexRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "feeding": "independent",
                 "bathing": "independent",
@@ -173,7 +173,7 @@ class BarthelIndexResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 75,
                 "unit": "points",

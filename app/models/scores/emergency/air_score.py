@@ -122,7 +122,7 @@ class AirScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "vomiting": "no",
                 "rif_pain": "yes",
@@ -197,7 +197,7 @@ class AirScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 6,
                 "unit": "points",

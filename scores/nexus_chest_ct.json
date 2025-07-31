@@ -1,0 +1,115 @@
+{
+  "id": "nexus_chest_ct",
+  "title": "NEXUS Chest CT Decision Instrument for CT Imaging",
+  "description": "Identifies blunt trauma patients with clinically significant chest injuries. The NEXUS Chest CT-All version uses 7 criteria to determine which patients require CT chest imaging after blunt trauma.",
+  "category": "emergency",
+  "version": "2015",
+  "parameters": [
+    {
+      "name": "abnormal_chest_xray",
+      "type": "string",
+      "required": true,
+      "description": "Abnormal chest X-ray showing any thoracic injury or widened mediastinum",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "distracting_injury",
+      "type": "string",
+      "required": true,
+      "description": "Presence of a distracting painful injury",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "chest_wall_tenderness",
+      "type": "string",
+      "required": true,
+      "description": "Tenderness to palpation of the chest wall",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "sternal_tenderness",
+      "type": "string",
+      "required": true,
+      "description": "Tenderness to palpation of the sternum",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "thoracic_spine_tenderness",
+      "type": "string",
+      "required": true,
+      "description": "Tenderness to palpation of the thoracic spine",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "scapular_tenderness",
+      "type": "string",
+      "required": true,
+      "description": "Tenderness to palpation of the scapula",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "rapid_deceleration",
+      "type": "string",
+      "required": true,
+      "description": "Rapid deceleration mechanism: fall from >20 feet (>6 meters) or MVA >40 mph (>64 km/hour) with sudden deceleration",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "nexus_chest_ct_score",
+    "type": "integer",
+    "unit": "criteria present",
+    "description": "Number of positive NEXUS Chest CT criteria"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low risk",
+        "description": "CT chest not indicated",
+        "interpretation": "No NEXUS Chest CT criteria are present. Major or minor thoracic injury can be excluded without CT chest imaging. The negative predictive value is 98.7% for all thoracic injuries."
+      },
+      {
+        "min": 1,
+        "max": 7,
+        "stage": "CT indicated",
+        "description": "Consider CT chest",
+        "interpretation": "One or more NEXUS Chest CT criteria are present. Major or minor thoracic injury cannot be excluded. Further workup is indicated, potentially including CT chest. This rule is 99.0% sensitive for all thoracic injuries and 100% sensitive for aortic and great vessel injuries."
+      }
+    ]
+  },
+  "references": [
+    "Rodriguez RM, Langdorf MI, Nishijima D, Baumann BM, Hendey GW, Medak AJ, et al. Derivation and validation of two decision instruments for selective chest CT in blunt trauma: a multicenter prospective observational study (NEXUS Chest CT). PLoS Med. 2015 Oct 6;12(10):e1001883. doi: 10.1371/journal.pmed.1001883.",
+    "Rodriguez RM, Hendey GW, Mower W, Kea B, Fortman J, Merchant G, et al. Derivation of a decision instrument for selective chest radiography in blunt trauma. J Trauma. 2011 Sep;71(3):549-53. doi: 10.1097/TA.0b013e3181f2ac9d."
+  ],
+  "formula": "NEXUS Chest CT Score = Number of positive criteria (0-7)",
+  "notes": [
+    "Applies to awake, non-intubated, hemodynamically stable blunt trauma patients ≥15 years old",
+    "Not for critically ill or poly-trauma patients requiring immediate CT",
+    "This is the NEXUS CT-All version which maximizes sensitivity for both major and minor injuries",
+    "100% sensitive for aortic and great vessel injuries",
+    "Should augment, not replace clinical judgment"
+  ]
+}

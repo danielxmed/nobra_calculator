@@ -181,7 +181,7 @@ class AcrEularGoutRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "entry_criterion": "yes",
                 "msu_crystals_present": "not_tested",
@@ -252,7 +252,7 @@ class AcrEularGoutResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "Score 7/23 points",
                 "unit": "points",

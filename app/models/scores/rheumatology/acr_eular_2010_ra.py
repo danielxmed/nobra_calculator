@@ -121,7 +121,7 @@ class AcrEular2010RaRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "joint_involvement": "1_to_3_small",
                 "rf_status": "negative",
@@ -179,7 +179,7 @@ class AcrEular2010RaResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 6,
                 "unit": "points",

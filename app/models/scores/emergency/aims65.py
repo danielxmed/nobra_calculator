@@ -127,7 +127,7 @@ class Aims65Request(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "albumin": 2.5,
                 "inr": 1.8,
@@ -232,7 +232,7 @@ class Aims65Response(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 4,
                 "unit": "points",

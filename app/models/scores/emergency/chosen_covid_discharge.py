@@ -260,7 +260,7 @@ class ChosenCovidDischargeRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 45,
                 "oxygen_saturation": 98,
@@ -493,7 +493,7 @@ class ChosenCovidDischargeResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 55,
                 "unit": "points",

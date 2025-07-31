@@ -20,7 +20,7 @@ functional performance applicable to Alzheimer disease and related dementias. It
 provides both a global score (0-3) and a sum of boxes score (0-18).
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Literal, Dict, Union
 
 
@@ -123,7 +123,7 @@ class ClinicalDementiaRatingRequest(BaseModel):
         example="0"
     )
     
-    @validator('personal_care')
+    @field_validator('personal_care')
     def validate_personal_care(cls, v):
         """Ensure personal care doesn't have 0.5 value"""
         if v == "0.5":
@@ -131,7 +131,7 @@ class ClinicalDementiaRatingRequest(BaseModel):
         return v
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "memory": "0.5",
                 "orientation": "0.5",
@@ -199,7 +199,7 @@ class ClinicalDementiaRatingResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "global_cdr": 0.5,

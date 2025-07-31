@@ -1,0 +1,114 @@
+{
+  "id": "ost",
+  "title": "Osteoporosis Self Assessment Tool (OST)",
+  "description": "Predicts risk of osteoporosis based on age and body weight. Simple screening tool to identify individuals who may benefit from further bone density testing with DXA scanning.",
+  "category": "rheumatology",
+  "version": "2001",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 40,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "weight",
+      "type": "float",
+      "required": true,
+      "description": "Body weight in kilograms",
+      "validation": {
+        "min": 20,
+        "max": 200
+      },
+      "unit": "kg"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient biological sex",
+      "options": ["female", "male"],
+      "validation": {
+        "enum": ["female", "male"]
+      }
+    }
+  ],
+  "result": {
+    "name": "ost_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "OST score (truncated to integer)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "sex": "female",
+        "min": 2,
+        "max": 20,
+        "stage": "Low risk",
+        "description": "Low risk of osteoporosis",
+        "interpretation": "This patient scores above 1 on the OST scale for women, indicating low risk of osteoporosis. Routine screening may be appropriate based on other risk factors and clinical guidelines."
+      },
+      {
+        "sex": "female",
+        "min": -3,
+        "max": 1,
+        "stage": "Intermediate risk",
+        "description": "Intermediate risk of osteoporosis",
+        "interpretation": "This patient scores between -3 and 1 on the OST scale for women, indicating intermediate risk of osteoporosis. Consider bone density testing (DXA scan) based on clinical judgment and other risk factors."
+      },
+      {
+        "sex": "female",
+        "min": -20,
+        "max": -4,
+        "stage": "High risk",
+        "description": "High risk of osteoporosis",
+        "interpretation": "This patient scores below -3 on the OST scale for women, indicating high risk of osteoporosis. Bone density testing (DXA scan) is strongly recommended. The original validation study showed 91% sensitivity and 45% specificity for identifying osteoporosis."
+      },
+      {
+        "sex": "male",
+        "min": 4,
+        "max": 20,
+        "stage": "Low risk",
+        "description": "Low risk of osteoporosis",
+        "interpretation": "This patient scores above 3 on the OST scale for men, indicating low risk of osteoporosis. Routine screening may be appropriate based on other risk factors and clinical guidelines."
+      },
+      {
+        "sex": "male",
+        "min": -1,
+        "max": 3,
+        "stage": "Intermediate risk",
+        "description": "Intermediate risk of osteoporosis",
+        "interpretation": "This patient scores between -1 and 3 on the OST scale for men, indicating intermediate risk of osteoporosis. Consider bone density testing (DXA scan) based on clinical judgment and other risk factors."
+      },
+      {
+        "sex": "male",
+        "min": -20,
+        "max": -2,
+        "stage": "High risk",
+        "description": "High risk of osteoporosis",
+        "interpretation": "This patient scores below -1 on the OST scale for men, indicating high risk of osteoporosis. Bone density testing (DXA scan) is strongly recommended. The validation study showed 93% sensitivity and 66% specificity for identifying osteoporosis in men."
+      }
+    ]
+  },
+  "references": [
+    "Koh LK, Sedrine WB, Torralba TP, Kung A, Fujiwara S, Chan SP, et al. A simple tool to identify asian women at increased risk of osteoporosis. Osteoporos Int. 2001;12(8):699-705. doi: 10.1007/s001980170070.",
+    "Adler RA, Tran MT, Petkov VI. Performance of the Osteoporosis Self-assessment Screening Tool for osteoporosis in American men. Mayo Clin Proc. 2003 Jun;78(6):723-7. doi: 10.4065/78.6.723.",
+    "Richy F, Gourlay M, Ross PD, Sen SS, Radican L, De Ceulaer F, et al. Validation and comparative evaluation of the osteoporosis self-assessment tool (OST) in a Caucasian population from Belgium. QJM. 2004 Jan;97(1):39-46. doi: 10.1093/qjmed/hch002.",
+    "Richards JS, Lazzari AA, Teves Qualler DA, Desale S, Howard R, Kerr GS. Validation of the osteoporosis self-assessment tool in US male veterans. J Clin Densitom. 2014 Jan-Mar;17(1):32-7. doi: 10.1016/j.jocd.2013.02.004."
+  ],
+  "formula": "OST = (weight in kg - age in years) × 0.2, truncated to integer",
+  "notes": [
+    "Validated for use in men and women aged 40 years and older",
+    "Not a diagnostic tool - intended to identify who may benefit from DXA scanning",
+    "Different risk thresholds for men and women",
+    "Comparable performance to other osteoporosis risk assessment tools",
+    "Does not account for all osteoporosis risk factors",
+    "Should not replace clinical judgment"
+  ]
+}

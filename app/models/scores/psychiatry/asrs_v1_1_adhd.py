@@ -168,7 +168,7 @@ class AsrsV11AdhdRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "q1_wrapping_details": "sometimes",
                 "q2_organization": "often",
@@ -270,7 +270,7 @@ class AsrsV11AdhdResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "Part A: 4/6 | Total: 42/72",
                 "unit": "points",

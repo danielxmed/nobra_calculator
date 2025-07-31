@@ -45,7 +45,7 @@ class Abc2IchVolumeRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "hemorrhage_shape": "round_ellipsoid",
                 "length_a": 3.2,
@@ -85,7 +85,7 @@ class Abc2IchVolumeResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 20.16,
                 "unit": "cm³",

@@ -1,0 +1,72 @@
+{
+  "id": "nyha_functional_classification",
+  "title": "New York Heart Association (NYHA) Functional Classification for Heart Failure",
+  "description": "Stratifies severity of heart failure by symptoms. Provides a simple way of classifying the extent of heart failure based on physical activity limitations and symptoms.",
+  "category": "cardiology",
+  "version": "9th edition",
+  "parameters": [
+    {
+      "name": "physical_ability",
+      "type": "string",
+      "required": true,
+      "description": "Patient's physical ability and symptom level",
+      "options": [
+        "Class I - No limitation of physical activity",
+        "Class II - Slight limitation of physical activity",
+        "Class III - Marked limitation of physical activity",
+        "Class IV - Unable to carry on any physical activity without discomfort"
+      ],
+      "validation": {
+        "enum": [
+          "Class I - No limitation of physical activity",
+          "Class II - Slight limitation of physical activity",
+          "Class III - Marked limitation of physical activity",
+          "Class IV - Unable to carry on any physical activity without discomfort"
+        ]
+      }
+    }
+  ],
+  "result": {
+    "name": "nyha_class",
+    "type": "string",
+    "unit": "",
+    "description": "NYHA functional classification (Class I-IV)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "classification": "Class I",
+        "description": "No limitation of physical activity",
+        "interpretation": "Ordinary physical activity does not cause undue fatigue, palpitation, or dyspnea. Patients can perform activities requiring ≥7 METs."
+      },
+      {
+        "classification": "Class II",
+        "description": "Slight limitation of physical activity",
+        "interpretation": "Comfortable at rest. Ordinary physical activity results in fatigue, palpitation, or dyspnea. Patients can perform activities requiring ≥5 METs but <7 METs."
+      },
+      {
+        "classification": "Class III",
+        "description": "Marked limitation of physical activity",
+        "interpretation": "Comfortable at rest. Less than ordinary activity causes fatigue, palpitation, or dyspnea. Patients can perform activities requiring ≥2 METs but <5 METs."
+      },
+      {
+        "classification": "Class IV",
+        "description": "Unable to carry on any physical activity without discomfort",
+        "interpretation": "Symptoms of heart failure at rest. If any physical activity is undertaken, discomfort increases. Patients cannot or should not perform activities requiring >2 METs."
+      }
+    ]
+  },
+  "references": [
+    "Dolgin M, Association NYH, Fox AC, Gorlin R, Levin RI, New York Heart Association. Criteria Committee. Nomenclature and criteria for diagnosis of diseases of the heart and great vessels. 9th ed. Boston, MA: Lippincott Williams and Wilkins; March 1, 1994.",
+    "Goldman L, Hashimoto B, Cook EF, Loscalzo A. Comparative reproducibility and validity of systems for assessing cardiovascular functional class: advantages of a new specific activity scale. Circulation. 1981 Dec;64(6):1227-34.",
+    "Raphael C, Briscoe C, Davies J, Ian Whinnett Z, Manisty C, Sutton R, et al. Limitations of the New York Heart Association functional classification system and self-reported walking distances in chronic heart failure. Heart. 2007 Apr;93(4):476-82."
+  ],
+  "formula": "Direct classification based on symptom assessment",
+  "notes": [
+    "NYHA classification is based on functional capacity and symptoms",
+    "Often criticized for being subjective and having limited reproducibility",
+    "Not necessarily linked directly to treatment strategy",
+    "MET = Metabolic Equivalent of Task",
+    "Should be assessed at each clinical encounter for patients with heart failure"
+  ]
+}

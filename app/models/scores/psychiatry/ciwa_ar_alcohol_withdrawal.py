@@ -449,7 +449,7 @@ class CiwaArAlcoholWithdrawalRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "nausea_vomiting": 2,
                 "tremor": 3,
@@ -699,7 +699,7 @@ class CiwaArAlcoholWithdrawalResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 19,
                 "unit": "points",

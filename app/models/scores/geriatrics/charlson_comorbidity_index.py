@@ -325,7 +325,7 @@ class CharlsonComorbidityIndexRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 65,
                 "myocardial_infarction": "no",
@@ -513,7 +513,7 @@ class CharlsonComorbidityIndexResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "total_score": 5,

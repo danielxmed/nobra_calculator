@@ -146,7 +146,7 @@ class CargTtRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "sex": "female",
                 "age_72_or_older": "yes",
@@ -228,7 +228,7 @@ class CargTtResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 4,
                 "unit": "points",

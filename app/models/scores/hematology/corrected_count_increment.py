@@ -380,7 +380,7 @@ class CorrectedCountIncrementRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "pre_transfusion_count": 25000,
                 "post_transfusion_count": 75000,
@@ -645,7 +645,7 @@ class CorrectedCountIncrementResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 19300.0,
                 "unit": "platelets/μL/m²/(×10¹¹ platelets)",

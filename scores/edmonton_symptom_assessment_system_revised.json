@@ -1,0 +1,163 @@
+{
+  "id": "edmonton_symptom_assessment_system_revised",
+  "title": "Edmonton Symptom Assessment System-revised (ESAS-r)",
+  "description": "Assesses symptoms of patients receiving palliative care through a standardized 9-item self-report symptom intensity tool with improved clarity and definitions.",
+  "category": "geriatrics",
+  "version": "2011",
+  "parameters": [
+    {
+      "name": "pain",
+      "type": "integer",
+      "required": true,
+      "description": "Pain intensity right now",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points"
+    },
+    {
+      "name": "tiredness",
+      "type": "integer",
+      "required": true,
+      "description": "Tiredness (weariness, weakness, or lack of energy) right now",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points"
+    },
+    {
+      "name": "drowsiness",
+      "type": "integer",
+      "required": true,
+      "description": "Drowsiness (feeling sleepy) right now",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points"
+    },
+    {
+      "name": "nausea",
+      "type": "integer",
+      "required": true,
+      "description": "Nausea (feeling sick to your stomach) right now",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points"
+    },
+    {
+      "name": "lack_of_appetite",
+      "type": "integer",
+      "required": true,
+      "description": "Lack of appetite (not feeling like eating) right now",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points"
+    },
+    {
+      "name": "shortness_of_breath",
+      "type": "integer",
+      "required": true,
+      "description": "Shortness of breath (difficulty breathing) right now",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points"
+    },
+    {
+      "name": "depression",
+      "type": "integer",
+      "required": true,
+      "description": "Depression (feeling sad, blue, or unhappy) right now",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points"
+    },
+    {
+      "name": "anxiety",
+      "type": "integer",
+      "required": true,
+      "description": "Anxiety (feeling nervous, worried, or fearful) right now",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points"
+    },
+    {
+      "name": "wellbeing",
+      "type": "integer",
+      "required": true,
+      "description": "Wellbeing (how you feel overall) right now",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points"
+    }
+  ],
+  "result": {
+    "name": "esas_r_total_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total ESAS-r score ranging from 0 to 90 points (sum of all nine symptom scores)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 17,
+        "stage": "Mild",
+        "description": "Mild total symptom burden",
+        "interpretation": "Mild overall symptom burden. Symptoms are present but manageable with standard palliative care interventions. Continue current symptom management approach and monitor regularly for changes."
+      },
+      {
+        "min": 18,
+        "max": 35,
+        "stage": "Moderate",
+        "description": "Moderate total symptom burden",
+        "interpretation": "Moderate overall symptom burden. Symptoms may be impacting quality of life and daily functioning. Consider intensifying symptom management interventions and more frequent assessments. Review current medications and palliative care plan."
+      },
+      {
+        "min": 36,
+        "max": 90,
+        "stage": "Severe",
+        "description": "Severe total symptom burden",
+        "interpretation": "Severe overall symptom burden significantly impacting quality of life. Urgent review and optimization of symptom management required. Consider specialist palliative care consultation, medication adjustments, and comprehensive care plan revision. Daily or more frequent monitoring recommended."
+      }
+    ]
+  },
+  "references": [
+    "Watanabe S, Nekolaichuk C, Beaumont C, Johnson L, Myers J, Strasser F. A multicenter study comparing two numerical versions of the Edmonton Symptom Assessment System in palliative care patients. J Pain Symptom Manage. 2011;41(2):456-68. doi: 10.1016/j.jpainsymman.2010.04.020.",
+    "Hui D, Bruera E. The Edmonton Symptom Assessment System 25 years later: Past, present, and future developments. J Pain Symptom Manage. 2017;53(3):630-643. doi: 10.1016/j.jpainsymman.2016.10.370.",
+    "Bruera E, Kuehn N, Miller MJ, Selmser P, Macmillan K. The Edmonton Symptom Assessment System (ESAS): a simple method for the assessment of palliative care patients. J Palliat Care. 1991;7(2):6-9.",
+    "Chang VT, Hwang SS, Feuerman M. Validation of the Edmonton Symptom Assessment Scale. Cancer. 2000;88(9):2164-71. doi: 10.1002/(sici)1097-0142(20000501)88:9<2164::aid-cncr24>3.0.co;2-5."
+  ],
+  "formula": "Total ESAS-r Score = pain + tiredness + drowsiness + nausea + lack_of_appetite + shortness_of_breath + depression + anxiety + wellbeing. Each symptom is rated from 0 (none/best) to 10 (worst possible).",
+  "notes": [
+    "The ESAS-r is a revision of the original Edmonton Symptom Assessment System (ESAS) with improved clarity and definitions.",
+    "All symptoms are assessed for the current moment ('right now') rather than over a time period.",
+    "The revised version provides specific definitions for potentially confusing items like tiredness, drowsiness, depression, anxiety, and wellbeing.",
+    "Symptoms are organized with physical symptoms first (pain, tiredness, drowsiness, nausea, lack of appetite, shortness of breath) followed by psychosocial symptoms (depression, anxiety) and overall wellbeing last.",
+    "The tool has been validated in multiple languages and clinical settings for palliative care patients.",
+    "Individual symptom scores of ≥4 are often considered clinically significant and warrant intervention.",
+    "The tool should be used for longitudinal monitoring, with clinicians expecting to see a downward trend in scores with effective treatment.",
+    "Can be administered by patients themselves (self-report) or with assistance from healthcare providers.",
+    "Useful for symptom screening, monitoring treatment response, and communication between patients and healthcare teams.",
+    "The ESAS-r is widely used in palliative care, oncology, nephrology, and other specialty settings.",
+    "Regular reassessment is recommended to track changes in symptom burden over time.",
+    "The tool helps identify which specific symptoms need more targeted intervention.",
+    "Total scores provide an overall assessment of symptom burden, while individual scores guide specific symptom management.",
+    "The revised version has been shown to be easier to understand and preferred by patients compared to the original ESAS.",
+    "Healthcare providers have highly favorable opinions of the ESAS-r as a clinical practice tool."
+  ]
+}

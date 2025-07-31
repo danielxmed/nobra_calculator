@@ -80,7 +80,7 @@ class Amt4Request(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": "correct",
                 "date_of_birth": "correct",
@@ -135,7 +135,7 @@ class Amt4Response(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 4,
                 "unit": "points",

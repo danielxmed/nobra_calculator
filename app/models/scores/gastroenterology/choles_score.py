@@ -341,7 +341,7 @@ class CholesScoredRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 45,
                 "gender": "female",
@@ -576,7 +576,7 @@ class CholesScoredResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "total_score": 4.5,

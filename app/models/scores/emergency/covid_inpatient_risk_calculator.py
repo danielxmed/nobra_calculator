@@ -291,7 +291,7 @@ class CovidInpatientRiskCalculatorRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 65,
                 "sex": "male",
@@ -572,7 +572,7 @@ class CovidInpatientRiskCalculatorResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 25.8,
                 "unit": "%",

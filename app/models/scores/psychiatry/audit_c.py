@@ -102,7 +102,7 @@ class AuditCRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "frequency": "2_to_3_times_week",
                 "typical_drinks": "3_or_4",
@@ -155,7 +155,7 @@ class AuditCResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 4,
                 "unit": "points",

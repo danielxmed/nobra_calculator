@@ -124,7 +124,7 @@ class ThakarScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "gender": "male",
                 "congestive_heart_failure": "no",
@@ -185,7 +185,7 @@ class ThakarScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 3,
                 "unit": "points",

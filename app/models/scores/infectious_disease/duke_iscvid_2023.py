@@ -132,7 +132,7 @@ class DukeIscvid2023Request(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "microbiologic_major_typical": "present",
                 "imaging_major_echo_ct": "present", 
@@ -184,7 +184,7 @@ class DukeIscvid2023Response(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "Definite IE",
                 "pathologic_criteria_count": 0,

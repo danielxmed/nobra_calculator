@@ -1,0 +1,109 @@
+{
+  "id": "feverpain_score",
+  "title": "FeverPAIN Score for Strep Pharyngitis",
+  "description": "Predicts likelihood of streptococcal pharyngitis and guides antibiotic prescribing decisions.",
+  "category": "infectious_disease",
+  "version": "2012",
+  "parameters": [
+    {
+      "name": "fever_24h",
+      "type": "string",
+      "required": true,
+      "description": "Fever in past 24 hours",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "absence_cough_coryza",
+      "type": "string",
+      "required": true,
+      "description": "Absence of cough or coryza",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "symptom_onset_3days",
+      "type": "string",
+      "required": true,
+      "description": "Symptom onset ≤3 days (attend rapidly)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "purulent_tonsils",
+      "type": "string",
+      "required": true,
+      "description": "Purulent tonsils",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "severe_tonsil_inflammation",
+      "type": "string",
+      "required": true,
+      "description": "Severe tonsil inflammation",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "feverpain_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "FeverPAIN score (0-5)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "13-18% strep isolation",
+        "interpretation": "13-18% likelihood of streptococcus isolation. No antibiotics recommended. Consider supportive care and symptom management."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Moderate Risk",
+        "description": "30-35% strep isolation",
+        "interpretation": "30-35% likelihood of streptococcus isolation. Delayed antibiotic prescription may be appropriate. Consider 3-day delayed prescribing strategy."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Moderate-High Risk",
+        "description": "39-48% strep isolation",
+        "interpretation": "39-48% likelihood of streptococcus isolation. Delayed antibiotic prescription may be appropriate. Consider 3-day delayed prescribing strategy."
+      },
+      {
+        "min": 4,
+        "max": 5,
+        "stage": "High Risk",
+        "description": "62-65% strep isolation",
+        "interpretation": "62-65% likelihood of streptococcus isolation. Consider antibiotics if symptoms are severe or patient is systemically unwell. Short delayed prescribing strategy (48 hours) may be appropriate."
+      }
+    ]
+  },
+  "references": [
+    "Little P, Hobbs FD, Moore M, Mant D, Williamson I, McNulty C, et al. Incidence and clinical variables associated with streptococcal throat infections: a prospective diagnostic cohort study. Br J Gen Pract. 2012 Nov;62(604):e787-94.",
+    "Little P, Moore M, Hobbs FD, Mant D, McNulty C, Williamson I, et al. Clinical score and rapid antigen detection test to guide antibiotic use for sore throats: randomised controlled trial of PRISM (primary care streptococcal management). BMJ. 2013 Oct 10;347:f5806."
+  ],
+  "formula": "FeverPAIN Score = Sum of positive criteria (1 point each)",
+  "notes": [
+    "For use in patients 3 years and older",
+    "FeverPAIN stands for: Fever, Purulence, Attend rapidly, Inflamed tonsils, No cough/coryza",
+    "Reduced antibiotic prescribing by 30% in implementation studies",
+    "Better utility than Centor score at lower score levels",
+    "Consider delayed antibiotic prescribing strategies when appropriate"
+  ]
+}

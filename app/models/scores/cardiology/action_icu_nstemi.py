@@ -121,7 +121,7 @@ class ActionIcuNstemiRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": "under_70",
                 "serum_creatinine": "under_1_1",
@@ -183,7 +183,7 @@ class ActionIcuNstemiResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 5,
                 "unit": "points",

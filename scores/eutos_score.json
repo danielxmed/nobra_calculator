@@ -1,0 +1,68 @@
+{
+  "id": "eutos_score",
+  "title": "EUTOS Score for Chronic Myelogenous Leukemia (CML)",
+  "description": "Predicts outcomes after CML treatments, specifically adjusted for tyrosine kinase inhibitor treatments. Predicts probability of complete cytogenetic response at 18 months and progression-free survival.",
+  "category": "hematology",
+  "version": "2011",
+  "parameters": [
+    {
+      "name": "basophil_percentage",
+      "type": "float",
+      "required": true,
+      "description": "Basophils as percentage of peripheral blood leukocytes",
+      "validation": {
+        "min": 0,
+        "max": 100
+      },
+      "unit": "percentage"
+    },
+    {
+      "name": "spleen_size_cm",
+      "type": "float",
+      "required": true,
+      "description": "Spleen size palpable below left costal margin",
+      "validation": {
+        "min": 0,
+        "max": 30
+      },
+      "unit": "cm"
+    }
+  ],
+  "result": {
+    "name": "eutos_score",
+    "type": "float",
+    "unit": "points",
+    "description": "EUTOS Score calculated from basophils and spleen size"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 87,
+        "stage": "Low Risk",
+        "description": "Low risk for CML progression",
+        "interpretation": "5-year progression-free survival: 90%, complete cytogenetic response at 18 months: 86%. Standard imatinib therapy recommended."
+      },
+      {
+        "min": 88,
+        "max": 1000,
+        "stage": "High Risk",
+        "description": "High risk for CML progression",
+        "interpretation": "5-year progression-free survival: 82%, complete cytogenetic response at 18 months: 66%. Consider more intensive monitoring or alternative treatment strategies."
+      }
+    ]
+  },
+  "references": [
+    "Hasford J, Baccarani M, Hoffmann V, Guilhot J, Saussele S, Rosti G, et al. Predicting complete cytogenetic response and subsequent progression-free survival in 2060 patients with CML on imatinib treatment: the EUTOS score. Blood. 2011 Jul 21;118(3):686-92. doi: 10.1182/blood-2010-12-319038.",
+    "Hoffman R, Nagler A, Keating A, Kamel-Reid S, Lipton JH. The EUTOS score predicts outcome in CML patients treated with nilotinib front-line. Blood. 2012 Dec 6;120(23):4684; author reply 4684-5. doi: 10.1182/blood-2012-08-449249.",
+    "Baccarani M, Deininger MW, Rosti G, Hochhaus A, Soverini S, Apperley JF, et al. European LeukemiaNet recommendations for the management of chronic myeloid leukemia: 2013 update. Blood. 2013 Aug 8;122(6):872-84. doi: 10.1182/blood-2013-05-501569."
+  ],
+  "formula": "EUTOS Score = (7 × basophil percentage) + (4 × spleen size in cm)",
+  "notes": [
+    "Can only be applied to newly-diagnosed patients before starting therapy",
+    "Developed and validated in patients treated with imatinib",
+    "Spleen size estimation is subjective but included in validation studies",
+    "Outcomes may not apply to newer generation tyrosine kinase inhibitors",
+    "Score ≤87 indicates low risk, >87 indicates high risk"
+  ]
+}

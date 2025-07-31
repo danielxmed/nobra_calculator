@@ -87,7 +87,7 @@ class AdhereAlgorithmRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "bun": "under_43",
                 "systolic_bp": "115_or_over",
@@ -144,7 +144,7 @@ class AdhereAlgorithmResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 0,
                 "unit": "risk_level",

@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Optional, Dict, Any, List
 from enum import Enum
 
@@ -79,7 +79,7 @@ class AIRQRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "daytime_symptoms": "no",
                 "nighttime_awakenings": "no",
@@ -163,7 +163,7 @@ class AIRQResponse(BaseModel):
     result: AIRQResult = Field(..., description="Calculation result")
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "calculator_name": "AIRQ",
                 "version": "2020",

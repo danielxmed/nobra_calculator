@@ -113,7 +113,7 @@ class AgeAdjustedEsrCrpRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 65,
                 "sex": "female",
@@ -199,7 +199,7 @@ class AgeAdjustedEsrCrpResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "esr_age_adjusted_limit": 37.5,

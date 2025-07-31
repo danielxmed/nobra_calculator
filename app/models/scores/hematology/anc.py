@@ -63,7 +63,7 @@ class AncRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "white_blood_cells": 6.5,
                 "neutrophil_percentage": 60.0,
@@ -122,7 +122,7 @@ class AncResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 4225,
                 "unit": "cells/mm³",

@@ -1,0 +1,72 @@
+{
+  "id": "fat_free_mass",
+  "title": "Fat Free Mass (FFM)",
+  "description": "Calculates the predictive value of fat-free mass from body weight and body mass index (BMI). Useful for weight-based medication dosing, especially in anesthesia, and helps calculate body composition.",
+  "category": "general",
+  "version": "2005",
+  "parameters": [
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient biological sex",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "body_weight_kg",
+      "type": "float",
+      "required": true,
+      "description": "Body weight in kilograms",
+      "validation": {
+        "min": 10,
+        "max": 300
+      },
+      "unit": "kg"
+    },
+    {
+      "name": "bmi",
+      "type": "float",
+      "required": true,
+      "description": "Body Mass Index (BMI)",
+      "validation": {
+        "min": 10,
+        "max": 80
+      },
+      "unit": "kg/m²"
+    }
+  ],
+  "result": {
+    "name": "fat_free_mass",
+    "type": "float",
+    "unit": "kg",
+    "description": "Fat-free mass calculated from body weight and BMI"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1000,
+        "stage": "Calculated",
+        "description": "Fat-free mass estimation",
+        "interpretation": "This represents the calculated fat-free mass, which includes muscle, bone, organs, and water content, excluding adipose tissue. Useful for medication dosing and body composition assessment."
+      }
+    ]
+  },
+  "references": [
+    "Janmahasatian S, Duffull SB, Ash S, Ward LC, Byrnes NM, Green B. Quantification of lean bodyweight. Clin Pharmacokinet. 2005;44(10):1051-65. doi: 10.2165/00003088-200544100-00004.",
+    "La Colla L, Albertin A, La Colla G, Mangano A. Predictive value of the Janmahasatian formula for lean body weight in the dosing of sugammadex in morbidly obese patients. Anaesthesia. 2010 Apr;65(4):445-6. doi: 10.1111/j.1365-2044.2010.06284.x.",
+    "Green B, Duffull SB. What is the best size descriptor to use for pharmacokinetic studies in the obese? Br J Clin Pharmacol. 2004 Aug;58(2):119-33. doi: 10.1111/j.1365-2125.2004.02157.x."
+  ],
+  "formula": "Male: FFM = (9.27 × 10³ × Body Weight) / (6.68 × 10³ + 216 × BMI), Female: FFM = (9.27 × 10³ × Body Weight) / (8.78 × 10³ + 244 × BMI)",
+  "notes": [
+    "Useful for weight-based medication dosing, especially in anesthesia",
+    "Attempts to exclude lipids in cellular membranes",
+    "Includes bone mass, organs, muscle, and water content",
+    "Predictive equation, not a direct measurement",
+    "Should be used alongside clinical judgment",
+    "Particularly valuable in patients with obesity for medication dosing"
+  ]
+}

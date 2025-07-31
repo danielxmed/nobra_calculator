@@ -134,7 +134,7 @@ class CarOltRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age_category": "55_to_59",
                 "sex": "male",
@@ -200,7 +200,7 @@ class CarOltResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 22,
                 "unit": "points",

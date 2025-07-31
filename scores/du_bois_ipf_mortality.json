@@ -1,0 +1,102 @@
+{
+  "id": "du_bois_ipf_mortality",
+  "title": "du Bois Score for Idiopathic Pulmonary Fibrosis (IPF) Mortality",
+  "description": "Determines 1-year mortality risk in IPF patients using PFT and clinical indicators. Developed from two clinical trials (n=1,099) to identify independent predictors of 1-year mortality in idiopathic pulmonary fibrosis.",
+  "category": "pulmonology",
+  "version": "2011",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "respiratory_hospitalization",
+      "type": "string",
+      "required": true,
+      "description": "History of respiratory hospitalization within the past 6 months",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "fvc_percent_predicted",
+      "type": "float",
+      "required": true,
+      "description": "Forced vital capacity (FVC) as percentage of predicted value",
+      "validation": {
+        "min": 10.0,
+        "max": 150.0
+      },
+      "unit": "% predicted"
+    },
+    {
+      "name": "change_fvc_24_weeks",
+      "type": "float",
+      "required": true,
+      "description": "Change in FVC over 24 weeks (absolute change in % predicted)",
+      "validation": {
+        "min": -50.0,
+        "max": 50.0
+      },
+      "unit": "% predicted change"
+    }
+  ],
+  "result": {
+    "name": "du_bois_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "du Bois mortality risk score for IPF patients"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 4,
+        "stage": "Low Risk",
+        "description": "Low 1-year mortality risk",
+        "interpretation": "Low risk of 1-year mortality in IPF. Continue standard monitoring and treatment. Regular follow-up with pulmonary function tests and clinical assessment recommended."
+      },
+      {
+        "min": 5,
+        "max": 8,
+        "stage": "Intermediate Risk",
+        "description": "Intermediate 1-year mortality risk",
+        "interpretation": "Intermediate risk of 1-year mortality in IPF. Consider more frequent monitoring, optimization of antifibrotic therapy, and evaluation for lung transplantation if appropriate. Discuss prognosis and advance care planning."
+      },
+      {
+        "min": 9,
+        "max": 15,
+        "stage": "High Risk",
+        "description": "High 1-year mortality risk",
+        "interpretation": "High risk of 1-year mortality in IPF. Urgent consideration for lung transplantation evaluation if candidate. Optimize supportive care, consider palliative care consultation, and discuss advance directives. Close monitoring required."
+      }
+    ]
+  },
+  "references": [
+    "du Bois RM, Weycker D, Albera C, Bradford WZ, Costabel U, Kartashov A, et al. Ascertainment of individual risk of mortality for patients with idiopathic pulmonary fibrosis. Am J Respir Crit Care Med. 2011;184(4):459-66. doi: 10.1164/rccm.201011-1790OC.",
+    "Ley B, Ryerson CJ, Vittinghoff E, Ryu JH, Tomassetti S, Lee JS, et al. A multidimensional index and staging system for idiopathic pulmonary fibrosis. Ann Intern Med. 2012;156(10):684-91. doi: 10.7326/0003-4819-156-10-201205150-00004.",
+    "Raghu G, Collard HR, Egan JJ, Martinez FJ, Behr J, Brown KK, et al. An official ATS/ERS/JRS/ALAT statement: idiopathic pulmonary fibrosis: evidence-based guidelines for diagnosis and management. Am J Respir Crit Care Med. 2011;183(6):788-824. doi: 10.1164/rccm.2009-040GL."
+  ],
+  "formula": "du Bois Score = Age points + Respiratory hospitalization points + FVC % predicted points + FVC change points. Age: 51-60 years (1 pt), 61-70 years (2 pts), >70 years (3 pts). Recent respiratory hospitalization: Yes (2 pts). FVC % predicted: 50-65% (1 pt), <50% (2 pts). FVC decline >10% in 24 weeks: Yes (3 pts).",
+  "notes": [
+    "Developed from data of 1,099 IPF patients from two clinical trials to predict 1-year mortality.",
+    "Score ranges from 0-10 points with higher scores indicating increased mortality risk.",
+    "Age scoring: ≤50 years (0 pts), 51-60 years (1 pt), 61-70 years (2 pts), >70 years (3 pts).",
+    "Respiratory hospitalization in past 6 months: Yes (2 pts), No (0 pts).",
+    "FVC % predicted: >65% (0 pts), 50-65% (1 pt), <50% (2 pts).",
+    "FVC decline >10% over 24 weeks: Yes (3 pts), No (0 pts).",
+    "Higher scores correlate with increased 1-year mortality risk in IPF patients.",
+    "Should be used in conjunction with clinical judgment and other prognostic factors.",
+    "Consider lung transplantation evaluation for high-risk patients who are candidates.",
+    "Regular monitoring of pulmonary function tests is essential for IPF management.",
+    "This tool aids in prognosis assessment but does not replace comprehensive clinical evaluation."
+  ]
+}

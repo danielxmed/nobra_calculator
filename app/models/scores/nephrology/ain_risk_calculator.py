@@ -139,7 +139,7 @@ class AinRiskCalculatorRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "creatinine": 2.5,
                 "bun": 45.0,
@@ -231,7 +231,7 @@ class AinRiskCalculatorResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 0.325,
                 "unit": "probability",

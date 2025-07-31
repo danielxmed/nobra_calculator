@@ -131,7 +131,7 @@ class CisplatinAkiRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 65,
                 "hypertension": "yes",
@@ -194,7 +194,7 @@ class CisplatinAkiResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 12.5,
                 "unit": "%",

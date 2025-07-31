@@ -192,7 +192,7 @@ class ChildPughScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "total_bilirubin": 2.5,
                 "serum_albumin": 3.2,
@@ -357,7 +357,7 @@ class ChildPughScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "total_score": 9,

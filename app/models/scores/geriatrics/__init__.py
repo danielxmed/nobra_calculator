@@ -11,6 +11,7 @@ from .braden_score import BradenScoreRequest, BradenScoreResponse
 from .charlson_comorbidity_index import CharlsonComorbidityIndexRequest, CharlsonComorbidityIndexResponse
 from .clinical_frailty_scale import ClinicalFrailtyScaleRequest, ClinicalFrailtyScaleResponse
 from .cirs_g import CirsGRequest, CirsGResponse
+from .edmonton_symptom_assessment_system_revised import EdmontonSymptomAssessmentSystemRevisedRequest, EdmontonSymptomAssessmentSystemRevisedResponse
 
 __all__ = [
     "AbbeyPainRequest",
@@ -31,4 +32,6 @@ __all__ = [
     "ClinicalFrailtyScaleResponse",
     "CirsGRequest",
     "CirsGResponse",
+    "EdmontonSymptomAssessmentSystemRevisedRequest",
+    "EdmontonSymptomAssessmentSystemRevisedResponse",
 ]

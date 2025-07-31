@@ -123,7 +123,7 @@ class AbgAnalyzerRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "ph": 7.25,
                 "pco2": 28.0,
@@ -204,7 +204,7 @@ class AbgAnalyzerResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "Metabolic Acidosis",
                 "unit": "",

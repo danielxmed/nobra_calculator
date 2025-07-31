@@ -398,7 +398,7 @@ class CincinnatiPrehospitalStrokeSeverityScaleRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "conjugate_gaze_deviation": "no",
                 "level_of_consciousness_questions": "both_correct",
@@ -635,7 +635,7 @@ class CincinnatiPrehospitalStrokeSeverityScaleResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 1,
                 "unit": "points",

@@ -21,7 +21,7 @@ The C-SSRS Screener is a brief, evidence-based tool for suicide risk assessment 
 evaluates both suicidal ideation severity and behavior to stratify risk levels.
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Literal, Dict, Any
 
 
@@ -77,7 +77,7 @@ class CSSRSRequest(BaseModel):
         example="Never"
     )
     
-    @validator('behavior_recent')
+    @field_validator('behavior_recent')
     def validate_behavior_consistency(cls, v, values):
         """Ensure behavior timing is consistent with behavior level"""
         if 'behavior_level' in values:
@@ -88,7 +88,7 @@ class CSSRSRequest(BaseModel):
         return v
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "ideation_level": 3,
                 "behavior_level": 1,
@@ -160,7 +160,7 @@ class CSSRSResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "Moderate Risk",
                 "unit": "category",

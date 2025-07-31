@@ -1,0 +1,167 @@
+{
+  "id": "neuropathic_pain_scale",
+  "title": "Neuropathic Pain Scale (NPS)",
+  "description": "Quantifies severity of neuropathic pain using 10 specific pain quality dimensions. Only for patients already diagnosed with neuropathic pain.",
+  "category": "neurology",
+  "version": "1997",
+  "parameters": [
+    {
+      "name": "intensity",
+      "type": "integer",
+      "required": true,
+      "description": "How intense is the pain?",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points (0 = no pain, 10 = most pain imaginable)"
+    },
+    {
+      "name": "sharp",
+      "type": "integer",
+      "required": true,
+      "description": "How sharp is the pain? ('Like a knife')",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points (0 = no pain, 10 = most pain imaginable)"
+    },
+    {
+      "name": "hot",
+      "type": "integer",
+      "required": true,
+      "description": "How hot is the pain? ('On fire')",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points (0 = no pain, 10 = most pain imaginable)"
+    },
+    {
+      "name": "dull",
+      "type": "integer",
+      "required": true,
+      "description": "How dull is the pain?",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points (0 = no pain, 10 = most pain imaginable)"
+    },
+    {
+      "name": "cold",
+      "type": "integer",
+      "required": true,
+      "description": "How cold is the pain? ('Freezing')",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points (0 = no pain, 10 = most pain imaginable)"
+    },
+    {
+      "name": "sensitive",
+      "type": "integer",
+      "required": true,
+      "description": "How sensitive is the skin to light touch? ('Raw skin')",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points (0 = no pain, 10 = most pain imaginable)"
+    },
+    {
+      "name": "itchy",
+      "type": "integer",
+      "required": true,
+      "description": "How itchy is the pain?",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points (0 = no pain, 10 = most pain imaginable)"
+    },
+    {
+      "name": "unpleasant",
+      "type": "integer",
+      "required": true,
+      "description": "How unpleasant is the pain? ('Intolerable')",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points (0 = no pain, 10 = most pain imaginable)"
+    },
+    {
+      "name": "deep_pain",
+      "type": "integer",
+      "required": true,
+      "description": "If the pain is deep, how intense is the deep pain?",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points (0 = no pain, 10 = most pain imaginable)"
+    },
+    {
+      "name": "surface_pain",
+      "type": "integer",
+      "required": true,
+      "description": "If the pain is on the surface, how intense is the surface pain?",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "points (0 = no pain, 10 = most pain imaginable)"
+    }
+  ],
+  "result": {
+    "name": "total_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total NPS score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 20,
+        "stage": "Mild",
+        "description": "Mild neuropathic pain",
+        "interpretation": "Score indicates mild neuropathic pain symptoms. Consider monitoring and conservative management strategies."
+      },
+      {
+        "min": 21,
+        "max": 40,
+        "stage": "Moderate",
+        "description": "Moderate neuropathic pain",
+        "interpretation": "Score indicates moderate neuropathic pain symptoms. May benefit from multimodal pain management approach."
+      },
+      {
+        "min": 41,
+        "max": 60,
+        "stage": "Severe",
+        "description": "Severe neuropathic pain",
+        "interpretation": "Score indicates severe neuropathic pain symptoms. Comprehensive pain management strategy recommended."
+      },
+      {
+        "min": 61,
+        "max": 100,
+        "stage": "Very Severe",
+        "description": "Very severe neuropathic pain",
+        "interpretation": "Score indicates very severe neuropathic pain symptoms. Urgent comprehensive pain management intervention may be needed."
+      }
+    ]
+  },
+  "references": [
+    "Galer BS, Jensen MP. Development and preliminary validation of a pain measure specific to neuropathic pain: the Neuropathic Pain Scale. Neurology. 1997 Feb;48(2):332-8. doi: 10.1212/wnl.48.2.332."
+  ],
+  "formula": "Total Score = Sum of all 10 item scores (each scored 0-10)",
+  "notes": [
+    "Only for patients already diagnosed with neuropathic pain - not a diagnostic tool",
+    "Useful for assessing pain severity and monitoring treatment response",
+    "Each item scored 0-10 where 0 = no pain and 10 = most pain imaginable",
+    "Higher scores indicate worse neuropathic pain"
+  ]
+}

@@ -124,7 +124,7 @@ class CahpScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 65,
                 "setting": "home",
@@ -220,7 +220,7 @@ class CahpScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 175,
                 "unit": "points",

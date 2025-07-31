@@ -130,7 +130,7 @@ class AceScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "emotional_abuse": "no",
                 "physical_abuse": "no",
@@ -201,7 +201,7 @@ class AceScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 1,
                 "unit": "points",

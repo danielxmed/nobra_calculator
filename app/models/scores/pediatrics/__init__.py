@@ -15,6 +15,9 @@ from .chalice_rule import ChaliceRuleRequest, ChaliceRuleResponse
 from .cheops_pain_scale import CheopsPainScaleRequest, CheopsPainScaleResponse
 from .capd import CapdRequest, CapdResponse
 from .dhaka_score import DhakaScoreRequest, DhakaScoreResponse
+from .eat_sleep_console import EatSleepConsoleRequest, EatSleepConsoleResponse
+from .neonatal_early_onset_sepsis import NeonatalEarlyOnsetSepsisRequest, NeonatalEarlyOnsetSepsisResponse
+from .neonatal_partial_exchange_polycythemia import NeonatalPartialExchangePolycythemiaRequest, NeonatalPartialExchangePolycythemiaResponse
 
 __all__ = [
     "AapPediatricHypertensionRequest",
@@ -43,4 +46,10 @@ __all__ = [
     "CapdResponse",
     "DhakaScoreRequest",
     "DhakaScoreResponse",
+    "EatSleepConsoleRequest",
+    "EatSleepConsoleResponse",
+    "NeonatalEarlyOnsetSepsisRequest",
+    "NeonatalEarlyOnsetSepsisResponse",
+    "NeonatalPartialExchangePolycythemiaRequest",
+    "NeonatalPartialExchangePolycythemiaResponse",
 ]

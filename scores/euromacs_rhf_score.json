@@ -1,0 +1,112 @@
+{
+  "id": "euromacs_rhf_score",
+  "title": "EUROMACS-RHF Score",
+  "description": "Determines risk of right ventricular heart failure in patients after left ventricular assist device (LVAD) implantation.",
+  "category": "cardiology",
+  "version": "2017",
+  "parameters": [
+    {
+      "name": "ra_pcwp_ratio_elevated",
+      "type": "string",
+      "required": true,
+      "description": "Right atrial pressure to pulmonary capillary wedge pressure ratio >0.54",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hemoglobin_low",
+      "type": "string",
+      "required": true,
+      "description": "Hemoglobin ≤10 g/dL",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "multiple_inotropes",
+      "type": "string",
+      "required": true,
+      "description": "Multiple intravenous inotropes",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "intermacs_class_low",
+      "type": "string",
+      "required": true,
+      "description": "INTERMACS Class 1-3 (critical cardiogenic shock to stable but inotrope dependent)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "severe_rv_dysfunction",
+      "type": "string",
+      "required": true,
+      "description": "Severe right ventricular dysfunction by echocardiogram",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "rhf_risk_assessment",
+    "type": "object",
+    "unit": "points",
+    "description": "Right heart failure risk assessment with score and risk stratification"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Low Risk",
+        "description": "Low risk for RHF",
+        "interpretation": "Low risk of right heart failure (11% incidence). Standard perioperative monitoring and management. Consider routine hemodynamic assessment post-LVAD implantation."
+      },
+      {
+        "min": 2.5,
+        "max": 4,
+        "stage": "Intermediate Risk",
+        "description": "Intermediate risk for RHF",
+        "interpretation": "Intermediate risk of right heart failure. Enhanced monitoring recommended. Consider closer hemodynamic surveillance and optimization of right ventricular support."
+      },
+      {
+        "min": 4.5,
+        "max": 9.5,
+        "stage": "High Risk",
+        "description": "High risk for RHF",
+        "interpretation": "High risk of right heart failure (43.1% incidence). Requires intensive monitoring and proactive management. Consider biventricular assist device or total heart support. Optimize hemodynamics and consider advanced RV support strategies."
+      }
+    ]
+  },
+  "references": [
+    "Soliman OII, Akin S, Muslem R, Boersma E, Manintveld OC, Krabatsch T, et al. Derivation and Validation of a Novel Right-Sided Heart Failure Model After Implantation of Continuous Flow Left Ventricular Assist Devices: The EUROMACS (European Registry for Patients with Mechanical Circulatory Support) Right-Sided Heart Failure Risk Score. Circulation. 2018 Mar 6;137(9):891-906. doi: 10.1161/CIRCULATIONAHA.117.030543.",
+    "Bellavia D, Iacovoni A, Scardulla C, Moja L, Pilato M, Kushwaha SS, et al. Prediction of right heart failure after left ventricular assist device implantation. Eur Heart J Acute Cardiovasc Care. 2017 Dec;6(8):668-676. doi: 10.1177/2048872615612455.",
+    "Kormos RL, Cowger J, Pagani FD, Teuteberg JJ, Goldstein DJ, Jacobs JP, et al. The Society of Thoracic Surgeons Intermacs database annual report: evolving indications, outcomes, and scientific partnerships. J Heart Lung Transplant. 2019 Feb;38(2):114-126. doi: 10.1016/j.healun.2018.11.013."
+  ],
+  "formula": "EUROMACS-RHF Score = (RA/PCWP >0.54 × 2) + (Hemoglobin ≤10 g/dL × 1) + (Multiple IV inotropes × 2.5) + (INTERMACS Class 1-3 × 2) + (Severe RV dysfunction × 2)",
+  "notes": [
+    "Derived from 2,988 adult patients undergoing continuous-flow LVAD implantation",
+    "Primary population: White (68%) and male (82%)",
+    "Predicts early (<30 days) severe postoperative right heart failure",
+    "RHF defined as: short/long-term right-sided circulatory support, continuous inotropic support ≥14 days, or nitric oxide ventilation ≥48 hours",
+    "Multiple inotropes has greatest weight in predicting post-LVAD RHF",
+    "C-index: 0.70 in derivation cohort, 0.67 in validation cohort",
+    "Low risk (0-2 points): 11% RHF incidence",
+    "High risk (>4 points): 43.1% RHF incidence",
+    "External validation studies show variable performance",
+    "Use for preoperative assessment and risk stratification",
+    "High-risk patients may benefit from biventricular assist device consideration",
+    "Score should be combined with clinical judgment and other assessment tools",
+    "Associated with increased ICU stay and reduced 1-year and 2-year survival",
+    "May guide perioperative monitoring intensity and intervention strategies"
+  ]
+}

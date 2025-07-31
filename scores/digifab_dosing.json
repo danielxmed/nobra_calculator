@@ -1,0 +1,112 @@
+{
+  "id": "digifab_dosing",
+  "title": "DigiFab (Digibind) Dosing for Digoxin Poisoning",
+  "description": "Doses DigiFab in patients with confirmed digoxin poisoning or overdose",
+  "category": "emergency",
+  "version": "2024",
+  "parameters": [
+    {
+      "name": "method",
+      "type": "string",
+      "required": true,
+      "description": "Calculation method to use",
+      "options": ["serum_level", "amount_ingested"],
+      "validation": {
+        "enum": ["serum_level", "amount_ingested"]
+      }
+    },
+    {
+      "name": "weight_kg",
+      "type": "float",
+      "required": false,
+      "description": "Patient body weight in kilograms (required for serum level method)",
+      "validation": {
+        "min": 0.5,
+        "max": 620
+      },
+      "unit": "kg"
+    },
+    {
+      "name": "serum_digoxin_level",
+      "type": "float",
+      "required": false,
+      "description": "Serum digoxin level in ng/mL (required for serum level method)",
+      "validation": {
+        "min": 0,
+        "max": 100
+      },
+      "unit": "ng/mL"
+    },
+    {
+      "name": "amount_ingested_mg",
+      "type": "float",
+      "required": false,
+      "description": "Total amount of digoxin ingested in mg (required for amount ingested method)",
+      "validation": {
+        "min": 0,
+        "max": 100
+      },
+      "unit": "mg"
+    }
+  ],
+  "result": {
+    "name": "digifab_vials",
+    "type": "integer",
+    "unit": "vials",
+    "description": "Number of DigiFab vials to administer (always rounded up)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 2,
+        "stage": "Low dose",
+        "description": "Low dose requirement",
+        "interpretation": "Administer calculated number of vials. Consider slow infusion over 2 hours if rhythm disturbances are not life-threatening."
+      },
+      {
+        "min": 3,
+        "max": 6,
+        "stage": "Moderate dose",
+        "description": "Moderate dose requirement",
+        "interpretation": "Administer calculated number of vials. Typical dose for chronic toxicity in adults. Monitor patient closely for response."
+      },
+      {
+        "min": 7,
+        "max": 10,
+        "stage": "High dose",
+        "description": "High dose requirement",
+        "interpretation": "Administer calculated number of vials. This suggests significant toxicity. Consider rapid infusion if life-threatening dysrhythmias present."
+      },
+      {
+        "min": 11,
+        "max": 20,
+        "stage": "Very high dose",
+        "description": "Very high dose requirement",
+        "interpretation": "Administer calculated number of vials urgently. This indicates severe toxicity. For acute poisoning with serum digoxin >10 ng/mL, empiric dosing of 10-20 vials may be appropriate."
+      },
+      {
+        "min": 21,
+        "max": 999,
+        "stage": "Extreme dose",
+        "description": "Extreme dose requirement",
+        "interpretation": "Critical toxicity requiring immediate intervention. Verify calculation and consider empiric maximum dosing. Consult toxicology immediately."
+      }
+    ]
+  },
+  "references": [
+    "Lapostolle F, Borron SW, Verdier C, et al. Digoxin-specific Fab fragments as single first-line therapy in digitalis poisoning. Crit Care Med. 2008;36(11):3014-8.",
+    "Antman EM, Wenger TL, Butler VP Jr, Haber E, Smith TW. Treatment of 150 cases of life-threatening digitalis intoxication with digoxin-specific Fab antibody fragments. Final report of a multicenter study. Circulation. 1990;81(6):1744-52.",
+    "Bismuth C, Gaultier M, Conso F, Efthymiou ML. Hyperkalemia in acute digitalis poisoning: prognostic significance and therapeutic implications. Clin Toxicol. 1973;6(2):153-62."
+  ],
+  "formula": "For serum level method: Number of vials = (serum digoxin level [ng/mL] × patient weight [kg]) / 100. For amount ingested method: Number of vials = (amount ingested [mg] / 0.5 mg/vial) × 0.8 (80% bioavailability). Always round up to the next whole number.",
+  "notes": [
+    "Therapeutic range for serum digoxin is 0.8-2.0 ng/mL",
+    "Obtain serum digoxin level ≥6 hours after last dose for accurate results",
+    "Digoxin levels post-DigiFab will be falsely elevated due to bound digoxin",
+    "Empiric dosing: Acute poisoning 10-20 vials, Chronic adult 3-6 vials, Chronic child 1-2 vials",
+    "Slow infusion over 2 hours improves efficacy when dysrhythmias are not life-threatening",
+    "Avoid calcium salts in digoxin toxicity as they may worsen dysrhythmias",
+    "Each vial contains approximately 40 mg of digoxin-specific antibody fragments"
+  ]
+}

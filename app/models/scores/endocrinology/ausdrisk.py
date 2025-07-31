@@ -111,7 +111,7 @@ class AusdriskRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": "45-54",
                 "sex": "male",
@@ -172,7 +172,7 @@ class AusdriskResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 10,
                 "unit": "points",

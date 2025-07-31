@@ -40,7 +40,7 @@ class AcepEdCovid19ManagementToolRequest(BaseModel):
     )
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "severity": "mild",
                 "priest_score": 3,
@@ -62,7 +62,7 @@ class AcepEdCovid19ManagementToolResponse(BaseModel):
     stage_description: str = Field(..., description="Short description of disposition level")
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "Discharge",
                 "unit": "disposition",

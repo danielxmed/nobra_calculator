@@ -1,0 +1,112 @@
+{
+  "id": "nccn_ipi",
+  "title": "National Comprehensive Cancer Network International Prognostic Index (NCCN-IPI)",
+  "description": "Predicts survival in patients with diffuse large B-cell lymphoma (DLBCL) using age, LDH levels, extranodal involvement, Ann Arbor stage, and ECOG performance status. Developed for the rituximab era with enhanced prognostic discrimination.",
+  "category": "hematology",
+  "version": "2014",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "ldh_ratio",
+      "type": "float",
+      "required": true,
+      "description": "LDH (lactate dehydrogenase) ratio compared to upper limit of normal (ULN). Calculate as: patient's LDH / upper limit of normal",
+      "validation": {
+        "min": 0.1,
+        "max": 20
+      },
+      "unit": "ratio"
+    },
+    {
+      "name": "extranodal_sites",
+      "type": "string",
+      "required": true,
+      "description": "Presence of extranodal disease in major organs (bone marrow, CNS, liver/GI tract, or lung)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "ann_arbor_stage",
+      "type": "string",
+      "required": true,
+      "description": "Ann Arbor staging for lymphoma",
+      "options": ["I", "II", "III", "IV"],
+      "validation": {
+        "enum": ["I", "II", "III", "IV"]
+      }
+    },
+    {
+      "name": "ecog_performance_status",
+      "type": "integer",
+      "required": true,
+      "description": "ECOG performance status (0 = Fully active, 1 = Restricted in strenuous activity, 2 = Ambulatory but unable to work, 3 = Limited self-care, 4 = Completely disabled)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    }
+  ],
+  "result": {
+    "name": "nccn_ipi_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "NCCN-IPI total score (0-8 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Low",
+        "description": "Low risk",
+        "interpretation": "5-year overall survival: 96%. Excellent prognosis with standard R-CHOP chemotherapy. Consider clinical trials for de-escalation strategies."
+      },
+      {
+        "min": 2,
+        "max": 3,
+        "stage": "Low-Intermediate",
+        "description": "Low-intermediate risk",
+        "interpretation": "5-year overall survival: 82%. Good prognosis with standard therapy. Standard R-CHOP remains appropriate."
+      },
+      {
+        "min": 4,
+        "max": 5,
+        "stage": "High-Intermediate",
+        "description": "High-intermediate risk",
+        "interpretation": "5-year overall survival: 64%. Moderate prognosis. Consider intensified therapy or clinical trials for novel agents."
+      },
+      {
+        "min": 6,
+        "max": 8,
+        "stage": "High",
+        "description": "High risk",
+        "interpretation": "5-year overall survival: 33%. Poor prognosis with standard therapy. Strong consideration for intensive therapy, autologous stem cell transplant, or clinical trials."
+      }
+    ]
+  },
+  "references": [
+    "Zhou Z, Sehn LH, Rademaker AW, Gordon LI, Lacasce AS, Crosby-Thompson A, et al. An enhanced International Prognostic Index (NCCN-IPI) for patients with diffuse large B-cell lymphoma treated in the rituximab era. Blood. 2014 Feb 6;123(6):837-42.",
+    "Ruppert AS, Dixon JG, Salles G, Wall A, Cunningham D, Poeschel V, et al. International prognostic indices in diffuse large B-cell lymphoma: a comparison of IPI, R-IPI, and NCCN-IPI. Blood. 2020 Jun 4;135(23):2041-2048.",
+    "Gleeson M, Hawkes EA, Peckitt C, Wotherspoon A, Attygalle A, Sharma B, et al. Prognostic indices in diffuse large B-cell lymphoma in the rituximab era: an analysis of the UK National Cancer Research Institute R-CHOP 14 versus 21 phase 3 trial. Br J Haematol. 2021 Feb;192(6):1015-1019."
+  ],
+  "formula": "NCCN-IPI Score = Age points + LDH points + Extranodal sites (1 if yes) + Ann Arbor stage (1 if III/IV) + ECOG status (1 if ≥2)\n\nAge: ≤40 (0), >40-60 (1), >60-75 (2), >75 (3)\nLDH: Normal (0), >1-3× ULN (1), ≥3× ULN (2)",
+  "notes": [
+    "Developed specifically for patients treated in the rituximab era",
+    "Extranodal sites refer to involvement of bone marrow, CNS, liver/GI tract, or lung only",
+    "Provides better discrimination than conventional IPI for low and high-risk patients",
+    "Maximum score is 8 points, minimum is 0 points",
+    "Should be used at initial diagnosis before treatment initiation"
+  ]
+}

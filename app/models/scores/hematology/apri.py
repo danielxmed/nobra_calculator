@@ -82,7 +82,7 @@ class ApriRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "ast": 80.0,
                 "ast_upper_limit": 40.0,
@@ -144,7 +144,7 @@ class ApriResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 3.56,
                 "unit": "index",

@@ -116,7 +116,7 @@ class DkaMpmScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "severe_comorbidities": "no",
                 "ph_less_than_7": "no",
@@ -342,7 +342,7 @@ class DkaMpmScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 6,
                 "unit": "points",

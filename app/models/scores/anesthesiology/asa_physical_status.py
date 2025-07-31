@@ -21,7 +21,7 @@ class AsaPhysicalStatusRequest(BaseModel):
     )
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "physical_status": "asa_2",
                 "emergency_surgery": "no"
@@ -39,7 +39,7 @@ class AsaPhysicalStatusResponse(BaseModel):
     stage_description: str = Field(..., description="Description of the ASA stage")
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "ASA II",
                 "unit": "",

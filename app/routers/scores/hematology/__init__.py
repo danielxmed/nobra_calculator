@@ -17,7 +17,13 @@ from .cns_ipi import router as cns_ipi_router
 from .corrected_count_increment import router as corrected_count_increment_router
 from .reticulocyte_production_index import router as reticulocyte_production_index_router
 from .dash_prediction_score import router as dash_prediction_score_router
+from .nccn_ipi import router as nccn_ipi_router
 from .cryoprecipitate_dosing import router as cryoprecipitate_dosing_router
+from .dipss_plus import router as dipss_plus_router
+from .dli_volume import router as dli_volume_router
+from .duval_cibmtr_score_aml_survival import router as duval_cibmtr_score_aml_survival_router
+from .neutrophil_lymphocyte_ratio import router as neutrophil_lymphocyte_ratio_router
+from .eutos_score import router as eutos_score_router
 
 # Create main specialty router
 router = APIRouter()
@@ -35,4 +41,10 @@ router.include_router(cns_ipi_router)
 router.include_router(corrected_count_increment_router)
 router.include_router(reticulocyte_production_index_router)
 router.include_router(dash_prediction_score_router)
+router.include_router(nccn_ipi_router)
 router.include_router(cryoprecipitate_dosing_router)
+router.include_router(dipss_plus_router)
+router.include_router(dli_volume_router)
+router.include_router(duval_cibmtr_score_aml_survival_router)
+router.include_router(neutrophil_lymphocyte_ratio_router)
+router.include_router(eutos_score_router)

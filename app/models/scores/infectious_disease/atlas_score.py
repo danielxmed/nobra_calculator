@@ -96,7 +96,7 @@ class AtlasScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age_65_or_older": True,
                 "systemic_antibiotics": False,
@@ -192,7 +192,7 @@ class AtlasScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "score": 2,
                 "max_score": 6,

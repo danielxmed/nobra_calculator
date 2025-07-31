@@ -1,0 +1,96 @@
+{
+  "id": "nexus_criteria",
+  "title": "NEXUS Criteria for C-Spine Imaging",
+  "description": "Clinically clears cervical spine fracture without imaging in alert, stable trauma patients. The NEXUS (National Emergency X-Radiography Utilization Study) criteria help determine which blunt trauma patients do not require cervical spine imaging.",
+  "category": "emergency",
+  "version": "2000",
+  "parameters": [
+    {
+      "name": "midline_cervical_tenderness",
+      "type": "string",
+      "required": true,
+      "description": "Midline posterior bony cervical spine tenderness on palpation from nuchal ridge to first thoracic vertebra",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      }
+    },
+    {
+      "name": "focal_neurologic_deficit",
+      "type": "string",
+      "required": true,
+      "description": "Any focal neurologic deficit (weakness, numbness, or sensory changes)",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      }
+    },
+    {
+      "name": "altered_alertness",
+      "type": "string",
+      "required": true,
+      "description": "Normal alertness and level of consciousness (alert, oriented, cooperative)",
+      "options": ["normal", "altered"],
+      "validation": {
+        "enum": ["normal", "altered"]
+      }
+    },
+    {
+      "name": "intoxication",
+      "type": "string",
+      "required": true,
+      "description": "Evidence of intoxication (alcohol, drugs, or other substances)",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      }
+    },
+    {
+      "name": "distracting_injury",
+      "type": "string",
+      "required": true,
+      "description": "Painful distracting injury that may impair the reliability of the physical examination",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      }
+    }
+  ],
+  "result": {
+    "name": "imaging_recommendation",
+    "type": "string",
+    "unit": "",
+    "description": "Recommendation for cervical spine imaging based on NEXUS criteria"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "criteria": "all_low_risk",
+        "stage": "Low Risk",
+        "description": "No cervical spine imaging required",
+        "interpretation": "Patient meets all five NEXUS criteria and is at low risk for cervical spine injury. Cervical spine imaging can be safely avoided. Sensitivity 99.6% for detecting clinically significant cervical spine injuries."
+      },
+      {
+        "criteria": "high_risk",
+        "stage": "High Risk",
+        "description": "Cervical spine imaging recommended",
+        "interpretation": "Patient does not meet all NEXUS criteria. Cervical spine imaging (CT scan preferred) is recommended to rule out cervical spine injury. Clinical assessment alone is insufficient to exclude injury."
+      }
+    ]
+  },
+  "references": [
+    "Hoffman JR, Mower WR, Wolfson AB, Todd KH, Zucker MI. Validity of a set of clinical criteria to rule out injury to the cervical spine in patients with blunt trauma. N Engl J Med. 2000;343(2):94-99. doi:10.1056/NEJM200007133430203",
+    "Stiell IG, Wells GA, Vandemheen KL, et al. The Canadian C-spine rule versus the NEXUS low-risk criteria in patients with trauma. N Engl J Med. 2003;349(26):2510-2518. doi:10.1056/NEJMoa031375",
+    "Paykin G, O'Reilly G, Ackland HM, Mitra B. The NEXUS criteria are insufficient to exclude cervical spine fractures in older blunt trauma patients. Injury. 2017;48(5):1020-1024. doi:10.1016/j.injury.2017.02.013"
+  ],
+  "formula": "All five criteria must be met for low risk classification: (1) No midline cervical tenderness AND (2) No focal neurologic deficit AND (3) Normal alertness AND (4) No intoxication AND (5) No painful distracting injury",
+  "notes": [
+    "Validated in blunt trauma patients only",
+    "Less reliable in patients >65 years of age",
+    "Use caution in pediatric patients (<18 years)",
+    "Canadian C-Spine Rule may be more sensitive",
+    "Original study included over 34,000 patients",
+    "Sensitivity: 99.6%, Specificity: 12.9%",
+    "Mnemonic: NSAID (Neurologic deficit absent, Spinal tenderness absent, Alertness normal, Intoxication absent, Distracting injury absent)"
+  ]
+}

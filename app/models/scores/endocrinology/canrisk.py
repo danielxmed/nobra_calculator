@@ -17,7 +17,7 @@ CANRISK is a validated screening tool for undiagnosed type 2 diabetes and predia
 in Canadian adults aged 18-74 years, accounting for Canada's multi-ethnic population.
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Literal
 
 
@@ -124,14 +124,14 @@ class CanriskRequest(BaseModel):
         example="white"
     )
     
-    @validator('large_baby')
+    @field_validator('large_baby')
     def validate_large_baby(cls, v, values):
         if 'gender' in values and values['gender'] == 'male' and v != 'not_applicable':
             raise ValueError("Large baby question only applies to females")
         return v
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": "45-54",
                 "gender": "male",
@@ -197,7 +197,7 @@ class CanriskResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 25,
                 "unit": "points",

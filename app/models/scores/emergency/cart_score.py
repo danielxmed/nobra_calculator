@@ -87,7 +87,7 @@ class CartScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "respiratory_rate": 22,
                 "heart_rate": 115,
@@ -161,7 +161,7 @@ class CartScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 20,
                 "unit": "points",

@@ -15,6 +15,8 @@ from .cpis import CpisRequest, CpisResponse
 from .copd_cat import CopdCatRequest, CopdCatResponse
 from .crb_65_pneumonia_severity import Crb65PneumoniaSeverityRequest, Crb65PneumoniaSeverityResponse
 from .decaf_score import DecafScoreRequest, DecafScoreResponse
+from .du_bois_ipf_mortality import DuBoisIpfMortalityRequest, DuBoisIpfMortalityResponse
+from .expected_peak_expiratory_flow import ExpectedPeakExpiratoryFlowRequest, ExpectedPeakExpiratoryFlowResponse
 
 __all__ = [
     "Curb65Request",
@@ -43,4 +45,8 @@ __all__ = [
     "Crb65PneumoniaSeverityResponse",
     "DecafScoreRequest",
     "DecafScoreResponse",
+    "DuBoisIpfMortalityRequest",
+    "DuBoisIpfMortalityResponse",
+    "ExpectedPeakExpiratoryFlowRequest",
+    "ExpectedPeakExpiratoryFlowResponse",
 ]

@@ -64,7 +64,7 @@ class AapPediatricHypertensionRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 10,
                 "sex": "male",
@@ -137,7 +137,7 @@ class AapPediatricHypertensionResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "Normal",
                 "unit": "classification",

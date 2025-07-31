@@ -226,7 +226,7 @@ class DangerAssessmentToolRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "physical_violence_increased": "no",
                 "owns_gun": "no",
@@ -435,7 +435,7 @@ class DangerAssessmentToolResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 3.2,
                 "unit": "danger score",

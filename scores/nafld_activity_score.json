@@ -1,0 +1,88 @@
+{
+  "id": "nafld_activity_score",
+  "title": "NAFLD (Non-Alcoholic Fatty Liver Disease) Activity Score",
+  "description": "Diagnoses steatohepatitis based on histological findings in NAFLD patients. The NAS evaluates disease activity by scoring three histological features: steatosis, lobular inflammation, and hepatocellular ballooning.",
+  "category": "gastroenterology",
+  "version": "2005",
+  "parameters": [
+    {
+      "name": "steatosis",
+      "type": "string",
+      "required": true,
+      "description": "Percentage of hepatocytes containing fat droplets on liver biopsy",
+      "options": ["<5%", "5-33%", "34-66%", ">66%"],
+      "validation": {
+        "enum": ["<5%", "5-33%", "34-66%", ">66%"]
+      }
+    },
+    {
+      "name": "lobular_inflammation",
+      "type": "string",
+      "required": true,
+      "description": "Number of inflammatory foci per 200× microscopic field",
+      "options": ["No foci", "1 focus per 200× field", "2-4 foci per 200× field", ">4 foci per 200× field"],
+      "validation": {
+        "enum": ["No foci", "1 focus per 200× field", "2-4 foci per 200× field", ">4 foci per 200× field"]
+      }
+    },
+    {
+      "name": "ballooning",
+      "type": "string",
+      "required": true,
+      "description": "Hepatocellular ballooning (enlarged hepatocytes with rarefied cytoplasm)",
+      "options": ["None", "Few balloon cells", "Many cells/prominent ballooning"],
+      "validation": {
+        "enum": ["None", "Few balloon cells", "Many cells/prominent ballooning"]
+      }
+    }
+  ],
+  "result": {
+    "name": "nafld_activity_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "NAFLD Activity Score ranging from 0-8"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "No activity",
+        "description": "No NAFLD activity",
+        "interpretation": "Score of 0 indicates no evidence of NAFLD activity. No steatosis, inflammation, or hepatocellular ballooning present."
+      },
+      {
+        "min": 1,
+        "max": 2,
+        "stage": "Mild activity",
+        "description": "Mild NAFLD activity",
+        "interpretation": "NAS of 1-2 indicates mild NAFLD activity. Generally correlated with 'not NASH' diagnosis. Close monitoring recommended."
+      },
+      {
+        "min": 3,
+        "max": 5,
+        "stage": "Moderate activity",
+        "description": "Moderate NAFLD activity",
+        "interpretation": "NAS of 3-5 indicates moderate NAFLD activity. Scores ≥4 have optimal sensitivity and specificity for predicting steatohepatitis. NAS ≥5 strongly correlates with 'definite NASH' diagnosis."
+      },
+      {
+        "min": 6,
+        "max": 8,
+        "stage": "Marked activity",
+        "description": "Marked NAFLD activity",
+        "interpretation": "NAS of 6-8 indicates marked NAFLD activity. Strongly correlates with definite NASH diagnosis. Consider therapeutic intervention and close monitoring."
+      }
+    ]
+  },
+  "references": [
+    "Kleiner DE, Brunt EM, Van Natta M, Behling C, Contos MJ, Cummings OW, et al. Design and validation of a histological scoring system for nonalcoholic fatty liver disease. Hepatology. 2005 Jun;41(6):1313-21. doi: 10.1002/hep.20701.",
+    "Brunt EM, Kleiner DE, Wilson LA, Belt P, Neuschwander-Tetri BA; NASH Clinical Research Network (CRN). Nonalcoholic fatty liver disease (NAFLD) activity score and the histopathologic diagnosis in NAFLD: distinct clinicopathologic meanings. Hepatology. 2011 Mar;53(3):810-20. doi: 10.1002/hep.24127."
+  ],
+  "formula": "NAS = Steatosis score (0-3) + Lobular inflammation score (0-3) + Hepatocellular ballooning score (0-2)",
+  "notes": [
+    "The NAS should not be used as a standalone diagnostic tool for NASH",
+    "A ≥2-point improvement in NAS is commonly used as an endpoint in clinical trials",
+    "Fibrosis is staged separately (0-4) and is not included in the NAS",
+    "NAS ≥4 is recommended for admission into interventional trials for NASH"
+  ]
+}

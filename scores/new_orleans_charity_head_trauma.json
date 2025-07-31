@@ -1,0 +1,114 @@
+{
+  "id": "new_orleans_charity_head_trauma",
+  "title": "New Orleans/Charity Head Trauma/Injury Rule",
+  "description": "Offers criteria for which patients are unlikely to require imaging after head trauma. Use ONLY in patients with head injury and loss of consciousness who are neurologically normal (GCS 15).",
+  "category": "neurology",
+  "version": "2000",
+  "parameters": [
+    {
+      "name": "headache",
+      "type": "string",
+      "required": true,
+      "description": "Headache",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "vomiting",
+      "type": "string",
+      "required": true,
+      "description": "Vomiting",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "age_over_60",
+      "type": "string",
+      "required": true,
+      "description": "Age > 60",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "intoxication",
+      "type": "string",
+      "required": true,
+      "description": "Alcohol or drug intoxication",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "persistent_amnesia",
+      "type": "string",
+      "required": true,
+      "description": "Persistent anterograde amnesia (short-term memory deficits)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "visible_trauma",
+      "type": "string",
+      "required": true,
+      "description": "Visible trauma above the clavicle",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "seizure",
+      "type": "string",
+      "required": true,
+      "description": "Seizure",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "recommendation",
+    "type": "string",
+    "unit": "",
+    "description": "CT scan recommendation"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Negative",
+        "description": "No criteria met",
+        "interpretation": "CT scan not required. The patient meets none of the New Orleans criteria. The rule is 100% sensitive for detecting intracranial injuries requiring neurosurgical intervention."
+      },
+      {
+        "min": 1,
+        "max": 7,
+        "stage": "Positive",
+        "description": "One or more criteria met",
+        "interpretation": "CT scan recommended. The patient meets at least one of the New Orleans criteria. Consider CT head imaging to rule out intracranial injury."
+      }
+    ]
+  },
+  "references": [
+    "Haydel MJ, Preston CA, Mills TJ, Luber S, Blaudeau E, DeBlieux PM. Indications for computed tomography in patients with minor head injury. N Engl J Med. 2000 Jul 13;343(2):100-5. doi: 10.1056/NEJM200007133430204."
+  ],
+  "formula": "If ANY criteria are positive (present), CT scan is recommended",
+  "notes": [
+    "Use ONLY in patients with head injury and loss of consciousness who are neurologically normal (GCS 15)",
+    "100% sensitive for detecting intracranial injuries requiring neurosurgical intervention",
+    "Less specific than other head injury rules like the Canadian CT Head Rule",
+    "Goal is to identify patients who need head CT imaging after minor head trauma",
+    "Excludes patients with focal neurologic findings, refusal of CT, or no loss of consciousness"
+  ]
+}

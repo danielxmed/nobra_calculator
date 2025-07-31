@@ -88,7 +88,7 @@ class FourAtRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "alertness": "normal",
                 "amt4_errors": 1,
@@ -143,7 +143,7 @@ class FourAtResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 4,
                 "unit": "points",

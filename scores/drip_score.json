@@ -1,0 +1,148 @@
+{
+  "id": "drip_score",
+  "title": "Drug Resistance in Pneumonia (DRIP) Score",
+  "description": "Predicts risk for community-acquired pneumonia due to drug-resistant pathogens (CAP-DRP). Helps determine when broad-spectrum antibiotics should be used to ensure effective treatment while avoiding unnecessary antibiotic resistance.",
+  "category": "infectious_disease",
+  "version": "2013",
+  "parameters": [
+    {
+      "name": "antibiotic_use_60_days",
+      "type": "string",
+      "required": true,
+      "description": "Antibiotic use within 60 days (Major risk factor)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "long_term_care_facility",
+      "type": "string",
+      "required": true,
+      "description": "Residence in a long-term-care facility (Major risk factor)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "tube_feeding",
+      "type": "string",
+      "required": true,
+      "description": "Tube feeding (Major risk factor)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "prior_drug_resistant_infection",
+      "type": "string",
+      "required": true,
+      "description": "Prior infection with a drug-resistant pathogen (Major risk factor)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "chronic_pulmonary_disease",
+      "type": "string",
+      "required": true,
+      "description": "Chronic pulmonary disease (Minor risk factor)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hospitalization_60_days",
+      "type": "string",
+      "required": true,
+      "description": "Prior hospitalization within 60 days (Minor risk factor)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "poor_functional_status",
+      "type": "string",
+      "required": true,
+      "description": "Poor functional status (Minor risk factor)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "mrsa_colonization",
+      "type": "string",
+      "required": true,
+      "description": "MRSA colonization (Minor risk factor)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "wound_care",
+      "type": "string",
+      "required": true,
+      "description": "Wound care (Minor risk factor)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "gastric_acid_suppression",
+      "type": "string",
+      "required": true,
+      "description": "Gastric acid suppression (Minor risk factor)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "drip_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "DRIP score total (0-14 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Low Risk",
+        "description": "Low risk of drug-resistant pneumonia",
+        "interpretation": "Scores <4 were associated with lower risk of drug-resistant pneumonia. Consider treating without extended-spectrum antibiotics. Standard empirical antibiotics appropriate."
+      },
+      {
+        "min": 4,
+        "max": 14,
+        "stage": "High Risk",
+        "description": "High risk of drug-resistant pneumonia",
+        "interpretation": "Scores ≥4 were associated with higher risk of drug-resistant pneumonia. Extended-spectrum antibiotic coverage is recommended to ensure effective treatment."
+      }
+    ]
+  },
+  "references": [
+    "Webb BJ, Dascomb K, Stenehjem E, Dean N. Derivation and multicenter validation of the drug resistance in pneumonia clinical prediction score. Antimicrob Agents Chemother. 2016;60(5):2652-63. doi: 10.1128/AAC.03071-15.",
+    "Attridge RT, Frei CR, Restrepo MI, et al. Guideline-concordant therapy and outcomes in healthcare-associated pneumonia. Eur Respir J. 2011;38(4):878-87. doi: 10.1183/09031936.00141110.",
+    "Webb BJ, Dangerfield B, Pasha JS, et al. Guideline-concordant antibiotic therapy and clinical outcomes in healthcare-associated pneumonia. Respir Med. 2012;106(11):1606-12. doi: 10.1016/j.rmed.2012.08.010."
+  ],
+  "formula": "Major risk factors (2 points each): Antibiotic use within 60 days, Long-term care facility residence, Tube feeding, Prior drug-resistant infection. Minor risk factors (1 point each): Chronic pulmonary disease, Hospitalization within 60 days, Poor functional status, MRSA colonization, Wound care, Gastric acid suppression. Total: 0-14 points.",
+  "notes": [
+    "The DRIP score should only be used for bacterial causes of pneumonia.",
+    "At threshold ≥4 points: Sensitivity 0.82, Specificity 0.81, PPV 0.68, NPV 0.90.",
+    "DRIP score is more predictive than healthcare-associated pneumonia (HCAP) criteria for drug-resistant pathogens.",
+    "May decrease antibiotic overutilization by 46% compared to HCAP criteria.",
+    "False negatives may occur with MRSA, P. aeruginosa, severe COPD, IV drug use, psychiatric illness, and homelessness.",
+    "False positives may occur with S. pneumoniae and methicillin-susceptible S. aureus (MSSA).",
+    "Local validation and institutional antibiotic resistance patterns should be considered for optimal implementation."
+  ]
+}

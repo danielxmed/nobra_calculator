@@ -1,0 +1,106 @@
+{
+  "id": "das28_crp",
+  "title": "Disease Activity Score-28 for Rheumatoid Arthritis with CRP (DAS28-CRP)",
+  "description": "Describes severity of rheumatoid arthritis using clinical and laboratory data, specifically CRP",
+  "category": "rheumatology",
+  "version": "1990",
+  "parameters": [
+    {
+      "name": "tender_joint_count",
+      "type": "integer",
+      "required": true,
+      "description": "Number of tender joints (0-28)",
+      "validation": {
+        "min": 0,
+        "max": 28
+      },
+      "unit": "joints"
+    },
+    {
+      "name": "swollen_joint_count",
+      "type": "integer",
+      "required": true,
+      "description": "Number of swollen joints (0-28)",
+      "validation": {
+        "min": 0,
+        "max": 28
+      },
+      "unit": "joints"
+    },
+    {
+      "name": "crp_level",
+      "type": "float",
+      "required": true,
+      "description": "C-reactive protein level in mg/L",
+      "validation": {
+        "min": 0,
+        "max": 300
+      },
+      "unit": "mg/L"
+    },
+    {
+      "name": "patient_global_health",
+      "type": "integer",
+      "required": true,
+      "description": "Patient's global assessment of disease activity (0-10 scale, where 0 = very well, 10 = very poor)",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "scale"
+    }
+  ],
+  "result": {
+    "name": "das28_crp_score",
+    "type": "float",
+    "unit": "points",
+    "description": "DAS28-CRP score (range 0-10)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2.6,
+        "stage": "Remission",
+        "description": "Disease remission",
+        "interpretation": "Remission. Patient is in remission with minimal or no disease activity. Continue current therapy and monitor."
+      },
+      {
+        "min": 2.6,
+        "max": 3.2,
+        "stage": "Low",
+        "description": "Low disease activity",
+        "interpretation": "Low disease activity. Current therapy is effective. Continue monitoring and may consider treatment optimization for remission target."
+      },
+      {
+        "min": 3.2,
+        "max": 5.1,
+        "stage": "Moderate",
+        "description": "Moderate disease activity",
+        "interpretation": "Moderate disease activity. Consider treatment intensification or modification. Reassess treatment strategy to achieve lower disease activity."
+      },
+      {
+        "min": 5.1,
+        "max": 10,
+        "stage": "High",
+        "description": "High disease activity",
+        "interpretation": "High disease activity. Treatment intensification or change is strongly recommended. Consider combination therapy or biologic agents."
+      }
+    ]
+  },
+  "references": [
+    "van der Heijde DM, van 't Hof MA, van Riel PL, et al. Judging disease activity in clinical practice in rheumatoid arthritis: first step in the development of a disease activity score. Ann Rheum Dis. 1990 Nov;49(11):916-20. doi: 10.1136/ard.49.11.916.",
+    "Prevoo ML, van 't Hof MA, Kuper HH, van Leeuwen MA, van de Putte LB, van Riel PL. Modified disease activity scores that include twenty-eight-joint counts. Development and validation in a prospective longitudinal study of patients with rheumatoid arthritis. Arthritis Rheum. 1995 Jan;38(1):44-8. doi: 10.1002/art.1780380107.",
+    "Fleischmann R, van der Heijde D, Koenig AS, et al. How much does Disease Activity Score in 28 joints ESR and CRP calculations underestimate disease activity compared to the Simplified Disease Activity Index? Ann Rheum Dis. 2015 Jun;74(6):1132-7. doi: 10.1136/annrheumdis-2013-204920."
+  ],
+  "formula": "DAS28-CRP = 0.56*√(tender joint count) + 0.28*√(swollen joint count) + 0.36*ln(CRP + 1) + 0.014*patient global health*10 + 0.96",
+  "notes": [
+    "The 28 joints assessed include: shoulders (2), elbows (2), wrists (2), MCPs (10), PIPs (8), knees (2), and thumb IPs (2)",
+    "Patient global health is assessed on 0-10 scale where 0 = very well and 10 = very poor",
+    "DAS28-CRP tends to give lower scores than DAS28-ESR for the same disease activity level",
+    "A change of ≥0.6 represents moderate improvement, ≥1.2 represents major improvement",
+    "Used as part of 'treat-to-target' approach in rheumatoid arthritis management",
+    "Should be used in conjunction with clinical judgment and other assessment tools",
+    "Values may be affected by conditions that influence CRP levels independent of RA activity"
+  ]
+}

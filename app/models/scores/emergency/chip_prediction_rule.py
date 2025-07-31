@@ -344,7 +344,7 @@ class ChipPredictionRuleRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "pedestrian_cyclist_vehicle": "no",
                 "ejected_from_vehicle": "no",
@@ -522,7 +522,7 @@ class ChipPredictionRuleResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "recommendation": "CT Recommended",

@@ -134,7 +134,7 @@ class DhakaScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "general_appearance": "restless_irritable",
                 "respirations": "normal",
@@ -278,7 +278,7 @@ class DhakaScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 5,
                 "unit": "DHAKA score",

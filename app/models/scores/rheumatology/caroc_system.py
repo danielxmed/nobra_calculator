@@ -24,7 +24,7 @@ patients into low (<10%), moderate (10-20%), or high (>20%) risk based on age,
 sex, femoral neck T-score, and clinical risk factors.
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Literal, Dict, Any
 
 
@@ -94,14 +94,14 @@ class CAROCSystemRequest(BaseModel):
         example="no"
     )
     
-    @validator('femoral_neck_t_score')
+    @field_validator('femoral_neck_t_score')
     def validate_t_score(cls, v):
         if v > 1:
             raise ValueError("T-scores above 1 are uncommon and should be verified")
         return v
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "sex": "female",
                 "age": 65,
@@ -190,7 +190,7 @@ class CAROCSystemResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "Moderate Risk",
                 "unit": "category",

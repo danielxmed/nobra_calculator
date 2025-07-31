@@ -76,7 +76,7 @@ class AbbeyPainRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "vocalization": 1,
                 "facial_expression": 2,
@@ -144,7 +144,7 @@ class AbbeyPainResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 5,
                 "unit": "points",

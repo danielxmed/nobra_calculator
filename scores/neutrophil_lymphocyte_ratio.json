@@ -1,0 +1,100 @@
+{
+  "id": "neutrophil_lymphocyte_ratio",
+  "title": "Neutrophil-Lymphocyte Ratio (NLR) Calculator",
+  "description": "Calculates neutrophil-lymphocyte ratio",
+  "category": "hematology",
+  "version": "2001",
+  "parameters": [
+    {
+      "name": "count_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of counts being provided",
+      "options": ["absolute", "percentage"],
+      "validation": {
+        "enum": ["absolute", "percentage"]
+      }
+    },
+    {
+      "name": "neutrophil_count",
+      "type": "float",
+      "required": true,
+      "description": "Neutrophil count or percentage",
+      "validation": {
+        "min": 0,
+        "max": 50000
+      },
+      "unit": "cells/μL or %"
+    },
+    {
+      "name": "lymphocyte_count",
+      "type": "float",
+      "required": true,
+      "description": "Lymphocyte count or percentage",
+      "validation": {
+        "min": 0.1,
+        "max": 50000
+      },
+      "unit": "cells/μL or %"
+    }
+  ],
+  "result": {
+    "name": "nlr",
+    "type": "float",
+    "unit": "ratio",
+    "description": "Neutrophil-lymphocyte ratio"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Normal",
+        "description": "Normal NLR",
+        "interpretation": "Normal neutrophil-lymphocyte ratio indicating no significant physiological stress"
+      },
+      {
+        "min": 3.01,
+        "max": 6,
+        "stage": "Mildly Elevated",
+        "description": "Mildly elevated NLR",
+        "interpretation": "Mildly elevated NLR suggesting low-level physiological stress. Monitor clinical status and trend over time."
+      },
+      {
+        "min": 6.01,
+        "max": 9,
+        "stage": "Mild Stress",
+        "description": "Mild physiological stress",
+        "interpretation": "NLR indicates mild physiological stress. May be seen in mild infections, minor inflammatory conditions, or early stress response."
+      },
+      {
+        "min": 9.01,
+        "max": 18,
+        "stage": "Moderate Stress",
+        "description": "Moderate physiological stress",
+        "interpretation": "NLR indicates moderate physiological stress. Often seen in bacterial infections, significant inflammation, or moderate severity illness."
+      },
+      {
+        "min": 18.01,
+        "max": 999999,
+        "stage": "Severe Stress",
+        "description": "Severe physiological stress",
+        "interpretation": "NLR indicates severe physiological stress. May indicate severe infection, sepsis, critical illness, or significant inflammatory conditions. Correlates with poor prognosis."
+      }
+    ]
+  },
+  "references": [
+    "Zahorec R. Ratio of neutrophil to lymphocyte counts--rapid and simple parameter of systemic inflammation and stress in critically ill. Bratisl Lek Listy. 2001;102(1):5-14.",
+    "Yang AP, Liu JP, Tao WQ, Li HM. The diagnostic and predictive role of NLR, d-NLR and PLR in COVID-19 patients. Int Immunopharmacol. 2020 Jul;84:106504."
+  ],
+  "formula": "NLR = Absolute Neutrophil Count / Absolute Lymphocyte Count",
+  "notes": [
+    "Can be calculated using either absolute counts (cells/μL) or percentages",
+    "Normal NLR range is approximately 1-3",
+    "Higher NLR correlates with poor prognosis and higher mortality rates",
+    "More useful than standard white blood cell count for assessing physiological stress",
+    "Results can be skewed by steroid use, active hematologic disorders, or HIV-related chronic lymphopenia",
+    "Should be interpreted in clinical context and not in isolation",
+    "Can be trended over time for prognostication"
+  ]
+}

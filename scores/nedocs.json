@@ -1,0 +1,150 @@
+{
+  "id": "nedocs",
+  "title": "NEDOCS Score for Emergency Department Overcrowding",
+  "description": "Estimates severity of overcrowding in emergency departments using 7 objective parameters including ED and hospital bed capacity, patient volume, ventilator usage, admission counts, and wait times.",
+  "category": "emergency",
+  "version": "2004",
+  "parameters": [
+    {
+      "name": "ed_beds",
+      "type": "integer",
+      "required": true,
+      "description": "Number of ED beds (total licensed number of beds)",
+      "validation": {
+        "min": 1,
+        "max": 500
+      },
+      "unit": "beds"
+    },
+    {
+      "name": "hospital_beds",
+      "type": "integer",
+      "required": true,
+      "description": "Number of hospital beds",
+      "validation": {
+        "min": 1,
+        "max": 5000
+      },
+      "unit": "beds"
+    },
+    {
+      "name": "total_patients",
+      "type": "integer",
+      "required": true,
+      "description": "Total patients in the ED (include patients doubled up in rooms and hallway beds)",
+      "validation": {
+        "min": 0,
+        "max": 1000
+      },
+      "unit": "patients"
+    },
+    {
+      "name": "ventilated_patients",
+      "type": "integer",
+      "required": true,
+      "description": "Patients on ventilators in the ED",
+      "validation": {
+        "min": 0,
+        "max": 100
+      },
+      "unit": "patients"
+    },
+    {
+      "name": "admitted_patients",
+      "type": "integer",
+      "required": true,
+      "description": "Number of admits in the ED",
+      "validation": {
+        "min": 0,
+        "max": 500
+      },
+      "unit": "patients"
+    },
+    {
+      "name": "longest_admit_wait",
+      "type": "float",
+      "required": true,
+      "description": "Waiting time of longest admitted patient",
+      "validation": {
+        "min": 0,
+        "max": 168
+      },
+      "unit": "hours"
+    },
+    {
+      "name": "longest_waiting_room_wait",
+      "type": "float",
+      "required": true,
+      "description": "Waiting time of longest waiting room patient (technically 'Last roomed patient's prior wait time')",
+      "validation": {
+        "min": 0,
+        "max": 168
+      },
+      "unit": "hours"
+    }
+  ],
+  "result": {
+    "name": "nedocs_score",
+    "type": "float",
+    "unit": "points",
+    "description": "NEDOCS score (1-200 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 20,
+        "stage": "Level 1",
+        "description": "Not busy",
+        "interpretation": "The emergency department is operating smoothly with minimal patient load and adequate resources."
+      },
+      {
+        "min": 21,
+        "max": 60,
+        "stage": "Level 2",
+        "description": "Busy",
+        "interpretation": "The emergency department is experiencing moderate patient volume but remains functional with acceptable wait times."
+      },
+      {
+        "min": 61,
+        "max": 100,
+        "stage": "Level 3",
+        "description": "Extremely busy but not overcrowded",
+        "interpretation": "The emergency department is very busy with high patient volume, but resources are still adequate to manage patient flow effectively."
+      },
+      {
+        "min": 101,
+        "max": 140,
+        "stage": "Level 4",
+        "description": "Overcrowded",
+        "interpretation": "The emergency department is overcrowded with inadequate resources for patient volume. Patient care may be compromised and wait times are excessive."
+      },
+      {
+        "min": 141,
+        "max": 180,
+        "stage": "Level 5",
+        "description": "Severely overcrowded",
+        "interpretation": "The emergency department is severely overcrowded with critical resource limitations. Patient safety is at risk and immediate measures should be taken."
+      },
+      {
+        "min": 181,
+        "max": 200,
+        "stage": "Level 6",
+        "description": "Dangerously overcrowded",
+        "interpretation": "The emergency department is dangerously overcrowded. Patient safety is severely compromised and emergency measures must be implemented immediately."
+      }
+    ]
+  },
+  "references": [
+    "Weiss SJ, et al. Estimating the Degree of Emergency Department Overcrowding in Academic Medical Centers: Results of the National ED Overcrowding Study (NEDOCS). Acad Emerg Med. 2004 Jan;11(1):38-50.",
+    "Hwang U, et. al. Measures of Crowding in the Emergency Department: A Systematic Review. Acad Emerg Med. 2011; 18:527–538",
+    "Hoot N, Aronsky D. An Early Warning System for Overcrowding in the Emergency Department. AMIA Annual Symposium Proceedings 2006;2006:339-343."
+  ],
+  "formula": "NEDOCS = -20 + 85.8 × (Total ED patients / ED beds) + 600 × (ED admits / Hospital beds) + 13.3 × (Ventilated patients) + 0.93 × (Longest admit time in hours) + 5.64 × (Last patient wait time in hours)",
+  "notes": [
+    "NEDOCS was validated in academic medical centers and may need adjustment for community hospitals",
+    "The score ranges from 1 to 200, with higher scores indicating greater overcrowding",
+    "Consider local factors and clinical judgment when interpreting results",
+    "Regular monitoring can help predict and prevent dangerous overcrowding situations"
+  ]
+}

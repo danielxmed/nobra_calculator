@@ -157,7 +157,7 @@ class AsdasCrpRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "back_pain": 4.5,
                 "morning_stiffness": 3.0,
@@ -275,7 +275,7 @@ class AsdasCrpResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 2.45,
                 "unit": "score",

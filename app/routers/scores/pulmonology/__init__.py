@@ -17,6 +17,8 @@ from .cpis import router as cpis_router
 from .copd_cat import router as copd_cat_router
 from .crb_65_pneumonia_severity import router as crb_65_pneumonia_severity_router
 from .decaf_score import router as decaf_score_router
+from .du_bois_ipf_mortality import router as du_bois_ipf_mortality_router
+from .expected_peak_expiratory_flow import router as expected_peak_expiratory_flow_router
 
 # Create main specialty router
 router = APIRouter()
@@ -34,3 +36,5 @@ router.include_router(cpis_router)
 router.include_router(copd_cat_router)
 router.include_router(crb_65_pneumonia_severity_router)
 router.include_router(decaf_score_router)
+router.include_router(du_bois_ipf_mortality_router)
+router.include_router(expected_peak_expiratory_flow_router)

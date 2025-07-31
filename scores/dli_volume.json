@@ -1,0 +1,140 @@
+{
+  "id": "dli_volume",
+  "title": "Donor Lymphocyte Infusion (DLI) Volume",
+  "description": "Estimates total blood volume to process by apheresis to produce appropriate DLI dosage",
+  "category": "hematology",
+  "version": "2010",
+  "parameters": [
+    {
+      "name": "recipient_weight",
+      "type": "float",
+      "required": true,
+      "description": "Recipient weight in kg",
+      "validation": {
+        "min": 1,
+        "max": 300
+      },
+      "unit": "kg"
+    },
+    {
+      "name": "cd3_infusion_dose",
+      "type": "float",
+      "required": true,
+      "description": "CD3+ infusion dose (× 10⁶ cells/kg)",
+      "validation": {
+        "min": 0.1,
+        "max": 1000
+      },
+      "unit": "× 10⁶ cells/kg"
+    },
+    {
+      "name": "number_of_infusions",
+      "type": "integer",
+      "required": true,
+      "description": "Number of planned infusions",
+      "validation": {
+        "min": 1,
+        "max": 10
+      },
+      "unit": "infusions"
+    },
+    {
+      "name": "collection_efficiency",
+      "type": "float",
+      "required": true,
+      "description": "Collection efficiency as percentage (typical: 50%)",
+      "validation": {
+        "min": 10,
+        "max": 90
+      },
+      "unit": "%"
+    },
+    {
+      "name": "donor_wbc_count",
+      "type": "float",
+      "required": true,
+      "description": "Donor white blood cell count",
+      "validation": {
+        "min": 1,
+        "max": 50
+      },
+      "unit": "× 10³/μL"
+    },
+    {
+      "name": "donor_total_lymphocytes",
+      "type": "float",
+      "required": true,
+      "description": "Donor total lymphocytes as percentage of WBC",
+      "validation": {
+        "min": 5,
+        "max": 80
+      },
+      "unit": "%"
+    },
+    {
+      "name": "donor_cd3_lymphocytes",
+      "type": "float",
+      "required": true,
+      "description": "Donor CD3+ lymphocytes as percentage of total lymphocytes",
+      "validation": {
+        "min": 30,
+        "max": 90
+      },
+      "unit": "%"
+    }
+  ],
+  "result": {
+    "name": "blood_volume_needed",
+    "type": "float",
+    "unit": "mL",
+    "description": "Total blood volume needed to process by apheresis"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2000,
+        "stage": "Low volume",
+        "description": "Small apheresis procedure",
+        "interpretation": "Low blood volume requirement. Short apheresis procedure expected. Monitor donor comfort and fluid balance."
+      },
+      {
+        "min": 2000,
+        "max": 5000,
+        "stage": "Moderate volume",
+        "description": "Standard apheresis procedure",
+        "interpretation": "Moderate blood volume requirement. Standard apheresis procedure. Ensure adequate donor hydration and monitor vital signs."
+      },
+      {
+        "min": 5000,
+        "max": 10000,
+        "stage": "High volume",
+        "description": "Extended apheresis procedure",
+        "interpretation": "High blood volume requirement. Extended apheresis procedure. Consider splitting into multiple sessions. Close monitoring of donor required."
+      },
+      {
+        "min": 10000,
+        "max": 50000,
+        "stage": "Very high volume",
+        "description": "Multiple session requirement",
+        "interpretation": "Very high blood volume requirement. Strongly consider multiple apheresis sessions to ensure donor safety. Careful donor selection and monitoring essential."
+      }
+    ]
+  },
+  "references": [
+    "Wingard JR, Hsu J, Hiemenz JW. Hematopoietic Stem Cell Transplantation: A Handbook for Clinicians. 2nd ed. Bethesda, MD: AABB Press; 2010.",
+    "Schmitz N, Dreger P, Suttorp M, et al. Primary transplantation of allogeneic peripheral blood progenitor cells mobilized by filgrastim (granulocyte colony-stimulating factor). Blood. 1995 Mar 1;85(5):1666-72.",
+    "Kolb HJ, Schattenberg A, Goldman JM, et al. European Group for Blood and Marrow Transplantation Working Party Chronic Leukemia. Graft-versus-leukemia effect of donor lymphocyte transfusions in marrow grafted patients. Blood. 1995 Nov 1;86(5):2041-50."
+  ],
+  "formula": "Total blood volume = (Recipient weight × CD3+ dose × Number of infusions) / (Donor WBC × % Total lymphocytes × % CD3+ lymphocytes × 1000 × Collection efficiency)",
+  "notes": [
+    "Typical DLI goal: 1 dose of 5×10⁷ CD3+ T-cells/kg recipient body weight",
+    "Standard collection efficiency assumption: 50% (range 40-60%)",
+    "Linear correlation exists between CD3+ cells collected and processed blood volume",
+    "Used primarily in allogeneic stem cell transplant management for relapsed disease",
+    "Consider donor safety limits: maximum 12,000 mL processed blood volume recommended",
+    "Higher processed volumes may require multiple apheresis sessions",
+    "Donor should meet standard apheresis eligibility criteria",
+    "Pre-apheresis CBC and donor screening required"
+  ]
+}

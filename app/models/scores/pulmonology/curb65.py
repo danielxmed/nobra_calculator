@@ -77,7 +77,7 @@ class Curb65Request(BaseModel):
         return v
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "confusion": False,
                 "urea": 25.0,
@@ -149,7 +149,7 @@ class Curb65Response(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 3,
                 "unit": "points",

@@ -19,7 +19,7 @@ heart rate) with biomarkers (troponin) and imaging findings (RV dysfunction) to 
 patients into three risk categories.
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Literal
 
 
@@ -83,7 +83,7 @@ class BovaScoreRequest(BaseModel):
         example=115
     )
     
-    @validator('systolic_bp')
+    @field_validator('systolic_bp')
     def validate_hemodynamic_stability(cls, v):
         """Ensures patient is hemodynamically stable"""
         if v < 90:
@@ -91,7 +91,7 @@ class BovaScoreRequest(BaseModel):
         return v
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "systolic_bp": 95,
                 "elevated_troponin": "yes",
@@ -148,7 +148,7 @@ class BovaScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 5,
                 "unit": "points",

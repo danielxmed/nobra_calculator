@@ -86,7 +86,7 @@ class BristolStoolFormScaleRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "stool_type": 4
             }
@@ -169,7 +169,7 @@ class BristolStoolFormScaleResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 4,
                 "unit": "type",

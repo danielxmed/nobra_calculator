@@ -103,7 +103,7 @@ class CambridgeDiabetesRiskScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "gender": "male",
                 "age": 55,
@@ -191,7 +191,7 @@ class CambridgeDiabetesRiskScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 0.247,
                 "unit": "probability",

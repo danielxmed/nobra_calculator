@@ -62,7 +62,7 @@ class Amt10Request(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age_correct": "correct",
                 "time_correct": "correct",
@@ -109,7 +109,7 @@ class Amt10Response(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 8,
                 "unit": "points",

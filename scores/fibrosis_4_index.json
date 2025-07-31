@@ -1,0 +1,96 @@
+{
+  "id": "fibrosis_4_index",
+  "title": "Fibrosis-4 (FIB-4) Index for Liver Fibrosis",
+  "description": "Non-invasive estimate of liver scarring in HCV and HBV patients, to assess need for biopsy. Calculated as (Age × AST) / (Platelet count × √ALT)",
+  "category": "gastroenterology",
+  "version": "2006",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient's age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "ast",
+      "type": "float",
+      "required": true,
+      "description": "Aspartate aminotransferase (AST) level",
+      "validation": {
+        "min": 1,
+        "max": 10000
+      },
+      "unit": "U/L"
+    },
+    {
+      "name": "alt",
+      "type": "float",
+      "required": true,
+      "description": "Alanine aminotransferase (ALT) level",
+      "validation": {
+        "min": 1,
+        "max": 10000
+      },
+      "unit": "U/L"
+    },
+    {
+      "name": "platelet_count",
+      "type": "float",
+      "required": true,
+      "description": "Platelet count in 10⁹/L",
+      "validation": {
+        "min": 1,
+        "max": 1000
+      },
+      "unit": "10⁹/L"
+    }
+  ],
+  "result": {
+    "name": "fib4_score",
+    "type": "float",
+    "unit": "index",
+    "description": "FIB-4 index value for liver fibrosis assessment"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1.45,
+        "stage": "Low risk",
+        "description": "Low risk of advanced fibrosis (F0-F1)",
+        "interpretation": "Low risk for advanced fibrosis. Excludes advanced fibrosis with ~90% negative predictive value. Can avoid liver biopsy. Monitor with repeat FIB-4 every 2-3 years."
+      },
+      {
+        "min": 1.45,
+        "max": 3.25,
+        "stage": "Indeterminate risk",
+        "description": "Indeterminate risk (F2-F3)",
+        "interpretation": "Indeterminate risk for advanced fibrosis. Consider second-line testing (elastography, FibroTest, or liver biopsy). Close monitoring required."
+      },
+      {
+        "min": 3.25,
+        "max": 999999,
+        "stage": "High risk",
+        "description": "High risk of advanced fibrosis/cirrhosis (F3-F4)",
+        "interpretation": "High risk for advanced fibrosis/cirrhosis. Suggests advanced fibrosis with 97% specificity. Refer to hepatologist. Consider liver biopsy or elastography for confirmation."
+      }
+    ]
+  },
+  "references": [
+    "Sterling RK, Lissen E, Clumeck N, Sola R, Correa MC, Montaner J, et al. Development of a simple noninvasive index to predict significant fibrosis in patients with HIV/HCV coinfection. Hepatology. 2006 Jun;43(6):1317-25. doi: 10.1002/hep.21178.",
+    "Vallet-Pichard A, Mallet V, Nalpas B, Verkarre V, Nalpas A, Dhalluin-Venier V, et al. FIB-4: an inexpensive and accurate marker of fibrosis in HCV infection. comparison with liver biopsy and fibrotest. Hepatology. 2007 Jul;46(1):32-6. doi: 10.1002/hep.21669.",
+    "Shah AG, Lydecker A, Murray K, Tetri BN, Contos MJ, Sanyal AJ, et al. Comparison of noninvasive markers of fibrosis in patients with nonalcoholic fatty liver disease. Clin Gastroenterol Hepatol. 2009 Oct;7(10):1104-12. doi: 10.1016/j.cgh.2009.05.033."
+  ],
+  "formula": "FIB-4 = (Age × AST) / (Platelet count × √ALT)",
+  "notes": [
+    "Use with caution in patients <35 or >65 years old",
+    "For patients >65 years, consider using a cutoff of 2.0 instead of 1.45",
+    "Originally developed for HIV/HCV coinfection but validated in NAFLD, HBV, and HCV",
+    "Platelet count should be in 10⁹/L (not 10³/µL) for this calculation"
+  ]
+}

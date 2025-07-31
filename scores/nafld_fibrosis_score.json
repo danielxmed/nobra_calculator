@@ -1,0 +1,128 @@
+{
+  "id": "nafld_fibrosis_score",
+  "title": "NAFLD (Non-Alcoholic Fatty Liver Disease) Fibrosis Score",
+  "description": "Estimates amount of scarring in the liver based on various lab tests. Distinguishes between patients with nonalcoholic fatty liver disease who have (F3-F4) and do not have (F0-F2) advanced fibrosis.",
+  "category": "gastroenterology",
+  "version": "2007",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "float",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 0,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "bmi",
+      "type": "float",
+      "required": true,
+      "description": "Body Mass Index calculated as weight(kg) / height(m)²",
+      "validation": {
+        "min": 10,
+        "max": 70
+      },
+      "unit": "kg/m²"
+    },
+    {
+      "name": "hyperglycemia",
+      "type": "string",
+      "required": true,
+      "description": "Presence of impaired fasting glucose (IFG) or diabetes mellitus",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "ast",
+      "type": "float",
+      "required": true,
+      "description": "Aspartate aminotransferase (AST) level",
+      "validation": {
+        "min": 1,
+        "max": 2000
+      },
+      "unit": "IU/L"
+    },
+    {
+      "name": "alt",
+      "type": "float",
+      "required": true,
+      "description": "Alanine aminotransferase (ALT) level",
+      "validation": {
+        "min": 1,
+        "max": 2000
+      },
+      "unit": "IU/L"
+    },
+    {
+      "name": "platelet_count",
+      "type": "float",
+      "required": true,
+      "description": "Platelet count",
+      "validation": {
+        "min": 10,
+        "max": 800
+      },
+      "unit": "×10⁹/L"
+    },
+    {
+      "name": "albumin",
+      "type": "float",
+      "required": true,
+      "description": "Serum albumin level",
+      "validation": {
+        "min": 1.0,
+        "max": 6.0
+      },
+      "unit": "g/dL"
+    }
+  ],
+  "result": {
+    "name": "nafld_fibrosis_score",
+    "type": "float",
+    "unit": "points",
+    "description": "NAFLD Fibrosis Score value"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": -10.0,
+        "max": -1.455,
+        "stage": "F0-F2",
+        "description": "Absence of significant fibrosis",
+        "interpretation": "Score < -1.455 is a predictor of absence of significant fibrosis (F0-F2 fibrosis). Negative predictive value of 93% for ruling out advanced fibrosis. These patients have mild to moderate fibrosis and are unlikely to have advanced liver disease."
+      },
+      {
+        "min": -1.455,
+        "max": 0.676,
+        "stage": "Indeterminate",
+        "description": "Indeterminate zone",
+        "interpretation": "Score between -1.455 and 0.676 falls in the indeterminate zone. Approximately 30% of patients fall into this range where the score cannot definitively rule in or rule out advanced fibrosis. Additional testing such as liver biopsy, elastography, or other non-invasive markers may be needed."
+      },
+      {
+        "min": 0.676,
+        "max": 10.0,
+        "stage": "F3-F4",
+        "description": "Presence of significant fibrosis",
+        "interpretation": "Score > 0.676 is a predictor of presence of significant fibrosis (F3-F4 fibrosis). Positive predictive value of 90% for advanced fibrosis. These patients likely have bridging fibrosis (F3) or cirrhosis (F4) and should be considered for close monitoring and treatment."
+      }
+    ]
+  },
+  "references": [
+    "Angulo P, Hui JM, Marchesini G, Bugianesi E, George J, Farrell GC, et al. The NAFLD fibrosis score: a noninvasive system that identifies liver fibrosis in patients with NAFLD. Hepatology. 2007 Apr;45(4):846-54. doi: 10.1002/hep.21496.",
+    "McPherson S, Stewart SF, Henderson E, Burt AD, Day CP. Simple non-invasive fibrosis scoring systems can reliably exclude advanced fibrosis in patients with non-alcoholic fatty liver disease. Gut. 2010 Sep;59(9):1265-9. doi: 10.1136/gut.2010.216077."
+  ],
+  "formula": "NAFLD Score = -1.675 + 0.037 × age (years) + 0.094 × BMI (kg/m²) + 1.13 × hyperglycemia (yes=1, no=0) + 0.99 × AST/ALT ratio - 0.013 × platelet count (×10⁹/L) - 0.66 × albumin (g/dL)",
+  "notes": [
+    "Fibrosis stages: F0 = absence of fibrosis, F1 = perisinusoidal or periportal fibrosis, F2 = perisinusoidal and portal/periportal fibrosis, F3 = bridging fibrosis, F4 = cirrhosis",
+    "The score was developed based on 733 patients with biopsy-proven NAFLD",
+    "AUROC for detecting advanced fibrosis was 0.88 (95% CI 0.85-0.92)",
+    "Approximately 30% of patients may fall into the indeterminate range requiring additional testing",
+    "The score helps reduce the need for liver biopsy by identifying patients likely or unlikely to have advanced fibrosis"
+  ]
+}

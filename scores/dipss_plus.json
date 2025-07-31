@@ -1,0 +1,149 @@
+{
+  "id": "dipss_plus",
+  "title": "DIPSS/DIPSS Plus (Dynamic International Prognostic Scoring System) for Myelofibrosis",
+  "description": "Estimates survival in patients with primary myelofibrosis using clinical and laboratory parameters",
+  "category": "hematology",
+  "version": "2011",
+  "parameters": [
+    {
+      "name": "scoring_system",
+      "type": "string",
+      "required": true,
+      "description": "Choose DIPSS or DIPSS Plus scoring system",
+      "options": ["DIPSS", "DIPSS_Plus"],
+      "validation": {
+        "enum": ["DIPSS", "DIPSS_Plus"]
+      }
+    },
+    {
+      "name": "age_over_65",
+      "type": "string",
+      "required": true,
+      "description": "Age greater than 65 years",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "wbc_over_25",
+      "type": "string",
+      "required": true,
+      "description": "White blood cell count >25,000/μL (25 × 10⁹/L)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hemoglobin_under_10",
+      "type": "string",
+      "required": true,
+      "description": "Hemoglobin <10 g/dL (100 g/L)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "peripheral_blast_1_or_more",
+      "type": "string",
+      "required": true,
+      "description": "Peripheral blood blast ≥1%",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "constitutional_symptoms",
+      "type": "string",
+      "required": true,
+      "description": "Constitutional symptoms (fever, night sweats, weight loss >10% in 6 months)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "unfavorable_karyotype",
+      "type": "string",
+      "required": false,
+      "description": "Unfavorable karyotype (complex karyotype or sole/two abnormalities including +8, -7/7q-, i(17q), -5/5q-, 12p-, inv(3), or 11q23 rearrangement) - Required for DIPSS Plus",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "platelets_under_100",
+      "type": "string",
+      "required": false,
+      "description": "Platelet count <100,000/μL (100 × 10⁹/L) - Required for DIPSS Plus",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "transfusion_dependent",
+      "type": "string",
+      "required": false,
+      "description": "Red cell transfusion dependency - Required for DIPSS Plus",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total DIPSS or DIPSS Plus score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low risk",
+        "description": "Low risk category",
+        "interpretation": "DIPSS: Median survival not reached. DIPSS Plus: Median survival 185 months (15.4 years). Consider observation with regular monitoring."
+      },
+      {
+        "min": 1,
+        "max": 2,
+        "stage": "Intermediate-1 risk",
+        "description": "Intermediate-1 risk category",
+        "interpretation": "DIPSS: Median survival 14.2 years. DIPSS Plus (1 point): Median survival 78 months (6.5 years). Consider risk-adapted therapy and clinical trial enrollment."
+      },
+      {
+        "min": 3,
+        "max": 4,
+        "stage": "Intermediate-2 risk",
+        "description": "Intermediate-2 risk category",
+        "interpretation": "DIPSS: Median survival 4 years. DIPSS Plus (2-3 points): Median survival 35 months (2.9 years). Consider allogeneic stem cell transplantation evaluation in eligible patients."
+      },
+      {
+        "min": 5,
+        "max": 8,
+        "stage": "High risk",
+        "description": "High risk category",
+        "interpretation": "DIPSS: Median survival 1.5 years. DIPSS Plus (4-6 points): Median survival 16 months (1.3 years). Strong consideration for allogeneic stem cell transplantation in eligible patients or clinical trials."
+      }
+    ]
+  },
+  "references": [
+    "Passamonti F, Cervantes F, Vannucchi AM, et al. A dynamic prognostic model to predict survival in primary myelofibrosis: a study by the IWG-MRT (International Working Group for Myeloproliferative Neoplasms Research and Treatment). Blood. 2010;115(9):1703-8.",
+    "Gangat N, Caramazza D, Vaidya R, et al. DIPSS plus: a refined Dynamic International Prognostic Scoring System for primary myelofibrosis that incorporates prognostic information from karyotype, platelet count, and transfusion status. J Clin Oncol. 2011;29(4):392-7."
+  ],
+  "formula": "DIPSS Score: Age >65 (1 point) + WBC >25,000/μL (1 point) + Hemoglobin <10 g/dL (2 points) + Peripheral blast ≥1% (1 point) + Constitutional symptoms (1 point). DIPSS Plus adds: Unfavorable karyotype (1 point) + Platelets <100,000/μL (1 point) + Transfusion dependency (1 point).",
+  "notes": [
+    "DIPSS can be applied at any time during the disease course, unlike IPSS which is only for diagnosis",
+    "Use DIPSS when karyotype is unavailable; use DIPSS Plus when karyotype is available",
+    "Constitutional symptoms include fever >37.5°C, night sweats, and weight loss >10% in 6 months",
+    "Does not incorporate molecular data (JAK2, CALR, MPL mutations)",
+    "Helps identify high-risk patients who may benefit from allogeneic stem cell transplantation"
+  ]
+}

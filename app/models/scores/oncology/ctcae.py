@@ -327,7 +327,7 @@ class CtcaeRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "adverse_event_type": "anemia",
                 "patient_sex": "female",
@@ -560,7 +560,7 @@ class CtcaeResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 2,
                 "unit": "grade",

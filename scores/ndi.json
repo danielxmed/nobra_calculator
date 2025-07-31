@@ -1,0 +1,247 @@
+{
+  "id": "ndi",
+  "title": "Neck Disability Index (NDI)",
+  "description": "Assesses disability in patients with neck pain across 10 functional domains",
+  "category": "neurology",
+  "version": "1991",
+  "parameters": [
+    {
+      "name": "pain_intensity",
+      "type": "integer",
+      "required": true,
+      "description": "Pain intensity level",
+      "options": [
+        "I have no pain at the moment (0)",
+        "The pain is very mild at the moment (1)",
+        "The pain is moderate at the moment (2)",
+        "The pain is fairly severe at the moment (3)",
+        "The pain is very severe at the moment (4)",
+        "The pain is the worst imaginable at the moment (5)"
+      ],
+      "validation": {
+        "min": 0,
+        "max": 5
+      }
+    },
+    {
+      "name": "personal_care",
+      "type": "integer",
+      "required": true,
+      "description": "Personal care (washing, dressing, etc.)",
+      "options": [
+        "I can look after myself normally without causing extra pain (0)",
+        "I can look after myself normally, but it causes extra pain (1)",
+        "It is painful to look after myself, and I am slow and careful (2)",
+        "I need some help but can manage most of my personal care (3)",
+        "I need help every day in most aspects of self care (4)",
+        "I do not get dressed, I wash with difficulty and stay in bed (5)"
+      ],
+      "validation": {
+        "min": 0,
+        "max": 5
+      }
+    },
+    {
+      "name": "lifting",
+      "type": "integer",
+      "required": true,
+      "description": "Lifting ability",
+      "options": [
+        "I can lift heavy weights without extra pain (0)",
+        "I can lift heavy weights, but it causes extra pain (1)",
+        "Pain prevents me from lifting heavy weights off the floor, but I can manage if they are conveniently placed, for example on a table (2)",
+        "Pain prevents me from lifting heavy weights, but I can manage light to medium weights if they are conveniently positioned (3)",
+        "I can only lift very light weights (4)",
+        "I cannot lift or carry anything (5)"
+      ],
+      "validation": {
+        "min": 0,
+        "max": 5
+      }
+    },
+    {
+      "name": "reading",
+      "type": "integer",
+      "required": true,
+      "description": "Reading ability",
+      "options": [
+        "I can read as much as I want to with no pain in my neck (0)",
+        "I can read as much as I want to with slight pain in my neck (1)",
+        "I can read as much as I want with moderate pain in my neck (2)",
+        "I cannot read as much as I want because of moderate pain in my neck (3)",
+        "I can hardly read at all because of severe pain in my neck (4)",
+        "I cannot read at all (5)"
+      ],
+      "validation": {
+        "min": 0,
+        "max": 5
+      }
+    },
+    {
+      "name": "headaches",
+      "type": "integer",
+      "required": true,
+      "description": "Headache frequency and severity",
+      "options": [
+        "I have no headaches at all (0)",
+        "I have slight headaches, which come infrequently (1)",
+        "I have moderate headaches, which come infrequently (2)",
+        "I have moderate headaches, which come frequently (3)",
+        "I have severe headaches, which come frequently (4)",
+        "I have headaches almost all the time (5)"
+      ],
+      "validation": {
+        "min": 0,
+        "max": 5
+      }
+    },
+    {
+      "name": "concentration",
+      "type": "integer",
+      "required": true,
+      "description": "Concentration ability",
+      "options": [
+        "I can concentrate fully when I want to with no difficulty (0)",
+        "I can concentrate fully when I want to with slight difficulty (1)",
+        "I have a fair degree of difficulty in concentrating when I want to (2)",
+        "I have a lot of difficulty in concentrating when I want to (3)",
+        "I have a great deal of difficulty in concentrating when I want to (4)",
+        "I cannot concentrate at all (5)"
+      ],
+      "validation": {
+        "min": 0,
+        "max": 5
+      }
+    },
+    {
+      "name": "work",
+      "type": "integer",
+      "required": true,
+      "description": "Work capacity",
+      "options": [
+        "I can do as much work as I want to (0)",
+        "I can only do my usual work, but no more (1)",
+        "I can do most of my usual work, but no more (2)",
+        "I cannot do my usual work (3)",
+        "I can hardly do any work at all (4)",
+        "I cannot do any work at all (5)"
+      ],
+      "validation": {
+        "min": 0,
+        "max": 5
+      }
+    },
+    {
+      "name": "driving",
+      "type": "integer",
+      "required": true,
+      "description": "Driving ability",
+      "options": [
+        "I can drive my car without any neck pain (0)",
+        "I can drive my car as long as I want with slight pain in my neck (1)",
+        "I can drive my car as long as I want with moderate pain in my neck (2)",
+        "I cannot drive my car as long as I want because of moderate pain in my neck (3)",
+        "I can hardly drive at all because of severe pain in my neck (4)",
+        "I cannot drive my car at all (5)"
+      ],
+      "validation": {
+        "min": 0,
+        "max": 5
+      }
+    },
+    {
+      "name": "sleeping",
+      "type": "integer",
+      "required": true,
+      "description": "Sleep quality",
+      "options": [
+        "I have no trouble sleeping (0)",
+        "My sleep is slightly disturbed (less than 1 hr sleepless) (1)",
+        "My sleep is mildly disturbed (1-2 hrs sleepless) (2)",
+        "My sleep is moderately disturbed (2-3 hrs sleepless) (3)",
+        "My sleep is greatly disturbed (3-5 hrs sleepless) (4)",
+        "My sleep is completely disturbed (5-7 hrs sleepless) (5)"
+      ],
+      "validation": {
+        "min": 0,
+        "max": 5
+      }
+    },
+    {
+      "name": "recreation",
+      "type": "integer",
+      "required": true,
+      "description": "Recreation activities",
+      "options": [
+        "I am able to engage in all my recreation activities with no neck pain at all (0)",
+        "I am able to engage in all my recreation activities, with some pain in my neck (1)",
+        "I am able to engage in most, but not all, of my usual recreation activities because of pain in my neck (2)",
+        "I am able to engage in a few of my usual recreation activities because of pain in my neck (3)",
+        "I can hardly do any recreation activities because of pain in my neck (4)",
+        "I cannot do any recreation activities at all (5)"
+      ],
+      "validation": {
+        "min": 0,
+        "max": 5
+      }
+    }
+  ],
+  "result": {
+    "name": "ndi_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "NDI score (0-50 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 4,
+        "stage": "None",
+        "description": "No disability",
+        "interpretation": "The patient has no significant neck-related disability. They can perform all activities without pain interfering with daily life."
+      },
+      {
+        "min": 5,
+        "max": 14,
+        "stage": "Mild",
+        "description": "Mild disability",
+        "interpretation": "The patient has mild neck-related disability. Most activities of daily living are not significantly affected, though some discomfort may be present."
+      },
+      {
+        "min": 15,
+        "max": 24,
+        "stage": "Moderate",
+        "description": "Moderate disability",
+        "interpretation": "The patient has moderate neck-related disability. Pain and associated symptoms are having a significant impact on important activities of daily living."
+      },
+      {
+        "min": 25,
+        "max": 34,
+        "stage": "Severe",
+        "description": "Severe disability",
+        "interpretation": "The patient has severe neck-related disability. Major activities of daily living are affected, and the patient requires significant modifications to manage their condition."
+      },
+      {
+        "min": 35,
+        "max": 50,
+        "stage": "Complete",
+        "description": "Complete disability",
+        "interpretation": "The patient has complete neck-related disability. They are either bed-bound or have exaggerated symptoms. Careful evaluation is needed to rule out malingering or psychological overlay."
+      }
+    ]
+  },
+  "references": [
+    "Vernon H, Mior S. The Neck Disability Index: a study of reliability and validity. J Manipulative Physiol Ther. 1991;14(7):409-415.",
+    "Vernon H. The Neck Disability Index: state-of-the-art, 1991-2008. J Manipulative Physiol Ther. 2008;31(7):491-502.",
+    "MacDermid JC, Walton DM, Avery S, et al. Measurement properties of the neck disability index: a systematic review. J Orthop Sports Phys Ther. 2009;39(5):400-417."
+  ],
+  "formula": "NDI Score = Sum of all 10 domain scores (each domain scored 0-5)",
+  "notes": [
+    "The NDI is the most widely used patient-reported outcome measure for neck pain",
+    "Each of the 10 domains is scored from 0 (no disability) to 5 (complete disability)",
+    "The total score ranges from 0 to 50 points",
+    "Can also be expressed as a percentage by multiplying the total score by 2",
+    "Minimum clinically important difference (MCID) is generally considered to be 5 points or 10%"
+  ]
+}

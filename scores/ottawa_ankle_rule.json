@@ -1,0 +1,130 @@
+{
+  "id": "ottawa_ankle_rule",
+  "title": "Ottawa Ankle Rule",
+  "description": "Rules out clinically significant foot and ankle fractures to reduce use of x-ray imaging. Provides separate criteria for ankle and foot x-rays based on location of pain and specific clinical findings.",
+  "category": "emergency",
+  "version": "1992",
+  "parameters": [
+    {
+      "name": "malleolar_zone_pain",
+      "type": "string",
+      "required": true,
+      "description": "Is there pain in the malleolar zone (area around the ankle)?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "lateral_malleolus_tenderness",
+      "type": "string",
+      "required": true,
+      "description": "Is there bone tenderness at the posterior edge or tip of the lateral malleolus (distal 6 cm)?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "medial_malleolus_tenderness",
+      "type": "string",
+      "required": true,
+      "description": "Is there bone tenderness at the posterior edge or tip of the medial malleolus (distal 6 cm)?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "midfoot_zone_pain",
+      "type": "string",
+      "required": true,
+      "description": "Is there pain in the midfoot zone?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "fifth_metatarsal_tenderness",
+      "type": "string",
+      "required": true,
+      "description": "Is there bone tenderness at the base of the 5th metatarsal?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "navicular_tenderness",
+      "type": "string",
+      "required": true,
+      "description": "Is there bone tenderness at the navicular bone?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "unable_to_bear_weight",
+      "type": "string",
+      "required": true,
+      "description": "Is the patient unable to bear weight both immediately after injury and in the emergency department (unable to take 4 steps)?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "ottawa_ankle_result",
+    "type": "string",
+    "unit": "recommendation",
+    "description": "X-ray recommendations based on Ottawa Ankle Rule"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "result": "no_xray_needed",
+        "stage": "No imaging required",
+        "description": "No x-ray needed",
+        "interpretation": "Based on the Ottawa Ankle Rule, no ankle or foot x-rays are required. The absence of all clinical criteria suggests a very low probability of clinically significant fracture. The rule has 98-100% sensitivity for detecting fractures."
+      },
+      {
+        "result": "ankle_xray_only",
+        "stage": "Ankle x-ray indicated",
+        "description": "Ankle x-ray series required",
+        "interpretation": "Based on the Ottawa Ankle Rule, an ankle x-ray series is indicated due to malleolar zone pain with either malleolar tenderness or inability to bear weight. This combination suggests possible ankle fracture requiring radiographic evaluation."
+      },
+      {
+        "result": "foot_xray_only",
+        "stage": "Foot x-ray indicated",
+        "description": "Foot x-ray series required",
+        "interpretation": "Based on the Ottawa Ankle Rule, a foot x-ray series is indicated due to midfoot zone pain with either 5th metatarsal/navicular tenderness or inability to bear weight. This combination suggests possible foot fracture requiring radiographic evaluation."
+      },
+      {
+        "result": "both_xrays",
+        "stage": "Both x-rays indicated",
+        "description": "Both ankle and foot x-ray series required",
+        "interpretation": "Based on the Ottawa Ankle Rule, both ankle and foot x-ray series are indicated. The presence of criteria in both zones suggests possible fractures in both areas requiring comprehensive radiographic evaluation."
+      }
+    ]
+  },
+  "references": [
+    "Stiell IG, Greenberg GH, McKnight RD, Nair RC, McDowell I, Worthington JR. A study to develop clinical decision rules for the use of radiography in acute ankle injuries. Ann Emerg Med. 1992 Apr;21(4):384-90. doi: 10.1016/s0196-0644(05)82656-3.",
+    "Stiell IG, McKnight RD, Greenberg GH, McDowell I, Nair RC, Wells GA, et al. Implementation of the Ottawa ankle rules. JAMA. 1994 Mar 16;271(11):827-32.",
+    "Bachmann LM, Kolb E, Koller MT, Steurer J, ter Riet G. Accuracy of Ottawa ankle rules to exclude fractures of the ankle and mid-foot: systematic review. BMJ. 2003 Feb 22;326(7386):417. doi: 10.1136/bmj.326.7386.417.",
+    "Dowling S, Spooner CH, Liang Y, Dryden DM, Friesen C, Klassen TP, et al. Accuracy of Ottawa Ankle Rules to exclude fractures of the ankle and midfoot in children: a meta-analysis. Acad Emerg Med. 2009 Apr;16(4):277-87. doi: 10.1111/j.1553-2712.2008.00333.x."
+  ],
+  "formula": "Ankle X-ray = Malleolar pain AND (Malleolar tenderness OR Unable to bear weight); Foot X-ray = Midfoot pain AND (5th metatarsal/Navicular tenderness OR Unable to bear weight)",
+  "notes": [
+    "High sensitivity (98-100%) for clinically significant fractures",
+    "Low specificity (41% ankle, 79% foot)",
+    "Bearing weight includes limping",
+    "Unable to bear weight means unable to take 4 steps",
+    "Should be applied within 48 hours of injury",
+    "Use with caution in patients under 18 years",
+    "Not reliable if patient is intoxicated, uncooperative, has distracting injuries, diminished leg sensation, or gross swelling preventing palpation",
+    "Can reduce unnecessary radiographs by 30-40%"
+  ]
+}

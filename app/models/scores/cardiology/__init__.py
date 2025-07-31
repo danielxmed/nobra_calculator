@@ -24,6 +24,14 @@ from .chads2_score import Chads2ScoreRequest, Chads2ScoreResponse
 from .cha2ds2_va_score import Cha2ds2VaScoreRequest, Cha2ds2VaScoreResponse
 from .corrected_qt_interval import CorrectedQtIntervalRequest, CorrectedQtIntervalResponse
 from .crusade_bleeding_risk import CrusadeBleedingRiskRequest, CrusadeBleedingRiskResponse
+from .dapt_score import DaptScoreRequest, DaptScoreResponse
+from .doac_score import DoacScoreRequest, DoacScoreResponse
+from .duke_activity_status_index import DukeActivityStatusIndexRequest, DukeActivityStatusIndexResponse
+from .duke_treadmill_score import DukeTreadmillScoreRequest, DukeTreadmillScoreResponse
+from .egsys_score_syncope import EgsysScoreSyncopeRequest, EgsysScoreSyncopeResponse
+from .euromacs_rhf_score import EuromacsRhfScoreRequest, EuromacsRhfScoreResponse
+from .euroscore_ii import EuroScoreIIRequest, EuroScoreIIResponse
+from .nyha_functional_classification import NyhaFunctionalClassificationRequest, NyhaFunctionalClassificationResponse
 
 __all__ = [
     "Cha2ds2VascRequest",
@@ -37,7 +45,9 @@ __all__ = [
     "AdhereAlgorithmRequest",
     "AdhereAlgorithmResponse",
     "CrusadeBleedingRiskRequest",
-    "CrusadeBleedingRiskResponse",
+    "CrusadeBleedingRiskResponse", 
+    "DaptScoreRequest",
+    "DaptScoreResponse",
     "ThakarScoreRequest",
     "ThakarScoreResponse",
     "AubHas2CardiovascularRiskIndexRequest",
@@ -69,5 +79,19 @@ __all__ = [
     "Cha2ds2VaScoreRequest",
     "Cha2ds2VaScoreResponse",
     "CorrectedQtIntervalRequest",
-    "CorrectedQtIntervalResponse"
+    "CorrectedQtIntervalResponse",
+    "DoacScoreRequest",
+    "DoacScoreResponse",
+    "DukeActivityStatusIndexRequest",
+    "DukeActivityStatusIndexResponse",
+    "DukeTreadmillScoreRequest",
+    "DukeTreadmillScoreResponse",
+    "EgsysScoreSyncopeRequest",
+    "EgsysScoreSyncopeResponse",
+    "EuromacsRhfScoreRequest",
+    "EuromacsRhfScoreResponse",
+    "EuroScoreIIRequest",
+    "EuroScoreIIResponse",
+    "NyhaFunctionalClassificationRequest",
+    "NyhaFunctionalClassificationResponse"
 ]

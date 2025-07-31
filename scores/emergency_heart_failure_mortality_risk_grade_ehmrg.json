@@ -1,0 +1,178 @@
+{
+  "id": "emergency_heart_failure_mortality_risk_grade_ehmrg",
+  "title": "Emergency Heart Failure Mortality Risk Grade (EHMRG)",
+  "description": "Estimates 7-day mortality risk in emergency department patients with acute heart failure using clinical variables routinely collected on arrival.",
+  "category": "emergency",
+  "version": "2010",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "ems_transport",
+      "type": "string",
+      "required": true,
+      "description": "Arrival by Emergency Medical Services (ambulance) transport",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "systolic_bp",
+      "type": "integer",
+      "required": true,
+      "description": "Systolic blood pressure on arrival (capped at 160 mmHg for calculation)",
+      "validation": {
+        "min": 40,
+        "max": 300
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "heart_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Heart rate on arrival (range 80-120 bpm used for calculation)",
+      "validation": {
+        "min": 30,
+        "max": 200
+      },
+      "unit": "bpm"
+    },
+    {
+      "name": "oxygen_saturation",
+      "type": "integer",
+      "required": true,
+      "description": "Oxygen saturation on arrival (capped at 92% for calculation)",
+      "validation": {
+        "min": 50,
+        "max": 100
+      },
+      "unit": "%"
+    },
+    {
+      "name": "creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Serum creatinine level",
+      "validation": {
+        "min": 0.1,
+        "max": 20.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "potassium",
+      "type": "float",
+      "required": true,
+      "description": "Serum potassium level",
+      "validation": {
+        "min": 2.0,
+        "max": 8.0
+      },
+      "unit": "mmol/L"
+    },
+    {
+      "name": "troponin_elevated",
+      "type": "string",
+      "required": true,
+      "description": "Troponin level above upper limit of normal",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "active_cancer",
+      "type": "string",
+      "required": true,
+      "description": "Presence of active cancer",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "metolazone_use",
+      "type": "string",
+      "required": true,
+      "description": "Current home use of metolazone",
+      "options": ["yes", "no"]
+    }
+  ],
+  "result": {
+    "name": "ehmrg_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "EHMRG risk score for 7-day mortality prediction"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": null,
+        "max": -49.1,
+        "stage": "Risk Group 1 (Very Low)",
+        "description": "Very low 7-day mortality risk",
+        "interpretation": "7-day mortality rate 0.5%. Very low risk for short-term mortality. Standard heart failure management with routine follow-up appropriate. Consider early discharge planning if clinically stable."
+      },
+      {
+        "min": -49.0,
+        "max": -15.9,
+        "stage": "Risk Group 2 (Low)",
+        "description": "Low 7-day mortality risk",
+        "interpretation": "7-day mortality rate 0.3%. Low risk for short-term mortality. Standard heart failure care with close outpatient follow-up. May be suitable for accelerated discharge pathway if appropriate support available."
+      },
+      {
+        "min": -15.8,
+        "max": 17.9,
+        "stage": "Risk Group 3 (Intermediate)",
+        "description": "Intermediate 7-day mortality risk",
+        "interpretation": "7-day mortality rate 0.7%. Intermediate risk requiring careful monitoring. Standard inpatient management with attention to optimization of heart failure therapy. Ensure adequate follow-up arrangements."
+      },
+      {
+        "min": 18.0,
+        "max": 56.5,
+        "stage": "Risk Group 4 (High)",
+        "description": "High 7-day mortality risk",
+        "interpretation": "7-day mortality rate 2.1%. High risk requiring intensive monitoring and aggressive management. Consider cardiology consultation, advanced heart failure therapies, and close inpatient observation."
+      },
+      {
+        "min": 56.6,
+        "max": 89.3,
+        "stage": "Risk Group 5a (Very High)",
+        "description": "Very high 7-day mortality risk",
+        "interpretation": "7-day mortality rate 3.3%. Very high risk requiring immediate intensive intervention. Strong consideration for ICU-level care, advanced heart failure specialist consultation, and evaluation for advanced therapies."
+      },
+      {
+        "min": 89.4,
+        "max": null,
+        "stage": "Risk Group 5b (Highest)",
+        "description": "Highest 7-day mortality risk",
+        "interpretation": "7-day mortality rate 8.0%. Highest risk category requiring immediate intensive care. Urgent cardiology/heart failure specialist consultation, ICU-level monitoring, and consideration of advanced mechanical support or palliative care discussions."
+      }
+    ]
+  },
+  "references": [
+    "Lee DS, Stitt A, Austin PC, Stukel TA, Schull MJ, Charl G, et al. Prediction of heart failure mortality in emergent care: a cohort study. Ann Intern Med. 2012;156(11):767-75, W-261, W-262. doi: 10.7326/0003-4819-156-11-201206050-00003.",
+    "Lee DS, Austin PC, Rouleau JL, Liu PP, Naimark D, Tu JV. Predicting mortality among patients hospitalized for heart failure: derivation and validation of a clinical model. JAMA. 2003;290(19):2581-7. doi: 10.1001/jama.290.19.2581.",
+    "Stiell IG, Clement CM, Brison RJ, Rowe BH, Borgundvaag B, Aaron SD, et al. A risk scoring system to identify emergency department patients with heart failure at high risk for serious adverse events. Acad Emerg Med. 2013;20(1):17-26. doi: 10.1111/acem.12056.",
+    "Chouihed T, Manzo-Silberman S, Peschanski N, Charpentier S, Gil-Jardrin E, Chkair B, et al. Emergency Heart Failure Mortality Risk Grade score performance for 7-day mortality prediction in patients with heart failure attended at the emergency department: validation in a Spanish cohort. Eur J Emerg Med. 2017;24(3):169-177. doi: 10.1097/MEJ.0000000000000391."
+  ],
+  "formula": "EHMRG Score = (2 × age) + (60 if EMS transport) + (-1 × min(SBP, 160)) + (1 × max(80, min(HR, 120))) + (-2 × min(O2Sat, 92)) + (20 × creatinine) + potassium_points + (60 if troponin elevated) + (45 if active cancer) + (60 if metolazone use) + 12. Potassium points: ≤3.9 = 5pts, 4.0-4.5 = 0pts, ≥4.6 = 30pts.",
+  "notes": [
+    "The EHMRG was derived and validated to predict 7-day mortality in emergency department patients with acute heart failure.",
+    "The score uses clinical variables routinely collected on arrival to the ED and provides personalized risk assessment.",
+    "The formula includes caps on certain variables: SBP (max 160), heart rate (range 80-120), oxygen saturation (max 92%).",
+    "The score range is approximately -248 to 400+ points, with higher scores indicating higher mortality risk.",
+    "Risk groups are defined by specific cut-points: ≤-49.1, -49.0 to -15.9, -15.8 to 17.9, 18.0 to 56.5, 56.6 to 89.3, ≥89.4.",
+    "The EHMRG has been validated in multiple international cohorts and healthcare systems.",
+    "The score outperformed physician estimates of risk, particularly in identifying low-risk and high-risk patients.",
+    "An extended model (EHMRG30-ST) includes ST-segment depression for 30-day mortality prediction.",
+    "The score should be used in conjunction with clinical judgment and not as the sole determinant of care decisions.",
+    "Electronic calculation is recommended to reduce calculation errors given the multivariable nature of the formula.",
+    "The tool is most applicable to patients presenting to the emergency department with acute heart failure symptoms.",
+    "Risk stratification can guide decisions about level of care, monitoring intensity, and discharge planning.",
+    "Very low and low-risk patients may be candidates for accelerated discharge pathways with appropriate follow-up.",
+    "High and very high-risk patients require intensive monitoring and consideration of advanced heart failure interventions."
+  ]
+}

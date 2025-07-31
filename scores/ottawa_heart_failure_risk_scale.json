@@ -1,0 +1,162 @@
+{
+  "id": "ottawa_heart_failure_risk_scale",
+  "title": "Ottawa Heart Failure Risk Scale (OHFRS)",
+  "description": "Identifies emergency department heart failure patients at high risk for serious adverse events. Uses 10 clinical variables to stratify risk from low (2.8%) to very high (89%+).",
+  "category": "emergency",
+  "version": "2013",
+  "parameters": [
+    {
+      "name": "stroke_or_tia",
+      "type": "string",
+      "required": true,
+      "description": "History of stroke or transient ischemic attack (TIA)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "intubation_respiratory_distress",
+      "type": "string",
+      "required": true,
+      "description": "History of intubation for respiratory distress",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "heart_rate_110_or_higher_arrival",
+      "type": "string",
+      "required": true,
+      "description": "Heart rate ≥110 beats per minute on ED arrival",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "oxygen_saturation_less_than_90",
+      "type": "string",
+      "required": true,
+      "description": "Oxygen saturation (SaO₂) <90% on arrival",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "heart_rate_110_or_higher_walk_test",
+      "type": "string",
+      "required": true,
+      "description": "Heart rate ≥110 beats per minute during 3-minute walk test",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "new_ischemic_changes_ecg",
+      "type": "string",
+      "required": true,
+      "description": "New ischemic changes on ECG (clinician interpretation)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "urea_12_or_higher",
+      "type": "string",
+      "required": true,
+      "description": "Urea ≥12 mmol/L (≥33.6 mg/dL)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "serum_co2_35_or_higher",
+      "type": "string",
+      "required": true,
+      "description": "Serum CO₂ ≥35 mmol/L",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "troponin_elevated_mi_level",
+      "type": "string",
+      "required": true,
+      "description": "Troponin I or T elevated to myocardial infarction level",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "nt_probnp_5000_or_higher",
+      "type": "string",
+      "required": true,
+      "description": "NT-proBNP ≥5,000 ng/L (≥5,000 pg/mL)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "ohfrs_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total Ottawa Heart Failure Risk Scale score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low risk",
+        "description": "2.8% risk of serious adverse events",
+        "interpretation": "This patient has a low risk (2.8%) of serious adverse events within 14 days. Serious adverse events include death within 30 days, admission to monitored unit, intubation, noninvasive ventilation, myocardial infarction, or relapse resulting in hospital admission within 14 days."
+      },
+      {
+        "min": 1,
+        "max": 2,
+        "stage": "Medium risk",
+        "description": "5.1-9.2% risk of serious adverse events",
+        "interpretation": "This patient has a medium risk (5.1-9.2%) of serious adverse events within 14 days. Consider closer monitoring and follow-up arrangements. The OHFRS has high sensitivity (91.8% without NT-proBNP, 95.8% with NT-proBNP) for detecting patients at risk."
+      },
+      {
+        "min": 3,
+        "max": 4,
+        "stage": "High risk",
+        "description": "15.9-26.1% risk of serious adverse events",
+        "interpretation": "This patient has a high risk (15.9-26.1%) of serious adverse events within 14 days. Strong consideration should be given to admission with monitoring. Serious adverse events include death within 30 days, admission to monitored unit, intubation, noninvasive ventilation, myocardial infarction, or relapse resulting in hospital admission within 14 days."
+      },
+      {
+        "min": 5,
+        "max": 13,
+        "stage": "Very high risk",
+        "description": "39.8-89%+ risk of serious adverse events",
+        "interpretation": "This patient has a very high risk (39.8-89%+) of serious adverse events within 14 days. Admission with intensive monitoring is strongly recommended. Serious adverse events include death within 30 days, admission to monitored unit, intubation, noninvasive ventilation, myocardial infarction, or relapse resulting in hospital admission within 14 days."
+      }
+    ]
+  },
+  "references": [
+    "Stiell IG, Clement CM, Brison RJ, Rowe BH, Borgundvaag B, Aaron SD, et al. A risk scoring system to identify emergency department patients with heart failure at high risk for serious adverse events. Acad Emerg Med. 2013 Jan;20(1):17-26. doi: 10.1111/acem.12056.",
+    "Stiell IG, Perry JJ, Clement CM, Brison RJ, Rowe BH, Aaron SD, et al. Prospective and Explicit Clinical Validation of the Ottawa Heart Failure Risk Scale, With and Without Use of Quantitative NT-proBNP. Acad Emerg Med. 2017 Mar;24(3):316-327. doi: 10.1111/acem.13141."
+  ],
+  "formula": "OHFRS = (Stroke/TIA × 1) + (Intubation history × 2) + (HR ≥110 arrival × 2) + (SaO₂ <90% × 1) + (HR ≥110 walk test × 1) + (New ischemic ECG × 2) + (Urea ≥12 × 1) + (CO₂ ≥35 × 2) + (Troponin MI level × 2) + (NT-proBNP ≥5000 × 1)",
+  "notes": [
+    "Designed for ED patients with heart failure after initial intervention",
+    "Not for hemodynamically unstable patients",
+    "High sensitivity: 91.8% without NT-proBNP, 95.8% with NT-proBNP",
+    "Use after initial ED stabilization and treatment",
+    "Helps standardize admission practices and improve disposition decisions",
+    "Serious adverse events: death within 30 days, monitored unit admission, intubation, noninvasive ventilation, MI, or relapse with admission within 14 days",
+    "Should be used in conjunction with clinical judgment",
+    "May help reduce both unnecessary admissions and unsafe discharges"
+  ]
+}

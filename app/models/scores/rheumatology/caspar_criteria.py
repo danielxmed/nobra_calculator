@@ -98,7 +98,7 @@ class CasparCriteriaRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "inflammatory_articular_disease": "yes",
                 "psoriasis_status": "current",
@@ -177,7 +177,7 @@ class CasparCriteriaResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "total_points": 4,

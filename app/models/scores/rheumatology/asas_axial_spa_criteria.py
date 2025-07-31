@@ -162,7 +162,7 @@ class AsasAxialSpaCriteriaRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "back_pain_duration_months": 6,
                 "age_at_onset": 28,
@@ -231,7 +231,7 @@ class AsasAxialSpaCriteriaResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "Axial SpA",
                 "unit": "",

@@ -252,7 +252,7 @@ class ChaliceRuleRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "witnessed_loc_over_5_min": "no",
                 "amnesia_over_5_min": "no",
@@ -457,7 +457,7 @@ class ChaliceRuleResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "recommendation": "CT Recommended",

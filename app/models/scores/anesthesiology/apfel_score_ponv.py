@@ -81,7 +81,7 @@ class ApfelScorePonvRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "gender": "female",
                 "smoking_status": "nonsmoker",
@@ -138,7 +138,7 @@ class ApfelScorePonvResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 4,
                 "unit": "points",

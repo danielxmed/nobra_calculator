@@ -1,0 +1,124 @@
+{
+  "id": "delta_p_score",
+  "title": "Dutch-English LEMS Tumor Association Prediction (DELTA-P) Score",
+  "description": "Predicts small-cell lung cancer (SCLC) in patients with Lambert-Eaton myasthenic syndrome (LEMS) using clinical parameters assessed at or within 3 months of onset. The score helps identify high-risk patients requiring intensive cancer screening.",
+  "category": "oncology",
+  "version": "2011",
+  "parameters": [
+    {
+      "name": "age_at_onset",
+      "type": "string",
+      "required": true,
+      "description": "Age at onset of LEMS symptoms",
+      "options": ["under_50", "50_or_over"],
+      "validation": {
+        "enum": ["under_50", "50_or_over"]
+      }
+    },
+    {
+      "name": "smoking_status",
+      "type": "string",
+      "required": true,
+      "description": "Smoking status at time of LEMS diagnosis",
+      "options": ["current_smoker", "former_or_never"],
+      "validation": {
+        "enum": ["current_smoker", "former_or_never"]
+      }
+    },
+    {
+      "name": "weight_loss",
+      "type": "string",
+      "required": true,
+      "description": "Weight loss of more than 5% at or within 3 months of LEMS onset",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "bulbar_involvement",
+      "type": "string",
+      "required": true,
+      "description": "Presence of bulbar symptoms (dysphagia, dysarthria, ptosis, diplopia) at or within 3 months of onset",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "erectile_dysfunction",
+      "type": "string",
+      "required": true,
+      "description": "Presence of erectile dysfunction in male patients at or within 3 months of onset (score as 'no' for female patients)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "karnofsky_status",
+      "type": "string",
+      "required": true,
+      "description": "Karnofsky performance status at or within 3 months of LEMS onset",
+      "options": ["less_than_70", "70_or_greater"],
+      "validation": {
+        "enum": ["less_than_70", "70_or_greater"]
+      }
+    }
+  ],
+  "result": {
+    "name": "delta_p_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "DELTA-P score for predicting small-cell lung cancer in LEMS patients"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Very Low Risk",
+        "description": "SCLC virtually excluded",
+        "interpretation": "Very low risk of small-cell lung cancer (0-2.6% risk). Standard cancer screening protocols appropriate. Continue neurological management of LEMS. Annual chest imaging may be sufficient unless other clinical factors warrant more frequent screening."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Low-Moderate Risk",
+        "description": "Low to moderate SCLC risk",
+        "interpretation": "Low to moderate risk of small-cell lung cancer (approximately 45% risk). Consider enhanced screening with chest CT every 6 months. Monitor closely for development of additional risk factors or cancer symptoms."
+      },
+      {
+        "min": 3,
+        "max": 6,
+        "stage": "High Risk",
+        "description": "High SCLC risk - intensive screening required",
+        "interpretation": "High risk of small-cell lung cancer (83.9-100% risk based on score). Immediate and intensive cancer screening required with chest CT, bronchoscopy if indicated, and multidisciplinary oncology evaluation. Screen every 3 months as recommended for high-risk patients. Early detection and treatment of SCLC is critical for improved outcomes."
+      }
+    ]
+  },
+  "references": [
+    "Titulaer MJ, Wirtz PW, Willems LN, van Kralingen KW, Smitt PA, Verschuuren JJ. Screening for small-cell lung cancer: a follow-up study of patients with Lambert-Eaton myasthenic syndrome. J Clin Oncol. 2008;26(26):4276-81. doi: 10.1200/JCO.2008.17.1302.",
+    "Titulaer MJ, Klooster R, Potman M, Sabater L, Graus F, Hegeman IM, et al. SOX antibodies in small-cell lung cancer and Lambert-Eaton myasthenic syndrome: frequency and relation with survival. J Clin Oncol. 2009;27(26):4260-7. doi: 10.1200/JCO.2008.20.6169.",
+    "Titulaer MJ, Maddison P, Sont JK, Wirtz PW, Hilton-Jones D, Klooster R, et al. Clinical Dutch-English Lambert-Eaton Myasthenic syndrome (LEMS) tumor association prediction score accurately predicts small-cell lung cancer in the LEMS. J Clin Oncol. 2011;29(7):902-8. doi: 10.1200/JCO.2010.32.0440.",
+    "van Sonderen A, Wirtz PW, Verschuuren JJ, Titulaer MJ. Paraneoplastic syndromes of the neuromuscular junction: therapeutic implications. Brain. 2016;139(Pt 10):2759-71. doi: 10.1093/brain/aww199."
+  ],
+  "formula": "DELTA-P Score = Sum of points for: Age ≥50 years (1 point) + Current smoking (1 point) + Weight loss >5% (1 point) + Bulbar involvement (1 point) + Erectile dysfunction in males (1 point) + Karnofsky performance status <70 (1 point). Score ranges from 0-6 points with higher scores indicating increased SCLC risk.",
+  "notes": [
+    "Developed using Dutch (n=107) and British (n=112) cohorts of LEMS patients.",
+    "Validated prospectively with area under ROC curve of 82.5% (95% CI 73.9-91%).",
+    "Each parameter must be assessed at or within 3 months of LEMS symptom onset.",
+    "Lambert-Eaton myasthenic syndrome affects approximately 1 in 100,000 individuals.",
+    "About 50-60% of LEMS patients have underlying small-cell lung cancer (SCLC-LEMS).",
+    "The remaining 40-50% have non-tumor LEMS (NT-LEMS) with different prognosis.",
+    "SCLC-LEMS patients typically have more severe symptoms and poorer functional status.",
+    "Early cancer detection is crucial as SCLC has poor prognosis with median survival <2 years.",
+    "Treatment of underlying SCLC can improve LEMS symptoms in some patients.",
+    "Score should be used in conjunction with clinical judgment and other diagnostic markers.",
+    "SOX antibodies are also associated with SCLC-LEMS and can complement this scoring system.",
+    "High-risk patients (score ≥3) should undergo screening every 3 months per guidelines.",
+    "Karnofsky Performance Status: 100=normal, 90=minor symptoms, 80=normal activity with effort, 70=unable to carry on normal activity but self-care, 60=requires occasional assistance, 50=requires considerable assistance, 40=disabled/requires special care, 30=severely disabled, 20=very sick, 10=moribund.",
+    "Bulbar symptoms include dysphagia (difficulty swallowing), dysarthria (difficulty speaking), ptosis (drooping eyelids), and diplopia (double vision).",
+    "LEMS typically presents with proximal muscle weakness, autonomic dysfunction, and reduced deep tendon reflexes."
+  ]
+}

@@ -21,7 +21,7 @@ decisions. It classifies patients into five stages (0, A, B, C, D) with specific
 evidence-based treatment recommendations for each stage.
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Literal
 
 
@@ -96,14 +96,14 @@ class BclcStagingRequest(BaseModel):
         example="no"
     )
     
-    @validator('tumor_size')
+    @field_validator('tumor_size')
     def validate_tumor_size(cls, v):
         if v <= 0:
             raise ValueError('Tumor size must be greater than 0')
         return v
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "performance_status": 0,
                 "child_pugh_class": "A",
@@ -160,7 +160,7 @@ class BclcStagingResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "A",
                 "unit": "",

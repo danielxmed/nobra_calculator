@@ -13,6 +13,9 @@ from .ariscat_score import AriscatScoreRequest, AriscatScoreResponse
 # Import the ASA Physical Status models
 from .asa_physical_status import AsaPhysicalStatusRequest, AsaPhysicalStatusResponse
 
+# Import the El-Ganzouri Risk Index models
+from .el_ganzouri_risk_index_difficult_airway import ElGanzouriRiskIndexDifficultAirwayRequest, ElGanzouriRiskIndexDifficultAirwayResponse
+
 # Export all models
 __all__ = [
     "ApfelScorePonvRequest",
@@ -21,4 +24,6 @@ __all__ = [
     "AriscatScoreResponse",
     "AsaPhysicalStatusRequest",
     "AsaPhysicalStatusResponse",
+    "ElGanzouriRiskIndexDifficultAirwayRequest",
+    "ElGanzouriRiskIndexDifficultAirwayResponse",
 ]

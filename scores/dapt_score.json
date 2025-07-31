@@ -1,0 +1,146 @@
+{
+  "id": "dapt_score",
+  "title": "Dual Antiplatelet Therapy (DAPT) Score",
+  "description": "Predicts which patients will benefit from prolonged DAPT after coronary stent placement. Developed from the DAPT Study randomized trial to predict combined ischemic and bleeding risk for patients being considered for continued thienopyridine therapy beyond 1 year.",
+  "category": "cardiology",
+  "version": "2016",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "diabetes_mellitus",
+      "type": "string",
+      "required": true,
+      "description": "History of diabetes mellitus",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "current_smoking",
+      "type": "string",
+      "required": true,
+      "description": "Current cigarette smoking",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "prior_mi_or_pci",
+      "type": "string",
+      "required": true,
+      "description": "Prior myocardial infarction or prior percutaneous coronary intervention",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "stent_diameter_small",
+      "type": "string",
+      "required": true,
+      "description": "Stent diameter <3 mm",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "chf_or_low_ef",
+      "type": "string",
+      "required": true,
+      "description": "History of congestive heart failure or left ventricular ejection fraction <30%",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "vein_graft_pci",
+      "type": "string",
+      "required": true,
+      "description": "Saphenous vein graft PCI",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "paclitaxel_eluting_stent",
+      "type": "string",
+      "required": true,
+      "description": "Paclitaxel-eluting stent",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "mi_at_presentation",
+      "type": "string",
+      "required": true,
+      "description": "Myocardial infarction at presentation",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "dapt_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "DAPT score for prolonged dual antiplatelet therapy benefit"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": -10,
+        "max": 1,
+        "stage": "Low Score (<2)",
+        "description": "Unfavorable benefit/risk ratio",
+        "interpretation": "DAPT score <2 indicates unfavorable benefit/risk ratio for prolonged DAPT. High bleeding risk and low ischemic risk. Consider discontinuing DAPT at 12 months. NNT to prevent ischemic event: 169, NNH to cause bleeding: 69."
+      },
+      {
+        "min": 2,
+        "max": 20,
+        "stage": "High Score (≥2)",
+        "description": "Favorable benefit/risk ratio",
+        "interpretation": "DAPT score ≥2 indicates favorable benefit/risk ratio for prolonged DAPT. High ischemic risk and low bleeding risk. Consider continuing DAPT beyond 12 months. NNT to prevent ischemic event: 33, NNH to cause bleeding: 263."
+      }
+    ]
+  },
+  "references": [
+    "Yeh RW, Secemsky EA, Kereiakes DJ, Normand SLT, Gershlick AH, Cohen DJ, et al. Development and Validation of a Prediction Rule for Benefit and Harm of Dual Antiplatelet Therapy Beyond 1 Year After Percutaneous Coronary Intervention. JAMA. 2016;315(16):1735-49. doi: 10.1001/jama.2016.3775.",
+    "Levine GN, Bates ER, Bittl JA, Brindis RG, Fihn SD, Fleisher LA, et al. 2016 ACC/AHA Guideline Focused Update on Duration of Dual Antiplatelet Therapy in Patients With Coronary Artery Disease. Circulation. 2016;134(10):e123-55. doi: 10.1161/CIR.0000000000000404.",
+    "Costa F, van Klaveren D, James S, Heg D, Räber L, Feres F, et al. Derivation and validation of the predicting bleeding complications in patients undergoing stent implantation and subsequent dual antiplatelet therapy (PRECISE-DAPT) score: a pooled analysis of individual-patient datasets from clinical trials. Lancet. 2017;389(10073):1025-1034. doi: 10.1016/S0140-6736(17)30397-5."
+  ],
+  "formula": "DAPT Score = Age points + Clinical factors. Age: 65-75 years (-1 pt), ≥75 years (-2 pts). Positive factors: Diabetes (+1 pt), Current smoking (+1 pt), Prior MI/PCI (+1 pt), Stent diameter <3mm (+1 pt), CHF/LVEF <30% (+2 pts), Vein graft PCI (+2 pts), Paclitaxel-eluting stent (-1 pt), MI at presentation (+1 pt).",
+  "notes": [
+    "Developed from the DAPT Study randomized trial data with 11,648 patients.",
+    "Score ranges from approximately -2 to +10 points.",
+    "Score ≥2 indicates favorable benefit/risk ratio for prolonged DAPT beyond 12 months.",
+    "Score <2 indicates unfavorable benefit/risk ratio for prolonged DAPT.",
+    "Age 65-75 years: -1 point, Age ≥75 years: -2 points, Age <65 years: 0 points.",
+    "Diabetes mellitus: +1 point, Current cigarette smoking: +1 point.",
+    "Prior MI or prior PCI: +1 point, Stent diameter <3 mm: +1 point.",
+    "CHF or LVEF <30%: +2 points, Saphenous vein graft PCI: +2 points.",
+    "Paclitaxel-eluting stent: -1 point, MI at presentation: +1 point.",
+    "High scores (≥2) predict high ischemic risk and low bleeding risk.",
+    "Low scores (<2) predict high bleeding risk and low ischemic risk.",
+    "Should be used in conjunction with clinical judgment and patient preferences.",
+    "Consider individual bleeding and ischemic risk factors not captured in the score.",
+    "Applies to patients who have completed 12 months of DAPT without major events."
+  ]
+}

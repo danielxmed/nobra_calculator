@@ -1,0 +1,111 @@
+{
+  "id": "evendo_score",
+  "title": "EVendo Score for Esophageal Varices",
+  "description": "Predicts presence and size of esophageal varices prior to screening endoscopy in patients with cirrhosis. Helps identify patients who may safely defer endoscopic screening.",
+  "category": "gastroenterology",
+  "version": "2019",
+  "parameters": [
+    {
+      "name": "inr",
+      "type": "float",
+      "required": true,
+      "description": "International Normalized Ratio (INR)",
+      "validation": {
+        "min": 0.5,
+        "max": 10.0
+      },
+      "unit": "ratio"
+    },
+    {
+      "name": "ast_u_l",
+      "type": "float",
+      "required": true,
+      "description": "Aspartate aminotransferase (AST) level",
+      "validation": {
+        "min": 5,
+        "max": 500
+      },
+      "unit": "U/L"
+    },
+    {
+      "name": "platelet_count",
+      "type": "float",
+      "required": true,
+      "description": "Platelet count",
+      "validation": {
+        "min": 10,
+        "max": 1000
+      },
+      "unit": "×10³/µL"
+    },
+    {
+      "name": "bun_mg_dl",
+      "type": "float",
+      "required": true,
+      "description": "Blood urea nitrogen (BUN)",
+      "validation": {
+        "min": 2,
+        "max": 100
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "hemoglobin_g_dl",
+      "type": "float",
+      "required": true,
+      "description": "Hemoglobin level",
+      "validation": {
+        "min": 4.0,
+        "max": 20.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "ascites_present",
+      "type": "string",
+      "required": true,
+      "description": "Presence of ascites on imaging or clinical examination",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "evendo_score",
+    "type": "float",
+    "unit": "score",
+    "description": "EVendo Score calculated from laboratory values and clinical findings"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3.90,
+        "stage": "Low Risk",
+        "description": "Low probability of esophageal varices",
+        "interpretation": "Screening endoscopy may be safely deferred. Probability of varices <5%. Sensitivity 95.1%, NPV 95.8%."
+      },
+      {
+        "min": 3.91,
+        "max": 50,
+        "stage": "High Risk",
+        "description": "High probability of esophageal varices",
+        "interpretation": "Endoscopic screening recommended. Probability of varices ≥5%. Consider urgent endoscopy if clinical suspicion high."
+      }
+    ]
+  },
+  "references": [
+    "Dong TS, Kalani A, Aby ES, Le L, Luu K, Hauer M, et al. Machine Learning-based Development and Validation of a Scoring System for Screening High-Risk Esophageal Varices. Clin Gastroenterol Hepatol. 2019 Sep;17(10):1894-1901.e1. doi: 10.1016/j.cgh.2019.01.025.",
+    "Gibiino G, Garcovich M, Ainora ME, Zocco MA. Machine learning and artificial intelligence: applications in hepatology. World J Gastroenterol. 2021 Jul 21;27(27):4384-4402. doi: 10.3748/wjg.v27.i27.4384.",
+    "Hassan M, Hasan MW, Giordano A, Masud F, Bartoli A, Ahmad N. Validation of the EVendo score for the prediction of varices in cirrhotic patients. World J Hepatol. 2022 Feb 27;14(2):460-474. doi: 10.4254/wjh.v14.i2.460."
+  ],
+  "formula": "A = (8.5 × INR) + (AST / 35), B = (Platelet count / 150) + (BUN / 20) + (Hemoglobin / 15), EVendo Score = (A / B) + 1 (if ascites present)",
+  "notes": [
+    "Use in patients >18 years with known or suspected cirrhosis",
+    "Do not use in patients with overt GI bleeding or history of acute variceal hemorrhage",
+    "Score ≤3.90 would spare 30.5% of patients from endoscopy, missing only 2.8% of varices needing treatment",
+    "Developed using machine learning (random forest algorithm)",
+    "Validated across multiple medical centers with robust performance characteristics"
+  ]
+}

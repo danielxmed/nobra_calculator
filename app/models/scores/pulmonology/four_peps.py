@@ -139,7 +139,7 @@ class FourPepsRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age_category": "50_to_64",
                 "chronic_respiratory_disease": "no",
@@ -201,7 +201,7 @@ class FourPepsResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 2,
                 "unit": "points",

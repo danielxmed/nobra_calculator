@@ -50,6 +50,24 @@ from .cam_icu import CamIcuRequest, CamIcuResponse
 from .covid_gram_critical_illness import CovidGramCriticalIllnessRequest, CovidGramCriticalIllnessResponse
 from .cpot_pain_observation import CpotPainObservationRequest, CpotPainObservationResponse
 from .danger_assessment_tool import DangerAssessmentToolRequest, DangerAssessmentToolResponse
+from .ed_safe_patient_safety_screener import EdSafePatientSafetyScreenerRequest, EdSafePatientSafetyScreenerResponse
+from .naloxone_drip_dosing import NaloxoneDripDosingRequest, NaloxoneDripDosingResponse
+from .news import NewsRequest, NewsResponse
+from .news_2 import News2Request, News2Response
+from .nedocs import NedocsRequest, NedocsResponse
+from .digifab_dosing import DigifabDosingRequest, DigifabDosingResponse
+from .emergency_department_assessment_chest_pain_edacs import EmergencyDepartmentAssessmentChestPainEdacsRequest, EmergencyDepartmentAssessmentChestPainEdacsResponse
+from .emergency_heart_failure_mortality_risk_grade_ehmrg import EmergencyHeartFailureMortalityRiskGradeEhmrgRequest, EmergencyHeartFailureMortalityRiskGradeEhmrgResponse
+from .nexus_criteria import NexusCriteriaRequest, NexusCriteriaResponse
+from .newsom_score import NewsomScoreRequest, NewsomScoreResponse
+from .nexus_chest_ct import NexusChestCtRequest, NexusChestCtResponse
+from .nexus_chest_blunt_trauma import NexusChestBluntTraumaRequest, NexusChestBluntTraumaResponse
+from .ottawa_ankle_rule import OttawaAnkleRuleRequest, OttawaAnkleRuleResponse
+from .ottawa_copd_risk_scale import OttawaCopdRiskScaleRequest, OttawaCopdRiskScaleResponse
+from .ottawa_heart_failure_risk_scale import OttawaHeartFailureRiskScaleRequest, OttawaHeartFailureRiskScaleResponse
+from .ottawa_knee_rule import OttawaKneeRuleRequest, OttawaKneeRuleResponse
+from .embed import EmbedRequest, EmbedResponse
+from .ett_depth_tidal_volume import EttDepthTidalVolumeRequest, EttDepthTidalVolumeResponse
 
 __all__ = [
     "FourCMortalityRequest",
@@ -130,4 +148,40 @@ __all__ = [
     "CpotPainObservationResponse",
     "DangerAssessmentToolRequest",
     "DangerAssessmentToolResponse",
+    "EdSafePatientSafetyScreenerRequest",
+    "EdSafePatientSafetyScreenerResponse",
+    "NaloxoneDripDosingRequest",
+    "NaloxoneDripDosingResponse",
+    "NewsRequest",
+    "NewsResponse",
+    "News2Request",
+    "News2Response",
+    "NedocsRequest",
+    "NedocsResponse",
+    "DigifabDosingRequest",
+    "DigifabDosingResponse",
+    "EmergencyDepartmentAssessmentChestPainEdacsRequest",
+    "EmergencyDepartmentAssessmentChestPainEdacsResponse",
+    "EmergencyHeartFailureMortalityRiskGradeEhmrgRequest",
+    "EmergencyHeartFailureMortalityRiskGradeEhmrgResponse",
+    "NexusCriteriaRequest",
+    "NexusCriteriaResponse",
+    "NewsomScoreRequest",
+    "NewsomScoreResponse",
+    "NexusChestCtRequest",
+    "NexusChestCtResponse",
+    "NexusChestBluntTraumaRequest",
+    "NexusChestBluntTraumaResponse",
+    "OttawaAnkleRuleRequest",
+    "OttawaAnkleRuleResponse",
+    "OttawaCopdRiskScaleRequest",
+    "OttawaCopdRiskScaleResponse",
+    "OttawaHeartFailureRiskScaleRequest",
+    "OttawaHeartFailureRiskScaleResponse",
+    "OttawaKneeRuleRequest",
+    "OttawaKneeRuleResponse",
+    "EmbedRequest",
+    "EmbedResponse",
+    "EttDepthTidalVolumeRequest",
+    "EttDepthTidalVolumeResponse",
 ]

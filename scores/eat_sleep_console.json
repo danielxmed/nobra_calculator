@@ -1,0 +1,88 @@
+{
+  "id": "eat_sleep_console",
+  "title": "Eat, Sleep, Console (ESC)",
+  "description": "Aids in management of infants with neonatal abstinence syndrome (NAS) by focusing on functional assessment rather than symptom scoring. Emphasizes nonpharmacologic interventions and family-centered care to optimize infant functioning.",
+  "category": "pediatrics",
+  "version": "2018",
+  "parameters": [
+    {
+      "name": "able_to_eat",
+      "type": "string",
+      "required": true,
+      "description": "Is the infant able to eat adequately (taking ≥1 oz per kg per feeding OR breastfeeding well for ≥10 minutes)?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "able_to_sleep",
+      "type": "string",
+      "required": true,
+      "description": "Is the infant able to sleep for ≥1 hour undisturbed after routine care?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "able_to_console",
+      "type": "string",
+      "required": true,
+      "description": "Can the infant be consoled within 10 minutes using standard comfort measures (feeding, diaper change, swaddling, holding, non-nutritive sucking)?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "esc_assessment",
+    "type": "string",
+    "unit": "status",
+    "description": "ESC functional assessment result"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "ESC Criteria Met",
+        "description": "All three functions achieved",
+        "interpretation": "Infant is able to eat, sleep, and be consoled with nonpharmacologic interventions. Continue current nonpharmacologic care with family involvement. No pharmacologic intervention needed at this time. Monitor for changes in functional status. Support family in providing comfort measures."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "ESC Criteria Not Met",
+        "description": "One or more functions impaired",
+        "interpretation": "Infant is unable to achieve one or more essential functions (eat, sleep, console) despite optimal nonpharmacologic interventions. Consider pharmacologic intervention with morphine. Reassess after each dose. Continue nonpharmacologic interventions alongside medication. Support family involvement in care."
+      }
+    ]
+  },
+  "references": [
+    "Grossman MR, Berkwitt AK, Osborn RR, Xu Y, Esserman DA, Shapiro ED, et al. An Initiative to Improve the Quality of Care of Infants with Neonatal Abstinence Syndrome. Pediatrics. 2017;139(6):e20163360. doi: 10.1542/peds.2016-3360.",
+    "Grossman MR, Lipshaw MJ, Osborn RR, Berkwitt AK. A Novel Approach to Assessing Infants with Neonatal Abstinence Syndrome. Hosp Pediatr. 2018;8(1):1-6. doi: 10.1542/hpeds.2017-0128.",
+    "Young LW, Hu D, Grossman M, Clark M, Sharma J, Hudak ML, et al. Eat, Sleep, Console Approach or Usual Care for Neonatal Opioid Withdrawal. N Engl J Med. 2023;388(25):2326-2337. doi: 10.1056/NEJMoa2214470.",
+    "Davis JM, Shenberger J, Terrin N, Breeze JL, Hudak M, Wachman EM, et al. Comparison of Safety and Efficacy of Methadone vs Morphine for Treatment of Neonatal Abstinence Syndrome: A Randomized Clinical Trial. JAMA Pediatr. 2018;172(8):741-748. doi: 10.1001/jamapediatrics.2018.1307."
+  ],
+  "formula": "Functional assessment based on three essential functions: (1) Able to eat adequately, (2) Able to sleep ≥1 hour undisturbed, (3) Can be consoled within 10 minutes. If all three criteria are met, continue nonpharmacologic care. If any criterion is not met despite optimal nonpharmacologic interventions, consider pharmacologic treatment.",
+  "notes": [
+    "Developed as an alternative to symptom-based scoring systems like Finnegan Neonatal Abstinence Scoring System (FNASS).",
+    "Focuses on functional assessment rather than subjective symptom scoring.",
+    "Emphasizes family-centered care and nonpharmacologic interventions as first-line treatment.",
+    "Nonpharmacologic interventions include: breastfeeding, skin-to-skin contact, swaddling, rhythmic movement, low-stimulation environment, feeding with early hunger cues, non-nutritive sucking.",
+    "Has been shown to reduce hospital length of stay by 45-47% compared to traditional scoring methods.",
+    "Reduces opioid treatment by approximately 30% without increasing adverse outcomes.",
+    "Pharmacologic treatment (typically morphine) is reserved for infants unable to achieve functional goals.",
+    "Assessment should be performed every 3-4 hours during awake periods.",
+    "Requires adequate trial of nonpharmacologic interventions before considering medication.",
+    "Family involvement is crucial - caregivers should be taught to provide comfort measures.",
+    "Environmental modifications important: dim lighting, quiet environment, minimal stimulation.",
+    "Feeding assessment: ≥1 oz per kg per feeding for formula-fed infants, or effective breastfeeding ≥10 minutes.",
+    "Sleep assessment: ability to sleep ≥1 hour undisturbed after routine care (feeding, diaper change).",
+    "Console assessment: ability to calm within 10 minutes using standard comfort measures.",
+    "Large randomized controlled trial (26 hospitals) demonstrated safety and efficacy of ESC approach.",
+    "Cost-effective approach reducing healthcare utilization and family separation."
+  ]
+}

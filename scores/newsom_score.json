@@ -1,0 +1,165 @@
+{
+  "id": "newsom_score",
+  "title": "Newsom Score for Non-traumatic Chest Pain",
+  "description": "Rules out need for chest X-ray in patients with chest pain (non-traumatic). The score uses 12 clinical criteria to identify low-risk patients who do not require chest radiography, with a sensitivity of 92.9% and negative predictive value of 98.4%.",
+  "category": "emergency",
+  "version": "2018",
+  "parameters": [
+    {
+      "name": "age_60_or_more",
+      "type": "string",
+      "required": true,
+      "description": "Is the patient 60 years old or older?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "chf_history",
+      "type": "string",
+      "required": true,
+      "description": "Does the patient have a history of congestive heart failure (CHF)?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "smoking_history",
+      "type": "string",
+      "required": true,
+      "description": "Does the patient have a smoking history (current or former)?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hemoptysis",
+      "type": "string",
+      "required": true,
+      "description": "Does the patient have hemoptysis (coughing up blood)?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "tuberculosis_history",
+      "type": "string",
+      "required": true,
+      "description": "Does the patient have a history of tuberculosis?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "thromboembolic_history",
+      "type": "string",
+      "required": true,
+      "description": "Does the patient have a history of thromboembolic disease (PE, DVT)?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "alcohol_abuse",
+      "type": "string",
+      "required": true,
+      "description": "Does the patient have prior or current alcohol abuse?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "fever",
+      "type": "string",
+      "required": true,
+      "description": "Does the patient have fever ≥100.4°F (38°C)?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "oxygen_saturation_low",
+      "type": "string",
+      "required": true,
+      "description": "Is the patient's oxygen saturation <90%?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "respiratory_rate_high",
+      "type": "string",
+      "required": true,
+      "description": "Is the patient's respiratory rate >24 breaths per minute?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "diminished_breath_sounds",
+      "type": "string",
+      "required": true,
+      "description": "Does the patient have diminished breath sounds on examination?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "rales",
+      "type": "string",
+      "required": true,
+      "description": "Does the patient have rales (crackles) on lung auscultation?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "newsom_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total Newsom Score points"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low risk",
+        "description": "Chest x-ray not needed",
+        "interpretation": "This patient has no risk factors present and is considered low risk. Chest x-ray is not needed based on the Newsom Score criteria. The negative predictive value is 98.4%, making it highly unlikely that a clinically significant finding would be missed."
+      },
+      {
+        "min": 1,
+        "max": 12,
+        "stage": "Not low risk",
+        "description": "Consider chest x-ray",
+        "interpretation": "This patient has one or more risk factors present. Consider obtaining a chest x-ray as clinically significant findings may be present. The score has 92.9% sensitivity for detecting abnormal chest x-ray findings such as pneumonia, congestive heart failure, or pleural effusion."
+      }
+    ]
+  },
+  "references": [
+    "Rothrock SG, Green SM, Costanzo KA, Fanelli JM, Cruzen ES, Pagane JR. High yield criteria for obtaining non-trauma chest radiography in the adult emergency department population. J Emerg Med. 2002 Aug;23(2):117-24. doi: 10.1016/s0736-4679(02)00496-1.",
+    "Newsom C, Jeanmonod R, Woolley W, et al. Prospective Validation and Refinement of a Decision Rule to Obtain Chest X-ray in Patients With Nontraumatic Chest Pain in the Emergency Department. Acad Emerg Med. 2018 Jun;25(6):650-656. doi: 10.1111/acem.13380."
+  ],
+  "formula": "Newsom Score = Sum of all positive criteria (1 point each)",
+  "notes": [
+    "This score is designed for non-traumatic chest pain patients in the emergency department",
+    "The score has a sensitivity of 92.9% and negative predictive value of 98.4%",
+    "Application of this rule could reduce chest x-ray utilization by approximately 28.9%",
+    "Always use clinical judgment alongside this score",
+    "Not validated for traumatic chest pain"
+  ]
+}

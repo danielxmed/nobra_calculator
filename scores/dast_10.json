@@ -1,0 +1,168 @@
+{
+  "id": "dast_10",
+  "title": "Drug Abuse Screening Test-10 (DAST-10)",
+  "description": "Brief 10-item assessment tool to measure, evaluate, and identify drug use problems, excluding alcohol and tobacco. Assesses drug use in the past 12 months.",
+  "category": "psychiatry",
+  "version": "DAST-10",
+  "parameters": [
+    {
+      "name": "used_drugs_other_than_medical",
+      "type": "string",
+      "required": true,
+      "description": "Have you used drugs other than those required for medical reasons?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "abuse_prescription_drugs",
+      "type": "string",
+      "required": true,
+      "description": "Do you abuse more than one drug at a time?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "always_able_to_stop",
+      "type": "string",
+      "required": true,
+      "description": "Are you always able to stop using drugs when you want to? (Reverse scored)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "blackouts_flashbacks",
+      "type": "string",
+      "required": true,
+      "description": "Have you had 'blackouts' or 'flashbacks' as a result of drug use?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "feel_bad_guilty",
+      "type": "string",
+      "required": true,
+      "description": "Do you ever feel bad or guilty about your drug use?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "spouse_parents_complain",
+      "type": "string",
+      "required": true,
+      "description": "Does your spouse (or parents) ever complain about your involvement with drugs?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "neglected_family_work",
+      "type": "string",
+      "required": true,
+      "description": "Have you neglected your family because of your use of drugs?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "engaged_illegal_activities",
+      "type": "string",
+      "required": true,
+      "description": "Have you engaged in illegal activities in order to obtain drugs?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "withdrawal_symptoms",
+      "type": "string",
+      "required": true,
+      "description": "Have you ever experienced withdrawal symptoms (felt sick) when you stopped taking drugs?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "medical_problems",
+      "type": "string",
+      "required": true,
+      "description": "Have you had medical problems as a result of your drug use (e.g., memory loss, hepatitis, convulsions, bleeding, etc.)?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "dast_10_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "DAST-10 total score (0-10 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "No Problems",
+        "description": "No drug problems reported",
+        "interpretation": "No evidence of drug-related problems. Continue routine screening at appropriate intervals."
+      },
+      {
+        "min": 1,
+        "max": 2,
+        "stage": "Low Level",
+        "description": "Low level problems",
+        "interpretation": "Low level drug problems that may require monitoring and re-assessment of drug use at a later date."
+      },
+      {
+        "min": 3,
+        "max": 5,
+        "stage": "Moderate Level",
+        "description": "Moderate level problems",
+        "interpretation": "Moderate level drug problems that necessitate further investigation with additional tests or resources. Consider brief intervention."
+      },
+      {
+        "min": 6,
+        "max": 8,
+        "stage": "Substantial Level",
+        "description": "Substantial problems",
+        "interpretation": "Substantial drug problems that require intensive assessment and treatment. Referral to specialized addiction services recommended."
+      },
+      {
+        "min": 9,
+        "max": 10,
+        "stage": "Severe Level",
+        "description": "Severe problems",
+        "interpretation": "Severe drug problems that require intensive assessment and medical treatment. Immediate referral to specialized addiction treatment program is warranted."
+      }
+    ]
+  },
+  "references": [
+    "Skinner HA. The drug abuse screening test. Addict Behav. 1982;7(4):363-71. doi: 10.1016/0306-4603(82)90006-8.",
+    "Yudko E, Lozhkina O, Fouts AA. A comprehensive review of the psychometric properties of the Drug Abuse Screening Test. J Subst Abuse Treat. 2007;32(2):189-98. doi: 10.1016/j.jsat.2006.08.002.",
+    "Cocco KM, Carey KB. Psychometric properties of the drug abuse screening test in psychiatric outpatients. Psychol Assess. 1998;10(4):408-14. doi: 10.1037/1040-3590.10.4.408."
+  ],
+  "formula": "Sum of positive responses: Items 1,2,4-10 score 1 point for 'Yes' answers; Item 3 scores 1 point for 'No' answer (reverse scored). Total possible score: 0-10 points.",
+  "notes": [
+    "The DAST-10 assesses drug use problems in the past 12 months, excluding alcohol and tobacco.",
+    "Item 3 ('Are you always able to stop using drugs when you want to?') is reverse scored - 'No' = 1 point.",
+    "A score of ≥3 is generally considered indicative of problematic substance use.",
+    "The optimal cutoff score is 7 for diagnostic purposes, though 3 is often used for screening.",
+    "Clinical judgment should be used to interpret scores in light of demographic and contextual factors.",
+    "While self-administered, clinician presence is recommended to clarify questions and encourage honest responses."
+  ]
+}

@@ -19,7 +19,7 @@ higher risk, with a total score range of 6-23 points. The tool is widely used
 across various healthcare settings to guide preventive interventions.
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Literal
 
 
@@ -106,7 +106,7 @@ class BradenScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "sensory_perception": 3,
                 "moisture": 3,
@@ -167,7 +167,7 @@ class BradenScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 15,
                 "unit": "points",

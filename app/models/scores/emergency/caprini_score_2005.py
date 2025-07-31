@@ -248,7 +248,7 @@ class CapriniScore2005Request(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age_category": "41_to_60",
                 "minor_surgery": "no",
@@ -348,7 +348,7 @@ class CapriniScore2005Response(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 4,
                 "unit": "points",

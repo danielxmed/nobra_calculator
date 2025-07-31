@@ -156,7 +156,7 @@ class BamRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "physical_health": 2,
                 "sleep_troubles": 1,
@@ -228,7 +228,7 @@ class BamResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 25,
                 "unit": "points",

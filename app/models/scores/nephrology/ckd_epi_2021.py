@@ -44,7 +44,7 @@ class CKDEpi2021Request(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "sex": "female",
                 "age": 65,
@@ -95,7 +95,7 @@ class CKDEpi2021Response(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 52.3,
                 "unit": "mL/min/1.73 m²",

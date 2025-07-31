@@ -1,0 +1,133 @@
+{
+  "id": "emergency_department_assessment_chest_pain_edacs",
+  "title": "Emergency Department Assessment of Chest Pain Score (EDACS)",
+  "description": "Risk stratifies chest pain patients for early discharge based on clinical factors to identify low-risk patients who can be safely discharged from the emergency department without further testing.",
+  "category": "emergency",
+  "version": "2014",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient sex",
+      "options": ["Male", "Female"],
+      "validation": {
+        "enum": ["Male", "Female"]
+      },
+      "unit": null
+    },
+    {
+      "name": "known_cad_or_risk_factors",
+      "type": "string",
+      "required": true,
+      "description": "Known coronary artery disease OR ≥3 risk factors (hypertension, dyslipidemia, diabetes, current smoker, family history of early CAD) - applies only to patients aged 18-50",
+      "options": ["Yes", "No", "Not applicable (age >50)"],
+      "validation": {
+        "enum": ["Yes", "No", "Not applicable (age >50)"]
+      },
+      "unit": null
+    },
+    {
+      "name": "diaphoresis",
+      "type": "string",
+      "required": true,
+      "description": "Presence of diaphoresis (excessive sweating)",
+      "options": ["Yes", "No"],
+      "validation": {
+        "enum": ["Yes", "No"]
+      },
+      "unit": null
+    },
+    {
+      "name": "pain_radiates",
+      "type": "string",
+      "required": true,
+      "description": "Pain radiates to arm, shoulder, neck, or jaw",
+      "options": ["Yes", "No"],
+      "validation": {
+        "enum": ["Yes", "No"]
+      },
+      "unit": null
+    },
+    {
+      "name": "pain_with_inspiration",
+      "type": "string",
+      "required": true,
+      "description": "Pain occurred or worsened with inspiration (pleuritic chest pain)",
+      "options": ["Yes", "No"],
+      "validation": {
+        "enum": ["Yes", "No"]
+      },
+      "unit": null
+    },
+    {
+      "name": "pain_reproduced_by_palpation",
+      "type": "string",
+      "required": true,
+      "description": "Pain reproduced by palpation of the chest wall",
+      "options": ["Yes", "No"],
+      "validation": {
+        "enum": ["Yes", "No"]
+      },
+      "unit": null
+    }
+  ],
+  "result": {
+    "name": "edacs_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "EDACS score calculated from clinical variables"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": null,
+        "max": 15,
+        "stage": "Low Risk",
+        "description": "EDACS <16 indicates low risk",
+        "interpretation": "Low risk for major adverse cardiac events (MACE). When combined with no new ischemia on ECG and negative troponins at 0 and 2 hours, patients may be considered for early discharge. The EDACS-Accelerated Diagnostic Protocol (EDACS-ADP) is >99% sensitive for 30-day MACE when all criteria are met. Patients should still receive appropriate follow-up and instruction for return if symptoms worsen."
+      },
+      {
+        "min": 16,
+        "max": null,
+        "stage": "Higher Risk",
+        "description": "EDACS ≥16 indicates higher risk",
+        "interpretation": "Higher risk for major adverse cardiac events (MACE). Patients require further evaluation including serial troponins, stress testing, or coronary imaging as clinically indicated. Do not use accelerated discharge protocols. Consider admission or extended observation with cardiology consultation. Additional risk stratification and definitive cardiac evaluation recommended."
+      }
+    ]
+  },
+  "references": [
+    "Than M, Cullen L, Aldous S, Parsonage WA, Reid CM, Greenslade J, et al. 2-Hour accelerated diagnostic protocol to assess patients with chest pain symptoms using contemporary troponins as the only biomarker: the ADAPT-ADP. J Am Coll Cardiol. 2012;59(23):2091-8. doi: 10.1016/j.jacc.2012.02.035.",
+    "Than M, Flaws D, Sanders S, Doust J, Glasziou P, Kline J, et al. Development and validation of the Emergency Department Assessment of Chest pain Score and 2 h accelerated diagnostic protocol. Emerg Med Australas. 2014;26(1):34-44. doi: 10.1111/1742-6723.12164.",
+    "Cullen L, Mueller C, Parsonage WA, Wildi K, Greenslade JH, Twerenbold R, et al. Validation of high-sensitivity troponin I in a 2-hour diagnostic strategy to assess 30-day outcomes in emergency department patients with possible acute coronary syndrome. J Am Coll Cardiol. 2013;62(14):1242-9. doi: 10.1016/j.jacc.2013.02.078.",
+    "Pickering JW, Than MP, Cullen L, Aldous S, Ter Avest E, Body R, et al. Rapid Rule-out of Acute Myocardial Infarction With a Single High-Sensitivity Cardiac Troponin T Measurement Below the Limit of Detection: A Collaborative Meta-analysis. Ann Intern Med. 2017;166(10):715-24. doi: 10.7326/M16-2562."
+  ],
+  "formula": "EDACS score = Age points + Sex points + Risk factor points (if age 18-50) + Diaphoresis points + Pain radiation points + Inspiration points + Palpation points. Age points based on decade (18-45: +2, 46-50: +4, 51-55: +6, 56-60: +8, 61-65: +10, 66-70: +12, 71-75: +14, 76-80: +16, 81-85: +18, ≥86: +20). Male sex: +6 points. Known CAD or ≥3 risk factors (ages 18-50 only): +4 points. Diaphoresis: +3 points. Pain radiates: +5 points. Pain with inspiration: -4 points. Palpation reproduces pain: -6 points.",
+  "notes": [
+    "EDACS was developed and validated in Australian and New Zealand emergency departments for risk stratification of chest pain patients.",
+    "The EDACS-Accelerated Diagnostic Protocol (EDACS-ADP) combines EDACS score <16 with no new ischemia on ECG and negative troponins at 0 and 2 hours.",
+    "EDACS-ADP has >99% sensitivity for 30-day major adverse cardiac events (MACE) including death, myocardial infarction, or revascularization.",
+    "Risk factors for patients aged 18-50 include: hypertension, dyslipidemia, diabetes mellitus, current smoking, and family history of early coronary artery disease.",
+    "The score was designed specifically for use in emergency department settings to identify patients suitable for early discharge.",
+    "EDACS performs similarly to other chest pain risk scores like HEART score but with different clinical variables.",
+    "Patients with EDACS ≥16 require further cardiac evaluation and should not be discharged using accelerated protocols.",
+    "The tool is most validated in patients presenting within 12 hours of chest pain onset.",
+    "External validation studies have confirmed the safety and effectiveness of EDACS-ADP in various populations.",
+    "EDACS should be used in conjunction with clinical judgment and institutional protocols for chest pain management.",
+    "The negative predictive value of EDACS-ADP approaches 100% when all criteria are met appropriately.",
+    "Serial troponin testing at 0 and 2 hours is essential for the complete EDACS-ADP protocol.",
+    "ECG must show no new ischemic changes for patients to be considered low risk regardless of EDACS score.",
+    "Follow-up care and return precautions are essential components of safe early discharge protocols."
+  ]
+}

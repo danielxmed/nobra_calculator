@@ -1,0 +1,90 @@
+{
+  "id": "ed_safe_patient_safety_screener",
+  "title": "ED-SAFE Patient Safety Screener 3 (PSS-3)",
+  "description": "Screens for suicidality in emergency patients through universal screening with a validated 3-question tool. Designed for rapid assessment of suicide risk in the emergency department setting for patients with any chief complaint.",
+  "category": "emergency",
+  "version": "2015",
+  "parameters": [
+    {
+      "name": "depression_past_2_weeks",
+      "type": "string",
+      "required": true,
+      "description": "Over the past 2 weeks, have you felt down, depressed, or hopeless?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "suicidal_thoughts_past_2_weeks",
+      "type": "string",
+      "required": true,
+      "description": "Over the past 2 weeks, have you had thoughts of killing yourself?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "lifetime_suicide_attempt",
+      "type": "string",
+      "required": true,
+      "description": "Have you ever in your lifetime made a suicide attempt?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "pss3_result",
+    "type": "string",
+    "unit": "status",
+    "description": "PSS-3 screening result indicating suicide risk level"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Negative Screen",
+        "description": "No current suicide risk indicators",
+        "interpretation": "Negative screen for suicide risk. No current suicidal ideation or lifetime suicide attempt reported. Continue with routine emergency care. Consider documenting negative screen in medical record."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Positive Screen",
+        "description": "Positive for suicide risk indicators",
+        "interpretation": "Positive screen for suicide risk. Patient has active suicidal ideation in past 2 weeks OR lifetime history of suicide attempt. Requires immediate further assessment by treating clinician. Consider mental health consultation, safety planning, and risk stratification with ED-SAFE Secondary Screener (ESS-6) if available."
+      }
+    ]
+  },
+  "references": [
+    "Boudreaux ED, Camargo CA Jr, Arias SA, Blais RK, Horton BJ, Jaques ML, et al. Improving Suicide Risk Screening and Detection in the Emergency Department. Am J Prev Med. 2016;50(4):445-453. doi: 10.1016/j.amepre.2015.09.029.",
+    "Boudreaux ED, Jaques ML, Brady KM, Matson A, Allen MH. The patient safety screener: validation of a brief suicide risk screener for emergency department settings. Arch Suicide Res. 2015;19(2):151-60. doi: 10.1080/13811118.2015.1034604.",
+    "Miller IW, Camargo CA Jr, Arias SA, Sullivan AF, Allen MH, Goldstein AB, et al. Suicide prevention in an emergency department population: the ED-SAFE study. JAMA Psychiatry. 2017;74(6):563-570. doi: 10.1001/jamapsychiatry.2017.0678.",
+    "Boudreaux ED, Miller I, Goldstein AB, Sullivan AF, Allen MH, Manton AP, et al. The Emergency Department Safety Assessment and Follow-up Evaluation (ED-SAFE): method and design considerations. Contemp Clin Trials. 2013;36(1):14-24. doi: 10.1016/j.cct.2013.05.008."
+  ],
+  "formula": "PSS-3 positive screening if: (1) Active suicidal ideation in past 2 weeks (Question 2 = Yes) OR (2) Lifetime history of suicide attempt (Question 3 = Yes). Depression question (Question 1) contributes to clinical context but does not independently determine positive screening.",
+  "notes": [
+    "Developed as part of the National Institute of Mental Health (NIMH) ED-SAFE study.",
+    "Validated for universal screening in emergency departments for patients ≥18 years old.",
+    "Can be administered to patients with any chief complaint, including non-psychiatric presentations.",
+    "Strong agreement with Beck Scale for Suicide Ideation (BSSI): κ = 0.94-0.95 for overall screening.",
+    "Doubles the rate of suicide risk detection compared to routine clinical assessment (from 2.9% to 5.7%).",
+    "Administered during triage or primary nursing assessment for rapid screening.",
+    "Positive screen requires further assessment by treating clinician and consideration of mental health consultation.",
+    "Among patients with non-psychiatric chief complaints, 3-12% also have suicidal ideation.",
+    "Part of comprehensive ED-SAFE protocol which includes secondary screening (ESS-6) and safety planning.",
+    "Should be used as universal screening tool for all ED patients, not just those with psychiatric presentations.",
+    "Brief tool designed for fast-paced emergency department environment.",
+    "Positive screening patients should receive safety planning and risk stratification.",
+    "Question 1 (depression) provides clinical context but is not required for positive screening determination.",
+    "Validation study demonstrated fair agreement for ideation detection (κ = 0.61) and excellent agreement for suicide attempts (κ = 0.97-0.98).",
+    "Tool can identify at-risk patients who might otherwise go undetected in emergency care.",
+    "Should be followed by comprehensive suicide risk assessment if screening is positive.",
+    "Documentation of screening results important for continuity of care and quality improvement.",
+    "Cost-effective screening approach that fits into existing ED workflow."
+  ]
+}

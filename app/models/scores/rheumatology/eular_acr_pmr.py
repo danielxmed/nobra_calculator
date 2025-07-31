@@ -105,7 +105,7 @@ class EularAcrPmrRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "morning_stiffness": ">45min",
                 "hip_pain_limited_rom": "yes",
@@ -163,7 +163,7 @@ class EularAcrPmrResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 6,
                 "unit": "points",

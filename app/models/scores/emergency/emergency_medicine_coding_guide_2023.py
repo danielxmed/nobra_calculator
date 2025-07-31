@@ -114,7 +114,7 @@ class EmergencyMedicineCodingGuide2023Request(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "number_complexity_problems": 3,
                 "tests_ordered": 2,
@@ -185,7 +185,7 @@ class EmergencyMedicineCodingGuide2023Response(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "99283",
                 "unit": "CPT code",

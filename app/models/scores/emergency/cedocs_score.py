@@ -133,7 +133,7 @@ class CedocsScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "critical_care_patients": 3,
                 "longest_wait_time_minutes": 240,
@@ -239,7 +239,7 @@ class CedocsScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "total_score": 89.5,

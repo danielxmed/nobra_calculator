@@ -102,7 +102,7 @@ class ClinicalFrailtyScaleRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "frailty_level": 4,
                 "age": 78,
@@ -239,7 +239,7 @@ class ClinicalFrailtyScaleResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 4,
                 "unit": "CFS level",

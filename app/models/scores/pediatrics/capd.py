@@ -362,7 +362,7 @@ class CapdRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "eye_contact": 1,
                 "purposeful_actions": 0,
@@ -625,7 +625,7 @@ class CapdResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "capd_positive": True,

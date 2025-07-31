@@ -116,7 +116,7 @@ class DenverHivRiskScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age_group": "26_32",
                 "gender": "male",
@@ -283,7 +283,7 @@ class DenverHivRiskScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 13,
                 "unit": "Denver HIV Risk Score",

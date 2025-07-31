@@ -114,7 +114,7 @@ class CatchRuleRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "gcs_less_than_15": "no",
                 "suspected_skull_fracture": "no", 
@@ -200,7 +200,7 @@ class CatchRuleResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "high_risk_factors_present": False,

@@ -139,7 +139,7 @@ class BurchWartofskypointScaleRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "temperature": "101_102",
                 "cns_effects": "mild_agitation",
@@ -280,7 +280,7 @@ class BurchWartofskypointScaleResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 60,
                 "unit": "points",

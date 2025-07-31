@@ -115,7 +115,7 @@ class CentorScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "tonsillar_exudate": "yes",
                 "tender_cervical_nodes": "yes", 
@@ -195,7 +195,7 @@ class CentorScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "total_score": 3,

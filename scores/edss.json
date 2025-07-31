@@ -1,0 +1,189 @@
+{
+  "id": "edss",
+  "title": "Expanded Disability Status Scale (EDSS) / Functional Systems Score (FSS)",
+  "description": "Describes severity of disability in MS patients based on functional systems assessment and ambulatory ability. The most widely used disability scale for multiple sclerosis.",
+  "category": "neurology",
+  "version": "1983",
+  "parameters": [
+    {
+      "name": "pyramidal",
+      "type": "integer",
+      "required": true,
+      "description": "Pyramidal Functions (Motor/Strength)",
+      "validation": {
+        "min": 0,
+        "max": 6
+      }
+    },
+    {
+      "name": "cerebellar",
+      "type": "integer",
+      "required": true,
+      "description": "Cerebellar Functions (Coordination/Balance)",
+      "validation": {
+        "min": 0,
+        "max": 5
+      }
+    },
+    {
+      "name": "brainstem",
+      "type": "integer",
+      "required": true,
+      "description": "Brainstem Functions (Eye movements, Speech, Swallowing)",
+      "validation": {
+        "min": 0,
+        "max": 5
+      }
+    },
+    {
+      "name": "sensory",
+      "type": "integer",
+      "required": true,
+      "description": "Sensory Functions (Touch, Pain, Temperature)",
+      "validation": {
+        "min": 0,
+        "max": 6
+      }
+    },
+    {
+      "name": "bowel_bladder",
+      "type": "integer",
+      "required": true,
+      "description": "Bowel and Bladder Functions",
+      "validation": {
+        "min": 0,
+        "max": 6
+      }
+    },
+    {
+      "name": "visual",
+      "type": "integer",
+      "required": true,
+      "description": "Visual Functions",
+      "validation": {
+        "min": 0,
+        "max": 6
+      }
+    },
+    {
+      "name": "cerebral",
+      "type": "integer",
+      "required": true,
+      "description": "Cerebral/Mental Functions",
+      "validation": {
+        "min": 0,
+        "max": 5
+      }
+    },
+    {
+      "name": "ambulation",
+      "type": "integer",
+      "required": true,
+      "description": "Ambulation Score (0-10 based on walking ability)",
+      "validation": {
+        "min": 0,
+        "max": 10
+      }
+    }
+  ],
+  "result": {
+    "name": "edss_score",
+    "type": "float",
+    "unit": "points",
+    "description": "EDSS score from 0 (normal neurological exam) to 10 (death due to MS)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0.0,
+        "max": 0.0,
+        "stage": "Normal",
+        "description": "Normal neurological exam",
+        "interpretation": "Normal neurological examination. All grade 0 in all functional systems."
+      },
+      {
+        "min": 1.0,
+        "max": 1.5,
+        "stage": "Minimal Disability",
+        "description": "No disability, minimal signs",
+        "interpretation": "No disability, minimal signs in one or more functional systems."
+      },
+      {
+        "min": 2.0,
+        "max": 2.5,
+        "stage": "Mild Disability",
+        "description": "Minimal disability in one FS",
+        "interpretation": "Minimal disability in one functional system."
+      },
+      {
+        "min": 3.0,
+        "max": 3.5,
+        "stage": "Moderate Disability",
+        "description": "Moderate disability in one FS",
+        "interpretation": "Moderate disability in one functional system or mild disability in three or four functional systems though fully ambulatory."
+      },
+      {
+        "min": 4.0,
+        "max": 4.5,
+        "stage": "Relatively Severe Disability",
+        "description": "Fully ambulatory without aid",
+        "interpretation": "Fully ambulatory without aid, self-sufficient, up and about some 12 hours a day despite relatively severe disability. Able to walk without aid or rest for 500m."
+      },
+      {
+        "min": 5.0,
+        "max": 5.5,
+        "stage": "Disability Severe Enough",
+        "description": "Ambulatory without aid for 200m",
+        "interpretation": "Ambulatory without aid or rest for about 200 meters; disability severe enough to impair full daily activities."
+      },
+      {
+        "min": 6.0,
+        "max": 6.5,
+        "stage": "Assistance Required",
+        "description": "Intermittent or constant assistance required",
+        "interpretation": "Intermittent or unilateral constant assistance (cane, crutch, brace) required to walk about 100 meters with or without resting."
+      },
+      {
+        "min": 7.0,
+        "max": 7.5,
+        "stage": "Restricted to Wheelchair",
+        "description": "Unable to walk beyond 5m",
+        "interpretation": "Unable to walk beyond approximately 5 meters even with aid, essentially restricted to wheelchair."
+      },
+      {
+        "min": 8.0,
+        "max": 8.5,
+        "stage": "Restricted to Bed or Chair",
+        "description": "Essentially restricted to bed/chair",
+        "interpretation": "Essentially restricted to bed or chair or perambulated in wheelchair, but out of bed most of day; retains many self-care functions."
+      },
+      {
+        "min": 9.0,
+        "max": 9.5,
+        "stage": "Helpless Bed Patient",
+        "description": "Helpless bed patient",
+        "interpretation": "Helpless bed patient; can communicate and eat."
+      },
+      {
+        "min": 10.0,
+        "max": 10.0,
+        "stage": "Death",
+        "description": "Death due to MS",
+        "interpretation": "Death due to MS."
+      }
+    ]
+  },
+  "references": [
+    "Kurtzke JF. Rating neurologic impairment in multiple sclerosis: an expanded disability status scale (EDSS). Neurology. 1983 Nov;33(11):1444-52.",
+    "Slater RJ, LaRocca NG, Scheinberg LC. Development and testing of a minimal record of disability in multiple sclerosis. Ann N Y Acad Sci. 1984;436:453-68.",
+    "Fouad AM, Abdel Naseer M, Farghaly M, Hegazy MI. New algorithmic approach for easier and faster extended disability status scale calculation. Mult Scler J Exp Transl Clin. 2023 Feb 9;9(1):20552173231155055."
+  ],
+  "formula": "EDSS 0-4: Based on Functional Systems scores. EDSS 4.5-9.5: Based primarily on ambulation and ability to perform activities of daily living.",
+  "notes": [
+    "Must be administered by a trained neurologist",
+    "Functional systems are evaluated first, then EDSS is determined",
+    "Visual and bowel/bladder scores require conversion before EDSS calculation",
+    "Ambulation is the primary determinant for scores above 5.0",
+    "Exception: Five FS scores of grade 2 results in EDSS 5.0, not 3.5"
+  ]
+}

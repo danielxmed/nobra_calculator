@@ -223,7 +223,7 @@ class CamIcuRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "rass_score": 0,
                 "acute_onset_fluctuating": "yes",
@@ -431,7 +431,7 @@ class CamIcuResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": {
                     "cam_icu_positive": False,

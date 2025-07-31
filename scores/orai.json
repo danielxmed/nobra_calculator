@@ -1,0 +1,77 @@
+{
+  "id": "orai",
+  "title": "Osteoporosis Risk Assessment Instrument (ORAI)",
+  "description": "Identifies women at risk for osteoporosis and recommends bone densitometry. Uses age, weight, and current estrogen use to stratify risk in postmenopausal women.",
+  "category": "rheumatology",
+  "version": "2000",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "string",
+      "required": true,
+      "description": "Age range of the patient",
+      "options": ["45-54", "55-64", "65-74", "75_or_older"],
+      "validation": {
+        "enum": ["45-54", "55-64", "65-74", "75_or_older"]
+      }
+    },
+    {
+      "name": "weight",
+      "type": "string",
+      "required": true,
+      "description": "Weight category of the patient",
+      "options": ["over_69kg", "60-69kg", "under_60kg"],
+      "validation": {
+        "enum": ["over_69kg", "60-69kg", "under_60kg"]
+      }
+    },
+    {
+      "name": "current_estrogen_use",
+      "type": "string",
+      "required": true,
+      "description": "Is the patient currently using estrogen (hormone replacement therapy)?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "orai_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total ORAI score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 8,
+        "stage": "Low risk",
+        "description": "Bone densitometry may not be needed",
+        "interpretation": "This patient scores less than 9 points on the ORAI scale. Bone densitometry may not be needed at this time. However, clinical judgment should be used, especially if other risk factors for osteoporosis are present."
+      },
+      {
+        "min": 9,
+        "max": 26,
+        "stage": "High risk",
+        "description": "Consider bone densitometry",
+        "interpretation": "This patient scores 9 or more points on the ORAI scale. Bone densitometry should be considered for this patient. The ORAI has a sensitivity of 93.3% and specificity of 46.4% for identifying women with low bone mineral density."
+      }
+    ]
+  },
+  "references": [
+    "Cadarette SM, Jaglal SB, Kreiger N, McIsaac WJ, Darlington GA, Tu JV. Development and validation of the Osteoporosis Risk Assessment Instrument to facilitate selection of women for bone densitometry. CMAJ. 2000 May 2;162(9):1289-94.",
+    "El Maghraoui A, Habbassi A, Ghazi M, Achemlal L, Mounach A, Nouijai A, et al. Validation and comparative evaluation of four osteoporosis risk assessment tools in Moroccan menopausal women. Arch Osteoporos. 2006 Dec;1(1-2):35-42. doi: 10.1007/s11657-006-0006-1.",
+    "Rubin KH, Abrahamsen B, Friis-Holmberg T, Hjelmborg JV, Bech M, Hermann AP, et al. Comparison of different screening tools (FRAX®, OST, ORAI, OSIRIS, SCORE and age alone) to identify women with increased risk of fracture. A population-based prospective study. Bone. 2013 Sep;56(1):16-22. doi: 10.1016/j.bone.2013.05.002."
+  ],
+  "formula": "ORAI Score = Age points + Weight points + Estrogen use points",
+  "notes": [
+    "Designed for postmenopausal women aged 45 years and older",
+    "Not intended for patients at high risk for secondary osteoporosis",
+    "Results are not diagnostic for osteoporosis",
+    "Does not replace bone densitometry testing",
+    "Sensitivity 93.3%, specificity 46.4% at cutoff of 9 points",
+    "Use clinical judgment alongside this tool"
+  ]
+}

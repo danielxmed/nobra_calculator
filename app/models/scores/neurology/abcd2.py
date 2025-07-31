@@ -84,7 +84,7 @@ class Abcd2Request(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 72,
                 "blood_pressure": "elevated",
@@ -155,7 +155,7 @@ class Abcd2Response(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 6,
                 "unit": "points",

@@ -78,7 +78,7 @@ class FourTsRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "thrombocytopenia_severity": "fall_greater_50_nadir_greater_20",
                 "timing_onset": "onset_5_10_days_or_fall_1_day_heparin_30_days",
@@ -139,7 +139,7 @@ class FourTsResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 7,
                 "unit": "points",

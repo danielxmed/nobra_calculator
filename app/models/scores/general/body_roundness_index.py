@@ -108,7 +108,7 @@ class BodyRoundnessIndexRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "waist_circumference": 85.0,
                 "height": 175.0
@@ -212,7 +212,7 @@ class BodyRoundnessIndexResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 4.85,
                 "unit": "index",

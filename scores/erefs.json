@@ -1,0 +1,131 @@
+{
+  "id": "erefs",
+  "title": "Eosinophilic Esophagitis Endoscopic Reference Score (EREFS)",
+  "description": "Assesses severity of endoscopic findings in patients with eosinophilic esophagitis (EoE) using standardized scoring of five major endoscopic features: edema, rings, exudates, furrows, and strictures.",
+  "category": "gastroenterology",
+  "version": "2013",
+  "parameters": [
+    {
+      "name": "edema",
+      "type": "integer",
+      "required": true,
+      "description": "Edema (loss of normal vascular markings; pallor or decreased transparency)",
+      "options": [0, 1],
+      "validation": {
+        "min": 0,
+        "max": 1,
+        "enum": [0, 1]
+      },
+      "unit": "grade"
+    },
+    {
+      "name": "rings",
+      "type": "integer",
+      "required": true,
+      "description": "Rings (trachealization/feline esophagus; concentric esophageal rings)",
+      "options": [0, 1, 2, 3],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "grade"
+    },
+    {
+      "name": "exudates",
+      "type": "integer",
+      "required": true,
+      "description": "Exudates (white plaques on mucosa)",
+      "options": [0, 1, 2],
+      "validation": {
+        "min": 0,
+        "max": 2,
+        "enum": [0, 1, 2]
+      },
+      "unit": "grade"
+    },
+    {
+      "name": "furrows",
+      "type": "integer",
+      "required": true,
+      "description": "Furrows (vertical lines or creases along the esophageal wall)",
+      "options": [0, 1],
+      "validation": {
+        "min": 0,
+        "max": 1,
+        "enum": [0, 1]
+      },
+      "unit": "grade"
+    },
+    {
+      "name": "strictures",
+      "type": "integer",
+      "required": true,
+      "description": "Strictures (fixed narrowings requiring small-caliber scope or causing resistance)",
+      "options": [0, 1],
+      "validation": {
+        "min": 0,
+        "max": 1,
+        "enum": [0, 1]
+      },
+      "unit": "grade"
+    }
+  ],
+  "result": {
+    "name": "erefs_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total EREFS score assessing EoE endoscopic severity"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "No Endoscopic Features",
+        "description": "No visible EoE features",
+        "interpretation": "No endoscopic evidence of eosinophilic esophagitis. Consider histologic assessment as endoscopic findings may be absent in early or treated disease. Normal endoscopy does not exclude EoE diagnosis."
+      },
+      {
+        "min": 1,
+        "max": 2,
+        "stage": "Mild Disease",
+        "description": "Mild endoscopic features",
+        "interpretation": "Mild endoscopic evidence of eosinophilic esophagitis. Consider correlation with histologic findings and clinical symptoms. Monitor response to treatment and reassess endoscopically."
+      },
+      {
+        "min": 3,
+        "max": 5,
+        "stage": "Moderate Disease",
+        "description": "Moderate endoscopic features",
+        "interpretation": "Moderate endoscopic evidence of eosinophilic esophagitis. Multiple features present suggest established disease. Correlate with histology and consider appropriate anti-inflammatory treatment."
+      },
+      {
+        "min": 6,
+        "max": 9,
+        "stage": "Severe Disease",
+        "description": "Severe endoscopic features",
+        "interpretation": "Severe endoscopic evidence of eosinophilic esophagitis. Multiple severe features indicate advanced disease with potential complications. Consider aggressive treatment and close monitoring for stricture formation."
+      }
+    ]
+  },
+  "references": [
+    "Hirano I, Moy N, Heckman MG, Thomas CS, Gonsalves N, Achem SR. Endoscopic assessment of the oesophageal features of eosinophilic oesophagitis: validation of a novel classification and grading system. Gut. 2013 Apr;62(4):489-95. doi: 10.1136/gutjnl-2011-301817.",
+    "van Rhijn BD, Verheij J, van den Bergh Weerman MA, Verseijden C, van den Wijngaard RM, de Jonge WJ, et al. The Endoscopic Reference Score shows modest accuracy to predict either clinical or histological activity in adult patients with eosinophilic oesophagitis. Aliment Pharmacol Ther. 2016 Aug;44(3):300-9. doi: 10.1111/apt.13698.",
+    "Dellon ES, Cotton CC, Gebhart JH, Higgins LL, Beitia R, Woosley JT, et al. Accuracy of the Eosinophilic Esophagitis Endoscopic Reference Score in Diagnosis and Determining Response to Treatment. Clin Gastroenterol Hepatol. 2016 Jan;14(1):31-9. doi: 10.1016/j.cgh.2015.08.040.",
+    "Safroneeva E, Straumann A, Coslovsky M, Zwahlen M, Kuehni CE, Panczak R, et al. Symptoms Have Modest Accuracy in Detecting Endoscopic and Histologic Remission in Adults With Eosinophilic Esophagitis. Gastroenterology. 2016 Sep;151(3):446-57.e5. doi: 10.1053/j.gastro.2016.05.040."
+  ],
+  "formula": "Total EREFS Score = Edema (0-1) + Rings (0-3) + Exudates (0-2) + Furrows (0-1) + Strictures (0-1)",
+  "notes": [
+    "Score ranges from 0-9 points based on endoscopic findings",
+    "Higher scores indicate more severe endoscopic disease",
+    "Recommended to use segment with worst (highest) score",
+    "Should be used in conjunction with histologic assessment",
+    "EREFS helps standardize endoscopic assessment of EoE",
+    "Useful for tracking disease progression and treatment response",
+    "12-21% of patients may be misclassified regarding therapeutic response",
+    "Normal endoscopy (score 0) does not exclude EoE diagnosis",
+    "Interobserver agreement is generally good for most features",
+    "May not capture all endoscopic abnormalities in EoE"
+  ]
+}

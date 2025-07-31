@@ -155,7 +155,7 @@ class DamicoRiskClassificationRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "psa_level": 8.5,
                 "gleason_score": 6,
@@ -359,7 +359,7 @@ class DamicoRiskClassificationResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "low",
                 "unit": "risk group",

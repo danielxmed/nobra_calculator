@@ -22,7 +22,7 @@ patients with atrial fibrillation. It incorporates age, sex, and several comorbi
 including renal dysfunction parameters that distinguish it from other stroke risk scores.
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Literal
 
 
@@ -104,14 +104,14 @@ class AtriaStrokeRequest(BaseModel):
         example="no"
     )
     
-    @validator('age')
+    @field_validator('age')
     def validate_age(cls, v):
         if v < 0 or v > 120:
             raise ValueError('Age must be between 0 and 120 years')
         return v
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 72,
                 "sex": "female",
@@ -170,7 +170,7 @@ class AtriaStrokeResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 6,
                 "unit": "points",

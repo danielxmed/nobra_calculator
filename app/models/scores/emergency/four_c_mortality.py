@@ -102,7 +102,7 @@ class FourCMortalityRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 70,
                 "sex": "male",
@@ -168,7 +168,7 @@ class FourCMortalityResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 10,
                 "unit": "points",

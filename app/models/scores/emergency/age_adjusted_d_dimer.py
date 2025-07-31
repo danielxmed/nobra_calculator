@@ -97,7 +97,7 @@ class AgeAdjustedDDimerRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 65,
                 "d_dimer_unit_type": "FEU",
@@ -182,7 +182,7 @@ class AgeAdjustedDDimerResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 650.0,
                 "unit": "µg/L",

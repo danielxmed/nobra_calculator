@@ -1,0 +1,151 @@
+{
+  "id": "dutch_criteria_familial_hypercholesterolemia",
+  "title": "Dutch Criteria for Familial Hypercholesterolemia (FH)",
+  "description": "Diagnoses familial hypercholesterolemia (FH) based on clinical, genetic, and family history using the Dutch Lipid Clinic Network (DLCN) point-based scoring system. Provides stratification into possible, probable, or definite FH categories.",
+  "category": "endocrinology",
+  "version": "1999",
+  "parameters": [
+    {
+      "name": "ldl_cholesterol_mmol",
+      "type": "float",
+      "required": true,
+      "description": "LDL cholesterol level in mmol/L",
+      "validation": {
+        "min": 0,
+        "max": 30
+      },
+      "unit": "mmol/L"
+    },
+    {
+      "name": "tendon_xanthomas",
+      "type": "string",
+      "required": true,
+      "description": "Presence of tendon xanthomas (Achilles tendon or dorsum of hand)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "corneal_arcus",
+      "type": "string",
+      "required": true,
+      "description": "Corneal arcus in patient <45 years old",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "family_history_ldl",
+      "type": "string",
+      "required": true,
+      "description": "Family history of LDL cholesterol >4.9 mmol/L (190 mg/dL) in adult first-degree relative or >4.0 mmol/L (155 mg/dL) in child/sibling <18 years",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "family_history_chd",
+      "type": "string",
+      "required": true,
+      "description": "Family history of premature coronary heart disease (CHD) in first-degree relative (men <55 years, women <60 years)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "personal_chd",
+      "type": "string",
+      "required": true,
+      "description": "Personal history of premature coronary heart disease (men <55 years, women <60 years)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "personal_cvd",
+      "type": "string",
+      "required": true,
+      "description": "Personal history of premature cerebral or peripheral vascular disease (men <55 years, women <60 years)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "dna_analysis",
+      "type": "string",
+      "required": true,
+      "description": "DNA analysis results: functional mutation in LDLR, APOB, or PCSK9 gene",
+      "options": ["positive", "negative", "not_performed"],
+      "validation": {
+        "enum": ["positive", "negative", "not_performed"]
+      }
+    }
+  ],
+  "result": {
+    "name": "dutch_fh_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Dutch Lipid Clinic Network score for familial hypercholesterolemia diagnosis"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Unlikely FH",
+        "description": "FH unlikely",
+        "interpretation": "Familial hypercholesterolemia is unlikely based on Dutch criteria. Consider other causes of hypercholesterolemia including secondary causes (hypothyroidism, diabetes, nephrotic syndrome, medications). Routine lipid management and cardiovascular risk assessment appropriate."
+      },
+      {
+        "min": 3,
+        "max": 5,
+        "stage": "Possible FH",
+        "description": "Possible familial hypercholesterolemia",
+        "interpretation": "Possible familial hypercholesterolemia. Consider genetic testing if available and appropriate. Initiate high-intensity statin therapy. Screen first-degree relatives for elevated cholesterol. Consider cascade screening and specialist referral."
+      },
+      {
+        "min": 6,
+        "max": 7,
+        "stage": "Probable FH",
+        "description": "Probable familial hypercholesterolemia",
+        "interpretation": "Probable familial hypercholesterolemia. Strong indication for genetic testing and specialist referral. Initiate high-intensity statin therapy with goal LDL <1.8 mmol/L (70 mg/dL). Mandatory cascade screening of first-degree relatives. Consider additional lipid-lowering therapy if statin alone insufficient."
+      },
+      {
+        "min": 8,
+        "max": 15,
+        "stage": "Definite FH",
+        "description": "Definite familial hypercholesterolemia",
+        "interpretation": "Definite familial hypercholesterolemia. Immediate specialist referral required. Aggressive lipid-lowering therapy with combination treatment (statin + ezetimibe ± PCSK9 inhibitor) targeting LDL <1.8 mmol/L (70 mg/dL). Mandatory cascade screening of all first-degree relatives. Consider genetic counseling."
+      }
+    ]
+  },
+  "references": [
+    "The diagnosis and management of familial hypercholesterolaemia. Dutch Health Care Insurance Board. 1999. Available from: https://www.lipidclinic.org/",
+    "Nordestgaard BG, Chapman MJ, Humphries SE, Ginsberg HN, Masana L, Descamps OS, et al. Familial hypercholesterolaemia is underdiagnosed and undertreated in the general population: guidance for clinicians to prevent coronary heart disease: consensus statement of the European Atherosclerosis Society. Eur Heart J. 2013;34(45):3478-90a. doi: 10.1093/eurheartj/eht273.",
+    "Cuchel M, Bruckert E, Ginsberg HN, Raal FJ, Santos RD, Hegele RA, et al. Homozygous familial hypercholesterolaemia: new insights and guidance for clinicians to improve detection and clinical management. A position paper from the Consensus Panel on Familial Hypercholesterolaemia of the European Atherosclerosis Society. Eur Heart J. 2014;35(32):2146-57. doi: 10.1093/eurheartj/ehu274."
+  ],
+  "formula": "Points awarded for: LDL cholesterol levels (1-8 points based on level), tendon xanthomas (6 points), corneal arcus <45 years (4 points), family history of elevated LDL (1 point), family history of premature CHD (1 point), personal premature CHD (2 points), personal premature CVD (1 point), positive DNA analysis (8 points). Scoring: 0-2 points = Unlikely FH, 3-5 points = Possible FH, 6-7 points = Probable FH, ≥8 points = Definite FH.",
+  "notes": [
+    "Developed by the Dutch Lipid Clinic Network in 1999 as a comprehensive diagnostic tool for FH.",
+    "Point-based scoring system allows for graduated likelihood assessment rather than binary diagnosis.",
+    "Widely recommended by international guidelines including ESC/EAS and NLA recommendations.",
+    "More comprehensive than Simon Broome criteria by including weighted scoring system.",
+    "LDL cholesterol thresholds: ≥8.5 mmol/L = 8 points; 6.5-8.4 = 5 points; 5.0-6.4 = 3 points; 4.0-4.9 = 1 point.",
+    "Tendon xanthomas are pathognomonic for FH and receive highest individual point value (6 points).",
+    "Corneal arcus in patients <45 years is highly suggestive of FH (4 points).",
+    "Family history components recognize the autosomal dominant inheritance pattern of FH.",
+    "DNA analysis provides definitive diagnosis when positive (8 points for pathogenic mutation).",
+    "Cascade screening is mandatory for all first-degree relatives of diagnosed FH patients.",
+    "Early diagnosis and treatment can prevent premature cardiovascular disease in FH patients.",
+    "High-intensity statin therapy is first-line treatment with LDL goal <1.8 mmol/L (70 mg/dL).",
+    "Combination therapy often required to achieve target LDL levels in FH patients.",
+    "Genetic counseling recommended for patients with confirmed FH diagnosis.",
+    "Prevalence of heterozygous FH is approximately 1 in 250-500 individuals worldwide."
+  ]
+}

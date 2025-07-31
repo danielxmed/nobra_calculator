@@ -19,6 +19,13 @@ from .c_ssrs import router as c_ssrs_router
 from .cas import router as cas_router
 from .cows_opiate_withdrawal import router as cows_opiate_withdrawal_router
 from .comm import router as comm_router
+from .dire_score import router as dire_score_router
+from .edinburgh_postnatal_depression_scale import router as edinburgh_postnatal_depression_scale_router
+from .dast_10 import router as dast_10_router
+from .dsm5_binge_eating_disorder import router as dsm5_binge_eating_disorder_router
+from .dsm5_bipolar_disorder import router as dsm5_bipolar_disorder_router
+from .dsm5_major_depressive_disorder import router as dsm5_major_depressive_disorder_router
+from .dsm5_ptsd import router as dsm5_ptsd_router
 
 # Create main specialty router
 router = APIRouter()
@@ -38,3 +45,10 @@ router.include_router(c_ssrs_router)
 router.include_router(cas_router)
 router.include_router(cows_opiate_withdrawal_router)
 router.include_router(comm_router)
+router.include_router(dire_score_router)
+router.include_router(edinburgh_postnatal_depression_scale_router)
+router.include_router(dast_10_router)
+router.include_router(dsm5_binge_eating_disorder_router)
+router.include_router(dsm5_bipolar_disorder_router)
+router.include_router(dsm5_major_depressive_disorder_router)
+router.include_router(dsm5_ptsd_router)

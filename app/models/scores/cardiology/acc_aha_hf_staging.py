@@ -72,7 +72,7 @@ class AccAhaHfStagingRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "risk_factors": "yes",
                 "structural_disease": "yes",
@@ -147,7 +147,7 @@ class AccAhaHfStagingResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": "B",
                 "unit": "stage",

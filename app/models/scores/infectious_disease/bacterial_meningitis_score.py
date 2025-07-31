@@ -15,7 +15,7 @@ pleocytosis who are at very low risk for bacterial meningitis, potentially avoid
 hospitalization and antibiotic treatment.
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Literal
 
 
@@ -74,7 +74,7 @@ class BacterialMeningitisScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "csf_gram_stain": "negative",
                 "csf_anc": 500,
@@ -127,7 +127,7 @@ class BacterialMeningitisScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 2,
                 "unit": "points",

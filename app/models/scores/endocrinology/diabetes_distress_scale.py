@@ -201,7 +201,7 @@ class DiabetesDistressScaleRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "overwhelming_demands": 3,
                 "feeling_discouraged": 2,
@@ -399,7 +399,7 @@ class DiabetesDistressScaleResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 2.24,
                 "unit": "DDS17 Score (1-6 scale)",

@@ -141,7 +141,7 @@ class AubHas2CardiovascularRiskIndexRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "history_heart_disease": "no",
                 "age_75_or_older": "no", 
@@ -234,7 +234,7 @@ class AubHas2CardiovascularRiskIndexResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 2,
                 "unit": "points",

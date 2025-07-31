@@ -73,7 +73,7 @@ class AwolScoreRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": "under_80",
                 "spelling_world_backward": "yes",
@@ -131,7 +131,7 @@ class AwolScoreResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 1,
                 "unit": "points",

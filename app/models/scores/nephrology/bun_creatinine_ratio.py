@@ -92,7 +92,7 @@ class BunCreatinineRatioRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "bun": 15.0,
                 "creatinine": 1.0
@@ -187,7 +187,7 @@ class BunCreatinineRatioResponse(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "result": 15.0,
                 "unit": "ratio",
