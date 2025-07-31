@@ -166,7 +166,7 @@ mcp = FastApiMCP(
 )
 
 # Mount the MCP server onto the same FastAPI app
-mcp.mount()
+mcp.mount_http()
 
 # Root endpoint
 @app.get("/")
