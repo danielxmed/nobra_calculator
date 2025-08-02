@@ -1,0 +1,125 @@
+{
+  "id": "mulbsta_score",
+  "title": "MuLBSTA Score for Viral Pneumonia Mortality",
+  "description": "Predicts 90-day mortality risk in patients with viral pneumonia using clinical and laboratory parameters to guide treatment decisions and resource allocation.",
+  "category": "pulmonology",
+  "version": "2019",
+  "parameters": [
+    {
+      "name": "multilobar_infiltrates",
+      "type": "string",
+      "required": true,
+      "description": "Presence of multilobar infiltrates on chest imaging",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "lymphopenia",
+      "type": "string",
+      "required": true,
+      "description": "Lymphocyte count ≤0.8 × 10⁹/L",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "bacterial_coinfection",
+      "type": "string",
+      "required": true,
+      "description": "Presence of bacterial coinfection",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "smoking_history",
+      "type": "string",
+      "required": true,
+      "description": "Current or former smoking history",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hypertension",
+      "type": "string",
+      "required": true,
+      "description": "History of hypertension",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "age_60_or_older",
+      "type": "string",
+      "required": true,
+      "description": "Age 60 years or older",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "mulbsta_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "MuLBSTA score ranging from 0-12 points"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 5,
+        "stage": "Low Risk",
+        "description": "Low risk of 90-day mortality",
+        "interpretation": "Score 0-5: Low risk of 90-day mortality (approximately 0-1.7%). Standard supportive care and monitoring appropriate."
+      },
+      {
+        "min": 6,
+        "max": 11,
+        "stage": "Moderate Risk",
+        "description": "Moderate risk of 90-day mortality",
+        "interpretation": "Score 6-11: Moderate risk of 90-day mortality (approximately 7.3-26.7%). Consider enhanced monitoring, aggressive supportive care, and potential ICU admission."
+      },
+      {
+        "min": 12,
+        "max": 12,
+        "stage": "High Risk",
+        "description": "High risk of 90-day mortality",
+        "interpretation": "Score 12: High risk of 90-day mortality (approximately 42.9%). Intensive monitoring, aggressive treatment, and ICU care strongly recommended."
+      }
+    ]
+  },
+  "references": [
+    "Guo L, Wei D, Zhang X, Wu Y, Li Q, Zhou M, et al. Clinical Features Predicting Mortality Risk in Patients With Viral Pneumonia: The MuLBSTA Score. Front Microbiol. 2019;10:2752. doi: 10.3389/fmicb.2019.02752.",
+    "Chen N, Zhou M, Dong X, Qu J, Gong F, Han Y, et al. Epidemiological and clinical characteristics of 99 cases of 2019 novel coronavirus pneumonia in Wuhan, China: a descriptive study. Lancet. 2020;395(10223):507-513. doi: 10.1016/S0140-6736(20)30211-7.",
+    "Fan G, Tu C, Zhou F, Liu Z, Wang Y, Song B, et al. Comparison of severity scores for COVID-19 patients with pneumonia: a retrospective study. Eur Respir J. 2020;56(3):2002113. doi: 10.1183/13993003.02113-2020."
+  ],
+  "formula": "MuLBSTA Score = Multilobar infiltrates (5 points) + Lymphopenia (4 points) + Bacterial coinfection (4 points) + Smoking history (3 points) + Hypertension (2 points) + Age ≥60 years (2 points). Maximum score: 20 points, but practical maximum observed is 12 points.",
+  "notes": [
+    "Developed specifically for viral pneumonia mortality prediction",
+    "Validated in influenza and other viral pneumonia patients",
+    "Has been applied to COVID-19 pneumonia with good predictive value",
+    "MuLBSTA stands for: Multilobar infiltrates, Lymphopenia, Bacterial coinfection, Smoking, Hypertension, Age",
+    "Score ranges from 0-20 theoretically, but practical maximum is 12 points",
+    "Higher scores correlate with increased 90-day mortality risk",
+    "Helps guide treatment intensity and resource allocation",
+    "Useful for early identification of high-risk patients",
+    "Should be used in conjunction with clinical judgment",
+    "Multilobar infiltrates defined as involvement of ≥2 lobes on chest imaging",
+    "Lymphopenia defined as lymphocyte count ≤0.8 × 10⁹/L",
+    "Bacterial coinfection determined by clinical, laboratory, or microbiologic evidence",
+    "Smoking history includes both current and former smokers",
+    "Hypertension based on medical history or current treatment",
+    "Age cutoff is 60 years for the elderly risk factor",
+    "External validation studies show good discriminative ability",
+    "Particularly useful in resource-limited settings"
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "id": "isth_dic_criteria",
+  "title": "ISTH Criteria for Disseminated Intravascular Coagulation (DIC)",
+  "description": "Diagnoses overt disseminated intravascular coagulation (DIC) based on laboratory parameters. This scoring system was developed by the International Society on Thrombosis and Haemostasis (ISTH) as a standardized approach to DIC diagnosis using readily available laboratory tests. Use only in patients with clinical suspicion for DIC in appropriate clinical settings.",
+  "category": "hematology",
+  "version": "2001",
+  "parameters": [
+    {
+      "name": "platelet_count",
+      "type": "string",
+      "required": true,
+      "description": "Platelet count in cells x 10^9/L (x 10^3/μL)",
+      "options": ["≥100", "50-99", "<50"],
+      "validation": {
+        "enum": ["≥100", "50-99", "<50"]
+      },
+      "unit": "×10^9/L"
+    },
+    {
+      "name": "fibrin_marker",
+      "type": "string",
+      "required": true,
+      "description": "Fibrin-related marker elevation (e.g., D-dimer, fibrin monomers, FDP)",
+      "options": ["no_increase", "moderate_increase", "severe_increase"],
+      "validation": {
+        "enum": ["no_increase", "moderate_increase", "severe_increase"]
+      },
+      "unit": null
+    },
+    {
+      "name": "pt_prolongation",
+      "type": "string",
+      "required": true,
+      "description": "Prothrombin time (PT) prolongation beyond normal range",
+      "options": ["<3_seconds", "3-5_seconds", "≥6_seconds"],
+      "validation": {
+        "enum": ["<3_seconds", "3-5_seconds", "≥6_seconds"]
+      },
+      "unit": "seconds"
+    },
+    {
+      "name": "fibrinogen_level",
+      "type": "string",
+      "required": true,
+      "description": "Fibrinogen level",
+      "options": ["≥1_g_L", "<1_g_L"],
+      "validation": {
+        "enum": ["≥1_g_L", "<1_g_L"]
+      },
+      "unit": "g/L"
+    }
+  ],
+  "result": {
+    "name": "dic_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "ISTH DIC score (0-8 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 4,
+        "stage": "Not Suggestive",
+        "description": "Not suggestive of overt DIC",
+        "interpretation": "Score <5 points: Not suggestive of overt DIC. May indicate non-overt DIC or absence of DIC. Consider reassessment if clinical suspicion remains high or clinical condition changes."
+      },
+      {
+        "min": 5,
+        "max": 8,
+        "stage": "Compatible with Overt DIC",
+        "description": "Compatible with overt DIC",
+        "interpretation": "Score ≥5 points: Compatible with overt DIC. Strong likelihood of overt DIC. Consider immediate treatment and management of underlying condition. Monitor closely and repeat laboratory studies."
+      }
+    ]
+  },
+  "references": [
+    "Taylor FB Jr, Toh CH, Hoots WK, Wada H, Levi M; Scientific Subcommittee on Disseminated Intravascular Coagulation (DIC) of the International Society on Thrombosis and Haemostasis (ISTH). Towards definition, clinical and laboratory criteria, and a scoring system for disseminated intravascular coagulation. Thromb Haemost. 2001 Nov;86(5):1327-30.",
+    "Toh CH, Hoots WK; SSC on Disseminated Intravascular Coagulation of the ISTH. The scoring system of the Scientific and Standardisation Committee on Disseminated Intravascular Coagulation of the International Society on Thrombosis and Haemostasis: a 5-year overview. J Thromb Haemost. 2007 Mar;5(3):604-6.",
+    "Bakhtiari K, Meijers JC, de Jonge E, Levi M. Prospective validation of the International Society of Thrombosis and Haemostasis scoring system for disseminated intravascular coagulation. Crit Care Med. 2004 Dec;32(12):2416-21.",
+    "Levi M, Toh CH, Thachil J, Watson HG. Guidelines for the diagnosis and management of disseminated intravascular coagulation. British Committee for Standards in Haematology. Br J Haematol. 2009 Apr;145(1):24-33."
+  ],
+  "formula": "Sum of points: Platelet count (0-2) + Fibrin marker (0-3) + PT prolongation (0-2) + Fibrinogen level (0-1)",
+  "notes": [
+    "Use only in patients with clinical suspicion for DIC",
+    "Requires underlying disorder associated with DIC (malignancy, sepsis, obstetric complications, trauma)",
+    "Score ≥5 points indicates overt DIC with 91-93% sensitivity and 97-98% specificity",
+    "Score <5 does not rule out DIC but may indicate non-overt DIC",
+    "Serial measurements may be more useful than single assessment",
+    "D-dimer is the most commonly used fibrin-related marker",
+    "Consider clinical context and repeat testing if suspicion remains high"
+  ]
+}

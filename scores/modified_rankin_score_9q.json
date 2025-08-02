@@ -1,0 +1,171 @@
+{
+  "id": "modified_rankin_score_9q",
+  "title": "Modified Rankin Score-9Q (mRS-9Q)",
+  "description": "9-question yes/no survey that provides simple and reliable determination of the modified Rankin Scale score in neurosurgical and neurological patients",
+  "category": "neurology",
+  "version": "mRS-9Q (Bruno 2010)",
+  "parameters": [
+    {
+      "name": "symptoms_bothering",
+      "type": "string",
+      "required": true,
+      "description": "Do you have any symptoms that are bothering you?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "same_work",
+      "type": "string",
+      "required": true,
+      "description": "Are you able to do the same work as before?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "keep_hobbies",
+      "type": "string",
+      "required": true,
+      "description": "Are you able to keep up with your hobbies?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "maintain_social_ties",
+      "type": "string",
+      "required": true,
+      "description": "Have you maintained your ties to friends and family?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "need_help_basic_tasks",
+      "type": "string",
+      "required": true,
+      "description": "Do you need help making a simple meal, doing household chores, or balancing a checkbook?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "need_help_shopping_travel",
+      "type": "string",
+      "required": true,
+      "description": "Do you need help with shopping or traveling close to home?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "need_help_walking",
+      "type": "string",
+      "required": true,
+      "description": "Do you need another person to help you walk?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "need_help_personal_care",
+      "type": "string",
+      "required": true,
+      "description": "Do you need help with eating, going to the toilet, or bathing?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "bedridden_nursing_care",
+      "type": "string",
+      "required": true,
+      "description": "Do you stay in bed most of the day and need constant nursing care?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "mrs_9q_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Modified Rankin Score 9Q result for neurological function assessment"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "No Symptoms",
+        "description": "No symptoms at all",
+        "interpretation": "Perfect health without symptoms. Complete functional independence."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "No Significant Disability",
+        "description": "Symptoms present but able to carry out all usual duties",
+        "interpretation": "No significant disability despite symptoms. Able to carry out all usual duties and activities."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Slight Disability",
+        "description": "Unable to carry out all previous activities but independent",
+        "interpretation": "Slight disability. Unable to carry out all previous activities but able to look after own affairs without assistance."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Moderate Disability",
+        "description": "Requires some help but able to walk unassisted",
+        "interpretation": "Moderate disability. Requires some assistance but able to walk unassisted."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Moderately Severe Disability",
+        "description": "Unable to attend to bodily needs without assistance",
+        "interpretation": "Moderately severe disability. Unable to attend to own bodily needs without assistance and unable to walk unassisted."
+      },
+      {
+        "min": 5,
+        "max": 5,
+        "stage": "Severe Disability",
+        "description": "Bedridden and requiring constant nursing care",
+        "interpretation": "Severe disability. Bedridden, incontinent and requiring constant nursing care and attention."
+      }
+    ]
+  },
+  "references": [
+    "Bruno A, Shah N, Lin C, Close B, Hess DC, Davis K, Baute V, Switzer JA, Waller JL, Nichols FT. Improving modified Rankin Scale assessment with a simplified questionnaire. Stroke. 2010 May;41(5):1048-50. doi: 10.1161/STROKEAHA.109.571562.",
+    "Bruno A, Close B, Hancock GM, Hess DC, Kahles T, Yeatts SD, Lees KR, Molina CA. Standardized modified rankin scale assessment by telephone: reliability in the ALIAS pilot trial. Stroke. 2012 Aug;43(8):2086-90. doi: 10.1161/STROKEAHA.112.657130.",
+    "Bruno A, Akinwuntan AE, Lin C, Close B, Davis K, Baute V, Aryal R, Brooks D, Hess DC, Switzer JA, Waller JL. Simplified modified rankin scale questionnaire: reproducibility over the telephone and validation with quality of life. Stroke. 2011 Aug;42(8):2276-9. doi: 10.1161/STROKEAHA.111.613273."
+  ],
+  "formula": "Algorithm-based scoring using 9 yes/no questions to determine mRS level: Q1 determines mRS 0 vs ≥1, then sequential questions determine final mRS score from 0-5.",
+  "notes": [
+    "Structured 9-question interview that reliably determines mRS score",
+    "Can be administered by telephone or in-person with equal reliability",
+    "Can be administered by medical or non-medical personnel",
+    "Reduces subjectivity compared to traditional mRS assessment",
+    "Web-based calculator available with automated error checking",
+    "Validated across multiple neurological and neurosurgical conditions",
+    "Excellent inter-rater reliability and test-retest reproducibility",
+    "Takes approximately 5-10 minutes to complete",
+    "Useful for clinical trials, quality improvement, and outcome tracking",
+    "Provides standardized approach to mRS determination",
+    "Does not include mRS 6 (death) as this is determined by patient status",
+    "Algorithm prioritizes higher disability levels when multiple criteria met"
+  ]
+}

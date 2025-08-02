@@ -1,0 +1,92 @@
+{
+  "id": "hits_score",
+  "title": "Hurt, Insult, Threaten, Scream (HITS) Score",
+  "description": "Detects domestic abuse (intimate partner violence) in women and men in healthcare settings. Uses four questions about frequency of partner abuse behaviors to screen for IPV in primary care and clinical settings.",
+  "category": "emergency",
+  "version": "1998",
+  "parameters": [
+    {
+      "name": "physically_hurt",
+      "type": "string",
+      "required": true,
+      "description": "How often does your partner physically hurt you?",
+      "options": ["never", "rarely", "sometimes", "fairly_often", "frequently"],
+      "validation": {
+        "enum": ["never", "rarely", "sometimes", "fairly_often", "frequently"]
+      }
+    },
+    {
+      "name": "insult_talk_down",
+      "type": "string",
+      "required": true,
+      "description": "How often does your partner insult you or talk down to you?",
+      "options": ["never", "rarely", "sometimes", "fairly_often", "frequently"],
+      "validation": {
+        "enum": ["never", "rarely", "sometimes", "fairly_often", "frequently"]
+      }
+    },
+    {
+      "name": "threaten_with_harm",
+      "type": "string",
+      "required": true,
+      "description": "How often does your partner threaten you with harm?",
+      "options": ["never", "rarely", "sometimes", "fairly_often", "frequently"],
+      "validation": {
+        "enum": ["never", "rarely", "sometimes", "fairly_often", "frequently"]
+      }
+    },
+    {
+      "name": "scream_curse",
+      "type": "string",
+      "required": true,
+      "description": "How often does your partner scream or curse at you?",
+      "options": ["never", "rarely", "sometimes", "fairly_often", "frequently"],
+      "validation": {
+        "enum": ["never", "rarely", "sometimes", "fairly_often", "frequently"]
+      }
+    }
+  ],
+  "result": {
+    "name": "hits_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "HITS score for intimate partner violence screening"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 4,
+        "max": 10,
+        "stage": "Low Risk",
+        "description": "Score 4-10",
+        "interpretation": "Low risk for intimate partner violence based on current screening. Continue to provide supportive care and maintain awareness for signs of abuse. Consider follow-up screening at future visits."
+      },
+      {
+        "min": 11,
+        "max": 20,
+        "stage": "Positive Screen",
+        "description": "Score ≥11",
+        "interpretation": "Positive screen for intimate partner violence. Patient reports frequent abusive behaviors by partner. Requires immediate safety assessment, documentation, resource provision, and follow-up care planning in accordance with institutional protocols."
+      }
+    ]
+  },
+  "references": [
+    "Sherin KM, Sinacore JM, Li XQ, Zitter RE, Shakil A. HITS: a short domestic violence screening tool for use in a family practice setting. Fam Med. 1998 Jul-Aug;30(7):508-12.",
+    "Shakil A, Donald S, Sinacore JM, Krepcho M. Validation of the HITS domestic violence screening tool with males. Fam Med. 2005 Mar;37(3):193-8.",
+    "US Preventive Services Task Force. Screening for Intimate Partner Violence, Elder Abuse, and Abuse of Vulnerable Adults: US Preventive Services Task Force Recommendation Statement. JAMA. 2018 Oct 23;320(16):1678-1687."
+  ],
+  "formula": "HITS Score = sum of frequency ratings for 4 questions (range 4-20). Each question scored: Never (1), Rarely (2), Sometimes (3), Fairly Often (4), Frequently (5). Cut-off ≥11 indicates positive screen for IPV.",
+  "notes": [
+    "Validated for both women and men in healthcare settings",
+    "Available in English and Spanish versions with different cut-off scores",
+    "English version: Cut-off ≥11 (sensitivity 86%, specificity 99%)",
+    "Spanish version: Cut-off ≥6 (sensitivity 100%, specificity 86%)",
+    "Should be administered in private setting without partner present",
+    "Positive screen requires safety assessment and appropriate referrals",
+    "Healthcare providers should be familiar with local IPV resources",
+    "Good internal consistency (Cronbach's alpha = 0.80)",
+    "Can be administered verbally or as written questionnaire",
+    "Brief 4-question format suitable for busy clinical settings",
+    "Correlates well with Conflict Tactics Scale (r = 0.85)"
+  ]
+}

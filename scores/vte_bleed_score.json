@@ -1,0 +1,120 @@
+{
+  "id": "vte_bleed_score",
+  "title": "VTE-BLEED Score",
+  "description": "Assesses bleeding risk on anticoagulation therapy in patients with venous thromboembolism (VTE). This validated risk score enables better stratification of bleeding risk during stable anticoagulation after a first VTE episode. Unlike bleeding risk scores derived from atrial fibrillation patients, the VTE-BLEED score is specifically designed for VTE patients who have different comorbidity profiles and risk factors.",
+  "category": "hematology",
+  "version": "2020",
+  "parameters": [
+    {
+      "name": "age_60_or_older",
+      "type": "string",
+      "required": true,
+      "description": "Patient age 60 years or older",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "active_cancer",
+      "type": "string",
+      "required": true,
+      "description": "Active cancer (currently receiving treatment, treated within 6 months, or metastatic)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "male_uncontrolled_hypertension",
+      "type": "string",
+      "required": true,
+      "description": "Male patient with uncontrolled hypertension (systolic BP >140 mmHg or diastolic BP >90 mmHg)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "anemia",
+      "type": "string",
+      "required": true,
+      "description": "Anemia (hemoglobin <13 g/dL in men or <12 g/dL in women)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "history_of_bleeding",
+      "type": "string",
+      "required": true,
+      "description": "History of bleeding (major bleeding episode requiring hospitalization, transfusion, or surgery)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "renal_dysfunction",
+      "type": "string",
+      "required": true,
+      "description": "Renal dysfunction (creatinine clearance 30-60 mL/min)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "vte_bleed_score",
+    "type": "float",
+    "unit": "points",
+    "description": "VTE-BLEED bleeding risk score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1.9,
+        "stage": "Low Risk",
+        "description": "Low bleeding risk on anticoagulation",
+        "interpretation": "VTE-BLEED score <2 indicates low bleeding risk. Continue standard anticoagulation therapy with routine monitoring. The benefits of anticoagulation typically outweigh bleeding risks in this population. Maintain standard follow-up intervals and patient education about bleeding precautions."
+      },
+      {
+        "min": 2,
+        "max": 10,
+        "stage": "Elevated Risk",
+        "description": "Elevated bleeding risk on anticoagulation",
+        "interpretation": "VTE-BLEED score ≥2 indicates elevated bleeding risk. Consider more frequent monitoring, careful medication selection, potential dose adjustments, and shorter anticoagulation duration when clinically appropriate. Implement enhanced bleeding precautions and patient education. Consider individual risk-benefit assessment for extended anticoagulation."
+      }
+    ]
+  },
+  "references": [
+    "Klok FA, Hösel V, Clemens A, et al. Prediction of bleeding events in patients with venous thromboembolism on stable anticoagulation treatment. Eur Respir J. 2016;48(5):1369-1376. doi: 10.1183/13993003.00280-2016",
+    "Barco S, Klok FA, Mahé I, et al. Impact of sex, age, and risk factors for venous thromboembolism on the risk of major bleeding in patients with acute venous thromboembolism. Circulation. 2020;141(1):8-17. doi: 10.1161/CIRCULATIONAHA.119.042716",
+    "Mahé I, Chidiac J, Bertoletti L, et al. The clinical course of venous thromboembolism may differ according to cancer site. Am J Med. 2017;130(3):337-347. doi: 10.1016/j.amjmed.2016.10.017",
+    "Prandoni P, Noventa F, Ghirarduzzi A, et al. The risk of recurrent venous thromboembolism after discontinuing anticoagulation in patients with acute proximal deep vein thrombosis or pulmonary embolism. Haematologica. 2007;92(2):199-205. doi: 10.3324/haematol.10516"
+  ],
+  "formula": "Age ≥60 years (1.5 points) + Active cancer (2 points) + Male with uncontrolled hypertension (1 point) + Anemia (1.5 points) + History of bleeding (1.5 points) + Renal dysfunction (1.5 points). Score <2 = Low risk, Score ≥2 = Elevated risk.",
+  "notes": [
+    "Designed for patients on stable anticoagulation after 30 days of treatment for DVT or PE",
+    "Most validated bleeding risk score in VTE settings with good prediction power for major bleeding",
+    "Validated for various direct oral anticoagulants (DOACs) and vitamin K antagonists",
+    "Can identify patients at risk of intracranial and fatal bleeding events",
+    "VTE patients typically have different comorbidity profile than atrial fibrillation patients",
+    "Score should not be used as definitive exclusion from anticoagulation therapy",
+    "Consider individual patient factors and clinical judgment in treatment decisions",
+    "Active cancer definition includes currently receiving treatment, treated within 6 months, or metastatic disease",
+    "Uncontrolled hypertension applies only to male patients in this score",
+    "Anemia thresholds: <13 g/dL in men, <12 g/dL in women",
+    "Renal dysfunction specifically refers to creatinine clearance 30-60 mL/min range",
+    "Score developed and validated in European VTE cohorts"
+  ]
+}

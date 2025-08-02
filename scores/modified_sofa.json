@@ -1,0 +1,119 @@
+{
+  "id": "modified_sofa",
+  "title": "Modified Sequential Organ Failure Assessment (mSOFA) Score",
+  "description": "Predicts ICU mortality using mostly clinical variables and fewer labs compared to the original SOFA Score. Designed for resource-constrained critical care environments during disasters or pandemics.",
+  "category": "emergency",
+  "version": "2010",
+  "parameters": [
+    {
+      "name": "spo2_fio2_ratio",
+      "type": "integer",
+      "required": true,
+      "description": "SpO₂/FiO₂ ratio for respiratory assessment",
+      "validation": {
+        "min": 50,
+        "max": 500
+      },
+      "unit": "ratio"
+    },
+    {
+      "name": "scleral_icterus",
+      "type": "string",
+      "required": true,
+      "description": "Presence of scleral icterus or jaundice",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      }
+    },
+    {
+      "name": "mean_arterial_pressure",
+      "type": "integer",
+      "required": true,
+      "description": "Mean arterial pressure in mmHg",
+      "validation": {
+        "min": 30,
+        "max": 200
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "vasopressor_use",
+      "type": "string",
+      "required": true,
+      "description": "Use of vasopressor medications",
+      "options": ["none", "low_dose", "moderate_dose", "high_dose"],
+      "validation": {
+        "enum": ["none", "low_dose", "moderate_dose", "high_dose"]
+      }
+    },
+    {
+      "name": "glasgow_coma_scale",
+      "type": "integer",
+      "required": true,
+      "description": "Glasgow Coma Scale score",
+      "validation": {
+        "min": 3,
+        "max": 15
+      },
+      "unit": "points"
+    },
+    {
+      "name": "creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Serum creatinine level",
+      "validation": {
+        "min": 0.1,
+        "max": 10.0
+      },
+      "unit": "mg/dL"
+    }
+  ],
+  "result": {
+    "name": "msofa_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "mSOFA score ranging from 0-20 points"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 7,
+        "stage": "Low Risk",
+        "description": "4% 30-day mortality",
+        "interpretation": "Low mortality risk with good prognosis in ICU setting."
+      },
+      {
+        "min": 8,
+        "max": 11,
+        "stage": "Moderate Risk",
+        "description": "31% 30-day mortality",
+        "interpretation": "Moderate mortality risk requiring intensive monitoring and aggressive treatment."
+      },
+      {
+        "min": 12,
+        "max": 20,
+        "stage": "High Risk",
+        "description": "58% 30-day mortality",
+        "interpretation": "High mortality risk requiring maximum intensive care support and consideration of goals of care."
+      }
+    ]
+  },
+  "references": [
+    "Rahmatinejad Z, Reihani H, Tohidinezhad F, Rahmatinejad F, Pourmand A, Abu-Hanna A, et al. Prognostic utilization of models based on the SOFA score and red cell distribution width in intensive care unit patients. Am J Emerg Med. 2018;36(5):775-781. doi: 10.1016/j.ajem.2017.10.011.",
+    "Grissom CK, Brown SM, Kuttler KG, Boltax JP, Jones J, Jephson AR, et al. A modified sequential organ failure assessment score for critical care triage. Disaster Med Public Health Prep. 2010;4(4):277-84. doi: 10.1001/dmp.2010.40.",
+    "Vahedian-Azimi A, Keramatinia AA, Bashar FR, Hajiesmaeili MR, Shojaei S, Hatamian S, et al. Comparison of proposed modified and original sequential organ failure assessment scores in predicting ICU mortality: a prospective, observational, follow-up study. Turk J Anaesthesiol Reanim. 2017;45(1):16-22. doi: 10.5152/TJAR.2017.93798."
+  ],
+  "formula": "mSOFA Score = Respiratory (SpO₂/FiO₂) + Liver (Scleral Icterus) + Cardiovascular (MAP + Vasopressors) + CNS (GCS) + Renal (Creatinine). Range: 0-20 points.",
+  "notes": [
+    "Simplified version of SOFA score requiring fewer laboratory tests",
+    "Particularly useful in resource-constrained critical care environments",
+    "Predicts ICU mortality with similar accuracy to the original SOFA score",
+    "Eliminates the hepatic component from original SOFA (uses scleral icterus instead of bilirubin)",
+    "Score ranges from 0-20 instead of 0-24 (original SOFA)",
+    "Day 1 mSOFA scores perform equally well as SOFA with AUC of 0.84",
+    "Threshold of 9 provides 85.6% sensitivity and 74.6% specificity for mortality prediction"
+  ]
+}

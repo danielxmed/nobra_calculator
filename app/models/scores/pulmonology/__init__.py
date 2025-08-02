@@ -21,6 +21,12 @@ from .fleischner_guidelines import FleischnerGuidelinesRequest, FleischnerGuidel
 from .gap_index_ipf_mortality import GapIndexIpfMortalityRequest, GapIndexIpfMortalityResponse
 from .geneva_score_revised_pe import GenevaScoreRevisedPeRequest, GenevaScoreRevisedPeResponse
 from .gold_copd_criteria import GoldCopdCriteriaRequest, GoldCopdCriteriaResponse
+from .horowitz_index import HorowitzIndexRequest, HorowitzIndexResponse
+from .lights_criteria import LightsCriteriaRequest, LightsCriteriaResponse
+from .manchester_score_prognosis_sclc import ManchesterScorePrognosisSclcRequest, ManchesterScorePrognosisSclcResponse
+from .mmrc_dyspnea_scale import MmrcDyspneaScaleRequest, MmrcDyspneaScaleResponse
+from .mulbsta_score import MulbstaScoreRequest, MulbstaScoreResponse
+from .murray_score import MurrayScoreRequest, MurrayScoreResponse
 
 __all__ = [
     "Curb65Request",
@@ -61,4 +67,16 @@ __all__ = [
     "GenevaScoreRevisedPeResponse",
     "GoldCopdCriteriaRequest",
     "GoldCopdCriteriaResponse",
+    "HorowitzIndexRequest",
+    "HorowitzIndexResponse",
+    "LightsCriteriaRequest",
+    "LightsCriteriaResponse",
+    "ManchesterScorePrognosisSclcRequest",
+    "ManchesterScorePrognosisSclcResponse",
+    "MmrcDyspneaScaleRequest",
+    "MmrcDyspneaScaleResponse",
+    "MulbstaScoreRequest",
+    "MulbstaScoreResponse",
+    "MurrayScoreRequest",
+    "MurrayScoreResponse",
 ]

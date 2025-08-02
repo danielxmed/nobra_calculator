@@ -1,0 +1,108 @@
+{
+  "id": "ldl_calculated",
+  "title": "LDL Calculated",
+  "description": "Calculates LDL cholesterol using the Friedewald formula based on total cholesterol, HDL cholesterol, and triglycerides. Used for cardiovascular risk assessment and lipid management when direct LDL measurement is not available",
+  "category": "cardiology",
+  "version": "friedewald_1972",
+  "parameters": [
+    {
+      "name": "total_cholesterol",
+      "type": "float",
+      "required": true,
+      "description": "Total cholesterol level (fasting required)",
+      "validation": {
+        "min": 50,
+        "max": 1000
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "hdl_cholesterol",
+      "type": "float",
+      "required": true,
+      "description": "High-density lipoprotein (HDL) cholesterol level",
+      "validation": {
+        "min": 10,
+        "max": 200
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "triglycerides",
+      "type": "float",
+      "required": true,
+      "description": "Triglyceride level (fasting required, accurate only if <400 mg/dL)",
+      "validation": {
+        "min": 30,
+        "max": 5000
+      },
+      "unit": "mg/dL"
+    }
+  ],
+  "result": {
+    "name": "ldl_cholesterol",
+    "type": "float",
+    "unit": "mg/dL",
+    "description": "Calculated low-density lipoprotein (LDL) cholesterol level"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 99,
+        "stage": "Optimal",
+        "description": "Optimal LDL cholesterol",
+        "interpretation": "LDL cholesterol level is optimal. Continue healthy lifestyle practices including heart-healthy diet, regular physical activity, and weight management."
+      },
+      {
+        "min": 100,
+        "max": 129,
+        "stage": "Near Optimal",
+        "description": "Near optimal/above optimal LDL cholesterol",
+        "interpretation": "LDL cholesterol level is near optimal to above optimal. Consider lifestyle modifications and assess cardiovascular risk factors."
+      },
+      {
+        "min": 130,
+        "max": 159,
+        "stage": "Borderline High",
+        "description": "Borderline high LDL cholesterol",
+        "interpretation": "LDL cholesterol level is borderline high. Lifestyle modifications recommended. Consider medication based on cardiovascular risk assessment."
+      },
+      {
+        "min": 160,
+        "max": 189,
+        "stage": "High",
+        "description": "High LDL cholesterol",
+        "interpretation": "LDL cholesterol level is high. Intensive lifestyle modifications and likely medication therapy indicated. Assess overall cardiovascular risk."
+      },
+      {
+        "min": 190,
+        "max": 999,
+        "stage": "Very High",
+        "description": "Very high LDL cholesterol",
+        "interpretation": "LDL cholesterol level is very high. Medication therapy strongly recommended along with intensive lifestyle modifications. Consider familial hypercholesterolemia."
+      }
+    ]
+  },
+  "references": [
+    "Friedewald WT, Levy RI, Fredrickson DS. Estimation of the concentration of low-density lipoprotein cholesterol in plasma, without use of the preparative ultracentrifuge. Clin Chem. 1972 Jun;18(6):499-502.",
+    "National Cholesterol Education Program (NCEP) Expert Panel on Detection, Evaluation, and Treatment of High Blood Cholesterol in Adults (Adult Treatment Panel III). Third Report of the National Cholesterol Education Program (NCEP) Expert Panel on Detection, Evaluation, and Treatment of High Blood Cholesterol in Adults (Adult Treatment Panel III) final report. Circulation. 2002 Dec 17;106(25):3143-421.",
+    "Stone NJ, Robinson JG, Lichtenstein AH, et al. 2013 ACC/AHA guideline on the treatment of blood cholesterol to reduce atherosclerotic cardiovascular risk in adults. Circulation. 2014 Jun 24;129(25 Suppl 2):S1-45.",
+    "Grundy SM, Stone NJ, Bailey AL, et al. 2018 AHA/ACC/AACVPR/AAPA/ABC/ACPM/ADA/AGS/APhA/ASPC/NLA/PCNA Guideline on the Management of Blood Cholesterol. Circulation. 2019 Jun 18;139(25):e1082-e1143."
+  ],
+  "formula": "LDL cholesterol (mg/dL) = Total Cholesterol - HDL Cholesterol - (Triglycerides/5)",
+  "notes": [
+    "Based on the Friedewald formula from 1972",
+    "Requires fasting lipid panel for accurate triglyceride measurement",
+    "Inaccurate when triglycerides >400 mg/dL - use direct LDL measurement",
+    "May underestimate LDL when triglycerides are very low (<100 mg/dL)",
+    "Overestimates LDL at very low LDL levels (<70 mg/dL) when triglycerides >200 mg/dL",
+    "Underestimates LDL at high LDL levels (>130 mg/dL) when triglycerides >200 mg/dL",
+    "Cannot be used in non-fasting samples",
+    "Not applicable in patients with dysbetalipoproteinemia (Type III hyperlipoproteinemia)",
+    "Direct LDL measurement recommended if accuracy is questioned",
+    "LDL targets vary based on cardiovascular risk: <70 mg/dL (high risk), <100 mg/dL (moderate risk)",
+    "Consider Martin-Hopkins equation for improved accuracy in some populations",
+    "Results should be interpreted in context of overall cardiovascular risk assessment"
+  ]
+}

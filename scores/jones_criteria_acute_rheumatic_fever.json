@@ -1,0 +1,137 @@
+{
+  "id": "jones_criteria_acute_rheumatic_fever",
+  "title": "Jones Criteria for Acute Rheumatic Fever Diagnosis",
+  "description": "Diagnoses acute rheumatic fever based on major and minor criteria with evidence of antecedent group A streptococcal infection. The revised 2015 criteria require evidence of streptococcal infection plus either 2 major criteria OR 1 major and 2 minor criteria.",
+  "category": "cardiology",
+  "version": "2015_revised",
+  "parameters": [
+    {
+      "name": "population_risk",
+      "type": "string",
+      "required": true,
+      "description": "Population risk category based on regional acute RF incidence and rheumatic heart disease prevalence",
+      "validation": {
+        "enum": ["low_risk", "moderate_high_risk"]
+      }
+    },
+    {
+      "name": "strep_evidence",
+      "type": "string",
+      "required": true,
+      "description": "Evidence of antecedent group A streptococcal infection (required for diagnosis)",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "carditis",
+      "type": "string",
+      "required": true,
+      "description": "Clinical and/or subclinical carditis (inflammation of the heart) - Major criterion",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "arthritis",
+      "type": "string",
+      "required": true,
+      "description": "Joint involvement - varies by population risk (polyarthritis for low-risk, monoarthritis/polyarthralgia acceptable for moderate-high risk) - Major criterion",
+      "validation": {
+        "enum": ["polyarthritis", "monoarthritis_polyarthralgia", "none"]
+      }
+    },
+    {
+      "name": "chorea",
+      "type": "string",
+      "required": true,
+      "description": "Sydenham's chorea (involuntary, irregular movements) - Major criterion",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "erythema_marginatum",
+      "type": "string",
+      "required": true,
+      "description": "Erythema marginatum (characteristic skin rash with clear center and wavy margins) - Major criterion",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "subcutaneous_nodules",
+      "type": "string",
+      "required": true,
+      "description": "Subcutaneous nodules (small, painless nodules over bony surfaces or tendons) - Major criterion",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "fever",
+      "type": "string",
+      "required": true,
+      "description": "Fever (≥38°C for moderate-high risk, ≥38.5°C for low-risk populations) - Minor criterion",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "arthralgia",
+      "type": "string",
+      "required": true,
+      "description": "Arthralgia (joint pain without inflammation) - Minor criterion (only in low-risk populations)",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "elevated_acute_phase_reactants",
+      "type": "string",
+      "required": true,
+      "description": "Elevated ESR (>60 mm/h) or CRP (>3.0 mg/dL) - Minor criterion",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "prolonged_pr_interval",
+      "type": "string",
+      "required": true,
+      "description": "Prolonged PR interval on ECG after accounting for age variability (unless carditis is major criterion) - Minor criterion",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "previous_rf_rhd",
+      "type": "string",
+      "required": true,
+      "description": "Previous rheumatic fever or rheumatic heart disease - Minor criterion",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "diagnosis",
+    "type": "string",
+    "description": "Acute rheumatic fever diagnosis based on Jones criteria"
+  },
+  "references": [
+    "Gewitz MH, Baltimore RS, Tani LY, Sable CA, Shulman ST, Carapetis J, et al. Revision of the Jones Criteria for the diagnosis of acute rheumatic fever in the era of Doppler echocardiography: a scientific statement from the American Heart Association. Circulation. 2015;131(20):1806-18.",
+    "WHO Expert Consultation on Rheumatic Fever and Rheumatic Heart Disease. WHO technical report series; no. 923. Geneva: World Health Organization; 2004.",
+    "Carapetis JR, Beaton A, Cunningham MW, Guilherme L, Karthikeyan G, Mayosi BM, et al. Acute rheumatic fever and rheumatic heart disease. Nat Rev Dis Primers. 2016;2:15084.",
+    "Centers for Disease Control and Prevention. Diagnosing Acute Rheumatic Fever. Group A Strep Clinical Guidance. Available at: https://www.cdc.gov/group-a-strep/hcp/clinical-guidance/diagnosing-acute-rheumatic-fever.html"
+  ],
+  "formula": "Evidence of antecedent group A streptococcal infection PLUS either: 2 major criteria OR 1 major + 2 minor criteria (accounting for population risk stratification)",
+  "notes": [
+    "The 2015 revision introduced population risk stratification: low-risk (acute RF incidence <2 per 100,000 school-age children) vs moderate-high risk populations",
+    "For moderate-high risk populations: monoarthritis or polyarthralgia can fulfill major arthritis criterion, and fever threshold is ≥38°C",
+    "For low-risk populations: polyarthritis required for major criterion, arthralgia remains minor criterion, fever threshold ≥38.5°C",
+    "Routine echocardiography/Doppler is recommended for all confirmed or suspected acute rheumatic fever cases",
+    "Isolated chorea or insidious carditis may warrant diagnosis even without meeting standard Jones criteria",
+    "Evidence of streptococcal infection includes: elevated ASO titers, anti-DNase B, positive throat culture, recent scarlet fever"
+  ]
+}

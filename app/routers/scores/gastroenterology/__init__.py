@@ -23,6 +23,31 @@ from .glasgow_blatchford_bleeding_score import router as glasgow_blatchford_blee
 from .glasgow_imrie_pancreatitis import router as glasgow_imrie_pancreatitis_router
 from .haps import router as haps_router
 from .harvey_bradshaw_index import router as harvey_bradshaw_index_router
+from .hepatic_encephalopathy_grades import router as hepatic_encephalopathy_grades_router
+from .ho_index import router as ho_index_router
+from .i_see_score import router as i_see_score_router
+from .kruis_score_ibs import router as kruis_score_ibs_router
+from .lille_model import router as lille_model_router
+from .liver_decompensation_risk_hcc import router as liver_decompensation_risk_hcc_router
+from .los_angeles_grading_esophagitis import router as los_angeles_grading_esophagitis_router
+from .maddreys_discriminant_function import router as maddreys_discriminant_function_router
+from .manning_criteria_ibs import router as manning_criteria_ibs_router
+from .mayo_score_disease_activity_index_dai_ulcerative_colitis import router as mayo_score_disease_activity_index_dai_ulcerative_colitis_router
+from .meld_na_unos_optn import router as meld_na_unos_optn_router
+from .meld_score_original import router as meld_score_original_router
+from .meld_combined import router as meld_combined_router
+from .milan_criteria import router as milan_criteria_router
+from .montreal_classification_ibd import router as montreal_classification_ibd_router
+from .mumtaz_score import router as mumtaz_score_router
+from .rome_iv_proctalgia_fugax import router as rome_iv_proctalgia_fugax_router
+from .rome_iv_reflux_hypersensitivity import router as rome_iv_reflux_hypersensitivity_router
+from .rome_iv_rumination_syndrome import router as rome_iv_rumination_syndrome_router
+from .rome_iv_unspecified_functional_bowel_disorder import router as rome_iv_unspecified_functional_bowel_disorder_router
+from .tokyo_guidelines_2018 import router as tokyo_guidelines_2018_router
+from .travis_criteria import router as travis_criteria_router
+from .truelove_witts_severity_index import router as truelove_witts_severity_index_router
+from .ukeld import router as ukeld_router
+from .wexner_score_ods import router as wexner_score_ods_router
 
 # Create main specialty router
 router = APIRouter()
@@ -46,3 +71,28 @@ router.include_router(glasgow_blatchford_bleeding_score_router)
 router.include_router(glasgow_imrie_pancreatitis_router)
 router.include_router(haps_router)
 router.include_router(harvey_bradshaw_index_router)
+router.include_router(hepatic_encephalopathy_grades_router)
+router.include_router(ho_index_router)
+router.include_router(i_see_score_router)
+router.include_router(kruis_score_ibs_router)
+router.include_router(lille_model_router)
+router.include_router(liver_decompensation_risk_hcc_router)
+router.include_router(los_angeles_grading_esophagitis_router)
+router.include_router(maddreys_discriminant_function_router)
+router.include_router(manning_criteria_ibs_router)
+router.include_router(mayo_score_disease_activity_index_dai_ulcerative_colitis_router)
+router.include_router(meld_na_unos_optn_router)
+router.include_router(meld_score_original_router)
+router.include_router(meld_combined_router)
+router.include_router(milan_criteria_router)
+router.include_router(montreal_classification_ibd_router)
+router.include_router(mumtaz_score_router)
+router.include_router(rome_iv_proctalgia_fugax_router)
+router.include_router(rome_iv_reflux_hypersensitivity_router)
+router.include_router(rome_iv_rumination_syndrome_router)
+router.include_router(rome_iv_unspecified_functional_bowel_disorder_router)
+router.include_router(tokyo_guidelines_2018_router)
+router.include_router(travis_criteria_router)
+router.include_router(truelove_witts_severity_index_router)
+router.include_router(ukeld_router)
+router.include_router(wexner_score_ods_router)

@@ -1,0 +1,105 @@
+{
+  "id": "swede_score",
+  "title": "Swede Score",
+  "description": "Predicts colposcopically high-grade lesions (HGL) on histology in cervical cancer screening. This standardized colposcopy scoring system evaluates five key characteristics to guide clinical decision-making and treatment planning for cervical intraepithelial neoplasia.",
+  "category": "gynecology",
+  "version": "2005",
+  "parameters": [
+    {
+      "name": "aceto_uptake",
+      "type": "string",
+      "required": true,
+      "description": "Acetowhite uptake after application of acetic acid during colposcopy",
+      "options": ["None or transparent", "Shady, milky", "Distinct, opaque white"],
+      "validation": {
+        "enum": ["None or transparent", "Shady, milky", "Distinct, opaque white"]
+      }
+    },
+    {
+      "name": "margins_surface",
+      "type": "string",
+      "required": true,
+      "description": "Characteristics of lesion margins and surface pattern",
+      "options": ["Diffuse", "Sharp but irregular, jagged", "Sharp and even, with surface level difference"],
+      "validation": {
+        "enum": ["Diffuse", "Sharp but irregular, jagged", "Sharp and even, with surface level difference"]
+      }
+    },
+    {
+      "name": "vessels",
+      "type": "string",
+      "required": true,
+      "description": "Vascular pattern observed during colposcopy",
+      "options": ["Fine, regular", "Absent", "Coarse or atypical"],
+      "validation": {
+        "enum": ["Fine, regular", "Absent", "Coarse or atypical"]
+      }
+    },
+    {
+      "name": "lesion_size",
+      "type": "string",
+      "required": true,
+      "description": "Size of the lesion or number of quadrants involved",
+      "options": ["<5 mm", "5-15 mm or 2 quadrants", ">15 mm or 3-4 quadrants"],
+      "validation": {
+        "enum": ["<5 mm", "5-15 mm or 2 quadrants", ">15 mm or 3-4 quadrants"]
+      }
+    },
+    {
+      "name": "iodine_staining",
+      "type": "string",
+      "required": true,
+      "description": "Iodine staining pattern (Schiller's test)",
+      "options": ["Brown", "Faintly or patchy yellow", "Distinct yellow"],
+      "validation": {
+        "enum": ["Brown", "Faintly or patchy yellow", "Distinct yellow"]
+      }
+    }
+  ],
+  "result": {
+    "name": "score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Swede Score ranging from 0-10 points"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 4,
+        "stage": "Low Risk",
+        "description": "Low suspicion for high-grade lesion",
+        "interpretation": "Score <5 indicates low risk for high-grade cervical lesion. Consider routine follow-up or targeted biopsy based on clinical suspicion."
+      },
+      {
+        "min": 5,
+        "max": 7,
+        "stage": "Intermediate Risk",
+        "description": "Consider biopsy based on clinical suspicion",
+        "interpretation": "Score 5-7 indicates intermediate risk. Consider colposcopy-directed biopsy for histopathological confirmation before treatment planning."
+      },
+      {
+        "min": 8,
+        "max": 10,
+        "stage": "High Risk",
+        "description": "Concerning for high-grade lesion",
+        "interpretation": "Score ≥8 indicates high suspicion for high-grade cervical lesion. Consider excisional treatment (LEEP, cone biopsy) at time of colposcopy ('see and treat' approach)."
+      }
+    ]
+  },
+  "references": [
+    "Strander B, Andersson-Ellström A, Milsom I, Rådberg T, Ryd W. Liquid-based cytology versus conventional Papanicolaou smear in an organized screening program : a prospective randomized study. Cancer. 2007 Dec 25;111(6):285-91. doi: 10.1002/cncr.23100.",
+    "Bowring J, Strander B, Young M, Evans H, Walker P. The Swede score: evaluation of a scoring system designed to improve the predictive value of colposcopy. J Low Genit Tract Dis. 2010 Oct;14(4):301-5. doi: 10.1097/LGT.0b013e3181d77756."
+  ],
+  "formula": "Swede Score = Aceto uptake points + Margins/surface points + Vessels points + Lesion size points + Iodine staining points (total 0-10 points)",
+  "notes": [
+    "Each parameter scored 0, 1, or 2 points for a total maximum score of 10",
+    "Score ≥8 has high specificity (90-100%) for high-grade lesions",
+    "Score ≥5 has high sensitivity (92-100%) for detecting high-grade lesions",
+    "Useful for 'see and treat' protocols in resource-limited settings",
+    "Helps standardize colposcopic evaluation and reduce inter-observer variability",
+    "Should be used in conjunction with cytology and HPV testing results",
+    "Particularly valuable for training novice colposcopists",
+    "Can guide decision between surveillance, biopsy, or immediate treatment"
+  ]
+}

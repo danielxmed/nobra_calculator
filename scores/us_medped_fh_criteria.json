@@ -1,0 +1,73 @@
+{
+  "id": "us_medped_fh_criteria",
+  "title": "US (MEDPED) Diagnostic Criteria for Familial Hypercholesterolemia (FH)",
+  "description": "Diagnoses familial hypercholesterolemia using age-specific total cholesterol cutoff values that vary based on family history of FH. The US MEDPED (Make Early Diagnosis to Prevent Early Death) criteria provide a simplified approach to FH diagnosis using only total cholesterol levels and family history.",
+  "category": "cardiology",
+  "version": "MEDPED 1995",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient's age in years",
+      "validation": {
+        "min": 0,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "total_cholesterol_mg_dl",
+      "type": "float",
+      "required": true,
+      "description": "Total cholesterol level in mg/dL",
+      "validation": {
+        "min": 50,
+        "max": 1000
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "family_history",
+      "type": "string",
+      "required": true,
+      "description": "Family history of FH",
+      "options": ["none", "1st_degree", "2nd_degree", "3rd_degree"],
+      "validation": {
+        "enum": ["none", "1st_degree", "2nd_degree", "3rd_degree"]
+      }
+    }
+  ],
+  "result": {
+    "name": "medped_diagnosis",
+    "type": "string",
+    "description": "US MEDPED diagnostic result for familial hypercholesterolemia"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "result": "Positive",
+        "description": "Meets US MEDPED criteria for FH",
+        "interpretation": "Patient meets the US MEDPED diagnostic criteria for familial hypercholesterolemia. Total cholesterol level exceeds the age and family history-specific cutoff. Consider genetic testing, family screening, and initiation of lipid-lowering therapy."
+      },
+      {
+        "result": "Negative", 
+        "description": "Does not meet US MEDPED criteria for FH",
+        "interpretation": "Patient does not meet the US MEDPED diagnostic criteria for familial hypercholesterolemia. Total cholesterol level is below the age and family history-specific cutoff. Consider other causes of hypercholesterolemia if cholesterol is elevated."
+      }
+    ]
+  },
+  "references": [
+    "Williams RR, Hunt SC, Schumacher MC, et al. Diagnosing heterozygous familial hypercholesterolemia using new practical criteria focused on the family history. Am J Cardiol. 1993;72(2):171-176.",
+    "Stone NJ, Levy RI, Fredrickson DS, Verter J. Coronary artery disease in 116 kindred with familial type II hyperlipoproteinemia. Circulation. 1974;49(3):476-488.",
+    "MEDPED Program. Make Early Diagnosis to Prevent Early Death (MEDPED). University of Utah. Available at: https://www.medped.org/"
+  ],
+  "formula": "Age-specific total cholesterol cutoffs:\n- Age <20: 1st degree 220, 2nd degree 230, 3rd degree 240, general population 270 mg/dL\n- Age 20-29: 1st degree 240, 2nd degree 250, 3rd degree 260, general population 290 mg/dL\n- Age 30-39: 1st degree 270, 2nd degree 280, 3rd degree 290, general population 340 mg/dL\n- Age ≥40: 1st degree 290, 2nd degree 300, 3rd degree 310, general population 360 mg/dL\nDiagnosis: Positive if total cholesterol ≥ corresponding cutoff",
+  "notes": [
+    "The US MEDPED criteria use only total cholesterol and family history, making them simpler to apply than other FH diagnostic tools.",
+    "Lower cholesterol cutoffs are used when there is a family history of FH (1st, 2nd, or 3rd degree relatives).",
+    "These criteria were designed for population screening and early diagnosis to prevent early cardiovascular death.",
+    "Consider genetic testing and cascade screening of family members if criteria are met.",
+    "The MEDPED criteria may be less sensitive than the Dutch Lipid Clinic Network criteria but are easier to apply in clinical practice."
+  ]
+}

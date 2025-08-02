@@ -1,0 +1,120 @@
+{
+  "id": "rome_iv_reflux_hypersensitivity",
+  "title": "Rome IV Diagnostic Criteria for Reflux Hypersensitivity",
+  "description": "Official Rome IV diagnostic criteria for reflux hypersensitivity, a functional esophageal disorder characterized by retrosternal symptoms triggered by normal amounts of gastroesophageal reflux. This validated diagnostic tool distinguishes reflux hypersensitivity from GERD and functional heartburn through specific investigations including pH monitoring with normal acid exposure but positive symptom-reflux association.",
+  "category": "gastroenterology",
+  "version": "Rome IV (2016)",
+  "parameters": [
+    {
+      "name": "retrosternal_symptoms",
+      "type": "string",
+      "required": true,
+      "description": "Retrosternal symptoms including heartburn and chest pain for at least 3 months with onset ≥6 months ago, occurring ≥2 times per week",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Patient experiences retrosternal symptoms (heartburn and/or chest pain) for the required duration and frequency", "no - Patient does not meet the symptom criteria for duration, frequency, or location"]
+    },
+    {
+      "name": "normal_endoscopy",
+      "type": "string",
+      "required": true,
+      "description": "Normal endoscopy findings without evidence of erosive esophagitis or other mucosal abnormalities",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Upper endoscopy shows normal esophageal mucosa without erosions or other abnormalities", "no - Upper endoscopy shows erosive esophagitis, Barrett's esophagus, or other mucosal lesions"]
+    },
+    {
+      "name": "absence_eosinophilic_esophagitis",
+      "type": "string",
+      "required": true,
+      "description": "Absence of evidence of eosinophilic esophagitis (EoE) on endoscopy and biopsy",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - No evidence of eosinophilic esophagitis on endoscopy and esophageal biopsies", "no - Evidence of eosinophilic esophagitis present on endoscopy or histology"]
+    },
+    {
+      "name": "absence_major_motor_disorders",
+      "type": "string",
+      "required": true,
+      "description": "Absence of major esophageal motor disorders (achalasia, EGJ outflow obstruction, diffuse esophageal spasm, jackhammer esophagus, absent peristalsis)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - No major esophageal motor disorders on manometry or appropriate functional studies", "no - Major esophageal motor disorders present on manometry"]
+    },
+    {
+      "name": "normal_acid_exposure_with_symptom_association",
+      "type": "string",
+      "required": true,
+      "description": "Evidence of symptom triggering by reflux events despite normal acid exposure on pH or pH-impedance monitoring",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Normal acid exposure time (<4%) on pH monitoring but positive symptom-reflux association (SAP >95% or SI >50%)", "no - Abnormal acid exposure time (≥4%) or negative symptom-reflux association on pH monitoring"]
+    },
+    {
+      "name": "exclusion_alarm_symptoms",
+      "type": "string",
+      "required": true,
+      "description": "Exclusion of alarm symptoms requiring further evaluation (dysphagia, weight loss, iron deficiency anemia, persistent vomiting, lymphadenopathy)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - No alarm symptoms present that would require alternative diagnostic evaluation", "no - Alarm symptoms present requiring further clinical evaluation before diagnosis"]
+    }
+  ],
+  "result": {
+    "name": "rome_iv_reflux_hypersensitivity_diagnosis",
+    "type": "string",
+    "unit": "diagnosis",
+    "description": "Rome IV diagnostic assessment for reflux hypersensitivity based on fulfillment of all required criteria"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Criteria Not Met",
+        "description": "Does not meet Rome IV criteria",
+        "interpretation": "Patient does not fulfill Rome IV diagnostic criteria for reflux hypersensitivity. One or more essential criteria are not met. Consider alternative diagnoses including GERD with abnormal acid exposure, functional heartburn with negative symptom-reflux association, eosinophilic esophagitis, or major esophageal motor disorders. Complete appropriate investigations including upper endoscopy, esophageal manometry, and ambulatory pH monitoring as indicated."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Criteria Met",
+        "description": "Meets Rome IV criteria",
+        "interpretation": "Patient fulfills Rome IV diagnostic criteria for reflux hypersensitivity. Diagnosis is established when all criteria are met including retrosternal symptoms, normal endoscopy, exclusion of eosinophilic esophagitis and motor disorders, and demonstration of normal acid exposure with positive symptom-reflux association. Treatment may include acid suppression therapy, visceral pain modulators, psychological interventions, and lifestyle modifications. Consider neuromodulators for refractory symptoms."
+      }
+    ]
+  },
+  "references": [
+    "Aziz Q, Fass R, Gyawali CP, Miwa H, Pandolfino JE, Zerbib F. Esophageal disorders. Gastroenterology. 2016 May;150(6):1368-1379. doi: 10.1053/j.gastro.2016.02.012.",
+    "Rome Foundation. Rome IV Diagnostic Criteria for Functional Gastrointestinal Disorders. 4th ed. Raleigh, NC: Rome Foundation; 2016.",
+    "Patel A, Gyawali CP. Reflux hypersensitivity: Current concepts and future directions. Current Gastroenterology Reports. 2015 May;17(5):20. doi: 10.1007/s11894-015-0441-x.",
+    "Savarino E, de Bortoli N, De Cassan C, et al. The natural history of gastro-esophageal reflux disease: a comprehensive review. Dis Esophagus. 2017 Feb 1;30(2):1-9. doi: 10.1111/dote.12511."
+  ],
+  "formula": "Rome IV Reflux Hypersensitivity Diagnosis = ALL criteria must be met for ≥3 months (onset ≥6 months ago, ≥2x/week): (1) Retrosternal symptoms + (2) Normal endoscopy + (3) No eosinophilic esophagitis + (4) No major motor disorders + (5) Normal acid exposure with positive symptom-reflux association + (6) No alarm symptoms",
+  "formula": "Rome IV Reflux Hypersensitivity Diagnosis = ALL criteria must be met for ≥3 months (onset ≥6 months ago, ≥2x/week): (1) Retrosternal symptoms + (2) Normal endoscopy + (3) No eosinophilic esophagitis + (4) No major motor disorders + (5) Normal acid exposure with positive symptom-reflux association + (6) No alarm symptoms",
+  "notes": [
+    "Rome IV diagnostic criteria for functional esophageal disorders",
+    "All criteria must be fulfilled for positive diagnosis",
+    "Reflux hypersensitivity is a functional esophageal disorder distinct from GERD",
+    "Requires ambulatory pH or pH-impedance monitoring for diagnosis",
+    "Normal acid exposure time defined as <4% total time pH <4.0",
+    "Positive symptom-reflux association: SAP >95% or SI >50%",
+    "Symptom association probability (SAP) and symptom index (SI) are key parameters",
+    "Distinguished from GERD by normal acid exposure time",
+    "Distinguished from functional heartburn by positive symptom-reflux association",
+    "May respond to acid suppression therapy despite normal acid exposure",
+    "Visceral pain modulators (tricyclics, gabapentinoids) may be effective",
+    "Psychological interventions and stress management are important",
+    "Dietary modifications similar to GERD management may help",
+    "Prokinetic agents may be considered for symptom management",
+    "Post-reflux swallow-induced peristaltic wave (PSPW) index may provide additional diagnostic value",
+    "Mean nocturnal baseline impedance (MNBI) may help identify reflux hypersensitivity",
+    "Controversial classification - some experts consider it part of GERD spectrum"
+  ]
+}

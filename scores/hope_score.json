@@ -1,0 +1,113 @@
+{
+  "id": "hope_score",
+  "title": "Hypothermia Outcome Prediction after ECLS (HOPE) Score",
+  "description": "Predicts survival probability for patients with hypothermic cardiac arrest undergoing extracorporeal life support (ECLS) rewarming to guide clinical decision-making",
+  "category": "emergency",
+  "version": "2018",
+  "parameters": [
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient sex",
+      "validation": {
+        "enum": ["male", "female"]
+      },
+      "options": ["male", "female"]
+    },
+    {
+      "name": "hypothermia_with_asphyxia",
+      "type": "string",
+      "required": true,
+      "description": "Hypothermia with asphyxia (drowning, avalanche burial)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "age_years",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 0,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "potassium_mmol_l",
+      "type": "float",
+      "required": true,
+      "description": "Serum potassium level in mmol/L",
+      "validation": {
+        "min": 1.0,
+        "max": 20.0
+      },
+      "unit": "mmol/L"
+    },
+    {
+      "name": "cpr_duration_minutes",
+      "type": "integer",
+      "required": true,
+      "description": "Duration of cardiopulmonary resuscitation in minutes",
+      "validation": {
+        "min": 1,
+        "max": 600
+      },
+      "unit": "minutes"
+    },
+    {
+      "name": "core_temperature_celsius",
+      "type": "float",
+      "required": true,
+      "description": "Core body temperature in degrees Celsius",
+      "validation": {
+        "min": 10.0,
+        "max": 35.0
+      },
+      "unit": "°C"
+    }
+  ],
+  "result": {
+    "name": "survival_probability",
+    "type": "float",
+    "description": "Predicted survival probability as percentage",
+    "unit": "percentage"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 10,
+        "category": "Low Survival Probability",
+        "description": "<10% survival probability",
+        "interpretation": "ECLS is unlikely to confer benefit. Consider withholding ECLS and discuss goals of care with family. The expected outcome is poor with minimal chance of meaningful recovery."
+      },
+      {
+        "min": 10,
+        "max": 100,
+        "category": "Favorable for ECLS",
+        "description": "≥10% survival probability", 
+        "interpretation": "ECLS rewarming is recommended. Notify ECLS-capable center and activate rewarming protocol while maintaining high-quality CPR. Reasonable chance of survival with good neurological outcome."
+      }
+    ]
+  },
+  "references": [
+    "Pasquier M, Hugli O, Paal P, Darocha T, Blancher M, Husby P, et al. Hypothermia outcome prediction after extracorporeal life support for hypothermic cardiac arrest patients: The HOPE score. Resuscitation. 2018 May;126:58-64. doi: 10.1016/j.resuscitation.2018.02.026",
+    "Darocha T, Kosinski S, Jarosz A, Sobczyk D, Galazkowski R, Piątek J, et al. The chain of survival in hypothermic circulatory arrest: encouraging preliminary results when using early identification, risk stratification and extracorporeal rewarming. Scand J Trauma Resusc Emerg Med. 2016 Jun 1;24:85. doi: 10.1186/s13049-016-0281-9",
+    "Lott C, Truhlář A, Alfonzo A, Barelli A, González-Salvado V, Hinkelbein J, et al. European Resuscitation Council Guidelines 2021: Cardiac arrest in special circumstances. Resuscitation. 2021 Apr;161:152-219. doi: 10.1016/j.resuscitation.2021.02.011"
+  ],
+  "formula": "HOPE Score = 2.44 - 1.55*(Sex: Male=1, Female=0) - 1.95*(Asphyxia: Yes=1, No=0) - 0.0191*(Age) - 2.07*log₂(Potassium) - 0.573*log₂(CPR duration) + 0.937*(Temperature) - 0.0247*(Temperature)². Survival probability = e^(HOPE Score) / (1 + e^(HOPE Score)) * 100%",
+  "notes": [
+    "Critical decision threshold at 10% survival probability for ECLS initiation",
+    "Superior to serum potassium alone (AUC 0.895 vs 0.774) for outcome prediction",
+    "Derived from 286 patients, externally validated with excellent discrimination (AUC 0.825)",
+    "Negative predictive value of 97% for HOPE score <10%",
+    "Recommended in 2021 European Resuscitation Council Guidelines",
+    "Not validated for mild hypothermia or non-accidental cardiac arrests",
+    "Most survivors (84%) have good neurological outcomes",
+    "Available at https://www.hypothermiascore.org for clinical use"
+  ]
+}

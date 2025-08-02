@@ -1,0 +1,201 @@
+{
+  "id": "international_igan_prediction_tool",
+  "title": "International IgA Nephropathy Prediction Tool",
+  "description": "Predicts risk of 50% decline in eGFR or end-stage kidney disease in patients with IgA nephropathy. This validated prediction tool was developed using an international multi-ethnic cohort of 2,781 patients with biopsy-proven idiopathic IgA nephropathy. The tool uses clinical, laboratory, and histological parameters available at biopsy to provide risk estimates for kidney function decline. Two versions are available: one including race/ethnicity and one without race. The tool is endorsed by the 2021 KDIGO guidelines as the preferred method to predict kidney outcomes in IgA nephropathy patients. It facilitates clinical decision-making, patient counseling, and clinical trial enrollment by stratifying patients based on their risk of progressive kidney disease.",
+  "category": "nephrology",
+  "version": "2019",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age at time of biopsy",
+      "validation": {
+        "min": 18,
+        "max": 65
+      },
+      "unit": "years"
+    },
+    {
+      "name": "egfr",
+      "type": "float",
+      "required": true,
+      "description": "Estimated glomerular filtration rate at time of biopsy",
+      "validation": {
+        "min": 5,
+        "max": 150
+      },
+      "unit": "mL/min/1.73m²"
+    },
+    {
+      "name": "map",
+      "type": "float",
+      "required": true,
+      "description": "Mean arterial pressure at time of biopsy",
+      "validation": {
+        "min": 60,
+        "max": 140
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "urine_protein",
+      "type": "float",
+      "required": true,
+      "description": "24-hour urine protein excretion at time of biopsy",
+      "validation": {
+        "min": 0.001,
+        "max": 15
+      },
+      "unit": "g/day"
+    },
+    {
+      "name": "mest_m",
+      "type": "integer",
+      "required": true,
+      "description": "Oxford MEST Score - Mesangial hypercellularity: M0 (≤0.5) or M1 (>0.5)",
+      "validation": {
+        "min": 0,
+        "max": 1
+      },
+      "unit": "score"
+    },
+    {
+      "name": "mest_e",
+      "type": "integer",
+      "required": true,
+      "description": "Oxford MEST Score - Endocapillary hypercellularity: E0 (absent) or E1 (present)",
+      "validation": {
+        "min": 0,
+        "max": 1
+      },
+      "unit": "score"
+    },
+    {
+      "name": "mest_s",
+      "type": "integer",
+      "required": true,
+      "description": "Oxford MEST Score - Segmental sclerosis: S0 (absent) or S1 (present)",
+      "validation": {
+        "min": 0,
+        "max": 1
+      },
+      "unit": "score"
+    },
+    {
+      "name": "mest_t",
+      "type": "integer",
+      "required": true,
+      "description": "Oxford MEST Score - Interstitial fibrosis/tubular atrophy: T0 (0-25%), T1 (26-50%), T2 (>50%)",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "unit": "score"
+    },
+    {
+      "name": "rasb_use",
+      "type": "string",
+      "required": true,
+      "description": "Renin-angiotensin system blocker use at time of biopsy",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "immunosuppression_use",
+      "type": "string",
+      "required": true,
+      "description": "Immunosuppressive therapy use at time of biopsy",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "race",
+      "type": "string",
+      "required": false,
+      "description": "Patient race/ethnicity (optional parameter for race-inclusive model)",
+      "options": ["white", "chinese", "japanese", "other"],
+      "validation": {
+        "enum": ["white", "chinese", "japanese", "other"]
+      },
+      "unit": null
+    }
+  ],
+  "result": {
+    "name": "risk_percentage",
+    "type": "float",
+    "unit": "%",
+    "description": "5-year risk of 50% decline in eGFR or end-stage kidney disease"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 10,
+        "stage": "Very Low Risk",
+        "description": "5-year risk <10%",
+        "interpretation": "Very low risk of kidney function decline. Standard monitoring and conservative management appropriate. Continue RASB therapy if indicated. Regular nephrology follow-up every 6-12 months. Focus on cardiovascular risk reduction and blood pressure control. Consider watchful waiting approach for immunosuppression."
+      },
+      {
+        "min": 10,
+        "max": 25,
+        "stage": "Low Risk",
+        "description": "5-year risk 10-25%",
+        "interpretation": "Low risk of kidney function decline. Conservative management with close monitoring. Optimize RASB therapy and blood pressure control (<130/80 mmHg). Regular nephrology follow-up every 3-6 months. Monitor proteinuria and eGFR trends. Consider immunosuppression if rapid progression or high-risk features develop."
+      },
+      {
+        "min": 25,
+        "max": 50,
+        "stage": "Moderate Risk",
+        "description": "5-year risk 25-50%",
+        "interpretation": "Moderate risk of kidney function decline. Consider immunosuppressive therapy based on individual patient factors. Optimize RASB therapy and strict blood pressure control. Frequent nephrology follow-up every 2-3 months. Monitor for treatment response and side effects. Consider clinical trial participation. Prepare for potential kidney replacement therapy discussion."
+      },
+      {
+        "min": 50,
+        "max": 75,
+        "stage": "High Risk",
+        "description": "5-year risk 50-75%",
+        "interpretation": "High risk of kidney function decline. Strong consideration for immunosuppressive therapy unless contraindicated. Aggressive blood pressure control and maximize RASB therapy. Frequent nephrology follow-up every 1-2 months. Consider clinical trial enrollment. Early kidney replacement therapy planning and education. Evaluate for kidney transplant candidacy."
+      },
+      {
+        "min": 75,
+        "max": 100,
+        "stage": "Very High Risk",
+        "description": "5-year risk >75%",
+        "interpretation": "Very high risk of kidney function decline. Urgent consideration for immunosuppressive therapy if not contraindicated. Maximal conservative management with aggressive blood pressure control. Monthly nephrology follow-up. Prioritize clinical trial participation. Immediate kidney replacement therapy planning and patient education. Accelerated kidney transplant evaluation and preparation."
+      }
+    ]
+  },
+  "references": [
+    "Barbour SJ, Coppo R, Zhang H, Liu ZH, Suzuki Y, Matsuzaki K, et al. Evaluating a New International Risk-Prediction Tool in IgA Nephropathy. JAMA Intern Med. 2019 Jul 1;179(7):942-952. doi: 10.1001/jamainternmed.2019.0600.",
+    "Kidney Disease: Improving Global Outcomes (KDIGO) Glomerular Diseases Work Group. KDIGO 2021 Clinical Practice Guideline for the Management of Glomerular Diseases. Kidney Int. 2021 Oct;100(4S):S1-S276. doi: 10.1016/j.kint.2021.05.021.",
+    "Zhang J, Huang B, Liu Z, Wang X, Xie M, Guo R, et al. External validation of the International IgA Nephropathy Prediction Tool. Clin J Am Soc Nephrol. 2020 Jul 7;15(7):1112-1120. doi: 10.2215/CJN.16021219."
+  ],
+  "formula": "Risk calculation uses transformed variables: sqrt(eGFR) - 8.8, ln(urine protein + 0.26), (MAP - 100)/15, and MEST scores with specific coefficients for race-inclusive and race-free models",
+  "notes": [
+    "The tool was developed using an international multi-ethnic cohort of 2,781 patients with biopsy-proven IgA nephropathy",
+    "Two prediction models available: one including race/ethnicity and one race-free model",
+    "Endorsed by 2021 KDIGO guidelines as preferred method for risk prediction in IgA nephropathy",
+    "Age range: 18-65 years at time of biopsy for adult version",
+    "Oxford MEST scores required: M (mesangial), E (endocapillary), S (segmental), T (interstitial fibrosis)",
+    "eGFR should be calculated using CKD-EPI equation when possible",
+    "Mean arterial pressure = (2 × diastolic + systolic) / 3",
+    "24-hour urine protein preferred; spot urine protein-to-creatinine ratio acceptable alternative",
+    "RASB includes ACE inhibitors and angiotensin receptor blockers",
+    "Immunosuppression includes corticosteroids, mycophenolate, cyclophosphamide, etc.",
+    "Race parameter is optional; race-free model performs similarly",
+    "Tool validated in multiple international cohorts with good discrimination (C-statistic ~0.72)",
+    "Risk estimates are for composite outcome of 50% eGFR decline or ESKD",
+    "Regular recalculation recommended as clinical parameters change",
+    "Not validated in children; pediatric version uses 30% eGFR decline endpoint",
+    "Consider local clinical context and patient preferences in treatment decisions",
+    "Tool assists but does not replace clinical judgment",
+    "Useful for patient counseling, treatment planning, and clinical trial enrollment"
+  ]
+}

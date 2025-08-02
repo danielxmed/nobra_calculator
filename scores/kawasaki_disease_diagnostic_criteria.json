@@ -1,0 +1,88 @@
+{
+  "id": "kawasaki_disease_diagnostic_criteria",
+  "title": "Kawasaki Disease Diagnostic Criteria",
+  "description": "Diagnoses Kawasaki Disease using fever duration and principal clinical features. Kawasaki disease is a systemic vasculitis of childhood that can cause coronary artery aneurysms if untreated. Diagnosis requires fever ≥4 days plus ≥4 of 5 principal clinical features, or fever ≥5 days plus 2-3 features (incomplete Kawasaki).",
+  "category": "pediatrics",
+  "version": "2017_aha",
+  "parameters": [
+    {
+      "name": "fever_duration",
+      "type": "integer",
+      "required": true,
+      "description": "Duration of fever in days. Minimum 4 days required for diagnosis consideration",
+      "validation": {
+        "min": 1,
+        "max": 30
+      },
+      "unit": "days"
+    },
+    {
+      "name": "bilateral_conjunctival_injection",
+      "type": "string",
+      "required": true,
+      "description": "Bilateral conjunctival injection without exudate - Principal clinical feature",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "oral_changes",
+      "type": "string",
+      "required": true,
+      "description": "Oral changes including cracked and erythematous lips, strawberry tongue, or erythema of oral mucosa - Principal clinical feature",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "cervical_lymphadenopathy",
+      "type": "string",
+      "required": true,
+      "description": "Cervical lymphadenopathy (≥1.5 cm diameter), usually unilateral - Principal clinical feature",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "extremity_changes",
+      "type": "string",
+      "required": true,
+      "description": "Extremity changes including erythema of palms/soles, induration of hands/feet, or desquamation of fingertips - Principal clinical feature",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "polymorphous_rash",
+      "type": "string",
+      "required": true,
+      "description": "Polymorphous rash (not vesicular or bullous) - Principal clinical feature",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "diagnosis",
+    "type": "string",
+    "unit": "category",
+    "description": "Kawasaki disease diagnosis based on fever duration and principal clinical features"
+  },
+  "references": [
+    "McCrindle BW, Rowley AH, Newburger JW, Burns JC, Bolger AF, Gewitz M, et al. Diagnosis, Treatment, and Long-Term Management of Kawasaki Disease: A Scientific Statement for Health Professionals From the American Heart Association. Circulation. 2017;135(17):e927-e999.",
+    "Newburger JW, Takahashi M, Gerber MA, Gewitz MH, Tani LY, Burns JC, et al. Diagnosis, treatment, and long-term management of Kawasaki disease: a statement for health professionals from the Committee on Rheumatic Fever, Endocarditis and Kawasaki Disease, Council on Cardiovascular Disease in the Young, American Heart Association. Circulation. 2004;110(17):2747-71.",
+    "Ayusawa M, Sonobe T, Uemura S, Ogawa S, Nakamura Y, Kiyosawa N, et al. Revision of diagnostic guidelines for Kawasaki disease (the 5th revised edition). Pediatr Int. 2005;47(2):232-4.",
+    "Yellen ES, Gauvreau K, Takahashi M, Burns JC, Shulman S, Baker AL, et al. Performance of 2004 American Heart Association recommendations for treatment of Kawasaki disease. Pediatrics. 2010;125(2):e234-41."
+  ],
+  "formula": "Classic KD: Fever ≥4 days + ≥4 of 5 principal features. Incomplete KD: Fever ≥5 days + 2-3 principal features with supportive laboratory findings or coronary abnormalities",
+  "notes": [
+    "Classic Kawasaki disease: fever ≥4 days plus ≥4 of 5 principal clinical features",
+    "Incomplete Kawasaki disease: fever ≥5 days plus 2-3 principal features (more common in infants <6 months)",
+    "Principal features may not appear simultaneously and can resolve before diagnosis",
+    "Early diagnosis and treatment (within 10 days of fever onset) reduces risk of coronary artery abnormalities",
+    "Infants ≤6 months are at highest risk for incomplete presentation and coronary complications",
+    "IVIG (intravenous immunoglobulin) plus aspirin is first-line treatment",
+    "Follow-up echocardiography is essential to monitor for coronary artery changes",
+    "Second-line treatments for IVIG-resistant cases include infliximab, corticosteroids, or cyclosporine"
+  ]
+}

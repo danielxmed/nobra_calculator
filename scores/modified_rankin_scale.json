@@ -1,0 +1,99 @@
+{
+  "id": "modified_rankin_scale",
+  "title": "Modified Rankin Scale for Neurologic Disability",
+  "description": "Measures the degree of disability or dependence in daily activities of people who have suffered a stroke or other causes of neurological disability",
+  "category": "neurology",
+  "version": "Modified (Warlow 1980s)",
+  "parameters": [
+    {
+      "name": "functional_status",
+      "type": "string",
+      "required": true,
+      "description": "Patient's current functional status and level of independence",
+      "options": ["no_symptoms", "no_significant_disability", "slight_disability", "moderate_disability", "moderately_severe_disability", "severe_disability", "dead"],
+      "validation": {
+        "enum": ["no_symptoms", "no_significant_disability", "slight_disability", "moderate_disability", "moderately_severe_disability", "severe_disability", "dead"]
+      }
+    }
+  ],
+  "result": {
+    "name": "mrs_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Modified Rankin Scale score for neurologic disability assessment"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "No Symptoms",
+        "description": "No symptoms at all",
+        "interpretation": "Perfect health without symptoms. Complete functional independence."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "No Significant Disability",
+        "description": "Able to carry out all usual duties and activities",
+        "interpretation": "No significant disability despite symptoms. Can perform all usual duties and activities."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Slight Disability",
+        "description": "Unable to carry out all previous activities but can look after own affairs",
+        "interpretation": "Slight disability. Unable to carry out all previous activities but able to look after own affairs without assistance."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Moderate Disability",
+        "description": "Requires some help but able to walk unassisted",
+        "interpretation": "Moderate disability. Requires some help but able to walk unassisted."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Moderately Severe Disability",
+        "description": "Unable to attend to bodily needs without assistance and unable to walk unassisted",
+        "interpretation": "Moderately severe disability. Unable to attend to own bodily needs without assistance and unable to walk unassisted."
+      },
+      {
+        "min": 5,
+        "max": 5,
+        "stage": "Severe Disability",
+        "description": "Bedridden, incontinent and requiring constant nursing care",
+        "interpretation": "Severe disability. Bedridden, incontinent and requiring constant nursing care and attention."
+      },
+      {
+        "min": 6,
+        "max": 6,
+        "stage": "Dead",
+        "description": "Death",
+        "interpretation": "Patient has died."
+      }
+    ]
+  },
+  "references": [
+    "Rankin J. Cerebral vascular accidents in patients over the age of 60. II. Prognosis. Scott Med J. 1957 Jul;2(7):200-15. doi: 10.1177/003693305700200704.",
+    "Warlow C, Dennis M, van Gijn J, et al. Stroke: A Practical Guide to Management. Oxford: Blackwell Scientific Publications; 2001.",
+    "Bruno A, Shah N, Lin C, Close B, Hess DC, Davis K, Baute V, Switzer JA, Waller JL, Nichols FT. Improving modified Rankin Scale assessment with a simplified questionnaire. Stroke. 2010 May;41(5):1048-50. doi: 10.1161/STROKEAHA.109.571562.",
+    "Banks JL, Marotta CA. Outcomes validity and reliability of the modified Rankin scale: implications for stroke clinical trials: a literature review and synthesis. Stroke. 2007 Mar;38(3):1091-6. doi: 10.1161/01.STR.0000258355.23810.c6."
+  ],
+  "formula": "Single ordinal scale from 0-6: 0 = No symptoms, 1 = No significant disability, 2 = Slight disability, 3 = Moderate disability, 4 = Moderately severe disability, 5 = Severe disability, 6 = Dead.",
+  "notes": [
+    "Most widely used outcome scale in acute stroke trials and clinical practice",
+    "Originally developed by John Rankin in 1957, modified by Charles Warlow in 1980s",
+    "Provides common language for describing degree of disability after neurological events",
+    "Assessment should use standardized interview to reduce subjectivity",
+    "Consider patient's ability to work, maintain hobbies, social connections, and independence in ADLs",
+    "Scores 0-2 generally considered functional independence",
+    "Scores 3-5 represent increasing levels of dependence",
+    "Score 6 indicates death",
+    "Inter-rater reliability improved with structured interview protocols",
+    "Important predictor of quality of life and healthcare resource utilization",
+    "Used to determine eligibility for stroke interventions and rehabilitation services",
+    "Key endpoint in stroke clinical trials and quality improvement initiatives"
+  ]
+}

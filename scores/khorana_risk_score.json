@@ -1,0 +1,79 @@
+{
+  "id": "khorana_risk_score",
+  "title": "Khorana Risk Score for Venous Thromboembolism in Cancer Patients",
+  "description": "Predicts VTE risk for cancer patients depending on cancer type and other factors. This validated risk assessment tool helps identify cancer patients at high risk for venous thromboembolism who may benefit from thromboprophylaxis during chemotherapy treatment.",
+  "category": "oncology",
+  "version": "2008_original",
+  "parameters": [
+    {
+      "name": "cancer_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of primary cancer. Very high-risk cancers (stomach, pancreas) score 2 points; high-risk cancers (lung, lymphoma, gynecologic, bladder, testicular) score 1 point; other cancers score 0 points",
+      "validation": {
+        "enum": ["very_high_risk", "high_risk", "standard_risk"]
+      }
+    },
+    {
+      "name": "platelet_count_elevated",
+      "type": "string",
+      "required": true,
+      "description": "Pre-chemotherapy platelet count ≥350×10⁹/L (≥350,000/μL). Scores 1 point if yes",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hemoglobin_low_or_epo",
+      "type": "string",
+      "required": true,
+      "description": "Hemoglobin level <10 g/dL or using red blood cell growth factors (erythropoietin, darbepoetin). Scores 1 point if yes",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "leukocyte_count_elevated",
+      "type": "string",
+      "required": true,
+      "description": "Pre-chemotherapy leukocyte count >11×10⁹/L (>11,000/μL). Scores 1 point if yes",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "bmi_elevated",
+      "type": "string",
+      "required": true,
+      "description": "Body mass index ≥35 kg/m². Scores 1 point if yes",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "risk_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Khorana risk score for VTE prediction in cancer patients"
+  },
+  "references": [
+    "Khorana AA, Kuderer NM, Culakova E, Lyman GH, Francis CW. Development and validation of a predictive model for chemotherapy-associated venous thromboembolism. Blood. 2008;111(10):4902-7.",
+    "Ay C, Dunkler D, Marosi C, Chiriac AL, Vormittag R, Simanek R, et al. Prediction of venous thromboembolism in cancer patients. Blood. 2010;116(24):5377-82.",
+    "Verso M, Agnelli G, Barni S, Gasparini G, LaBianca R. A modified Khorana risk assessment score for venous thromboembolism in cancer patients receiving chemotherapy: the Protecht score. Intern Emerg Med. 2012;7(3):291-2.",
+    "Mulder FI, Candeloro M, Kamphuisen PW, Di Nisio M, Bossuyt PM, Guman N, et al. The Khorana score for prediction of venous thromboembolism in cancer patients: a systematic review and meta-analysis. Haematologica. 2019;104(6):1277-1287."
+  ],
+  "formula": "Cancer type (very high-risk: 2 pts, high-risk: 1 pt, standard: 0 pts) + platelet count ≥350 (1 pt) + Hgb <10 or EPO use (1 pt) + leukocyte count >11 (1 pt) + BMI ≥35 (1 pt)",
+  "notes": [
+    "Developed for cancer patients starting chemotherapy (solid tumors and lymphomas)",
+    "Do NOT use in patients with brain tumors or multiple myeloma",
+    "Not intended for diagnosing VTE but for predicting future risk",
+    "Original high-risk cutoff: ≥3 points; recent evidence suggests ≥2 points may be more optimal",
+    "VTE incidence at 6 months: Low risk (0 pts): 5.0%, Intermediate risk (1-2 pts): 6.6%, High risk (≥3 pts): 11.0%",
+    "High-risk patients may benefit from thromboprophylaxis with LMWH (64% VTE risk reduction)",
+    "Limited sensitivity: only 23.4% of patients who develop VTE are classified as high risk",
+    "Performance varies by cancer type; less predictive in lung cancer patients",
+    "Very high-risk cancers: stomach, pancreas",
+    "High-risk cancers: lung, lymphoma, gynecologic, bladder, testicular"
+  ]
+}

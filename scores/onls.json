@@ -1,0 +1,116 @@
+{
+  "id": "onls",
+  "title": "Overall Neuropathy Limitations Scale (ONLS)",
+  "description": "Quantifies the severity of functional disability in peripheral neuropathy by assessing upper and lower extremity functional activities. This validated scale is widely used to track disease progression and treatment response in various neuropathic conditions, particularly immune-mediated polyneuropathies.",
+  "category": "neurology",
+  "version": "2006",
+  "parameters": [
+    {
+      "name": "arms_grade",
+      "type": "integer",
+      "required": true,
+      "description": "Arms functional disability grade based on ability to perform arm and hand functions",
+      "options": [0, 1, 2, 3, 4, 5],
+      "validation": {
+        "min": 0,
+        "max": 5,
+        "enum": [0, 1, 2, 3, 4, 5]
+      },
+      "scoring": {
+        "0": "Normal arm function",
+        "1": "Minor symptoms or signs in arms, not affecting function",
+        "2": "Mild disability in arms affecting but not preventing function",
+        "3": "Moderate disability in arms preventing at least one function but not preventing all functions",
+        "4": "Severe disability in both arms preventing all functions, but some purposeful movements remain possible",
+        "5": "Arms disability preventing all purposeful movements"
+      }
+    },
+    {
+      "name": "legs_grade",
+      "type": "integer",
+      "required": true,
+      "description": "Legs functional disability grade based on walking ability, climbing stairs, and running capacity",
+      "options": [0, 1, 2, 3, 4, 5, 6, 7],
+      "validation": {
+        "min": 0,
+        "max": 7,
+        "enum": [0, 1, 2, 3, 4, 5, 6, 7]
+      },
+      "scoring": {
+        "0": "Walking, climbing stairs, and running not affected",
+        "1": "Walking, climbing stairs, and running affected but able to walk normally",
+        "2": "Walks independently, but with abnormal gait",
+        "3": "Requires unilateral support (cane, crutch, wall) to walk 10 meters",
+        "4": "Requires bilateral support (walker, crutches, or two people) to walk 10 meters",
+        "5": "Wheelchair bound, but able to stand and walk 1 meter with help",
+        "6": "Restricted to wheelchair, some purposeful leg movements possible",
+        "7": "Restricted to wheelchair or bed, no purposeful leg movements"
+      }
+    }
+  ],
+  "result": {
+    "name": "onls_total_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total ONLS score representing overall neuropathy severity and functional limitations"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "No Disability",
+        "description": "No functional limitations",
+        "interpretation": "Normal function in both arms and legs with no evidence of functional disability from peripheral neuropathy."
+      },
+      {
+        "min": 1,
+        "max": 3,
+        "stage": "Mild Disability",
+        "description": "Minimal functional limitations",
+        "interpretation": "Mild peripheral neuropathy with minimal impact on daily activities. Some symptoms present but function largely preserved."
+      },
+      {
+        "min": 4,
+        "max": 6,
+        "stage": "Moderate Disability",
+        "description": "Moderate functional limitations",
+        "interpretation": "Moderate peripheral neuropathy with noticeable impact on daily activities. May require assistive devices or modifications."
+      },
+      {
+        "min": 7,
+        "max": 9,
+        "stage": "Severe Disability",
+        "description": "Significant functional limitations",
+        "interpretation": "Severe peripheral neuropathy with substantial functional impairment requiring significant assistance or adaptive equipment."
+      },
+      {
+        "min": 10,
+        "max": 12,
+        "stage": "Very Severe Disability",
+        "description": "Profound functional limitations",
+        "interpretation": "Very severe peripheral neuropathy with profound disability requiring extensive care and assistance for most activities."
+      }
+    ]
+  },
+  "references": [
+    "Graham RC, Hughes RA. A modified peripheral neuropathy scale: the Overall Neuropathy Limitations Scale. J Neurol Neurosurg Psychiatry. 2006;77(8):973-6. doi: 10.1136/jnnp.2005.081547.",
+    "Hughes RA, Donofrio P, Bril V, Dalakas MC, Deng C, Hanna K, et al. Intravenous immune globulin (10% caprylate-chromatography purified) for the treatment of chronic inflammatory demyelinating polyradiculoneuropathy (ICE study): a randomised placebo-controlled trial. Lancet Neurol. 2008;7(2):136-44. doi: 10.1016/S1474-4422(07)70329-0.",
+    "van Nes SI, Vanhoutte EK, van Doorn PA, Hermans M, Bakkers M, Kuitwaard K, et al. Rasch-built Overall Disability Scale (R-ODS) for immune-mediated peripheral neuropathies. Neurology. 2011;76(4):337-45. doi: 10.1212/WNL.0b013e318208824b."
+  ],
+  "formula": "ONLS Total Score = Arms Grade (0-5) + Legs Grade (0-7)",
+  "notes": [
+    "The ONLS is a modified version of the Overall Disability Sum Score (ODSS) with better content validity and reduced ceiling effect",
+    "Originally validated in 100 patients with various peripheral nerve disorders",
+    "High inter-rater reliability with intraclass correlation coefficient of 0.97",
+    "Acceptable responsiveness with standardized response mean of 0.76",
+    "Best used with direct patient observation rather than patient self-reporting",
+    "Not validated for use in pediatric populations",
+    "Particularly useful for tracking progression in immune-mediated polyneuropathies",
+    "The legs scale includes running and stair climbing to reduce ceiling effects compared to ODSS",
+    "Should be used in conjunction with other neuropathy assessment tools for comprehensive evaluation",
+    "Scores of 0-3 generally indicate preserved independence in daily activities",
+    "Scores ≥7 typically indicate need for mobility aids or assistance",
+    "Regular monitoring can help assess treatment response and disease progression"
+  ]
+}

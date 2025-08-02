@@ -1,0 +1,279 @@
+{
+  "id": "modified_fatigue_impact_scale",
+  "title": "Modified Fatigue Impact Scale (MFIS)",
+  "description": "Measures the impact that fatigue has on patient's daily life across physical, cognitive, and psychosocial domains",
+  "category": "neurology",
+  "version": "1994",
+  "parameters": [
+    {
+      "name": "less_alert",
+      "type": "integer",
+      "required": true,
+      "description": "I have been less alert",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "difficulty_paying_attention",
+      "type": "integer",
+      "required": true,
+      "description": "I have had difficulty paying attention",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "unable_think_clearly",
+      "type": "integer",
+      "required": true,
+      "description": "I have been unable to think clearly",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "clumsy_uncoordinated",
+      "type": "integer",
+      "required": true,
+      "description": "I have been clumsy and uncoordinated",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "forgetful",
+      "type": "integer",
+      "required": true,
+      "description": "I have been forgetful",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "pace_physical_activities",
+      "type": "integer",
+      "required": true,
+      "description": "I have had to pace myself in my physical activities",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "less_motivated_physical",
+      "type": "integer",
+      "required": true,
+      "description": "I have been less motivated to do anything that requires physical effort",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "less_motivated_social",
+      "type": "integer",
+      "required": true,
+      "description": "I have been less motivated to participate in social activities",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "limited_away_from_home",
+      "type": "integer",
+      "required": true,
+      "description": "I have been limited in my ability to do things away from home",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "trouble_maintaining_effort",
+      "type": "integer",
+      "required": true,
+      "description": "I have had trouble maintaining physical effort for long periods",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "difficulty_making_decisions",
+      "type": "integer",
+      "required": true,
+      "description": "I have had difficulty making decisions",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "less_motivated_thinking",
+      "type": "integer",
+      "required": true,
+      "description": "I have been less motivated to do anything that requires thinking",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "muscles_weak",
+      "type": "integer",
+      "required": true,
+      "description": "My muscles have felt weak",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "physically_uncomfortable",
+      "type": "integer",
+      "required": true,
+      "description": "I have been physically uncomfortable",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "trouble_finishing_thinking_tasks",
+      "type": "integer",
+      "required": true,
+      "description": "I have had trouble finishing tasks that require thinking",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "difficulty_organizing",
+      "type": "integer",
+      "required": true,
+      "description": "I have had difficulty organizing things",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "less_able_physical_tasks",
+      "type": "integer",
+      "required": true,
+      "description": "I have been less able to complete tasks that require physical effort",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "thinking_slowed",
+      "type": "integer",
+      "required": true,
+      "description": "My thinking has been slowed down",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "trouble_concentrating",
+      "type": "integer",
+      "required": true,
+      "description": "I have had trouble concentrating",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "limited_physical_activities",
+      "type": "integer",
+      "required": true,
+      "description": "I have limited my physical activities",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    },
+    {
+      "name": "need_more_rest",
+      "type": "integer",
+      "required": true,
+      "description": "I have needed to rest more often or for longer periods of time",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "options": ["0", "1", "2", "3", "4"]
+    }
+  ],
+  "result": {
+    "name": "mfis_total_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total MFIS score indicating overall fatigue impact on daily functioning"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 37,
+        "stage": "Below Cutoff",
+        "description": "Fatigue impact below clinical cutoff",
+        "interpretation": "Total score below 38 suggests fatigue impact that may not significantly affect quality of life. Continue routine monitoring and consider lifestyle interventions."
+      },
+      {
+        "min": 38,
+        "max": 84,
+        "stage": "Above Cutoff",
+        "description": "Clinically significant fatigue impact",
+        "interpretation": "Total score of 38 or above indicates clinically significant fatigue impact on daily functioning. Consider comprehensive fatigue management strategies and regular monitoring."
+      }
+    ]
+  },
+  "references": [
+    "Fisk JD, Ritvo PG, Ross L, Haase DA, Marrie TJ, Schlech WF. Measuring the functional impact of fatigue: initial validation of the fatigue impact scale. Clin Infect Dis. 1994 Jan;18 Suppl 1:S79-83. doi: 10.1093/clinids/18.supplement_1.s79.",
+    "Learmonth YC, Dlugonski D, Pilutti LA, Sandroff BM, Klaren R, Motl RW. Psychometric properties of the Fatigue Severity Scale and the Modified Fatigue Impact Scale. J Neurol Sci. 2013 Aug 15;331(1-2):102-7. doi: 10.1016/j.jns.2013.05.023."
+  ],
+  "formula": "Sum of all 21 item scores. Physical subscale: items 4,6,7,10,13,14,17,20,21. Cognitive subscale: items 1,2,3,5,11,12,15,16,18,19. Psychosocial subscale: items 8,9.",
+  "notes": [
+    "Originally developed for multiple sclerosis patients but used in various conditions",
+    "Each item scored 0-4: Never=0, Rarely=1, Sometimes=2, Often=3, Almost Always=4",
+    "Maximum total score is 84 points",
+    "Cutoff of 38 points recommended for clinically significant fatigue impact",
+    "Changes ≥4 points on MFIS predict significant effect on quality of life",
+    "Provides subscales for Physical (36 points max), Cognitive (40 points max), and Psychosocial (8 points max) functioning",
+    "Self-administered questionnaire taking 5-10 minutes to complete",
+    "21-item version recommended over 5-item version for comprehensive assessment"
+  ]
+}

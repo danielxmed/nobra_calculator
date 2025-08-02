@@ -1,0 +1,55 @@
+{
+  "id": "maintenance_fluids_calculations",
+  "title": "Maintenance Fluids Calculations (Holliday-Segar Method)",
+  "description": "Calculates maintenance fluid requirements by weight using the Holliday-Segar method",
+  "category": "pediatrics",
+  "version": "1957",
+  "parameters": [
+    {
+      "name": "weight",
+      "type": "float",
+      "required": true,
+      "description": "Patient weight in kilograms",
+      "validation": {
+        "min": 0.5,
+        "max": 200.0
+      },
+      "unit": "kg"
+    }
+  ],
+  "result": {
+    "name": "maintenance_fluids",
+    "type": "object",
+    "unit": "mL",
+    "description": "Maintenance fluid requirements per day and per hour"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 999999,
+        "stage": "Maintenance Requirements",
+        "description": "Standard maintenance fluid calculation",
+        "interpretation": "These are the calculated maintenance fluid requirements. Adjust based on clinical condition, losses, and ongoing fluid balance assessment."
+      }
+    ]
+  },
+  "references": [
+    "Holliday MA, Segar WE. The maintenance need for water in parenteral fluid therapy. Pediatrics. 1957 May;19(5):823-32.",
+    "Moritz ML, Ayus JC. Prevention of hospital-acquired hyponatremia: a case for using isotonic saline. Pediatrics. 2003 Feb;111(2):227-30.",
+    "Friedman JN, Beck CE, DeGroot J, Geary DF, Sklansky DJ, Freedman SB. Comparison of isotonic and hypotonic intravenous maintenance fluids: a randomized clinical trial. JAMA Pediatr. 2015 May;169(5):445-51."
+  ],
+  "formula": "0-10 kg: 100 mL/kg/day; 10-20 kg: 1000 mL + 50 mL/kg for each kg over 10; >20 kg: 1500 mL + 20 mL/kg for each kg over 20",
+  "notes": [
+    "Based on the Holliday-Segar method developed in 1957",
+    "Calculates maintenance fluid needs for healthy patients",
+    "Does not account for ongoing losses (fever, diarrhea, etc.)",
+    "Consider using isotonic solutions to prevent hyponatremia",
+    "Adjust for clinical condition and fluid balance status",
+    "May need modification in heart failure, renal disease, or liver disease",
+    "Monitor electrolytes and fluid balance regularly",
+    "Formula assumes normal renal function and no excessive losses",
+    "Consider restricting fluids in conditions with fluid retention",
+    "Neonates and premature infants may require different calculations"
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "id": "lace_index_readmission",
+  "title": "LACE Index for Readmission",
+  "description": "Predicts 30-day readmission or death in medical and surgical ward patients using four key clinical factors: length of stay, acuity of admission, comorbidities, and emergency department visits",
+  "category": "emergency",
+  "version": "original_2010",
+  "parameters": [
+    {
+      "name": "length_of_stay_days",
+      "type": "integer",
+      "required": true,
+      "description": "Length of current hospital stay in days",
+      "validation": {
+        "min": 0,
+        "max": 365
+      },
+      "unit": "days"
+    },
+    {
+      "name": "acute_emergent_admission",
+      "type": "string",
+      "required": true,
+      "description": "Was this an acute/emergent admission (unplanned)?",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "charlson_comorbidity_index",
+      "type": "integer",
+      "required": true,
+      "description": "Charlson Comorbidity Index score (0-37)",
+      "validation": {
+        "min": 0,
+        "max": 37
+      },
+      "unit": "points"
+    },
+    {
+      "name": "ed_visits_6_months",
+      "type": "integer",
+      "required": true,
+      "description": "Number of emergency department visits in the 6 months prior to current admission",
+      "validation": {
+        "min": 0,
+        "max": 20
+      },
+      "unit": "visits"
+    }
+  ],
+  "result": {
+    "name": "lace_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "LACE Index score predicting 30-day readmission or death risk"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 4,
+        "stage": "Low Risk",
+        "description": "Low risk of 30-day readmission or death",
+        "interpretation": "Patients with LACE scores 0-4 have low risk of 30-day readmission or death. Standard discharge planning and follow-up may be appropriate."
+      },
+      {
+        "min": 5,
+        "max": 9,
+        "stage": "Moderate Risk",
+        "description": "Moderate risk of 30-day readmission or death",
+        "interpretation": "Patients with LACE scores 5-9 have moderate risk of 30-day readmission or death. Consider enhanced discharge planning and early post-discharge follow-up."
+      },
+      {
+        "min": 10,
+        "max": 19,
+        "stage": "High Risk",
+        "description": "High risk of 30-day readmission or death",
+        "interpretation": "Patients with LACE scores ≥10 have high risk of 30-day readmission or death. Intensive discharge planning, care coordination, and early follow-up strongly recommended."
+      }
+    ]
+  },
+  "references": [
+    "van Walraven C, Dhalla IA, Bell C, et al. Derivation and validation of an index to predict early death or unplanned readmission after discharge from hospital to the community. CMAJ. 2010 Apr 6;182(6):551-7.",
+    "Walraven C, Wong J, Forster AJ. LACE+ index: extension of a validated index to predict early death or urgent readmission after hospital discharge using administrative data. Open Med. 2012;6(4):e80-90.",
+    "Gruneir A, Dhalla IA, van Walraven C, et al. Unplanned readmissions after hospital discharge among patients identified as being at high risk for readmission using a validated predictive algorithm. Open Med. 2011;5(2):e104-11.",
+    "Low LL, Tan SY, Ng MJ, et al. Applying the LACE index to an Asian population to predict 30-day hospital readmissions in an accountable care organization. Medicine (Baltimore). 2017 Jan;96(4):e5728."
+  ],
+  "formula": "LACE = L + A + C + E, where L = Length of stay points (0-7), A = Acute admission points (0 or 3), C = Charlson comorbidity points (0-5), E = ED visits points (0-4)",
+  "notes": [
+    "Validated for patients ≥18 years old",
+    "Applicable to both medical and surgical patients",
+    "Based on administrative data available at discharge",
+    "Higher scores indicate increased risk of 30-day readmission or death",
+    "Maximum possible score is 19 points",
+    "Original validation showed C-statistic of 0.684",
+    "Acute admission defined as unplanned admission through emergency department",
+    "Charlson Comorbidity Index should be calculated using ICD codes",
+    "ED visits counted for 6 months prior to current admission",
+    "Used for discharge planning and resource allocation"
+  ]
+}

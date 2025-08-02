@@ -1,0 +1,75 @@
+{
+  "id": "mentzer_index",
+  "title": "Mentzer Index",
+  "description": "Differentiates beta thalassemia trait from iron deficiency anemia using MCV and RBC count. A simple screening tool that helps distinguish between these two common causes of microcytic anemia.",
+  "category": "hematology",
+  "version": "1973",
+  "parameters": [
+    {
+      "name": "mcv",
+      "type": "float",
+      "required": true,
+      "description": "Mean Corpuscular Volume - average volume of red blood cells",
+      "validation": {
+        "min": 0,
+        "max": 200
+      },
+      "unit": "fL"
+    },
+    {
+      "name": "rbc_count",
+      "type": "float",
+      "required": true,
+      "description": "Red Blood Cell count in millions per microliter",
+      "validation": {
+        "min": 0.001,
+        "max": 15
+      },
+      "unit": "10⁶/µL"
+    }
+  ],
+  "result": {
+    "name": "mentzer_index",
+    "type": "float",
+    "unit": "",
+    "description": "Mentzer Index value used to differentiate between beta thalassemia trait and iron deficiency anemia"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 13,
+        "stage": "Beta Thalassemia Trait Likely",
+        "description": "Index < 13",
+        "interpretation": "Beta thalassemia trait is more likely. In thalassemia, RBC production is normal but cells are smaller and more fragile, resulting in normal RBC count with low MCV. Consider hemoglobin electrophoresis for confirmation."
+      },
+      {
+        "min": 13,
+        "max": 13,
+        "stage": "Indeterminate",
+        "description": "Index = 13",
+        "interpretation": "Results are inconclusive. Both beta thalassemia trait and iron deficiency anemia are possible. Further testing with iron studies and hemoglobin electrophoresis is recommended."
+      },
+      {
+        "min": 13,
+        "max": 999,
+        "stage": "Iron Deficiency Anemia Likely",
+        "description": "Index > 13",
+        "interpretation": "Iron deficiency anemia is more likely. In iron deficiency, the marrow cannot produce as many RBCs and they are small, resulting in both low RBC count and low MCV. Consider iron studies for confirmation."
+      }
+    ]
+  },
+  "references": [
+    "Mentzer WC Jr. Differentiation of iron deficiency from thalassaemia trait. Lancet. 1973 Apr 21;1(7808):882.",
+    "Vehapoglu A, Ozgurhan G, Demir AD, et al. Hematological indices for differential diagnosis of Beta thalassemia trait and iron deficiency anemia. Anemia. 2014;2014:576738.",
+    "Zaghloul A, Al-Bukhari TAMA, Bajuaifer N, et al. Introduction of new formulas and evaluation of the previous red blood cell indices and formulas in the differentiation between beta thalassemia trait and iron deficiency anemia in the Makkah region. Hematology. 2016;21(6):351-8."
+  ],
+  "formula": "Mentzer Index = MCV (fL) / RBC count (10⁶/µL)",
+  "notes": [
+    "This is a screening tool only and should not be used for definitive diagnosis",
+    "Results can be impacted by concurrent iron deficiency and beta thalassemia trait",
+    "Abnormal results should prompt confirmatory testing with iron studies and hemoglobin electrophoresis",
+    "Normal MCV range: 80-100 fL",
+    "Normal RBC count range: 4-6 × 10⁶ cells/µL"
+  ]
+}

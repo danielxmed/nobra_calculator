@@ -1,0 +1,127 @@
+{
+  "id": "wexner_score_ods",
+  "title": "Wexner Score for Obstructed Defecation Syndrome (ODS)",
+  "description": "Stratifies severity of fecal incontinence in patients with obstructed defecation syndrome. Also known as the Cleveland Clinic Fecal Incontinence Score (CCFIS), this validated scoring system evaluates five key aspects of fecal incontinence to provide objective assessment of symptom severity and impact on quality of life.",
+  "category": "gastroenterology",
+  "version": "1993",
+  "parameters": [
+    {
+      "name": "incontinence_solid_stool",
+      "type": "integer",
+      "required": true,
+      "description": "Frequency of incontinence to solid stool",
+      "options": [0, 1, 2, 3, 4],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "incontinence_liquid_stool",
+      "type": "integer",
+      "required": true,
+      "description": "Frequency of incontinence to liquid stool",
+      "options": [0, 1, 2, 3, 4],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "incontinence_gas",
+      "type": "integer",
+      "required": true,
+      "description": "Frequency of incontinence to gas (flatus)",
+      "options": [0, 1, 2, 3, 4],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "wears_pad",
+      "type": "integer",
+      "required": true,
+      "description": "Frequency of wearing protective pads",
+      "options": [0, 1, 2, 3, 4],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "lifestyle_alteration",
+      "type": "integer",
+      "required": true,
+      "description": "Extent to which incontinence alters the patient's lifestyle",
+      "options": [0, 1, 2, 3, 4],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "points"
+    }
+  ],
+  "result": {
+    "name": "wexner_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Wexner Score for fecal incontinence severity"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Perfect Continence",
+        "description": "Perfect continence with no symptoms",
+        "interpretation": "Wexner score of 0 indicates perfect continence with no fecal incontinence symptoms. No treatment is typically required. Continue routine care and lifestyle modifications as appropriate for underlying conditions."
+      },
+      {
+        "min": 1,
+        "max": 9,
+        "stage": "Mild Incontinence",
+        "description": "Mild fecal incontinence",
+        "interpretation": "Wexner score of 1-9 indicates mild fecal incontinence that may have minimal impact on quality of life. Consider conservative management including dietary modifications, fiber supplementation, pelvic floor exercises, and bowel training programs. Monitor symptoms and reassess regularly."
+      },
+      {
+        "min": 10,
+        "max": 20,
+        "stage": "Clinical Incontinence",
+        "description": "Clinically significant fecal incontinence",
+        "interpretation": "Wexner score ≥10 indicates clinically significant fecal incontinence requiring active management. Consider comprehensive evaluation including anorectal physiology testing, imaging studies, and specialist referral. Treatment options may include advanced conservative therapies, biofeedback, sacral nerve stimulation, or surgical interventions depending on underlying etiology."
+      }
+    ]
+  },
+  "references": [
+    "Jorge JM, Wexner SD. Etiology and management of fecal incontinence. Dis Colon Rectum. 1993;36(1):77-97. doi: 10.1007/BF02050307",
+    "Rockwood TH, Church JM, Fleshman JW, et al. Fecal Incontinence Quality of Life Scale: quality of life instrument for patients with fecal incontinence. Dis Colon Rectum. 2000;43(1):9-16. doi: 10.1007/BF02237236",
+    "Vaizey CJ, Carapeti E, Cahill JA, Kamm MA. Prospective comparison of faecal incontinence grading systems. Gut. 1999;44(1):77-80. doi: 10.1136/gut.44.1.77",
+    "Bharucha AE, Dunivan G, Goode PS, et al. Epidemiology, pathophysiology, and classification of fecal incontinence: state of the science summary for the National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK) workshop. Am J Gastroenterol. 2015;110(1):127-136. doi: 10.1038/ajg.2014.396"
+  ],
+  "formula": "Sum of scores for: Incontinence to solid stool (0-4) + Incontinence to liquid stool (0-4) + Incontinence to gas (0-4) + Wears pad (0-4) + Lifestyle alteration (0-4). Each parameter scored: 0=Never, 1=Less than once a month, 2=Less than once a week but at least once a month, 3=Less than once a day but at least once a week, 4=At least once a day.",
+  "notes": [
+    "Also known as Cleveland Clinic Fecal Incontinence Score (CCFIS)",
+    "Score ranges from 0 (perfect continence) to 20 (complete incontinence)",
+    "Clinical incontinence corresponds to score >9",
+    "Most widely used and validated fecal incontinence scoring system",
+    "Correlates well with patient-reported symptom severity and quality of life impact",
+    "Does not account for fecal urgency, which may be assessed separately",
+    "Easily understood and completed by patients",
+    "Useful for monitoring treatment response and disease progression",
+    "Each parameter uses same 5-point frequency scale (0-4 points)",
+    "Lifestyle alteration refers to the extent incontinence impacts daily activities",
+    "Protective pad use frequency reflects practical management impact",
+    "Should be used in conjunction with clinical history and physical examination",
+    "May be repeated at follow-up visits to assess treatment effectiveness"
+  ]
+}

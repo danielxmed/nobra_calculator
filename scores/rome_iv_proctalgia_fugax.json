@@ -1,0 +1,136 @@
+{
+  "id": "rome_iv_proctalgia_fugax",
+  "title": "Rome IV Diagnostic Criteria for Proctalgia Fugax",
+  "description": "Official Rome IV diagnostic criteria for proctalgia fugax, a functional anorectal pain disorder characterized by sudden, severe, episodic rectal pain unrelated to defecation. This validated diagnostic tool helps differentiate proctalgia fugax from other anorectal pain syndromes including levator ani syndrome and unspecified functional anorectal pain.",
+  "category": "gastroenterology",
+  "version": "Rome IV (2016)",
+  "parameters": [
+    {
+      "name": "recurrent_rectal_pain_unrelated_defecation",
+      "type": "string",
+      "required": true,
+      "description": "Recurrent episodes of pain localized to the rectum and unrelated to defecation",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Patient experiences recurrent episodes of pain specifically in the rectum that occur independently of bowel movements", "no - Patient does not experience recurrent rectal pain unrelated to defecation"]
+    },
+    {
+      "name": "episode_duration_seconds_to_30_minutes",
+      "type": "string",
+      "required": true,
+      "description": "Episodes lasting from seconds to minutes, with a maximum duration of 30 minutes",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Pain episodes last from seconds to minutes but never exceed 30 minutes in duration", "no - Pain episodes either last longer than 30 minutes or do not fit this duration pattern"]
+    },
+    {
+      "name": "no_anorectal_pain_between_episodes",
+      "type": "string",
+      "required": true,
+      "description": "No anorectal pain between episodes (pain-free intervals)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Patient is completely pain-free between episodes of proctalgia fugax", "no - Patient experiences ongoing or persistent anorectal pain between discrete episodes"]
+    },
+    {
+      "name": "exclusion_inflammatory_causes",
+      "type": "string",
+      "required": true,
+      "description": "Exclusion of inflammatory bowel disease as cause of rectal pain",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Inflammatory bowel disease (Crohn's disease, ulcerative colitis) has been ruled out", "no - Inflammatory bowel disease has not been adequately excluded or is present"]
+    },
+    {
+      "name": "exclusion_structural_anorectal_lesions",
+      "type": "string",
+      "required": true,
+      "description": "Exclusion of structural anorectal lesions (abscess, fissure, thrombosed hemorrhoids)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Intramuscular abscess, anal fissure, and thrombosed hemorrhoids have been ruled out", "no - Structural anorectal lesions have not been adequately excluded or are present"]
+    },
+    {
+      "name": "exclusion_prostatitis",
+      "type": "string",
+      "required": true,
+      "description": "Exclusion of prostatitis as cause of rectal pain",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Prostatitis has been ruled out as cause of rectal pain", "no - Prostatitis has not been adequately excluded or is present"]
+    },
+    {
+      "name": "exclusion_coccygodynia",
+      "type": "string",
+      "required": true,
+      "description": "Exclusion of coccygodynia (tailbone pain) as cause of symptoms",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Coccygodynia has been ruled out as cause of symptoms", "no - Coccygodynia has not been adequately excluded or is present"]
+    },
+    {
+      "name": "exclusion_pelvic_floor_alterations",
+      "type": "string",
+      "required": true,
+      "description": "Exclusion of major structural alterations of the pelvic floor",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Major structural alterations of the pelvic floor have been ruled out", "no - Major structural pelvic floor alterations have not been adequately excluded or are present"]
+    }
+  ],
+  "result": {
+    "name": "rome_iv_proctalgia_fugax_diagnosis",
+    "type": "string",
+    "unit": "diagnosis",
+    "description": "Rome IV diagnostic assessment for proctalgia fugax based on fulfillment of all required criteria"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Criteria Not Met",
+        "description": "Does not meet Rome IV criteria",
+        "interpretation": "Patient does not fulfill Rome IV diagnostic criteria for proctalgia fugax. One or more essential criteria are not met. Consider alternative diagnoses including levator ani syndrome, unspecified functional anorectal pain, or organic causes. Further evaluation may be needed to identify underlying pathology or alternative functional disorders."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Criteria Met",
+        "description": "Meets Rome IV criteria",
+        "interpretation": "Patient fulfills Rome IV diagnostic criteria for proctalgia fugax. Diagnosis is established when all essential criteria are met, including recurrent episodes of rectal pain lasting seconds to 30 minutes, pain-free intervals between episodes, and exclusion of organic causes. Treatment focuses on reassurance, stress management, and symptomatic relief during acute episodes."
+      }
+    ]
+  },
+  "references": [
+    "Lacy BE, Mearin F, Chang L, Chey WD, Lembo AJ, Simren M, Spiller R. Bowel Disorders. Gastroenterology. 2016 May;150(6):1393-1407.e5. doi: 10.1053/j.gastro.2016.02.031.",
+    "Bharucha AE, Wald A, Enck P, Rao S. Functional anorectal disorders. Gastroenterology. 2006 Apr;130(5):1510-8. doi: 10.1053/j.gastro.2005.11.064.",
+    "Rome Foundation. Rome IV Diagnostic Criteria for Functional Gastrointestinal Disorders. 4th ed. Raleigh, NC: Rome Foundation; 2016.",
+    "Chiarioni G, Asteria C, Whitehead WE. Chronic proctalgia and chronic pelvic pain syndromes: new etiologic insights and treatment options. World J Gastroenterol. 2011 Oct 21;17(39):4447-55. doi: 10.3748/wjg.v17.i39.4447."
+  ],
+  "formula": "Rome IV Proctalgia Fugax Diagnosis = ALL criteria must be met: (1) Recurrent rectal pain unrelated to defecation + (2) Episodes lasting seconds to 30 minutes + (3) No pain between episodes + (4) Exclusion of all organic causes (IBD, structural lesions, prostatitis, coccygodynia, pelvic floor alterations)",
+  "notes": [
+    "Rome IV diagnostic criteria for functional gastrointestinal disorders",
+    "All criteria must be fulfilled for positive diagnosis",
+    "Proctalgia fugax is characterized by sudden, severe, episodic rectal pain",
+    "Maximum episode duration increased from 20 to 30 minutes in Rome IV vs Rome III",
+    "Pain location specified as rectum (not lower rectum/anus as in Rome III)",
+    "Distinct from levator ani syndrome (chronic pain with puborectalis tenderness)",
+    "Distinct from unspecified functional anorectal pain (episodes >30 minutes)",
+    "Episodes typically occur <5 times per year in most patients",
+    "Pain often described as sudden, severe, cramping, or stabbing",
+    "Can awaken patients from sleep and interrupt normal activities",
+    "May be triggered by stress, anxiety, or sexual activity",
+    "Diagnosis of exclusion requiring thorough evaluation for organic causes",
+    "Treatment is primarily symptomatic and supportive",
+    "Reassurance and stress management are important therapeutic components"
+  ]
+}

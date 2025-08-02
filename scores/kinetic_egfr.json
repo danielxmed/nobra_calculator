@@ -1,0 +1,132 @@
+{
+  "id": "kinetic_egfr",
+  "title": "Kinetic Estimated Glomerular Filtration Rate (keGFR)",
+  "description": "Estimates GFR in patients with acutely changing creatinine levels, allowing for earlier detection of acute kidney injury when creatinine is in a non-steady state. More accurate than traditional GFR equations during periods of rapidly changing kidney function.",
+  "category": "nephrology",
+  "version": "2013_chen",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Biological sex of the patient",
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "race",
+      "type": "string",
+      "required": true,
+      "description": "Race for MDRD equation adjustment",
+      "validation": {
+        "enum": ["black", "non_black"]
+      }
+    },
+    {
+      "name": "baseline_creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Baseline serum creatinine before acute illness (mg/dL). Use most recent stable value if available.",
+      "validation": {
+        "min": 0.1,
+        "max": 15.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "creatinine_1",
+      "type": "float",
+      "required": true,
+      "description": "First creatinine measurement (mg/dL)",
+      "validation": {
+        "min": 0.1,
+        "max": 25.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "creatinine_2",
+      "type": "float",
+      "required": true,
+      "description": "Second creatinine measurement (mg/dL)",
+      "validation": {
+        "min": 0.1,
+        "max": 25.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "time_hours",
+      "type": "float",
+      "required": true,
+      "description": "Time between first and second creatinine measurements in hours",
+      "validation": {
+        "min": 1,
+        "max": 168
+      },
+      "unit": "hours"
+    }
+  ],
+  "result": {
+    "name": "kinetic_egfr",
+    "type": "object",
+    "unit": "mL/min/1.73 m²",
+    "description": "Kinetic eGFR value with AKI risk assessment"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 60,
+        "description": "Normal/near-normal kidney function",
+        "interpretation": "keGFR ≥60 mL/min/1.73 m² suggests preserved kidney function with low AKI risk"
+      },
+      {
+        "min": 30,
+        "max": 59,
+        "description": "Moderate kidney dysfunction",
+        "interpretation": "keGFR 30-59 mL/min/1.73 m² indicates moderate kidney impairment with intermediate AKI risk"
+      },
+      {
+        "min": 15,
+        "max": 29,
+        "description": "Severe kidney dysfunction",
+        "interpretation": "keGFR 15-29 mL/min/1.73 m² indicates severe kidney impairment with high AKI risk"
+      },
+      {
+        "max": 14,
+        "description": "Kidney failure",
+        "interpretation": "keGFR <15 mL/min/1.73 m² indicates kidney failure with very high AKI risk"
+      }
+    ]
+  },
+  "references": [
+    "Chen S. Retooling the creatinine clearance equation to estimate kinetic GFR when the plasma creatinine is changing acutely. J Am Soc Nephrol. 2013 May;24(6):877-88.",
+    "O'Sullivan ED, Doyle A. The clinical utility of kinetic glomerular filtration rate. Clin Kidney J. 2017 Apr;10(2):202-208.",
+    "Pickering JW, Ralib AM, Endre ZH. Combining creatinine and volume kinetics identifies missed cases of acute kidney injury following cardiac arrest. Crit Care. 2013 Jan 14;17(1):R7.",
+    "Dewitte A, Joannès-Boyau O, Sidobre C, Fleureau C, Bats ML, Derache P, et al. Kinetic eGFR and Novel AKI Biomarkers to Predict Renal Recovery. Clin J Am Soc Nephrol. 2015 Nov 6;10(11):1900-10."
+  ],
+  "formula": "keGFR = eGFR_baseline - (Δcreatinine × Vd) / (time × BSA) where eGFR_baseline is calculated using MDRD equation, Δcreatinine = Cr2 - Cr1, Vd = distribution volume, BSA = body surface area",
+  "notes": [
+    "Designed for use when creatinine is changing acutely (non-steady state)",
+    "More accurate than traditional eGFR equations during AKI",
+    "Can detect AKI 8-24 hours earlier than traditional creatinine-based criteria",
+    "keGFR <30 mL/min/1.73 m² is 90% specific for AKI (71% sensitive)",
+    "Particularly useful in ICU and post-operative settings",
+    "Requires two creatinine measurements separated by at least 1 hour",
+    "Assumes normal creatinine production rate (~20 mg/kg/day)",
+    "May be less accurate in patients with rapidly changing muscle mass",
+    "Not validated in pediatric patients or pregnancy"
+  ]
+}

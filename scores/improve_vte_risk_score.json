@@ -1,0 +1,153 @@
+{
+  "id": "improve_vte_risk_score",
+  "title": "IMPROVE Risk Score for Venous Thromboembolism (VTE)",
+  "description": "Predicts 3-month risk of acute venous thromboembolism (VTE) in hospitalized medical patients. The IMPROVE (International Medical Prevention Registry on Venous Thromboembolism) Predictive score was developed to assess VTE risk in hospitalized medical patients and help identify patients who may not require pharmacological thromboprophylaxis. This validated clinical prediction tool uses 7 clinical variables present at admission or during hospitalization to stratify patients into risk categories. Patients with scores <2 (representing <1% 3-month VTE risk) may not warrant pharmacologic thromboprophylaxis, while those with scores ≥2 should receive prophylaxis. The score is particularly valuable for identifying low-risk medical patients who can safely avoid anticoagulation.",
+  "category": "hematology",
+  "version": "2011 Spyropoulos",
+  "parameters": [
+    {
+      "name": "previous_vte",
+      "type": "string",
+      "required": true,
+      "description": "History of previous venous thromboembolism (deep vein thrombosis or pulmonary embolism). Previous VTE is the strongest risk factor, carrying the highest point value due to increased likelihood of recurrence",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "known_thrombophilia",
+      "type": "string",
+      "required": true,
+      "description": "Known thrombophilia or hereditary thrombotic disorder (Factor V Leiden, prothrombin gene mutation, antithrombin deficiency, protein C or S deficiency, antiphospholipid syndrome). Thrombophilic disorders increase VTE risk through various mechanisms affecting coagulation",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "current_lower_limb_paralysis",
+      "type": "string",
+      "required": true,
+      "description": "Current lower-limb paralysis or paresis affecting mobility. Paralysis increases VTE risk through venous stasis and reduced muscle pump function in affected limbs",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "current_cancer",
+      "type": "string",
+      "required": true,
+      "description": "Current active cancer diagnosis. Cancer increases VTE risk through multiple mechanisms including tumor-related procoagulant factors, chemotherapy effects, and reduced mobility",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "immobilized_7_days",
+      "type": "string",
+      "required": true,
+      "description": "Immobilized ≥7 days immediately prior to and during hospital admission. Prolonged immobilization increases VTE risk through venous stasis and activation of coagulation pathways",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "icu_ccu_stay",
+      "type": "string",
+      "required": true,
+      "description": "Current stay in intensive care unit (ICU) or coronary care unit (CCU). Critical care setting indicates severe illness with increased VTE risk from immobility, procedures, and systemic inflammation",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "age_over_60",
+      "type": "string",
+      "required": true,
+      "description": "Age greater than 60 years. Advanced age increases VTE risk through age-related changes in coagulation factors, decreased mobility, and increased comorbidities",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "score",
+    "type": "integer",
+    "unit": "points",
+    "description": "IMPROVE VTE Risk Score (range 0-12 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Very Low Risk",
+        "description": "Score 0 points",
+        "interpretation": "0.4% 3-month VTE risk. Pharmacologic thromboprophylaxis not warranted. Consider mechanical prophylaxis or early mobilization as appropriate."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "Score 1 point",
+        "interpretation": "0.6% 3-month VTE risk. Pharmacologic thromboprophylaxis not warranted. Consider mechanical prophylaxis or early mobilization as appropriate."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Moderate Risk",
+        "description": "Score 2 points",
+        "interpretation": "1.0% 3-month VTE risk. Start pharmacologic or mechanical prophylaxis. Consider patient-specific bleeding risk before initiating anticoagulation."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Moderate-High Risk",
+        "description": "Score 3 points",
+        "interpretation": "1.7% 3-month VTE risk. Start pharmacologic or mechanical prophylaxis. Consider patient-specific bleeding risk before initiating anticoagulation."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "High Risk",
+        "description": "Score 4 points",
+        "interpretation": "2.9% 3-month VTE risk. Start pharmacologic or mechanical prophylaxis. Consider patient-specific bleeding risk before initiating anticoagulation."
+      },
+      {
+        "min": 5,
+        "max": 12,
+        "stage": "Very High Risk",
+        "description": "Score 5-12 points",
+        "interpretation": "7.2% or higher 3-month VTE risk. Start pharmacologic or mechanical prophylaxis. Consider patient-specific bleeding risk before initiating anticoagulation. May benefit from extended prophylaxis duration."
+      }
+    ]
+  },
+  "references": [
+    "Spyropoulos AC, Anderson FA Jr, FitzGerald G, et al. Predictive and associative models to identify hospitalized medical patients at risk for VTE. Chest. 2011 Sep;140(3):706-714. doi: 10.1378/chest.10-1944.",
+    "Hostler DC, Marx ES, Moores LK, et al. Validation of the International Medical Prevention Registry on Venous Thromboembolism bleeding risk model. Chest. 2016 Apr;149(4):1002-1009. doi: 10.1378/chest.15-2082.",
+    "Rosenberg D, Eichorn A, Alarcon M, et al. External validation of the risk assessment model of the International Medical Prevention Registry on Venous Thromboembolism (IMPROVE) for medical patients in a tertiary health system. J Am Heart Assoc. 2014 Nov 4;3(6):e001152. doi: 10.1161/JAHA.114.001152."
+  ],
+  "formula": "Score = Previous VTE (3) + Known thrombophilia (2) + Current lower-limb paralysis (2) + Current cancer (2) + Immobilized ≥7 days (1) + ICU/CCU stay (1) + Age >60 years (1)",
+  "notes": [
+    "Developed from international IMPROVE database of hospitalized medical patients",
+    "Score <2 indicates pharmacologic thromboprophylaxis not warranted (<1% 3-month VTE risk)",
+    "Score ≥2 indicates need for pharmacologic or mechanical prophylaxis",
+    "Previous VTE carries highest risk weight (3 points) due to high recurrence rates",
+    "Thrombophilia and paralysis each carry 2 points, reflecting significant VTE risk",
+    "Cancer diagnosis adds 2 points regardless of type or stage",
+    "Immobilization defined as ≥7 days immediately prior to and during admission",
+    "ICU/CCU stay reflects severe illness and procedural VTE risks",
+    "Age >60 years threshold based on increased baseline VTE risk",
+    "Score validated in multiple external cohorts with consistent performance",
+    "Consider bleeding risk assessment (e.g., IMPROVE Bleeding Risk Score) before anticoagulation",
+    "May be combined with bleeding risk scores for comprehensive risk-benefit analysis",
+    "Mechanical prophylaxis alternatives for high bleeding risk patients",
+    "Score should be reassessed if clinical status changes during hospitalization"
+  ]
+}

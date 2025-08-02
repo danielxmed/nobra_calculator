@@ -1,0 +1,202 @@
+{
+  "id": "villalta_score",
+  "title": "Villalta Score for Post-thrombotic Syndrome (PTS)",
+  "description": "Diagnoses and stratifies severity of post-thrombotic syndrome in patients with history of deep venous thrombosis (DVT). The score combines patient-reported symptoms with physician-assessed clinical signs to provide standardized PTS evaluation.",
+  "category": "hematology",
+  "version": "Villalta 1994",
+  "parameters": [
+    {
+      "name": "pain",
+      "type": "integer",
+      "required": true,
+      "description": "Patient-reported pain severity in the affected limb",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "options": [0, 1, 2, 3]
+    },
+    {
+      "name": "cramps",
+      "type": "integer",
+      "required": true,
+      "description": "Patient-reported cramping severity in the affected limb",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "options": [0, 1, 2, 3]
+    },
+    {
+      "name": "heaviness",
+      "type": "integer",
+      "required": true,
+      "description": "Patient-reported feeling of heaviness in the affected limb",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "options": [0, 1, 2, 3]
+    },
+    {
+      "name": "paresthesia",
+      "type": "integer",
+      "required": true,
+      "description": "Patient-reported paresthesia (numbness, tingling) severity in the affected limb",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "options": [0, 1, 2, 3]
+    },
+    {
+      "name": "pruritus",
+      "type": "integer",
+      "required": true,
+      "description": "Patient-reported itching severity in the affected limb",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "options": [0, 1, 2, 3]
+    },
+    {
+      "name": "pretibial_edema",
+      "type": "integer",
+      "required": true,
+      "description": "Physician-assessed pretibial edema severity",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "options": [0, 1, 2, 3]
+    },
+    {
+      "name": "skin_induration",
+      "type": "integer",
+      "required": true,
+      "description": "Physician-assessed skin induration (hardening) severity",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "options": [0, 1, 2, 3]
+    },
+    {
+      "name": "hyperpigmentation",
+      "type": "integer",
+      "required": true,
+      "description": "Physician-assessed skin hyperpigmentation severity",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "options": [0, 1, 2, 3]
+    },
+    {
+      "name": "redness",
+      "type": "integer",
+      "required": true,
+      "description": "Physician-assessed skin redness severity",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "options": [0, 1, 2, 3]
+    },
+    {
+      "name": "venous_ectasia",
+      "type": "integer",
+      "required": true,
+      "description": "Physician-assessed venous ectasia (dilated superficial veins) severity",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "options": [0, 1, 2, 3]
+    },
+    {
+      "name": "calf_compression_pain",
+      "type": "integer",
+      "required": true,
+      "description": "Physician-assessed pain on calf compression severity",
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "options": [0, 1, 2, 3]
+    },
+    {
+      "name": "venous_ulcer_present",
+      "type": "string",
+      "required": true,
+      "description": "Presence of venous ulcer",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "villalta_score",
+    "type": "integer",
+    "description": "Villalta Score with PTS severity classification"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 4,
+        "stage": "PTS Absent",
+        "description": "No post-thrombotic syndrome",
+        "interpretation": "Villalta score indicates absence of post-thrombotic syndrome. Continue routine follow-up for DVT patients. Monitor for development of PTS symptoms over time, as PTS can develop months to years after initial DVT."
+      },
+      {
+        "min": 5,
+        "max": 9,
+        "stage": "Mild PTS",
+        "description": "Mild post-thrombotic syndrome",
+        "interpretation": "Villalta score indicates mild post-thrombotic syndrome. Initiate conservative management including compression therapy (20-30 mmHg), leg elevation, exercise, weight management, and patient education. Regular follow-up to monitor progression."
+      },
+      {
+        "min": 10,
+        "max": 14,
+        "stage": "Moderate PTS",
+        "description": "Moderate post-thrombotic syndrome",
+        "interpretation": "Villalta score indicates moderate post-thrombotic syndrome. Intensify conservative management with higher-grade compression stockings (30-40 mmHg), structured exercise programs, and weight management. Consider referral to vascular specialist for additional interventions."
+      },
+      {
+        "min": 15,
+        "max": 33,
+        "stage": "Severe PTS",
+        "description": "Severe post-thrombotic syndrome",
+        "interpretation": "Villalta score indicates severe post-thrombotic syndrome. Requires intensive management and specialist referral. Consider advanced therapies including intermittent pneumatic compression, venous interventions, and ulcer care if present. Significant impact on quality of life."
+      }
+    ]
+  },
+  "references": [
+    "Villalta S, Bagatella P, Piccioli A, et al. Assessment of validity and reproducibility of a clinical scale for the post-thrombotic syndrome. Haemostasis. 1994;24(4):158a.",
+    "Kahn SR, Partsch H, Vedantham S, et al. Definition of post-thrombotic syndrome of the leg for use in clinical investigations: a recommendation for standardization. J Thromb Haemost. 2009;7(5):879-883.",
+    "Soosainathan A, Moore HM, Gohel MS, et al. Scoring systems for the post-thrombotic syndrome. J Vasc Surg. 2013;57(1):254-261."
+  ],
+  "formula": "Villalta Score = Sum of 5 symptoms (0-3 points each) + Sum of 6 clinical signs (0-3 points each)\n\nSymptoms: Pain + Cramps + Heaviness + Paresthesia + Pruritus\nSigns: Pretibial edema + Skin induration + Hyperpigmentation + Redness + Venous ectasia + Calf compression pain\n\nSpecial rule: If venous ulcer present, score is automatically ≥15 (severe PTS)\n\nScoring: 0=Absent, 1=Mild, 2=Moderate, 3=Severe\nInterpretation: 0-4=No PTS, 5-9=Mild PTS, 10-14=Moderate PTS, ≥15=Severe PTS",
+  "notes": [
+    "The Villalta score is the most widely used and recommended tool for diagnosing and grading post-thrombotic syndrome severity.",
+    "Requires clinical examination of the affected limb by a trained healthcare provider.",
+    "Should be assessed at least 6 months after acute DVT when post-thrombotic changes have stabilized.",
+    "Presence of venous ulcer automatically classifies PTS as severe regardless of other symptom/sign scores.",
+    "Inter-observer reliability is good when performed by trained clinicians.",
+    "The scale combines patient-reported symptoms with objective clinical findings for comprehensive assessment."
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "id": "mcdonald_criteria_multiple_sclerosis_2017_revision",
+  "title": "McDonald Criteria for Multiple Sclerosis (2017 Revision)",
+  "description": "Diagnoses multiple sclerosis using clinical attacks, lesion characteristics, and MRI findings. The 2017 revision introduces key changes including the use of CSF oligoclonal bands to substitute for dissemination in time, acceptance of symptomatic lesions in brainstem/spinal cord, and inclusion of cortical lesions for dissemination in space criteria.",
+  "category": "neurology",
+  "version": "2017",
+  "parameters": [
+    {
+      "name": "clinical_attacks",
+      "type": "string",
+      "required": true,
+      "description": "Number of clinical attacks. Clinical attack defined as inflammatory demyelinating CNS event lasting ≥24 hours with objective neurological dysfunction",
+      "validation": {
+        "enum": ["0", "1", "2_or_more"]
+      },
+      "options": ["0", "1", "2_or_more"]
+    },
+    {
+      "name": "objective_clinical_evidence",
+      "type": "string",
+      "required": true,
+      "description": "Number of lesions with objective clinical evidence. Evidence includes abnormality on neurologic exam, imaging, or visual evoked potentials",
+      "validation": {
+        "enum": ["0", "1", "2_or_more"]
+      },
+      "options": ["0", "1", "2_or_more"]
+    },
+    {
+      "name": "dissemination_in_space",
+      "type": "string",
+      "required": true,
+      "description": "Dissemination in Space (DIS) - Evidence of lesions in multiple CNS locations. Requires ≥1 T2-hyperintense lesions in ≥2 of 4 locations: periventricular, cortical/juxtacortical, infratentorial, spinal cord",
+      "validation": {
+        "enum": ["not_demonstrated", "demonstrated"]
+      },
+      "options": ["not_demonstrated", "demonstrated"]
+    },
+    {
+      "name": "dissemination_in_time",
+      "type": "string",
+      "required": true,
+      "description": "Dissemination in Time (DIT) - Additional clinical attack, new T2/gadolinium-enhancing lesion on follow-up MRI, or simultaneous gadolinium-enhancing and non-enhancing lesions on single MRI",
+      "validation": {
+        "enum": ["not_demonstrated", "demonstrated"]
+      },
+      "options": ["not_demonstrated", "demonstrated"]
+    },
+    {
+      "name": "csf_oligoclonal_bands",
+      "type": "string",
+      "required": true,
+      "description": "CSF-specific oligoclonal bands present. In 2017 revision, can substitute for dissemination in time when dissemination in space is demonstrated",
+      "validation": {
+        "enum": ["absent", "present", "not_tested"]
+      },
+      "options": ["absent", "present", "not_tested"]
+    },
+    {
+      "name": "alternative_diagnosis",
+      "type": "string",
+      "required": true,
+      "description": "Alternative diagnosis that better explains the clinical presentation and findings",
+      "validation": {
+        "enum": ["excluded", "possible"]
+      },
+      "options": ["excluded", "possible"]
+    }
+  ],
+  "result": {
+    "name": "ms_diagnosis",
+    "type": "string",
+    "unit": "diagnosis",
+    "description": "Multiple sclerosis diagnosis based on 2017 McDonald Criteria"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "MS Not Diagnosed",
+        "description": "Criteria not met",
+        "interpretation": "The 2017 McDonald Criteria for multiple sclerosis are not fulfilled. The clinical presentation and findings do not meet the diagnostic requirements for MS. Consider alternative diagnoses, continue clinical monitoring, or repeat MRI evaluation in 3-6 months if clinical suspicion remains high. Additional testing such as CSF analysis, visual evoked potentials, or other investigations may be warranted based on clinical judgment."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "MS Diagnosed",
+        "description": "Criteria fulfilled",
+        "interpretation": "The 2017 McDonald Criteria for multiple sclerosis are fulfilled. The patient meets the diagnostic requirements for MS with evidence of dissemination in space and time, appropriate clinical presentation, and exclusion of alternative diagnoses. Initiate appropriate disease-modifying therapy, provide patient education, and establish multidisciplinary care. Monitor for disease progression and treatment response. Consider referral to MS specialist if not already involved in care."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Possible MS",
+        "description": "Insufficient criteria",
+        "interpretation": "The clinical and radiological findings are suggestive of multiple sclerosis but do not fully meet the 2017 McDonald Criteria. This may represent early disease, clinically isolated syndrome (CIS), or an alternative diagnosis. Continue clinical monitoring with serial neurological examinations and follow-up MRI in 3-6 months. Consider CSF analysis if not already performed. Discuss risk of conversion to MS and potential early treatment options if high-risk features are present."
+      }
+    ]
+  },
+  "references": [
+    "Thompson AJ, Banwell BL, Barkhof F, Carroll WM, Coetzee T, Comi G, et al. Diagnosis of multiple sclerosis: 2017 revisions of the McDonald criteria. Lancet Neurol. 2018 Feb;17(2):162-173. doi: 10.1016/S1474-4422(17)30470-2.",
+    "Polman CH, Reingold SC, Banwell B, Clanet M, Cohen JA, Filippi M, et al. Diagnostic criteria for multiple sclerosis: 2010 revisions to the McDonald criteria. Ann Neurol. 2011 Feb;69(2):292-302. doi: 10.1002/ana.22366.",
+    "McNicholas N, McGuigan C, Kehoe L, Gallagher L, Teeling M, Hamid SH, et al. Clinical Application of 2017 McDonald Diagnostic Criteria for Multiple Sclerosis. J Clin Neurol. 2018 Jul;14(3):387-398. doi: 10.3988/jcn.2018.14.3.387.",
+    "Arrambide G, Tintore M, Espejo C, Auger C, Castillo M, Rio J, et al. The value of oligoclonal bands in the multiple sclerosis diagnostic criteria. Brain. 2018 Apr 1;141(4):1075-1084. doi: 10.1093/brain/awy006."
+  ],
+  "formula": "Diagnosis based on: Clinical attacks (≥1) + Objective clinical evidence + Dissemination in Space (DIS) + Dissemination in Time (DIT or CSF oligoclonal bands) + Exclusion of alternative diagnoses",
+  "notes": [
+    "2017 revision allows CSF oligoclonal bands to substitute for dissemination in time when DIS is demonstrated",
+    "Symptomatic lesions in brainstem or spinal cord can now be used as evidence for DIS",
+    "Cortical lesions are now acceptable in addition to juxtacortical lesions for DIS",
+    "Clinical attack defined as inflammatory demyelinating CNS event lasting ≥24 hours",
+    "Objective clinical evidence includes abnormality on neurologic exam, imaging, or visual evoked potentials",
+    "DIS requires ≥1 T2-hyperintense lesions in ≥2 of 4 locations: periventricular, cortical/juxtacortical, infratentorial, spinal cord",
+    "DIT can be demonstrated by additional clinical attack, new MRI lesions, or simultaneous enhancing/non-enhancing lesions",
+    "Alternative diagnosis must be adequately excluded to make MS diagnosis",
+    "Primary progressive MS has separate diagnostic criteria not covered in this calculator",
+    "McDonald criteria apply primarily to patients with typical clinically isolated syndrome",
+    "Criteria aim to facilitate earlier diagnosis while preserving specificity",
+    "Regular clinical and MRI monitoring recommended for patients not meeting full criteria",
+    "Multidisciplinary care essential for optimal MS management"
+  ]
+}

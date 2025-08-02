@@ -30,6 +30,10 @@ from .glasgow_modified_alcohol_withdrawal_scale import GlasgowModifiedAlcoholWit
 from .hamilton_anxiety_scale import HamiltonAnxietyScaleRequest, HamiltonAnxietyScaleResponse
 from .hamilton_depression_rating_scale import HamiltonDepressionRatingScaleRequest, HamiltonDepressionRatingScaleResponse
 from .heads_ed import HeadsEdRequest, HeadsEdResponse
+from .madrs import MadrsRequest, MadrsResponse
+from .major_depression_index import MajorDepressionIndexRequest, MajorDepressionIndexResponse
+from .modified_minnesota_detoxification_scale import ModifiedMinnesotaDetoxificationScaleRequest, ModifiedMinnesotaDetoxificationScaleResponse
+from .qids_sr16 import QidsSr16Request, QidsSr16Response
 
 __all__ = [
     "AasRequest",
@@ -87,5 +91,13 @@ __all__ = [
     "HamiltonDepressionRatingScaleRequest",
     "HamiltonDepressionRatingScaleResponse",
     "HeadsEdRequest",
-    "HeadsEdResponse"
+    "HeadsEdResponse",
+    "MadrsRequest",
+    "MadrsResponse",
+    "MajorDepressionIndexRequest",
+    "MajorDepressionIndexResponse",
+    "ModifiedMinnesotaDetoxificationScaleRequest",
+    "ModifiedMinnesotaDetoxificationScaleResponse",
+    "QidsSr16Request",
+    "QidsSr16Response"
 ]

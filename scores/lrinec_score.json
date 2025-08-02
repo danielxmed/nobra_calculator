@@ -1,0 +1,126 @@
+{
+  "id": "lrinec_score",
+  "title": "LRINEC Score for Necrotizing Soft Tissue Infection",
+  "description": "Screens for necrotizing soft tissue infections using laboratory parameters",
+  "category": "emergency",
+  "version": "2004",
+  "parameters": [
+    {
+      "name": "crp",
+      "type": "float",
+      "required": true,
+      "description": "C-Reactive Protein level in mg/L",
+      "validation": {
+        "min": 0,
+        "max": 1000
+      },
+      "unit": "mg/L"
+    },
+    {
+      "name": "wbc",
+      "type": "float",
+      "required": true,
+      "description": "White Blood Cell count in cells/µL",
+      "validation": {
+        "min": 0,
+        "max": 100000
+      },
+      "unit": "cells/µL"
+    },
+    {
+      "name": "hemoglobin",
+      "type": "float",
+      "required": true,
+      "description": "Hemoglobin level in g/dL",
+      "validation": {
+        "min": 0,
+        "max": 25
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "sodium",
+      "type": "float",
+      "required": true,
+      "description": "Serum sodium level in mEq/L",
+      "validation": {
+        "min": 100,
+        "max": 180
+      },
+      "unit": "mEq/L"
+    },
+    {
+      "name": "creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Serum creatinine level in mg/dL",
+      "validation": {
+        "min": 0,
+        "max": 20
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "glucose",
+      "type": "float",
+      "required": true,
+      "description": "Serum glucose level in mg/dL",
+      "validation": {
+        "min": 0,
+        "max": 1000
+      },
+      "unit": "mg/dL"
+    }
+  ],
+  "result": {
+    "name": "lrinec_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "LRINEC score (0-13 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 5,
+        "stage": "Low Risk",
+        "description": "Necrotizing fasciitis unlikely",
+        "interpretation": "Low risk for necrotizing fasciitis (<50% probability). However, 10% of patients with necrotizing fasciitis still had a score <6. Clinical suspicion remains important."
+      },
+      {
+        "min": 6,
+        "max": 7,
+        "stage": "Moderate Risk",
+        "description": "Intermediate probability",
+        "interpretation": "Moderate risk for necrotizing fasciitis (50-75% probability). Consider urgent surgical consultation and close monitoring."
+      },
+      {
+        "min": 8,
+        "max": 13,
+        "stage": "High Risk",
+        "description": "Necrotizing fasciitis likely",
+        "interpretation": "High risk for necrotizing fasciitis (>75% probability). Urgent surgical consultation and immediate operative intervention strongly recommended."
+      }
+    ]
+  },
+  "references": [
+    "Wong CH, Khin LW, Heng KS, Tan KC, Low CO. The LRINEC (Laboratory Risk Indicator for Necrotizing Fasciitis) score: a tool for distinguishing necrotizing fasciitis from other soft tissue infections. Crit Care Med. 2004 Jul;32(7):1535-41. doi: 10.1097/01.ccm.0000129486.35458.7d.",
+    "Bechar J, Sepehripour S, Hardwicke J, Filobbos G. Laboratory risk indicator for necrotising fasciitis (LRINEC) score for the assessment of early necrotising fasciitis: a systematic review of the literature. Ann R Coll Surg Engl. 2017 Jun;99(5):341-346. doi: 10.1308/rcsann.2017.0053.",
+    "Fernando SM, Tran A, Cheng W, Rochwerg B, Kyeremanteng K, Seely AJE, et al. Necrotizing soft tissue infection: diagnostic accuracy of physical examination, imaging, and LRINEC score: a systematic review and meta-analysis. Ann Surg. 2019 Jan;269(1):58-65. doi: 10.1097/SLA.0000000000002774."
+  ],
+  "formula": "LRINEC score = CRP points + WBC points + Hemoglobin points + Sodium points + Creatinine points + Glucose points. CRP ≥150 mg/L (4 pts), WBC >25K (2 pts), 15-25K (1 pt), Hgb <11 (2 pts), 11-13.5 (1 pt), Na <135 (2 pts), Cr >1.6 (2 pts), Glucose >180 (1 pt).",
+  "notes": [
+    "Developed to distinguish necrotizing fasciitis from other soft tissue infections",
+    "Based on six laboratory parameters routinely obtained in emergency departments",
+    "Original study showed PPV of 92% and NPV of 96% for scores >6",
+    "Subsequent validation studies have shown variable performance",
+    "10% of patients with necrotizing fasciitis had scores <6 in original study",
+    "Cannot definitively rule out necrotizing fasciitis with low scores",
+    "Should be used as adjunct to clinical assessment, not replacement",
+    "High clinical suspicion should prompt surgical consultation regardless of score",
+    "Time-sensitive condition requiring urgent recognition and treatment",
+    "Not prospectively validated in original development study",
+    "Performance may vary in different patient populations (e.g., diabetics)",
+    "Clinical judgment remains paramount in diagnosis and management decisions"
+  ]
+}

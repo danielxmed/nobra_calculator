@@ -1,0 +1,151 @@
+{
+  "id": "rome_iv_rumination_syndrome",
+  "title": "Rome IV Diagnostic Criteria for Rumination Syndrome",
+  "description": "Official Rome IV diagnostic criteria for rumination syndrome in adults, a functional gastroduodenal disorder characterized by effortless regurgitation of recently ingested food followed by remastication and reswallowing or expulsion. This validated diagnostic tool distinguishes rumination syndrome from GERD and other gastroesophageal disorders through specific clinical criteria emphasizing effortless regurgitation without retching or nausea.",
+  "category": "gastroenterology",
+  "version": "Rome IV (2016)",
+  "parameters": [
+    {
+      "name": "persistent_recurrent_regurgitation",
+      "type": "string",
+      "required": true,
+      "description": "Persistent or recurrent regurgitation of recently ingested food into the mouth with subsequent spitting or remastication and swallowing for ≥3 months with onset ≥6 months ago",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Patient experiences persistent or recurrent regurgitation of recently ingested food with remastication and reswallowing or expulsion", "no - Patient does not experience the characteristic regurgitation pattern or does not meet temporal criteria"]
+    },
+    {
+      "name": "regurgitation_not_preceded_by_retching",
+      "type": "string",
+      "required": true,
+      "description": "Regurgitation is not preceded by retching (effortless regurgitation)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Regurgitation occurs effortlessly without preceding retching movements", "no - Regurgitation is preceded by retching or forceful abdominal contractions"]
+    },
+    {
+      "name": "exclusion_gi_bleeding",
+      "type": "string",
+      "required": true,
+      "description": "Exclusion of signs of gastrointestinal bleeding",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - No evidence of gastrointestinal bleeding (melena, hematemesis, hematochezia)", "no - Signs of gastrointestinal bleeding present requiring investigation"]
+    },
+    {
+      "name": "exclusion_iron_deficiency_anemia",
+      "type": "string",
+      "required": true,
+      "description": "Exclusion of unexplained iron deficiency anemia",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - No unexplained iron deficiency anemia present", "no - Unexplained iron deficiency anemia present requiring evaluation"]
+    },
+    {
+      "name": "exclusion_heartburn_reflux",
+      "type": "string",
+      "required": true,
+      "description": "Exclusion of significant heartburn or esophageal reflux symptoms",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - No significant heartburn or esophageal reflux symptoms", "no - Significant heartburn or esophageal reflux symptoms present"]
+    },
+    {
+      "name": "exclusion_weight_loss",
+      "type": "string",
+      "required": true,
+      "description": "Exclusion of unintentional weight loss",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - No unintentional weight loss (>10% body weight over 6 months)", "no - Unintentional weight loss present requiring evaluation"]
+    },
+    {
+      "name": "exclusion_abdominal_mass_lymphadenopathy",
+      "type": "string",
+      "required": true,
+      "description": "Exclusion of palpable abdominal mass or lymphadenopathy",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - No palpable abdominal mass or lymphadenopathy on examination", "no - Palpable abdominal mass or lymphadenopathy present"]
+    },
+    {
+      "name": "exclusion_dysphagia",
+      "type": "string",
+      "required": true,
+      "description": "Exclusion of dysphagia (difficulty swallowing)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - No dysphagia for solids or liquids", "no - Dysphagia present requiring evaluation"]
+    },
+    {
+      "name": "exclusion_persistent_vomiting",
+      "type": "string",
+      "required": true,
+      "description": "Exclusion of persistent vomiting episodes",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - No persistent vomiting episodes distinct from regurgitation", "no - Persistent vomiting episodes present"]
+    }
+  ],
+  "result": {
+    "name": "rome_iv_rumination_syndrome_diagnosis",
+    "type": "string",
+    "unit": "diagnosis",
+    "description": "Rome IV diagnostic assessment for rumination syndrome based on fulfillment of all required criteria"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Criteria Not Met",
+        "description": "Does not meet Rome IV criteria",
+        "interpretation": "Patient does not fulfill Rome IV diagnostic criteria for rumination syndrome. One or more essential criteria are not met or exclusion criteria are present. Consider alternative diagnoses including GERD with regurgitation, gastroparesis, eating disorders, or organic gastrointestinal pathology. Further evaluation may be needed including upper endoscopy, gastric emptying studies, and psychological assessment as clinically indicated."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Criteria Met",
+        "description": "Meets Rome IV criteria",
+        "interpretation": "Patient fulfills Rome IV diagnostic criteria for rumination syndrome. Diagnosis is established when all criteria are met including persistent regurgitation of recently ingested food with remastication and reswallowing, effortless regurgitation without retching, and exclusion of organic causes. Treatment focuses on behavioral interventions including diaphragmatic breathing training, habit reversal therapy, and biofeedback. Dietary modifications and psychological support may be beneficial."
+      }
+    ]
+  },
+  "references": [
+    "Stanghellini V, Chan FK, Hasler WL, Malagelada JR, Suzuki H, Tack J, Talley NJ. Gastroduodenal disorders. Gastroenterology. 2016 May;150(6):1380-1392. doi: 10.1053/j.gastro.2016.02.011.",
+    "Rome Foundation. Rome IV Diagnostic Criteria for Functional Gastrointestinal Disorders. 4th ed. Raleigh, NC: Rome Foundation; 2016.",
+    "Barba E, Burri E, Accarino A, Cisternas D, Quiroga S, Monclus E, Navazo I, Malagelada JR. Abdominothoracic mechanisms of functional abdominal distention and correction by biofeedback. Gastroenterology. 2015 Apr;148(4):732-9. doi: 10.1053/j.gastro.2014.12.006.",
+    "Kessing BF, Bredenoord AJ, Smout AJ. Objective manometric criteria for the rumination syndrome. Am J Gastroenterol. 2014 Jan;109(1):52-9. doi: 10.1038/ajg.2013.428."
+  ],
+  "formula": "Rome IV Rumination Syndrome Diagnosis = ALL criteria must be met for ≥3 months (onset ≥6 months ago): (1) Persistent regurgitation with remastication/reswallowing + (2) Effortless regurgitation without retching + (3) Exclusion of all alarm symptoms and organic causes (GI bleeding, anemia, heartburn, weight loss, masses, dysphagia, vomiting)",
+  "notes": [
+    "Rome IV diagnostic criteria for functional gastroduodenal disorders",
+    "All criteria must be fulfilled for positive diagnosis",
+    "Rumination syndrome is characterized by effortless postprandial regurgitation",
+    "Regurgitation typically occurs within 30 minutes of eating",
+    "Regurgitant contains recognizable food with pleasant taste initially",
+    "Process ceases when regurgitated material becomes acidic",
+    "Effortless regurgitation usually not preceded by nausea",
+    "Distinguished from GERD by absence of heartburn and acid reflux symptoms",
+    "Distinguished from gastroparesis by normal gastric emptying",
+    "Distinguished from eating disorders by absence of intentional behavior",
+    "Prevalence approximately 3.1% in general population",
+    "Often misdiagnosed as refractory GERD or vomiting",
+    "Primary treatment involves behavioral interventions",
+    "Diaphragmatic breathing training is first-line therapy",
+    "Habit reversal therapy and biofeedback are effective",
+    "Dietary modifications may include smaller, more frequent meals",
+    "Psychological support important for management",
+    "Prognosis generally good with appropriate behavioral treatment",
+    "Nocturnal regurgitation makes diagnosis less likely but does not exclude it"
+  ]
+}

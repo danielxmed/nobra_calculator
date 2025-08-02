@@ -1,0 +1,135 @@
+{
+  "id": "hep_hit",
+  "title": "HIT Expert Probability (HEP) Score for Heparin-Induced Thrombocytopenia",
+  "description": "Pre-test clinical scoring model for heparin-induced thrombocytopenia (HIT) based on broad expert opinion. Helps guide clinical decisions regarding therapy and reduces unnecessary use of alternative anticoagulants.",
+  "category": "hematology",
+  "version": "2010",
+  "parameters": [
+    {
+      "name": "magnitude_fall",
+      "type": "string",
+      "required": true,
+      "description": "Magnitude of platelet count fall from baseline",
+      "options": ["less_than_30", "30_to_50", "greater_than_50"],
+      "validation": {
+        "enum": ["less_than_30", "30_to_50", "greater_than_50"]
+      }
+    },
+    {
+      "name": "timing_platelet_fall",
+      "type": "string",
+      "required": true,
+      "description": "Timing of platelet count fall based on type of HIT onset",
+      "options": ["less_than_4_days", "4_days", "5_to_10_days", "11_to_14_days", "greater_than_14_days"],
+      "validation": {
+        "enum": ["less_than_4_days", "4_days", "5_to_10_days", "11_to_14_days", "greater_than_14_days"]
+      }
+    },
+    {
+      "name": "nadir_platelet_count",
+      "type": "string",
+      "required": true,
+      "description": "Lowest platelet count reached",
+      "options": ["20_or_less", "greater_than_20"],
+      "validation": {
+        "enum": ["20_or_less", "greater_than_20"]
+      },
+      "unit": "× 10⁹/L"
+    },
+    {
+      "name": "thrombosis",
+      "type": "string",
+      "required": true,
+      "description": "Presence and type of thrombosis",
+      "options": ["new_vte_ate", "progression_vte_ate", "none"],
+      "validation": {
+        "enum": ["new_vte_ate", "progression_vte_ate", "none"]
+      }
+    },
+    {
+      "name": "skin_necrosis",
+      "type": "string",
+      "required": true,
+      "description": "Skin necrosis at heparin injection sites",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "acute_systemic_reaction",
+      "type": "string",
+      "required": true,
+      "description": "Acute systemic reaction after IV heparin",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "bleeding",
+      "type": "string",
+      "required": true,
+      "description": "Presence of bleeding or petechiae",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "other_causes_thrombocytopenia",
+      "type": "string",
+      "required": true,
+      "description": "Presence of other causes of thrombocytopenia",
+      "options": ["definite", "possible", "none"],
+      "validation": {
+        "enum": ["definite", "possible", "none"]
+      }
+    }
+  ],
+  "result": {
+    "name": "hep_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "HEP score for pre-test probability of HIT"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": -7,
+        "max": 1,
+        "stage": "Low Probability",
+        "description": "Score <2",
+        "interpretation": "Low probability of HIT. The HEP score has 100% sensitivity at cutoff of 2, effectively ruling out HIT in low-risk patients. Consider alternative causes of thrombocytopenia."
+      },
+      {
+        "min": 2,
+        "max": 4,
+        "stage": "Intermediate Probability",
+        "description": "Score 2-4",
+        "interpretation": "Intermediate probability of HIT. Further testing recommended including HIT antibody testing. Continue clinical monitoring."
+      },
+      {
+        "min": 5,
+        "max": 15,
+        "stage": "High Probability",
+        "description": "Score ≥5",
+        "interpretation": "High probability of HIT. At cutoff of 5, the HEP score has 86% sensitivity and 88% specificity. Consider immediate cessation of heparin and initiation of alternative anticoagulation while awaiting confirmatory testing."
+      }
+    ]
+  },
+  "references": [
+    "Cuker A, Arepally G, Crowther MA, Rice L, Datko F, Hook K, et al. The HIT Expert Probability (HEP) Score: a novel pre-test probability model for heparin-induced thrombocytopenia based on broad expert opinion. J Thromb Haemost. 2010 Dec;8(12):2642-50.",
+    "Joseph J, Rabbolini D, Enjeti AK, Favaloro E, Kopp S, McRae S, et al. Prospective comparison of the HEP score and 4Ts score for the diagnosis of heparin-induced thrombocytopenia. Blood Adv. 2018 Nov 27;2(22):3155-3162.",
+    "Lillo-Le Louet A, Boutouyrie P, Alhenc-Gelas M, Le Beller C, Gautier I, Aiach M, et al. External validation of the HIT Expert Probability (HEP) score. Thromb Haemost. 2015 Mar;113(3):633-40."
+  ],
+  "formula": "Sum of points from 8 clinical features: (1) Magnitude of platelet fall, (2) Timing of platelet fall, (3) Nadir platelet count, (4) Thrombosis, (5) Skin necrosis, (6) Acute systemic reaction, (7) Bleeding, (8) Other causes of thrombocytopenia",
+  "notes": [
+    "The HEP score ranges from -7 to +15 points",
+    "100% sensitivity at cutoff ≥2, 60% specificity",
+    "86% sensitivity at cutoff ≥5, 88% specificity",
+    "Superior to 4Ts score for less experienced clinicians and ICU patients",
+    "Median completion time: 4 minutes (range 1-20 minutes)",
+    "Should be used alongside clinical judgment and laboratory testing"
+  ]
+}

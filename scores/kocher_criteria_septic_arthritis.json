@@ -1,0 +1,111 @@
+{
+  "id": "kocher_criteria_septic_arthritis",
+  "title": "Kocher Criteria for Septic Arthritis in Children",
+  "description": "Clinical prediction rule to differentiate septic arthritis from transient synovitis in children presenting with hip pain, fever, and decreased range of motion",
+  "category": "emergency",
+  "version": "1999",
+  "parameters": [
+    {
+      "name": "non_weight_bearing",
+      "type": "string",
+      "required": true,
+      "description": "Patient unable to bear weight on the affected limb",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "temperature_over_38_5",
+      "type": "string",
+      "required": true,
+      "description": "Temperature greater than 38.5°C (101.3°F) at presentation or in history",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "esr_over_40",
+      "type": "string",
+      "required": true,
+      "description": "Erythrocyte sedimentation rate (ESR) greater than 40 mm/hr",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "wbc_over_12000",
+      "type": "string",
+      "required": true,
+      "description": "White blood cell count greater than 12,000 cells/mm³",
+      "validation": {
+        "enum": ["yes", "no"]
+      },  
+      "options": ["yes", "no"]
+    }
+  ],
+  "result": {
+    "name": "septic_arthritis_probability",
+    "type": "object",
+    "unit": "predictors",
+    "description": "Risk assessment for septic arthritis based on number of predictors present"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Very Low Risk",
+        "description": "0 predictors present",
+        "interpretation": "Risk of septic arthritis <0.2-2%. Consider transient synovitis. May manage conservatively with close monitoring."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Low Risk", 
+        "description": "1 predictor present",
+        "interpretation": "Risk of septic arthritis 3-9.5%. Consider laboratory studies and imaging. May observe with close follow-up."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Moderate Risk",
+        "description": "2 predictors present", 
+        "interpretation": "Risk of septic arthritis 35-40%. Strong consideration for arthrocentesis or surgical drainage. Urgent orthopedic consultation recommended."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "High Risk",
+        "description": "3 predictors present",
+        "interpretation": "Risk of septic arthritis 72.8-93.1%. Arthrocentesis or urgent surgical drainage strongly indicated. Immediate orthopedic consultation and antibiotic therapy."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Very High Risk",
+        "description": "4 predictors present",
+        "interpretation": "Risk of septic arthritis 93-99.6%. Urgent surgical drainage required. Immediate orthopedic consultation and empiric antibiotic therapy."
+      }
+    ]
+  },
+  "references": [
+    "Kocher MS, Zurakowski D, Kasser JR. Differentiating between septic arthritis and transient synovitis of the hip in children: an evidence-based clinical prediction algorithm. J Bone Joint Surg Am. 1999 Dec;81(12):1662-70.",
+    "Caird MS, Flynn JM, Leung YL, Millman JE, D'Italia JG, Dormans JP. Factors distinguishing septic arthritis from transient synovitis of the hip in children. A prospective study. J Bone Joint Surg Am. 2006 Jun;88(6):1251-7.",
+    "Luhmann SJ, Jones A, Schootman M, Gordon JE, Schoenecker PL, Luhmann JD. Differentiation between septic arthritis and transient synovitis of the hip in children with clinical prediction algorithms. J Bone Joint Surg Am. 2004 May;86(5):956-62.",
+    "Del Beccaro MA, Champoux AN, Bockers T, Mendelman PM. Septic arthritis versus transient synovitis of the hip: the value of screening laboratory tests. Ann Emerg Med. 1992 Oct;21(10):1418-22."
+  ],
+  "formula": "Count number of predictors present: (1) Non-weight bearing + (2) Temperature >38.5°C + (3) ESR >40 mm/hr + (4) WBC >12,000 cells/mm³",
+  "notes": [
+    "Originally developed for pediatric patients with hip pain and suspected septic arthritis",
+    "Most validated in children aged 2-16 years presenting with hip symptoms",
+    "Should be used in conjunction with clinical judgment and other diagnostic modalities",
+    "C-reactive protein (CRP) >20 mg/L has been proposed as an additional predictor in some studies",
+    "Consider immediate arthrocentesis regardless of criteria if clinical suspicion is high",
+    "The algorithm assists in risk stratification but does not replace clinical assessment",
+    "Serial evaluation may be needed as clinical picture can evolve rapidly",
+    "Criteria may be less reliable in very young children (<2 years) or immunocompromised patients"
+  ]
+}

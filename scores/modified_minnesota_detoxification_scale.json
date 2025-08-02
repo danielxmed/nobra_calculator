@@ -1,0 +1,158 @@
+{
+  "id": "modified_minnesota_detoxification_scale",
+  "title": "Modified Minnesota Detoxification Scale (mMINDS)",
+  "description": "Scores symptoms for patients with alcohol withdrawal syndrome, particularly useful in critically ill patients and ICU settings",
+  "category": "psychiatry",
+  "version": "Modified (2015)",
+  "parameters": [
+    {
+      "name": "pulse",
+      "type": "integer",
+      "required": true,
+      "description": "Pulse rate in beats per minute",
+      "validation": {
+        "min": 40,
+        "max": 200
+      },
+      "unit": "bpm"
+    },
+    {
+      "name": "diastolic_bp",
+      "type": "integer",
+      "required": true,
+      "description": "Diastolic blood pressure in mmHg",
+      "validation": {
+        "min": 40,
+        "max": 150
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "tremor",
+      "type": "string",
+      "required": true,
+      "description": "Severity of tremor observed",
+      "options": ["absent", "slightly_visible", "moderate_with_arms_extended", "severe_without_extending_arms"],
+      "validation": {
+        "enum": ["absent", "slightly_visible", "moderate_with_arms_extended", "severe_without_extending_arms"]
+      }
+    },
+    {
+      "name": "sweat",
+      "type": "string",
+      "required": true,
+      "description": "Severity of diaphoresis observed",
+      "options": ["absent", "barely_moist_palms", "beads_visible", "drenching"],
+      "validation": {
+        "enum": ["absent", "barely_moist_palms", "beads_visible", "drenching"]
+      }
+    },
+    {
+      "name": "hallucinations",
+      "type": "string",
+      "required": true,
+      "description": "Presence and severity of hallucinations",
+      "options": ["absent", "mild_sporadic", "moderate_intermittent", "severe_continuous"],
+      "validation": {
+        "enum": ["absent", "mild_sporadic", "moderate_intermittent", "severe_continuous"]
+      }
+    },
+    {
+      "name": "agitation",
+      "type": "string",
+      "required": true,
+      "description": "Level of agitation using Richmond Agitation-Sedation Scale principles",
+      "options": ["normal_sedated", "somewhat_increased", "moderately_fidgety", "pacing_thrashing"],
+      "validation": {
+        "enum": ["normal_sedated", "somewhat_increased", "moderately_fidgety", "pacing_thrashing"]
+      }
+    },
+    {
+      "name": "orientation",
+      "type": "string",
+      "required": true,
+      "description": "Level of orientation to person, place, and time",
+      "options": ["oriented_x3", "oriented_x2", "oriented_x1", "disoriented"],
+      "validation": {
+        "enum": ["oriented_x3", "oriented_x2", "oriented_x1", "disoriented"]
+      }
+    },
+    {
+      "name": "delusions",
+      "type": "string",
+      "required": true,
+      "description": "Presence of delusions or inability to assess due to sedation",
+      "options": ["absent_unable_to_assess", "present"],
+      "validation": {
+        "enum": ["absent_unable_to_assess", "present"]
+      }
+    },
+    {
+      "name": "seizures",
+      "type": "string",
+      "required": true,
+      "description": "Active seizure activity at time of assessment",
+      "options": ["not_actively_seizing", "actively_seizing"],
+      "validation": {
+        "enum": ["not_actively_seizing", "actively_seizing"]
+      }
+    }
+  ],
+  "result": {
+    "name": "mminds_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Modified Minnesota Detoxification Scale score for alcohol withdrawal severity"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 10,
+        "stage": "Minimal Withdrawal",
+        "description": "Minimal to no withdrawal symptoms",
+        "interpretation": "Minimal alcohol withdrawal symptoms. Clinical observation may be sufficient. Consider symptom-triggered therapy."
+      },
+      {
+        "min": 11,
+        "max": 20,
+        "stage": "Mild Withdrawal",
+        "description": "Mild withdrawal symptoms",
+        "interpretation": "Mild alcohol withdrawal syndrome. Consider benzodiazepine therapy. Monitor closely for progression."
+      },
+      {
+        "min": 21,
+        "max": 30,
+        "stage": "Moderate Withdrawal",
+        "description": "Moderate withdrawal symptoms",
+        "interpretation": "Moderate alcohol withdrawal syndrome. Benzodiazepine therapy indicated. Consider ICU monitoring if score increasing."
+      },
+      {
+        "min": 31,
+        "max": 46,
+        "stage": "Severe Withdrawal",
+        "description": "Severe withdrawal symptoms",
+        "interpretation": "Severe alcohol withdrawal syndrome with high risk for delirium tremens. Aggressive benzodiazepine therapy required. ICU monitoring strongly recommended."
+      }
+    ]
+  },
+  "references": [
+    "Hack JB, Hoffmann RS, Nelson LS. Resistant alcohol withdrawal: does an unexpectedly large sedative requirement identify these patients early? J Med Toxicol. 2006 Jun;2(2):55-60. doi: 10.1007/BF03161175.",
+    "Awissi DK, Lebrun G, Fagnan M, Skrobik Y. Alcohol, nicotine, and iatrogenic withdrawals in the ICU. Crit Care Med. 2013 Sep;41(9 Suppl 1):S57-68. doi: 10.1097/CCM.0b013e3182a168d5.",
+    "DeCarolis DD, Rice KL, Ho L, Willenbring ML, Cassaro S. Symptom-driven lorazepam protocol for treatment of severe alcohol withdrawal delirium in the intensive care unit. Pharmacotherapy. 2007 Apr;27(4):510-8. doi: 10.1592/phco.27.4.510.",
+    "Foy A, March S, Drinkwater V. Use of an objective clinical scale in the assessment and management of alcohol withdrawal in a large general hospital. Alcohol Clin Exp Res. 1988 Jun;12(3):360-4. doi: 10.1111/j.1530-0277.1988.tb00208.x."
+  ],
+  "formula": "Sum of points from all 9 parameters: Pulse (0-2), DBP (0-2), Tremor (0-6), Sweat (0-6), Hallucinations (0-3), Agitation (0-9), Orientation (0-6), Delusions (0-6), Seizures (0-6). Range: 0-46 points.",
+  "notes": [
+    "Specifically designed for use in critically ill patients and ICU settings",
+    "Preferred over CIWA-Ar in patients who cannot provide subjective responses",
+    "If unable to assess a parameter due to over-sedation or mechanical ventilation, score = 0",
+    "Validated primarily in medical and surgical intensive care units",
+    "Associated with shorter ICU stays and reduced benzodiazepine use compared to CIWA-Ar",
+    "Helps guide symptom-triggered benzodiazepine therapy protocols",
+    "More objective assessment compared to subjective scales like CIWA-Ar",
+    "Scores ≥21 indicate moderate to severe withdrawal requiring aggressive treatment",
+    "Consider ICU monitoring for progressive increases in score or scores >20",
+    "Useful for monitoring treatment response and titrating benzodiazepine therapy"
+  ]
+}

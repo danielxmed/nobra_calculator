@@ -1,0 +1,100 @@
+{
+  "id": "mtoq_4",
+  "title": "Migraine Treatment Optimization Questionnaire-4 (mTOQ-4)",
+  "description": "Determines effectiveness of current migraine treatment plan to guide treatment optimization decisions",
+  "category": "neurology",
+  "version": "1.0",
+  "parameters": [
+    {
+      "name": "pain_free_2_hours",
+      "type": "string",
+      "required": true,
+      "description": "After taking your migraine medication, are you pain-free within 2 hours for most attacks?",
+      "options": ["never_rarely", "less_than_half", "half_or_more"],
+      "validation": {
+        "enum": ["never_rarely", "less_than_half", "half_or_more"]
+      }
+    },
+    {
+      "name": "relief_24_hours",
+      "type": "string",
+      "required": true,
+      "description": "Does 1 dose of your migraine medication usually relieve your headache and keep it away for at least 24 hours?",
+      "options": ["never_rarely", "less_than_half", "half_or_more"],
+      "validation": {
+        "enum": ["never_rarely", "less_than_half", "half_or_more"]
+      }
+    },
+    {
+      "name": "able_to_plan",
+      "type": "string",
+      "required": true,
+      "description": "Are you comfortable enough with your migraine medication to be able to plan your daily activities?",
+      "options": ["never_rarely", "less_than_half", "half_or_more"],
+      "validation": {
+        "enum": ["never_rarely", "less_than_half", "half_or_more"]
+      }
+    },
+    {
+      "name": "feel_in_control",
+      "type": "string",
+      "required": true,
+      "description": "After taking your migraine medication, do you feel in control of your migraines enough so that you feel you can return to normal function?",
+      "options": ["never_rarely", "less_than_half", "half_or_more"],
+      "validation": {
+        "enum": ["never_rarely", "less_than_half", "half_or_more"]
+      }
+    }
+  ],
+  "result": {
+    "name": "mtoq_4_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total mTOQ-4 score indicating treatment effectiveness"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Very Poor",
+        "description": "Very poor treatment efficacy",
+        "interpretation": "Current migraine treatment is ineffective. Strong recommendation to modify acute treatment strategy. Patient has 6.8% risk of progression to chronic migraine. Consider preventive therapy if not already prescribed."
+      },
+      {
+        "min": 1,
+        "max": 5,
+        "stage": "Poor",
+        "description": "Poor treatment efficacy",
+        "interpretation": "Current migraine treatment shows limited effectiveness. Recommend modifying acute treatment medication or dosing strategy. Patient has 4.4% risk of progression to chronic migraine. Consider preventive therapy."
+      },
+      {
+        "min": 6,
+        "max": 7,
+        "stage": "Moderate",
+        "description": "Moderate treatment efficacy",
+        "interpretation": "Current migraine treatment is moderately effective. May benefit from treatment optimization. Patient has 2.7% risk of progression to chronic migraine. Assess if further improvements are needed."
+      },
+      {
+        "min": 8,
+        "max": 8,
+        "stage": "Maximum",
+        "description": "Maximum treatment efficacy",
+        "interpretation": "Current migraine treatment is highly effective. Continue current treatment plan. Patient has only 1.9% risk of progression to chronic migraine. No changes recommended unless new issues arise."
+      }
+    ]
+  },
+  "references": [
+    "Lipton RB, Kolodner K, Bigal ME, Valade D, Láinez MJ, Pascual J, et al. Validity and reliability of the migraine-treatment optimization questionnaire. Cephalalgia. 2009 Jul;29(7):751-9. doi: 10.1111/j.1468-2982.2008.01786.x.",
+    "Lipton RB, Fanning KM, Serrano D, Reed ML, Cady R, Buse DC. Ineffective acute treatment of episodic migraine is associated with new-onset chronic migraine. Neurology. 2015 Feb 17;84(7):688-95. doi: 10.1212/WNL.0000000000001256.",
+    "Silberstein SD, Lipton RB, Dodick DW, Goadsby PJ, Freitag F, Mathew N, et al. Efficacy and safety of topiramate for the treatment of chronic migraine: a randomized, double-blind, placebo-controlled trial. Headache. 2007 Feb;47(2):170-80."
+  ],
+  "formula": "mTOQ-4 Score = Q1 + Q2 + Q3 + Q4 (where 0=never/rarely, 1=less than half the time, 2=half the time or more)",
+  "notes": [
+    "mTOQ-4 is a validated subset derived from the original mTOQ-6 questionnaire",
+    "Higher scores indicate better treatment optimization and lower risk of chronic migraine",
+    "Treatment modification should be considered for scores <8",
+    "The questionnaire assesses 4 key aspects: 2-hour pain freedom, 24-hour relief, ability to plan activities, and feeling in control",
+    "Should be reassessed periodically to monitor treatment effectiveness"
+  ]
+}

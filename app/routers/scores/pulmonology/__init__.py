@@ -23,6 +23,12 @@ from .fleischner_guidelines import router as fleischner_guidelines_router
 from .gap_index_ipf_mortality import router as gap_index_ipf_mortality_router
 from .geneva_score_revised_pe import router as geneva_score_revised_pe_router
 from .gold_copd_criteria import router as gold_copd_criteria_router
+from .horowitz_index import router as horowitz_index_router
+from .lights_criteria import router as lights_criteria_router
+from .manchester_score_prognosis_sclc import router as manchester_score_prognosis_sclc_router
+from .mmrc_dyspnea_scale import router as mmrc_dyspnea_scale_router
+from .mulbsta_score import router as mulbsta_score_router
+from .murray_score import router as murray_score_router
 
 # Create main specialty router
 router = APIRouter()
@@ -46,3 +52,9 @@ router.include_router(fleischner_guidelines_router)
 router.include_router(gap_index_ipf_mortality_router)
 router.include_router(geneva_score_revised_pe_router)
 router.include_router(gold_copd_criteria_router)
+router.include_router(horowitz_index_router)
+router.include_router(lights_criteria_router)
+router.include_router(manchester_score_prognosis_sclc_router)
+router.include_router(mmrc_dyspnea_scale_router)
+router.include_router(mulbsta_score_router)
+router.include_router(murray_score_router)

@@ -1,0 +1,185 @@
+{
+  "id": "psa_doubling_time_calculator",
+  "title": "PSA Doubling Time (PSADT) Calculator",
+  "description": "Calculates PSA doubling rate in prostate cancer patients with biochemical recurrence after treatment. This prognostic tool correlates with survival and helps guide treatment decisions for salvage therapy, imaging studies, and castration-resistant disease management. Uses longitudinal PSA measurements to determine the rate of PSA increase over time.",
+  "category": "oncology",
+  "version": "2019",
+  "parameters": [
+    {
+      "name": "psa_1",
+      "type": "float",
+      "required": true,
+      "description": "First PSA measurement in ng/mL",
+      "validation": {
+        "min": 0.01,
+        "max": 10000.0
+      },
+      "unit": "ng/mL"
+    },
+    {
+      "name": "days_1",
+      "type": "integer",
+      "required": true,
+      "description": "Days from baseline for first PSA measurement",
+      "validation": {
+        "min": 0,
+        "max": 10000
+      },
+      "unit": "days"
+    },
+    {
+      "name": "psa_2",
+      "type": "float",
+      "required": true,
+      "description": "Second PSA measurement in ng/mL",
+      "validation": {
+        "min": 0.01,
+        "max": 10000.0
+      },
+      "unit": "ng/mL"
+    },
+    {
+      "name": "days_2",
+      "type": "integer",
+      "required": true,
+      "description": "Days from baseline for second PSA measurement",
+      "validation": {
+        "min": 0,
+        "max": 10000
+      },
+      "unit": "days"
+    },
+    {
+      "name": "psa_3",
+      "type": "float",
+      "required": false,
+      "description": "Third PSA measurement in ng/mL (optional)",
+      "validation": {
+        "min": 0.01,
+        "max": 10000.0
+      },
+      "unit": "ng/mL"
+    },
+    {
+      "name": "days_3",
+      "type": "integer",
+      "required": false,
+      "description": "Days from baseline for third PSA measurement (optional)",
+      "validation": {
+        "min": 0,
+        "max": 10000
+      },
+      "unit": "days"
+    },
+    {
+      "name": "psa_4",
+      "type": "float",
+      "required": false,
+      "description": "Fourth PSA measurement in ng/mL (optional)",
+      "validation": {
+        "min": 0.01,
+        "max": 10000.0
+      },
+      "unit": "ng/mL"
+    },
+    {
+      "name": "days_4",
+      "type": "integer",
+      "required": false,
+      "description": "Days from baseline for fourth PSA measurement (optional)",
+      "validation": {
+        "min": 0,
+        "max": 10000
+      },
+      "unit": "days"
+    },
+    {
+      "name": "psa_5",
+      "type": "float",
+      "required": false,
+      "description": "Fifth PSA measurement in ng/mL (optional)",
+      "validation": {
+        "min": 0.01,
+        "max": 10000.0
+      },
+      "unit": "ng/mL"
+    },
+    {
+      "name": "days_5",
+      "type": "integer",
+      "required": false,
+      "description": "Days from baseline for fifth PSA measurement (optional)",
+      "validation": {
+        "min": 0,
+        "max": 10000
+      },
+      "unit": "days"
+    }
+  ],
+  "result": {
+    "name": "psa_doubling_time",
+    "type": "float",
+    "unit": "months",
+    "description": "Calculated PSA doubling time indicating rate of PSA increase and disease progression"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Very High Risk",
+        "description": "Rapid PSA progression",
+        "interpretation": "Very rapid PSA doubling indicates aggressive disease with high risk of metastasis and mortality. Urgent treatment consideration required."
+      },
+      {
+        "min": 3,
+        "max": 6,
+        "stage": "High Risk",
+        "description": "Fast PSA progression",
+        "interpretation": "Rapid PSA doubling associated with increased risk of metastasis and reduced survival. Consider aggressive treatment options."
+      },
+      {
+        "min": 6,
+        "max": 12,
+        "stage": "Intermediate Risk",
+        "description": "Moderate PSA progression",
+        "interpretation": "Moderate PSA doubling time. Intermediate risk for progression requiring close monitoring and treatment consideration."
+      },
+      {
+        "min": 12,
+        "max": 36,
+        "stage": "Low Risk",
+        "description": "Slow PSA progression",
+        "interpretation": "Slower PSA doubling associated with better prognosis and lower risk of aggressive disease progression."
+      },
+      {
+        "min": 36,
+        "max": 1000,
+        "stage": "Very Low Risk",
+        "description": "Very slow PSA progression",
+        "interpretation": "Very slow PSA doubling indicates indolent disease with excellent prognosis and low risk of clinically significant progression."
+      }
+    ]
+  },
+  "references": [
+    "D'Amico AV, Moul JW, Carroll PR, Sun L, Lubeck D, Chen MH. Surrogate end point for prostate cancer-specific mortality after radical prostatectomy or radiation therapy. J Natl Cancer Inst. 2003;95(18):1376-83. doi: 10.1093/jnci/djg043.",
+    "Freedland SJ, Humphreys EB, Mangold LA, Eisenberger M, Dorey FJ, Walsh PC, et al. Risk of prostate cancer-specific mortality following biochemical recurrence after radical prostatectomy. JAMA. 2005;294(4):433-9. doi: 10.1001/jama.294.4.433.",
+    "Pound CR, Partin AW, Eisenberger MA, Chan DW, Pearson JD, Walsh PC. Natural history of progression after PSA elevation following radical prostatectomy. JAMA. 1999;281(17):1591-7. doi: 10.1001/jama.281.17.1591.",
+    "Zhou P, Chen MH, McLeod D, Carroll PR, Moul JW, D'Amico AV. Predictors of prostate cancer-specific mortality after radical prostatectomy or radiation therapy. J Clin Oncol. 2005;23(28):6992-8. doi: 10.1200/JCO.2005.01.2906."
+  ],
+  "formula": "PSADT = ln(2) / slope, where slope is derived from linear regression of ln(PSA) vs time",
+  "notes": [
+    "Used only for patients with biochemical recurrence after treatment",
+    "Requires at least 2 PSA measurements, preferably 3 or more for accuracy",
+    "Not applicable for initial prostate cancer screening or untreated patients",
+    "PSA doubling time <6 months associated with worse prognosis",
+    "PSA doubling time >12 months associated with better survival",
+    "Should be used in conjunction with Gleason score and other clinical factors",
+    "Helps guide decisions for salvage therapy and imaging studies",
+    "Multiple measurement points improve calculation accuracy",
+    "Consider measurement errors and laboratory variability",
+    "Time intervals should be adequate to detect PSA changes (usually ≥3 months)",
+    "Used for monitoring castration-resistant prostate cancer progression",
+    "May guide timing of systemic therapy initiation"
+  ]
+}

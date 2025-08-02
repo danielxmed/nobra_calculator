@@ -1,0 +1,92 @@
+{
+  "id": "horowitz_index",
+  "title": "Horowitz Index for Lung Function (P/F Ratio)",
+  "description": "Assesses lung function, particularly in intubated patients, by calculating the ratio of arterial oxygen partial pressure to fraction of inspired oxygen. Also known as the P/F ratio or Carrico index.",
+  "category": "pulmonology",
+  "version": "1974",
+  "parameters": [
+    {
+      "name": "pao2",
+      "type": "float",
+      "required": true,
+      "description": "Partial pressure of oxygen in arterial blood from ABG",
+      "unit": "mmHg",
+      "validation": {
+        "min": 10,
+        "max": 700
+      }
+    },
+    {
+      "name": "fio2",
+      "type": "float",
+      "required": true,
+      "description": "Fraction of inspired oxygen (as decimal, not percentage). Room air = 0.21, 100% oxygen = 1.0",
+      "unit": "fraction",
+      "validation": {
+        "min": 0.21,
+        "max": 1.0
+      }
+    }
+  ],
+  "result": {
+    "name": "pf_ratio",
+    "type": "float",
+    "unit": "mmHg",
+    "description": "P/F ratio (Horowitz Index) indicating lung function status"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 400,
+        "max": 99999,
+        "stage": "Normal",
+        "description": "P/F ratio >400",
+        "interpretation": "Normal lung function. P/F ratio above 400 mmHg indicates adequate oxygenation."
+      },
+      {
+        "min": 300,
+        "max": 400,
+        "stage": "Mild Impairment",
+        "description": "P/F ratio 300-400",
+        "interpretation": "Mild oxygenation impairment. Not consistent with ARDS but indicates some degree of lung dysfunction."
+      },
+      {
+        "min": 200,
+        "max": 300,
+        "stage": "Mild ARDS",
+        "description": "P/F ratio 200-300",
+        "interpretation": "Mild ARDS according to Berlin criteria. Associated with approximately 27% mortality. Consider lung protective ventilation strategies."
+      },
+      {
+        "min": 100,
+        "max": 200,
+        "stage": "Moderate ARDS",
+        "description": "P/F ratio 100-200",
+        "interpretation": "Moderate ARDS according to Berlin criteria. Associated with approximately 32% mortality. Implement lung protective ventilation and consider prone positioning."
+      },
+      {
+        "min": 0,
+        "max": 100,
+        "stage": "Severe ARDS",
+        "description": "P/F ratio ≤100",
+        "interpretation": "Severe ARDS according to Berlin criteria. Associated with approximately 45% mortality. Consider advanced therapies including prone positioning, neuromuscular blockade, and ECMO evaluation."
+      }
+    ]
+  },
+  "references": [
+    "Horovitz JH, Carrico CJ, Shires GT. Pulmonary response to major injury. Arch Surg. 1974 Mar;108(3):349-55.",
+    "Bernard GR, Artigas A, Brigham KL, Carlet J, Falke K, Hudson L, et al. The American-European Consensus Conference on ARDS. Definitions, mechanisms, relevant outcomes, and clinical trial coordination. Am J Respir Crit Care Med. 1994 Mar;149(3 Pt 1):818-24.",
+    "ARDS Definition Task Force, Ranieri VM, Rubenfeld GD, Thompson BT, Ferguson ND, Caldwell E, et al. Acute respiratory distress syndrome: the Berlin Definition. JAMA. 2012 Jun 20;307(23):2526-33."
+  ],
+  "formula": "P/F Ratio = PaO2 / FiO2",
+  "notes": [
+    "Requires arterial blood gas (ABG) for accurate PaO2 measurement",
+    "FiO2 must be expressed as a fraction (e.g., 0.5 for 50%), not as a percentage",
+    "Normal P/F ratio at sea level is typically 400-500 mmHg",
+    "Cannot distinguish between hypoventilation and V/Q mismatch",
+    "Used in several severity scoring systems including SOFA, SAPS II, and SAPS III",
+    "The Berlin Definition requires PEEP ≥5 cm H2O for ARDS diagnosis",
+    "Consider altitude adjustment at elevations >1000 meters",
+    "Also known as the Horowitz Index or Carrico Index"
+  ]
+}

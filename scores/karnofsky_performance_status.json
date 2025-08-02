@@ -1,0 +1,44 @@
+{
+  "id": "karnofsky_performance_status",
+  "title": "Karnofsky Performance Status Scale",
+  "description": "Determines patient's ability to tolerate therapies in serious illness, specifically for chemotherapy. This validated functional status scale ranges from 100% (normal, no evidence of disease) to 0% (death) and correlates with treatment tolerance, survival, and quality of life in cancer patients.",
+  "category": "oncology",
+  "version": "1949_original",
+  "parameters": [
+    {
+      "name": "performance_status",
+      "type": "integer",
+      "required": true,
+      "description": "Karnofsky Performance Status percentage based on patient's functional capabilities and symptoms. Higher scores indicate better functional status and greater ability to tolerate treatment.",
+      "validation": {
+        "min": 0,
+        "max": 100,
+        "enum": [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+      },
+      "unit": "percentage"
+    }
+  ],
+  "result": {
+    "name": "functional_status",
+    "type": "string",
+    "unit": "category",
+    "description": "Functional status category and clinical interpretation based on Karnofsky score"
+  },
+  "references": [
+    "Karnofsky DA, Abelmann WH, Craver LF, Burchenal JH. The use of the nitrogen mustards in the palliative treatment of carcinoma. With particular reference to bronchogenic carcinoma. Cancer. 1948;1(4):634-656.",
+    "Karnofsky DA, Burchenal JH. The clinical evaluation of chemotherapeutic agents in cancer. In: MacLeod CM, editor. Evaluation of chemotherapeutic agents. New York: Columbia University Press; 1949. p. 196.",
+    "Schag CC, Heinrich RL, Ganz PA. Karnofsky performance status revisited reliability, validity, and guidelines. J Clin Oncol. 1984;2(3):187-193.",
+    "Yates JW, Chalmer B, McKegney FP. Evaluation of patients with advanced cancer using the Karnofsky performance status. Cancer. 1980;45(8):2220-2224."
+  ],
+  "formula": "Direct assessment using standardized 11-point scale (0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100%) based on functional capabilities",
+  "notes": [
+    "Originally developed in 1949 by David Karnofsky and colleagues for nitrogen mustard chemotherapy studies",
+    "Widely used in oncology for treatment eligibility, clinical trial enrollment, and prognosis assessment",
+    "Correlates with chemotherapy tolerance, survival outcomes, and quality of life measures",
+    "Higher scores (80-100%) generally indicate good performance status suitable for aggressive treatments",
+    "Lower scores (0-40%) may indicate need for palliative care or less intensive treatments",
+    "ECOG Performance Status (0-4 scale) is a simpler alternative but Karnofsky provides more granular assessment",
+    "Subject to interobserver variability; standardized assessment guidelines improve reliability",
+    "May lack sensitivity in elderly cancer patients where 80% score ECOG 0-1 despite comorbidities"
+  ]
+}

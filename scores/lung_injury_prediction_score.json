@@ -1,0 +1,229 @@
+{
+  "id": "lung_injury_prediction_score",
+  "title": "Lung Injury Prediction Score (LIPS)",
+  "description": "Identifies patients at high risk for developing acute lung injury (ALI)",
+  "category": "emergency",
+  "version": "2011",
+  "parameters": [
+    {
+      "name": "shock",
+      "type": "string",
+      "required": true,
+      "description": "Shock requiring vasopressors",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "aspiration",
+      "type": "string",
+      "required": true,
+      "description": "Aspiration (witnessed or strongly suspected)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "sepsis",
+      "type": "string",
+      "required": true,
+      "description": "Sepsis (systemic inflammatory response to infection)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "pneumonia",
+      "type": "string",
+      "required": true,
+      "description": "Pneumonia",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "pancreatitis",
+      "type": "string",
+      "required": true,
+      "description": "Pancreatitis",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "high_risk_surgery",
+      "type": "string",
+      "required": true,
+      "description": "High-risk surgery type",
+      "options": ["none", "orthopedic_spine", "acute_abdomen", "cardiac", "aortic_vascular", "emergency_surgery"],
+      "validation": {
+        "enum": ["none", "orthopedic_spine", "acute_abdomen", "cardiac", "aortic_vascular", "emergency_surgery"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "high_risk_trauma",
+      "type": "string",
+      "required": true,
+      "description": "High-risk trauma type",
+      "options": ["none", "traumatic_brain_injury", "smoke_inhalation", "near_drowning", "lung_contusion", "multiple_fractures"],
+      "validation": {
+        "enum": ["none", "traumatic_brain_injury", "smoke_inhalation", "near_drowning", "lung_contusion", "multiple_fractures"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "alcohol_abuse",
+      "type": "string",
+      "required": true,
+      "description": "Alcohol abuse",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "obesity",
+      "type": "string",
+      "required": true,
+      "description": "Obesity (BMI >30 kg/m²)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "hypoalbuminemia",
+      "type": "string",
+      "required": true,
+      "description": "Hypoalbuminemia (<3.5 g/dL)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "chemotherapy",
+      "type": "string",
+      "required": true,
+      "description": "Chemotherapy",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "fio2_over_35",
+      "type": "string",
+      "required": true,
+      "description": "FiO₂ >35% or >0.35",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "tachypnea",
+      "type": "string",
+      "required": true,
+      "description": "Tachypnea (respiratory rate >30/min)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "spo2_under_95",
+      "type": "string",
+      "required": true,
+      "description": "SpO₂ <95%",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "acidosis",
+      "type": "string",
+      "required": true,
+      "description": "Acidosis (pH <7.35)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "diabetes_with_sepsis",
+      "type": "string",
+      "required": true,
+      "description": "Diabetes mellitus (protective if sepsis present)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "lips_score",
+    "type": "float",
+    "unit": "points",
+    "description": "LIPS score (0-20+ points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 4,
+        "stage": "Low Risk",
+        "description": "Low risk for acute lung injury",
+        "interpretation": "Low risk for developing acute lung injury. Standard monitoring and care. ALI development unlikely but continue routine clinical assessment."
+      },
+      {
+        "min": 4.1,
+        "max": 20,
+        "stage": "High Risk",
+        "description": "High risk for acute lung injury",
+        "interpretation": "High risk for developing acute lung injury. Implement preventive strategies including lung-protective ventilation, conservative fluid management, and close monitoring."
+      }
+    ]
+  },
+  "references": [
+    "Gajic O, Dabbagh O, Park PK, Adesanya A, Chang SY, Hou P, et al. Early identification of patients at risk of acute lung injury: evaluation of lung injury prediction score in a multicenter cohort study. Am J Respir Crit Care Med. 2011 Feb 15;183(4):462-70. doi: 10.1164/rccm.201004-0549OC.",
+    "Kor DJ, Warner DO, Alsara A, Fernández-Pérez ER, Malinchoc M, Kashyap R, et al. Derivation and diagnostic accuracy of the surgical lung injury prediction model. Anesthesiology. 2011 Jul;115(1):117-28. doi: 10.1097/ALN.0b013e31821b5839.",
+    "Trillo-Alvarez C, Cartin-Ceba R, Kor DJ, Kojicic M, Kashyap R, Thakur S, et al. Acute lung injury prediction score: derivation and validation in a population-based sample. Eur Respir J. 2011 Mar;37(3):604-9. doi: 10.1183/09031936.00036810."
+  ],
+  "formula": "LIPS = Sum of predisposing conditions + high-risk surgery + high-risk trauma + risk modifiers. Shock (2), Aspiration (2), Sepsis (1), Pneumonia (1.5), Pancreatitis (1), Surgery (1-3.5), Trauma (1.5-2), Risk modifiers (1-2 each), Diabetes with sepsis (-1).",
+  "notes": [
+    "Developed to identify patients at risk for acute lung injury before mechanical ventilation",
+    "Validated in multicenter cohort studies with over 5,000 patients",
+    "Score >4 points identifies high-risk patients requiring preventive measures",
+    "Sensitivity 69%, specificity 78% for ALI development",
+    "Positive likelihood ratio 3.1, negative likelihood ratio 0.4",
+    "ALI typically develops within 2 days (median) of initial assessment",
+    "Emergency Department version (EDLIPS) also available with similar performance",
+    "Should be calculated within 24 hours of hospital admission or ICU transfer",
+    "Useful for enrollment in ALI prevention trials and clinical protocols",
+    "Does not replace clinical judgment but aids in risk stratification",
+    "Pancreatitis has lowest ALI risk (3%) while smoke inhalation has highest (26%)",
+    "Score helps guide implementation of lung-protective strategies early"
+  ]
+}

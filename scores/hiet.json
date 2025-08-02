@@ -1,0 +1,62 @@
+{
+  "id": "hiet",
+  "title": "High-dose Insulin Euglycemia Therapy (HIET)",
+  "description": "Calculates insulin dosing for calcium channel blocker or beta blocker overdose. Provides both initial bolus and continuous infusion doses, along with dextrose requirements to maintain euglycemia.",
+  "category": "toxicology",
+  "version": "2011",
+  "parameters": [
+    {
+      "name": "weight",
+      "type": "float",
+      "required": true,
+      "description": "Patient weight",
+      "validation": {
+        "min": 1,
+        "max": 500
+      },
+      "unit": "kg"
+    },
+    {
+      "name": "infusion_rate",
+      "type": "string",
+      "required": true,
+      "description": "Initial insulin infusion rate",
+      "options": ["0.5", "1.0"],
+      "validation": {
+        "enum": ["0.5", "1.0"]
+      }
+    }
+  ],
+  "result": {
+    "name": "hiet_protocol",
+    "type": "object",
+    "description": "Complete HIET dosing protocol"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 999,
+        "stage": "HIET Protocol",
+        "description": "Dosing calculated",
+        "interpretation": "Follow the calculated protocol with close monitoring. Check glucose every 30 minutes for 1-2 hours until stable. Monitor potassium hourly. Continue until hemodynamic improvement achieved."
+      }
+    ]
+  },
+  "references": [
+    "Holger JS, Stellpflug SJ, Cole JB, Harris CR, Engebretsen KM. High-dose insulin: a consecutive case series in toxin-induced cardiogenic shock. Clin Toxicol (Phila). 2011 Aug;49(7):653-8.",
+    "Greene SL, Gawarammana I, Wood DM, Jones AL, Dargan PI. Relative safety of hyperinsulinaemia/euglycaemia therapy in the management of calcium channel blocker overdose: a prospective observational study. Intensive Care Med. 2007 Nov;33(11):2019-24.",
+    "Engebretsen KM, Kaczmarek KM, Morgan J, Holger JS. High-dose insulin therapy in beta-blocker and calcium channel-blocker poisoning. Clin Toxicol (Phila). 2011 Apr;49(4):277-83."
+  ],
+  "formula": "Insulin Bolus = 1 unit/kg IV; Initial Infusion = 0.5-1 unit/kg/hr; Dextrose = 0.5 g/kg/hr",
+  "notes": [
+    "For calcium channel blocker or beta blocker-induced myocardial depression",
+    "Monitor for hypoglycemia and hypokalemia closely",
+    "Hypoglycemia can occur hours after insulin infusion stops",
+    "Concentrate insulin solutions to prevent fluid overload",
+    "May require up to 10 units/kg/hr in severe cases",
+    "Typical duration is 1-2 days, but may extend to 4 days",
+    "Maintain glucose between 110-250 mg/dL",
+    "Give dextrose 25-50g bolus if glucose <250 mg/dL"
+  ]
+}

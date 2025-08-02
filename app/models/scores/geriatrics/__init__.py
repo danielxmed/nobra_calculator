@@ -13,6 +13,7 @@ from .clinical_frailty_scale import ClinicalFrailtyScaleRequest, ClinicalFrailty
 from .cirs_g import CirsGRequest, CirsGResponse
 from .edmonton_symptom_assessment_system_revised import EdmontonSymptomAssessmentSystemRevisedRequest, EdmontonSymptomAssessmentSystemRevisedResponse
 from .g8_geriatric_screening_tool import G8GeriatricScreeningToolRequest, G8GeriatricScreeningToolResponse
+from .malnutrition_universal_screening_tool import MalnutritionUniversalScreeningToolRequest, MalnutritionUniversalScreeningToolResponse
 
 __all__ = [
     "AbbeyPainRequest",
@@ -37,4 +38,6 @@ __all__ = [
     "EdmontonSymptomAssessmentSystemRevisedResponse",
     "G8GeriatricScreeningToolRequest",
     "G8GeriatricScreeningToolResponse",
+    "MalnutritionUniversalScreeningToolRequest",
+    "MalnutritionUniversalScreeningToolResponse",
 ]

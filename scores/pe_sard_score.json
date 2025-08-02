@@ -1,0 +1,93 @@
+{
+  "id": "pe_sard_score",
+  "title": "Pulmonary Embolism Syncope-Anemia-Renal Dysfunction (PE-SARD) Score",
+  "description": "Estimates risk of early major bleeding in patients with acute pulmonary embolism (PE). This validated risk assessment tool helps clinicians identify PE patients at higher risk for bleeding complications within 30 days of diagnosis, assisting in treatment decisions and management planning.",
+  "category": "emergency",
+  "version": "2021",
+  "parameters": [
+    {
+      "name": "syncope",
+      "type": "string",
+      "required": true,
+      "description": "History of syncope at presentation or shortly before PE diagnosis",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "anemia",
+      "type": "string",
+      "required": true,
+      "description": "Anemia defined as hemoglobin level less than 12 g/dL",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "renal_dysfunction",
+      "type": "string",
+      "required": true,
+      "description": "Renal dysfunction defined as glomerular filtration rate (GFR) less than 60 mL/min/1.73m²",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "pe_sard_score",
+    "type": "float",
+    "unit": "points",
+    "description": "PE-SARD bleeding risk score determining early major bleeding risk category"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "Low bleeding risk",
+        "interpretation": "Low risk for early major bleeding (0.6% incidence within 30 days). Standard anticoagulation therapy is appropriate with routine monitoring. Consider outpatient management if other clinical factors permit."
+      },
+      {
+        "min": 1,
+        "max": 2.5,
+        "stage": "Intermediate Risk",
+        "description": "Intermediate bleeding risk",
+        "interpretation": "Intermediate risk for early major bleeding (1.5% incidence within 30 days). Consider more frequent monitoring and careful assessment of bleeding vs. thrombotic risk. May require modified anticoagulation approach or closer surveillance."
+      },
+      {
+        "min": 2.5,
+        "max": 5,
+        "stage": "High Risk",
+        "description": "High bleeding risk",
+        "interpretation": "High risk for early major bleeding (2.5% incidence within 30 days). Requires careful consideration of bleeding vs. thrombotic risk. Consider reduced-intensity anticoagulation, closer monitoring, or alternative treatment strategies in consultation with specialists."
+      }
+    ]
+  },
+  "references": [
+    "Barrios D, Rosa-Salazar V, Morillo R, Nieto R, Fernández-Golfín C, Zamorano JL, et al. An Original Risk Score to Predict Early Major Bleeding in Acute Pulmonary Embolism: The Syncope, Anemia, Renal Dysfunction (PE-SARD) Bleeding Score. Chest. 2021 Sep;160(3):992-1000. doi: 10.1016/j.chest.2021.04.063.",
+    "Lobo JL, Zorrilla V, Aizpuru F, Grau E, Jiménez D, Prandoni P, et al. External validation of the PE-SARD risk score for predicting early bleeding in acute pulmonary embolism in the RIETE Registry. Thromb Res. 2024 Mar;235:176-181. doi: 10.1016/j.thromres.2024.01.016.",
+    "Yamashita Y, Morimoto T, Amano H, Takase T, Hiramori S, Kim K, et al. External validation of the Pulmonary Embolism-Syncope, Anemia, and Renal Dysfunction bleeding score for early major bleeding in patients with acute pulmonary embolism: from the COMMAND VTE Registry-2. J Thromb Thrombolysis. 2024 Aug;58(2):357-365. doi: 10.1007/s11239-024-02988-4."
+  ],
+  "formula": "PE-SARD Score = 1.5×(if syncope) + 2.5×(if anemia Hgb <12 g/dL) + 1×(if renal dysfunction GFR <60 mL/min)",
+  "notes": [
+    "Simple 3-variable score for bleeding risk assessment in acute PE",
+    "Syncope contributes 1.5 points to the total score",
+    "Anemia (Hgb <12 g/dL) contributes 2.5 points - highest weighted factor",
+    "Renal dysfunction (GFR <60 mL/min/1.73m²) contributes 1 point",
+    "Score ranges from 0 to 5 points total",
+    "Low risk (0 points): 0.6% bleeding incidence at 30 days",
+    "Intermediate risk (1-2.5 points): 1.5% bleeding incidence at 30 days",
+    "High risk (>2.5 points): 2.5% bleeding incidence at 30 days",
+    "Externally validated in multiple large registries (RIETE, COMMAND VTE)",
+    "Better performance compared to existing bleeding scores in PE setting",
+    "Assists in shared decision-making for PE management",
+    "Should be used in conjunction with thrombotic risk assessment",
+    "Does not replace clinical judgment for individual patient assessment",
+    "Consider patient-specific factors not captured in the score",
+    "Useful for identifying patients requiring modified anticoagulation strategies"
+  ]
+}

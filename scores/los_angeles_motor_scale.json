@@ -1,0 +1,106 @@
+{
+  "id": "los_angeles_motor_scale",
+  "title": "Los Angeles Motor Scale (LAMS)",
+  "description": "Stratifies stroke severity in the field to identify patients with large vessel occlusion",
+  "category": "neurology",
+  "version": "2003",
+  "parameters": [
+    {
+      "name": "facial_droop",
+      "type": "string",
+      "required": true,
+      "description": "Presence and severity of facial droop or weakness",
+      "options": [
+        "absent",
+        "present"
+      ],
+      "validation": {
+        "enum": [
+          "absent",
+          "present"
+        ]
+      },
+      "unit": ""
+    },
+    {
+      "name": "arm_drift",
+      "type": "string",
+      "required": true,
+      "description": "Arm drift or fall when arms held extended for 10 seconds",
+      "options": [
+        "absent",
+        "drifts_down",
+        "falls_rapidly"
+      ],
+      "validation": {
+        "enum": [
+          "absent",
+          "drifts_down",
+          "falls_rapidly"
+        ]
+      },
+      "unit": ""
+    },
+    {
+      "name": "grip_strength",
+      "type": "string",
+      "required": true,
+      "description": "Hand grip strength assessment",
+      "options": [
+        "normal",
+        "weak_grip",
+        "no_grip"
+      ],
+      "validation": {
+        "enum": [
+          "normal",
+          "weak_grip",
+          "no_grip"
+        ]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "lams_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Los Angeles Motor Scale score (0-5 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Minor to Moderate Stroke",
+        "description": "LVO less likely",
+        "interpretation": "LVO less likely. Stroke is minor or moderate in severity, but may still benefit from acute treatment. Consider transport to nearest stroke-capable facility."
+      },
+      {
+        "min": 4,
+        "max": 5,
+        "stage": "Severe Stroke",
+        "description": "LVO likely",
+        "interpretation": "LVO likely. Stroke is severe and requires acute treatment. Transfer to stroke center with endovascular capabilities for possible mechanical thrombectomy."
+      }
+    ]
+  },
+  "references": [
+    "Llanes JN, Kidwell CS, Starkman S, Leary MC, Eckstein M, Saver JL. The Los Angeles Motor Scale (LAMS): a new measure to characterize stroke severity in the field. Prehosp Emerg Care. 2004 Jan-Mar;8(1):46-50. doi: 10.1080/312703002806.",
+    "Nazliel B, Starkman S, Liebeskind DS, Ovbiagele B, Kim D, Sanossian N, et al. A brief prehospital stroke severity scale identifies ischemic stroke patients harboring persisting large arterial occlusions. Stroke. 2008 Aug;39(8):2264-7. doi: 10.1161/STROKEAHA.107.508127.",
+    "Pérez de la Ossa N, Carrera D, Gorchs M, Querol M, Millán M, Gomis M, et al. Design and validation of a prehospital stroke scale to predict large arterial occlusion: the rapid arterial occlusion evaluation scale. Stroke. 2014 Jan;45(1):87-91. doi: 10.1161/STROKEAHA.113.003071."
+  ],
+  "formula": "LAMS score = Facial droop (0-1) + Arm drift (0-2) + Grip strength (0-2). Score ≥4 suggests large vessel occlusion (LVO) requiring endovascular intervention.",
+  "notes": [
+    "Designed for prehospital assessment by emergency medical services (EMS)",
+    "Correlates strongly with NIHSS (r = 0.75)",
+    "Sensitivity of 81% and specificity of 89% for predicting large vessel occlusion",
+    "Score ≥4 increases by 7-fold the likelihood of persisting large vessel occlusion",
+    "Should be used for field triage to guide transport destination",
+    "Not a substitute for comprehensive neurologic examination or full NIHSS",
+    "Helps identify patients who may benefit from direct transport to comprehensive stroke centers",
+    "Time-sensitive assessment - should be completed rapidly in the field",
+    "Validated for use by paramedics and emergency medical technicians",
+    "Originally derived from Los Angeles Prehospital Stroke Screen (LAPSS) motor components"
+  ]
+}

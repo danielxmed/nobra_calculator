@@ -1,0 +1,84 @@
+{
+  "id": "modified_recist",
+  "title": "Modified Response Evaluation Criteria in Solid Tumors (mRECIST)",
+  "description": "Assesses treatment response in hepatocellular carcinoma (HCC) patients based on viable tumor enhancement, specifically designed for patients receiving targeted therapies and locoregional treatments.",
+  "category": "oncology",
+  "version": "2010",
+  "parameters": [
+    {
+      "name": "baseline_sum_diameters",
+      "type": "float",
+      "required": true,
+      "description": "Sum of baseline diameters of viable (enhancing) target lesions in centimeters",
+      "validation": {
+        "min": 0.1,
+        "max": 50.0
+      },
+      "unit": "cm"
+    },
+    {
+      "name": "current_sum_diameters",
+      "type": "float", 
+      "required": true,
+      "description": "Sum of current diameters of viable (enhancing) target lesions in centimeters",
+      "validation": {
+        "min": 0.0,
+        "max": 50.0
+      },
+      "unit": "cm"
+    },
+    {
+      "name": "intratumoral_enhancement",
+      "type": "string",
+      "required": true,
+      "description": "Presence of intratumoral arterial enhancement in target lesions",
+      "options": ["present", "absent", "new_lesions"],
+      "validation": {
+        "enum": ["present", "absent", "new_lesions"]
+      }
+    }
+  ],
+  "result": {
+    "name": "mrecist_response",
+    "type": "string",
+    "unit": "response_category",
+    "description": "mRECIST response category based on viable tumor assessment"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "stage": "Complete Response",
+        "description": "Disappearance of arterial enhancement",
+        "interpretation": "Complete disappearance of any intratumoral arterial enhancement in all target lesions indicates excellent treatment response."
+      },
+      {
+        "stage": "Partial Response", 
+        "description": "≥30% decrease in viable tumor",
+        "interpretation": "At least 30% decrease in the sum of diameters of viable target lesions indicates good treatment response."
+      },
+      {
+        "stage": "Stable Disease",
+        "description": "Neither PR nor PD criteria met",
+        "interpretation": "Neither sufficient shrinkage to qualify for partial response nor sufficient increase to qualify for progressive disease."
+      },
+      {
+        "stage": "Progressive Disease",
+        "description": "≥20% increase in viable tumor", 
+        "interpretation": "At least 20% increase in the sum of diameters of viable target lesions or appearance of new lesions indicates treatment failure."
+      }
+    ]
+  },
+  "references": [
+    "Lencioni R, Llovet JM. Modified RECIST (mRECIST) assessment for hepatocellular carcinoma. Semin Liver Dis. 2010;30(1):52-60. doi: 10.1055/s-0030-1247132.",
+    "Forner A, Ayuso C, Varela M, et al. Evaluation of tumor response after locoregional therapies in hepatocellular carcinoma: are response evaluation criteria in solid tumors reliable? Cancer. 2009;115(3):616-23. doi: 10.1002/cncr.24050.",
+    "Edeline J, Boucher E, Rolland Y, et al. Comparison of tumor response by Response Evaluation Criteria in Solid Tumors (RECIST) and modified RECIST in patients treated with sorafenib for hepatocellular carcinoma. Cancer. 2012;118(1):147-56. doi: 10.1002/cncr.26255."
+  ],
+  "formula": "mRECIST Response = f(baseline_sum_diameters, current_sum_diameters, enhancement_status). Complete Response: disappearance of arterial enhancement. Partial Response: ≥30% decrease in viable tumor. Progressive Disease: ≥20% increase in viable tumor or new lesions. Stable Disease: neither PR nor PD criteria.",
+  "notes": [
+    "Target lesions must be ≥1.0 cm in diameter and show intratumoral arterial enhancement on CT or MRI",
+    "Viable tumor is defined as tissue showing uptake in arterial phase of contrast-enhanced imaging",
+    "European Association for the Study of the Liver (EASL) guidelines recommend evaluation 1 month after treatment",
+    "mRECIST is superior to standard RECIST 1.1 for HCC assessment, particularly with antiangiogenic drugs",
+    "Measurement should be performed on CT or MRI obtained in arterial phase when contrast is highest"
+  ]
+}

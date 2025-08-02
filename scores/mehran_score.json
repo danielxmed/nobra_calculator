@@ -1,0 +1,143 @@
+{
+  "id": "mehran_score",
+  "title": "Mehran Score for Post-PCI Contrast Nephropathy",
+  "description": "Predicts risk of contrast-induced nephropathy (CIN) after percutaneous coronary intervention (PCI). The score uses 8 clinical variables to stratify patients into risk categories and guide preventive strategies.",
+  "category": "cardiology",
+  "version": "2004",
+  "parameters": [
+    {
+      "name": "hypotension",
+      "type": "string",
+      "required": true,
+      "description": "Systolic blood pressure <80 mmHg for ≥1 hour requiring inotropic support or intra-aortic balloon pump within 24 hours of catheterization",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "intra_aortic_balloon_pump",
+      "type": "string",
+      "required": true,
+      "description": "Use of intra-aortic balloon pump (IABP)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "congestive_heart_failure",
+      "type": "string",
+      "required": true,
+      "description": "CHF class III/IV by New York Heart Association Classification and/or history of pulmonary edema",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "age_over_75",
+      "type": "string",
+      "required": true,
+      "description": "Age greater than 75 years",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "anemia",
+      "type": "string",
+      "required": true,
+      "description": "Baseline hematocrit <39% for men and <36% for women",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "diabetes",
+      "type": "string",
+      "required": true,
+      "description": "History of diabetes mellitus",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "contrast_volume_ml",
+      "type": "float",
+      "required": true,
+      "description": "Total volume of contrast media used (in mL)",
+      "validation": {
+        "min": 0,
+        "max": 1000
+      },
+      "unit": "mL"
+    },
+    {
+      "name": "egfr",
+      "type": "float",
+      "required": true,
+      "description": "Estimated glomerular filtration rate",
+      "validation": {
+        "min": 0,
+        "max": 200
+      },
+      "unit": "mL/min/1.73 m²"
+    }
+  ],
+  "result": {
+    "name": "mehran_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total Mehran score for contrast-induced nephropathy risk"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 5,
+        "stage": "Low Risk",
+        "description": "Low risk of CIN",
+        "interpretation": "7.5% risk of contrast-induced nephropathy. 0.04% risk of CIN requiring dialysis. Standard preventive measures recommended including adequate hydration."
+      },
+      {
+        "min": 6,
+        "max": 10,
+        "stage": "Moderate Risk",
+        "description": "Moderate risk of CIN",
+        "interpretation": "14.0% risk of contrast-induced nephropathy. 0.12% risk of CIN requiring dialysis. Consider enhanced preventive measures including N-acetylcysteine, sodium bicarbonate, and minimizing contrast volume."
+      },
+      {
+        "min": 11,
+        "max": 15,
+        "stage": "High Risk",
+        "description": "High risk of CIN",
+        "interpretation": "26.1% risk of contrast-induced nephropathy. 1.09% risk of CIN requiring dialysis. Aggressive preventive measures recommended. Consider alternative imaging if possible or minimize contrast volume with careful monitoring."
+      },
+      {
+        "min": 16,
+        "max": 999,
+        "stage": "Very High Risk",
+        "description": "Very high risk of CIN",
+        "interpretation": "57.4% risk of contrast-induced nephropathy. 12.6% risk of CIN requiring dialysis. Maximum preventive measures required. Strongly consider alternative imaging modalities if clinically appropriate. If PCI necessary, use minimal contrast with aggressive hydration and renal protection."
+      }
+    ]
+  },
+  "references": [
+    "Mehran R, Aymong ED, Nikolsky E, Lasic Z, Iakovou I, Fahy M, et al. A simple risk score for prediction of contrast-induced nephropathy after percutaneous coronary intervention: development and initial validation. J Am Coll Cardiol. 2004 Oct 6;44(7):1393-9. doi: 10.1016/j.jacc.2004.06.068.",
+    "Wi J, Ko YG, Kim JS, Kim BK, Choi D, Ha JW, et al. Impact of contrast-induced acute kidney injury with transient or persistent renal dysfunction on long-term outcomes of patients with acute myocardial infarction undergoing percutaneous coronary intervention. Heart. 2011 Nov;97(21):1753-7. doi: 10.1136/hrt.2010.218677.",
+    "Narula A, Mehran R, Weisz G, Dangas GD, Yu J, Généreux P, et al. Contrast-induced acute kidney injury after primary percutaneous coronary intervention: results from the HORIZONS-AMI substudy. Eur Heart J. 2014 Jun 14;35(23):1533-40. doi: 10.1093/eurheartj/ehu063."
+  ],
+  "formula": "Score = Hypotension (5 points) + IABP (5 points) + CHF (5 points) + Age >75 (4 points) + Anemia (3 points) + Diabetes (3 points) + (Contrast volume in mL / 100) + eGFR points (6 if <20, 4 if 20-39, 2 if 40-59, 0 if ≥60)",
+  "notes": [
+    "CIN is defined as an increase ≥0.5 mg/dL (or ≥25%) in serum creatinine at 48 hours post-PCI.",
+    "Should not be used in patients with pre-existing end-stage renal disease on dialysis.",
+    "Should not be used in patients with contrast exposure within 1 week of the index procedure.",
+    "The score has been validated with excellent calibration and discriminatory capacity (C-statistic >0.8).",
+    "Consider renal protective measures such as N-acetylcysteine and limiting contrast volume in high-risk patients.",
+    "Hypotension criteria requires both SBP <80 mmHg AND need for inotropic support or IABP."
+  ]
+}

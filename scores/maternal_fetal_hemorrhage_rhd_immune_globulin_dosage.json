@@ -1,0 +1,91 @@
+{
+  "id": "maternal_fetal_hemorrhage_rhd_immune_globulin_dosage",
+  "title": "Maternal-Fetal Hemorrhage Rh(D) Immune Globulin Dosage",
+  "description": "Calculates amount of RhIG (RhoGAM) to be administered to Rh-negative mother following maternal-fetal hemorrhage to prevent hemolytic disease of the fetus and newborn (HDFN). Essential for preventing maternal anti-D antibody formation when Rh-negative mother is exposed to Rh-positive fetal blood.",
+  "category": "hematology",
+  "version": "2018",
+  "parameters": [
+    {
+      "name": "maternal_blood_volume",
+      "type": "float",
+      "required": true,
+      "description": "Total maternal blood volume in mL. Can be estimated using Nadler's equation based on height and weight, or standard estimates (3,700-4,500 mL for average adult female)",
+      "validation": {
+        "min": 2000,
+        "max": 6000
+      },
+      "unit": "mL"
+    },
+    {
+      "name": "fetal_cell_percentage",
+      "type": "float",
+      "required": true,
+      "description": "Percentage of fetal cells in maternal bloodstream, determined by flow cytometry or Kleihauer-Betke test. Normal baseline is <0.1%, with clinical significance typically >0.3%",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "%"
+    }
+  ],
+  "result": {
+    "name": "rhig_dosage",
+    "type": "integer",
+    "unit": "vials",
+    "description": "Number of 300 μg RhIG vials required to prevent maternal alloimmunization"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Standard Dose",
+        "description": "Minimal maternal-fetal hemorrhage",
+        "interpretation": "Standard single dose of 300 μg RhIG (1 vial) is sufficient to prevent alloimmunization for up to 30 mL of fetal blood exposure. This covers the vast majority of routine deliveries and small hemorrhages."
+      },
+      {
+        "min": 2,
+        "max": 3,
+        "stage": "Moderate Hemorrhage",
+        "description": "Moderate maternal-fetal hemorrhage",
+        "interpretation": "Moderate hemorrhage requiring 2-3 vials of 300 μg RhIG. Each additional vial provides protection against an additional 30 mL of fetal blood. Close monitoring for adequate suppression of anti-D formation is recommended."
+      },
+      {
+        "min": 4,
+        "max": 10,
+        "stage": "Large Hemorrhage",
+        "description": "Large maternal-fetal hemorrhage",
+        "interpretation": "Significant hemorrhage requiring 4-10 vials of 300 μg RhIG. This represents a substantial fetal-maternal bleeding episode requiring aggressive prophylaxis. Consider follow-up Kleihauer-Betke testing to ensure adequate coverage and monitoring for maternal alloimmunization."
+      },
+      {
+        "min": 11,
+        "max": 50,
+        "stage": "Massive Hemorrhage",
+        "description": "Massive maternal-fetal hemorrhage",
+        "interpretation": "Massive hemorrhage requiring >10 vials of 300 μg RhIG. This is a rare but serious event requiring immediate obstetric consultation and hematology involvement. Consider intravenous RhIG administration if available, intensive monitoring, and potential need for exchange transfusion protocols."
+      }
+    ]
+  },
+  "references": [
+    "AABB Technical Manual, 18th edition. American Association of Blood Banks; 2014.",
+    "American College of Obstetricians and Gynecologists. Prevention of Rh D alloimmunization. ACOG Practice Bulletin No. 4. Washington, DC: American College of Obstetricians and Gynecologists; 1999.",
+    "Bowman JM. The prevention of Rh immunization. Transfus Med Rev. 1988;2(3):129-50. doi: 10.1016/s0887-7963(88)70067-9.",
+    "Queenan JT, Tomai TP, Ural SH, King JC. Deviation in amniotic fluid optical density at a wavelength of 450 nm in Rh-immunized pregnancies from 14 to 40 weeks' gestation: a proposal for clinical management. Am J Obstet Gynecol. 1993;168(5):1370-6. doi: 10.1016/0002-9378(93)90384-k."
+  ],
+  "formula": "Number of RhIG vials (300 μg) = (fetal_cell_percentage / 100) × maternal_blood_volume (mL) / 30 mL, rounded to nearest whole number + 1 additional vial for safety margin",
+  "notes": [
+    "Standard 300 μg dose protects against 30 mL of fetal whole blood (15 mL of fetal red cells)",
+    "Before 12 weeks gestation, mini-dose of 150 μg may be used (protects against 2.5 mL fetal RBCs)",
+    "After 12 weeks gestation, full 300 μg dose is recommended",
+    "Isoimmunization can occur with as little as 0.01-0.03 mL of fetal-maternal hemorrhage",
+    "Rounding rules: if decimal <0.5, round up to next whole number; if ≥0.5, round up and add 1",
+    "Flow cytometry is more accurate than Kleihauer-Betke test for fetal cell quantification",
+    "Maternal blood volume can be estimated via Nadler's formula: 0.3561 × height³(m) + 0.03308 × weight(kg) + 0.1833 L",
+    "Normal baseline fetal cell percentage is <0.1% in maternal circulation",
+    "Clinical significance typically begins at >0.3% fetal cells",
+    "RhIG should be administered within 72 hours of delivery for optimal efficacy",
+    "May be effective up to 28 days post-exposure but efficacy decreases with time",
+    "Monitor for signs of maternal alloimmunization with subsequent pregnancies",
+    "Consider follow-up testing to confirm adequate suppression of anti-D formation"
+  ]
+}

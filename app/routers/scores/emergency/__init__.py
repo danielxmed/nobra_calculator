@@ -6,6 +6,7 @@ from fastapi import APIRouter
 
 from .four_c_mortality import router as four_c_mortality_router
 from .ais_inhalation_injury import router as ais_inhalation_injury_router
+from .injury_severity_score import router as injury_severity_score_router
 from .emergency_medicine_coding_guide_2023 import router as emergency_medicine_coding_guide_2023_router
 from .abc_score import router as abc_score_router
 from .acep_ed_covid19_management_tool import router as acep_ed_covid19_management_tool_router
@@ -59,6 +60,12 @@ from .ottawa_ankle_rule import router as ottawa_ankle_rule_router
 from .ottawa_copd_risk_scale import router as ottawa_copd_risk_scale_router
 from .ottawa_heart_failure_risk_scale import router as ottawa_heart_failure_risk_scale_router
 from .ottawa_knee_rule import router as ottawa_knee_rule_router
+from .ottawa_sah_rule import router as ottawa_sah_rule_router
+from .psi_port_score import router as psi_port_score_router
+from .pesi import router as pesi_router
+from .pe_sard_score import router as pe_sard_score_router
+from .qsofa_score import router as qsofa_score_router
+from .qcsi import router as qcsi_router
 from .embed import router as embed_router
 from .ett_depth_tidal_volume import router as ett_depth_tidal_volume_router
 from .fast import router as fast_router
@@ -69,12 +76,46 @@ from .gupta_postoperative_pneumonia_risk import router as gupta_postoperative_pn
 from .gupta_postoperative_respiratory_failure_risk import router as gupta_postoperative_respiratory_failure_risk_router
 from .hacor_score import router as hacor_score_router
 from .hacks_impairment_index import router as hacks_impairment_index_router
+from .he_macs import router as he_macs_router
+from .hestia_criteria import router as hestia_criteria_router
+from .hark import router as hark_router
+from .hits_score import router as hits_score_router
+from .hope_score import router as hope_score_router
+from .intraoperative_fluid_dosing import router as intraoperative_fluid_dosing_router
+from .iv_drip_rate_calculator import router as iv_drip_rate_calculator_router
+from .kings_college_criteria_acetaminophen import router as kings_college_criteria_acetaminophen_router
+from .kocher_criteria_septic_arthritis import router as kocher_criteria_septic_arthritis_router
+from .lace_index_readmission import router as lace_index_readmission_router
+from .local_anesthetic_dosing_calculator import router as local_anesthetic_dosing_calculator_router
+from .lrinec_score import router as lrinec_score_router
+from .lung_injury_prediction_score import router as lung_injury_prediction_score_router
+from .macocha_score import router as macocha_score_router
+from .mangled_extremity_severity_score import router as mangled_extremity_severity_score_router
+from .mrc_icu_score import router as mrc_icu_score_router
+from .modified_early_warning_score import router as modified_early_warning_score_router
+from .modified_brain_injury_guideline import router as modified_brain_injury_guideline_router
+from .modified_mallampati_classification import router as modified_mallampati_classification_router
+from .modified_sofa import router as modified_sofa_router
+from .rose_rule import router as rose_rule_router
+from .roth_score import router as roth_score_router
+from .rox_index import router as rox_index_router
+from .rule_of_7s_lyme_meningitis import router as rule_of_7s_lyme_meningitis_router
+from .rule_of_nines import router as rule_of_nines_router
+from .tpa_alteplase_dosing_stroke import router as tpa_alteplase_dosing_stroke_router
+from .triss import router as triss_router
+from .winters_formula_metabolic_acidosis import router as winters_formula_metabolic_acidosis_router
+from .wisconsin_criteria_maxillofacial_trauma import router as wisconsin_criteria_maxillofacial_trauma_router
+from .woman_abuse_screening_tool import router as woman_abuse_screening_tool_router
+from .years_algorithm_pe import router as years_algorithm_pe_router
+from .utah_covid19_risk_score import router as utah_covid19_risk_score_router
+from .rems_score import router as rems_score_router
 
 # Create main specialty router
 router = APIRouter()
 
 router.include_router(four_c_mortality_router)
 router.include_router(ais_inhalation_injury_router)
+router.include_router(injury_severity_score_router)
 router.include_router(emergency_medicine_coding_guide_2023_router)
 router.include_router(abc_score_router)
 router.include_router(acep_ed_covid19_management_tool_router)
@@ -128,6 +169,12 @@ router.include_router(ottawa_ankle_rule_router)
 router.include_router(ottawa_copd_risk_scale_router)
 router.include_router(ottawa_heart_failure_risk_scale_router)
 router.include_router(ottawa_knee_rule_router)
+router.include_router(ottawa_sah_rule_router)
+router.include_router(psi_port_score_router)
+router.include_router(pesi_router)
+router.include_router(pe_sard_score_router)
+router.include_router(qsofa_score_router)
+router.include_router(qcsi_router)
 router.include_router(embed_router)
 router.include_router(ett_depth_tidal_volume_router)
 router.include_router(fast_router)
@@ -138,3 +185,36 @@ router.include_router(gupta_postoperative_pneumonia_risk_router)
 router.include_router(gupta_postoperative_respiratory_failure_risk_router)
 router.include_router(hacor_score_router)
 router.include_router(hacks_impairment_index_router)
+router.include_router(he_macs_router)
+router.include_router(hestia_criteria_router)
+router.include_router(hark_router)
+router.include_router(hits_score_router)
+router.include_router(hope_score_router)
+router.include_router(intraoperative_fluid_dosing_router)
+router.include_router(iv_drip_rate_calculator_router)
+router.include_router(kings_college_criteria_acetaminophen_router)
+router.include_router(kocher_criteria_septic_arthritis_router)
+router.include_router(lace_index_readmission_router)
+router.include_router(local_anesthetic_dosing_calculator_router)
+router.include_router(lrinec_score_router)
+router.include_router(lung_injury_prediction_score_router)
+router.include_router(macocha_score_router)
+router.include_router(mangled_extremity_severity_score_router)
+router.include_router(mrc_icu_score_router)
+router.include_router(modified_early_warning_score_router)
+router.include_router(modified_brain_injury_guideline_router)
+router.include_router(modified_mallampati_classification_router)
+router.include_router(modified_sofa_router)
+router.include_router(rose_rule_router)
+router.include_router(roth_score_router)
+router.include_router(rox_index_router)
+router.include_router(rule_of_7s_lyme_meningitis_router)
+router.include_router(rule_of_nines_router)
+router.include_router(tpa_alteplase_dosing_stroke_router)
+router.include_router(triss_router)
+router.include_router(winters_formula_metabolic_acidosis_router)
+router.include_router(wisconsin_criteria_maxillofacial_trauma_router)
+router.include_router(woman_abuse_screening_tool_router)
+router.include_router(years_algorithm_pe_router)
+router.include_router(utah_covid19_risk_score_router)
+router.include_router(rems_score_router)

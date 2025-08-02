@@ -1,0 +1,111 @@
+{
+  "id": "immune_related_adverse_events_gi_colitis",
+  "title": "Immune-Related Adverse Events for GI Toxicity - Colitis",
+  "description": "Grades severity of colitis secondary to immune checkpoint inhibitor therapy and provides management recommendations",
+  "category": "oncology",
+  "version": "2021",
+  "parameters": [
+    {
+      "name": "stool_increase_per_day",
+      "type": "integer",
+      "required": true,
+      "description": "Increase in number of stools per day over baseline",
+      "validation": {
+        "min": 0,
+        "max": 20
+      },
+      "unit": "stools/day"
+    },
+    {
+      "name": "incontinence_present",
+      "type": "string",
+      "required": true,
+      "description": "Presence of fecal incontinence",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "functional_impact",
+      "type": "string",
+      "required": true,
+      "description": "Impact on activities of daily living and self-care",
+      "validation": {
+        "enum": ["none_minimal", "moderate_limiting", "severe_limiting", "life_threatening"]
+      },
+      "options": ["none_minimal", "moderate_limiting", "severe_limiting", "life_threatening"]
+    },
+    {
+      "name": "hospitalization_indicated",
+      "type": "string",
+      "required": true,
+      "description": "Clinical indication for hospitalization",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    }
+  ],
+  "result": {
+    "name": "irae_grade",
+    "type": "integer",
+    "description": "irAE grade for GI colitis (1-4)",
+    "unit": "grade"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "grade": "Grade 1",
+        "description": "Mild - Increase of <4 stools per day over baseline",
+        "interpretation": "Continue immune checkpoint inhibitor (ICPi) with close monitoring. Monitor for dehydration and electrolyte imbalances. Recommend dietary changes (avoid high-fiber foods, dairy, caffeine). Expedited patient contact and follow-up. Consider supportive care with loperamide if needed. Educate patient on symptom monitoring."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "grade": "Grade 2",
+        "description": "Moderate - Increase of 4-6 stools per day over baseline",
+        "interpretation": "Hold ICPi until symptoms improve to grade ≤1. Consider corticosteroids (prednisone 1 mg/kg/day). Provide supportive care including loperamide, hydration, electrolyte monitoring. Obtain gastroenterology consultation. Consider endoscopy evaluation to assess mucosal inflammation. Monitor for progression to higher grade. Resume ICPi when symptoms controlled."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "grade": "Grade 3",
+        "description": "Severe - Increase of ≥7 stools per day, incontinence, limiting self-care",
+        "interpretation": "Consider permanently discontinuing CTLA-4 agents. Administer corticosteroids (prednisone 1-2 mg/kg/day). Consider hospitalization for severe symptoms or complications. Urgent gastroenterology consultation required. Consider IV corticosteroids or infliximab if steroid-refractory. Monitor for complications (perforation, bleeding). Aggressive supportive care."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "grade": "Grade 4",
+        "description": "Life-threatening - Life-threatening consequences, urgent intervention required",
+        "interpretation": "Permanently discontinue ICPi treatment. Immediate hospitalization required. High-dose IV corticosteroids (methylprednisolone 1-2 mg/kg/day). Consider early infliximab treatment (5 mg/kg) if steroid-refractory within 3-5 days. Urgent gastroenterology and surgical consultation. Monitor for perforation, bleeding, sepsis. Intensive supportive care with fluid resuscitation."
+      }
+    ]
+  },
+  "references": [
+    "Brahmer JR, Lacchetti C, Schneider BJ, Atkins MB, Brassil KJ, Caterino JM, et al. Management of Immune-Related Adverse Events in Patients Treated With Immune Checkpoint Inhibitor Therapy: American Society of Clinical Oncology Clinical Practice Guideline. J Clin Oncol. 2018 Jun 10;36(17):1714-1768. doi: 10.1200/JCO.2017.77.6385.",
+    "Thompson JA, Schneider BJ, Brahmer J, Andrews S, Armand P, Bhatia S, et al. NCCN Guidelines Insights: Management of Immunotherapy-Related Toxicities, Version 1.2020. J Natl Compr Canc Netw. 2020 Mar 1;18(3):230-241. doi: 10.6004/jnccn.2020.0012.",
+    "Wang DY, Salem JE, Cohen JV, Chandra S, Menzer C, Ye F, et al. Fatal Toxic Effects Associated With Immune Checkpoint Inhibitors: A Systematic Review and Meta-analysis. JAMA Oncol. 2018 Dec 1;4(12):1721-1728. doi: 10.1001/jamaoncol.2018.3923.",
+    "Gupta A, De Felice KM, Loftus EV Jr, Khanna S. Systematic review: colitis associated with anti-CTLA-4 therapy. Aliment Pharmacol Ther. 2015 Aug;42(4):406-17. doi: 10.1111/apt.13281."
+  ],
+  "formula": "Grading based on stool frequency increase over baseline, presence of incontinence, functional impact, and hospitalization needs: Grade 1 (<4 stools/day increase), Grade 2 (4-6 stools/day increase), Grade 3 (≥7 stools/day increase, incontinence, limiting self-care), Grade 4 (life-threatening consequences)",
+  "notes": [
+    "Based on Common Terminology Criteria for Adverse Events (CTCAE) Version 5.0",
+    "Most frequently occurs 5-10 weeks after ICPi treatment initiation",
+    "More common with anti-CTLA-4 agents (ipilimumab) than anti-PD-1/PD-L1",
+    "Grade 2+ requires holding ICPi and gastroenterology consultation",
+    "Corticosteroids are first-line treatment for grade 2-4 colitis",
+    "Infliximab considered for steroid-refractory cases (avoid if perforation risk)",
+    "CTLA-4 agents should be permanently discontinued for grade 3-4 colitis",
+    "Anti-PD-1/PD-L1 agents may be resumed after grade 2-3 resolution",
+    "Monitor for complications: perforation, bleeding, sepsis, toxic megacolon",
+    "Colonoscopy helpful for diagnosis and severity assessment",
+    "Stool studies should exclude infectious causes (C. diff, CMV, parasites)",
+    "Dietary modifications: avoid high-fiber foods, dairy, caffeine, alcohol",
+    "Supportive care includes hydration, electrolyte monitoring, nutritional support",
+    "Mortality rate up to 1-2% for severe cases, mainly from perforation/sepsis"
+  ]
+}

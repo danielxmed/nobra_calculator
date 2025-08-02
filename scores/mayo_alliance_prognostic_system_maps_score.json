@@ -1,0 +1,114 @@
+{
+  "id": "mayo_alliance_prognostic_system_maps_score",
+  "title": "Mayo Alliance Prognostic System (MAPS) Score",
+  "description": "Assesses prognosis of systemic mastocytosis using clinical and molecular risk factors. Developed at Mayo Clinic to provide contemporary risk stratification for patients with systemic mastocytosis, incorporating both clinical parameters and molecular genetic information for accurate survival prediction.",
+  "category": "hematology",
+  "version": "2018",
+  "parameters": [
+    {
+      "name": "sm_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of systemic mastocytosis according to WHO classification. Indolent SM (ISM) and smoldering SM (SSM) have better prognosis than advanced SM subtypes",
+      "validation": {
+        "enum": ["indolent_smoldering_sm", "advanced_sm"]
+      },
+      "options": ["indolent_smoldering_sm", "advanced_sm"]
+    },
+    {
+      "name": "patient_age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years. Age >60 years is associated with worse prognosis in systemic mastocytosis",
+      "validation": {
+        "min": 18,
+        "max": 100
+      },
+      "unit": "years"
+    },
+    {
+      "name": "platelet_count",
+      "type": "float",
+      "required": true,
+      "description": "Platelet count in ×10⁹/L. Thrombocytopenia (<150 ×10⁹/L) is an adverse prognostic factor associated with advanced disease",
+      "validation": {
+        "min": 10,
+        "max": 1000
+      },
+      "unit": "×10⁹/L"
+    },
+    {
+      "name": "serum_alp",
+      "type": "string",
+      "required": true,
+      "description": "Serum alkaline phosphatase level relative to normal range. Elevated ALP indicates possible liver involvement or bone disease in systemic mastocytosis",
+      "validation": {
+        "enum": ["normal", "elevated"]
+      },
+      "options": ["normal", "elevated"]
+    },
+    {
+      "name": "adverse_mutations",
+      "type": "string",
+      "required": true,
+      "description": "Presence of adverse mutations including ASXL1, RUNX1, and NRAS. These mutations are associated with poor prognosis and advanced disease progression",
+      "validation": {
+        "enum": ["absent", "present"]
+      },
+      "options": ["absent", "present"]
+    }
+  ],
+  "result": {
+    "name": "maps_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "MAPS score ranging from 0-6 points for risk stratification of systemic mastocytosis"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Low Risk",
+        "description": "Excellent prognosis",
+        "interpretation": "MAPS score ≤2 indicates low risk systemic mastocytosis with excellent prognosis. Median survival is 198 months (16.5 years) with 5-year survival rate approaching 99%. These patients typically have indolent or smoldering disease with minimal adverse features. Standard monitoring and supportive care are usually sufficient, with treatment reserved for symptomatic disease or disease progression."
+      },
+      {
+        "min": 3,
+        "max": 4,
+        "stage": "Intermediate Risk",
+        "description": "Intermediate prognosis",
+        "interpretation": "MAPS score 3-4 indicates intermediate risk systemic mastocytosis with variable prognosis. Median survival ranges from 36-85 months (3-7 years) depending on specific risk factors. These patients require closer monitoring for disease progression and may benefit from earlier intervention. Consider treatment for symptomatic disease and regular assessment of disease status with appropriate supportive measures."
+      },
+      {
+        "min": 5,
+        "max": 6,
+        "stage": "High Risk",
+        "description": "Poor prognosis",
+        "interpretation": "MAPS score ≥5 indicates high risk systemic mastocytosis with poor prognosis. Median survival is approximately 12 months with 5-year survival rate of only 4-24%. These patients typically have advanced systemic mastocytosis with multiple adverse features. Aggressive treatment should be considered, including targeted therapies, cytoreductive treatment, or enrollment in clinical trials. Palliative care consultation may be appropriate."
+      }
+    ]
+  },
+  "references": [
+    "Pardanani A, Reichard KK, Zblewski D, Abdelrahman RA, Wassie EA, Koschmann J, et al. Mayo alliance prognostic system for mastocytosis: clinical and hybrid clinical-molecular models. Blood Adv. 2018 Nov 27;2(21):2964-2975. doi: 10.1182/bloodadvances.2018024768.",
+    "Valent P, Sotlar K, Blatt K, Hartmann K, Reiter A, Sadovnik I, et al. Proposed diagnostic algorithm for patients with suspected mastocytosis: a proposal of the European Competence Network on Mastocytosis. Allergy. 2014 Oct;69(10):1267-74. doi: 10.1111/all.12436.",
+    "Sperr WR, Kundi M, Alvarez-Twose I, van Anrooij B, Oude Elberink JN, Gorska A, et al. International prognostic scoring system for mastocytosis (IPSM): a retrospective cohort study. Lancet Haematol. 2019 Nov;6(11):e638-e649. doi: 10.1016/S2352-3026(19)30166-8.",
+    "Arber DA, Orazi A, Hasserjian R, Thiele J, Borowitz MJ, Le Beau MM, et al. The 2016 revision to the World Health Organization classification of myeloid neoplasms and acute leukemia. Blood. 2016 May 19;127(20):2391-405. doi: 10.1182/blood-2016-03-643544."
+  ],
+  "formula": "MAPS Score = SM Type points + Age points + Platelet points + ALP points + Adverse mutations points. Maximum score 6 points (Advanced SM: 2 + Age >60: 1 + Platelets <150: 1 + Elevated ALP: 1 + Adverse mutations: 1)",
+  "notes": [
+    "Developed from analysis of 580 patients at Mayo Clinic between 1968-2015",
+    "Two models available: clinical only and hybrid clinical-molecular model",
+    "Risk factors are directly and proportionally correlated with survival",
+    "Score of 0-1 associated with median survival not reached and 99% 5-year survival",
+    "Advanced SM includes aggressive SM, SM with associated hematologic neoplasm, and mast cell leukemia",
+    "Adverse mutations include ASXL1, RUNX1, and NRAS variants",
+    "Serum alkaline phosphatase elevation may indicate liver or bone involvement",
+    "Thrombocytopenia threshold of 150 ×10⁹/L based on WHO criteria",
+    "Age >60 years represents decreased physiologic reserve and worse outcomes",
+    "Model validated in independent cohorts with excellent discrimination",
+    "Should be used in conjunction with WHO classification and clinical assessment",
+    "Molecular testing enhances prognostic accuracy when available",
+    "Regular reassessment recommended as disease status may change over time"
+  ]
+}

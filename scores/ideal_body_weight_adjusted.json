@@ -1,0 +1,77 @@
+{
+  "id": "ideal_body_weight_adjusted",
+  "title": "Ideal Body Weight and Adjusted Body Weight",
+  "description": "Calculates ideal body weight using the Devine formula and adjusted body weight for clinical use, particularly medication dosing and physiological calculations",
+  "category": "general",
+  "version": "1974",
+  "parameters": [
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient sex",
+      "validation": {
+        "enum": ["male", "female"]
+      },
+      "options": ["male", "female"]
+    },
+    {
+      "name": "height_inches",
+      "type": "float",
+      "required": true,
+      "description": "Patient height in inches",
+      "validation": {
+        "min": 48.0,
+        "max": 84.0
+      },
+      "unit": "inches"
+    },
+    {
+      "name": "actual_weight_kg",
+      "type": "float",
+      "required": false,
+      "description": "Patient's actual body weight in kg (optional, needed for adjusted body weight calculation)",
+      "validation": {
+        "min": 20.0,
+        "max": 300.0
+      },
+      "unit": "kg"
+    }
+  ],
+  "result": {
+    "name": "body_weights",
+    "type": "object",
+    "description": "Calculated ideal body weight and adjusted body weight if actual weight provided",
+    "unit": "kg"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "category": "Normal Height",
+        "description": "≥60 inches (5 feet)",
+        "interpretation": "Standard Devine formula applies for ideal body weight calculation"
+      },
+      {
+        "category": "Short Stature",
+        "description": "<60 inches (5 feet)",
+        "interpretation": "Consider subtracting 2-5 lbs per inch below 60 inches from calculated ideal body weight"
+      }
+    ]
+  },
+  "references": [
+    "Devine BJ. Gentamicin therapy. Drug Intell Clin Pharm. 1974;8:650-655",
+    "Pai MP, Paloucek FP. The origin of the \"ideal\" body weight equations. Ann Pharmacother. 2000 Sep;34(9):1066-9. doi: 10.1345/aph.19381"
+  ],
+  "formula": "Men: IBW = 50 kg + 2.3 kg × (height in inches - 60). Women: IBW = 45.5 kg + 2.3 kg × (height in inches - 60). Adjusted Body Weight = IBW + 0.4 × (actual weight - IBW)",
+  "notes": [
+    "Primarily developed for medication dosing calculations",
+    "Generally applicable for people ≥60 inches (5 feet) tall",
+    "For patients under 5 feet, consider subtracting 2-5 lbs for each inch below 60 inches",
+    "Adjusted body weight is useful for overweight/obese patients",
+    "Confirm medication dosing recommendations with pharmacy",
+    "Some medications use ideal body weight, others use actual body weight",
+    "Only an approximation - clinical judgment should be applied",
+    "Useful for calculating tidal volume in mechanical ventilation",
+    "Widely used in critical care, emergency medicine, and pulmonology"
+  ]
+}

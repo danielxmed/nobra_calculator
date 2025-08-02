@@ -1,0 +1,90 @@
+{
+  "id": "subtle_anterior_stemi_4_variable",
+  "title": "Subtle Anterior STEMI Calculator (4-Variable)",
+  "description": "Differentiates normal variant ST elevation (benign early repolarization) from anterior STEMI in patients with chest pain and non-diagnostic ECG changes. This sensitive tool helps identify patients with subtle anterior wall MI who may benefit from urgent percutaneous coronary intervention.",
+  "category": "cardiology",
+  "version": "2017",
+  "parameters": [
+    {
+      "name": "qtc_interval",
+      "type": "float",
+      "required": true,
+      "description": "Bazett-corrected QT interval measured on ECG",
+      "unit": "ms",
+      "validation": {
+        "min": 300,
+        "max": 700
+      }
+    },
+    {
+      "name": "qrs_amplitude_v2",
+      "type": "float",
+      "required": true,
+      "description": "QRS amplitude (height) in lead V2 measured from baseline to peak of R wave",
+      "unit": "mm",
+      "validation": {
+        "min": 0,
+        "max": 50
+      }
+    },
+    {
+      "name": "r_wave_amplitude_v4",
+      "type": "float",
+      "required": true,
+      "description": "R wave amplitude (height) in lead V4 measured from baseline to peak of R wave",
+      "unit": "mm",
+      "validation": {
+        "min": 0,
+        "max": 50
+      }
+    },
+    {
+      "name": "st_elevation_v3",
+      "type": "float",
+      "required": true,
+      "description": "ST segment elevation measured 60 ms after the J point in lead V3",
+      "unit": "mm",
+      "validation": {
+        "min": 0,
+        "max": 10
+      }
+    }
+  ],
+  "result": {
+    "name": "score",
+    "type": "float",
+    "unit": "points",
+    "description": "Calculated score for subtle anterior STEMI probability"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 18.2,
+        "stage": "Benign Early Repolarization",
+        "description": "Low probability of anterior STEMI",
+        "interpretation": "Score <18.2 suggests benign early repolarization rather than acute coronary occlusion. Clinical correlation and serial ECGs recommended if symptoms persist."
+      },
+      {
+        "min": 18.2,
+        "max": 100,
+        "stage": "Likely Anterior STEMI",
+        "description": "High probability of anterior STEMI",
+        "interpretation": "Score ≥18.2 indicates likely anterior STEMI with probable LAD occlusion. Consider urgent cardiology consultation and cardiac catheterization. Sensitivity 83.3%, specificity 87.7%."
+      }
+    ]
+  },
+  "references": [
+    "Driver BE, Khalil A, Henry T, Kazmi F, Adil A, Smith SW. A new 4-variable formula to differentiate normal variant ST segment elevation in V2-V4 (early repolarization) from subtle left anterior descending coronary occlusion – Adding QRS amplitude of V2 improves the model. J Electrocardiol. 2017 Nov-Dec;50(6):836-843. doi: 10.1016/j.jelectrocard.2017.08.005.",
+    "Smith SW, Khalil A, Henry TD, Rosas M, Chang RJ, Hocken C, et al. Electrocardiographic differentiation of early repolarization from subtle anterior ST-elevation myocardial infarction. Ann Emerg Med. 2012 Jul;60(1):45-56.e2. doi: 10.1016/j.annemergmed.2012.02.015."
+  ],
+  "formula": "Score = 0.052 × (QTc in ms) - 0.151 × (QRS amplitude V2 in mm) - 0.268 × (R wave amplitude V4 in mm) + 1.062 × (ST elevation V3 in mm)",
+  "notes": [
+    "Only use if ECG shows ≥1 mm ST elevation in ≥1 of leads V2-V4",
+    "Exclude if ECG shows non-concave STE, inferior reciprocal changes, anterior ST depression, Q waves in V2-V4, or T wave inversion in V2-V6",
+    "QTc should be measured using Bazett's formula: QTc = QT / √RR",
+    "ST elevation should be measured 60 ms after the J point, not at the J point itself",
+    "This 4-variable version is more sensitive than the original 3-variable formula",
+    "Clinical correlation is essential - if STEMI is still suspected despite negative score, proceed with caution and consider serial ECGs"
+  ]
+}

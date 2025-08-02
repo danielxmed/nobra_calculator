@@ -1,0 +1,79 @@
+{
+  "id": "hepatic_encephalopathy_grades",
+  "title": "Hepatic Encephalopathy Grades/Stages (West Haven Criteria)",
+  "description": "Defines criteria for the stages of hepatic encephalopathy based on West Haven Criteria. This semi-quantitative grading system assesses mental state based on changes in consciousness, intellectual function, behavior, and neuromuscular abnormalities.",
+  "category": "gastroenterology",
+  "version": "2014",
+  "parameters": [
+    {
+      "name": "clinical_features",
+      "type": "string",
+      "required": true,
+      "description": "Clinical presentation of the patient",
+      "options": [
+        "grade_0",
+        "grade_1",
+        "grade_2",
+        "grade_3",
+        "grade_4"
+      ],
+      "validation": {
+        "enum": ["grade_0", "grade_1", "grade_2", "grade_3", "grade_4"]
+      }
+    }
+  ],
+  "result": {
+    "name": "hepatic_encephalopathy_grade",
+    "type": "string",
+    "unit": "grade",
+    "description": "West Haven Grade of hepatic encephalopathy"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "value": "grade_0",
+        "stage": "Grade 0 (Minimal HE)",
+        "description": "Minimal hepatic encephalopathy",
+        "interpretation": "No clinically evident changes in personality or behavior. Impaired psychometric or neuropsychological tests. No asterixis. Previously known as subclinical hepatic encephalopathy. Patients appear normal but have subtle cognitive deficits detectable only by specialized testing."
+      },
+      {
+        "value": "grade_1",
+        "stage": "Grade 1 (Covert HE)",
+        "description": "Changes in behavior with minimal change in level of consciousness",
+        "interpretation": "Trivial lack of awareness, euphoria or anxiety, shortened attention span, impaired performance of addition or subtraction. Mild asterixis or tremor may be present. Sleep-wake cycle may be reversed. This stage is often only noticed by family members."
+      },
+      {
+        "value": "grade_2",
+        "stage": "Grade 2 (Overt HE)",
+        "description": "Gross disorientation, drowsiness, possibly asterixis, inappropriate behavior",
+        "interpretation": "Lethargy or apathy, minimal disorientation for time or place, subtle personality change, inappropriate behavior, impaired performance of subtraction. Obvious asterixis. Patient is drowsy but arousable. This is the first stage clearly identifiable on clinical examination."
+      },
+      {
+        "value": "grade_3",
+        "stage": "Grade 3 (Overt HE)",
+        "description": "Marked confusion, incoherent speech, sleeping most of the time but arousable to vocal stimuli",
+        "interpretation": "Somnolence to semi-stupor but responsive to verbal stimuli, confusion, gross disorientation. Patient cannot perform mental tasks, disorientation to time and place, marked confusion, amnesia, occasional fits of rage, speech is incomprehensible. Muscular rigidity and clonus may be present."
+      },
+      {
+        "value": "grade_4",
+        "stage": "Grade 4 (Overt HE)",
+        "description": "Comatose, unresponsive to pain; decorticate or decerebrate posturing",
+        "interpretation": "Coma with or without response to painful stimuli. No personality or behavioral changes can be assessed. Decerebrate or decorticate posturing may be present. Pupils may be dilated. This represents complete loss of consciousness."
+      }
+    ]
+  },
+  "references": [
+    "Vilstrup H, Amodio P, Bajaj J, Cordoba J, Ferenci P, Mullen KD, et al.; American Association for the Study of Liver Diseases; European Association for the Study of the Liver. Hepatic encephalopathy in chronic liver disease: 2014 practice guideline by the American Association for the Study of Liver Diseases and the European Association for the Study of the Liver. J Hepatol. 2014 Sep;61(3):642-59.",
+    "European Association for the Study of the Liver. EASL Clinical Practice Guidelines on the management of hepatic encephalopathy. J Hepatol. 2022 Oct;77(3):807-824.",
+    "Ferenci P, Lockwood A, Mullen K, Tarter R, Weissenborn K, Blei AT. Hepatic encephalopathy--definition, nomenclature, diagnosis, and quantification: final report of the working party at the 11th World Congresses of Gastroenterology, Vienna, 1998. Hepatology. 2002 Mar;35(3):716-21."
+  ],
+  "formula": "Clinical assessment based on mental status, neuromuscular function, and level of consciousness",
+  "notes": [
+    "West Haven Criteria is the most widely used classification system for hepatic encephalopathy",
+    "Grades 0-1 are considered 'Covert HE' while Grades 2-4 are 'Overt HE'",
+    "Grade 0 (Minimal HE) requires specialized psychometric testing for diagnosis",
+    "Asterixis (flapping tremor) is typically absent in Grade 0, mild in Grade 1, and obvious in Grade 2",
+    "Always exclude other causes of altered mental status before diagnosing hepatic encephalopathy",
+    "In acute liver failure, cerebral edema risk increases with grade: ~25-35% in Grade 3, ~75% in Grade 4"
+  ]
+}

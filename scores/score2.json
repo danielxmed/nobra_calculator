@@ -1,0 +1,142 @@
+{
+  "id": "score2",
+  "title": "Systematic Coronary Risk Evaluation 2 (SCORE2)",
+  "description": "Predicts 10-year risk of cardiovascular disease (fatal and non-fatal myocardial infarction and stroke) in patients aged 40-69 without prior cardiovascular disease or diabetes.",
+  "category": "cardiology",
+  "version": "2021",
+  "parameters": [
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Biological sex",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Age in years",
+      "validation": {
+        "min": 40,
+        "max": 69
+      },
+      "unit": "years"
+    },
+    {
+      "name": "smoking",
+      "type": "string",
+      "required": true,
+      "description": "Current smoking status",
+      "options": ["current", "other"],
+      "validation": {
+        "enum": ["current", "other"]
+      }
+    },
+    {
+      "name": "systolic_bp",
+      "type": "integer",
+      "required": true,
+      "description": "Systolic blood pressure",
+      "validation": {
+        "min": 80,
+        "max": 250
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "total_cholesterol",
+      "type": "float",
+      "required": true,
+      "description": "Total cholesterol",
+      "validation": {
+        "min": 2.0,
+        "max": 12.0
+      },
+      "unit": "mmol/L"
+    },
+    {
+      "name": "hdl_cholesterol",
+      "type": "float",
+      "required": true,
+      "description": "HDL cholesterol",
+      "validation": {
+        "min": 0.5,
+        "max": 3.5
+      },
+      "unit": "mmol/L"
+    },
+    {
+      "name": "risk_region",
+      "type": "string",
+      "required": true,
+      "description": "Cardiovascular risk region based on country",
+      "options": ["low", "moderate", "high", "very_high"],
+      "validation": {
+        "enum": ["low", "moderate", "high", "very_high"]
+      }
+    }
+  ],
+  "result": {
+    "name": "score2_risk",
+    "type": "float",
+    "unit": "%",
+    "description": "10-year cardiovascular disease risk"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2.5,
+        "stage": "Low to Moderate Risk (<50 years)",
+        "description": "<2.5% 10-year risk",
+        "interpretation": "Low to moderate cardiovascular risk. Focus on lifestyle counseling including smoking cessation, healthy diet, and regular physical activity. Generally, no specific risk factor treatment needed unless individual risk factors are severely elevated."
+      },
+      {
+        "min": 2.5,
+        "max": 5.0,
+        "stage": "High Risk (<50 years) / Low to Moderate Risk (50-69 years)",
+        "description": "2.5-5% 10-year risk",
+        "interpretation": "For patients <50 years: High risk - consider risk factor treatment, particularly for LDL-C reduction. For patients 50-69 years: Low to moderate risk - focus on lifestyle interventions."
+      },
+      {
+        "min": 5.0,
+        "max": 7.5,
+        "stage": "High Risk (<50 years) / High Risk (50-69 years)",
+        "description": "5-7.5% 10-year risk",
+        "interpretation": "High cardiovascular risk. Consider risk factor treatment including lipid-lowering therapy and blood pressure management. Lifestyle modification remains essential."
+      },
+      {
+        "min": 7.5,
+        "max": 10.0,
+        "stage": "Very High Risk (<50 years) / High Risk (50-69 years)",
+        "description": "7.5-10% 10-year risk",
+        "interpretation": "For patients <50 years: Very high risk - recommend aggressive risk factor treatment. For patients 50-69 years: High risk - consider risk factor treatment including statins and antihypertensives."
+      },
+      {
+        "min": 10.0,
+        "max": 100.0,
+        "stage": "Very High Risk",
+        "description": "≥10% 10-year risk",
+        "interpretation": "Very high cardiovascular risk. Recommend intensive risk factor treatment including high-intensity statin therapy, optimal blood pressure control, and aggressive lifestyle modification. Consider aspirin if bleeding risk is low."
+      }
+    ]
+  },
+  "references": [
+    "Visseren FLJ, Mach F, Smulders YM, Carballo D, Koskinas KC, Bäck M, et al. 2021 ESC Guidelines on cardiovascular disease prevention in clinical practice. Eur Heart J. 2021 Sep 7;42(34):3227-3337. doi: 10.1093/eurheartj/ehab484.",
+    "SCORE2 working group and ESC Cardiovascular risk collaboration. SCORE2 risk prediction algorithms: new models to estimate 10-year risk of cardiovascular disease in Europe. Eur Heart J. 2021 Jul 1;42(25):2439-2454. doi: 10.1093/eurheartj/ehab309.",
+    "Hageman S, Pennells L, Ojeda F, Kaptoge S, Kuulasmaa K, de Vries T, et al. SCORE2 risk prediction algorithms: new models to estimate 10-year risk of cardiovascular disease in Europe. Eur Heart J. 2021 Jul 1;42(25):2439-2454."
+  ],
+  "formula": "10-year risk = 1 - S0(10)^exp(x), where x = Σ[β × transformed_variables]. Variables are transformed: cage=(age-60)/5, csbp=(SBP-120)/20, ctot=(total_chol-6)/1, chdl=(HDL-1.3)/0.5. Coefficients vary by sex and risk region.",
+  "notes": [
+    "Only for patients aged 40-69 without prior CVD or diabetes",
+    "Risk thresholds are age-specific: <50 years vs 50-69 years",
+    "Risk regions: Low (Belgium, Denmark, France, Israel, Luxembourg, Norway, Spain, Switzerland, The Netherlands, UK), Moderate (Austria, Cyprus, Finland, Germany, Greece, Iceland, Ireland, Italy, Malta, Portugal, San Marino, Slovenia, Sweden), High (Albania, Armenia, Azerbaijan, Bosnia & Herzegovina, Croatia, Czech Republic, Estonia, Hungary, Kazakhstan, Poland, Slovakia, Turkey), Very High (Algeria, Belarus, Bulgaria, Egypt, Georgia, Kyrgyzstan, Latvia, Lebanon, Libya, Lithuania, Montenegro, Morocco, Republic of Moldova, Romania, Russian Federation, Serbia, Syria, North Macedonia, Tunisia, Ukraine, Uzbekistan)",
+    "Use SCORE2-OP for patients ≥70 years",
+    "Use SCORE2-Diabetes for patients with type 2 diabetes",
+    "Consider additional risk modifiers: family history, chronic kidney disease, mental disorders, HIV, inflammatory conditions"
+  ]
+}

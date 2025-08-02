@@ -1,0 +1,173 @@
+{
+  "id": "impede_vte",
+  "title": "IMPEDE-VTE",
+  "description": "Predicts risk of venous thromboembolism (VTE) in patients with multiple myeloma receiving treatment. The IMPEDE-VTE score was developed and validated in large cohorts (4,446 patients in derivation, 4,256 in validation) to identify multiple myeloma patients at highest risk for VTE during treatment. Patients with multiple myeloma have a 9-fold increased risk of VTE compared to the general population. This validated score helps clinicians identify patients who would benefit most from thromboprophylaxis and is incorporated into National Comprehensive Cancer Network (NCCN) guidelines. The model stratifies patients into low, intermediate, and high-risk categories with cumulative 6-month VTE incidences ranging from 3.8-5.0% (low risk) to 24.1-40.5% (high risk) across validation studies.",
+  "category": "hematology",
+  "version": "2019 Sanfilippo",
+  "parameters": [
+    {
+      "name": "immunomodulatory_drug",
+      "type": "string",
+      "required": true,
+      "description": "Use of immunomodulatory drugs (lenalidomide, thalidomide, pomalidomide). IMiDs significantly increase VTE risk in multiple myeloma patients through multiple mechanisms including increased platelet aggregation and endothelial dysfunction",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "bmi_25_or_greater",
+      "type": "string",
+      "required": true,
+      "description": "Body mass index ≥25 kg/m². Overweight and obesity are established risk factors for VTE through multiple mechanisms including increased inflammatory markers, decreased mobility, and compression of venous return",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "pelvic_hip_femur_fracture",
+      "type": "string",
+      "required": true,
+      "description": "Pathologic fracture of pelvis, hip, or femur. Bone lesions and fractures are common in multiple myeloma and significantly increase VTE risk through immobilization and local inflammatory processes",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "erythropoiesis_stimulating_agent",
+      "type": "string",
+      "required": true,
+      "description": "Use of erythropoiesis-stimulating agents (ESAs) such as erythropoietin or darbepoetin. ESAs increase VTE risk by raising hematocrit and blood viscosity, and may increase platelet reactivity",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "doxorubicin_use",
+      "type": "string",
+      "required": true,
+      "description": "Use of doxorubicin as part of multiple myeloma treatment regimen. Doxorubicin increases VTE risk through endothelial damage and increased coagulation factor activity",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "dexamethasone_use",
+      "type": "string",
+      "required": true,
+      "description": "Dexamethasone dosing level. High-dose dexamethasone (≥160mg/month or ≥40mg/week) significantly increases VTE risk more than low-dose regimens through effects on coagulation factors and platelet function",
+      "options": ["none", "low_dose", "high_dose"],
+      "validation": {
+        "enum": ["none", "low_dose", "high_dose"]
+      }
+    },
+    {
+      "name": "asian_pacific_islander",
+      "type": "string",
+      "required": true,
+      "description": "Asian or Pacific Islander ethnicity. This population has lower baseline VTE risk compared to other ethnicities, possibly due to genetic factors affecting coagulation cascade and fibrinolysis",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "history_of_vte",
+      "type": "string",
+      "required": true,
+      "description": "History of venous thromboembolism (deep vein thrombosis or pulmonary embolism) prior to multiple myeloma diagnosis. Previous VTE is the strongest predictor of recurrent thrombotic events",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "tunneled_line_cvc",
+      "type": "string",
+      "required": true,
+      "description": "Presence of tunneled central venous catheter or central line. Central venous catheters increase VTE risk through direct endothelial injury, flow disruption, and serving as nidus for thrombus formation",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "therapeutic_anticoagulation",
+      "type": "string",
+      "required": true,
+      "description": "Current therapeutic anticoagulation with warfarin or low molecular weight heparin (LMWH). Therapeutic anticoagulation significantly reduces VTE risk when used appropriately",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "prophylactic_anticoagulation",
+      "type": "string",
+      "required": true,
+      "description": "Current prophylactic anticoagulation with low molecular weight heparin (LMWH) or aspirin. Prophylactic measures provide moderate VTE risk reduction in high-risk patients",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "score",
+    "type": "integer",
+    "unit": "points",
+    "description": "IMPEDE-VTE score (range -7 to 19 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": -7,
+        "max": 3,
+        "stage": "Low Risk",
+        "description": "Score ≤3 points",
+        "interpretation": "Low VTE risk. 6-month cumulative VTE incidence 3.8-5.0%. Standard monitoring and general VTE prevention measures. Consider thromboprophylaxis only in presence of additional high-risk factors not captured by score."
+      },
+      {
+        "min": 4,
+        "max": 7,
+        "stage": "Intermediate Risk",
+        "description": "Score 4-7 points", 
+        "interpretation": "Intermediate VTE risk. 6-month cumulative VTE incidence 8.6-12.6%. Consider thromboprophylaxis with aspirin or low molecular weight heparin based on individual patient factors, bleeding risk, and treatment regimen. Regular monitoring recommended."
+      },
+      {
+        "min": 8,
+        "max": 19,
+        "stage": "High Risk",
+        "description": "Score ≥8 points",
+        "interpretation": "High VTE risk. 6-month cumulative VTE incidence 24.1-40.5%. Thromboprophylaxis strongly recommended unless contraindicated. Preferred agents include low molecular weight heparin or direct oral anticoagulants. Close monitoring for VTE symptoms essential."
+      }
+    ]
+  },
+  "references": [
+    "Sanfilippo KM, Luo S, Wang TF, et al. Predicting venous thromboembolism in multiple myeloma: development and validation of the IMPEDE VTE score. Am J Hematol. 2019 Nov;94(11):1176-1184. doi: 10.1002/ajh.25603.",
+    "Sanfilippo KM, Luo S, Wang TF, et al. Validation of the IMPEDE VTE score for prediction of venous thromboembolism in multiple myeloma: a retrospective cohort study. Br J Haematol. 2021 Jun;193(5):1005-1015. doi: 10.1111/bjh.17396.",
+    "Li A, Wu Q, Luo S, et al. Derivation and validation of a risk assessment model for immunomodulatory drug-associated thrombosis among patients with multiple myeloma. J Natl Compr Canc Netw. 2019 Jul 1;17(7):840-847. doi: 10.6004/jnccn.2018.7273.",
+    "National Comprehensive Cancer Network. Multiple Myeloma (Version 3.2023). https://www.nccn.org/professionals/physician_gls/pdf/myeloma.pdf"
+  ],
+  "formula": "Score = (IMiD use: 4 pts) + (BMI ≥25: 1 pt) + (Pelvic/hip/femur fracture: 4 pts) + (ESA use: 1 pt) + (Doxorubicin: 3 pts) + (Dexamethasone low: 2 pts, high: 4 pts) + (Asian/PI ethnicity: -3 pts) + (VTE history: 5 pts) + (Tunneled line/CVC: 2 pts) + (Therapeutic anticoagulation: -4 pts) + (Prophylactic anticoagulation: -3 pts)",
+  "notes": [
+    "Developed from 4,446 multiple myeloma patients in Veterans Administration database",
+    "Externally validated in 4,256 patients from SEER-Medicare database", 
+    "C-statistic 0.66-0.74 across validation studies demonstrates good discrimination",
+    "Multiple myeloma patients have 9-fold increased VTE risk vs general population",
+    "Score incorporated into NCCN Multiple Myeloma Guidelines for VTE risk assessment",
+    "IMiDs (lenalidomide, thalidomide, pomalidomide) are major VTE risk factors",
+    "High-dose dexamethasone defined as ≥160mg/month or ≥40mg/week",
+    "Score outperforms previous IMWG/NCCN risk assessment guidelines",
+    "Therapeutic anticoagulation includes warfarin or therapeutic-dose LMWH",
+    "Prophylactic anticoagulation includes prophylactic LMWH or aspirin",
+    "Consider bleeding risk when selecting thromboprophylaxis agent",
+    "Duration of thromboprophylaxis should match duration of high-risk treatment",
+    "Regular reassessment recommended as treatment regimens change",
+    "Score validated across different ethnic populations including Chinese cohorts"
+  ]
+}

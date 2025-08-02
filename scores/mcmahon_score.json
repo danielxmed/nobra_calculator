@@ -1,0 +1,128 @@
+{
+  "id": "mcmahon_score",
+  "title": "McMahon Score for Rhabdomyolysis",
+  "description": "Predicts mortality or acute kidney injury (AKI) requiring renal replacement therapy in hospitalized rhabdomyolysis patients. The score helps identify low-risk patients unlikely to have severe adverse outcomes.",
+  "category": "nephrology",
+  "version": "2013",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "string",
+      "required": true,
+      "description": "Patient age category",
+      "options": ["<=50", "51-70", "71-80", ">80"],
+      "validation": {
+        "enum": ["<=50", "51-70", "71-80", ">80"]
+      }
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient biological sex",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "initial_creatinine",
+      "type": "string",
+      "required": true,
+      "description": "Initial serum creatinine level",
+      "options": ["<1.4", "1.4-2.2", ">2.2"],
+      "validation": {
+        "enum": ["<1.4", "1.4-2.2", ">2.2"]
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "initial_calcium_low",
+      "type": "string",
+      "required": true,
+      "description": "Initial calcium less than 7.5 mg/dL",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "initial_cpk_high",
+      "type": "string",
+      "required": true,
+      "description": "Initial creatine phosphokinase (CPK) greater than 40,000 U/L",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "rhabdo_cause",
+      "type": "string",
+      "required": true,
+      "description": "Rhabdomyolysis secondary cause",
+      "options": ["known_causes", "other_causes"],
+      "validation": {
+        "enum": ["known_causes", "other_causes"]
+      }
+    },
+    {
+      "name": "initial_phosphate",
+      "type": "string",
+      "required": true,
+      "description": "Initial phosphate level",
+      "options": ["<4.0", "4.0-5.4", ">5.4"],
+      "validation": {
+        "enum": ["<4.0", "4.0-5.4", ">5.4"]
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "initial_bicarbonate_low",
+      "type": "string",
+      "required": true,
+      "description": "Initial bicarbonate less than 19 mEq/L",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "mcmahon_score",
+    "type": "float",
+    "unit": "points",
+    "description": "McMahon Score for predicting mortality or AKI requiring RRT in rhabdomyolysis"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 5.9,
+        "stage": "Low Risk",
+        "description": "Low risk for death or AKI requiring RRT",
+        "interpretation": "3% risk of death or acute kidney injury requiring renal replacement therapy. Consider standard supportive care with fluid resuscitation and monitoring."
+      },
+      {
+        "min": 6,
+        "max": 20,
+        "stage": "Not Low Risk",
+        "description": "Not low risk for adverse outcomes",
+        "interpretation": "Increased risk of death or acute kidney injury requiring renal replacement therapy. Consider aggressive renal protective therapy including high-volume fluid resuscitation, close monitoring of renal function, and early nephrology consultation."
+      }
+    ]
+  },
+  "references": [
+    "McMahon GM, Zeng X, Waikar SS. A risk prediction score for kidney failure or mortality in rhabdomyolysis. JAMA Intern Med. 2013 Oct 28;173(19):1821-8. doi: 10.1001/jamainternmed.2013.9774.",
+    "Safari S, Yousefifard M, Hashemi B, Baratloo A, Forouzanfar MM, Rahmati F, et al. The value of serum creatine kinase in predicting the risk of rhabdomyolysis-induced acute kidney injury: a systematic review and meta-analysis. Clin Exp Nephrol. 2016 Apr;20(2):153-61. doi: 10.1007/s10157-015-1204-1.",
+    "Premru V, Kovač J, Buturović-Ponikvar J, Ponikvar R. Some kinetic considerations in the treatment of acute kidney injury caused by rhabdomyolysis. Ther Apher Dial. 2017 Oct;21(5):451-456. doi: 10.1111/1744-9987.12547."
+  ],
+  "formula": "Score = (Age points) + (Sex points) + (Initial Creatinine points) + (Initial Calcium <7.5 mg/dL points) + (Initial CPK >40,000 U/L points) + (Rhabdo Cause points) + (Initial Phosphate points) + (Initial Bicarbonate <19 mEq/L points)",
+  "notes": [
+    "Known causes include: seizures, syncope, exercise, statins, and myositis (0 points). Other causes score 3 points.",
+    "Developed for patients with CPK >5,000 U/L within 3 days of admission.",
+    "A score ≥6 is 68% specific and 86% sensitive for predicting need for RRT.",
+    "The score helps identify patients who may benefit from aggressive fluid resuscitation early in their course.",
+    "Initial laboratory values should be obtained on admission or as close to admission as possible."
+  ]
+}

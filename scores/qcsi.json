@@ -1,0 +1,96 @@
+{
+  "id": "qcsi",
+  "title": "Quick COVID-19 Severity Index (qCSI)",
+  "description": "Predicts 24-hour risk of critical respiratory failure in ED admitted COVID-19 patients. This validated prognostic tool helps identify patients at risk for respiratory decompensation using three simple bedside measurements, enabling early intervention and appropriate resource allocation.",
+  "category": "emergency",
+  "version": "2020",
+  "parameters": [
+    {
+      "name": "respiratory_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Respiratory rate in breaths per minute",
+      "validation": {
+        "min": 8,
+        "max": 60
+      },
+      "unit": "breaths/min"
+    },
+    {
+      "name": "lowest_oxygen_saturation",
+      "type": "integer",
+      "required": true,
+      "description": "Lowest pulse oximetry recorded during initial 4 hours in ED (%)",
+      "validation": {
+        "min": 50,
+        "max": 100
+      },
+      "unit": "%"
+    },
+    {
+      "name": "oxygen_flow_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Current oxygen flow rate (L/min). Use 0 for room air",
+      "validation": {
+        "min": 0,
+        "max": 15
+      },
+      "unit": "L/min"
+    }
+  ],
+  "result": {
+    "name": "qcsi_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "qCSI score determining 24-hour risk of critical respiratory failure"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Low Risk",
+        "description": "Low risk for respiratory failure",
+        "interpretation": "Low risk for critical respiratory failure within 24 hours (<5% risk). Patients may be suitable for standard ward monitoring with routine care. Continue standard COVID-19 management protocols with regular monitoring. Consider discharge planning if other clinical factors permit."
+      },
+      {
+        "min": 4,
+        "max": 6,
+        "stage": "Intermediate Risk",
+        "description": "Intermediate risk for respiratory failure",
+        "interpretation": "Intermediate risk for critical respiratory failure within 24 hours. Enhanced monitoring recommended with frequent respiratory assessments. Consider higher level of care, telemetry monitoring, and preparedness for respiratory support. Implement close observation protocols."
+      },
+      {
+        "min": 7,
+        "max": 12,
+        "stage": "High Risk",
+        "description": "High risk for respiratory failure",
+        "interpretation": "High risk for critical respiratory failure within 24 hours. Requires intensive monitoring and consideration for higher level of care. Prepare for potential respiratory support including high-flow oxygen, non-invasive ventilation, or intubation. Consider ICU consultation and aggressive supportive measures."
+      }
+    ]
+  },
+  "references": [
+    "Haimovich AD, Ravindra NG, Stoytchev S, Young HP, Wilson FP, van Dijk D, et al. Development and Validation of the Quick COVID-19 Severity Index: A Prognostic Tool for Early Clinical Decompensation. Ann Emerg Med. 2020 Oct;76(4):442-453. doi: 10.1016/j.annemergmed.2020.07.022.",
+    "Liao X, Wang B, Kang Y. Novel coronavirus infection during the 2019-2020 epidemic: preparing intensive care units-the experience in Sichuan Province, China. Intensive Care Med. 2020 Apr;46(4):357-360. doi: 10.1007/s00134-020-05954-2.",
+    "Covino M, De Matteis G, Santoro M, Sabia L, Simeoni B, Candelli M, et al. Clinical characteristics and prognostic factors in COVID-19 patients aged ≥80 years. Geriatr Gerontol Int. 2020 Jul;20(7):704-708. doi: 10.1111/ggi.13960."
+  ],
+  "formula": "qCSI Score calculated from respiratory rate, lowest oxygen saturation (in first 4h), and oxygen flow rate using validated prediction model",
+  "notes": [
+    "Simple 3-variable bedside tool for COVID-19 respiratory failure prediction",
+    "Predicts respiratory failure within 24 hours of ED admission",
+    "Respiratory failure defined as O2 requirement >10 L/min, high-flow device, NIV, invasive ventilation, or death",
+    "Uses respiratory rate, lowest O2 saturation in first 4 hours, and current oxygen flow rate",
+    "Low risk (≤3 points): <5% risk of respiratory failure, suitable for standard ward care",
+    "Intermediate risk (4-6 points): Enhanced monitoring and higher level of care consideration",
+    "High risk (≥7 points): Intensive monitoring and preparation for respiratory support",
+    "Sensitivity 79% and specificity 78% for predicting respiratory decompensation (≤3 score)",
+    "AUC 0.761 for ICU admission prediction",
+    "Derived and validated during COVID-19 pandemic in 9-ED health system",
+    "Study included 1,792 admitted COVID-19 patients with 620 (35%) having respiratory failure",
+    "Useful for resource allocation and early intervention planning",
+    "Should be used in conjunction with clinical judgment and COVID-19 protocols",
+    "Reassess if clinical condition changes significantly",
+    "Consider local COVID-19 treatment protocols and resource availability"
+  ]
+}

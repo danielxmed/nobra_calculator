@@ -1,0 +1,81 @@
+{
+  "id": "mmrc_dyspnea_scale",
+  "title": "mMRC (Modified Medical Research Council) Dyspnea Scale",
+  "description": "Stratifies severity of dyspnea in respiratory diseases, particularly COPD, based on functional disability",
+  "category": "pulmonology",
+  "version": "Modified",
+  "parameters": [
+    {
+      "name": "dyspnea_grade",
+      "type": "string",
+      "required": true,
+      "description": "Patient's functional limitation due to dyspnea based on activities that trigger breathlessness",
+      "options": ["grade_0", "grade_1", "grade_2", "grade_3", "grade_4"],
+      "validation": {
+        "enum": ["grade_0", "grade_1", "grade_2", "grade_3", "grade_4"]
+      }
+    }
+  ],
+  "result": {
+    "name": "mmrc_grade",
+    "type": "integer",
+    "unit": "grade",
+    "description": "mMRC dyspnea grade indicating severity of functional limitation"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "No Dyspnea",
+        "description": "Minimal functional limitation",
+        "interpretation": "Dyspnea only with strenuous exercise. Normal exercise tolerance with minimal functional impairment. Patient can perform most activities without significant breathlessness."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Mild Dyspnea",
+        "description": "Mild functional limitation",
+        "interpretation": "Dyspnea when hurrying or walking up a slight hill. Slight limitation in activities involving exertion or walking uphill. Generally good functional capacity for daily activities."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Moderate Dyspnea",
+        "description": "Moderate functional limitation",
+        "interpretation": "Walks slower than people of the same age because of dyspnea, or has to stop for breath when walking at own pace on level ground. Moderate limitation affecting walking speed and endurance."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Severe Dyspnea",
+        "description": "Severe functional limitation",
+        "interpretation": "Stops for breath after walking 100 yards (91 m) or after a few minutes on level ground. Significant limitation in walking distance. Severely impaired exercise tolerance."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Very Severe Dyspnea",
+        "description": "Very severe functional limitation",
+        "interpretation": "Too dyspneic to leave house or breathless when dressing or undressing. Severe disability with breathlessness at rest or with minimal activity. Housebound due to dyspnea."
+      }
+    ]
+  },
+  "references": [
+    "Mahler DA, Wells CK. Evaluation of clinical methods for rating dyspnea. Chest. 1988 Mar;93(3):580-6. doi: 10.1378/chest.93.3.580.",
+    "Bestall JC, Paul EA, Garrod R, Garnham R, Jones PW, Wedzicha JA. Usefulness of the Medical Research Council (MRC) dyspnoea scale as a measure of disability in patients with chronic obstructive pulmonary disease. Thorax. 1999 Jul;54(7):581-6. doi: 10.1136/thx.54.7.581.",
+    "Kocks JW, Tuinenga MG, Uil SM, van den Berg JW, Ståhl E, van der Molen T. Health status measurement in COPD: the minimal clinically important difference of the clinical COPD questionnaire. Respir Res. 2006 Apr 7;7:62. doi: 10.1186/1465-9921-7-62.",
+    "Global Initiative for Chronic Obstructive Lung Disease. Global Strategy for the Diagnosis, Management, and Prevention of Chronic Obstructive Pulmonary Disease (2023 Report). Available from: https://goldcopd.org"
+  ],
+  "formula": "Single categorical assessment based on functional limitation due to dyspnea",
+  "notes": [
+    "Walking assessment should be performed on level ground",
+    "High inter-rater reliability (98%)",
+    "Correlates with health-related quality of life measures",
+    "Used as component of BODE Index for COPD prognosis",
+    "Part of GOLD guidelines for COPD assessment",
+    "Not meant to independently guide clinical management decisions",
+    "Should be assessed at baseline and during follow-up visits",
+    "May indicate potential morbidity and mortality risk in respiratory diseases"
+  ]
+}

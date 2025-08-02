@@ -1,0 +1,91 @@
+{
+  "id": "mets_ir",
+  "title": "Metabolic Score for Insulin Resistance (METS-IR)",
+  "description": "Predicts risk of type 2 diabetes in previously undiagnosed patients using fasting glucose, triglycerides, BMI, and HDL cholesterol. A simple, non-insulin dependent marker for insulin resistance.",
+  "category": "endocrinology",
+  "version": "2018",
+  "parameters": [
+    {
+      "name": "fasting_glucose",
+      "type": "float",
+      "required": true,
+      "description": "Fasting plasma glucose level",
+      "validation": {
+        "min": 40,
+        "max": 700
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "triglycerides",
+      "type": "float",
+      "required": true,
+      "description": "Fasting triglyceride level",
+      "validation": {
+        "min": 10,
+        "max": 2000
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "bmi",
+      "type": "float",
+      "required": true,
+      "description": "Body Mass Index calculated as weight(kg)/height(m)²",
+      "validation": {
+        "min": 10,
+        "max": 70
+      },
+      "unit": "kg/m²"
+    },
+    {
+      "name": "hdl_cholesterol",
+      "type": "float",
+      "required": true,
+      "description": "High-density lipoprotein cholesterol level",
+      "validation": {
+        "min": 10,
+        "max": 200
+      },
+      "unit": "mg/dL"
+    }
+  ],
+  "result": {
+    "name": "mets_ir_score",
+    "type": "float",
+    "unit": "",
+    "description": "METS-IR score indicating insulin resistance and diabetes risk"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 50.39,
+        "stage": "Low Risk",
+        "description": "METS-IR ≤50.39",
+        "interpretation": "Low risk of developing Type 2 Diabetes. Continue routine screening and maintain healthy lifestyle habits including diet and exercise."
+      },
+      {
+        "min": 50.39,
+        "max": 999,
+        "stage": "High Risk",
+        "description": "METS-IR >50.39",
+        "interpretation": "High risk of developing Type 2 Diabetes. Consider more intensive lifestyle interventions, closer monitoring of glucose levels, and possible preventive interventions. Further evaluation with oral glucose tolerance test may be warranted."
+      }
+    ]
+  },
+  "references": [
+    "Bello-Chavolla OY, Almeda-Valdes P, Gomez-Velasco D, et al. METS-IR, a novel score to evaluate insulin sensitivity, is predictive of visceral adiposity and incident type 2 diabetes. Eur J Endocrinol. 2018 May;178(5):533-544.",
+    "Bello-Chavolla OY, Antonio-Villa NE, Vargas-Vázquez A, et al. Metabolic Score for Visceral Fat (METS-VF), a novel estimator of intra-abdominal fat content and cardio-metabolic health. Clin Nutr. 2020 May;39(5):1613-1621.",
+    "Zhang M, Liu D, Qin P, et al. Association of metabolic score for insulin resistance and its 6-year change with incident type 2 diabetes mellitus. J Diabetes. 2021 Sep;13(9):725-734."
+  ],
+  "formula": "METS-IR = (ln((2 × Fasting Glucose) + Triglycerides) × BMI) / ln(HDL Cholesterol)",
+  "notes": [
+    "Ideal for use in outpatient and primary care settings",
+    "Does not require insulin measurements, making it more practical than HOMA-IR",
+    "Validated primarily in Mexican and Asian populations",
+    "Not a diagnostic tool for T2DM but a risk assessment tool",
+    "All measurements should be taken in fasting state",
+    "May need further validation in other ethnic populations"
+  ]
+}

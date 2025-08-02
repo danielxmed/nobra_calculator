@@ -1,0 +1,147 @@
+{
+  "id": "ich_score",
+  "title": "Intracerebral Hemorrhage (ICH) Score",
+  "description": "Estimates 30-day mortality risk in patients with spontaneous intracerebral hemorrhage based on clinical and radiographic findings at presentation. The ICH Score was developed to provide a simple, reliable clinical grading scale analogous to those used for traumatic brain injury, subarachnoid hemorrhage, and ischemic stroke. This validated prognostic tool uses five independent risk factors identified through multivariate analysis: Glasgow Coma Scale score, age ≥80 years, infratentorial hemorrhage location, ICH volume ≥30 cm³, and presence of intraventricular hemorrhage. The score ranges from 0-6 points with excellent discrimination for 30-day mortality prediction. ICH Score standardizes clinical assessment, facilitates treatment protocol development, improves research study design, and enables evidence-based prognostic discussions with patients and families. The tool is particularly valuable for early risk stratification and clinical decision-making in acute intracerebral hemorrhage management.",
+  "category": "neurology",
+  "version": "2001",
+  "parameters": [
+    {
+      "name": "glasgow_coma_scale",
+      "type": "string",
+      "required": true,
+      "description": "Glasgow Coma Scale score at presentation or transfer from emergency department",
+      "options": ["13_15", "5_12", "3_4"],
+      "validation": {
+        "enum": ["13_15", "5_12", "3_4"]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "age",
+      "type": "string",
+      "required": true,
+      "description": "Patient age at presentation",
+      "options": ["under_80", "80_or_older"],
+      "validation": {
+        "enum": ["under_80", "80_or_older"]
+      },
+      "unit": "years"
+    },
+    {
+      "name": "ich_location",
+      "type": "string",
+      "required": true,
+      "description": "Location of intracerebral hemorrhage on CT scan",
+      "options": ["supratentorial", "infratentorial"],
+      "validation": {
+        "enum": ["supratentorial", "infratentorial"]
+      },
+      "unit": null
+    },
+    {
+      "name": "ich_volume",
+      "type": "string",
+      "required": true,
+      "description": "ICH volume calculated using ABC/2 method on initial CT scan",
+      "options": ["less_than_30", "30_or_greater"],
+      "validation": {
+        "enum": ["less_than_30", "30_or_greater"]
+      },
+      "unit": "cm³"
+    },
+    {
+      "name": "intraventricular_hemorrhage",
+      "type": "string",
+      "required": true,
+      "description": "Presence of intraventricular hemorrhage on CT scan",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      },
+      "unit": null
+    }
+  ],
+  "result": {
+    "name": "ich_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "ICH score (range 0-6 points) with 30-day mortality prediction"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Very Low Risk",
+        "description": "Score 0 points",
+        "interpretation": "Excellent prognosis. 30-day mortality: 0-5%. All patients with ICH Score 0 survived in the original validation study. Standard ICH management with close monitoring. Consider less aggressive interventions. Favorable outcome expected with appropriate care. Excellent candidate for rehabilitation planning."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "Score 1 point",
+        "interpretation": "Good prognosis. 30-day mortality: ~16%. Low mortality risk with appropriate management. Standard intensive care with neurological monitoring. Consider early rehabilitation planning. Favorable functional outcome possible with optimal care."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Moderate Risk",
+        "description": "Score 2 points",
+        "interpretation": "Moderate prognosis. 30-day mortality: ~33%. Intermediate risk requiring intensive management. Consider aggressive medical management and possible surgical intervention based on clinical status. Close neurological monitoring essential. Discuss prognosis with family."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "High Risk",
+        "description": "Score 3 points",
+        "interpretation": "Poor prognosis. 30-day mortality: ~54%. High mortality risk despite optimal care. Consider intensive treatment approaches and surgical evaluation. Goals of care discussions with family recommended. Palliative care consultation may be appropriate."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Very High Risk",
+        "description": "Score 4 points",
+        "interpretation": "Very poor prognosis. 30-day mortality: ~93%. Extremely high mortality risk. Consider comfort care measures and goals of care discussions. Palliative care consultation recommended. Family support and end-of-life planning important."
+      },
+      {
+        "min": 5,
+        "max": 6,
+        "stage": "Extremely High Risk",
+        "description": "Score 5-6 points",
+        "interpretation": "Extremely poor prognosis. 30-day mortality: 95-100%. Near-universal mortality. All patients with ICH Score ≥5 died in original validation study. Comfort care measures and palliative care consultation recommended. Focus on family support and dignified end-of-life care."
+      }
+    ]
+  },
+  "references": [
+    "Hemphill JC 3rd, Bonovich DC, Besmertis L, Manley GT, Johnston SC. The ICH score: a simple, reliable grading scale for intracerebral hemorrhage. Stroke. 2001 Apr;32(4):891-7. doi: 10.1161/01.str.32.4.891.",
+    "Rost NS, Smith EE, Chang Y, Snider RW, Chanderraj R, Schwab K, et al. Prediction of functional outcome in patients with primary intracerebral hemorrhage: the FUNC score. Stroke. 2008 Aug;39(8):2304-9. doi: 10.1161/STROKEAHA.107.512202.",
+    "Godoy DA, Pinero G, Papa F. Predicting mortality in spontaneous intracerebral hemorrhage: can modification to original score improve the prediction? Stroke. 2006 Apr;37(4):1038-44. doi: 10.1161/01.STR.0000206441.79646.49."
+  ],
+  "formula": "ICH Score = GCS 3-4 (2) + GCS 5-12 (1) + Age ≥80 (1) + Infratentorial location (1) + ICH volume ≥30cm³ (1) + IVH present (1). Total score 0-6 points.",
+  "notes": [
+    "The ICH Score was developed in 2001 by Hemphill et al. as a standard clinical grading scale",
+    "Five independent risk factors identified through multivariate analysis of 152 patients",
+    "GCS score categories: 13-15 (0 points), 5-12 (1 point), 3-4 (2 points)",
+    "Age cutoff: <80 years (0 points), ≥80 years (1 point)",
+    "Location: Supratentorial (0 points), Infratentorial (1 point)",
+    "ICH volume calculated using ABC/2 ellipsoid method on initial CT",
+    "Volume cutoff: <30 cm³ (0 points), ≥30 cm³ (1 point)",
+    "Intraventricular hemorrhage: Absent (0 points), Present (1 point)",
+    "Original validation showed 0%, 16%, 33%, 54%, and 93% mortality for scores 0-4",
+    "All 26 patients with ICH Score 0 survived in the original study",
+    "All 6 patients with ICH Score ≥5 died in the original study",
+    "30-day mortality increases steadily with ICH Score (P<0.005)",
+    "ABC/2 method: A=largest diameter, B=perpendicular diameter, C=number of slices × slice thickness",
+    "GCS assessed at time of transfer from emergency department",
+    "Volume calculation can be completed within 1-2 minutes",
+    "The score has been externally validated in multiple populations",
+    "Limitations include poor functional outcome prediction and lack of NIHSS incorporation",
+    "Modified versions have been proposed for different populations",
+    "Useful for standardizing treatment protocols and research studies",
+    "Facilitates evidence-based prognostic discussions with families",
+    "Does not replace clinical judgment in individual patient management",
+    "Consider goals of care discussions for high-risk patients (score ≥3)",
+    "Early palliative care consultation may be appropriate for very high-risk patients"
+  ]
+}

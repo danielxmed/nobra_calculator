@@ -1,0 +1,91 @@
+{
+  "id": "modified_fisher_grading_scale",
+  "title": "Modified Fisher Grading Scale for Subarachnoid Hemorrhage (SAH)",
+  "description": "States severity of aneurysmal subarachnoid hemorrhage based on amount and type of blood on CT with associated risk of vasospasm",
+  "category": "neurology",
+  "version": "2006",
+  "parameters": [
+    {
+      "name": "sah_thickness",
+      "type": "string",
+      "required": true,
+      "description": "Subarachnoid hemorrhage thickness on CT scan",
+      "options": ["none", "thin", "thick"],
+      "validation": {
+        "enum": ["none", "thin", "thick"]
+      }
+    },
+    {
+      "name": "ivh_present",
+      "type": "string",
+      "required": true,
+      "description": "Presence of intraventricular hemorrhage (IVH)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "modified_fisher_grade",
+    "type": "integer",
+    "unit": "grade",
+    "description": "Modified Fisher grade (0-4) with associated vasospasm risk"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Grade 0",
+        "description": "No SAH present",
+        "interpretation": "No subarachnoid hemorrhage detected on CT. Vasospasm risk: 0%."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Grade 1",
+        "description": "Focal/thin SAH, no IVH",
+        "interpretation": "Focal or diffuse thin SAH (<1mm) without intraventricular hemorrhage. Vasospasm risk: 6-24%."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Grade 2",
+        "description": "Focal/thin SAH with IVH",
+        "interpretation": "Focal or diffuse thin SAH (<1mm) with intraventricular hemorrhage. Vasospasm risk: 15-33%."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Grade 3",
+        "description": "Focal/thick SAH, no IVH",
+        "interpretation": "Focal or diffuse thick SAH (≥1mm) without intraventricular hemorrhage. Vasospasm risk: 33-35%."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Grade 4",
+        "description": "Focal/thick SAH with IVH",
+        "interpretation": "Focal or diffuse thick SAH (≥1mm) with intraventricular hemorrhage. Vasospasm risk: 34-40%."
+      }
+    ]
+  },
+  "references": [
+    "Frontera JA, Claassen J, Schmidt JM, Wartenberg KE, Temes R, Connolly ES Jr, MacDonald RL, Mayer SA. Prediction of symptomatic vasospasm after subarachnoid hemorrhage: the modified fisher scale. Neurosurgery. 2006 Jul;59(1):21-7; discussion 21-7. doi: 10.1227/01.NEU.0000218821.34014.1B.",
+    "Claassen J, Bernardini GL, Kreiter K, Bates J, Du YE, Copeland D, Connolly ES, Mayer SA. Effect of cisternal and ventricular blood on risk of delayed cerebral ischemia after subarachnoid hemorrhage: the Fisher scale revisited. Stroke. 2001 Sep;32(9):2012-20. doi: 10.1161/hs0901.095677.",
+    "Fisher CM, Kistler JP, Davis JM. Relation of cerebral vasospasm to subarachnoid hemorrhage visualized by computerized tomographic scanning. Neurosurgery. 1980 Jan;6(1):1-9. doi: 10.1227/00006123-198001000-00001."
+  ],
+  "formula": "Grade determined by combination of SAH thickness (<1mm vs ≥1mm) and presence/absence of intraventricular hemorrhage (IVH). Grade 0: No SAH. Grade 1: Thin SAH, no IVH. Grade 2: Thin SAH with IVH. Grade 3: Thick SAH, no IVH. Grade 4: Thick SAH with IVH.",
+  "notes": [
+    "Only applies to aneurysmal subarachnoid hemorrhage",
+    "Modified Fisher scale is more predictive of vasospasm than original Fisher scale",
+    "Thick SAH defined as ≥1mm thickness on CT scan",
+    "Thin SAH defined as <1mm thickness on CT scan",
+    "Vasospasm risk increases progressively with each grade",
+    "Does not apply to traumatic SAH, AVM, or other non-aneurysmal causes",
+    "Should be assessed on initial non-contrast head CT",
+    "Used in conjunction with clinical assessment for management decisions",
+    "Higher grades warrant closer monitoring for delayed cerebral ischemia"
+  ]
+}

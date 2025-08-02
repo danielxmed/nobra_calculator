@@ -1,0 +1,111 @@
+{
+  "id": "mekhail_extension_motzer_score",
+  "title": "Mekhail Extension of the Motzer Score",
+  "description": "Predicts survival of metastatic renal cell carcinoma, more accurately than the original Motzer Score by incorporating additional prognostic factors",
+  "category": "oncology",
+  "version": "2005",
+  "parameters": [
+    {
+      "name": "ldh_elevated",
+      "type": "string",
+      "required": true,
+      "description": "LDH > 1.5x upper limit of normal (ULN). Normal ULN is typically 140 U/L",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hemoglobin_low",
+      "type": "string",
+      "required": true,
+      "description": "Hemoglobin < lower limit of normal (typically <12 g/dL)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "corrected_calcium_high",
+      "type": "string",
+      "required": true,
+      "description": "Corrected serum calcium > 10 mg/dL (2.5 mmol/L)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "time_to_treatment_less_than_1_year",
+      "type": "string",
+      "required": true,
+      "description": "Time from initial diagnosis to systemic treatment < 1 year",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "prior_radiotherapy",
+      "type": "string",
+      "required": true,
+      "description": "Prior treatment with radiation therapy",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "metastatic_sites_2_or_more",
+      "type": "string",
+      "required": true,
+      "description": "≥2 sites of metastasis",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "mekhail_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total Mekhail Extension of the Motzer Score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Favorable Risk",
+        "description": "0-1 risk factors",
+        "interpretation": "Favorable risk group with median survival of 28 months. These patients have the best prognosis and may be candidates for less aggressive treatment approaches or observation in some cases."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Intermediate Risk",
+        "description": "2 risk factors",
+        "interpretation": "Intermediate risk group with median survival of 14 months. These patients require active treatment and close monitoring."
+      },
+      {
+        "min": 3,
+        "max": 6,
+        "stage": "Poor Risk",
+        "description": "≥3 risk factors",
+        "interpretation": "Poor risk group with median survival of 5 months. These patients have the worst prognosis and may benefit from aggressive systemic therapy or clinical trial enrollment."
+      }
+    ]
+  },
+  "references": [
+    "Mekhail TM, Abou-Jawde RM, Boumerhi G, Malhi S, Wood L, Elson P, et al. Validation and extension of the Memorial Sloan-Kettering prognostic factors model for survival in patients with previously untreated metastatic renal cell carcinoma. J Clin Oncol. 2005 Feb 1;23(4):832-41. doi: 10.1200/JCO.2005.05.179.",
+    "Motzer RJ, Mazumdar M, Bacik J, Berg W, Amsterdam A, Ferrara J. Survival and prognostic stratification of 670 patients with advanced renal cell carcinoma. J Clin Oncol. 1999 Aug;17(8):2530-40. doi: 10.1200/JCO.1999.17.8.2530."
+  ],
+  "formula": "Score = Sum of present risk factors (each factor = 1 point if present)",
+  "notes": [
+    "More of a historical prognostic tool than a current clinical predictor",
+    "Best used for selecting patients for clinical trials",
+    "Not validated for individual survival prediction in modern targeted therapy era",
+    "The original Motzer score includes only the first 4 factors; Mekhail extension adds prior radiotherapy and number of metastatic sites"
+  ]
+}

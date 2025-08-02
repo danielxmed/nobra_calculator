@@ -18,6 +18,18 @@ from .dhaka_score import DhakaScoreRequest, DhakaScoreResponse
 from .eat_sleep_console import EatSleepConsoleRequest, EatSleepConsoleResponse
 from .neonatal_early_onset_sepsis import NeonatalEarlyOnsetSepsisRequest, NeonatalEarlyOnsetSepsisResponse
 from .neonatal_partial_exchange_polycythemia import NeonatalPartialExchangePolycythemiaRequest, NeonatalPartialExchangePolycythemiaResponse
+from .hour_specific_neonatal_hyperbilirubinemia import HourSpecificNeonatalHyperbilirubinemiaRequest, HourSpecificNeonatalHyperbilirubinemiaResponse
+from .infant_scalp_score import InfantScalpScoreRequest, InfantScalpScoreResponse
+from .immunization_schedule_calculator import ImmunizationScheduleCalculatorRequest, ImmunizationScheduleCalculatorResponse
+from .intrauterine_rbc_transfusion_dosage import IntrauterineRbcTransfusionDosageRequest, IntrauterineRbcTransfusionDosageResponse
+from .kawasaki_disease_diagnostic_criteria import KawasakiDiseaseRequest, KawasakiDiseaseResponse
+from .lansky_play_performance_scale import LanskyPlayPerformanceScaleRequest, LanskyPlayPerformanceScaleResponse
+from .maintenance_fluids_calculations import MaintenanceFluidsCalculationsRequest, MaintenanceFluidsCalculationsResponse
+from .modified_asthma_predictive_index import ModifiedAsthmaPredictiveIndexRequest, ModifiedAsthmaPredictiveIndexResponse
+from .modified_finnegan_neonatal_abstinence_score import ModifiedFinneganNeonatalAbstinenceScoreRequest, ModifiedFinneganNeonatalAbstinenceScoreResponse
+from .oxygenation_index import OxygenationIndexRequest, OxygenationIndexResponse
+from .phoenix_sepsis_score import PhoenixSepsisScoreRequest, PhoenixSepsisScoreResponse
+from .wat_1_pediatric_withdrawal import Wat1PediatricWithdrawalRequest, Wat1PediatricWithdrawalResponse
 
 __all__ = [
     "AapPediatricHypertensionRequest",
@@ -52,4 +64,28 @@ __all__ = [
     "NeonatalEarlyOnsetSepsisResponse",
     "NeonatalPartialExchangePolycythemiaRequest",
     "NeonatalPartialExchangePolycythemiaResponse",
+    "HourSpecificNeonatalHyperbilirubinemiaRequest",
+    "HourSpecificNeonatalHyperbilirubinemiaResponse",
+    "InfantScalpScoreRequest",
+    "InfantScalpScoreResponse",
+    "ImmunizationScheduleCalculatorRequest",
+    "ImmunizationScheduleCalculatorResponse",
+    "IntrauterineRbcTransfusionDosageRequest",
+    "IntrauterineRbcTransfusionDosageResponse",
+    "KawasakiDiseaseRequest",
+    "KawasakiDiseaseResponse",
+    "LanskyPlayPerformanceScaleRequest",
+    "LanskyPlayPerformanceScaleResponse",
+    "MaintenanceFluidsCalculationsRequest",
+    "MaintenanceFluidsCalculationsResponse",
+    "ModifiedAsthmaPredictiveIndexRequest",
+    "ModifiedAsthmaPredictiveIndexResponse",
+    "ModifiedFinneganNeonatalAbstinenceScoreRequest",
+    "ModifiedFinneganNeonatalAbstinenceScoreResponse",
+    "OxygenationIndexRequest",
+    "OxygenationIndexResponse",
+    "PhoenixSepsisScoreRequest",
+    "PhoenixSepsisScoreResponse",
+    "Wat1PediatricWithdrawalRequest",
+    "Wat1PediatricWithdrawalResponse",
 ]

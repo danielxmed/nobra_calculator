@@ -1,0 +1,95 @@
+{
+  "id": "killip_classification",
+  "title": "Killip Classification for Heart Failure",
+  "description": "Quantifies heart failure severity in acute coronary syndrome (STEMI or NSTEMI) and predicts 30-day mortality. Based on physical examination findings to stratify risk in myocardial infarction patients.",
+  "category": "cardiology",
+  "version": "1967_killip",
+  "parameters": [
+    {
+      "name": "killip_class",
+      "type": "string",
+      "required": true,
+      "description": "Killip class based on clinical presentation",
+      "options": [
+        {
+          "value": "class_i",
+          "label": "Class I - No signs of congestion",
+          "description": "No clinical signs of heart failure"
+        },
+        {
+          "value": "class_ii",
+          "label": "Class II - S3 and basal rales on auscultation",
+          "description": "Rales in the lungs, third heart sound (S3), and/or elevated jugular venous pressure"
+        },
+        {
+          "value": "class_iii",
+          "label": "Class III - Acute pulmonary edema",
+          "description": "Overt pulmonary edema with rales throughout lung fields"
+        },
+        {
+          "value": "class_iv",
+          "label": "Class IV - Cardiogenic shock",
+          "description": "Cardiogenic shock with hypotension (SBP <90 mmHg) and evidence of peripheral vasoconstriction"
+        }
+      ],
+      "validation": {
+        "enum": ["class_i", "class_ii", "class_iii", "class_iv"]
+      }
+    }
+  ],
+  "result": {
+    "name": "killip_result",
+    "type": "object",
+    "unit": "classification",
+    "description": "Killip classification with mortality risk estimates"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "class": "I",
+        "description": "No signs of congestion",
+        "mortality_30_day": "2-3%",
+        "in_hospital_mortality": "<6%",
+        "interpretation": "Low risk. No clinical signs of heart failure. Standard ACS management appropriate."
+      },
+      {
+        "class": "II",
+        "description": "S3 and basal rales",
+        "mortality_30_day": "5-12%",
+        "in_hospital_mortality": "<17%",
+        "interpretation": "Moderate risk. Mild-moderate heart failure. Consider diuretics and close monitoring."
+      },
+      {
+        "class": "III",
+        "description": "Acute pulmonary edema",
+        "mortality_30_day": "10-20%",
+        "in_hospital_mortality": "38%",
+        "interpretation": "High risk. Severe heart failure with pulmonary edema. Aggressive treatment including diuretics, vasodilators, and consider mechanical support."
+      },
+      {
+        "class": "IV",
+        "description": "Cardiogenic shock",
+        "mortality_30_day": "10-20%",
+        "in_hospital_mortality": "81%",
+        "interpretation": "Very high risk. Cardiogenic shock requires immediate intervention including inotropes, mechanical circulatory support, and urgent revascularization."
+      }
+    ]
+  },
+  "references": [
+    "Killip T 3rd, Kimball JT. Treatment of myocardial infarction in a coronary care unit. A two year experience with 250 patients. Am J Cardiol. 1967 Oct;20(4):457-64.",
+    "Khot UN, Jia G, Moliterno DJ, Lincoff AM, Khot MB, Harrington RA, Topol EJ. Prognostic importance of physical examination for heart failure in non-ST-elevation acute coronary syndromes: the enduring value of Killip classification. JAMA. 2003 Oct 22;290(16):2174-81.",
+    "Mello BH, Oliveira GB, Ramos RF, Lopes BB, Barros CB, Carvalho Ede O, et al. Validation of the Killip-Kimball classification and late mortality after acute myocardial infarction. Arq Bras Cardiol. 2014 Aug;103(2):107-17.",
+    "DeGeare VS, Boura JA, Grines LL, O'Neill WW, Grines CL. Predictive value of the Killip classification in patients undergoing primary percutaneous coronary intervention for acute myocardial infarction. Am J Cardiol. 2001 May 1;87(9):1035-8."
+  ],
+  "formula": "Clinical classification based on physical examination findings: Class I (no heart failure) → Class IV (cardiogenic shock)",
+  "notes": [
+    "Originally developed in 1967 before reperfusion therapy era",
+    "Still validated and predictive in modern era with PCI and thrombolytics",
+    "Simple bedside assessment requiring only physical examination",
+    "Useful for rapid risk stratification in emergency settings",
+    "Can guide treatment decisions including reperfusion therapy and mechanical support",
+    "Mortality rates have decreased since original study due to modern therapies",
+    "Should be used as part of full clinical assessment, not in isolation",
+    "Applies to both STEMI and NSTEMI patients"
+  ]
+}

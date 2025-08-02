@@ -18,6 +18,11 @@ from .edmonton_obesity_staging_system import router as edmonton_obesity_staging_
 from .estimated_average_glucose_eag_hba1c import router as estimated_average_glucose_eag_hba1c_router
 from .findrisc import router as findrisc_router
 from .glucose_infusion_rate import router as glucose_infusion_rate_router
+from .homa_ir import router as homa_ir_router
+from .hypoglycemia_risk_score import router as hypoglycemia_risk_score_router
+from .idf_dar_fasting_risk_assessment import router as idf_dar_fasting_risk_assessment_router
+from .mets_ir import router as mets_ir_router
+from .myxedema_coma_diagnostic_score import router as myxedema_coma_diagnostic_score_router
 
 # Create main specialty router
 router = APIRouter()
@@ -37,3 +42,8 @@ router.include_router(edmonton_obesity_staging_system_router)
 router.include_router(estimated_average_glucose_eag_hba1c_router)
 router.include_router(findrisc_router)
 router.include_router(glucose_infusion_rate_router)
+router.include_router(homa_ir_router)
+router.include_router(hypoglycemia_risk_score_router)
+router.include_router(idf_dar_fasting_risk_assessment_router)
+router.include_router(mets_ir_router)
+router.include_router(myxedema_coma_diagnostic_score_router)

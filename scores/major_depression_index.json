@@ -1,0 +1,175 @@
+{
+  "id": "major_depression_index",
+  "title": "Major Depression Inventory (MDI)",
+  "description": "Screens for depression and provides both diagnosis and severity assessment using WHO-developed criteria",
+  "category": "psychiatry",
+  "version": "WHO",
+  "parameters": [
+    {
+      "name": "depressed_mood",
+      "type": "string",
+      "required": true,
+      "description": "How much of the time during the past 2 weeks have you felt sad or depressed?",
+      "options": ["not_at_all", "some_of_time", "most_of_time", "all_the_time"],
+      "validation": {
+        "enum": ["not_at_all", "some_of_time", "most_of_time", "all_the_time"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "lack_of_interest",
+      "type": "string",
+      "required": true,
+      "description": "How much of the time during the past 2 weeks have you lost interest in your daily activities?",
+      "options": ["not_at_all", "some_of_time", "most_of_time", "all_the_time"],
+      "validation": {
+        "enum": ["not_at_all", "some_of_time", "most_of_time", "all_the_time"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "lack_of_energy",
+      "type": "string",
+      "required": true,
+      "description": "How much of the time during the past 2 weeks have you felt lacking in energy and strength?",
+      "options": ["not_at_all", "some_of_time", "most_of_time", "all_the_time"],
+      "validation": {
+        "enum": ["not_at_all", "some_of_time", "most_of_time", "all_the_time"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "low_self_confidence",
+      "type": "string",
+      "required": true,
+      "description": "How much of the time during the past 2 weeks have you felt less self-confident?",
+      "options": ["not_at_all", "some_of_time", "most_of_time", "all_the_time"],
+      "validation": {
+        "enum": ["not_at_all", "some_of_time", "most_of_time", "all_the_time"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "bad_conscience",
+      "type": "string",
+      "required": true,
+      "description": "How much of the time during the past 2 weeks have you had a bad conscience or feelings of guilt?",
+      "options": ["not_at_all", "some_of_time", "most_of_time", "all_the_time"],
+      "validation": {
+        "enum": ["not_at_all", "some_of_time", "most_of_time", "all_the_time"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "life_not_worth_living",
+      "type": "string",
+      "required": true,
+      "description": "How much of the time during the past 2 weeks have you felt that life wasn't worth living?",
+      "options": ["not_at_all", "some_of_time", "most_of_time", "all_the_time"],
+      "validation": {
+        "enum": ["not_at_all", "some_of_time", "most_of_time", "all_the_time"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "concentration_problems",
+      "type": "string",
+      "required": true,
+      "description": "How much of the time during the past 2 weeks have you had difficulty concentrating?",
+      "options": ["not_at_all", "some_of_time", "most_of_time", "all_the_time"],
+      "validation": {
+        "enum": ["not_at_all", "some_of_time", "most_of_time", "all_the_time"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "agitation_restlessness",
+      "type": "string",
+      "required": true,
+      "description": "How much of the time during the past 2 weeks have you felt very restless?",
+      "options": ["not_at_all", "some_of_time", "most_of_time", "all_the_time"],
+      "validation": {
+        "enum": ["not_at_all", "some_of_time", "most_of_time", "all_the_time"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "psychomotor_retardation",
+      "type": "string",
+      "required": true,
+      "description": "How much of the time during the past 2 weeks have you felt that your movements have been slower?",
+      "options": ["not_at_all", "some_of_time", "most_of_time", "all_the_time"],
+      "validation": {
+        "enum": ["not_at_all", "some_of_time", "most_of_time", "all_the_time"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "sleep_problems",
+      "type": "string",
+      "required": true,
+      "description": "How much of the time during the past 2 weeks have you had trouble sleeping at night?",
+      "options": ["not_at_all", "some_of_time", "most_of_time", "all_the_time"],
+      "validation": {
+        "enum": ["not_at_all", "some_of_time", "most_of_time", "all_the_time"]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "mdi_score",
+    "type": "object",
+    "unit": "points",
+    "description": "MDI total score and depression severity classification"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 13,
+        "stage": "No Depression",
+        "description": "Minimal or no depressive symptoms",
+        "interpretation": "No evidence of clinically significant depression. Continue routine monitoring and preventive care. Consider lifestyle factors and general mental health promotion."
+      },
+      {
+        "min": 14,
+        "max": 20,
+        "stage": "Mild Depression", 
+        "description": "Mild depressive symptoms",
+        "interpretation": "Mild depression present. Consider watchful waiting, psychosocial interventions, counseling, or brief therapy. Monitor closely for symptom progression. Lifestyle modifications and social support may be beneficial."
+      },
+      {
+        "min": 21,
+        "max": 25,
+        "stage": "Moderate Depression",
+        "description": "Moderate depressive symptoms",
+        "interpretation": "Moderate depression requiring treatment. Consider psychotherapy and/or antidepressant medication. Regular follow-up essential. Assess for functional impairment and safety concerns."
+      },
+      {
+        "min": 26,
+        "max": 30,
+        "stage": "Severe Depression",
+        "description": "Severe depressive symptoms",
+        "interpretation": "Severe depression requiring immediate treatment. Strong indication for combined therapy (psychotherapy + medication). Assess suicide risk. Consider psychiatric referral and intensive monitoring."
+      }
+    ]
+  },
+  "references": [
+    "Bech P, Rasmussen NA, Olsen LR, Noerholm V, Abildgaard W. The sensitivity and specificity of the Major Depression Inventory, using the Present State Examination as the index of diagnostic validity. J Affect Disord. 2001 Oct;66(2-3):159-64.",
+    "Olsen LR, Jensen DV, Noerholm V, Martiny K, Bech P. The internal and external validity of the Major Depression Inventory in measuring severity of depressive states. Psychol Med. 2003 Feb;33(2):351-6.",
+    "Cuijpers P, Li J, Hofmann SG, Andersson G. Self-reported versus clinician-rated symptoms of depression as outcome measures in psychotherapy research on depression: a meta-analysis. Clin Psychol Rev. 2010 Nov;30(7):768-78."
+  ],
+  "formula": "Sum of 10 items scored 0-3 each, with diagnostic algorithms for ICD-10 and DSM-IV criteria",
+  "notes": [
+    "Developed by WHO and Professor Per Bech in Denmark",
+    "Available free of charge with full manual",
+    "Translated into seven languages",
+    "Provides both diagnostic and severity assessment",
+    "Based on ICD-10 and DSM-IV criteria for major depression",
+    "Requires symptoms present for at least 2 weeks",
+    "Item 6 (life not worth living) requires careful suicide risk assessment",
+    "Should be combined with clinical interview for formal diagnosis",
+    "Useful for monitoring treatment response over time",
+    "Consider cultural and linguistic factors in interpretation"
+  ]
+}

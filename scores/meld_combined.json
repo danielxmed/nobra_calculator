@@ -1,0 +1,168 @@
+{
+  "id": "meld_combined",
+  "title": "Model for End-Stage Liver Disease (Combined MELD)",
+  "description": "Offers multiple versions of MELD for liver transplant planning and end-stage liver disease severity assessment",
+  "category": "gastroenterology",
+  "version": "Combined 2023",
+  "parameters": [
+    {
+      "name": "meld_version",
+      "type": "string",
+      "required": true,
+      "description": "MELD version to calculate",
+      "options": ["original", "meld_na", "meld_3_0"],
+      "validation": {
+        "enum": ["original", "meld_na", "meld_3_0"]
+      }
+    },
+    {
+      "name": "bilirubin",
+      "type": "float",
+      "required": true,
+      "description": "Serum bilirubin in mg/dL",
+      "validation": {
+        "min": 0.1,
+        "max": 50.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Serum creatinine in mg/dL",
+      "validation": {
+        "min": 0.1,
+        "max": 15.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "inr",
+      "type": "float",
+      "required": true,
+      "description": "International Normalized Ratio (INR) for prothrombin time",
+      "validation": {
+        "min": 0.8,
+        "max": 10.0
+      }
+    },
+    {
+      "name": "sodium",
+      "type": "float",
+      "required": false,
+      "description": "Serum sodium in mEq/L (required for MELD-Na and MELD 3.0)",
+      "validation": {
+        "min": 120,
+        "max": 160
+      },
+      "unit": "mEq/L"
+    },
+    {
+      "name": "albumin",
+      "type": "float",
+      "required": false,
+      "description": "Serum albumin in g/dL (required for MELD 3.0)",
+      "validation": {
+        "min": 1.0,
+        "max": 6.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "age",
+      "type": "integer",
+      "required": false,
+      "description": "Patient age in years (required for MELD 3.0)",
+      "validation": {
+        "min": 12,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": false,
+      "description": "Patient sex (required for MELD 3.0)",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "dialysis_twice_in_week",
+      "type": "string",
+      "required": false,
+      "description": "Patient received dialysis at least twice in the past week",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "meld_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "MELD score indicating severity of liver disease and transplant priority"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 6,
+        "max": 9,
+        "stage": "Mild Disease",
+        "description": "Lower mortality risk",
+        "interpretation": "Mild liver disease with low 90-day mortality risk (<2%). Generally not considered for liver transplantation unless specific indications present."
+      },
+      {
+        "min": 10,
+        "max": 14,
+        "stage": "Moderate Disease",
+        "description": "Moderate mortality risk",
+        "interpretation": "Moderate liver disease with intermediate mortality risk (6-20%). May be considered for liver transplantation evaluation depending on clinical circumstances."
+      },
+      {
+        "min": 15,
+        "max": 19,
+        "stage": "Severe Disease",
+        "description": "High mortality risk",
+        "interpretation": "Severe liver disease with high mortality risk (>20%). Strong indication for liver transplantation evaluation. MELD ≥15 is generally the threshold for transplant consideration."
+      },
+      {
+        "min": 20,
+        "max": 29,
+        "stage": "Very Severe Disease",
+        "description": "Very high mortality risk",
+        "interpretation": "Very severe liver disease with very high mortality risk (>50%). High priority for liver transplantation. Close monitoring and intensive management required."
+      },
+      {
+        "min": 30,
+        "max": 40,
+        "stage": "Critical Disease",
+        "description": "Extremely high mortality risk",
+        "interpretation": "Critical liver disease with extremely high mortality risk (>80%). Highest priority for liver transplantation. Consider intensive care management and urgent transplant evaluation."
+      }
+    ]
+  },
+  "references": [
+    "Kamath PS, Wiesner RH, Malinchoc M, Kremers W, Therneau TM, Kosberg CL, et al. A model to predict survival in patients with end-stage liver disease. Hepatology. 2001 Feb;33(2):464-70. doi: 10.1053/jhep.2001.22172.",
+    "Wiesner R, Edwards E, Freeman R, Harper A, Kim R, Kamath P, et al. Model for end-stage liver disease (MELD) and allocation of donor livers. Gastroenterology. 2003 Jan;124(1):91-6. doi: 10.1053/gast.2003.50016.",
+    "Kim WR, Biggins SW, Kremers WK, Wiesner RH, Kamath PS, Benson JT, et al. Hyponatremia and mortality among patients on the liver-transplant waiting list. N Engl J Med. 2008 Sep 4;359(10):1018-26. doi: 10.1056/NEJMoa0801209.",
+    "Kwong AJ, Ebel NH, Kim WR, Lake JR, Smith JM, Schladt DP, et al. OPTN/SRTR 2021 Annual Data Report: Liver. Am J Transplant. 2023 Feb;23(2 Suppl 1):S178-S263. doi: 10.1016/j.ajt.2023.02.006.",
+    "Kim WR, Mannalithara A, Heimbach JK, Kamath PS, Asrani SK, Biggins SW, et al. MELD 3.0: The Model for End-Stage Liver Disease Updated for the Modern Era. Gastroenterology. 2021 Dec;161(6):1887-1895.e4. doi: 10.1053/j.gastro.2021.08.050."
+  ],
+  "formula": "Version-specific formulas: Original MELD = 3.78×ln(bilirubin) + 11.2×ln(INR) + 9.57×ln(creatinine) + 6.43; MELD-Na incorporates sodium; MELD 3.0 includes albumin, age, and sex adjustments",
+  "notes": [
+    "MELD 3.0 is the current standard for organ transplantation (effective 2023)",
+    "Use most recent lab values within 48 hours",
+    "Maximum creatinine of 4.0 mg/dL used in calculations if higher",
+    "Minimum values: bilirubin 1.0 mg/dL, creatinine 1.0 mg/dL, INR 1.0",
+    "Sodium clamped between 125-137 mEq/L for MELD-Na calculations",
+    "Patients under 12 years should use PELD (Pediatric End-Stage Liver Disease) score",
+    "OPTN accepts maximum submitted score of 40",
+    "Score should be recalculated as lab values change",
+    "Different formulas apply for ages 12-18 vs ≥18 years in MELD 3.0"
+  ]
+}

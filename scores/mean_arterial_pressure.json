@@ -1,0 +1,104 @@
+{
+  "id": "mean_arterial_pressure",
+  "title": "Mean Arterial Pressure (MAP)",
+  "description": "Calculates the average arterial pressure during one cardiac cycle using systolic and diastolic blood pressure. MAP is a better indicator of tissue perfusion than systolic blood pressure alone.",
+  "category": "cardiology",
+  "version": "Standard",
+  "parameters": [
+    {
+      "name": "systolic_bp",
+      "type": "float",
+      "required": true,
+      "description": "Systolic blood pressure (the higher value)",
+      "validation": {
+        "min": 40,
+        "max": 300
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "diastolic_bp",
+      "type": "float",
+      "required": true,
+      "description": "Diastolic blood pressure (the lower value)",
+      "validation": {
+        "min": 20,
+        "max": 200
+      },
+      "unit": "mmHg"
+    }
+  ],
+  "result": {
+    "name": "map",
+    "type": "float",
+    "unit": "mmHg",
+    "description": "Mean arterial pressure representing average blood pressure throughout the cardiac cycle"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 90,
+        "max": 110,
+        "stage": "Normal",
+        "description": "Normal MAP",
+        "interpretation": "Normal mean arterial pressure indicating adequate tissue perfusion. This range provides optimal blood flow to vital organs."
+      },
+      {
+        "min": 70,
+        "max": 89.9,
+        "stage": "Low Normal",
+        "description": "Low normal MAP",
+        "interpretation": "Low normal MAP but still adequate for tissue perfusion in most patients. Monitor closely in elderly patients or those with chronic hypertension who may require higher MAP for adequate perfusion."
+      },
+      {
+        "min": 65,
+        "max": 69.9,
+        "stage": "Borderline Low",
+        "description": "Borderline low MAP",
+        "interpretation": "Borderline low MAP. This is the minimum recommended MAP in patients with sepsis and septic shock. May require intervention to maintain adequate organ perfusion."
+      },
+      {
+        "min": 60,
+        "max": 64.9,
+        "stage": "Low",
+        "description": "Low MAP",
+        "interpretation": "Low MAP with risk of inadequate tissue perfusion. This is the minimum MAP generally needed to maintain adequate perfusion to vital organs. Consider fluids, vasopressors, or other interventions."
+      },
+      {
+        "min": 0,
+        "max": 59.9,
+        "stage": "Critical",
+        "description": "Critically low MAP",
+        "interpretation": "Critically low MAP with high risk of organ hypoperfusion and ischemia. Immediate intervention required. Even brief periods at MAP <50 mmHg significantly increase mortality risk."
+      },
+      {
+        "min": 110.1,
+        "max": 130,
+        "stage": "Elevated",
+        "description": "Elevated MAP",
+        "interpretation": "Elevated MAP which may indicate hypertension or increased systemic vascular resistance. Evaluate for underlying causes and consider antihypertensive therapy if persistently elevated."
+      },
+      {
+        "min": 130.1,
+        "max": 999,
+        "stage": "High",
+        "description": "High MAP",
+        "interpretation": "Significantly elevated MAP indicating severe hypertension. Risk of end-organ damage. Requires urgent evaluation and treatment to prevent complications such as stroke, myocardial infarction, or renal failure."
+      }
+    ]
+  },
+  "references": [
+    "Magder SA. The highs and lows of blood pressure: toward meaningful clinical targets in patients with shock. Crit Care Med. 2014 May;42(5):1241-51. doi: 10.1097/CCM.0000000000000324.",
+    "Walsh M, Devereaux PJ, Garg AX, Kurz A, Turan A, Rodseth RN, et al. Relationship between intraoperative mean arterial pressure and clinical outcomes after noncardiac surgery: toward an empirical definition of hypotension. Anesthesiology. 2013 Sep;119(3):507-15. doi: 10.1097/ALN.0b013e3182a10e26.",
+    "Sesso HD, Stampfer MJ, Rosner B, Hennekens CH, Gaziano JM, Manson JE, et al. Systolic and diastolic blood pressure, pulse pressure, and mean arterial pressure as predictors of cardiovascular disease risk in Men. Hypertension. 2000 Nov;36(5):801-7. doi: 10.1161/01.hyp.36.5.801."
+  ],
+  "formula": "MAP = (2 × Diastolic BP + Systolic BP) / 3  OR  MAP = Diastolic BP + 1/3 × (Systolic BP - Diastolic BP)",
+  "notes": [
+    "MAP accounts for the fact that approximately two-thirds of the cardiac cycle is spent in diastole.",
+    "MAP ≥60 mmHg is generally needed to maintain adequate tissue perfusion.",
+    "MAP ≥65 mmHg is recommended in patients with severe sepsis and septic shock.",
+    "In chronic hypertensive patients, higher MAP may be needed to maintain organ perfusion.",
+    "MAP = Cardiac Output × Systemic Vascular Resistance, so treatment depends on the underlying cause.",
+    "MAP is preferred over systolic BP for assessing tissue perfusion in critical care settings."
+  ]
+}

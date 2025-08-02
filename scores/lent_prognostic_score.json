@@ -1,0 +1,107 @@
+{
+  "id": "lent_prognostic_score",
+  "title": "LENT Prognostic Score for Malignant Pleural Effusion",
+  "description": "Predicts survival in patients with malignant pleural effusion using clinical and laboratory parameters to help inform treatment decisions and prognosis discussions",
+  "category": "oncology",
+  "version": "clive_2014",
+  "parameters": [
+    {
+      "name": "pleural_fluid_ldh",
+      "type": "float",
+      "required": true,
+      "description": "Pleural fluid lactate dehydrogenase (LDH) level",
+      "validation": {
+        "min": 0,
+        "max": 10000
+      },
+      "unit": "U/L"
+    },
+    {
+      "name": "ecog_performance_status",
+      "type": "integer",
+      "required": true,
+      "description": "Eastern Cooperative Oncology Group (ECOG) Performance Status scale",
+      "options": [0, 1, 2, 3, 4],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      }
+    },
+    {
+      "name": "neutrophil_lymphocyte_ratio",
+      "type": "float",
+      "required": true,
+      "description": "Serum neutrophil-to-lymphocyte ratio",
+      "validation": {
+        "min": 0,
+        "max": 100
+      }
+    },
+    {
+      "name": "tumor_type",
+      "type": "string",
+      "required": true,
+      "description": "Primary tumor type",
+      "options": ["mesothelioma_hematologic", "breast_gynecologic_renal", "lung_other"],
+      "validation": {
+        "enum": ["mesothelioma_hematologic", "breast_gynecologic_renal", "lung_other"]
+      }
+    }
+  ],
+  "result": {
+    "name": "lent_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "LENT prognostic score for malignant pleural effusion"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "Low risk of mortality",
+        "interpretation": "Low risk group with median survival of 319 days (approximately 10.5 months). Patients in this group may benefit from more aggressive interventions and have better overall prognosis."
+      },
+      {
+        "min": 2,
+        "max": 4,
+        "stage": "Moderate Risk",
+        "description": "Moderate risk of mortality",
+        "interpretation": "Moderate risk group with median survival of 130 days (approximately 4.3 months). Treatment decisions should consider individual patient factors and goals of care."
+      },
+      {
+        "min": 5,
+        "max": 7,
+        "stage": "High Risk",
+        "description": "High risk of mortality",
+        "interpretation": "High risk group with median survival of 44 days (approximately 1.5 months). Focus on palliative care and comfort measures may be most appropriate. Less invasive interventions should be considered."
+      }
+    ]
+  },
+  "references": [
+    "Clive AO, Kahan BC, Hopwood BE, Bhatnagar R, Morley AJ, Zahan-Evans N, et al. Predicting survival in malignant pleural effusion: development and validation of the LENT prognostic score. Thorax. 2014 Dec;69(12):1098-104.",
+    "Psallidas I, Kanellakis NI, Gerry S, Theza A, Saba T, Tsim S, et al. Development and validation of response markers to predict survival and pleurodesis success in patients with malignant pleural effusion (PROMISE): a multicohort analysis. Lancet Oncol. 2018 Jul;19(7):930-939.",
+    "Porcel JM. Malignant pleural effusion. Current opinion in Pulmonary Medicine. 2016 Jul;22(4):356-61."
+  ],
+  "formula": "LENT Score = LDH points + ECOG points + Neutrophil-lymphocyte ratio points + Tumor type points",
+  "notes": [
+    "LENT stands for: LDH, ECOG performance status, Neutrophil-to-lymphocyte ratio, Tumor type",
+    "Developed specifically for patients with malignant pleural effusion",
+    "Helps identify patients who might benefit from less invasive interventions",
+    "Useful for clinical trial stratification and research purposes",
+    "Score ranges from 0 to 7 points total",
+    "Not meant to replace clinical judgment in treatment decisions",
+    "Should be used in conjunction with other clinical factors and patient preferences",
+    "Particularly helpful for discussions about prognosis and goals of care",
+    "ECOG 0: Fully active, able to carry on all pre-disease activities without restriction",
+    "ECOG 1: Restricted in physically strenuous activity but ambulatory and able to carry out light work",
+    "ECOG 2: Ambulatory and capable of all self-care but unable to carry out any work activities; up and about >50% of waking hours",
+    "ECOG 3: Capable of only limited self-care; confined to bed or chair >50% of waking hours",
+    "ECOG 4: Completely disabled; cannot carry on any self-care; totally confined to bed or chair",
+    "Pleural fluid LDH ≥1,500 U/L suggests more aggressive disease",
+    "Neutrophil-to-lymphocyte ratio ≥9 indicates systemic inflammatory response",
+    "Tumor type reflects different biological behaviors and treatment responses"
+  ]
+}

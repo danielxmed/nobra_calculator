@@ -1,0 +1,91 @@
+{
+  "id": "urine_anion_gap",
+  "title": "Urine Anion Gap",
+  "description": "Detects urinary acidosis for evaluation of non-anion gap metabolic acidosis. Helps differentiate between renal and extrarenal causes of normal anion gap metabolic acidosis by assessing urinary ammonium excretion capacity.",
+  "category": "nephrology",
+  "version": "1986",
+  "parameters": [
+    {
+      "name": "urine_sodium_meq_l",
+      "type": "float",
+      "required": true,
+      "description": "Urine sodium concentration in milliequivalents per liter",
+      "validation": {
+        "min": 5,
+        "max": 300
+      },
+      "unit": "mEq/L"
+    },
+    {
+      "name": "urine_potassium_meq_l",
+      "type": "float",
+      "required": true,
+      "description": "Urine potassium concentration in milliequivalents per liter",
+      "validation": {
+        "min": 5,
+        "max": 200
+      },
+      "unit": "mEq/L"
+    },
+    {
+      "name": "urine_chloride_meq_l",
+      "type": "float",
+      "required": true,
+      "description": "Urine chloride concentration in milliequivalents per liter",
+      "validation": {
+        "min": 5,
+        "max": 400
+      },
+      "unit": "mEq/L"
+    }
+  ],
+  "result": {
+    "name": "urine_anion_gap",
+    "type": "float",
+    "unit": "mEq/L",
+    "description": "Calculated urine anion gap"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": -200,
+        "max": -10,
+        "stage": "Negative UAG",
+        "description": "Extrarenal cause likely",
+        "interpretation": "Negative urine anion gap suggests an extrarenal cause of non-anion gap metabolic acidosis. This indicates adequate renal ammonium excretion, typically seen in GI bicarbonate losses (diarrhea, ureteroenteric fistulas). The kidney is appropriately responding to acidosis by increasing ammonium excretion to regenerate bicarbonate."
+      },
+      {
+        "min": -10,
+        "max": 20,
+        "stage": "Normal UAG",
+        "description": "Normal range",
+        "interpretation": "Normal urine anion gap (typical range -10 to +20 mEq/L). This range may be seen in healthy individuals or early stages of acid-base disorders. Clinical correlation is essential to determine significance in the context of metabolic acidosis."
+      },
+      {
+        "min": 20,
+        "max": 200,
+        "stage": "Positive UAG",
+        "description": "Renal cause likely",
+        "interpretation": "Positive urine anion gap suggests a renal cause of non-anion gap metabolic acidosis. This indicates impaired renal ammonium excretion, typically seen in renal tubular acidosis (Type 1 distal RTA, Type 2 proximal RTA, Type 4 hyperkalemic RTA). The kidney is unable to adequately acidify urine or excrete ammonium despite systemic acidosis."
+      }
+    ]
+  },
+  "references": [
+    "Goldstein MB, Bear R, Richardson RM, Marsden PA, Halperin ML. The urine anion gap: a clinically useful index of ammonium excretion. Am J Med Sci. 1986;292(4):198-202.",
+    "Kim GH, Han JS, Kim YS, Joo KW, Kim S, Lee JS. Evaluation of urine acidification by urine anion gap versus urine osmolal gap in chronic metabolic acidosis. Am J Kidney Dis. 2002;40(4):778-84."
+  ],
+  "formula": "Urine Anion Gap (mEq/L) = Urine Na+ + Urine K+ - Urine Cl-",
+  "notes": [
+    "Primary use is in evaluation of non-anion gap (normal anion gap) metabolic acidosis",
+    "Negative UAG (<-10 mEq/L) suggests extrarenal bicarbonate loss (e.g., diarrhea)",
+    "Positive UAG (>20 mEq/L) suggests renal tubular acidosis",
+    "Normal range is typically -10 to +20 mEq/L",
+    "Limitations exist in severe volume depletion where chloride excretion becomes very low",
+    "Should not be used in isolation - requires clinical correlation",
+    "Urine osmolar gap may be more accurate in some clinical situations",
+    "Consider hyperchloremic fluids can worsen non-anion gap metabolic acidosis",
+    "Use fluids with lower chloride concentrations (like Lactated Ringer's) when treating these conditions",
+    "Requires fresh urine sample with accurate electrolyte measurements",
+    "Most useful when serum anion gap is normal (8-12 mEq/L) with metabolic acidosis"
+  ]
+}

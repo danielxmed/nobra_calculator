@@ -1,0 +1,128 @@
+{
+  "id": "kings_college_criteria_acetaminophen",
+  "title": "King's College Criteria for Acetaminophen Toxicity",
+  "description": "Determines need for liver transplant referral in patients with acute liver failure secondary to acetaminophen overdose. Used to identify patients with poor prognosis who may require urgent liver transplantation.",
+  "category": "emergency",
+  "version": "1989_ogrady",
+  "parameters": [
+    {
+      "name": "arterial_ph",
+      "type": "float",
+      "required": true,
+      "description": "Arterial pH value from arterial blood gas",
+      "validation": {
+        "min": 6.0,
+        "max": 8.0
+      },
+      "unit": "pH units"
+    },
+    {
+      "name": "inr",
+      "type": "float",
+      "required": true,
+      "description": "International Normalized Ratio (INR) for coagulation assessment",
+      "validation": {
+        "min": 0.5,
+        "max": 20.0
+      },
+      "unit": "INR"
+    },
+    {
+      "name": "creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Serum creatinine level",
+      "validation": {
+        "min": 0.1,
+        "max": 25.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "hepatic_encephalopathy_grade",
+      "type": "string",
+      "required": true,
+      "description": "Grade of hepatic encephalopathy",
+      "options": [
+        {
+          "value": "none",
+          "label": "No encephalopathy",
+          "description": "No neurological signs"
+        },
+        {
+          "value": "grade_i",
+          "label": "Grade I",
+          "description": "Mild confusion, euphoria, depression, decreased attention"
+        },
+        {
+          "value": "grade_ii",
+          "label": "Grade II", 
+          "description": "Lethargy, moderate confusion, slurred speech, inappropriate behavior"
+        },
+        {
+          "value": "grade_iii",
+          "label": "Grade III",
+          "description": "Marked confusion, incoherent speech, sleeping but rousable"
+        },
+        {
+          "value": "grade_iv",
+          "label": "Grade IV",
+          "description": "Coma, unresponsive to painful stimuli"
+        }
+      ],
+      "validation": {
+        "enum": ["none", "grade_i", "grade_ii", "grade_iii", "grade_iv"]
+      }
+    },
+    {
+      "name": "lactate",
+      "type": "float",
+      "required": false,
+      "description": "Serum lactate level (additional prognostic marker)",
+      "validation": {
+        "min": 0.1,
+        "max": 30.0
+      },
+      "unit": "mmol/L"
+    },
+    {
+      "name": "phosphate",
+      "type": "float",
+      "required": false,
+      "description": "Serum phosphate level at 48-96 hours (additional prognostic marker)",
+      "validation": {
+        "min": 0.5,
+        "max": 15.0
+      },
+      "unit": "mg/dL"
+    }
+  ],
+  "result": {
+    "name": "kings_college_result",
+    "type": "object",
+    "unit": "criteria",
+    "description": "King's College Criteria assessment for liver transplant need"
+  },
+  "interpretation": {
+    "criteria_met": "Meets King's College Criteria - indicates poor prognosis and need for urgent liver transplant evaluation",
+    "criteria_not_met": "Does not meet King's College Criteria - but close monitoring still required as criteria are specific but not sensitive"
+  },
+  "references": [
+    "O'Grady JG, Alexander GJ, Hayllar KM, Williams R. Early indicators of prognosis in fulminant hepatic failure. Gastroenterology. 1989 Aug;97(2):439-45.",
+    "Bailey B, Amre DK, Gaudreault P. Fulminant hepatic failure secondary to acetaminophen poisoning: a systematic review and meta-analysis of prognostic criteria determining the need for liver transplantation. Crit Care Med. 2003 Jan;31(1):299-305.",
+    "Bernal W, Auzinger G, Dhawan A, Wendon J. Acute liver failure. Lancet. 2010 Jul 17;376(9736):190-201.",
+    "Larson AM, Polson J, Fontana RJ, Davern TJ, Lalani E, Hynan LS, et al. Acetaminophen-induced acute liver failure: results of a United States multicenter, prospective study. Hepatology. 2005 Dec;42(6):1364-72."
+  ],
+  "formula": "Meets criteria if: Arterial pH <7.30 OR (INR >6.5 AND Creatinine >3.4 mg/dL AND Hepatic Encephalopathy Grade III/IV)",
+  "notes": [
+    "Developed to identify patients with acetaminophen-induced liver failure who need liver transplant evaluation",
+    "High specificity (95%) but moderate sensitivity (58%) - meeting criteria indicates poor prognosis",
+    "Not meeting criteria does not guarantee good outcome - close monitoring still required",
+    "Additional poor prognostic factors: lactate >3.5 mmol/L (early) or >3.0 mmol/L (full resuscitation), phosphate >3.75 mg/dL at 48-96h",
+    "Should prompt immediate referral to liver transplant center if criteria met",
+    "Developed before routine use of N-acetylcysteine - prognosis may be better with modern therapy",
+    "PT values may not be comparable across laboratories - INR preferred",
+    "Serial assessment may be more valuable than single timepoint",
+    "Consider other causes of acute liver failure if acetaminophen toxicity unclear"
+  ]
+}

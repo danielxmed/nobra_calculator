@@ -1,0 +1,98 @@
+{
+  "id": "iv_drip_rate_calculator",
+  "title": "IV Drip Rate Calculator",
+  "description": "Calculates IV infusion rate using drip count when IV pumps are unavailable. This tool determines the correct drops per minute needed to deliver a specified volume of intravenous fluid over a given time period using gravity-fed IV administration sets. Essential for resource-limited settings or when electronic infusion pumps are not available.",
+  "category": "emergency",
+  "version": "2024",
+  "parameters": [
+    {
+      "name": "volume_ml",
+      "type": "float",
+      "required": true,
+      "description": "Total volume of IV fluid to be administered in milliliters",
+      "validation": {
+        "min": 1,
+        "max": 10000
+      },
+      "unit": "mL"
+    },
+    {
+      "name": "time_minutes",
+      "type": "float",
+      "required": true,
+      "description": "Total time for infusion in minutes",
+      "validation": {
+        "min": 1,
+        "max": 14400
+      },
+      "unit": "minutes"
+    },
+    {
+      "name": "drop_factor",
+      "type": "string",
+      "required": true,
+      "description": "Drop factor of the IV tubing set (drops per mL)",
+      "options": ["10", "15", "20", "60"],
+      "validation": {
+        "enum": ["10", "15", "20", "60"]
+      },
+      "unit": "gtts/mL"
+    }
+  ],
+  "result": {
+    "name": "drip_rate",
+    "type": "float",
+    "unit": "gtts/min",
+    "description": "IV drip rate in drops per minute"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 30,
+        "stage": "Slow Infusion",
+        "description": "Low drip rate infusion",
+        "interpretation": "Slow infusion rate suitable for maintenance fluids, medications requiring careful titration, or patients at risk of fluid overload. Easy to count and monitor manually."
+      },
+      {
+        "min": 30,
+        "max": 100,
+        "stage": "Moderate Infusion",
+        "description": "Moderate drip rate infusion",
+        "interpretation": "Moderate infusion rate appropriate for standard fluid resuscitation, blood products, or routine medication administration. Requires careful counting and frequent monitoring."
+      },
+      {
+        "min": 100,
+        "max": 200,
+        "stage": "Fast Infusion",
+        "description": "High drip rate infusion",
+        "interpretation": "Fast infusion rate for rapid fluid resuscitation or urgent medication delivery. Difficult to count accurately - consider using larger bore tubing or multiple IV lines if available."
+      },
+      {
+        "min": 200,
+        "max": 1000,
+        "stage": "Very Fast Infusion",
+        "description": "Very high drip rate infusion",
+        "interpretation": "Very fast infusion rate for emergency situations requiring rapid volume expansion. Extremely difficult to count manually - strongly consider alternative delivery methods if available."
+      }
+    ]
+  },
+  "references": [
+    "Wormald JC, Rodrigues JN, Hayton MJ, Bulstrode CJ. An illustrated guide to the anatomical snuffbox. Part 2: Trauma. Br J Hand Ther. 2008;13(3):75-84.",
+    "Phillips LD, Gorski LA. Manual of I.V. therapeutics: evidence-based practice for infusion therapy. 6th ed. Philadelphia, PA: F.A. Davis Company; 2014.",
+    "Weinstein SM, Hagle ME. Plumer's principles and practice of infusion therapy. 9th ed. Philadelphia, PA: Wolters Kluwer/Lippincott Williams & Wilkins; 2014.",
+    "Alexander M, Corrigan A, Gorski L, Hankins J, Perucca R. Infusion nursing: an evidence-based approach. 3rd ed. St. Louis, MO: Saunders Elsevier; 2010."
+  ],
+  "formula": "IV Drip Rate (gtts/min) = (Volume to be given in mL × Drop factor in gtts/mL) / Time in minutes",
+  "notes": [
+    "IV infusion pumps have largely replaced manual drip counting in many healthcare settings",
+    "Essential calculation for resource-limited settings without electronic pumps",
+    "Drop factor varies by IV tubing manufacturer and type - always check packaging",
+    "60 gtts/mL = microdrip/minidrip tubing (for precise medication delivery)",
+    "10-20 gtts/mL = macrodrip/regular tubing (for routine fluid administration)",
+    "Count drops for 15 seconds and multiply by 4 to verify rate",
+    "Adjust drip rate by opening/closing roller clamp on IV tubing",
+    "Monitor patient closely for signs of fluid overload or inadequate infusion",
+    "Consider patient safety factors: age, cardiac status, renal function"
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "id": "malnutrition_universal_screening_tool",
+  "title": "Malnutrition Universal Screening Tool (MUST)",
+  "description": "Identifies patients who are malnourished or at risk of malnutrition using BMI, weight loss, and acute disease effects",
+  "category": "geriatrics",
+  "version": "2003",
+  "parameters": [
+    {
+      "name": "bmi",
+      "type": "float",
+      "required": true,
+      "description": "Body Mass Index in kg/m²",
+      "validation": {
+        "min": 10.0,
+        "max": 60.0
+      },
+      "unit": "kg/m²"
+    },
+    {
+      "name": "weight_loss_percentage",
+      "type": "float",
+      "required": true,
+      "description": "Unplanned weight loss in the past 3-6 months as percentage of body weight",
+      "validation": {
+        "min": 0.0,
+        "max": 50.0
+      },
+      "unit": "%"
+    },
+    {
+      "name": "acute_disease_effect",
+      "type": "string",
+      "required": true,
+      "description": "Patient acutely ill with no nutritional intake for >5 days or likely to have no intake for >5 days",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "must_score",
+    "type": "object",
+    "unit": "points",
+    "description": "MUST total score and malnutrition risk level"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "Low risk of malnutrition",
+        "interpretation": "Low risk of malnutrition. Routine clinical care with repeat screening in hospital weekly, in care homes monthly, and in community annually for special groups."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Medium Risk",
+        "description": "Medium risk of malnutrition",
+        "interpretation": "Medium risk of malnutrition. Document dietary intake and observe for 3 days. If improved intake - little clinical concern. If no improvement, follow clinical guidelines. Repeat screening in hospital weekly and in care homes/community monthly."
+      },
+      {
+        "min": 2,
+        "max": 10,
+        "stage": "High Risk",
+        "description": "High risk of malnutrition",
+        "interpretation": "High risk of malnutrition. Refer to dietitian, nutritional support team or implement local policy. Improve and increase overall nutritional intake. Monitor and review care plan regularly. Repeat screening in hospital weekly and in care homes/community monthly."
+      }
+    ]
+  },
+  "references": [
+    "Elia M. The 'MUST' report. Nutritional screening of adults: a multidisciplinary responsibility. Redditch: BAPEN; 2003.",
+    "Kondrup J, Allison SP, Elia M, Vellas B, Plauth M. ESPEN guidelines for nutrition screening 2002. Clin Nutr. 2003 Aug;22(4):415-21.",
+    "Stratton RJ, Hackston A, Longmore D, Dixon R, Price S, Stroud M, et al. Malnutrition in hospital outpatients and inpatients: prevalence, concurrent validity and ease of use of the 'malnutrition universal screening tool' ('MUST') for adults. Br J Nutr. 2004 Nov;92(5):799-808."
+  ],
+  "formula": "BMI score (≥20: 0pts, 18.5-20: 1pt, <18.5: 2pts) + Weight loss score (<5%: 0pts, 5-10%: 1pt, >10%: 2pts) + Acute disease effect (no: 0pts, yes: 2pts)",
+  "notes": [
+    "Developed by BAPEN (British Association for Parenteral and Enteral Nutrition) in 2003",
+    "Widely used screening tool in UK healthcare settings",
+    "Suitable for use in hospitals, care homes, and community settings",
+    "Can detect both under-nutrition and over-nutrition",
+    "Linked to evidence-based care plans and treatment pathways",
+    "Should be repeated regularly: weekly in hospitals, monthly in care homes/community",
+    "Requires clinical judgment for interpretation in specific populations",
+    "Consider alternative measurements if BMI cannot be calculated",
+    "Document food intake when medium or high risk identified",
+    "Early intervention more effective than treatment of established malnutrition"
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "id": "hiv_needle_stick_rasp",
+  "title": "HIV Needle Stick Risk Assessment Stratification Protocol (RASP)",
+  "description": "Quantifies HIV exposure risk by source and exposure type to guide post-exposure prophylaxis (PEP) decisions following needle stick injuries or other potential HIV exposures.",
+  "category": "infectious_disease",
+  "version": "2007",
+  "parameters": [
+    {
+      "name": "source_population",
+      "type": "string",
+      "required": true,
+      "description": "HIV status and clinical condition of source patient",
+      "options": ["hiv_acute_aids", "hiv_asymptomatic", "unknown_high_risk", "unknown_low_risk"],
+      "validation": {
+        "enum": ["hiv_acute_aids", "hiv_asymptomatic", "unknown_high_risk", "unknown_low_risk"]
+      }
+    },
+    {
+      "name": "inoculum_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of body fluid involved in exposure",
+      "options": ["fresh_blood", "high_risk_fluids", "dried_old_blood", "low_risk_secretions"],
+      "validation": {
+        "enum": ["fresh_blood", "high_risk_fluids", "dried_old_blood", "low_risk_secretions"]
+      }
+    },
+    {
+      "name": "transmission_method",
+      "type": "string",
+      "required": true,
+      "description": "Method of exposure/transmission route",
+      "options": ["intravenous", "deep_intramuscular", "deep_transcutaneous_bleeding", "superficial_transcutaneous", "mucosal_contact", "intact_skin"],
+      "validation": {
+        "enum": ["intravenous", "deep_intramuscular", "deep_transcutaneous_bleeding", "superficial_transcutaneous", "mucosal_contact", "intact_skin"]
+      }
+    },
+    {
+      "name": "inoculum_volume",
+      "type": "string",
+      "required": true,
+      "description": "Volume of inoculum/exposure",
+      "options": ["massive_transfusion", "measurable_over_1ml", "moderate_large_bore", "small_small_bore", "trace_surface_only"],
+      "validation": {
+        "enum": ["massive_transfusion", "measurable_over_1ml", "moderate_large_bore", "small_small_bore", "trace_surface_only"]
+      }
+    }
+  ],
+  "result": {
+    "name": "hiv_risk",
+    "type": "float",
+    "unit": "risk_ratio",
+    "description": "HIV transmission risk expressed as 1 in X"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1000,
+        "stage": "Definitely Indicated",
+        "description": "Risk ≥1/1000",
+        "interpretation": "Post-exposure prophylaxis (PEP) is definitely indicated. Begin PEP as soon as possible, ideally within 2 hours but up to 72 hours post-exposure. Continue for 28 days with appropriate antiretroviral regimen."
+      },
+      {
+        "min": 1001,
+        "max": 10000,
+        "stage": "Recommended",
+        "description": "Risk 1/1001-1/10000",
+        "interpretation": "PEP is recommended but optional. Discuss risks and benefits with the exposed individual. Consider severity of exposure, source patient factors, and time since exposure."
+      },
+      {
+        "min": 10001,
+        "max": 100000,
+        "stage": "Optional",
+        "description": "Risk 1/10001-1/100000",
+        "interpretation": "PEP is optional but not generally recommended. May consider in special circumstances or if exposed person has high anxiety. Ensure appropriate counseling and follow-up."
+      },
+      {
+        "min": 100001,
+        "max": 999999999,
+        "stage": "Not Indicated",
+        "description": "Risk ≤1/100000",
+        "interpretation": "PEP is not indicated. Risk of HIV transmission is negligible. Provide reassurance and standard follow-up care. Consider baseline HIV testing if warranted."
+      }
+    ]
+  },
+  "references": [
+    "Vertesi L. Risk Assessment Stratification Protocol (RASP) to help patients decide on the use of postexposure prophylaxis for HIV exposure. CJEM. 2003 Jan;5(1):46-8.",
+    "Panlilio AL, Cardo DM, Grohskopf LA, Heneine W, Ross CS; U.S. Public Health Service. Updated U.S. Public Health Service guidelines for the management of occupational exposures to HIV and recommendations for postexposure prophylaxis. MMWR Recomm Rep. 2005 Sep 30;54(RR-9):1-17.",
+    "Cardo DM, Culver DH, Ciesielski CA, Srivastava PU, Marcus R, Abiteboul D, et al. A case-control study of HIV seroconversion in health care workers after percutaneous exposure. Centers for Disease Control and Prevention Needlestick Surveillance Group. N Engl J Med. 1997 Nov 20;337(21):1485-90."
+  ],
+  "formula": "Basic risk = 1 / (Source population × Inoculum type × Method of transmission); Total risk (1 in X) = Basic risk × Volume of inoculum",
+  "notes": [
+    "PEP should be initiated as soon as possible, ideally within 2 hours of exposure",
+    "PEP can be considered up to 72 hours post-exposure but effectiveness decreases with time",
+    "Source population high-risk factors include: injection drug use, men who have sex with men, commercial sex work",
+    "High-risk fluids include: semen, vaginal secretions, CSF, synovial fluid, pleural fluid, peritoneal fluid, pericardial fluid, amniotic fluid",
+    "Low-risk secretions include: tears, urine, saliva, vomitus, feces (unless visibly bloody)",
+    "Standard PEP regimen is typically a 3-drug antiretroviral combination for 28 days"
+  ]
+}

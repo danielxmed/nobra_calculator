@@ -1,0 +1,219 @@
+{
+  "id": "wat_1_pediatric_withdrawal",
+  "title": "Withdrawal Assessment Tool (WAT-1) for Pediatric Withdrawal",
+  "description": "Validated assessment tool for evaluating opioid and benzodiazepine withdrawal severity in pediatric patients. The WAT-1 systematically assesses 12 clinical parameters across multiple domains including neurologic irritability, motor symptoms, respiratory distress, and gastrointestinal symptoms to guide withdrawal management in children.",
+  "category": "pediatrics",
+  "version": "2008",
+  "parameters": [
+    {
+      "name": "post_menstrual_age_weeks",
+      "type": "integer",
+      "required": true,
+      "description": "Post-menstrual age in weeks (gestational age + chronological age)",
+      "validation": {
+        "min": 25,
+        "max": 200
+      },
+      "unit": "weeks"
+    },
+    {
+      "name": "state_sleep_wake_cycle",
+      "type": "integer",
+      "required": true,
+      "description": "State/sleep-wake cycle disturbance (0=normal sleep, 1=mild restlessness, 2=moderate agitation, 3=severe sleep disturbance)",
+      "options": [0, 1, 2, 3],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "tremor",
+      "type": "integer",
+      "required": true,
+      "description": "Tremor severity (0=none, 1=mild when stimulated, 2=moderate when awake, 3=severe continuous)",
+      "options": [0, 1, 2, 3],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "increased_muscle_tone",
+      "type": "integer",
+      "required": true,
+      "description": "Increased muscle tone/hypertonia (0=normal, 1=mild increase, 2=moderate increase, 3=severe rigidity)",
+      "options": [0, 1, 2, 3],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "excoriation",
+      "type": "integer",
+      "required": true,
+      "description": "Excoriation marks from scratching (0=none, 1=red marks, 2=scratches without bleeding, 3=bleeding scratches)",
+      "options": [0, 1, 2, 3],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "myoclonus_seizures",
+      "type": "integer",
+      "required": true,
+      "description": "Myoclonus/seizure activity (0=none, 1=occasional jerks, 2=frequent jerks, 3=continuous or seizures)",
+      "options": [0, 1, 2, 3],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "tachypnea",
+      "type": "integer",
+      "required": true,
+      "description": "Tachypnea/respiratory distress (0=normal rate, 1=mildly elevated, 2=moderately elevated, 3=severely elevated or distressed)",
+      "options": [0, 1, 2, 3],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "sweating",
+      "type": "integer",
+      "required": true,
+      "description": "Sweating/diaphoresis (0=none, 1=mild sweating, 2=moderate sweating, 3=profuse sweating)",
+      "options": [0, 1, 2, 3],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "fever",
+      "type": "integer",
+      "required": true,
+      "description": "Fever/hyperthermia (0=<37.2°C, 1=37.2-37.8°C, 2=37.9-38.3°C, 3=>38.3°C)",
+      "options": [0, 1, 2, 3],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "frequent_yawning_sneezing",
+      "type": "integer",
+      "required": true,
+      "description": "Frequent yawning/sneezing (0=none, 1=occasional, 2=frequent, 3=continuous)",
+      "options": [0, 1, 2, 3],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "nasal_stuffiness",
+      "type": "integer",
+      "required": true,
+      "description": "Nasal stuffiness/rhinorrhea (0=none, 1=mild stuffiness, 2=moderate stuffiness, 3=severe stuffiness)",
+      "options": [0, 1, 2, 3],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "poor_feeding_vomiting",
+      "type": "integer",
+      "required": true,
+      "description": "Poor feeding/vomiting (0=normal feeding, 1=poor feeding, 2=refusal to feed, 3=vomiting)",
+      "options": [0, 1, 2, 3],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    }
+  ],
+  "result": {
+    "name": "wat_1_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "WAT-1 total score for pediatric withdrawal severity"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "None to Mild",
+        "description": "No withdrawal or mild withdrawal symptoms",
+        "interpretation": "WAT-1 score indicates no significant withdrawal or very mild withdrawal symptoms. Continue current management and monitor for symptom progression. Consider comfort measures and supportive care as needed."
+      },
+      {
+        "min": 3,
+        "max": 8,
+        "stage": "Mild to Moderate",
+        "description": "Mild to moderate withdrawal symptoms",
+        "interpretation": "WAT-1 score suggests mild to moderate withdrawal symptoms requiring intervention. Consider pharmacological management with appropriate medications. Increase monitoring frequency and provide comfort measures."
+      },
+      {
+        "min": 9,
+        "max": 36,
+        "stage": "Moderate to Severe",
+        "description": "Moderate to severe withdrawal symptoms",
+        "interpretation": "WAT-1 score indicates moderate to severe withdrawal requiring immediate pharmacological intervention. Consider methadone, morphine, or clonidine as appropriate. Provide intensive monitoring and supportive care."
+      }
+    ]
+  },
+  "references": [
+    "Franck LS, Harris SK, Soetenga DJ, et al. The Withdrawal Assessment Tool-1 (WAT-1): an assessment instrument for monitoring opioid and benzodiazepine withdrawal symptoms in pediatric patients. Pediatr Crit Care Med. 2008;9(6):573-580. doi: 10.1097/PCC.0b013e31818c8328",
+    "Anand KJ, Willson DF, Berger J, et al. Tolerance and withdrawal from prolonged opioid use in critically ill children. Pediatrics. 2010;125(5):e1208-e1225. doi: 10.1542/peds.2009-0489",
+    "Ista E, van Dijk M, Gamel C, et al. Withdrawal symptoms in children after long-term administration of sedatives and/or analgesics: a literature review. Assessment remains troublesome. Intensive Care Med. 2007;33(8):1396-1406. doi: 10.1007/s00134-007-0696-x",
+    "Best KM, Asaro LA, Franck LS. Patterns of sedation weaning in critically ill children recovering from acute respiratory failure. Pediatr Crit Care Med. 2015;16(3):e43-e49. doi: 10.1097/PCC.0000000000000324"
+  ],
+  "formula": "Sum of scores for 12 withdrawal assessment parameters (0-3 points each): state/sleep-wake cycle + tremor + increased muscle tone + excoriation + myoclonus/seizures + tachypnea + sweating + fever + frequent yawning/sneezing + nasal stuffiness + poor feeding/vomiting. Post-menstrual age affects interpretation thresholds.",
+  "notes": [
+    "Validated for pediatric patients (term infants to 18 years)",
+    "Assesses withdrawal from opioids and benzodiazepines",
+    "Should be assessed every 4-12 hours during withdrawal period",
+    "Scores ≥3 typically warrant pharmacological intervention",
+    "Post-menstrual age affects expected baseline behaviors",
+    "Younger patients may have different manifestations",
+    "Consider environmental factors affecting assessment",
+    "Tool helps standardize withdrawal assessment across providers",
+    "Useful for guiding weaning protocols and medication decisions",
+    "Should be used in conjunction with clinical judgment",
+    "Requires training for reliable administration",
+    "Not validated for alcohol or other substance withdrawal",
+    "Environmental modifications may help reduce scores",
+    "Family presence and comfort measures are important adjuncts",
+    "Consider pain vs withdrawal as differential diagnosis",
+    "Age-appropriate comfort measures should be implemented"
+  ]
+}

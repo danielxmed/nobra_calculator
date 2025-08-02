@@ -1,0 +1,119 @@
+{
+  "id": "immune_related_adverse_events_lung_pneumonitis",
+  "title": "Immune-Related Adverse Events for Lung Toxicity - Pneumonitis",
+  "description": "Grades severity of pneumonitis secondary to immune checkpoint inhibitor (ICPi) therapy based on Common Terminology Criteria for Adverse Events (CTCAE) Version 5.0 criteria. This standardized grading system evaluates respiratory symptoms, oxygen requirements, and functional impact to determine the severity of immune-mediated pneumonitis and guide clinical management decisions including ICPi therapy continuation, corticosteroid treatment, pulmonology consultation needs, and monitoring for life-threatening respiratory complications. ICPi-induced pneumonitis has an incidence of 2.7% for all-grade and 0.8% for high-grade pneumonitis in single-agent therapy. The calculator provides evidence-based management recommendations essential for oncologists, pulmonologists, and intensive care teams managing patients on immunotherapy.",
+  "category": "oncology",
+  "version": "CTCAE v5.0",
+  "parameters": [
+    {
+      "name": "respiratory_symptoms",
+      "type": "string",
+      "required": true,
+      "description": "Presence and severity of respiratory symptoms including dyspnea, cough, chest pain. Asymptomatic indicates radiographic changes only without symptoms. Mild symptoms allow normal daily activities. Moderate symptoms limit some activities. Severe symptoms significantly limit activities",
+      "options": ["asymptomatic", "mild", "moderate", "severe"],
+      "validation": {
+        "enum": ["asymptomatic", "mild", "moderate", "severe"]
+      }
+    },
+    {
+      "name": "functional_impact",
+      "type": "string",
+      "required": true,
+      "description": "Impact on activities of daily living and functional status. None: normal activities maintained. Limiting instrumental ADLs: some limitation in complex activities. Limiting self-care ADLs: unable to perform basic self-care activities. Life-threatening: requires urgent intervention",
+      "options": ["none", "limiting_instrumental_adls", "limiting_self_care_adls", "life_threatening"],
+      "validation": {
+        "enum": ["none", "limiting_instrumental_adls", "limiting_self_care_adls", "life_threatening"]
+      }
+    },
+    {
+      "name": "oxygen_requirement",
+      "type": "string",
+      "required": true,
+      "description": "Need for supplemental oxygen or respiratory support. Room air: no oxygen needed. Low-flow oxygen: nasal cannula ≤4L/min. High-flow oxygen: >4L/min or non-rebreather mask. Mechanical ventilation: intubation or non-invasive positive pressure ventilation required",
+      "options": ["room_air", "low_flow_oxygen", "high_flow_oxygen", "mechanical_ventilation"],
+      "validation": {
+        "enum": ["room_air", "low_flow_oxygen", "high_flow_oxygen", "mechanical_ventilation"]
+      }
+    },
+    {
+      "name": "radiographic_findings",
+      "type": "string",
+      "required": true,
+      "description": "Extent of radiographic involvement on chest imaging (CT preferred). Normal: no findings. Minimal: <25% lung involvement. Moderate: 25-50% lung involvement. Extensive: >50% lung involvement or diffuse bilateral involvement",
+      "options": ["normal", "minimal", "moderate", "extensive"],
+      "validation": {
+        "enum": ["normal", "minimal", "moderate", "extensive"]
+      }
+    },
+    {
+      "name": "hospitalization_indicated",
+      "type": "string",
+      "required": true,
+      "description": "Clinical indication for hospitalization based on severity, oxygen requirements, or complications. Indicates at least Grade 2 severity. Consider for respiratory distress, hypoxemia, or need for close monitoring",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "grade",
+    "type": "integer",
+    "unit": "grade",
+    "description": "CTCAE grade for immune-related pneumonitis (1-4)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Grade 1",
+        "description": "Mild - Asymptomatic; clinical or diagnostic observations only",
+        "interpretation": "Continue ICPi with close monitoring. Repeat chest imaging in 3-4 weeks. Rule out alternative causes (infection, progression, radiation pneumonitis). Monitor pulmonary function tests. Consider pulmonology consultation if persistent. Hold ICPi if symptoms develop or imaging worsens."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Grade 2",
+        "description": "Moderate - Symptomatic; limiting instrumental ADLs",
+        "interpretation": "Hold ICPi until symptoms improve to grade ≤1. Start corticosteroids (prednisone 1 mg/kg/day or equivalent). Obtain pulmonology consultation. Rule out infectious causes with bronchoscopy if indicated. Consider hospitalization for close monitoring. Repeat chest imaging in 3-5 days. Resume ICPi when grade ≤1 and steroids tapered."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Grade 3",
+        "description": "Severe - Limiting self-care ADLs; oxygen indicated",
+        "interpretation": "Permanently discontinue ICPi. Immediate hospitalization required. Start high-dose corticosteroids (methylprednisolone 2-4 mg/kg/day IV). Urgent pulmonology and intensive care consultation. Bronchoscopy to rule out infection. If no improvement in 48-72 hours, add mycophenolate mofetil, infliximab, or cyclophosphamide. Monitor for respiratory failure."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Grade 4",
+        "description": "Life-threatening - Life-threatening respiratory compromise; urgent intervention indicated",
+        "interpretation": "Permanently discontinue ICPi. Immediate ICU admission required. Start high-dose IV corticosteroids (methylprednisolone 2-4 mg/kg/day). Urgent pulmonology and critical care consultation. Consider mechanical ventilation support. Bronchoscopy when stable. Add second-line immunosuppressants (infliximab, cyclophosphamide, IVIG) if refractory to steroids. Consider plasmapheresis for refractory cases."
+      }
+    ]
+  },
+  "references": [
+    "Brahmer JR, Lacchetti C, Schneider BJ, Atkins MB, Brassil KJ, Caterino JM, et al. Management of Immune-Related Adverse Events in Patients Treated With Immune Checkpoint Inhibitor Therapy: American Society of Clinical Oncology Clinical Practice Guideline. J Clin Oncol. 2018 Jun 10;36(17):1714-1768. doi: 10.1200/JCO.2017.77.6385.",
+    "Thompson JA, Schneider BJ, Brahmer J, Andrews S, Armand P, Bhatia S, et al. NCCN Guidelines Insights: Management of Immunotherapy-Related Toxicities, Version 1.2020. J Natl Compr Canc Netw. 2020 Mar 1;18(3):230-241. doi: 10.6004/jnccn.2020.0012.",
+    "Nishino M, Giobbie-Hurder A, Hatabu H, Ramaiya NH, Hodi FS. Incidence of Programmed Cell Death 1 Inhibitor-Related Pneumonitis in Patients With Advanced Cancer: A Systematic Review and Meta-analysis. JAMA Oncol. 2016 Dec 1;2(12):1607-1616. doi: 10.1001/jamaoncol.2016.2453.",
+    "Naidoo J, Wang X, Woo KM, Iyriboz T, Halpenny D, Cunningham J, et al. Pneumonitis in Patients Treated With Anti-Programmed Death-1/Programmed Death Ligand 1 Therapy. J Clin Oncol. 2017 Mar 10;35(7):709-717. doi: 10.1200/JCO.2016.68.2005."
+  ],
+  "formula": "CTCAE grading based on symptom severity, functional impact, oxygen requirements, and radiographic extent: Grade 1: Asymptomatic with radiographic changes; Grade 2: Symptomatic limiting instrumental ADLs; Grade 3: Severe symptoms limiting self-care ADLs, oxygen indicated; Grade 4: Life-threatening respiratory compromise requiring urgent intervention",
+  "notes": [
+    "ICPi-induced pneumonitis has incidence of 2.7% for all-grade and 0.8% for high-grade pneumonitis",
+    "Higher incidence with combination immunotherapy compared to single-agent therapy",
+    "Onset typically occurs 2-24 weeks after treatment initiation (median 2.8 months)",
+    "CT chest is more sensitive than chest X-ray for detection of pneumonitis",
+    "Four main radiographic patterns: cryptogenic organizing pneumonia (COP), nonspecific interstitial pneumonia (NSIP), hypersensitivity pneumonitis (HP), and acute interstitial pneumonia/ARDS",
+    "Bronchoscopy should be performed to rule out infection, especially before starting immunosuppression",
+    "Grade 1-2: Outpatient management possible with close monitoring",
+    "Grade 3-4: Require hospitalization, often ICU care for Grade 4",
+    "Permanent ICPi discontinuation recommended for Grade 3-4 pneumonitis",
+    "Corticosteroids are first-line treatment for Grade 2-4 pneumonitis",
+    "Second-line agents for steroid-refractory cases: infliximab, mycophenolate mofetil, cyclophosphamide, IVIG",
+    "Monitor for opportunistic infections during immunosuppressive treatment",
+    "Pneumocystis jirovecii pneumonia (PCP) prophylaxis recommended for prolonged high-dose steroids"
+  ]
+}

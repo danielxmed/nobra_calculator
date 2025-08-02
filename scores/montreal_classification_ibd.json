@@ -1,0 +1,121 @@
+{
+  "id": "montreal_classification_ibd",
+  "title": "Montreal Classification for Inflammatory Bowel Disease (IBD)",
+  "description": "Classifies phenotype and severity of Crohn's disease and ulcerative colitis to guide treatment decisions and predict disease course.",
+  "category": "gastroenterology",
+  "version": "2005",
+  "parameters": [
+    {
+      "name": "disease_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of inflammatory bowel disease",
+      "options": ["crohns_disease", "ulcerative_colitis"],
+      "validation": {
+        "enum": ["crohns_disease", "ulcerative_colitis"]
+      }
+    },
+    {
+      "name": "age_at_diagnosis",
+      "type": "integer",
+      "required": true,
+      "description": "Age at diagnosis in years for Montreal Age classification",
+      "validation": {
+        "min": 0,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "crohns_location",
+      "type": "string",
+      "required": false,
+      "description": "Location of Crohn's disease (L1-L4) - only for Crohn's disease",
+      "options": ["L1_ileal", "L2_colonic", "L3_ileocolonic", "L4_upper_gi"],
+      "validation": {
+        "enum": ["L1_ileal", "L2_colonic", "L3_ileocolonic", "L4_upper_gi"]
+      }
+    },
+    {
+      "name": "crohns_behavior",
+      "type": "string",
+      "required": false,
+      "description": "Behavior pattern of Crohn's disease (B1-B3) - only for Crohn's disease",
+      "options": ["B1_inflammatory", "B2_stricturing", "B3_penetrating"],
+      "validation": {
+        "enum": ["B1_inflammatory", "B2_stricturing", "B3_penetrating"]
+      }
+    },
+    {
+      "name": "perianal_disease",
+      "type": "string",
+      "required": false,
+      "description": "Presence of perianal disease modifier (p) - only for Crohn's disease",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "uc_extent",
+      "type": "string",
+      "required": false,
+      "description": "Extent of ulcerative colitis (E1-E3) - only for ulcerative colitis",
+      "options": ["E1_proctitis", "E2_left_sided", "E3_extensive"],
+      "validation": {
+        "enum": ["E1_proctitis", "E2_left_sided", "E3_extensive"]
+      }
+    },
+    {
+      "name": "uc_severity",
+      "type": "string",
+      "required": false,
+      "description": "Severity of ulcerative colitis (S0-S3) - only for ulcerative colitis",
+      "options": ["S0_remission", "S1_mild", "S2_moderate", "S3_severe"],
+      "validation": {
+        "enum": ["S0_remission", "S1_mild", "S2_moderate", "S3_severe"]
+      }
+    }
+  ],
+  "result": {
+    "name": "montreal_classification",
+    "type": "string",
+    "description": "Complete Montreal Classification code and interpretation"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "condition": "crohns_disease",
+        "stage": "Crohn's Disease Classification",
+        "description": "Age + Location + Behavior + Perianal modifier",
+        "interpretation": "Montreal Classification provides standardized phenotypic characterization for clinical management and research."
+      },
+      {
+        "condition": "ulcerative_colitis", 
+        "stage": "Ulcerative Colitis Classification",
+        "description": "Age + Extent + Severity",
+        "interpretation": "Montreal Classification helps predict disease course and guide therapeutic decisions."
+      }
+    ]
+  },
+  "references": [
+    "Silverberg MS, Satsangi J, Ahmad T, Arnott ID, Bernstein CN, Brant SR, et al. Toward an integrated clinical, molecular and serological classification of inflammatory bowel disease: report of a Working Party of the 2005 Montreal World Congress of Gastroenterology. Can J Gastroenterol. 2005;19 Suppl A:5A-36A. doi: 10.1155/2005/269076.",
+    "Satsangi J, Silverberg MS, Vermeire S, Colombel JF. The Montreal classification of inflammatory bowel disease: controversies, consensus, and implications. Gut. 2006;55(6):749-53. doi: 10.1136/gut.2005.082909.",
+    "Thia KT, Sandborn WJ, Harmsen WS, Zinsmeister AR, Loftus EV Jr. Risk factors associated with progression to intestinal complications of Crohn's disease in a population-based cohort. Gastroenterology. 2010;139(4):1147-55. doi: 10.1053/j.gastro.2010.06.070."
+  ],
+  "formula": "For Crohn's Disease: A[age] + L[location] + B[behavior] + p[perianal]. For Ulcerative Colitis: A[age] + E[extent] + S[severity]. Age: A1 (<17y), A2 (17-40y), A3 (>40y).",
+  "notes": [
+    "Montreal Classification replaced Vienna Classification in 2005",
+    "Provides standardized phenotypic characterization for IBD",
+    "Age categories: A1 (<17 years), A2 (17-40 years), A3 (>40 years)",
+    "Crohn's location: L1 (ileal), L2 (colonic), L3 (ileocolonic), L4 (upper GI)",
+    "Crohn's behavior: B1 (inflammatory), B2 (stricturing), B3 (penetrating)",
+    "Perianal modifier 'p' can be added to any Crohn's behavior",
+    "UC extent: E1 (proctitis), E2 (left-sided), E3 (extensive/pancolitis)",  
+    "UC severity: S0 (remission), S1 (mild), S2 (moderate), S3 (severe)",
+    "Classification evolves over time with disease progression",
+    "Helps predict prognosis and guide treatment strategies",
+    "Widely used in clinical trials and research",
+    "Essential for personalized IBD management"
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "id": "ukeld",
+  "title": "United Kingdom Model for End-Stage Liver Disease (UKELD)",
+  "description": "Predicts mortality in end-stage liver disease patients for liver transplant planning. Developed specifically for UK population to determine eligibility for liver transplantation and estimate patient prognosis.",
+  "category": "gastroenterology",
+  "version": "2008",
+  "parameters": [
+    {
+      "name": "inr",
+      "type": "float",
+      "required": true,
+      "description": "International Normalized Ratio (INR) - measure of blood clotting time",
+      "validation": {
+        "min": 0.8,
+        "max": 10.0
+      },
+      "unit": "ratio"
+    },
+    {
+      "name": "creatinine_umol_l",
+      "type": "float",
+      "required": true,
+      "description": "Serum creatinine concentration in micromoles per liter",
+      "validation": {
+        "min": 30,
+        "max": 800
+      },
+      "unit": "µmol/L"
+    },
+    {
+      "name": "bilirubin_umol_l",
+      "type": "float",
+      "required": true,
+      "description": "Serum bilirubin concentration in micromoles per liter",
+      "validation": {
+        "min": 5,
+        "max": 1000
+      },
+      "unit": "µmol/L"
+    },
+    {
+      "name": "sodium_mmol_l",
+      "type": "float",
+      "required": true,
+      "description": "Serum sodium concentration in millimoles per liter",
+      "validation": {
+        "min": 120,
+        "max": 150
+      },
+      "unit": "mmol/L"
+    }
+  ],
+  "result": {
+    "name": "ukeld_score",
+    "type": "float",
+    "unit": "points",
+    "description": "UKELD score predicting mortality risk in end-stage liver disease"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 48,
+        "stage": "Below Transplant Threshold",
+        "description": "Low mortality risk",
+        "interpretation": "UKELD score below 49 indicates relatively low 1-year mortality risk (<9% without transplantation). Patient does not meet the UK criteria for liver transplant eligibility based on mortality risk alone. Continue medical management and monitor disease progression."
+      },
+      {
+        "min": 49,
+        "max": 59,
+        "stage": "Transplant Eligible",
+        "description": "Moderate to high mortality risk",
+        "interpretation": "UKELD score ≥49 meets the UK cutoff for transplant eligibility, indicating >9% 1-year mortality risk without transplantation. Patient should be evaluated for liver transplantation and placed on the waiting list if appropriate. Optimize medical management while awaiting transplant."
+      },
+      {
+        "min": 60,
+        "max": 100,
+        "stage": "High Priority Transplant",
+        "description": "Very high mortality risk",
+        "interpretation": "UKELD score ≥60 predicts approximately 50% 1-year mortality risk without transplantation. Patient has very high priority for liver transplantation. Urgent transplant evaluation and aggressive supportive care are indicated. Consider intensive care unit monitoring if clinically unstable."
+      }
+    ]
+  },
+  "references": [
+    "Neuberger J, Gimson A, Davies M, Akyol M, O'Grady J, Burroughs A, Hudson M. Selection of patients for liver transplantation and allocation of donated livers in the UK. Gut. 2008;57(2):252-7.",
+    "Barber K, Madden S, Allen J, Collett D, Neuberger J, Gimson A. Elective liver transplant list mortality: development of a United Kingdom end-stage liver disease score. Transplantation. 2011;92(4):469-76."
+  ],
+  "formula": "UKELD Score = 5.395 × ln(INR) + 1.485 × ln(creatinine, µmol/L) + 3.13 × ln(bilirubin, µmol/L) - 81.565 × ln(sodium, mmol/L) + 435",
+  "notes": [
+    "Developed specifically for the UK population based on data from UK liver transplantation centers (2003-2007)",
+    "Score ≥49 is the cutoff for transplant eligibility in the UK, corresponding to >9% 1-year mortality without transplantation",
+    "Score of 60 predicts approximately 50% 1-year mortality without transplantation",
+    "Excludes patients with hepatocellular carcinoma, who may qualify for transplantation through other criteria",
+    "Interlaboratory differences in laboratory values may affect score accuracy",
+    "Based on natural logarithm calculations - ensure all laboratory values are positive and within physiological ranges",
+    "Used in conjunction with clinical assessment and other factors to determine transplant candidacy",
+    "Originally derived from the MELD score but incorporates serum sodium and uses UK-specific coefficients"
+  ]
+}

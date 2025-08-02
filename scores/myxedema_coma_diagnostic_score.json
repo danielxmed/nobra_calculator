@@ -1,0 +1,163 @@
+{
+  "id": "myxedema_coma_diagnostic_score",
+  "title": "Myxedema Coma Diagnostic Score",
+  "description": "Diagnostic scoring system for myxedema coma (MC), a rare but life-threatening decompensated state of extreme hypothyroidism. This validated scoring system facilitates early recognition and treatment by evaluating thermoregulatory, central nervous, cardiovascular, gastrointestinal, and metabolic dysfunction along with precipitating events.",
+  "category": "endocrinology",
+  "version": "2014",
+  "parameters": [
+    {
+      "name": "body_temperature",
+      "type": "string",
+      "required": true,
+      "description": "Core body temperature reflecting thermoregulatory dysfunction in severe hypothyroidism",
+      "options": ["normal_37", "mild_hypothermia_35_37", "moderate_hypothermia_32_35", "severe_hypothermia_below_32"],
+      "validation": {
+        "enum": ["normal_37", "mild_hypothermia_35_37", "moderate_hypothermia_32_35", "severe_hypothermia_below_32"]
+      },
+      "scoring": {
+        "normal_37": "≥37°C (0 points)",
+        "mild_hypothermia_35_37": "35-37°C (10 points)",
+        "moderate_hypothermia_32_35": "32-35°C (15 points)",
+        "severe_hypothermia_below_32": "<32°C (20 points)"
+      }
+    },
+    {
+      "name": "central_nervous_system",
+      "type": "string",
+      "required": true,
+      "description": "Central nervous system manifestations of severe hypothyroidism affecting consciousness and neurological function",
+      "options": ["normal", "mild_lethargy", "moderate_somnolence", "stupor_semicoma", "coma"],
+      "validation": {
+        "enum": ["normal", "mild_lethargy", "moderate_somnolence", "stupor_semicoma", "coma"]
+      },
+      "scoring": {
+        "normal": "Normal mental status (0 points)",
+        "mild_lethargy": "Mild lethargy, decreased concentration (10 points)",
+        "moderate_somnolence": "Moderate somnolence, disorientation (20 points)",
+        "stupor_semicoma": "Stupor, semicoma (25 points)",
+        "coma": "Coma (30 points)"
+      }
+    },
+    {
+      "name": "cardiovascular_dysfunction",
+      "type": "string",
+      "required": true,
+      "description": "Cardiovascular manifestations including heart rate, blood pressure, and cardiac function abnormalities",
+      "options": ["normal", "mild_bradycardia", "moderate_bradycardia_hypotension", "severe_shock"],
+      "validation": {
+        "enum": ["normal", "mild_bradycardia", "moderate_bradycardia_hypotension", "severe_shock"]
+      },
+      "scoring": {
+        "normal": "Normal cardiovascular function (0 points)",
+        "mild_bradycardia": "Mild bradycardia (HR 60-70 bpm) (5 points)",
+        "moderate_bradycardia_hypotension": "Moderate bradycardia (HR <60 bpm) or hypotension (10 points)",
+        "severe_shock": "Severe shock, cardiac arrest (15 points)"
+      }
+    },
+    {
+      "name": "gastrointestinal_dysfunction",
+      "type": "string",
+      "required": true,
+      "description": "Gastrointestinal manifestations including constipation, ileus, and motility disorders",
+      "options": ["normal", "mild_constipation", "moderate_distension", "severe_ileus"],
+      "validation": {
+        "enum": ["normal", "mild_constipation", "moderate_distension", "severe_ileus"]
+      },
+      "scoring": {
+        "normal": "Normal gastrointestinal function (0 points)",
+        "mild_constipation": "Mild constipation (5 points)",
+        "moderate_distension": "Moderate abdominal distension, decreased bowel sounds (10 points)",
+        "severe_ileus": "Severe ileus, absent bowel sounds (15 points)"
+      }
+    },
+    {
+      "name": "metabolic_dysfunction",
+      "type": "string",
+      "required": true,
+      "description": "Metabolic abnormalities including hyponatremia, hypoglycemia, and other electrolyte disturbances",
+      "options": ["normal", "mild_hyponatremia", "moderate_hyponatremia", "severe_hyponatremia_hypoglycemia"],
+      "validation": {
+        "enum": ["normal", "mild_hyponatremia", "moderate_hyponatremia", "severe_hyponatremia_hypoglycemia"]
+      },
+      "scoring": {
+        "normal": "Normal metabolic parameters (0 points)",
+        "mild_hyponatremia": "Mild hyponatremia (Na+ 130-135 mEq/L) (5 points)",
+        "moderate_hyponatremia": "Moderate hyponatremia (Na+ 120-129 mEq/L) (10 points)",
+        "severe_hyponatremia_hypoglycemia": "Severe hyponatremia (Na+ <120 mEq/L) or hypoglycemia (15 points)"
+      }
+    },
+    {
+      "name": "precipitating_event",
+      "type": "string",
+      "required": true,
+      "description": "Presence of precipitating events that may trigger myxedema coma in patients with severe hypothyroidism",
+      "options": ["none", "minor_stress", "moderate_stress", "major_stress"],
+      "validation": {
+        "enum": ["none", "minor_stress", "moderate_stress", "major_stress"]
+      },
+      "scoring": {
+        "none": "No identifiable precipitating event (0 points)",
+        "minor_stress": "Minor stress (medication changes, mild illness) (5 points)",
+        "moderate_stress": "Moderate stress (infection, surgery) (10 points)",
+        "major_stress": "Major stress (severe infection, major surgery, trauma) (15 points)"
+      }
+    }
+  ],
+  "result": {
+    "name": "myxedema_coma_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total diagnostic score for myxedema coma with corresponding diagnostic probability assessment"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 24,
+        "stage": "Unlikely",
+        "description": "Myxedema coma unlikely",
+        "interpretation": "Score <25 makes the diagnosis of myxedema coma unlikely. Consider alternative diagnoses for altered mental status and hypothermia."
+      },
+      {
+        "min": 25,
+        "max": 44,
+        "stage": "Possible",
+        "description": "Myxedema coma possible but unlikely",
+        "interpretation": "Low probability of myxedema coma. Continue evaluation for other causes while considering thyroid function assessment."
+      },
+      {
+        "min": 45,
+        "max": 59,
+        "stage": "At Risk",
+        "description": "Patient at risk for myxedema coma",
+        "interpretation": "Intermediate probability - patient at risk for myxedema coma. Urgent thyroid function testing and close monitoring recommended."
+      },
+      {
+        "min": 60,
+        "max": 100,
+        "stage": "Diagnostic",
+        "description": "Highly suggestive of myxedema coma",
+        "interpretation": "High probability - potentially diagnostic for myxedema coma. Immediate emergency treatment with IV levothyroxine and supportive care indicated."
+      }
+    ]
+  },
+  "references": [
+    "Popoveniuc G, Chandra T, Sud A, Sharma M, Blackman MR, Burman KD, et al. A diagnostic scoring system for myxedema coma. Endocr Pract. 2014;20(8):808-17. doi: 10.4158/EP13460.OR.",
+    "Mathew V, Misgar RA, Ghosh S, Mukhopadhyay P, Roychowdhury P, Pandit K, et al. Myxedema coma: a new look into an old crisis. J Thyroid Res. 2011;2011:493462. doi: 10.4061/2011/493462.",
+    "Wall CR. Myxedema coma: diagnosis and treatment. Am Fam Physician. 2000;62(11):2485-90."
+  ],
+  "formula": "Myxedema Coma Score = Body Temperature Points + Central Nervous System Points + Cardiovascular Points + Gastrointestinal Points + Metabolic Points + Precipitating Event Points",
+  "notes": [
+    "Myxedema coma is a rare but life-threatening decompensated state of extreme hypothyroidism with mortality rates of 25-50%",
+    "The scoring system has 100% sensitivity and 85.71% specificity at a cutoff score of 60",
+    "Area under the ROC curve is 0.88 (95% CI: 0.65 to 1.00), indicating excellent diagnostic performance",
+    "Score ≥60 is potentially diagnostic for myxedema coma and requires immediate treatment",
+    "Scores 45-59 classify patients at risk and warrant urgent thyroid function testing",
+    "Score <25 makes myxedema coma unlikely, though severe hypothyroidism may still be present",
+    "Common precipitating events include infection, surgery, trauma, medications (sedatives, narcotics), cold exposure",
+    "Temperature measurement should be core temperature; skin temperature may be misleadingly normal",
+    "Early recognition and treatment are critical as delayed treatment significantly increases mortality",
+    "Treatment includes IV levothyroxine, supportive care, and management of precipitating factors",
+    "The scoring system should be used in conjunction with clinical judgment and thyroid function tests"
+  ]
+}

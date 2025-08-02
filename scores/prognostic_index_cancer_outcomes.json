@@ -1,0 +1,82 @@
+{
+  "id": "prognostic_index_cancer_outcomes",
+  "title": "Prognostic Index for Cancer Outcomes",
+  "description": "Predicts cancer mortality from serum biomarkers using C-reactive protein (CRP) and white blood cell (WBC) count. This simple two-parameter scoring system provides risk stratification for cancer patients and helps guide prognostic discussions and clinical decision-making across multiple cancer types.",
+  "category": "oncology",
+  "version": "2013",
+  "parameters": [
+    {
+      "name": "crp",
+      "type": "string",
+      "required": true,
+      "description": "C-reactive protein (CRP) level in mg/L",
+      "options": ["≤10", ">10"],
+      "validation": {
+        "enum": ["≤10", ">10"]
+      },
+      "unit": "mg/L"
+    },
+    {
+      "name": "wbc_count",
+      "type": "string",
+      "required": true,
+      "description": "White blood cell (WBC) count in 10⁹/L",
+      "options": ["≤11", ">11"],
+      "validation": {
+        "enum": ["≤11", ">11"]
+      },
+      "unit": "×10⁹/L"
+    }
+  ],
+  "result": {
+    "name": "prognostic_index_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Prognostic index score predicting cancer mortality risk based on inflammatory markers"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "Minimal inflammatory response",
+        "interpretation": "Good prognosis with minimal systemic inflammatory response. Both CRP and WBC count are within normal ranges, suggesting less aggressive disease and better potential outcomes."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Intermediate Risk",
+        "description": "Moderate inflammatory response",
+        "interpretation": "Intermediate prognosis with moderate systemic inflammatory response. Either elevated CRP or elevated WBC count indicates some degree of inflammation associated with cancer progression."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "High Risk",
+        "description": "Significant inflammatory response",
+        "interpretation": "Poor prognosis with significant systemic inflammatory response. Both CRP and WBC count are elevated, indicating substantial inflammation and potentially more aggressive disease with worse outcomes."
+      }
+    ]
+  },
+  "references": [
+    "Proctor MJ, McMillan DC, Morrison DS, Fletcher CD, Horgan PG, Clarke SJ. A derived neutrophil to lymphocyte ratio predicts survival in patients with cancer. Br J Cancer. 2012;107(4):695-9. doi: 10.1038/bjc.2012.292.",
+    "Proctor MJ, Morrison DS, Talwar D, Balmer SM, Fletcher CD, O'Reilly DS, et al. A comparison of inflammation-based prognostic scores in patients with cancer. A Glasgow Inflammation Outcome Study. Eur J Cancer. 2011;47(17):2633-41. doi: 10.1016/j.ejca.2011.03.028.",
+    "McMillan DC. The systemic inflammation-based Glasgow Prognostic Score: a decade of experience in patients with cancer. Cancer Treat Rev. 2013;39(5):534-40. doi: 10.1016/j.ctrv.2012.08.003."
+  ],
+  "formula": "Score = CRP points + WBC points (where CRP >10 mg/L = 1 point, WBC >11 × 10⁹/L = 1 point)",
+  "notes": [
+    "Simple two-parameter scoring system using readily available laboratory values",
+    "Validated across multiple cancer types and patient populations",
+    "Higher scores indicate worse prognosis due to increased systemic inflammation",
+    "Should be used in conjunction with other prognostic factors and clinical judgment",
+    "CRP reflects acute-phase response and tumor-associated inflammation",
+    "Elevated WBC count may indicate immune response to cancer or infection",
+    "Not a standalone diagnostic tool - requires integration with staging and other factors",
+    "Survival outcomes vary significantly depending on cancer type, stage, and treatment",
+    "May help guide prognostic discussions and treatment planning decisions",
+    "Regular monitoring of these biomarkers may help track disease progression",
+    "Cost-effective prognostic tool using standard laboratory tests",
+    "Particularly useful in settings where more complex scoring systems are unavailable"
+  ]
+}

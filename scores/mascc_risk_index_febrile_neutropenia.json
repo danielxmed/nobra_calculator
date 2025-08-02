@@ -1,0 +1,125 @@
+{
+  "id": "mascc_risk_index_febrile_neutropenia",
+  "title": "MASCC Risk Index for Febrile Neutropenia",
+  "description": "Identifies febrile neutropenia patients at low risk for poor outcome including death, intensive care unit admission, confusion, cardiac complications, respiratory failure, renal failure, hypotension, bleeding, and other serious medical complications. Developed by Multinational Association for Supportive Care in Cancer (MASCC) to guide outpatient vs inpatient management decisions.",
+  "category": "hematology",
+  "version": "1998",
+  "parameters": [
+    {
+      "name": "burden_of_illness",
+      "type": "string",
+      "required": true,
+      "description": "Burden of illness based on symptom severity assessment. Reflects overall clinical condition and symptom burden at presentation",
+      "validation": {
+        "enum": ["none_mild", "moderate", "severe"]
+      },
+      "options": ["none_mild", "moderate", "severe"]
+    },
+    {
+      "name": "hypotension",
+      "type": "string",
+      "required": true,
+      "description": "Presence of hypotension defined as systolic blood pressure <90 mmHg. Hypotension indicates hemodynamic instability and higher complication risk",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "active_copd",
+      "type": "string",
+      "required": true,
+      "description": "Active chronic obstructive pulmonary disease. COPD increases risk of respiratory complications during febrile neutropenia",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "cancer_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of underlying cancer and history of fungal infection. Hematologic malignancies with prior fungal infection carry higher complication risk",
+      "validation": {
+        "enum": ["solid_tumor_or_hematologic_no_prior_fungal", "hematologic_with_prior_fungal"]
+      },
+      "options": ["solid_tumor_or_hematologic_no_prior_fungal", "hematologic_with_prior_fungal"]
+    },
+    {
+      "name": "dehydration_requiring_iv",
+      "type": "string",
+      "required": true,
+      "description": "Dehydration requiring intravenous fluid therapy. Indicates volume depletion and potential for hemodynamic compromise",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "fever_onset_status",
+      "type": "string",
+      "required": true,
+      "description": "Patient status at fever onset (outpatient vs inpatient). Outpatient onset typically associated with lower complication risk",
+      "validation": {
+        "enum": ["outpatient", "inpatient"]
+      },
+      "options": ["outpatient", "inpatient"]
+    },
+    {
+      "name": "patient_age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years. Age ≥60 years associated with increased complication risk in febrile neutropenia",
+      "validation": {
+        "min": 18,
+        "max": 100
+      },
+      "unit": "years"
+    }
+  ],
+  "result": {
+    "name": "mascc_risk_index",
+    "type": "integer",
+    "unit": "points",
+    "description": "MASCC Risk Index score ranging from 0-26 points. Score ≥21 indicates low risk for complications"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 20,
+        "stage": "High Risk",
+        "description": "High risk for complications",
+        "interpretation": "MASCC score <21 indicates high risk for serious complications of febrile neutropenia. These patients require admission for empiric intravenous antibiotics if not already hospitalized. High-risk patients have increased likelihood of developing complications including death, ICU admission, confusion, cardiac complications, respiratory failure, renal failure, hypotension, bleeding, and other serious medical complications. Inpatient monitoring and aggressive supportive care are essential."
+      },
+      {
+        "min": 21,
+        "max": 26,
+        "stage": "Low Risk",
+        "description": "Low risk for complications",
+        "interpretation": "MASCC score ≥21 indicates low risk for serious complications of febrile neutropenia with 91% positive predictive value for uncomplicated course. These patients may be considered for oral antibiotic therapy and/or outpatient management with close follow-up. However, clinical judgment should always override the score, and patients should have reliable access to medical care and ability to return if symptoms worsen."
+      }
+    ]
+  },
+  "references": [
+    "Klastersky J, Paesmans M, Rubenstein EB, Boyer M, Elting L, Feld R, et al. The Multinational Association for Supportive Care in Cancer risk index: A multinational scoring system for identifying low-risk febrile neutropenic cancer patients. J Clin Oncol. 2000 Aug;18(16):3038-51. doi: 10.1200/JCO.2000.18.16.3038.",
+    "Freifeld AG, Bow EJ, Sepkowitz KA, Boeckh MJ, Ito JI, Mullen CA, et al. Clinical practice guideline for the use of antimicrobial agents in neutropenic patients with cancer: 2010 update by the infectious diseases society of america. Clin Infect Dis. 2011 Feb 15;52(4):e56-93. doi: 10.1093/cid/cir073.",
+    "Uys A, Rapoport BL, Anderson R. Febrile neutropenia: a prospective study to validate the Multinational Association of Supportive Care of Cancer (MASCC) risk-index score. Support Care Cancer. 2004 Aug;12(8):555-60. doi: 10.1007/s00520-004-0614-5."
+  ],
+  "formula": "MASCC Risk Index = Burden of illness points + Hypotension points + COPD points + Cancer type points + Dehydration points + Fever onset status points + Age points. Maximum score 26 points. Score ≥21 indicates low risk for complications.",
+  "notes": [
+    "Developed from 756 patients in derivation cohort and validated in 383 patients",
+    "Positive predictive value of 91% for low-risk classification in original validation",
+    "Specificity 68% and sensitivity 71% in original validation study",
+    "External validation studies show PPV range 83-98% with sensitivity 59-95%",
+    "Performance may be lower in patients with hematologic malignancies",
+    "Does not incorporate neutrophil count <0.1 x10⁹/L or expected prolonged neutropenia ≥7 days",
+    "Only applies to adult patients (≥18 years)",
+    "Not recommended for acute leukemia or stem cell transplant patients",
+    "Clinical judgment should always override the score when indicated",
+    "Endorsed by Infectious Diseases Society of America (IDSA) guidelines",
+    "Outpatient management requires reliable access to medical care and follow-up",
+    "Score designed to identify patients suitable for less intensive management strategies",
+    "Regular reassessment needed if clinical condition changes during treatment"
+  ]
+}

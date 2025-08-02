@@ -1,0 +1,122 @@
+{
+  "id": "meld_na_unos_optn",
+  "title": "MELD Na (UNOS/OPTN)",
+  "description": "Quantifies end-stage liver disease for transplant planning with sodium, used by UNOS for liver allocation since 2016",
+  "category": "gastroenterology",
+  "version": "2016",
+  "parameters": [
+    {
+      "name": "creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Serum creatinine in mg/dL. If patient on dialysis ≥2 times in past week, use 4.0. If <1.0, use 1.0",
+      "unit": "mg/dL",
+      "validation": {
+        "min": 0.01,
+        "max": 40.0
+      }
+    },
+    {
+      "name": "bilirubin",
+      "type": "float",
+      "required": true,
+      "description": "Total bilirubin in mg/dL. If <1.0, use 1.0",
+      "unit": "mg/dL",
+      "validation": {
+        "min": 0.01,
+        "max": 100.0
+      }
+    },
+    {
+      "name": "inr",
+      "type": "float",
+      "required": true,
+      "description": "International Normalized Ratio (INR). If <1.0, use 1.0",
+      "unit": "",
+      "validation": {
+        "min": 0.01,
+        "max": 100.0
+      }
+    },
+    {
+      "name": "sodium",
+      "type": "float",
+      "required": true,
+      "description": "Serum sodium in mEq/L. Values <125 are set to 125, values >137 are set to 137",
+      "unit": "mEq/L",
+      "validation": {
+        "min": 100.0,
+        "max": 150.0
+      }
+    },
+    {
+      "name": "dialysis_twice_past_week",
+      "type": "string",
+      "required": true,
+      "description": "Has the patient had dialysis (hemodialysis, peritoneal dialysis, CVVHD) at least twice in the past week?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "meld_na_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "MELD Na score for liver disease severity"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 6,
+        "max": 9,
+        "stage": "Low Risk",
+        "description": "MELD Na ≤9",
+        "interpretation": "3-month mortality approximately 1.9%. Lower priority for liver transplant. Continue routine monitoring and management."
+      },
+      {
+        "min": 10,
+        "max": 19,
+        "stage": "Moderate Risk",
+        "description": "MELD Na 10-19",
+        "interpretation": "3-month mortality approximately 6.0%. Moderate priority for liver transplant. Consider hepatology referral if not already established. Monitor labs regularly."
+      },
+      {
+        "min": 20,
+        "max": 29,
+        "stage": "High Risk",
+        "description": "MELD Na 20-29",
+        "interpretation": "3-month mortality approximately 19.6%. High priority for liver transplant. Requires close monitoring and aggressive management of complications."
+      },
+      {
+        "min": 30,
+        "max": 39,
+        "stage": "Very High Risk",
+        "description": "MELD Na 30-39",
+        "interpretation": "3-month mortality approximately 52.6%. Very high priority for liver transplant. Consider ICU-level care for complications."
+      },
+      {
+        "min": 40,
+        "max": 40,
+        "stage": "Extremely High Risk",
+        "description": "MELD Na ≥40",
+        "interpretation": "3-month mortality approximately 71.3%. Highest priority for liver transplant. Requires intensive care management."
+      }
+    ]
+  },
+  "references": [
+    "Kim WR, Biggins SW, Kremers WK, Wiesner RH, Kamath PS, Benson JT, et al. Hyponatremia and mortality among patients on the liver-transplant waiting list. N Engl J Med. 2008 Sep 4;359(10):1018-26. doi: 10.1056/NEJMoa0801209.",
+    "Kamath PS, Kim WR; Advanced Liver Disease Study Group. The model for end-stage liver disease (MELD). Hepatology. 2007 Mar;45(3):797-805. doi: 10.1002/hep.21563.",
+    "OPTN Policy 9: Allocation of Livers and Liver-Intestines. Organ Procurement and Transplantation Network. Effective January 11, 2016."
+  ],
+  "formula": "MELD(i) = 0.957 × ln(Cr) + 0.378 × ln(bilirubin) + 1.120 × ln(INR) + 0.643, then if MELD(i) > 11: MELD Na = MELD(i) + 1.32 × (137 - Na) - [0.033 × MELD(i) × (137 - Na)]",
+  "notes": [
+    "Used by UNOS/OPTN for liver transplant allocation since January 2016",
+    "Sodium adjustment only applied if initial MELD > 11",
+    "For patients on dialysis ≥2 times in past week, creatinine value is set to 4.0",
+    "Laboratory values less than 1.0 are set to 1.0 for calculation",
+    "Sodium values are bounded between 125-137 mEq/L",
+    "Final score is rounded to nearest whole number and bounded between 6-40"
+  ]
+}

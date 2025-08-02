@@ -1,0 +1,83 @@
+{
+  "id": "ho_index",
+  "title": "Ho Index for Ulcerative Colitis",
+  "description": "Predicts outcome of medical therapy in severe ulcerative colitis by assessing risk of failure of corticosteroid therapy on day 3 of admission.",
+  "category": "gastroenterology",
+  "version": "2004",
+  "parameters": [
+    {
+      "name": "mean_stool_frequency",
+      "type": "string",
+      "required": true,
+      "description": "Mean stool frequency in stools per 24 hours on day 3 of admission",
+      "options": ["4_or_less", "over_4_to_6", "over_6_to_9", "over_9"],
+      "validation": {
+        "enum": ["4_or_less", "over_4_to_6", "over_6_to_9", "over_9"]
+      }
+    },
+    {
+      "name": "colonic_dilatation",
+      "type": "string",
+      "required": true,
+      "description": "Presence of colonic dilatation (≥5.5cm on abdominal X-ray) within first 3 days",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      }
+    },
+    {
+      "name": "hypoalbuminemia",
+      "type": "string",
+      "required": true,
+      "description": "Presence of hypoalbuminemia (albumin ≤3 g/dL or ≤30 g/L) on day 3",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "ho_index_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Ho Index score indicating risk of medical therapy failure"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "Score 0-1",
+        "interpretation": "Low risk of medical therapy failure (11%). Continue current corticosteroid therapy with close monitoring. Good response to medical management expected."
+      },
+      {
+        "min": 2,
+        "max": 3,
+        "stage": "Intermediate Risk",
+        "description": "Score 2-3",
+        "interpretation": "Intermediate risk of medical therapy failure (45%). Consider early assessment for second-line medical therapy (e.g., infliximab, cyclosporine). Close monitoring required with low threshold for escalation."
+      },
+      {
+        "min": 4,
+        "max": 9,
+        "stage": "High Risk",
+        "description": "Score ≥4",
+        "interpretation": "High risk of medical therapy failure (85%). Strong consideration for immediate second-line medical therapy or surgical consultation. Early multidisciplinary team involvement recommended."
+      }
+    ]
+  },
+  "references": [
+    "Ho GT, Mowat C, Goddard CJ, Fennell JM, Shah NB, Prescott RJ, Satsangi J. Predicting the outcome of severe ulcerative colitis: development of a novel risk score to aid early selection of patients for second-line medical therapy or surgery. Aliment Pharmacol Ther. 2004 May 15;19(10):1079-87.",
+    "Lynch RW, Churchhouse AM, Protheroe A, Arnott ID; UK IBD Audit Steering Group. Predicting outcome in acute severe ulcerative colitis: comparison of the Travis and Ho scores using UK IBD audit data. Aliment Pharmacol Ther. 2016 Jun;43(11):1132-41."
+  ],
+  "formula": "Ho Index Score = Stool Frequency Points + Colonic Dilatation Points + Hypoalbuminemia Points",
+  "notes": [
+    "Use in patients presenting with acute severe ulcerative colitis who are admitted to the hospital",
+    "Calculate on day 3 of admission for optimal predictive value",
+    "Mean stool frequency should be calculated over the previous 24 hours",
+    "Colonic dilatation is defined as transverse colon diameter ≥5.5cm on abdominal X-ray",
+    "Score has 85% sensitivity and 75% specificity at cutoff ≥4 for predicting non-response",
+    "Helps identify patients who may benefit from early second-line therapy or surgery"
+  ]
+}

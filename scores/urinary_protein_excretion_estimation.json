@@ -1,0 +1,79 @@
+{
+  "id": "urinary_protein_excretion_estimation",
+  "title": "Urinary Protein Excretion Estimation",
+  "description": "Quantifies 24h proteinuria with protein/creatinine ratio in single urine sample. Provides a convenient alternative to 24-hour urine collection for estimating daily protein excretion in patients with stable renal function.",
+  "category": "nephrology",
+  "version": "1983",
+  "parameters": [
+    {
+      "name": "urine_protein_mg_dl",
+      "type": "float",
+      "required": true,
+      "description": "Urine protein concentration in milligrams per deciliter from random daytime urine sample",
+      "validation": {
+        "min": 0,
+        "max": 1000
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "urine_creatinine_mg_dl",
+      "type": "float",
+      "required": true,
+      "description": "Urine creatinine concentration in milligrams per deciliter from the same urine sample",
+      "validation": {
+        "min": 10,
+        "max": 500
+      },
+      "unit": "mg/dL"
+    }
+  ],
+  "result": {
+    "name": "protein_excretion_24h",
+    "type": "float",
+    "unit": "g/day",
+    "description": "Estimated 24-hour urinary protein excretion"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0.2,
+        "stage": "Normal",
+        "description": "Within normal limits",
+        "interpretation": "Normal protein excretion. No evidence of significant proteinuria. Continue routine monitoring as clinically indicated. No specific nephrology intervention required at this time."
+      },
+      {
+        "min": 0.2,
+        "max": 3.5,
+        "stage": "Abnormal Proteinuria",
+        "description": "Investigate further",
+        "interpretation": "Abnormal proteinuria detected. This level of protein excretion warrants further investigation to determine the underlying cause. Consider additional testing including serum creatinine, eGFR, urinalysis with microscopy, and nephrology consultation if persistent. Rule out diabetes, hypertension, and other causes of chronic kidney disease."
+      },
+      {
+        "min": 3.5,
+        "max": 50,
+        "stage": "Nephrotic Range",
+        "description": "Nephrotic range proteinuria",
+        "interpretation": "Nephrotic range proteinuria (>3.5 g/day) detected. This indicates significant glomerular disease and requires urgent nephrology evaluation. Investigate for nephrotic syndrome causes including minimal change disease, focal segmental glomerulosclerosis, membranous nephropathy, and systemic diseases. Consider renal biopsy, lipid profile, and albumin levels."
+      }
+    ]
+  },
+  "references": [
+    "Ginsberg JM, Chang BS, Matarese RA, Garella S. Use of single voided urine samples to estimate quantitative proteinuria. N Engl J Med. 1983;309(25):1543-6.",
+    "Wahbeh AM, Ewais MH, Elsharif ME. Comparison of 24-hour urinary protein and protein-to-creatinine ratio in the assessment of proteinuria. Saudi J Kidney Dis Transpl. 2009;20(3):443-7."
+  ],
+  "formula": "24-hour Urinary Protein Excretion (g/day) = Urine Protein (mg/dL) / Urine Creatinine (mg/dL)",
+  "notes": [
+    "Requires random daytime urine sample - avoid overnight or first morning urine samples",
+    "Only valid in patients with stable renal function (stable GFR)",
+    "Correlation is lowest for overnight samples and highest for random daytime samples",
+    "Cannot be used reliably in patients with unstable kidney function or acute kidney injury",
+    "Use the same urine sample for both protein and creatinine measurements",
+    "Consider 24-hour urine collection if proteinuria >10 g/day or if most proteinuria may not be of glomerular origin",
+    "In patients with type 1 diabetes, accuracy decreases when ratio >3.5 g/g",
+    "First validated by Ginsberg et al. in 1983 New England Journal of Medicine study",
+    "Provides convenient alternative to cumbersome 24-hour urine collection",
+    "Normal protein excretion is typically <150 mg/day in healthy adults"
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "id": "interchest_rule",
+  "title": "INTERCHEST Clinical Prediction Rule for Chest Pain in Primary Care",
+  "description": "Rules out coronary artery disease (CAD) in primary care patients 30 years and older presenting with chest pain. This clinical prediction rule is designed to identify patients with very low likelihood of chest pain due to unstable CAD, allowing for safe discharge without further urgent evaluation. The rule uses 6 clinical variables with scores ranging from -1 to +5. Scores ≤1 indicate low CAD risk (2.1% probability) with 98% negative predictive value, while scores ≥2 indicate higher risk (43% probability) requiring further evaluation. This tool is specifically for primary care settings and should not be used for positive diagnosis of CAD or in emergency settings.",
+  "category": "cardiology",
+  "version": "2017 Aerts",
+  "parameters": [
+    {
+      "name": "history_of_cad",
+      "type": "string",
+      "required": true,
+      "description": "Previous history of coronary artery disease including myocardial infarction, coronary revascularization, or known CAD",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "age_gender_risk",
+      "type": "string",
+      "required": true,
+      "description": "Age and gender risk factor: Female ≥65 years or male ≥55 years",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "effort_related_pain",
+      "type": "string",
+      "required": true,
+      "description": "Chest pain is related to physical effort or exertion",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "pain_reproducible_palpation",
+      "type": "string",
+      "required": true,
+      "description": "Pain is reproducible by chest wall palpation (suggests musculoskeletal cause)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "physician_suspected_serious",
+      "type": "string",
+      "required": true,
+      "description": "Physician initially suspected a serious condition based on clinical presentation",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "pressure_sensation",
+      "type": "string",
+      "required": true,
+      "description": "Chest discomfort feels like pressure or squeezing sensation",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "interchest_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "INTERCHEST score (range -1 to +5 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": -1,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "Score ≤1 points",
+        "interpretation": "Very low likelihood of chest pain due to unstable CAD (2.1% probability, 98% NPV). Safe for discharge without urgent further evaluation. Consider routine outpatient follow-up if symptoms persist."
+      },
+      {
+        "min": 2,
+        "max": 5,
+        "stage": "Higher Risk",
+        "description": "Score 2-5 points",
+        "interpretation": "Cannot rule out unstable CAD (43% probability). Requires further urgent evaluation with ECG, cardiac biomarkers, and consideration for stress testing or cardiology consultation."
+      }
+    ]
+  },
+  "references": [
+    "Aerts M, Minalu G, Bösner S, et al. Pooled individual patient data from five countries were used to derive a multi-variable clinical prediction rule for the diagnosis of coronary artery disease in primary care. J Clin Epidemiol. 2017 Jan;81:120-129. doi: 10.1016/j.jclinepi.2016.09.011.",
+    "Bösner S, Haasenritter J, Becker A, et al. Ruling out coronary artery disease in primary care: development and validation of a simple prediction rule. CMAJ. 2010 Sep 7;182(12):1295-300. doi: 10.1503/cmaj.100212.",
+    "Cayley WE Jr. Chest pain--tools to improve your in-office evaluation. J Fam Pract. 2014 May;63(5):246-51."
+  ],
+  "formula": "Score = History of CAD (1) + Age/Gender risk (1) + Effort-related pain (1) + Pressure sensation (1) + Physician suspected serious (1) - Pain reproducible by palpation (1)",
+  "notes": [
+    "Developed using patient-level data from five studies across Belgium, Sweden, Switzerland, Germany, and USA",
+    "Validated for patients 30 years and older in primary care settings",
+    "NOT for use in emergency department or acute care settings",
+    "NOT to be used for positive diagnosis of angina or CAD - only as negative screening tool",
+    "Should not be used if readily apparent cause of chest pain (trauma, infection)",
+    "Should not be used if clear anginal equivalent symptoms (jaw pain, dyspnea on exertion)",
+    "Should not be used if ECG or laboratory testing suggests cardiac etiology",
+    "Score ≤1 has 98% negative predictive value for unstable CAD",
+    "Better predictive properties than Marburg Heart Score but requires further validation",
+    "Area under ROC curve of 0.84 indicating good diagnostic ability",
+    "Most applicable to patients without obvious cardiac risk factors",
+    "Pain reproducible by palpation is the only negative predictor (-1 point)",
+    "Physician clinical suspicion is an important component of the rule",
+    "Age thresholds differ by gender: females ≥65, males ≥55 years",
+    "Pressure sensation refers to typical anginal chest discomfort quality",
+    "Effort-related pain includes any exertional component",
+    "Rule helps identify patients safe for outpatient management"
+  ]
+}

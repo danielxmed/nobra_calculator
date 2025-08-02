@@ -1,0 +1,116 @@
+{
+  "id": "mdrd_gfr",
+  "title": "MDRD GFR Equation",
+  "description": "Estimates glomerular filtration rate (GFR) based on serum creatinine and patient characteristics for chronic kidney disease (CKD) assessment. The MDRD equation was developed from the Modification of Diet in Renal Disease study.",
+  "category": "nephrology",
+  "version": "2006 IDMS-traceable",
+  "parameters": [
+    {
+      "name": "creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Serum creatinine level",
+      "validation": {
+        "min": 0.1,
+        "max": 20.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "age",
+      "type": "float",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient biological sex",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "black_race",
+      "type": "string",
+      "required": true,
+      "description": "Whether patient identifies as Black/African American",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "gfr",
+    "type": "float",
+    "unit": "mL/min/1.73 m²",
+    "description": "Estimated glomerular filtration rate normalized to body surface area"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 90,
+        "max": 999,
+        "stage": "G1",
+        "description": "Normal or high",
+        "interpretation": "Normal kidney function or hyperfiltration. If evidence of kidney damage (proteinuria, hematuria, pathologic abnormalities, or imaging abnormalities), this represents CKD stage 1."
+      },
+      {
+        "min": 60,
+        "max": 89.9,
+        "stage": "G2",
+        "description": "Mildly decreased",
+        "interpretation": "Mildly reduced kidney function. If evidence of kidney damage, this represents CKD stage 2. Monitor annually."
+      },
+      {
+        "min": 45,
+        "max": 59.9,
+        "stage": "G3a",
+        "description": "Mildly to moderately decreased",
+        "interpretation": "Moderate reduction in kidney function (CKD stage 3a). Monitor every 6 months. Consider nephrology referral."
+      },
+      {
+        "min": 30,
+        "max": 44.9,
+        "stage": "G3b",
+        "description": "Moderately to severely decreased",
+        "interpretation": "Moderate reduction in kidney function (CKD stage 3b). Monitor every 3 months. Nephrology referral recommended."
+      },
+      {
+        "min": 15,
+        "max": 29.9,
+        "stage": "G4",
+        "description": "Severely decreased",
+        "interpretation": "Severe reduction in kidney function (CKD stage 4). Monitor every 3 months. Urgent nephrology referral. Prepare for renal replacement therapy."
+      },
+      {
+        "min": 0,
+        "max": 14.9,
+        "stage": "G5",
+        "description": "Kidney failure",
+        "interpretation": "Kidney failure (CKD stage 5). Immediate nephrology referral if not already under care. Initiate renal replacement therapy (dialysis or transplant) if uremic."
+      }
+    ]
+  },
+  "references": [
+    "Levey AS, Coresh J, Greene T, Stevens LA, Zhang YL, Hendriksen S, et al. Using standardized serum creatinine values in the modification of diet in renal disease study equation for estimating glomerular filtration rate. Ann Intern Med. 2006 Aug 15;145(4):247-54. doi: 10.7326/0003-4819-145-4-200608150-00004.",
+    "Levey AS, Bosch JP, Lewis JB, Greene T, Rogers N, Roth D. A more accurate method to estimate glomerular filtration rate from serum creatinine: a new prediction equation. Modification of Diet in Renal Disease Study Group. Ann Intern Med. 1999 Mar 16;130(6):461-70. doi: 10.7326/0003-4819-130-6-199903160-00002.",
+    "National Kidney Foundation. K/DOQI clinical practice guidelines for chronic kidney disease: evaluation, classification, and stratification. Am J Kidney Dis. 2002 Feb;39(2 Suppl 1):S1-266."
+  ],
+  "formula": "GFR = 175 × (Serum Cr)^-1.154 × (age)^-0.203 × 1.212 (if Black) × 0.742 (if female)",
+  "notes": [
+    "This equation uses the IDMS-traceable (standardized) creatinine values.",
+    "The MDRD equation is less accurate for eGFR >60 mL/min/1.73 m² and tends to underestimate GFR at higher levels.",
+    "Not recommended for acute kidney injury - only for chronic kidney disease assessment.",
+    "The CKD-EPI 2021 equation is now preferred by NKF/ASN for GFR estimation as it provides better accuracy, especially at higher GFR levels.",
+    "Consider clinical context including proteinuria, hematuria, and imaging when interpreting results."
+  ]
+}

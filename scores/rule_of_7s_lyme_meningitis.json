@@ -1,0 +1,95 @@
+{
+  "id": "rule_of_7s_lyme_meningitis",
+  "title": "Rule of 7s for Lyme Meningitis",
+  "description": "Distinguishes Lyme meningitis from aseptic meningitis in pediatric patients (ages 2-18) in Lyme endemic areas. This validated clinical prediction rule identifies children at low risk for Lyme meningitis who can be managed as outpatients while awaiting Lyme serology results, potentially avoiding unnecessary hospitalizations and parenteral antibiotics.",
+  "category": "emergency",
+  "version": "2012",
+  "parameters": [
+    {
+      "name": "headache_days",
+      "type": "integer",
+      "required": true,
+      "description": "Number of days of headache symptoms prior to presentation",
+      "validation": {
+        "min": 1,
+        "max": 30
+      },
+      "unit": "days"
+    },
+    {
+      "name": "csf_mononuclear_percentage",
+      "type": "float",
+      "required": true,
+      "description": "Percentage of mononuclear cells in cerebrospinal fluid analysis",
+      "validation": {
+        "min": 0,
+        "max": 100
+      },
+      "unit": "%"
+    },
+    {
+      "name": "cranial_nerve_palsy",
+      "type": "string",
+      "required": true,
+      "description": "Presence of seventh (facial) or other cranial nerve palsy on clinical examination",
+      "validation": {
+        "enum": ["present", "absent"]
+      },
+      "options": ["present", "absent"]
+    }
+  ],
+  "result": {
+    "name": "rule_of_7s_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Rule of 7s score ranging from 0-3 points based on clinical criteria"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk for Lyme Meningitis",
+        "description": "Outpatient management appropriate",
+        "interpretation": "Low risk for Lyme meningitis (<10% probability). Patient meets all three 'Rule of 7s' criteria for low risk: <7 days of headache, <70% CSF mononuclear cells, and no cranial nerve palsy. These children can be safely managed as outpatients while awaiting Lyme serology results. Consider discharge home with close outpatient follow-up, symptomatic treatment, and clear return precautions. Avoid unnecessary hospitalization and empirical parenteral antibiotics. Ensure proper follow-up within 24-48 hours and clear instructions for return if symptoms worsen."
+      },
+      {
+        "min": 1,
+        "max": 3,
+        "stage": "Not Low Risk for Lyme Meningitis",
+        "description": "Consider inpatient management and empirical treatment",
+        "interpretation": "Not low risk for Lyme meningitis - higher probability of Lyme meningitis cannot be excluded. Patient does not meet all criteria for low risk classification by the Rule of 7s. Consider inpatient management with empirical antibiotic treatment for Lyme meningitis while awaiting confirmatory serology results. Initiate appropriate antibiotics (ceftriaxone) if clinical suspicion is high. Monitor closely for neurologic complications and clinical deterioration. Obtain comprehensive Lyme serology testing and consider additional diagnostic evaluation as clinically indicated."
+      }
+    ]
+  },
+  "references": [
+    "Avery RA, Frank G, Glutting JJ, Eppes SC. Prediction of Lyme meningitis in children from a Lyme disease-endemic region: a logistic-regression model using history, physical, and laboratory findings. Pediatrics. 2006 Aug;118(2):e477-81. doi: 10.1542/peds.2005-3043.",
+    "Avery RA, Frank G, Eppes SC. Diagnostic utility of Borrelia burgdorferi cerebrospinal fluid polymerase chain reaction in children with Lyme meningitis. Pediatr Infect Dis J. 2005 Aug;24(8):705-8. doi: 10.1097/01.inf.0000172152.64983.d1.",
+    "Shah SS, Zaoutis TE, Turnquist J, Hodinka RL, Coffin SE. Early differentiation of Lyme from enteroviral meningitis. Pediatr Infect Dis J. 2005 Jun;24(6):542-5. doi: 10.1097/01.inf.0000164767.73746.cc.",
+    "Garro AC, Rutman M, Simonsen K, Jaeger JL, Chapin K, Lockhart G. Prospective validation of a clinical prediction model for Lyme meningitis in children. Pediatrics. 2009 May;123(5):e829-34. doi: 10.1542/peds.2008-2048.",
+    "Cohn KA, Thompson AD, Shah SS, Hines EM, Lyons TW, Welsh EJ, Levas MN, Lewander WJ, Bennett NJ, Nigrovic LE. Validation of a Clinical Prediction Rule to Distinguish Lyme Meningitis From Aseptic Meningitis. Pediatrics. 2012 Jan;129(1):e46-53. doi: 10.1542/peds.2011-1215."
+  ],
+  "formula": "Rule of 7s Score = sum of points for: (1) ≥7 days of headache (1 point), (2) ≥70% CSF mononuclear cells (1 point), (3) Presence of cranial nerve palsy (1 point). Score of 0 = Low risk (<10% probability of Lyme meningitis), Score 1-3 = Not low risk",
+  "notes": [
+    "Rule of 7s distinguishes Lyme meningitis from aseptic meningitis in children ages 2-18",
+    "Only applicable in Lyme disease-endemic areas with CSF pleocytosis (≥10 WBC/mm³)",
+    "Score of 0 points indicates low risk for Lyme meningitis (<10% probability)",
+    "Score of 1-3 points indicates not low risk for Lyme meningitis",
+    "Low risk patients can be managed as outpatients while awaiting serology",
+    "Validated with 96% sensitivity and 41% specificity for low risk identification",
+    "Requires correction of CSF cell count if RBC >500 cells/mm³",
+    "Not a definitive diagnostic test - clinical decision aid only",
+    "Requires close outpatient follow-up for low risk patients",
+    "Consider empirical antibiotic treatment for non-low risk patients",
+    "Performance validated in multiple pediatric cohort studies",
+    "More practical than complex mathematical prediction models",
+    "Helps avoid unnecessary hospitalizations in low risk patients",
+    "Should be used in conjunction with clinical judgment",
+    "Limited to pediatric population - not validated in adults",
+    "Requires presence of CSF pleocytosis for application",
+    "Cranial nerve palsy most commonly involves facial nerve (CN VII)",
+    "Rule applies only to children with suspected CNS infection",
+    "Geographic limitation to Lyme-endemic regions",
+    "May need seasonal consideration in endemic areas"
+  ]
+}

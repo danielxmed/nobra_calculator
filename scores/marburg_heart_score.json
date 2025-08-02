@@ -1,0 +1,103 @@
+{
+  "id": "marburg_heart_score",
+  "title": "Marburg Heart Score (MHS)",
+  "description": "Rules out coronary artery disease in primary care patients aged 35 years and older presenting with chest pain. Uses five equally weighted clinical criteria to stratify patients into low-risk (score 0-2) or higher-risk (score ≥3) categories for CAD assessment. Designed specifically for primary care settings to guide appropriate referral decisions.",
+  "category": "cardiology",
+  "version": "2010",
+  "parameters": [
+    {
+      "name": "age_sex_criteria",
+      "type": "string",
+      "required": true,
+      "description": "Age and sex criteria: Female ≥65 years or male ≥55 years. Based on established cardiovascular risk factors related to age and sex",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "known_vascular_disease",
+      "type": "string",
+      "required": true,
+      "description": "Known coronary artery disease, cerebrovascular disease, or peripheral vascular disease. History of established vascular disease increases likelihood of CAD",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "pain_worse_with_exercise",
+      "type": "string",
+      "required": true,
+      "description": "Chest pain worsens with physical exercise or exertion. Exercise-induced chest pain is characteristic of angina pectoris",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "pain_not_reproducible_palpation",
+      "type": "string",
+      "required": true,
+      "description": "Chest pain is NOT reproducible with palpation. Non-reproducible chest pain is more likely to be cardiac in origin than musculoskeletal",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "patient_assumes_cardiac",
+      "type": "string",
+      "required": true,
+      "description": "Patient assumes the chest pain is of cardiac origin. Patient's clinical intuition about their symptoms has diagnostic value",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    }
+  ],
+  "result": {
+    "name": "marburg_heart_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Marburg Heart Score ranging from 0-5 points. Score ≥3 indicates higher CAD risk requiring urgent evaluation"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Low Risk",
+        "description": "Low risk for coronary artery disease",
+        "interpretation": "Score 0-2 indicates low risk for coronary artery disease with approximately 3% CAD risk. These patients are highly unlikely to have unstable CAD and can be managed with outpatient evaluation as needed. This low-risk stratification helps avoid unnecessary urgent referrals while maintaining patient safety. Consider routine follow-up, symptom monitoring, and cardiovascular risk factor modification as appropriate."
+      },
+      {
+        "min": 3,
+        "max": 5,
+        "stage": "Higher Risk",
+        "description": "Higher risk for coronary artery disease requiring urgent evaluation",
+        "interpretation": "Score ≥3 indicates higher risk for coronary artery disease with approximately 23% CAD risk. These patients warrant consideration for urgent evaluation or inpatient admission for further cardiac assessment. This includes ECG, cardiac biomarkers, and possible stress testing or coronary imaging. The modest positive predictive value emphasizes the need for comprehensive evaluation rather than assumption of CAD presence."
+      }
+    ]
+  },
+  "references": [
+    "Bösner S, Haasenritter J, Becker A, Karatolios K, Vaucher P, Gencer B, et al. Ruling out coronary artery disease in primary care: development and validation of a simple prediction rule. CMAJ. 2010 Sep 7;182(12):1295-300. doi: 10.1503/cmaj.100212.",
+    "Haasenritter J, Bösner S, Vaucher P, Herzig L, Heinzel-Gutenbrunner M, Baum E, et al. Ruling out coronary heart disease in primary care: external validation of a clinical prediction rule. Br J Gen Pract. 2012 Jun;62(599):e415-21. doi: 10.3399/bjgp12X649106.",
+    "Harskamp RE, Laeven SC, Himmelreich JC, Lucassen WA, van Weert HC. Chest pain in general practice: a systematic review of prediction rules. BMJ Open. 2019 Feb 21;9(2):e027081. doi: 10.1136/bmjopen-2018-027081."
+  ],
+  "formula": "Marburg Heart Score = Sum of positive criteria (1 point each): Age/sex criteria + Known vascular disease + Pain worse with exercise + Pain NOT reproducible with palpation + Patient assumes cardiac origin. Total score ranges 0-5 points.",
+  "notes": [
+    "Validated specifically in patients 35 years and older presenting with chest pain in primary care",
+    "Designed as a negative predictive tool to identify low-risk patients who do not require urgent evaluation",
+    "Score ≥3 had sensitivity of 87.1% and specificity of 80.8% for CAD in original validation",
+    "NOT recommended for use in emergency department settings or patients with obvious alternative diagnoses",
+    "NOT to be used for positive diagnosis of angina or CAD - designed for risk stratification only",
+    "Should not be used in patients with known CAD as it was designed for initial CAD diagnosis",
+    "Area under the curve was 0.87 in derivation cohort and 0.90 in validation cohort",
+    "Helps reduce unnecessary urgent referrals while maintaining diagnostic safety",
+    "Clinical judgment should always supplement score-based decision making",
+    "Consider cardiovascular risk factors and patient preferences in management decisions",
+    "Score developed from German primary care practices and validated internationally",
+    "Performs well compared to other chest pain triage tools in primary care settings"
+  ]
+}

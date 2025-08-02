@@ -1,0 +1,118 @@
+{
+  "id": "imdc_risk_model",
+  "title": "IMDC (International Metastatic RCC Database Consortium) Risk Model for Metastatic Renal Cell Carcinoma",
+  "description": "Predicts survival in patients with metastatic renal cell carcinoma (mRCC) treated with systemic therapy and assists in treatment selection based on risk stratification",
+  "category": "oncology",
+  "version": "2013",
+  "parameters": [
+    {
+      "name": "time_to_systemic_therapy",
+      "type": "string",
+      "required": true,
+      "description": "Time from RCC diagnosis to first-line systemic therapy",
+      "validation": {
+        "enum": ["less_than_1_year", "1_year_or_more"]
+      },
+      "options": ["less_than_1_year", "1_year_or_more"]
+    },
+    {
+      "name": "karnofsky_performance_status",
+      "type": "string",
+      "required": true,
+      "description": "Karnofsky Performance Status",
+      "validation": {
+        "enum": ["less_than_80", "80_or_more"]
+      },
+      "options": ["less_than_80", "80_or_more"]
+    },
+    {
+      "name": "hemoglobin",
+      "type": "string",
+      "required": true,
+      "description": "Hemoglobin level relative to lower limit of normal",
+      "validation": {
+        "enum": ["below_normal", "normal_or_above"]
+      },
+      "options": ["below_normal", "normal_or_above"]
+    },
+    {
+      "name": "corrected_calcium",
+      "type": "string",
+      "required": true,
+      "description": "Corrected calcium level relative to upper limit of normal",
+      "validation": {
+        "enum": ["above_normal", "normal_or_below"]
+      },
+      "options": ["above_normal", "normal_or_below"]
+    },
+    {
+      "name": "neutrophils",
+      "type": "string",
+      "required": true,
+      "description": "Absolute neutrophil count relative to upper limit of normal",
+      "validation": {
+        "enum": ["above_normal", "normal_or_below"]
+      },
+      "options": ["above_normal", "normal_or_below"]
+    },
+    {
+      "name": "platelets",
+      "type": "string",
+      "required": true,
+      "description": "Platelet count relative to upper limit of normal",
+      "validation": {
+        "enum": ["above_normal", "normal_or_below"]
+      },
+      "options": ["above_normal", "normal_or_below"]
+    }
+  ],
+  "result": {
+    "name": "imdc_score",
+    "type": "integer",
+    "description": "IMDC risk score (0-6 points)",
+    "unit": "points"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "category": "Favorable Risk",
+        "description": "0 risk factors",
+        "interpretation": "Favorable prognosis with median overall survival of 43.2 months. Consider pazopanib or sunitinib as first-line therapy."
+      },
+      {
+        "min": 1,
+        "max": 2,
+        "category": "Intermediate Risk",
+        "description": "1-2 risk factors",
+        "interpretation": "Intermediate prognosis with median overall survival of 22.5 months. Consider ipilimumab plus nivolumab or cabozantinib as first-line therapy."
+      },
+      {
+        "min": 3,
+        "max": 6,
+        "category": "Poor Risk",
+        "description": "3-6 risk factors",
+        "interpretation": "Poor prognosis with median overall survival of 7.8 months. Consider ipilimumab plus nivolumab or cabozantinib as first-line therapy."
+      }
+    ]
+  },
+  "references": [
+    "Heng DY, Xie W, Regan MM, Warren MA, Golshayan AR, Sahi C, et al. Prognostic factors for overall survival in patients with metastatic renal cell carcinoma treated with vascular endothelial growth factor-targeted agents: results from a large, multicenter study. J Clin Oncol. 2009 Dec 1;27(34):5794-9. doi: 10.1200/JCO.2008.21.4809",
+    "Heng DY, Xie W, Regan MM, Harshman LC, Bjarnason GA, Vaishampayan UN, et al. External validation and comparison with other models of the International Metastatic Renal-Cell Carcinoma Database Consortium prognostic model: a population-based study. Lancet Oncol. 2013 Feb;14(2):141-8. doi: 10.1016/S1470-2045(12)70559-4",
+    "Motzer RJ, Tannir NM, McDermott DF, Arén Frontera O, Melichar B, Choueiri TK, et al. Nivolumab plus Ipilimumab versus Sunitinib in Advanced Renal-Cell Carcinoma. N Engl J Med. 2018 Apr 5;378(14):1277-1290. doi: 10.1056/NEJMoa1712126"
+  ],
+  "formula": "Sum of risk factors: Time to therapy <1 year (1 point) + KPS <80% (1 point) + Hemoglobin below normal (1 point) + Calcium above normal (1 point) + Neutrophils above normal (1 point) + Platelets above normal (1 point)",
+  "notes": [
+    "Gold standard for risk stratification in metastatic renal cell carcinoma",
+    "Validated across multiple treatment settings including VEGF-targeted therapy and immunotherapy",
+    "Used in clinical trials to stratify patients and guide treatment selection",
+    "More than 50% of patients fall into intermediate risk category",
+    "Remains relevant in the era of modern immunotherapy combinations",
+    "Favorable risk patients may not benefit from ipilimumab + nivolumab vs sunitinib",
+    "Intermediate and poor risk patients derive survival benefit from combination immunotherapy",
+    "Normal laboratory ranges may vary by institution - use institutional normal limits",
+    "Also known as Heng criteria or IMDC criteria",
+    "Applicable to both clear cell and non-clear cell RCC"
+  ]
+}

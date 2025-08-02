@@ -1,0 +1,103 @@
+{
+  "id": "hunt_hess_classification",
+  "title": "Hunt & Hess Classification of Subarachnoid Hemorrhage",
+  "description": "Classifies severity of aneurysmal subarachnoid hemorrhage based on clinical presentation to predict mortality and guide surgical risk assessment. Uses neurological symptoms and level of consciousness to assign grades I-V.",
+  "category": "neurology",
+  "version": "1968",
+  "parameters": [
+    {
+      "name": "clinical_presentation",
+      "type": "string",
+      "required": true,
+      "description": "Clinical presentation and neurological status",
+      "options": [
+        "asymptomatic_minimal_headache",
+        "moderate_severe_headache_nuchal_rigidity",
+        "drowsiness_confusion_mild_focal_deficit",
+        "stupor_moderate_severe_hemiparesis",
+        "deep_coma_decerebrate_rigidity_moribund"
+      ],
+      "validation": {
+        "enum": [
+          "asymptomatic_minimal_headache",
+          "moderate_severe_headache_nuchal_rigidity", 
+          "drowsiness_confusion_mild_focal_deficit",
+          "stupor_moderate_severe_hemiparesis",
+          "deep_coma_decerebrate_rigidity_moribund"
+        ]
+      }
+    },
+    {
+      "name": "serious_systemic_disease",
+      "type": "string",
+      "required": true,
+      "description": "Presence of serious systemic disease (hypertension, diabetes, severe arteriosclerosis, chronic pulmonary disease, severe vasospasm on angiography)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "hunt_hess_grade",
+    "type": "string",
+    "unit": "grade",
+    "description": "Hunt-Hess grade classification"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Grade I",
+        "description": "Asymptomatic or minimal headache",
+        "interpretation": "Asymptomatic or minimal headache and slight nuchal rigidity. Excellent prognosis with ~70% survival rate. Low surgical risk. Early intervention generally recommended."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Grade II",
+        "description": "Moderate to severe headache",
+        "interpretation": "Moderate to severe headache, nuchal rigidity, no neurologic deficit other than cranial nerve palsy. Good prognosis with ~60% survival rate. Reasonable surgical candidate."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Grade III",
+        "description": "Drowsiness, confusion, mild focal deficit",
+        "interpretation": "Drowsiness, confusion, or mild focal deficit. Fair prognosis with ~50% survival rate. Higher surgical risk, careful evaluation needed."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Grade IV",
+        "description": "Stupor, moderate to severe hemiparesis",
+        "interpretation": "Stupor, moderate to severe hemiparesis, possibly early decerebrate rigidity and vegetative disturbances. Poor prognosis with ~40% survival rate. High surgical risk."
+      },
+      {
+        "min": 5,
+        "max": 5,
+        "stage": "Grade V",
+        "description": "Deep coma, decerebrate rigidity, moribund",
+        "interpretation": "Deep coma, decerebrate rigidity, moribund appearance. Very poor prognosis with ~10% survival rate. Extremely high surgical risk, intervention often futile."
+      }
+    ]
+  },
+  "references": [
+    "Hunt WE, Hess RM. Surgical risk as related to time of intervention in the repair of intracranial aneurysms. J Neurosurg. 1968 Jan;28(1):14-20.",
+    "Hunt WE, Kosnik EJ. Timing and perioperative care in intracranial aneurysm surgery. Clin Neurosurg. 1974;21:79-89.",
+    "Oshiro EM, Walter KA, Piantadosi S, Witham TF, Tamargo RJ. A new subarachnoid hemorrhage grading system based on the Glasgow Coma Scale: a comparison with the Hunt and Hess and World Federation of Neurosurgical Societies Scales in a clinical series. Neurosurgery. 1997 Jul;41(1):140-7."
+  ],
+  "formula": "Grade based on clinical presentation: I (asymptomatic/minimal headache), II (moderate-severe headache, nuchal rigidity), III (drowsiness/confusion/mild deficit), IV (stupor/hemiparesis), V (coma/decerebrate). Add one grade if serious systemic disease present.",
+  "notes": [
+    "Originally developed in 1968 by Hunt and Hess, modified in 1974 to include grades 0 and Ia",
+    "Higher grades correlate with increased mortality and surgical risk",
+    "Inter-observer variability is high (κ ~0.48), reassessment recommended",
+    "Assessment at 48 hours post-admission may provide better prognostication than initial assessment",
+    "Serious systemic disease increases grade by one level",
+    "Should be used in conjunction with other clinical factors and imaging findings",
+    "Modified Hunt-Hess scales have been proposed to improve discrimination",
+    "Not applicable to traumatic subarachnoid hemorrhage",
+    "Correlates well with World Federation of Neurosurgical Societies (WFNS) scale"
+  ]
+}

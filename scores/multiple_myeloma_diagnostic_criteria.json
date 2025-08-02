@@ -1,0 +1,151 @@
+{
+  "id": "multiple_myeloma_diagnostic_criteria",
+  "title": "Multiple Myeloma Diagnostic Criteria (IMWG)",
+  "description": "Diagnoses multiple myeloma according to the International Myeloma Working Group (IMWG) criteria, including traditional CRAB criteria and newer SLiM biomarkers.",
+  "category": "hematology",
+  "version": "2014",
+  "parameters": [
+    {
+      "name": "clonal_plasma_cells_bone_marrow",
+      "type": "string",
+      "required": true,
+      "description": "Clonal bone marrow plasma cells ≥10%",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "biopsy_proven_plasmacytoma",
+      "type": "string",
+      "required": true,
+      "description": "Biopsy-proven bony or extramedullary plasmacytoma",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hypercalcemia",
+      "type": "string",
+      "required": true,
+      "description": "Hypercalcemia: Serum calcium >1 mg/dL above normal or >11 mg/dL",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "renal_insufficiency",
+      "type": "string",
+      "required": true,
+      "description": "Renal insufficiency: Creatinine clearance <40 mL/min or serum creatinine >2 mg/dL",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "anemia",
+      "type": "string",
+      "required": true,
+      "description": "Anemia: Hemoglobin >2 g/dL below normal or <10 g/dL",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "bone_lesions",
+      "type": "string",
+      "required": true,
+      "description": "Bone lesions: ≥1 osteolytic lesion on imaging",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "plasma_cells_60_percent",
+      "type": "string",
+      "required": true,
+      "description": "Clonal bone marrow plasma cells ≥60%",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "light_chain_ratio",
+      "type": "string",
+      "required": true,
+      "description": "Involved:uninvolved serum free light chain ratio ≥100",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "focal_mri_lesions",
+      "type": "string",
+      "required": true,
+      "description": ">1 focal lesion on MRI",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "diagnosis",
+    "type": "string",
+    "unit": "",
+    "description": "Multiple myeloma diagnostic assessment"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Not Diagnostic",
+        "description": "Criteria not met for multiple myeloma",
+        "interpretation": "The patient does not meet the IMWG criteria for multiple myeloma diagnosis. Further evaluation may be needed for other plasma cell disorders."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Multiple Myeloma",
+        "description": "Criteria met for multiple myeloma",
+        "interpretation": "The patient meets the IMWG criteria for multiple myeloma diagnosis and requires appropriate staging and treatment planning."
+      }
+    ]
+  },
+  "references": [
+    "Rajkumar SV, Dimopoulos MA, Palumbo A, Blade J, Merlini G, Mateos MV, et al. International Myeloma Working Group updated criteria for the diagnosis of multiple myeloma. Lancet Oncol. 2014;15(12):e538-48. doi: 10.1016/S1470-2045(14)70442-5.",
+    "Kumar S, Paiva B, Anderson KC, Durie B, Landgren O, Moreau P, et al. International Myeloma Working Group consensus criteria for response and minimal residual disease assessment in multiple myeloma. Lancet Oncol. 2016;17(8):e328-e346. doi: 10.1016/S1470-2045(16)30206-6.",
+    "Palumbo A, Avet-Loiseau H, Oliva S, Lokhorst HM, Goldschmidt H, Rosinol L, et al. Revised International Staging System for Multiple Myeloma: A Report From International Myeloma Working Group. J Clin Oncol. 2015;33(26):2863-9. doi: 10.1200/JCO.2015.61.2267."
+  ],
+  "formula": "Multiple Myeloma Diagnosis = (Clonal plasma cells ≥10% OR Biopsy-proven plasmacytoma) AND ≥1 myeloma defining event (CRAB criteria: Hypercalcemia, Renal insufficiency, Anemia, Bone lesions; OR SLiM biomarkers: ≥60% plasma cells, Light chain ratio ≥100, >1 MRI focal lesion)",
+  "notes": [
+    "The IMWG criteria require both clonal plasma cell evidence AND myeloma defining events",
+    "Traditional CRAB criteria represent end-organ damage from multiple myeloma",
+    "SLiM biomarkers (2014 update) allow diagnosis before end-organ damage occurs",
+    "SLiM stands for: 60% plasma cells, Light chain ratio ≥100, MRI >1 focal lesion",
+    "CRAB stands for: Calcium elevation, Renal dysfunction, Anemia, Bone lesions",
+    "Clonal plasma cells must be confirmed by flow cytometry, immunohistochemistry, or immunofluorescence",
+    "Plasmacytoma diagnosis requires tissue biopsy confirmation",
+    "Hypercalcemia: >1 mg/dL above upper limit of normal or >11 mg/dL",
+    "Renal insufficiency: Creatinine clearance <40 mL/min or serum creatinine >2 mg/dL",
+    "Anemia: >2 g/dL below lower limit of normal or <10 g/dL",
+    "Bone lesions: One or more osteolytic lesions on skeletal radiography, CT, or PET-CT",
+    "Light chain ratio: Involved to uninvolved serum free light chain ratio ≥100",
+    "MRI focal lesions: More than one focal lesion on MRI studies",
+    "60% plasma cells: Clonal bone marrow plasma cells ≥60%",
+    "Concurrent medical conditions may complicate the interpretation of these criteria",
+    "Additional testing may include serum protein electrophoresis, immunofixation, and cytogenetics",
+    "The criteria distinguish multiple myeloma from MGUS and smoldering multiple myeloma",
+    "Early treatment may prevent progression to symptomatic multiple myeloma",
+    "Requires comprehensive hematologic evaluation and multidisciplinary care",
+    "Regular monitoring is essential for patients meeting diagnostic criteria"
+  ]
+}

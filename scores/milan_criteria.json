@@ -1,0 +1,100 @@
+{
+  "id": "milan_criteria",
+  "title": "Milan Criteria for Liver Transplantation",
+  "description": "Assesses suitability of patients for liver transplant with cirrhosis and hepatocellular carcinoma (HCC), recommended by AASLD guidelines",
+  "category": "gastroenterology",
+  "version": "1.0",
+  "parameters": [
+    {
+      "name": "tumor_count",
+      "type": "string",
+      "required": true,
+      "description": "Number of HCC tumors identified on imaging",
+      "options": ["single", "two_three", "more_than_three"],
+      "validation": {
+        "enum": ["single", "two_three", "more_than_three"]
+      }
+    },
+    {
+      "name": "single_tumor_size",
+      "type": "float",
+      "required": false,
+      "description": "Size of single tumor in cm (only if single tumor)",
+      "validation": {
+        "min": 0,
+        "max": 20
+      },
+      "unit": "cm"
+    },
+    {
+      "name": "largest_tumor_size",
+      "type": "float",
+      "required": false,
+      "description": "Size of largest tumor in cm (only if 2-3 tumors)",
+      "validation": {
+        "min": 0,
+        "max": 20
+      },
+      "unit": "cm"
+    },
+    {
+      "name": "extrahepatic_involvement",
+      "type": "string",
+      "required": true,
+      "description": "Evidence of extrahepatic disease (metastases)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "major_vessel_involvement",
+      "type": "string",
+      "required": true,
+      "description": "Major vascular invasion (portal vein or hepatic vein thrombosis)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "milan_criteria_met",
+    "type": "string",
+    "unit": "",
+    "description": "Whether patient meets Milan criteria for liver transplantation"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Meets Criteria",
+        "description": "Eligible for liver transplantation",
+        "interpretation": "Patient meets Milan criteria and is eligible for liver transplantation consideration. Excellent post-transplant outcomes expected with 4-year survival ~75%. Qualifies for MELD exception points (MMaT-3) after 6-month waiting period."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Does Not Meet Criteria",
+        "description": "Not eligible for liver transplantation",
+        "interpretation": "Patient does not meet Milan criteria. Consider downstaging strategies with locoregional therapies (TACE, Y90 radioembolization, ablation). If successfully downstaged to within Milan criteria and maintained for 3-6 months, may become transplant eligible. Monitor AFP levels - must be <500 ng/mL for eligibility."
+      }
+    ]
+  },
+  "references": [
+    "Mazzaferro V, Regalia E, Doci R, Andreola S, Pulvirenti A, Bozzetti F, et al. Liver transplantation for the treatment of small hepatocellular carcinomas in patients with cirrhosis. N Engl J Med. 1996 Mar 14;334(11):693-9. doi: 10.1056/NEJM199603143341104.",
+    "Mazzaferro V, Llovet JM, Miceli R, Bhoori S, Schiavo M, Mariani L, et al. Predicting survival after liver transplantation in patients with hepatocellular carcinoma beyond the Milan criteria: a retrospective, exploratory analysis. Lancet Oncol. 2009 Jan;10(1):35-43. doi: 10.1016/S1470-2045(08)70284-5.",
+    "Mazzaferro V, Bhoori S, Sposito C, Bongini M, Langer M, Miceli R, et al. Milan criteria in liver transplantation for hepatocellular carcinoma: an evidence-based analysis of 15 years of experience. Liver Transpl. 2011 Oct;17 Suppl 2:S44-57. doi: 10.1002/lt.22365.",
+    "Marrero JA, Kulik LM, Sirlin CB, Zhu AX, Finn RS, Abecassis MM, et al. Diagnosis, Staging, and Management of Hepatocellular Carcinoma: 2018 Practice Guidance by the American Association for the Study of Liver Diseases. Hepatology. 2018 Aug;68(2):723-750. doi: 10.1002/hep.29913."
+  ],
+  "formula": "Milan Criteria: (1 tumor ≤5 cm) OR (2-3 tumors, each ≤3 cm) AND no extrahepatic disease AND no major vessel involvement",
+  "notes": [
+    "Imaging should be high-quality multiphasic CT or MRI",
+    "Count all viable tumors (exclude completely necrotic lesions after treatment)",
+    "Patients with AFP >1000 ng/mL must be downstaged to AFP <500 ng/mL to be eligible",
+    "Downstaging to Milan criteria requires maintenance for 3-6 months before transplant eligibility",
+    "MELD exception points: MMaT-3 (median MELD at transplant minus 3) after 6-month waiting period",
+    "Consider bridging therapy while on waitlist to prevent tumor progression"
+  ]
+}

@@ -4,6 +4,7 @@ Emergency score models
 
 from .four_c_mortality import FourCMortalityRequest, FourCMortalityResponse
 from .ais_inhalation_injury import AisInhalationInjuryRequest, AisInhalationInjuryResponse
+from .injury_severity_score import InjurySeverityScoreRequest, InjurySeverityScoreResponse
 from .emergency_medicine_coding_guide_2023 import EmergencyMedicineCodingGuide2023Request, EmergencyMedicineCodingGuide2023Response
 from .abc_score import AbcScoreRequest, AbcScoreResponse
 from .acep_ed_covid19_management_tool import (
@@ -17,6 +18,10 @@ from .acetaminophen_overdose_nac import (
 from .adapt_protocol import AdaptProtocolRequest, AdaptProtocolResponse
 from .age_adjusted_d_dimer import AgeAdjustedDDimerRequest, AgeAdjustedDDimerResponse
 from .aims65 import Aims65Request, Aims65Response
+from .tpa_alteplase_dosing_stroke import (
+    TpaAlteplaseDosingStrokeRequest,
+    TpaAlteplaseDosingStrokeResponse
+)
 from .alt_70_cellulitis import Alt70CellulitisRequest, Alt70CellulitisResponse
 from .altitude_adjusted_perc import AltitudeAdjustedPercRequest, AltitudeAdjustedPercResponse
 from .alvarado_score import AlvaradoScoreRequest, AlvaradoScoreResponse
@@ -66,6 +71,12 @@ from .ottawa_ankle_rule import OttawaAnkleRuleRequest, OttawaAnkleRuleResponse
 from .ottawa_copd_risk_scale import OttawaCopdRiskScaleRequest, OttawaCopdRiskScaleResponse
 from .ottawa_heart_failure_risk_scale import OttawaHeartFailureRiskScaleRequest, OttawaHeartFailureRiskScaleResponse
 from .ottawa_knee_rule import OttawaKneeRuleRequest, OttawaKneeRuleResponse
+from .ottawa_sah_rule import OttawaSahRuleRequest, OttawaSahRuleResponse
+from .psi_port_score import PsiPortScoreRequest, PsiPortScoreResponse
+from .pesi import PesiRequest, PesiResponse
+from .pe_sard_score import PeSardScoreRequest, PeSardScoreResponse
+from .qsofa_score import QsofaScoreRequest, QsofaScoreResponse
+from .qcsi import QcsiRequest, QcsiResponse
 from .embed import EmbedRequest, EmbedResponse
 from .ett_depth_tidal_volume import EttDepthTidalVolumeRequest, EttDepthTidalVolumeResponse
 from .fast import FastRequest, FastResponse
@@ -76,12 +87,46 @@ from .gupta_postoperative_pneumonia_risk import GuptaPostoperativePneumoniaRiskR
 from .gupta_postoperative_respiratory_failure_risk import GuptaPostoperativeRespiratoryFailureRiskRequest, GuptaPostoperativeRespiratoryFailureRiskResponse
 from .hacor_score import HacorScoreRequest, HacorScoreResponse
 from .hacks_impairment_index import HacksImpairmentIndexRequest, HacksImpairmentIndexResponse
+from .he_macs import HeMacsRequest, HeMacsResponse
+from .hestia_criteria import HestiaCriteriaRequest, HestiaCriteriaResponse
+from .hark import HarkRequest, HarkResponse
+from .hits_score import HitsScoreRequest, HitsScoreResponse
+from .hope_score import HopeScoreRequest, HopeScoreResponse
+from .intraoperative_fluid_dosing import IntraoperativeFluidDosingRequest, IntraoperativeFluidDosingResponse
+from .iv_drip_rate_calculator import IvDripRateCalculatorRequest, IvDripRateCalculatorResponse
+from .kings_college_criteria_acetaminophen import KingsCollegeCriteriaAcetaminophenRequest, KingsCollegeCriteriaAcetaminophenResponse
+from .kocher_criteria_septic_arthritis import KocherCriteriaSepticArthritisRequest, KocherCriteriaSepticArthritisResponse
+from .lace_index_readmission import LaceIndexReadmissionRequest, LaceIndexReadmissionResponse
+from .local_anesthetic_dosing_calculator import LocalAnestheticDosingCalculatorRequest, LocalAnestheticDosingCalculatorResponse
+from .lrinec_score import LrinecScoreRequest, LrinecScoreResponse
+from .lung_injury_prediction_score import LungInjuryPredictionScoreRequest, LungInjuryPredictionScoreResponse
+from .macocha_score import MacochaScoreRequest, MacochaScoreResponse
+from .mangled_extremity_severity_score import MangledExtremitySeverityScoreRequest, MangledExtremitySeverityScoreResponse
+from .mrc_icu_score import MrcIcuScoreRequest, MrcIcuScoreResponse
+from .modified_early_warning_score import ModifiedEarlyWarningScoreRequest, ModifiedEarlyWarningScoreResponse
+from .modified_brain_injury_guideline import ModifiedBrainInjuryGuidelineRequest, ModifiedBrainInjuryGuidelineResponse
+from .modified_mallampati_classification import ModifiedMallampatiClassificationRequest, ModifiedMallampatiClassificationResponse
+from .modified_sofa import ModifiedSofaRequest, ModifiedSofaResponse
+from .rose_rule import RoseRuleRequest, RoseRuleResponse
+from .roth_score import RothScoreRequest, RothScoreResponse
+from .rox_index import RoxIndexRequest, RoxIndexResponse
+from .rule_of_7s_lyme_meningitis import RuleOf7sLymeMeningitisRequest, RuleOf7sLymeMeningitisResponse
+from .rule_of_nines import RuleOfNinesRequest, RuleOfNinesResponse
+from .triss import TrissRequest, TrissResponse
+from .winters_formula_metabolic_acidosis import WintersFormulaMetabolicAcidosisRequest, WintersFormulaMetabolicAcidosisResponse
+from .wisconsin_criteria_maxillofacial_trauma import WisconsinCriteriaMaxillofacialTraumaRequest, WisconsinCriteriaMaxillofacialTraumaResponse
+from .woman_abuse_screening_tool import WomanAbuseScreeningToolRequest, WomanAbuseScreeningToolResponse
+from .years_algorithm_pe import YearsAlgorithmPeRequest, YearsAlgorithmPeResponse
+from .utah_covid19_risk_score import UtahCovid19RiskScoreRequest, UtahCovid19RiskScoreResponse
+from .rems_score import RemsScoreRequest, RemsScoreResponse
 
 __all__ = [
     "FourCMortalityRequest",
     "FourCMortalityResponse",
     "AisInhalationInjuryRequest",
     "AisInhalationInjuryResponse",
+    "InjurySeverityScoreRequest",
+    "InjurySeverityScoreResponse",
     "EmergencyMedicineCodingGuide2023Request",
     "EmergencyMedicineCodingGuide2023Response",
     "AbcScoreRequest",
@@ -188,6 +233,18 @@ __all__ = [
     "OttawaHeartFailureRiskScaleResponse",
     "OttawaKneeRuleRequest",
     "OttawaKneeRuleResponse",
+    "OttawaSahRuleRequest",
+    "OttawaSahRuleResponse",
+    "PsiPortScoreRequest",
+    "PsiPortScoreResponse",
+    "PesiRequest",
+    "PesiResponse",
+    "PeSardScoreRequest",
+    "PeSardScoreResponse",
+    "QsofaScoreRequest",
+    "QsofaScoreResponse",
+    "QcsiRequest",
+    "QcsiResponse",
     "EmbedRequest",
     "EmbedResponse",
     "EttDepthTidalVolumeRequest",
@@ -208,4 +265,70 @@ __all__ = [
     "HacorScoreResponse",
     "HacksImpairmentIndexRequest",
     "HacksImpairmentIndexResponse",
+    "HeMacsRequest",
+    "HeMacsResponse",
+    "HestiaCriteriaRequest",
+    "HestiaCriteriaResponse",
+    "HarkRequest",
+    "HarkResponse",
+    "HitsScoreRequest",
+    "HitsScoreResponse",
+    "HopeScoreRequest",
+    "HopeScoreResponse",
+    "IntraoperativeFluidDosingRequest",
+    "IntraoperativeFluidDosingResponse",
+    "IvDripRateCalculatorRequest",
+    "IvDripRateCalculatorResponse",
+    "KingsCollegeCriteriaAcetaminophenRequest",
+    "KingsCollegeCriteriaAcetaminophenResponse",
+    "KocherCriteriaSepticArthritisRequest",
+    "KocherCriteriaSepticArthritisResponse",
+    "LaceIndexReadmissionRequest",
+    "LaceIndexReadmissionResponse",
+    "LocalAnestheticDosingCalculatorRequest",
+    "LocalAnestheticDosingCalculatorResponse",
+    "LrinecScoreRequest",
+    "LrinecScoreResponse",
+    "LungInjuryPredictionScoreRequest",
+    "LungInjuryPredictionScoreResponse",
+    "MacochaScoreRequest",
+    "MacochaScoreResponse",
+    "MangledExtremitySeverityScoreRequest",
+    "MangledExtremitySeverityScoreResponse",
+    "MrcIcuScoreRequest",
+    "MrcIcuScoreResponse",
+    "ModifiedEarlyWarningScoreRequest",
+    "ModifiedEarlyWarningScoreResponse",
+    "ModifiedBrainInjuryGuidelineRequest",
+    "ModifiedBrainInjuryGuidelineResponse",
+    "ModifiedMallampatiClassificationRequest",
+    "ModifiedMallampatiClassificationResponse",
+    "ModifiedSofaRequest",
+    "ModifiedSofaResponse",
+    "RoseRuleRequest",
+    "RoseRuleResponse",
+    "RothScoreRequest",
+    "RothScoreResponse",
+    "RoxIndexRequest",
+    "RoxIndexResponse",
+    "RuleOf7sLymeMeningitisRequest",
+    "RuleOf7sLymeMeningitisResponse",
+    "RuleOfNinesRequest",
+    "RuleOfNinesResponse",
+    "TpaAlteplaseDosingStrokeRequest",
+    "TpaAlteplaseDosingStrokeResponse",
+    "TrissRequest",
+    "TrissResponse",
+    "WintersFormulaMetabolicAcidosisRequest",
+    "WintersFormulaMetabolicAcidosisResponse",
+    "WisconsinCriteriaMaxillofacialTraumaRequest",
+    "WisconsinCriteriaMaxillofacialTraumaResponse",
+    "WomanAbuseScreeningToolRequest",
+    "WomanAbuseScreeningToolResponse",
+    "YearsAlgorithmPeRequest",
+    "YearsAlgorithmPeResponse",
+    "UtahCovid19RiskScoreRequest",
+    "UtahCovid19RiskScoreResponse",
+    "RemsScoreRequest",
+    "RemsScoreResponse"
 ]

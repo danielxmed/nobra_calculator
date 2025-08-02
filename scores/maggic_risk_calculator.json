@@ -1,0 +1,211 @@
+{
+  "id": "maggic_risk_calculator",
+  "title": "MAGGIC Risk Calculator for Heart Failure",
+  "description": "Estimates 1- and 3-year mortality in heart failure patients",
+  "category": "cardiology",
+  "version": "2013",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "gender",
+      "type": "string",
+      "required": true,
+      "description": "Patient gender",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "ejection_fraction",
+      "type": "integer",
+      "required": true,
+      "description": "Left ventricular ejection fraction",
+      "validation": {
+        "min": 10,
+        "max": 80
+      },
+      "unit": "%"
+    },
+    {
+      "name": "nyha_class",
+      "type": "string",
+      "required": true,
+      "description": "NYHA functional class",
+      "options": ["I", "II", "III", "IV"],
+      "validation": {
+        "enum": ["I", "II", "III", "IV"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Serum creatinine level",
+      "validation": {
+        "min": 0.3,
+        "max": 15.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "systolic_bp",
+      "type": "integer",
+      "required": true,
+      "description": "Systolic blood pressure",
+      "validation": {
+        "min": 60,
+        "max": 250
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "bmi",
+      "type": "float",
+      "required": true,
+      "description": "Body mass index",
+      "validation": {
+        "min": 10.0,
+        "max": 60.0
+      },
+      "unit": "kg/m²"
+    },
+    {
+      "name": "diabetes",
+      "type": "string",
+      "required": true,
+      "description": "Diabetes mellitus present",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "copd",
+      "type": "string",
+      "required": true,
+      "description": "Chronic obstructive pulmonary disease present",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "current_smoker",
+      "type": "string",
+      "required": true,
+      "description": "Current smoking status",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "hf_duration_over_18_months",
+      "type": "string",
+      "required": true,
+      "description": "Heart failure diagnosed >18 months ago",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "beta_blocker",
+      "type": "string",
+      "required": true,
+      "description": "Currently prescribed beta-blocker",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "ace_arb",
+      "type": "string",
+      "required": true,
+      "description": "Currently prescribed ACE inhibitor or ARB",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "maggic_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "MAGGIC risk score (0-50 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 15,
+        "stage": "Low Risk",
+        "description": "Low mortality risk",
+        "interpretation": "Low risk for 1-year (<5%) and 3-year (<15%) mortality. Standard heart failure management appropriate."
+      },
+      {
+        "min": 16,
+        "max": 25,
+        "stage": "Intermediate Risk",
+        "description": "Intermediate mortality risk",
+        "interpretation": "Intermediate risk for 1-year (5-15%) and 3-year (15-40%) mortality. Consider optimized medical therapy and monitoring."
+      },
+      {
+        "min": 26,
+        "max": 35,
+        "stage": "High Risk",
+        "description": "High mortality risk",
+        "interpretation": "High risk for 1-year (15-40%) and 3-year (40-70%) mortality. Aggressive management and advanced therapies may be indicated."
+      },
+      {
+        "min": 36,
+        "max": 50,
+        "stage": "Very High Risk",
+        "description": "Very high mortality risk",
+        "interpretation": "Very high risk for 1-year (>40%) and 3-year (>70%) mortality. Consider advanced heart failure therapies, transplant evaluation, or palliative care."
+      }
+    ]
+  },
+  "references": [
+    "Pocock SJ, Ariti CA, McMurray JJ, Maggioni A, Køber L, Squire IB, et al. Predicting survival in heart failure: a risk score based on 39 372 patients from 30 studies. Eur Heart J. 2013 May;34(19):1404-13. doi: 10.1093/eurheartj/ehs337.",
+    "Sartipy U, Dahlström U, Edner M, Lund LH. Predicting survival in heart failure: validation of the MAGGIC heart failure risk score in 51,043 patients from the Swedish heart failure registry. Eur J Heart Fail. 2014 Feb;16(2):173-9. doi: 10.1111/ejhf.32.",
+    "Simpson J, Jhund PS, Silva Cardoso J, Martinez F, Mosterd A, Ramires F, et al. Comparing LCZ696 with enalapril according to baseline risk using the MAGGIC and EMPHASIS-HF risk scores: an analysis of mortality and morbidity in PARADIGM-HF. J Am Coll Cardiol. 2015 Nov 10;66(19):2059-71. doi: 10.1016/j.jacc.2015.08.878."
+  ],
+  "formula": "Complex integer scoring system based on 13 predictors: age, gender, EF, NYHA class, creatinine, systolic BP, BMI, diabetes, COPD, smoking, HF duration, beta-blocker use, ACE-I/ARB use",
+  "notes": [
+    "Developed from meta-analysis of 39,372 patients from 30 studies",
+    "Applicable to both HFrEF and HFpEF patients",
+    "Score ranges from 0 (lowest risk) to 50+ (highest risk)",
+    "C-index of 0.70-0.75 for mortality prediction",
+    "Validated in multiple international cohorts",
+    "Does not include biomarkers like BNP/NT-proBNP",
+    "Age scoring varies by ejection fraction category",
+    "Lower EF, higher creatinine, and diabetes are strongest predictors",
+    "Not prescribed beta-blockers or ACE-I/ARB increases risk",
+    "Useful for clinical decision-making and prognostication",
+    "Available online at www.heartfailurerisk.org",
+    "1-year mortality ranges from 1.5% (score 0) to 84.2% (score 50+)",
+    "3-year mortality ranges from 3.9% (score 0) to 98.5% (score 50+)"
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "id": "maddreys_discriminant_function",
+  "title": "Maddrey's Discriminant Function for Alcoholic Hepatitis",
+  "description": "Predicts prognosis and steroid benefit in alcoholic hepatitis",
+  "category": "gastroenterology",
+  "version": "1978",
+  "parameters": [
+    {
+      "name": "patient_pt",
+      "type": "float",
+      "required": true,
+      "description": "Patient's prothrombin time (PT)",
+      "validation": {
+        "min": 8.0,
+        "max": 120.0
+      },
+      "unit": "seconds"
+    },
+    {
+      "name": "control_pt",
+      "type": "float",
+      "required": true,
+      "description": "Control/reference prothrombin time (PT)",
+      "validation": {
+        "min": 8.0,
+        "max": 20.0
+      },
+      "unit": "seconds"
+    },
+    {
+      "name": "total_bilirubin",
+      "type": "float",
+      "required": true,
+      "description": "Total bilirubin level",
+      "validation": {
+        "min": 0.1,
+        "max": 50.0
+      },
+      "unit": "mg/dL"
+    }
+  ],
+  "result": {
+    "name": "maddrey_score",
+    "type": "float",
+    "unit": "points",
+    "description": "Maddrey's Discriminant Function score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 31,
+        "stage": "Mild to Moderate",
+        "description": "Good prognosis, steroid therapy not indicated",
+        "interpretation": "Mild to moderate alcoholic hepatitis with good prognosis. 90% survival rate at 30 days without steroid therapy. Steroid treatment not recommended."
+      },
+      {
+        "min": 32,
+        "max": 1000,
+        "stage": "Severe",
+        "description": "Poor prognosis, consider steroid therapy",
+        "interpretation": "Severe alcoholic hepatitis with poor prognosis. 35-45% mortality risk within first month. Consider corticosteroid therapy if no contraindications exist."
+      }
+    ]
+  },
+  "references": [
+    "Maddrey WC, Boitnott JK, Bedine MS, Weber FL Jr, Mezey E, White RI Jr. Corticosteroid therapy of alcoholic hepatitis. Gastroenterology. 1978 Aug;75(2):193-9. PMID: 352788.",
+    "Carithers RL Jr, Herlong HF, Diehl AM, Shaw EW, Combes B, Fallon HJ, Maddrey WC. Methylprednisolone therapy in patients with severe alcoholic hepatitis. A randomized multicenter trial. Ann Intern Med. 1989 May 1;110(9):685-90. doi: 10.7326/0003-4819-110-9-685.",
+    "Louvet A, Naveau S, Abdelnour M, Ramond MJ, Diaz E, Fartoux L, et al. The Lille model: a new tool for therapeutic strategy in patients with severe alcoholic hepatitis treated with steroids. Hepatology. 2007 Jun;45(6):1348-54. doi: 10.1002/hep.21607."
+  ],
+  "formula": "Maddrey's DF = 4.6 × (Patient's PT - Control PT) + Total Bilirubin",
+  "notes": [
+    "Developed in 1978 by Maddrey et al. following a randomized controlled trial",
+    "First established clinical prognostic score for alcoholic hepatitis",
+    "Score ≥32 indicates severe alcoholic hepatitis with poor prognosis",
+    "Score <32 indicates mild to moderate disease with 90% 30-day survival without steroids",
+    "Patients with score ≥32 may benefit from corticosteroid therapy",
+    "Should be used in conjunction with contraindications assessment for steroids",
+    "Less useful for long-term prognosis prediction",
+    "MELD score may be more accurate for mortality prediction in some studies",
+    "Often combined with Lille score to assess treatment response",
+    "Control PT is typically 11-13 seconds in most laboratories",
+    "Requires exclusion of other causes of hepatitis and acute liver failure",
+    "Consider liver biopsy in patients with severe disease (score ≥32)"
+  ]
+}

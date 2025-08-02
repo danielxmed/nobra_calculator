@@ -1,0 +1,100 @@
+{
+  "id": "menza_score",
+  "title": "Menza Score",
+  "description": "Predicts 4-year HIV risk for men who have sex with men (MSM) based on sexual behavior and substance use factors. Developed to help identify high-risk individuals for targeted HIV prevention interventions.",
+  "category": "infectious_disease",
+  "version": "2009",
+  "parameters": [
+    {
+      "name": "sti_history",
+      "type": "string",
+      "required": true,
+      "description": "History of gonorrhea, chlamydia, or syphilis",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "meth_nitrite_use",
+      "type": "string",
+      "required": true,
+      "description": "Methamphetamine or inhaled nitrite (poppers) use in the prior 6 months",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "unprotected_anal_intercourse",
+      "type": "string",
+      "required": true,
+      "description": "Unprotected anal intercourse with HIV-positive or unknown status partner in the prior year",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "ten_plus_partners",
+      "type": "string",
+      "required": true,
+      "description": "10 or more male sexual partners in the prior year",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "menza_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total Menza Score indicating HIV risk level"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "<5% 4-year HIV risk",
+        "interpretation": "Low risk for HIV acquisition over the next 4 years. Continue routine HIV screening and preventive counseling. Discuss general HIV prevention strategies."
+      },
+      {
+        "min": 1,
+        "max": 3,
+        "stage": "Moderate Risk",
+        "description": "5-9% 4-year HIV risk",
+        "interpretation": "Moderate risk for HIV acquisition. Consider discussing pre-exposure prophylaxis (PrEP) and intensified HIV prevention counseling. Regular HIV testing recommended."
+      },
+      {
+        "min": 4,
+        "max": 11,
+        "stage": "High Risk",
+        "description": "10-14% 4-year HIV risk",
+        "interpretation": "High risk for HIV acquisition. Strongly consider pre-exposure prophylaxis (PrEP) initiation. Provide comprehensive HIV prevention counseling and frequent HIV testing."
+      },
+      {
+        "min": 12,
+        "max": 19,
+        "stage": "Very High Risk",
+        "description": ">14% 4-year HIV risk",
+        "interpretation": "Very high risk for HIV acquisition. Pre-exposure prophylaxis (PrEP) strongly recommended. Implement intensive HIV prevention interventions and very frequent HIV testing."
+      }
+    ]
+  },
+  "references": [
+    "Menza TW, Hughes JP, Celum CL, Golden MR. Prediction of HIV acquisition among men who have sex with men. Sex Transm Dis. 2009 Sep;36(9):547-55.",
+    "Luo Q, Dong Y, Chen H, et al. Factors Associated with HIV Infection among Men Who Have Sex with Men: A Systematic Review and Meta-analysis. Arch Sex Behav. 2023;52(5):2293-2322.",
+    "Jones J, Hoenigl M, Siegler AJ, et al. Assessing the Performance of 3 Human Immunodeficiency Virus Incidence Risk Scores in a Cohort of Black and White Men Who Have Sex With Men in the South. Sex Transm Dis. 2017 May;44(5):297-302."
+  ],
+  "formula": "Menza Score = STI history (0 or 4 points) + Meth/nitrite use (0 or 11 points) + Unprotected anal intercourse (0 or 1 point) + 10+ partners (0 or 3 points)",
+  "notes": [
+    "Should only be used for assessing risk in men who have sex with men (MSM)",
+    "Should not be the sole tool used to determine the need for pre-exposure prophylaxis (PrEP)",
+    "Based on behavioral data from 1999-2003",
+    "Validation studies noted decreased sensitivity for Black MSM",
+    "Consider local HIV epidemiology and individual patient factors when interpreting results"
+  ]
+}

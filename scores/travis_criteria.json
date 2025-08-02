@@ -1,0 +1,63 @@
+{
+  "id": "travis_criteria",
+  "title": "Travis Criteria",
+  "description": "Predicts risk of needing colectomy with severe ulcerative colitis. Used on day 3 of treatment for acute severe ulcerative colitis to predict failure of medical therapy.",
+  "category": "gastroenterology",
+  "version": "1996",
+  "parameters": [
+    {
+      "name": "stool_frequency",
+      "type": "string",
+      "required": true,
+      "description": "Number of stools on day 3 of treatment",
+      "options": ["less_than_3", "3_to_8", "more_than_8"],
+      "validation": {
+        "enum": ["less_than_3", "3_to_8", "more_than_8"]
+      }
+    },
+    {
+      "name": "crp_elevated",
+      "type": "string",
+      "required": true,
+      "description": "CRP >45 mg/L (>428 nmol/L)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "risk_category",
+    "type": "string",
+    "unit": "",
+    "description": "Risk of needing colectomy"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "risk": "low",
+        "stage": "Low Risk",
+        "description": "Low risk of needing colectomy",
+        "interpretation": "Patient has low risk of needing colectomy. Continue current medical therapy with close monitoring. Ensure appropriate follow-up and maintenance therapy on discharge."
+      },
+      {
+        "risk": "high",
+        "stage": "High Risk",
+        "description": "High risk of needing colectomy",
+        "interpretation": "Patient has high risk of needing colectomy. Consider early surgical consultation and other therapies including surgery. Intensify medical therapy or consider second-line treatments (cyclosporine, infliximab) if not already initiated."
+      }
+    ]
+  },
+  "references": [
+    "Travis SP, Farrant JM, Ricketts C, et al. Predicting outcome in severe ulcerative colitis. Gut. 1996;38(6):905-910.",
+    "Lynch RW, Churchhouse AMD, Protheroe A, Arnott IDR, UK IBD Audit Steering Group. Predicting outcome in acute severe ulcerative colitis: comparison of the Travis and Ho scores using UK IBD audit data. Aliment Pharmacol Ther. 2016;43(11):1132-1141.",
+    "Pabla BS, Schwartz DA. Assessing severity of disease in patients with ulcerative colitis. Gastroenterol Clin North Am. 2020;49(4):671-688."
+  ],
+  "formula": "High risk if: (>8 bowel movements) OR (3-8 bowel movements AND CRP >45 mg/L)",
+  "notes": [
+    "Used on day 3 of treatment for acute severe ulcerative colitis",
+    "Helps predict failure of medical therapy and need for colectomy",
+    "High risk patients should be considered for early surgical consultation",
+    "85% specificity for predicting need for colectomy in the original study"
+  ]
+}

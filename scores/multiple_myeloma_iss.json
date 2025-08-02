@@ -1,0 +1,90 @@
+{
+  "id": "multiple_myeloma_iss",
+  "title": "Multiple Myeloma International Staging System (ISS)",
+  "description": "Prognosticates severity of multiple myeloma based on routinely obtained lab values including serum β2 microglobulin and albumin levels.",
+  "category": "hematology",
+  "version": "2005",
+  "parameters": [
+    {
+      "name": "serum_beta2_microglobulin",
+      "type": "float",
+      "required": true,
+      "description": "Serum β2 microglobulin level",
+      "unit": "mg/L",
+      "validation": {
+        "min": 0.1,
+        "max": 50.0
+      }
+    },
+    {
+      "name": "serum_albumin",
+      "type": "float",
+      "required": true,
+      "description": "Serum albumin level",
+      "unit": "g/dL",
+      "validation": {
+        "min": 1.0,
+        "max": 6.0
+      }
+    }
+  ],
+  "result": {
+    "name": "iss_stage",
+    "type": "string",
+    "unit": "",
+    "description": "ISS stage (I, II, or III) with prognostic information"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Stage I",
+        "description": "Best prognosis",
+        "interpretation": "ISS Stage I: β2 microglobulin <3.5 mg/L and albumin ≥3.5 g/dL. Median overall survival: 62 months. Best prognostic group."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Stage II",
+        "description": "Intermediate prognosis",
+        "interpretation": "ISS Stage II: β2 microglobulin <3.5 mg/L with albumin <3.5 g/dL, OR β2 microglobulin 3.5-5.4 mg/L (regardless of albumin). Median overall survival: 44 months. Intermediate prognostic group."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Stage III",
+        "description": "Poorest prognosis",
+        "interpretation": "ISS Stage III: β2 microglobulin ≥5.5 mg/L (regardless of albumin). Median overall survival: 29 months. Poorest prognostic group."
+      }
+    ]
+  },
+  "references": [
+    "Greipp PR, San Miguel J, Durie BG, Crowley JJ, Barlogie B, Bladé J, et al. International staging system for multiple myeloma. J Clin Oncol. 2005;23(15):3412-20. doi: 10.1200/JCO.2005.04.242.",
+    "Durie BG, Salmon SE. A clinical staging system for multiple myeloma. Correlation of measured myeloma cell mass with presenting clinical features, response to treatment, and survival. Cancer. 1975;36(3):842-54. doi: 10.1002/1097-0142(197509)36:3<842::aid-cncr2820360303>3.0.co;2-u.",
+    "Palumbo A, Avet-Loiseau H, Oliva S, Lokhorst HM, Goldschmidt H, Rosinol L, et al. Revised International Staging System for Multiple Myeloma: A Report From International Myeloma Working Group. J Clin Oncol. 2015;33(26):2863-9. doi: 10.1200/JCO.2015.61.2267."
+  ],
+  "formula": "ISS Stage determination: Stage I = β2 microglobulin <3.5 mg/L AND albumin ≥3.5 g/dL; Stage II = (β2 microglobulin <3.5 mg/L AND albumin <3.5 g/dL) OR (β2 microglobulin 3.5-5.4 mg/L); Stage III = β2 microglobulin ≥5.5 mg/L",
+  "notes": [
+    "Developed from database of 10,750 multiple myeloma patients from 1981-2002",
+    "Uses only two easily obtainable laboratory parameters",
+    "Simpler and more objective than previous Durie-Salmon staging system",
+    "Validated across multiple international patient populations",
+    "Should only be used for newly diagnosed multiple myeloma patients",
+    "Not validated for relapsed myeloma, smoldering myeloma, or MGUS",
+    "β2 microglobulin reflects tumor burden and kidney function",
+    "Albumin reflects nutritional status and disease burden",
+    "Higher β2 microglobulin levels correlate with worse prognosis",
+    "Lower albumin levels correlate with worse prognosis",
+    "Stage I has the best median overall survival (62 months)",
+    "Stage II has intermediate median overall survival (44 months)",
+    "Stage III has the poorest median overall survival (29 months)",
+    "ISS staging should be performed at diagnosis for all patients",
+    "Results help guide treatment intensity and prognosis counseling",
+    "Often used in conjunction with cytogenetic risk assessment",
+    "The Revised ISS (R-ISS) incorporates additional genetic factors",
+    "ISS remains widely used due to simplicity and availability of parameters",
+    "Should be interpreted alongside other prognostic factors",
+    "Regular reassessment during treatment may provide additional prognostic information"
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "id": "modified_sgarbossa_criteria",
+  "title": "Modified Sgarbossa's Criteria for MI in Left Bundle Branch Block",
+  "description": "Diagnoses acute myocardial infarction in patients with prior left bundle branch block using ECG criteria with improved sensitivity over the original Sgarbossa criteria.",
+  "category": "cardiology",
+  "version": "2012",
+  "parameters": [
+    {
+      "name": "concordant_st_elevation",
+      "type": "string",
+      "required": true,
+      "description": "Concordant ST elevation ≥1 mm in leads with positive QRS complex",
+      "options": ["present", "absent"],
+      "validation": {
+        "enum": ["present", "absent"]
+      }
+    },
+    {
+      "name": "concordant_st_depression",
+      "type": "string",
+      "required": true,
+      "description": "Concordant ST depression ≥1 mm in leads V1, V2, or V3",
+      "options": ["present", "absent"],
+      "validation": {
+        "enum": ["present", "absent"]
+      }
+    },
+    {
+      "name": "discordant_st_elevation_ratio",
+      "type": "string",
+      "required": true,
+      "description": "Discordant ST elevation with ST/S ratio ≥-0.25 (modified criterion)",
+      "options": ["present", "absent"],
+      "validation": {
+        "enum": ["present", "absent"]
+      }
+    }
+  ],
+  "result": {
+    "name": "sgarbossa_result",
+    "type": "string",
+    "unit": "interpretation",
+    "description": "Diagnosis of acute MI based on Modified Sgarbossa criteria"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Negative",
+        "description": "No criteria met",
+        "interpretation": "Modified Sgarbossa criteria negative for acute MI in setting of LBBB."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Positive",
+        "description": "At least one criterion met",
+        "interpretation": "Modified Sgarbossa criteria positive for acute MI in setting of LBBB."
+      }
+    ]
+  },
+  "references": [
+    "Smith SW, Dodd KW, Henry TD, Dvorak DM, Pearce LA. Diagnosis of ST-elevation myocardial infarction in the presence of left bundle branch block with the ST-elevation to S-wave ratio in a modified Sgarbossa rule. Ann Emerg Med. 2012;60(6):766-76. doi: 10.1016/j.annemergmed.2012.07.119.",
+    "Sgarbossa EB, Pinski SL, Barbagelata A, Underwood DA, Gates KB, Topol EJ, et al. Electrocardiographic diagnosis of evolving acute myocardial infarction in the presence of left bundle-branch block. GUSTO-1 (Global Utilization of Streptokinase and Tissue Plasminogen Activator for Occluded Coronary Arteries) Investigators. N Engl J Med. 1996;334(8):481-7. doi: 10.1056/NEJM199602223340801.",
+    "Aslanger EK, Yalin K. Electrophysiologic basis, electrocardiographic features, and clinical implications of aVR sign. Ann Noninvasive Electrocardiol. 2015;20(1):12-20. doi: 10.1111/anec.12140."
+  ],
+  "formula": "Modified Sgarbossa Criteria: 1) Concordant ST elevation ≥1 mm in leads with positive QRS (5 points), 2) Concordant ST depression ≥1 mm in V1-V3 (3 points), 3) Discordant ST elevation with ST/S ratio ≥-0.25 (modified from original ≥5 mm criterion). Any single criterion = positive test.",
+  "notes": [
+    "Modified version improves sensitivity from 36% to 80% while maintaining 99% specificity",
+    "Key modification: replaced absolute ST elevation ≥5 mm with ST/S ratio ≥-0.25",
+    "Any single positive criterion indicates acute MI in setting of LBBB",
+    "Positive likelihood ratio of 9, negative likelihood ratio of 0.1",
+    "Should be used in conjunction with clinical presentation and cardiac biomarkers",
+    "ST/S ratio measured as ST elevation divided by depth of S wave in same lead",
+    "More sensitive than original Sgarbossa criteria for detecting acute occlusion MI"
+  ]
+}

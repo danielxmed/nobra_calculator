@@ -1,0 +1,86 @@
+{
+  "id": "surgical_apgar_score",
+  "title": "Surgical Apgar Score (SAS) for Postoperative Risk",
+  "description": "Predicts postoperative risk of major complications and death in patients undergoing major surgery based on intraoperative parameters. This simple 10-point scoring system uses estimated blood loss, lowest heart rate, and lowest mean arterial pressure measured during surgery to provide immediate postoperative risk stratification.",
+  "category": "general",
+  "version": "2007",
+  "parameters": [
+    {
+      "name": "estimated_blood_loss",
+      "type": "string",
+      "required": true,
+      "description": "Total estimated blood loss during the surgical procedure",
+      "options": ["≤100 mL", "101-600 mL", "601-1,000 mL", ">1,000 mL"],
+      "validation": {
+        "enum": ["≤100 mL", "101-600 mL", "601-1,000 mL", ">1,000 mL"]
+      }
+    },
+    {
+      "name": "lowest_mean_arterial_pressure",
+      "type": "string",
+      "required": true,
+      "description": "Lowest mean arterial pressure recorded during the surgical procedure",
+      "options": ["<40 mmHg", "40-54 mmHg", "55-69 mmHg", "≥70 mmHg"],
+      "validation": {
+        "enum": ["<40 mmHg", "40-54 mmHg", "55-69 mmHg", "≥70 mmHg"]
+      }
+    },
+    {
+      "name": "lowest_heart_rate",
+      "type": "string",
+      "required": true,
+      "description": "Lowest heart rate recorded during the surgical procedure",
+      "options": ["≤55 bpm", "56-65 bpm", "66-75 bpm", "76-85 bpm", ">85 bpm"],
+      "validation": {
+        "enum": ["≤55 bpm", "56-65 bpm", "66-75 bpm", "76-85 bpm", ">85 bpm"]
+      }
+    }
+  ],
+  "result": {
+    "name": "score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Surgical Apgar Score ranging from 0-10 points"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 4,
+        "stage": "Very High Risk",
+        "description": "Very high risk of major complications",
+        "interpretation": "Scores ≤4 indicate very high risk of major postoperative complications and mortality. Consider intensive monitoring, ICU admission, and aggressive perioperative management."
+      },
+      {
+        "min": 5,
+        "max": 6,
+        "stage": "High Risk",
+        "description": "High risk of major complications",
+        "interpretation": "Scores 5-6 indicate high risk of major postoperative complications. Consider enhanced monitoring and close perioperative surveillance."
+      },
+      {
+        "min": 7,
+        "max": 10,
+        "stage": "Low Risk",
+        "description": "Low risk - usual care recommended",
+        "interpretation": "Scores ≥7 indicate low risk of major postoperative complications. Standard postoperative care and monitoring recommended."
+      }
+    ]
+  },
+  "references": [
+    "Gawande AA, Kwaan MR, Regenbogen SE, Lipsitz SA, Zinner MJ. An Apgar score for surgery. J Am Coll Surg. 2007 Apr;204(2):201-8. doi: 10.1016/j.jamcollsurg.2006.11.011.",
+    "Regenbogen SE, Lancaster RT, Lipsitz SR, Greenberg CC, Hutter MM, Gawande AA. Does the Surgical Apgar Score measure intraoperative performance? Ann Surg. 2008 Aug;248(2):320-8. doi: 10.1097/SLA.0b013e318181c6d8."
+  ],
+  "formula": "SAS = EBL points + MAP points + Heart Rate points (total 0-10 points)",
+  "notes": [
+    "Calculate at the end of surgery using intraoperative parameters only",
+    "EBL: ≤100mL=3pts, 101-600mL=2pts, 601-1000mL=1pt, >1000mL=0pts",
+    "MAP: ≥70mmHg=3pts, 55-69mmHg=2pts, 40-54mmHg=1pt, <40mmHg=0pts", 
+    "HR: ≤55bpm=4pts, 56-65bpm=3pts, 66-75bpm=2pts, 76-85bpm=1pt, >85bpm=0pts",
+    "Lower scores correlate with higher risk of major complications and mortality",
+    "Useful for determining need for ICU admission and enhanced monitoring",
+    "Validated across multiple surgical specialties and procedures",
+    "Patients with scores ≤4 had 30-day mortality/morbidity rate of 58.6%",
+    "Patients with scores 9-10 had mortality/morbidity rate of only 3.6%"
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "id": "manchester_score_prognosis_sclc",
+  "title": "Manchester Score for Prognosis in Small Cell Lung Cancer",
+  "description": "Predicts 2-year survival in patients with small cell lung cancer (SCLC) using six clinical and laboratory parameters. Stratifies patients into three prognostic groups (good, medium, poor) to guide treatment decisions and clinical management.",
+  "category": "pulmonology",
+  "version": "1987",
+  "parameters": [
+    {
+      "name": "serum_ldh",
+      "type": "string",
+      "required": true,
+      "description": "Serum lactate dehydrogenase level relative to upper limit of normal. Elevated LDH reflects increased tumor burden and metabolic activity, indicating worse prognosis",
+      "validation": {
+        "enum": ["normal", "elevated"]
+      },
+      "options": ["normal", "elevated"]
+    },
+    {
+      "name": "serum_sodium",
+      "type": "float",
+      "required": true,
+      "description": "Serum sodium concentration in mmol/L. Hyponatremia (<132 mmol/L) often results from SIADH (syndrome of inappropriate antidiuretic hormone secretion) commonly associated with SCLC",
+      "validation": {
+        "min": 110.0,
+        "max": 160.0
+      },
+      "unit": "mmol/L"
+    },
+    {
+      "name": "serum_alkaline_phosphatase",
+      "type": "string",
+      "required": true,
+      "description": "Serum alkaline phosphatase level relative to upper limit of normal. Elevated ALP (>1.5x normal) suggests liver or bone metastases, indicating extensive disease",
+      "validation": {
+        "enum": ["normal", "1.1_to_1.5_times_normal", "greater_than_1.5_times_normal"]
+      },
+      "options": ["normal", "1.1_to_1.5_times_normal", "greater_than_1.5_times_normal"]
+    },
+    {
+      "name": "serum_bicarbonate",
+      "type": "float",
+      "required": true,
+      "description": "Serum bicarbonate concentration in mmol/L. Low bicarbonate (<24 mmol/L) may indicate metabolic acidosis associated with advanced disease or organ dysfunction",
+      "validation": {
+        "min": 10.0,
+        "max": 40.0
+      },
+      "unit": "mmol/L"
+    },
+    {
+      "name": "disease_stage",
+      "type": "string",
+      "required": true,
+      "description": "Small cell lung cancer staging. Limited stage: confined to one hemithorax including ipsilateral hilar and supraclavicular nodes. Extensive stage: disease beyond limited stage boundaries",
+      "validation": {
+        "enum": ["limited", "extensive"]
+      },
+      "options": ["limited", "extensive"]
+    },
+    {
+      "name": "karnofsky_performance_status",
+      "type": "integer",
+      "required": true,
+      "description": "Karnofsky Performance Status scale (0-100). Measures functional status and ability to carry out activities of daily living. Lower scores indicate worse functional status and prognosis",
+      "validation": {
+        "min": 0,
+        "max": 100
+      },
+      "unit": "points"
+    }
+  ],
+  "result": {
+    "name": "manchester_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Manchester Score ranging from 0-6 points, where higher scores indicate worse prognosis and lower 2-year survival rates"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Good Prognosis",
+        "description": "Good prognostic group with best survival outcomes",
+        "interpretation": "Good prognosis with 16.2% two-year survival rate. This group contains all long-term survivors in the original study. Consider standard chemotherapy regimens with curative intent. Suitable for aggressive treatment approaches including concurrent chemoradiotherapy for limited stage disease."
+      },
+      {
+        "min": 2,
+        "max": 3,
+        "stage": "Medium Prognosis",
+        "description": "Intermediate prognostic group with moderate survival outcomes",
+        "interpretation": "Medium prognosis with 2.5% two-year survival rate. Consider standard treatment protocols with careful monitoring for treatment tolerance. Balance treatment intensity with quality of life considerations. May benefit from supportive care measures alongside chemotherapy."
+      },
+      {
+        "min": 4,
+        "max": 6,
+        "stage": "Poor Prognosis",
+        "description": "Poor prognostic group with worst survival outcomes",
+        "interpretation": "Poor prognosis with 0% two-year survival rate in the original study cohort. No patients in this group survived longer than one year. Consider palliative care approach with emphasis on symptom management and quality of life. Treatment decisions should focus on palliation rather than cure."
+      }
+    ]
+  },
+  "references": [
+    "Cerny T, Blair V, Anderson H, Bramwell V, Thatcher N. Pretreatment prognostic factors and scoring system in 407 small-cell lung cancer patients. Int J Cancer. 1987 Jul 15;40(1):1-7. doi: 10.1002/ijc.2910400102.",
+    "Paesmans M, Sculier JP, Libert P, Bureau G, Dabouis G, Thiriaux J, et al. Prognostic factors for survival in advanced non-small-cell lung cancer: univariate and multivariate analyses including recursive partitioning and amalgamation algorithms in 1,052 patients. J Clin Oncol. 1995 May;13(5):1221-30. doi: 10.1200/JCO.1995.13.5.1221.",
+    "Albain KS, Crowley JJ, LeBlanc M, Livingston RB. Determinants of improved outcome in small-cell lung cancer: an analysis of the 2,580-patient Southwest Oncology Group data base. J Clin Oncol. 1990 Sep;8(9):1563-74. doi: 10.1200/JCO.1990.8.9.1563."
+  ],
+  "formula": "Manchester Score = LDH points + Sodium points + Alkaline Phosphatase points + Bicarbonate points + Disease Stage points + Karnofsky Performance Status points. LDH >ULN (1 point), Na <132 mmol/L (1 point), ALP >1.5x ULN (1 point), HCO3 <24 mmol/L (1 point), Extensive stage (1 point), KPS ≤50 (1 point). Total score 0-1 = Good prognosis, 2-3 = Medium prognosis, 4-6 = Poor prognosis.",
+  "notes": [
+    "Developed from analysis of 407 small cell lung cancer patients treated between 1979-1985",
+    "61 pre-treatment variables were initially evaluated through multiple regression analysis",
+    "Simple scoring system shows little loss of prognostic information compared to complex Cox analysis",
+    "Helps distinguish three distinct prognostic groups with clinically meaningful survival differences",
+    "Good prognostic group contains all long-term survivors from the original cohort",
+    "Poor prognostic group had no patients surviving longer than one year",
+    "Facilitates comparison between different treatment studies and research protocols",
+    "May assist in treatment decision-making and shared clinical decision-making discussions",
+    "Particularly useful for determining appropriateness of aggressive vs. palliative treatment approaches",
+    "Score developed during era when more prognostic information was requested by patients and physicians due to limited cure rates in SCLC"
+  ]
+}

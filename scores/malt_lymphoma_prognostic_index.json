@@ -1,0 +1,85 @@
+{
+  "id": "malt_lymphoma_prognostic_index",
+  "title": "MALT Lymphoma Prognostic Index (MALT-IPI)",
+  "description": "Identifies MALT lymphoma patients at risk for poor outcomes using three clinical parameters: age ≥70 years, Ann Arbor stage III/IV, and elevated lactate dehydrogenase (LDH). Stratifies patients into low, intermediate, and high risk groups predictive for event-free survival and overall survival.",
+  "category": "hematology",
+  "version": "2017",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years. Age ≥70 years is associated with worse prognosis (HR 1.72, 95% CI 1.26-2.33)",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "ldh_level",
+      "type": "string",
+      "required": true,
+      "description": "Serum lactate dehydrogenase (LDH) level relative to upper limit of normal. Elevated LDH is associated with worse prognosis (HR 1.87, 95% CI 1.27-2.77)",
+      "validation": {
+        "enum": ["normal", "elevated"]
+      },
+      "options": ["normal", "elevated"]
+    },
+    {
+      "name": "ann_arbor_stage",
+      "type": "string",
+      "required": true,
+      "description": "Ann Arbor staging system for lymphomas. Stage III/IV disease is associated with worse prognosis (HR 1.79, 95% CI 1.35-2.38)",
+      "validation": {
+        "enum": ["I", "II", "III", "IV"]
+      },
+      "options": ["I", "II", "III", "IV"]
+    }
+  ],
+  "result": {
+    "name": "malt_ipi_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "MALT-IPI score ranging from 0-3 points, where higher scores indicate worse prognosis"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "Low risk of poor outcomes",
+        "interpretation": "Excellent prognosis with 5-year overall survival of 96.7%, event-free survival of 76.0%, and cause-specific survival of 98.2%. Conservative management approaches may be considered."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Intermediate Risk",
+        "description": "Intermediate risk of poor outcomes",
+        "interpretation": "Moderate prognosis with 5-year overall survival of 81.7%, event-free survival of 48.4%, and cause-specific survival of 94.7%. Consider more intensive monitoring and treatment planning."
+      },
+      {
+        "min": 2,
+        "max": 3,
+        "stage": "High Risk",
+        "description": "High risk of poor outcomes",
+        "interpretation": "Poor prognosis with 5-year overall survival of 64.9%, event-free survival of 15.7%, and cause-specific survival of 74.3%. Aggressive treatment approaches should be strongly considered."
+      }
+    ]
+  },
+  "references": [
+    "Thieblemont C, Cascione L, Conconi A, Kiesewetter B, Raderer M, Gaidano G, et al. A MALT lymphoma prognostic index. Blood. 2017 Sep 21;130(12):1409-1417. doi: 10.1182/blood-2017-03-771915.",
+    "Hong J, Lee Y, Park J, Kim SJ, Lim ST, Kim JS, et al. Validation of the MALT-lymphoma international prognostic index (MALT-IPI) and extension of the prognostic model with the addition of β2-microglobulin. Ann Hematol. 2019 Nov;98(11):2499-2507. doi: 10.1007/s00277-019-03808-x.",
+    "Zucca E, Conconi A, Martinelli G, Bouabdallah R, Tucci A, Vitolo U, et al. Final Results of the IELSG-19 Randomized Trial of Mucosa-Associated Lymphoid Tissue Lymphoma: Improved Event-Free and Progression-Free Survival With Rituximab Plus Chlorambucil Versus Either Agent Alone. J Clin Oncol. 2017 Jun 10;35(17):1905-1912. doi: 10.1200/JCO.2016.70.6994."
+  ],
+  "formula": "MALT-IPI Score = Age points + LDH points + Ann Arbor Stage points. Age ≥70 years (1 point), elevated LDH (1 point), Ann Arbor stage III/IV (1 point). Total score 0 = Low risk, 1 = Intermediate risk, ≥2 = High risk.",
+  "notes": [
+    "Developed using 401 patients from the IELSG-19 randomized trial and validated in independent cohort (N=633)",
+    "Applicable to both gastric and non-gastric MALT lymphoma patients",
+    "Prognostic utility retained across different treatment arms (chlorambucil, rituximab, rituximab plus chlorambucil)",
+    "Simple, accessible tool that significantly discriminates between patients with different progression-free, overall, and cause-specific survival",
+    "May help define appropriate treatment approaches for individual patients",
+    "Age ≥70 years, Ann Arbor stage III/IV, and elevated LDH were independently associated with worse event-free survival in multivariate analysis"
+  ]
+}

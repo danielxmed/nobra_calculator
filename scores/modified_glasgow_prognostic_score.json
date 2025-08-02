@@ -1,0 +1,80 @@
+{
+  "id": "modified_glasgow_prognostic_score",
+  "title": "Modified Glasgow Prognostic Score (mGPS) for Cancer Outcomes",
+  "description": "Provides improved cancer prognosis over the original Glasgow Prognostic Score, based on serum biomarkers (CRP and albumin) reflecting systemic inflammation and nutritional status",
+  "category": "oncology",
+  "version": "Modified",
+  "parameters": [
+    {
+      "name": "crp_level",
+      "type": "float",
+      "required": true,
+      "description": "C-Reactive Protein (CRP) level",
+      "unit": "mg/L",
+      "validation": {
+        "min": 0,
+        "max": 500
+      }
+    },
+    {
+      "name": "albumin_level",
+      "type": "float",
+      "required": true,
+      "description": "Serum albumin level",
+      "unit": "g/L",
+      "validation": {
+        "min": 10,
+        "max": 60
+      }
+    }
+  ],
+  "result": {
+    "name": "mgps_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Modified Glasgow Prognostic Score (0-2 points) indicating cancer prognosis"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Score 0",
+        "description": "Good prognosis",
+        "interpretation": "Normal inflammatory markers. CRP ≤10 mg/L (regardless of albumin level)."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Score 1", 
+        "description": "Intermediate prognosis",
+        "interpretation": "Elevated inflammation with adequate nutrition. CRP >10 mg/L and albumin ≥35 g/L."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Score 2",
+        "description": "Poor prognosis",
+        "interpretation": "Elevated inflammation with poor nutrition. CRP >10 mg/L and albumin <35 g/L."
+      }
+    ]
+  },
+  "references": [
+    "Proctor MJ, Morrison DS, Talwar D, Balmer SM, O'Reilly DS, Foulis AK, Horgan PG, McMillan DC. An inflammation-based prognostic score (mGPS) predicts cancer survival independent of tumour site: a Glasgow Inflammation Outcome Study. Br J Cancer. 2011 Aug 23;105(5):726-34. doi: 10.1038/bjc.2011.292.",
+    "McMillan DC. The systemic inflammation-based Glasgow Prognostic Score: a decade of experience in patients with cancer. Cancer Treat Rev. 2013 Aug;39(5):534-40. doi: 10.1016/j.ctrv.2012.08.003.",
+    "Forrest LM, McMillan DC, McArdle CS, Angerson WJ, Dunlop DJ. Evaluation of cumulative prognostic scores based on the systemic inflammatory response in patients with inoperable non-small-cell lung cancer. Br J Cancer. 2003 Aug 4;89(3):477-81. doi: 10.1038/sj.bjc.6601242."
+  ],
+  "formula": "Score determined by CRP and albumin levels. Score 0: CRP ≤10 mg/L (any albumin). Score 1: CRP >10 mg/L and albumin ≥35 g/L. Score 2: CRP >10 mg/L and albumin <35 g/L.",
+  "notes": [
+    "Modified version weighs inflammatory component (CRP) more heavily than original GPS",
+    "Low albumin alone (without elevated CRP) scores 0 points in mGPS vs 1 point in original GPS",
+    "Validated across multiple cancer types including gastric, renal, lung, pancreatic, and colorectal cancers",
+    "Reflects both systemic inflammatory response and nutritional status",
+    "Higher scores associated with worse overall survival, disease-specific survival, and disease-free survival",
+    "Uses readily available laboratory markers",
+    "Should be interpreted in context of cancer stage, treatment status, and other prognostic factors",
+    "Not a standalone diagnostic or treatment decision tool",
+    "Survival outcomes vary significantly based on patient selection and cancer type",
+    "Can provide prognostic information beyond traditional TNM staging"
+  ]
+}

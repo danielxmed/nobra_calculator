@@ -15,6 +15,7 @@ from .clinical_frailty_scale import router as clinical_frailty_scale_router
 from .cirs_g import router as cirs_g_router
 from .edmonton_symptom_assessment_system_revised import router as edmonton_symptom_assessment_system_revised_router
 from .g8_geriatric_screening_tool import router as g8_geriatric_screening_tool_router
+from .malnutrition_universal_screening_tool import router as malnutrition_universal_screening_tool_router
 
 # Create main specialty router
 router = APIRouter()
@@ -30,3 +31,4 @@ router.include_router(clinical_frailty_scale_router)
 router.include_router(cirs_g_router)
 router.include_router(edmonton_symptom_assessment_system_revised_router)
 router.include_router(g8_geriatric_screening_tool_router)
+router.include_router(malnutrition_universal_screening_tool_router)

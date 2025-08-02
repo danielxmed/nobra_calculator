@@ -1,0 +1,164 @@
+{
+  "id": "improvedd_vte_risk_score",
+  "title": "IMPROVEDD Risk Score for Venous Thromboembolism (VTE)",
+  "description": "Predicts 77-day risk of acute venous thromboembolism (VTE) in hospitalized medical patients by incorporating D-dimer levels into the IMPROVE Risk Score. The IMPROVEDD (IMPROVE + D-dimer) score enhances the original IMPROVE VTE risk assessment by adding D-dimer ≥2× upper limit of normal as an additional risk factor worth 2 points. This validated clinical prediction tool was developed from the APEX trial involving 7,441 hospitalized medically ill patients. The addition of D-dimer significantly improves VTE risk discrimination and reclassification compared to the original IMPROVE score. An IMPROVEDD score ≥2 identifies patients with heightened VTE risk through 77 days, helping clinicians make more informed decisions about extended thromboprophylaxis duration in acutely ill medical patients.",
+  "category": "hematology",
+  "version": "2017 Gibson",
+  "parameters": [
+    {
+      "name": "previous_vte",
+      "type": "string",
+      "required": true,
+      "description": "History of previous venous thromboembolism (deep vein thrombosis or pulmonary embolism). Previous VTE is the strongest risk factor, carrying the highest point value (3 points) due to significantly increased likelihood of recurrence",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "known_thrombophilia",
+      "type": "string",
+      "required": true,
+      "description": "Known thrombophilia or hereditary thrombotic disorder (Factor V Leiden, prothrombin gene mutation, antithrombin deficiency, protein C or S deficiency, antiphospholipid syndrome). Thrombophilic disorders increase VTE risk through various mechanisms affecting coagulation pathways",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "current_lower_limb_paralysis",
+      "type": "string",
+      "required": true,
+      "description": "Current lower-limb paralysis or paresis affecting mobility. Paralysis increases VTE risk through venous stasis and reduced muscle pump function in affected limbs, particularly concerning for DVT development",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "current_cancer",
+      "type": "string",
+      "required": true,
+      "description": "Current active cancer diagnosis regardless of type or stage. Cancer increases VTE risk through multiple mechanisms including tumor-related procoagulant factors, chemotherapy effects, reduced mobility, and systemic hypercoagulable state",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "immobilized_7_days",
+      "type": "string",
+      "required": true,
+      "description": "Immobilized ≥7 days immediately prior to and during hospital admission. Prolonged immobilization increases VTE risk through venous stasis and activation of coagulation pathways. Includes bed rest, wheelchair confinement, or significant mobility limitation",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "icu_ccu_stay",
+      "type": "string",
+      "required": true,
+      "description": "Current stay in intensive care unit (ICU) or coronary care unit (CCU). Critical care setting indicates severe illness with increased VTE risk from immobility, invasive procedures, systemic inflammation, and hemodynamic instability",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "age_over_60",
+      "type": "string",
+      "required": true,
+      "description": "Age greater than 60 years. Advanced age increases VTE risk through age-related changes in coagulation factors, decreased mobility, increased comorbidities, and reduced physiological reserve",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "d_dimer_elevated",
+      "type": "string",
+      "required": true,
+      "description": "D-dimer ≥2× upper limit of normal (ULN). Elevated D-dimer reflects ongoing fibrin formation and breakdown, indicating activation of the coagulation and fibrinolytic systems. This biomarker significantly enhances VTE risk prediction when added to clinical risk factors",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "score",
+    "type": "integer",
+    "unit": "points",
+    "description": "IMPROVEDD VTE Risk Score (range 0-14 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Very Low Risk",
+        "description": "Score 0 points",
+        "interpretation": "0.5% 77-day VTE risk. Pharmacologic thromboprophylaxis not warranted. Consider mechanical prophylaxis or early mobilization as appropriate."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "Score 1 point",
+        "interpretation": "0.7% 77-day VTE risk. Pharmacologic thromboprophylaxis not warranted. Consider mechanical prophylaxis or early mobilization as appropriate."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Moderate Risk",
+        "description": "Score 2 points",
+        "interpretation": "1.0% 77-day VTE risk. Start pharmacologic or mechanical prophylaxis. Consider patient-specific bleeding risk before initiating anticoagulation."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Moderate-High Risk",
+        "description": "Score 3 points",
+        "interpretation": "1.4% 77-day VTE risk. Start pharmacologic or mechanical prophylaxis. Consider patient-specific bleeding risk before initiating anticoagulation."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "High Risk",
+        "description": "Score 4 points",
+        "interpretation": "1.9% 77-day VTE risk. Start pharmacologic or mechanical prophylaxis. Consider patient-specific bleeding risk before initiating anticoagulation."
+      },
+      {
+        "min": 5,
+        "max": 14,
+        "stage": "Very High Risk",
+        "description": "Score 5-14 points",
+        "interpretation": "2.7% or higher 77-day VTE risk. Start pharmacologic or mechanical prophylaxis. Consider patient-specific bleeding risk before initiating anticoagulation. May benefit from extended prophylaxis duration."
+      }
+    ]
+  },
+  "references": [
+    "Gibson CM, Spyropoulos AC, Cohen AT, et al. The IMPROVEDD VTE Risk Score: Incorporation of D-Dimer into the IMPROVE Score to Improve Venous Thromboembolism Risk Stratification. TH Open. 2017 Oct 9;1(1):e56-e65. doi: 10.1055/s-0037-1603929.",
+    "Spyropoulos AC, Lipardi C, Xu J, et al. Modified IMPROVE VTE Risk Score and Elevated D-Dimer Identify a High Venous Thromboembolism Risk in Acutely Ill Medical Population for Extended Thromboprophylaxis. TH Open. 2020 Mar 6;4(1):e59-e65. doi: 10.1055/s-0040-1705137.",
+    "Spyropoulos AC, Anderson FA Jr, FitzGerald G, et al. Predictive and associative models to identify hospitalized medical patients at risk for VTE. Chest. 2011 Sep;140(3):706-714. doi: 10.1378/chest.10-1944."
+  ],
+  "formula": "Score = Previous VTE (3) + Known thrombophilia (2) + Current lower-limb paralysis (2) + Current cancer (2) + Immobilized ≥7 days (1) + ICU/CCU stay (1) + Age >60 years (1) + D-dimer ≥2×ULN (2)",
+  "notes": [
+    "Enhanced version of IMPROVE VTE score by adding D-dimer measurement",
+    "Developed from APEX trial with 7,441 hospitalized medically ill patients",
+    "Score <2 indicates low VTE risk, pharmacologic thromboprophylaxis not warranted",
+    "Score ≥2 indicates increased VTE risk, start pharmacologic or mechanical prophylaxis",
+    "D-dimer ≥2× ULN adds 2 points and significantly improves risk discrimination",
+    "Predicts 77-day VTE risk (extended period compared to original IMPROVE 3-month risk)",
+    "Addition of D-dimer improves AUC discrimination by 0.06 (p=0.0006)",
+    "Continuous net reclassification improvement: 0.34 (95% CI: 0.17-0.51)",
+    "Patients with IMPROVEDD ≥2 have 2.73× higher VTE risk (HR: 2.73, 95% CI: 1.52-4.90)",
+    "D-dimer independently associated with symptomatic VTE (adjusted HR: 2.22)",
+    "Used in MARINER trial for extended thromboprophylaxis patient selection",
+    "Consider bleeding risk assessment (e.g., IMPROVE Bleeding Risk Score) before anticoagulation",
+    "May be particularly useful for identifying patients who benefit from extended prophylaxis",
+    "D-dimer measurement should be obtained at hospital admission for optimal assessment",
+    "Score should be reassessed if clinical status or D-dimer levels change significantly"
+  ]
+}

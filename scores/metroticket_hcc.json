@@ -1,0 +1,79 @@
+{
+  "id": "metroticket_hcc",
+  "title": "Metroticket Calculator for Hepatocellular Carcinoma (HCC) Survival",
+  "description": "Predicts 3 and 5-year survival after liver transplantation for patients with hepatocellular carcinoma (HCC), especially those not meeting Milan Criteria. Uses tumor size, number, and vascular invasion status.",
+  "category": "oncology",
+  "version": "2009",
+  "parameters": [
+    {
+      "name": "largest_nodule_size",
+      "type": "integer",
+      "required": true,
+      "description": "Size of the largest vital tumor nodule in millimeters",
+      "validation": {
+        "min": 0,
+        "max": 99
+      },
+      "unit": "mm"
+    },
+    {
+      "name": "number_of_nodules",
+      "type": "integer",
+      "required": true,
+      "description": "Number of vital tumor nodules (≥1cm)",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "nodules"
+    },
+    {
+      "name": "vascular_invasion",
+      "type": "string",
+      "required": true,
+      "description": "Presence or absence of vascular invasion",
+      "options": ["unknown", "absent", "present"],
+      "validation": {
+        "enum": ["unknown", "absent", "present"]
+      }
+    }
+  ],
+  "result": {
+    "name": "survival_prediction",
+    "type": "object",
+    "unit": "",
+    "description": "Predicted 3-year and 5-year survival rates after liver transplantation"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 7,
+        "stage": "Within Up-to-Seven Criteria",
+        "description": "Sum of size (cm) + number ≤7, no vascular invasion",
+        "interpretation": "Excellent prognosis with 5-year survival rate of approximately 71.2%. These patients have outcomes comparable to those within Milan criteria and are good candidates for liver transplantation."
+      },
+      {
+        "min": 7,
+        "max": 999,
+        "stage": "Beyond Up-to-Seven Criteria",
+        "description": "Sum of size (cm) + number >7 or vascular invasion present",
+        "interpretation": "Lower survival rates compared to up-to-seven criteria. Individual survival prediction varies based on specific tumor characteristics. Consider multidisciplinary evaluation for transplant candidacy."
+      }
+    ]
+  },
+  "references": [
+    "Mazzaferro V, Llovet JM, Miceli R, et al. Predicting survival after liver transplantation in patients with hepatocellular carcinoma beyond the Milan criteria: a retrospective, exploratory analysis. Lancet Oncol. 2009 Jan;10(1):35-43.",
+    "Mazzaferro V, Sposito C, Zhou J, et al. Metroticket 2.0 Model for Analysis of Competing Risks of Death After Liver Transplantation for Hepatocellular Carcinoma. Gastroenterology. 2018 Jan;154(1):128-139.",
+    "Lei JY, Wang WT, Yan LN. \"Metroticket\" predictor for assessing liver transplantation to treat hepatocellular carcinoma: a single-center analysis in mainland China. World J Gastroenterol. 2013 Nov 28;19(44):8093-8."
+  ],
+  "formula": "Up-to-Seven: Sum of largest tumor diameter (cm) + number of tumors ≤7. Survival prediction based on tumor characteristics matrix.",
+  "notes": [
+    "Developed from 1,556 patients who underwent liver transplantation for HCC in 36 European centers",
+    "The 'up-to-seven' criteria applies only in absence of macrovascular invasion",
+    "Provides individualized survival predictions rather than dichotomous in/out criteria",
+    "Less widely validated than original Milan criteria",
+    "Metroticket 2.0 also incorporates AFP levels for improved prediction",
+    "Online calculator available at http://www.hcc-olt-metroticket.org/"
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "id": "score2_diabetes",
+  "title": "Systematic Coronary Risk Evaluation 2-Diabetes (SCORE2-Diabetes)",
+  "description": "Predicts 10-year cardiovascular disease (fatal and non-fatal myocardial infarction and stroke) risk in patients with type 2 diabetes aged under 70 years without prior cardiovascular disease.",
+  "category": "cardiology",
+  "version": "2023",
+  "parameters": [
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Biological sex",
+      "options": ["male", "female"]
+    },
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Age in years",
+      "validation": {
+        "min": 40,
+        "max": 69
+      },
+      "unit": "years"
+    },
+    {
+      "name": "smoking",
+      "type": "string",
+      "required": true,
+      "description": "Current smoking status",
+      "options": ["current", "other"]
+    },
+    {
+      "name": "systolic_bp",
+      "type": "integer",
+      "required": true,
+      "description": "Systolic blood pressure",
+      "validation": {
+        "min": 80,
+        "max": 250
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "total_cholesterol",
+      "type": "float",
+      "required": true,
+      "description": "Total cholesterol",
+      "validation": {
+        "min": 2.0,
+        "max": 12.0
+      },
+      "unit": "mmol/L"
+    },
+    {
+      "name": "hdl_cholesterol",
+      "type": "float",
+      "required": true,
+      "description": "HDL cholesterol",
+      "validation": {
+        "min": 0.5,
+        "max": 3.5
+      },
+      "unit": "mmol/L"
+    },
+    {
+      "name": "age_diabetes_diagnosis",
+      "type": "integer",
+      "required": true,
+      "description": "Age at type 2 diabetes diagnosis",
+      "validation": {
+        "min": 18,
+        "max": 69
+      },
+      "unit": "years"
+    },
+    {
+      "name": "hba1c",
+      "type": "float",
+      "required": true,
+      "description": "Glycated hemoglobin (HbA1c)",
+      "validation": {
+        "min": 20,
+        "max": 130
+      },
+      "unit": "mmol/mol"
+    },
+    {
+      "name": "egfr",
+      "type": "float",
+      "required": true,
+      "description": "Estimated glomerular filtration rate (eGFR)",
+      "validation": {
+        "min": 15,
+        "max": 150
+      },
+      "unit": "mL/min/1.73m²"
+    },
+    {
+      "name": "risk_region",
+      "type": "string",
+      "required": true,
+      "description": "Cardiovascular risk region based on country",
+      "options": ["low", "moderate", "high", "very_high"]
+    }
+  ],
+  "result": {
+    "name": "cvd_risk",
+    "type": "float",
+    "unit": "%",
+    "description": "10-year cardiovascular disease risk percentage"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2.5,
+        "stage": "Low to Moderate Risk",
+        "description": "Low to moderate risk (<2.5% for age <50 years)",
+        "interpretation": "Consider lifestyle interventions. Reinforce healthy lifestyle choices including diet, physical activity, and smoking cessation if applicable."
+      },
+      {
+        "min": 2.5,
+        "max": 5,
+        "stage": "Moderate Risk",
+        "description": "Moderate risk (2.5-5% for age <50 years or <5% for age 50-69 years)",
+        "interpretation": "Lifestyle interventions recommended. Consider risk factor treatment if other risk factors present."
+      },
+      {
+        "min": 5,
+        "max": 7.5,
+        "stage": "High Risk",
+        "description": "High risk (5-7.5% for age <50 years or 5-10% for age 50-69 years)",
+        "interpretation": "Consider risk factor treatment including lipid-lowering therapy and blood pressure management. Intensive lifestyle modification essential."
+      },
+      {
+        "min": 7.5,
+        "max": 10,
+        "stage": "High Risk",
+        "description": "High risk (7.5-10% for age 50-69 years)",
+        "interpretation": "Recommend risk factor treatment including lipid-lowering therapy (statins) and blood pressure management. Intensive diabetes control and lifestyle modification."
+      },
+      {
+        "min": 10,
+        "max": 100,
+        "stage": "Very High Risk",
+        "description": "Very high risk (≥7.5% for age <50 years or ≥10% for age 50-69 years)",
+        "interpretation": "Recommend intensive risk factor treatment including high-intensity statins, blood pressure management, and optimal diabetes control. Consider additional therapies such as SGLT2 inhibitors or GLP-1 receptor agonists with cardiovascular benefit."
+      }
+    ]
+  },
+  "references": [
+    "SCORE2-Diabetes Working Group and the ESC Cardiovascular Risk Collaboration. SCORE2-Diabetes: 10-year cardiovascular risk estimation in type 2 diabetes in Europe. Eur Heart J. 2023 Jul 21;44(28):2544-2556. doi: 10.1093/eurheartj/ehad260.",
+    "Pennells L, Kaptoge S, Østergaard HB, Read SH, Carinci F, Franch-Nadal J, et al. SCORE2-Diabetes: 10-year cardiovascular risk estimation in type 2 diabetes in Europe. Eur Heart J. 2023 Jul 21;44(28):2544-2556.",
+    "Visseren FLJ, Mach F, Smulders YM, Carballo D, Koskinas KC, Bäck M, et al. 2021 ESC Guidelines on cardiovascular disease prevention in clinical practice. Eur Heart J. 2021 Sep 7;42(34):3227-3337. doi: 10.1093/eurheartj/ehab484."
+  ],
+  "formula": "Uses Fine and Gray competing risk models with diabetes-specific variables (HbA1c, age at diagnosis, eGFR) added to conventional SCORE2 risk factors, calibrated to four European risk regions",
+  "notes": [
+    "For patients with type 2 diabetes aged 40-69 years without previous cardiovascular disease",
+    "Risk thresholds are age-specific: <50 years vs 50-69 years",
+    "Countries are grouped into four risk regions based on WHO CVD mortality rates",
+    "Consider diabetes-specific interventions (SGLT2i, GLP-1 RA) in addition to standard cardiovascular risk reduction",
+    "For patients ≥70 years, consider using SCORE2-OP"
+  ]
+}

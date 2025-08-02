@@ -1,0 +1,85 @@
+{
+  "id": "los_angeles_grading_esophagitis",
+  "title": "Los Angeles (LA) Grading of Esophagitis",
+  "description": "Stratifies severity of esophagitis based on endoscopic findings, recommended by ACG guidelines",
+  "category": "gastroenterology",
+  "version": "1994",
+  "parameters": [
+    {
+      "name": "mucosal_break_size",
+      "type": "string",
+      "required": true,
+      "description": "Size and extent of mucosal breaks observed on endoscopy",
+      "options": [
+        "breaks_5mm_or_less_no_continuity",
+        "breaks_greater_than_5mm_no_continuity", 
+        "breaks_continuous_between_folds_less_than_75_percent",
+        "breaks_75_percent_or_more_circumference"
+      ],
+      "validation": {
+        "enum": [
+          "breaks_5mm_or_less_no_continuity",
+          "breaks_greater_than_5mm_no_continuity",
+          "breaks_continuous_between_folds_less_than_75_percent", 
+          "breaks_75_percent_or_more_circumference"
+        ]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "la_grade",
+    "type": "string",
+    "unit": "grade",
+    "description": "Los Angeles classification grade (A, B, C, or D)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Grade A",
+        "description": "Mild reflux esophagitis",
+        "interpretation": "Mucosal break(s) ≤5 mm, without continuity across mucosal folds. Mild reflux esophagitis. Treat with standard-dose PPI for 4 weeks. Consider further testing to confirm GERD diagnosis per ACG guidelines."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Grade B",
+        "description": "Mild reflux esophagitis",
+        "interpretation": "Mucosal break(s) >5 mm, without continuity across mucosal folds. Mild reflux esophagitis. Treat with standard-dose PPI for 4 weeks."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Grade C",
+        "description": "Severe reflux esophagitis",
+        "interpretation": "Mucosal break(s) continuous between ≥2 mucosal folds, involving <75% of esophageal circumference. Severe reflux esophagitis. Treat with standard-dose PPI for 8 weeks. Consider surgical options for persistent symptoms."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Grade D",
+        "description": "Severe reflux esophagitis",
+        "interpretation": "Mucosal break(s) involving ≥75% of esophageal circumference. Severe reflux esophagitis. Treat with standard-dose PPI for 8 weeks. Consider surgical options. Repeat endoscopy after PPI therapy to exclude Barrett's esophagus."
+      }
+    ]
+  },
+  "references": [
+    "Lundell LR, Dent J, Bennett JR, Blum AL, Armstrong D, Galmiche JP, et al. Endoscopic assessment of oesophagitis: clinical and functional correlates and further validation of the Los Angeles classification. Gut. 1999 Aug;45(2):172-80. doi: 10.1136/gut.45.2.172.",
+    "Katz PO, Gerson LB, Vela MF. Guidelines for the diagnosis and management of gastroesophageal reflux disease. Am J Gastroenterol. 2013 Mar;108(3):308-28; quiz 329. doi: 10.1038/ajg.2012.444.",
+    "Kahrilas PJ, Shaheen NJ, Vaezi MF, Hiltz SW, Black E, Modlin IM, et al. American Gastroenterological Association Medical Position Statement on the management of gastroesophageal reflux disease. Gastroenterology. 2008 Oct;135(4):1383-1391, 1391.e1-5. doi: 10.1053/j.gastro.2008.05.045."
+  ],
+  "formula": "Classification based on endoscopic appearance of mucosal breaks: Grade A (≤5mm, no continuity), Grade B (>5mm, no continuity), Grade C (continuous between folds, <75% circumference), Grade D (≥75% circumference).",
+  "notes": [
+    "Developed to provide standardized classification of reflux esophagitis severity",
+    "Shows low interrater variability and high reproducibility",
+    "Recommended by American College of Gastroenterology (ACG) guidelines",
+    "Grades A-B considered mild reflux esophagitis (4 weeks PPI therapy)",
+    "Grades C-D considered severe reflux esophagitis (8 weeks PPI therapy)",
+    "Grade A patients may need further testing to confirm GERD diagnosis",
+    "Grade C-D patients may be candidates for antireflux surgery",
+    "Repeat endoscopy recommended after PPI therapy for severe grades to exclude Barrett's esophagus",
+    "Classification applies only to erosive esophagitis, not non-erosive reflux disease (NERD)"
+  ]
+}

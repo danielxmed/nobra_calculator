@@ -1,0 +1,200 @@
+{
+  "id": "phoenix_sepsis_score",
+  "title": "Phoenix Sepsis Score",
+  "description": "International consensus criteria for pediatric sepsis and septic shock diagnosis based on organ dysfunction assessment. Developed by the SCCM Pediatric Sepsis Definition Task Force and published in JAMA 2024. Identifies potentially life-threatening organ dysfunction in children with suspected infection.",
+  "category": "pediatrics",
+  "version": "2024",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years (must be <18 years, excludes birth hospitalizations and preterm infants <37 weeks postconceptional age)",
+      "validation": {
+        "min": 0,
+        "max": 17
+      },
+      "unit": "years"
+    },
+    {
+      "name": "suspected_infection",
+      "type": "string",
+      "required": true,
+      "description": "Presence of suspected or confirmed infection",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "respiratory_support",
+      "type": "string",
+      "required": true,
+      "description": "Type of respiratory support being provided",
+      "options": ["none", "supplemental_oxygen", "high_flow_nasal_cannula", "non_invasive_ventilation", "invasive_mechanical_ventilation"],
+      "validation": {
+        "enum": ["none", "supplemental_oxygen", "high_flow_nasal_cannula", "non_invasive_ventilation", "invasive_mechanical_ventilation"]
+      }
+    },
+    {
+      "name": "pao2_fio2_ratio",
+      "type": "float",
+      "required": false,
+      "description": "PaO2/FiO2 ratio (if arterial blood gas available)",
+      "validation": {
+        "min": 0,
+        "max": 800
+      },
+      "unit": "ratio"
+    },
+    {
+      "name": "spo2_fio2_ratio",
+      "type": "float",
+      "required": false,
+      "description": "SpO2/FiO2 ratio (if PaO2/FiO2 not available)",
+      "validation": {
+        "min": 0,
+        "max": 1000
+      },
+      "unit": "ratio"
+    },
+    {
+      "name": "vasoactive_medications",
+      "type": "integer",
+      "required": true,
+      "description": "Number of vasoactive medications being administered",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "count"
+    },
+    {
+      "name": "lactate",
+      "type": "float",
+      "required": false,
+      "description": "Serum lactate level in mmol/L",
+      "validation": {
+        "min": 0,
+        "max": 50
+      },
+      "unit": "mmol/L"
+    },
+    {
+      "name": "mean_arterial_pressure",
+      "type": "integer",
+      "required": false,
+      "description": "Mean arterial pressure in mmHg",
+      "validation": {
+        "min": 20,
+        "max": 200
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "platelets",
+      "type": "integer",
+      "required": false,
+      "description": "Platelet count in ×10³/μL",
+      "validation": {
+        "min": 0,
+        "max": 1000
+      },
+      "unit": "×10³/μL"
+    },
+    {
+      "name": "inr",
+      "type": "float",
+      "required": false,
+      "description": "International normalized ratio (INR)",
+      "validation": {
+        "min": 0.5,
+        "max": 10.0
+      },
+      "unit": "ratio"
+    },
+    {
+      "name": "d_dimer",
+      "type": "float",
+      "required": false,
+      "description": "D-dimer level in mg/L FEU",
+      "validation": {
+        "min": 0,
+        "max": 100
+      },
+      "unit": "mg/L FEU"
+    },
+    {
+      "name": "fibrinogen",
+      "type": "float",
+      "required": false,
+      "description": "Fibrinogen level in g/L",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "g/L"
+    },
+    {
+      "name": "glasgow_coma_scale",
+      "type": "integer",
+      "required": true,
+      "description": "Glasgow Coma Scale score (3-15)",
+      "validation": {
+        "min": 3,
+        "max": 15
+      },
+      "unit": "score"
+    },
+    {
+      "name": "pupil_reactivity",
+      "type": "string",
+      "required": true,
+      "description": "Pupil reactivity status",
+      "options": ["both_reactive", "one_fixed", "both_fixed"],
+      "validation": {
+        "enum": ["both_reactive", "one_fixed", "both_fixed"]
+      }
+    }
+  ],
+  "result": {
+    "name": "phoenix_sepsis_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Phoenix Sepsis Score (0-13 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "No Sepsis",
+        "description": "Score does not meet sepsis criteria",
+        "interpretation": "Phoenix Sepsis Score <2 points. Does not meet criteria for sepsis. Continue monitoring for clinical deterioration and reassess if condition changes."
+      },
+      {
+        "min": 2,
+        "max": 13,
+        "stage": "Sepsis",
+        "description": "Meets criteria for sepsis",
+        "interpretation": "Phoenix Sepsis Score ≥2 points with suspected infection. Meets criteria for sepsis indicating potentially life-threatening organ dysfunction. Requires urgent medical evaluation and management."
+      }
+    ]
+  },
+  "references": [
+    "Schlapbach LJ, Watson RS, Sorce LR, Argent AC, Menon K, Hartman ME, et al. International Consensus Criteria for Pediatric Sepsis and Septic Shock. JAMA. 2024 Feb 27;331(8):665-674. doi: 10.1001/jama.2024.0179.",
+    "Watson RS, Schlapbach LJ, Sorce LR, Argent AC, Menon K, Hartman ME, et al. Development and Validation of the Phoenix Criteria for Pediatric Sepsis and Septic Shock. JAMA. 2024 Feb 27;331(8):675-686. doi: 10.1001/jama.2024.0196.",
+    "SCCM Task Force Develops New Criteria to Identify Pediatric Sepsis. Society of Critical Care Medicine. 2024. Available at: https://www.sccm.org/blog/sccm-task-force-develops-new-criteria-to-identify-pediatric-sepsis"
+  ],
+  "formula": "Phoenix Sepsis Score = Respiratory subscore + Cardiovascular subscore + Coagulation subscore + Neurologic subscore. Sepsis defined as score ≥2 with suspected infection. Septic shock defined as sepsis with cardiovascular subscore ≥1.",
+  "notes": [
+    "First data-driven international consensus criteria for pediatric sepsis and septic shock",
+    "Applies to children <18 years of age with suspected or confirmed infection",
+    "Excludes birth hospitalizations and children with postconceptional age <37 weeks",
+    "Not designed as a screening tool but standardizes sepsis criteria for reliable identification",
+    "Septic shock diagnosis requires sepsis (Phoenix score ≥2) plus cardiovascular dysfunction (cardiovascular subscore ≥1)",
+    "Mortality rates: 7.1% in higher-resource settings, 28.5% in lower-resource settings for children meeting sepsis criteria",
+    "Replaces previous SIRS-based criteria which had poor predictive value",
+    "Developed using global survey, systematic review, multicenter EHR database, and modified Delphi consensus process"
+  ]
+}

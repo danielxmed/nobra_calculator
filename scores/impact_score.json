@@ -1,0 +1,190 @@
+{
+  "id": "impact_score",
+  "title": "IMPACT Score for Outcomes in Head Injury",
+  "description": "Predicts 6-month mortality and unfavorable outcomes after moderate to severe traumatic brain injury (TBI). The International Mission on Prognosis and Analysis of Clinical Trials (IMPACT) score uses three progressive models (Core, Extended, Lab) to provide evidence-based prognosis in patients with GCS ≤12. Developed from a database of 8,509 acute TBI patients from 8 randomized controlled trials and 3 observational studies. This validated prognostic tool assists clinicians in counseling families, making treatment decisions, and planning care for severe TBI patients. The Core model uses only clinical variables (age, motor score, pupillary reactivity), while Extended adds CT findings and Lab incorporates laboratory values for enhanced accuracy.",
+  "category": "neurology",
+  "version": "2008 Steyerberg",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years. Age is a strong predictor of outcome in TBI, with older patients having worse prognosis. Used in all IMPACT model variants",
+      "validation": {
+        "min": 14,
+        "max": 100
+      },
+      "unit": "years"
+    },
+    {
+      "name": "motor_score",
+      "type": "string",
+      "required": true,
+      "description": "Best motor response component of Glasgow Coma Scale. Reflects level of consciousness and neurological function. Key predictor in all IMPACT models",
+      "options": ["obeys_commands", "localizes_pain", "withdraws_from_pain", "abnormal_flexion", "abnormal_extension", "no_motor_response"],
+      "validation": {
+        "enum": ["obeys_commands", "localizes_pain", "withdraws_from_pain", "abnormal_flexion", "abnormal_extension", "no_motor_response"]
+      }
+    },
+    {
+      "name": "pupillary_reactivity",
+      "type": "string",
+      "required": true,
+      "description": "Pupillary light reflex response. Both pupils reactive indicates better prognosis. One or both non-reactive pupils suggest brainstem dysfunction and worse outcome",
+      "options": ["both_reactive", "one_reactive", "both_nonreactive"],
+      "validation": {
+        "enum": ["both_reactive", "one_reactive", "both_nonreactive"]
+      }
+    },
+    {
+      "name": "model_type",
+      "type": "string",
+      "required": true,
+      "description": "IMPACT model variant to use. Core uses basic clinical variables only. Extended adds CT findings. Lab adds laboratory values for maximum accuracy",
+      "options": ["core", "extended", "lab"],
+      "validation": {
+        "enum": ["core", "extended", "lab"]
+      }
+    },
+    {
+      "name": "hypoxia",
+      "type": "string",
+      "required": false,
+      "description": "History of hypoxia (SpO2 <90% or PaO2 <60 mmHg) before or at admission. Secondary brain injury factor that worsens prognosis. Required for Extended and Lab models",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hypotension",
+      "type": "string",
+      "required": false,
+      "description": "History of hypotension (systolic BP <90 mmHg) before or at admission. Secondary brain injury factor that significantly worsens outcome. Required for Extended and Lab models",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "marshall_ct_classification",
+      "type": "string",
+      "required": false,
+      "description": "Marshall CT classification for traumatic brain injury. Grades severity of brain injury based on initial head CT findings. Higher grades indicate worse prognosis. Required for Extended and Lab models",
+      "options": ["diffuse_injury_i", "diffuse_injury_ii", "diffuse_injury_iii", "diffuse_injury_iv", "evacuated_mass_lesion", "non_evacuated_mass_lesion"],
+      "validation": {
+        "enum": ["diffuse_injury_i", "diffuse_injury_ii", "diffuse_injury_iii", "diffuse_injury_iv", "evacuated_mass_lesion", "non_evacuated_mass_lesion"]
+      }
+    },
+    {
+      "name": "traumatic_sah",
+      "type": "string",
+      "required": false,
+      "description": "Presence of traumatic subarachnoid hemorrhage on initial head CT. Indicates more severe brain injury and worse prognosis. Required for Extended and Lab models",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "epidural_hematoma",
+      "type": "string",
+      "required": false,
+      "description": "Presence of epidural hematoma on initial head CT. Mass lesion that may require surgical evacuation. Paradoxically may have better prognosis if evacuated promptly. Required for Extended and Lab models",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "glucose",
+      "type": "float",
+      "required": false,
+      "description": "Initial glucose level in mg/dL. Hyperglycemia is associated with worse outcomes in TBI through secondary brain injury mechanisms. Required for Lab model only",
+      "validation": {
+        "min": 50,
+        "max": 800
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "hemoglobin",
+      "type": "float",
+      "required": false,
+      "description": "Initial hemoglobin level in g/dL. Anemia may worsen cerebral oxygen delivery and outcome. Required for Lab model only",
+      "validation": {
+        "min": 5.0,
+        "max": 20.0
+      },
+      "unit": "g/dL"
+    }
+  ],
+  "result": {
+    "name": "probability",
+    "type": "object",
+    "unit": "percentage",
+    "description": "Probabilities for 6-month mortality and unfavorable outcome"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 10,
+        "stage": "Very Low Risk",
+        "description": "Mortality <10%, Unfavorable outcome <20%",
+        "interpretation": "Excellent prognosis. Very low probability of death or severe disability at 6 months. Aggressive treatment strongly indicated. Good functional recovery expected."
+      },
+      {
+        "min": 10,
+        "max": 25,
+        "stage": "Low Risk",
+        "description": "Mortality 10-25%, Unfavorable outcome 20-40%",
+        "interpretation": "Good prognosis. Low to moderate probability of adverse outcomes. Aggressive treatment recommended. Majority likely to achieve functional independence."
+      },
+      {
+        "min": 25,
+        "max": 50,
+        "stage": "Moderate Risk",
+        "description": "Mortality 25-50%, Unfavorable outcome 40-70%",
+        "interpretation": "Moderate prognosis. Significant risk of death or severe disability. Treatment decisions should involve family discussion. Variable functional outcomes expected."
+      },
+      {
+        "min": 50,
+        "max": 75,
+        "stage": "High Risk",
+        "description": "Mortality 50-75%, Unfavorable outcome 70-85%",
+        "interpretation": "Poor prognosis. High probability of death or severe disability. Treatment decisions require careful family consultation regarding goals of care. Limited functional recovery expected."
+      },
+      {
+        "min": 75,
+        "max": 100,
+        "stage": "Very High Risk",
+        "description": "Mortality >75%, Unfavorable outcome >85%",
+        "interpretation": "Very poor prognosis. Very high probability of death or severe disability. Consider comfort care measures. Family counseling essential regarding realistic expectations."
+      }
+    ]
+  },
+  "references": [
+    "Steyerberg EW, Mushkudiani N, Perel P, et al. Predicting outcome after traumatic brain injury: development and international validation of prognostic scores based on admission characteristics. PLoS Med. 2008 Aug 5;5(8):e165. doi: 10.1371/journal.pmed.0050165.",
+    "Lingsma HF, Roozenbeek B, Steyerberg EW, et al. Early prognosis in traumatic brain injury: from prophecies to predictions. Lancet Neurol. 2010 May;9(5):543-54. doi: 10.1016/S1474-4422(10)70065-X.",
+    "Roozenbeek B, Lingsma HF, Lecky FE, et al. Prediction of outcome after moderate and severe traumatic brain injury: external validation of the International Mission on Prognosis and Analysis of Clinical Trials (IMPACT) and Corticoid Randomisation After Significant Head injury (CRASH) prognostic models. Crit Care Med. 2012 May;40(5):1609-17. doi: 10.1097/CCM.0b013e31824519ce.",
+    "Raj R, Siironen J, Skrifvars MB, et al. Predicting outcome in traumatic brain injury: development of a novel computerized tomography classification system (Helsinki computerized tomography score). Neurosurgery. 2014 Dec;75(6):632-46. doi: 10.1227/NEU.0000000000000533."
+  ],
+  "formula": "Logistic regression model: Core uses age + motor score + pupillary reactivity. Extended adds hypoxia + hypotension + Marshall CT + tSAH + epidural hematoma. Lab adds glucose + hemoglobin. Calculates probability of 6-month mortality and unfavorable outcome (death, persistent vegetative state, severe disability).",
+  "notes": [
+    "Developed from 8,509 TBI patients with GCS ≤12 from 8 RCTs and 3 observational studies",
+    "Age ≥14 years, evaluated within 24 hours of admission",
+    "AUC ranges 0.80-0.82 for mortality prediction across validation studies",
+    "Three progressive models: Core (clinical only), Extended (+CT), Lab (+laboratory)",
+    "Should not be used for serial evaluations during hospitalization",
+    "Not for sole basis of clinical decision-making - use for prognosis counseling",
+    "Developed in high-income countries - may need validation in other settings",
+    "Motor score is best motor response from Glasgow Coma Scale",
+    "Marshall CT classification: I=normal, II=diffuse <5mm, III=diffuse 5-25mm, IV=diffuse >25mm, V=evacuated mass, VI=non-evacuated mass >25cc",
+    "Unfavorable outcome defined as death, persistent vegetative state, or severe disability at 6 months",
+    "Hypoxia defined as SpO2 <90% or PaO2 <60 mmHg before or at admission",
+    "Hypotension defined as systolic BP <90 mmHg before or at admission",
+    "Lab model shows highest discrimination but requires additional laboratory values",
+    "Consider alongside clinical judgment and family values/preferences"
+  ]
+}

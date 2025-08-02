@@ -1,0 +1,91 @@
+{
+  "id": "homa_ir",
+  "title": "HOMA-IR (Homeostatic Model Assessment for Insulin Resistance)",
+  "description": "Approximates insulin resistance using fasting glucose and insulin levels. A simple, non-invasive method to quantify insulin resistance and beta-cell function.",
+  "category": "endocrinology",
+  "version": "1985",
+  "parameters": [
+    {
+      "name": "fasting_insulin",
+      "type": "float",
+      "required": true,
+      "description": "Fasting insulin level (must be fasting for at least 8 hours)",
+      "unit": "μIU/mL",
+      "validation": {
+        "min": 0.1,
+        "max": 300
+      }
+    },
+    {
+      "name": "fasting_glucose",
+      "type": "float",
+      "required": true,
+      "description": "Fasting glucose level (must be fasting for at least 8 hours)",
+      "unit": "mg/dL",
+      "validation": {
+        "min": 10,
+        "max": 600
+      }
+    }
+  ],
+  "result": {
+    "name": "homa_ir_score",
+    "type": "float",
+    "unit": "score",
+    "description": "HOMA-IR score indicating degree of insulin resistance"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0.7,
+        "stage": "Low",
+        "description": "Below normal range",
+        "interpretation": "HOMA-IR below normal range. This may indicate insulin sensitivity, but consider clinical context."
+      },
+      {
+        "min": 0.7,
+        "max": 2.0,
+        "stage": "Normal",
+        "description": "Normal insulin sensitivity",
+        "interpretation": "Normal insulin resistance range (0.7-2.0). No evidence of significant insulin resistance."
+      },
+      {
+        "min": 2.0,
+        "max": 2.5,
+        "stage": "Borderline",
+        "description": "Borderline insulin resistance",
+        "interpretation": "Borderline insulin resistance (2.0-2.5). Consider lifestyle modifications and monitoring for metabolic syndrome risk factors."
+      },
+      {
+        "min": 2.5,
+        "max": 5.0,
+        "stage": "Moderate",
+        "description": "Moderate insulin resistance",
+        "interpretation": "Moderate insulin resistance (2.5-5.0). Increased risk for type 2 diabetes and metabolic syndrome. Consider comprehensive metabolic evaluation."
+      },
+      {
+        "min": 5.0,
+        "max": 999999,
+        "stage": "Severe",
+        "description": "Severe insulin resistance",
+        "interpretation": "Severe insulin resistance (>5.0). High risk for type 2 diabetes and cardiovascular disease. Recommend comprehensive evaluation and intervention."
+      }
+    ]
+  },
+  "references": [
+    "Matthews DR, Hosker JP, Rudenski AS, Naylor BA, Treacher DF, Turner RC. Homeostasis model assessment: insulin resistance and beta-cell function from fasting plasma glucose and insulin concentrations in man. Diabetologia. 1985 Jul;28(7):412-9.",
+    "Tohidi M, Ghasemi A, Hadaegh F, Derakhshan A, Chary A, Azizi F. Age- and sex-specific reference values for fasting serum insulin levels and insulin resistance/sensitivity indices in healthy Iranian adults: Tehran Lipid and Glucose Study. Clin Biochem. 2014 Apr;47(6):432-8."
+  ],
+  "formula": "HOMA-IR = (Fasting Insulin [μIU/mL] × Fasting Glucose [mg/dL]) / 405",
+  "notes": [
+    "Should NOT be used in patients on insulin therapy",
+    "Requires fasting state (nothing eaten or drunk except water for at least 8 hours)",
+    "May have questionable accuracy in impaired glucose tolerance, normal BMI, or elderly populations",
+    "Should not be used as a standalone diagnostic tool",
+    "Most useful for epidemiologic, population-based, and group level assessments",
+    "Normal ranges may vary between populations and ethnicities",
+    "Alternative formulas exist: (Glucose [mmol/L] × Insulin [mIU/L]) / 22.5",
+    "HOMA2 model is an updated version with improved accuracy"
+  ]
+}

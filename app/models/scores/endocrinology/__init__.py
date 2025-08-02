@@ -17,6 +17,11 @@ from .edmonton_obesity_staging_system import EdmontonObesityStagingSystemRequest
 from .estimated_average_glucose_eag_hba1c import EstimatedAverageGlucoseEagHba1cRequest, EstimatedAverageGlucoseEagHba1cResponse
 from .findrisc import FindriscRequest, FindriscResponse
 from .glucose_infusion_rate import GlucoseInfusionRateRequest, GlucoseInfusionRateResponse
+from .homa_ir import HomaIrRequest, HomaIrResponse
+from .hypoglycemia_risk_score import HypoglycemiaRiskScoreRequest, HypoglycemiaRiskScoreResponse
+from .idf_dar_fasting_risk_assessment import IdfDarFastingRiskAssessmentRequest, IdfDarFastingRiskAssessmentResponse
+from .mets_ir import MetsIrRequest, MetsIrResponse
+from .myxedema_coma_diagnostic_score import MyxedemaComatDiagnosticScoreRequest, MyxedemaComatDiagnosticScoreResponse
 
 __all__ = [
     "AdaRiskCalculatorRequest",
@@ -49,4 +54,14 @@ __all__ = [
     "FindriscResponse",
     "GlucoseInfusionRateRequest",
     "GlucoseInfusionRateResponse",
+    "HomaIrRequest",
+    "HomaIrResponse",
+    "HypoglycemiaRiskScoreRequest",
+    "HypoglycemiaRiskScoreResponse",
+    "IdfDarFastingRiskAssessmentRequest",
+    "IdfDarFastingRiskAssessmentResponse",
+    "MetsIrRequest",
+    "MetsIrResponse",
+    "MyxedemaComatDiagnosticScoreRequest",
+    "MyxedemaComatDiagnosticScoreResponse"
 ]

@@ -1,0 +1,100 @@
+{
+  "id": "wpss_mds",
+  "title": "WPSS (WHO classification-based Prognostic Scoring System) for Myelodysplastic Syndrome",
+  "description": "Assesses prognosis of patients with myelodysplastic syndrome (MDS) based on WHO morphological classification, cytogenetics, and transfusion requirement. The WPSS provides dynamic prognostic assessment throughout disease course and stratifies patients into five risk groups.",
+  "category": "hematology",
+  "version": "Malcovati 2007",
+  "parameters": [
+    {
+      "name": "who_category",
+      "type": "string",
+      "required": true,
+      "description": "WHO morphological classification of myelodysplastic syndrome",
+      "options": ["ra_rars_del5q", "rcmd_rcmd_rs", "raeb_1", "raeb_2"],
+      "validation": {
+        "enum": ["ra_rars_del5q", "rcmd_rcmd_rs", "raeb_1", "raeb_2"]
+      },
+      "unit": "categorical"
+    },
+    {
+      "name": "karyotype",
+      "type": "string",
+      "required": true,
+      "description": "Cytogenetic risk category based on karyotype analysis",
+      "options": ["good", "intermediate", "poor"],
+      "validation": {
+        "enum": ["good", "intermediate", "poor"]
+      },
+      "unit": "categorical"
+    },
+    {
+      "name": "transfusion_requirement",
+      "type": "string",
+      "required": true,
+      "description": "Regular red blood cell transfusion requirement",
+      "options": ["none", "regular"],
+      "validation": {
+        "enum": ["none", "regular"]
+      },
+      "unit": "categorical"
+    }
+  ],
+  "result": {
+    "name": "wpss_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "WPSS total score (0-6 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Very Low Risk",
+        "description": "Excellent prognosis",
+        "interpretation": "Very low risk MDS with median overall survival of 141 months (11.8 years). Low probability of leukemic transformation."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "Good prognosis",
+        "interpretation": "Low risk MDS with median overall survival of 66 months (5.5 years). Low probability of leukemic transformation."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Intermediate Risk",
+        "description": "Moderate prognosis",
+        "interpretation": "Intermediate risk MDS with median overall survival of 48 months (4 years). Moderate probability of leukemic transformation."
+      },
+      {
+        "min": 3,
+        "max": 4,
+        "stage": "High Risk",
+        "description": "Poor prognosis",
+        "interpretation": "High risk MDS with median overall survival of 26 months (2.2 years). High probability of leukemic transformation."
+      },
+      {
+        "min": 5,
+        "max": 6,
+        "stage": "Very High Risk",
+        "description": "Very poor prognosis",
+        "interpretation": "Very high risk MDS with median overall survival of 9 months. Very high probability of leukemic transformation."
+      }
+    ]
+  },
+  "references": [
+    "Malcovati L, Germing U, Kuendgen A, et al. Time-dependent prognostic scoring system for predicting survival and leukemic evolution in myelodysplastic syndromes. J Clin Oncol. 2007;25(23):3503-3510. doi: 10.1200/JCO.2006.08.5696",
+    "Malcovati L, Della Porta MG, Strupp C, et al. Impact of the degree of anemia on the outcome of patients with myelodysplastic syndrome and its integration into the WHO classification-based Prognostic Scoring System (WPSS). Haematologica. 2011;96(10):1433-1440. doi: 10.3324/haematol.2011.044602",
+    "Della Porta MG, Tuechler H, Malcovati L, et al. Validation of WHO classification-based Prognostic Scoring System (WPSS) for myelodysplastic syndromes and comparison with the revised International Prognostic Scoring System (IPSS-R). Leukemia. 2015;29(7):1502-1513. doi: 10.1038/leu.2015.55"
+  ],
+  "formula": "WPSS Score = WHO Category Score + Karyotype Score + Transfusion Requirement Score",
+  "notes": [
+    "WPSS is dynamic and can be recalculated throughout disease course",
+    "Unlike IPSS, WPSS can be applied at any time during follow-up",
+    "Regular transfusion requirement defined as ≥1 RBC transfusion every 8 weeks over 4 months",
+    "Intermediate cytogenetic risk includes all abnormalities not classified as good or poor",
+    "Score provides both survival and leukemic transformation risk assessment"
+  ]
+}

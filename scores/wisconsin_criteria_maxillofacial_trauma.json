@@ -1,0 +1,146 @@
+{
+  "id": "wisconsin_criteria_maxillofacial_trauma",
+  "title": "Wisconsin Criteria for Maxillofacial Trauma CT",
+  "description": "Clinical decision rule to predict the need for CT imaging after maxillofacial trauma. This validated tool helps emergency physicians determine which patients with facial injuries require computed tomography to detect significant fractures while avoiding unnecessary radiation exposure in low-risk patients.",
+  "category": "emergency",
+  "version": "2018",
+  "parameters": [
+    {
+      "name": "high_energy_mechanism",
+      "type": "string",
+      "required": true,
+      "description": "High-energy mechanism of injury (motor vehicle collision, fall >3 feet, assault with object, sports injury)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "facial_deformity",
+      "type": "string",
+      "required": true,
+      "description": "Visible facial deformity or asymmetry on inspection",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "malocclusion",
+      "type": "string",
+      "required": true,
+      "description": "Dental malocclusion or inability to open mouth normally",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "facial_numbness",
+      "type": "string",
+      "required": true,
+      "description": "Facial numbness or altered sensation (especially infraorbital distribution)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "periorbital_swelling",
+      "type": "string",
+      "required": true,
+      "description": "Significant periorbital swelling or hematoma",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "diplopia",
+      "type": "string",
+      "required": true,
+      "description": "Double vision or diplopia",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "palpable_step_off",
+      "type": "string",
+      "required": true,
+      "description": "Palpable step-off deformity of facial bones",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "epistaxis",
+      "type": "string",
+      "required": true,
+      "description": "Epistaxis (nosebleed) or nasal deformity",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "ct_recommendation",
+    "type": "string",
+    "unit": "",
+    "description": "Recommendation for CT imaging based on Wisconsin Criteria"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "CT not indicated",
+        "interpretation": "No high-risk criteria present. CT imaging is not indicated. Clinical observation and symptomatic treatment are appropriate. Consider plain radiographs if clinically indicated for specific concerns."
+      },
+      {
+        "min": 1,
+        "max": 8,
+        "stage": "High Risk",
+        "description": "CT indicated",
+        "interpretation": "One or more high-risk criteria present. CT imaging is indicated to evaluate for significant facial fractures. Proceed with facial CT with coronal and sagittal reconstructions."
+      }
+    ]
+  },
+  "references": [
+    "Koller KE, Sabatino MJ, Skalski KA, et al. Implementation of clinical decision rules for emergency department patients with facial trauma. AEM Educ Train. 2018;2(4):269-275. doi: 10.1002/aet2.10103",
+    "Dreyer SJ, Wolf SJ, Mayglothling J, et al. Clinical policy: critical issues in the evaluation and management of patients presenting to the emergency department with acute blunt facial trauma. Ann Emerg Med. 2023;82(1):94-114. doi: 10.1016/j.annemergmed.2023.03.032",
+    "Hopper RA, Salemy S, Sze RW. Diagnosis of midface fractures with CT: what the surgeon needs to know. Radiographics. 2006;26(3):783-793. doi: 10.1148/rg.263055031",
+    "Hashim H, Iqbal S. Chronic pain after facial trauma. Br J Oral Maxillofac Surg. 2010;48(4):270-274. doi: 10.1016/j.bjoms.2009.07.024"
+  ],
+  "formula": "Presence of any high-risk criteria (high-energy mechanism, facial deformity, malocclusion, facial numbness, periorbital swelling, diplopia, palpable step-off, or epistaxis) indicates need for CT imaging. Absence of all criteria suggests CT is not necessary.",
+  "notes": [
+    "Validated clinical decision rule for facial trauma imaging",
+    "Helps reduce unnecessary radiation exposure in low-risk patients",
+    "High sensitivity for detecting clinically significant facial fractures",
+    "Does not replace clinical judgment in complex cases",
+    "Consider patient age, medical comorbidities, and social factors",
+    "High-energy mechanisms include MVCs, falls >3 feet, assaults with objects",
+    "Low-energy mechanisms include simple falls, minor altercations",
+    "Facial numbness particularly important for orbital floor fractures",
+    "Malocclusion may indicate mandibular or maxillary fractures",
+    "Diplopia suggests orbital fracture with muscle entrapment",
+    "Palpable step-offs indicate bone discontinuity",
+    "Rule designed for adult patients in emergency department setting",
+    "Not validated for pediatric patients or penetrating trauma",
+    "Consider ophthalmology consultation for suspected orbital injuries",
+    "Plain radiographs have limited utility in facial trauma",
+    "CT with bone windows and reconstructions preferred imaging modality"
+  ]
+}

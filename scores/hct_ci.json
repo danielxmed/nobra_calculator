@@ -1,0 +1,214 @@
+{
+  "id": "hct_ci",
+  "title": "Hematopoietic Cell Transplantation-specific Comorbidity Index (HCT-CI)",
+  "description": "Predicts survival after HCT in patients with hematologic malignancies, including optional age adjustment. The HCT-CI comprises 17 different categories of organ dysfunction and has been validated as more sensitive than the Charlson Comorbidity Index for HCT patients.",
+  "category": "hematology",
+  "version": "2005, Age-adjusted 2014",
+  "parameters": [
+    {
+      "name": "arrhythmia",
+      "type": "string",
+      "required": true,
+      "description": "History of arrhythmia",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "cardiac",
+      "type": "string",
+      "required": true,
+      "description": "Cardiac dysfunction",
+      "options": ["none", "cad_chf_mi_ef", "valve_disease"],
+      "validation": {
+        "enum": ["none", "cad_chf_mi_ef", "valve_disease"]
+      }
+    },
+    {
+      "name": "inflammatory_bowel",
+      "type": "string",
+      "required": true,
+      "description": "Inflammatory bowel disease",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "diabetes",
+      "type": "string",
+      "required": true,
+      "description": "Diabetes",
+      "options": ["none_or_diet", "treated"],
+      "validation": {
+        "enum": ["none_or_diet", "treated"]
+      }
+    },
+    {
+      "name": "cerebrovascular",
+      "type": "string",
+      "required": true,
+      "description": "Cerebrovascular disease",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "psychiatric",
+      "type": "string",
+      "required": true,
+      "description": "Psychiatric disturbance",
+      "options": ["none", "requiring_treatment"],
+      "validation": {
+        "enum": ["none", "requiring_treatment"]
+      }
+    },
+    {
+      "name": "hepatic",
+      "type": "string",
+      "required": true,
+      "description": "Hepatic dysfunction",
+      "options": ["none", "mild", "moderate_severe"],
+      "validation": {
+        "enum": ["none", "mild", "moderate_severe"]
+      }
+    },
+    {
+      "name": "obesity",
+      "type": "string",
+      "required": true,
+      "description": "Obesity (BMI > 35 kg/m²)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "infection",
+      "type": "string",
+      "required": true,
+      "description": "Infection requiring antimicrobial treatment after day 0",
+      "options": ["none", "requiring_treatment"],
+      "validation": {
+        "enum": ["none", "requiring_treatment"]
+      }
+    },
+    {
+      "name": "rheumatologic",
+      "type": "string",
+      "required": true,
+      "description": "Rheumatologic disease",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "peptic_ulcer",
+      "type": "string",
+      "required": true,
+      "description": "Peptic ulcer disease",
+      "options": ["none_or_no_treatment", "requiring_treatment"],
+      "validation": {
+        "enum": ["none_or_no_treatment", "requiring_treatment"]
+      }
+    },
+    {
+      "name": "renal",
+      "type": "string",
+      "required": true,
+      "description": "Renal dysfunction",
+      "options": ["none_or_mild", "moderate_severe"],
+      "validation": {
+        "enum": ["none_or_mild", "moderate_severe"]
+      }
+    },
+    {
+      "name": "pulmonary",
+      "type": "string",
+      "required": true,
+      "description": "Pulmonary dysfunction",
+      "options": ["none_or_mild", "moderate", "severe"],
+      "validation": {
+        "enum": ["none_or_mild", "moderate", "severe"]
+      }
+    },
+    {
+      "name": "prior_solid_tumor",
+      "type": "string",
+      "required": true,
+      "description": "Prior solid tumor (treated at any time, excluding non-melanoma skin cancer)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "include_age",
+      "type": "string",
+      "required": true,
+      "description": "Include age adjustment (Sorror 2014)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "age",
+      "type": "integer",
+      "required": false,
+      "description": "Patient age in years (required if age adjustment is included)",
+      "unit": "years",
+      "validation": {
+        "min": 0,
+        "max": 100
+      }
+    }
+  ],
+  "result": {
+    "name": "hct_ci_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "HCT-CI score (0-26 points, or 0-27 with age adjustment)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "Score 0",
+        "interpretation": "Low risk group. Non-relapse mortality approximately 14% at 2 years. Good candidate for transplantation."
+      },
+      {
+        "min": 1,
+        "max": 2,
+        "stage": "Intermediate Risk",
+        "description": "Score 1-2",
+        "interpretation": "Intermediate risk group. Non-relapse mortality approximately 21% at 2 years. Consider risk-benefit assessment for transplantation."
+      },
+      {
+        "min": 3,
+        "max": 27,
+        "stage": "High Risk",
+        "description": "Score ≥3",
+        "interpretation": "High risk group. Non-relapse mortality approximately 41% at 2 years. Consider alternative therapies or risk-adapted conditioning regimens."
+      }
+    ]
+  },
+  "references": [
+    "Sorror ML, Maris MB, Storb R, Baron F, Sandmaier BM, Maloney DG, et al. Hematopoietic cell transplantation (HCT)-specific comorbidity index: a new tool for risk assessment before allogeneic HCT. Blood. 2005 Oct 15;106(8):2912-9.",
+    "Sorror ML, Sandmaier BM, Storer BE, Franke GN, Laport GG, Chauncey TR, et al. Comorbidity-age index: a clinical measure of biologic age before allogeneic hematopoietic cell transplantation. J Clin Oncol. 2014 Oct 10;32(29):3249-56.",
+    "Sorror ML, Martin PJ, Storb RF, Bhatia S, Maziarz RT, Pulsipher MA, et al. Pretransplant comorbidities predict severity of acute graft-versus-host disease and subsequent mortality. Blood. 2014 Jul 10;124(2):287-95."
+  ],
+  "formula": "Sum of points assigned to each comorbidity: Arrhythmia (1), Cardiac CAD/CHF/MI/EF≤50% (1), Cardiac valve disease (3), IBD (1), Diabetes treated (1), Cerebrovascular (1), Psychiatric (1), Mild hepatic (1), Moderate/severe hepatic (3), Obesity BMI>35 (1), Infection (1), Rheumatologic (2), Peptic ulcer (2), Moderate/severe renal (2), Moderate pulmonary (2), Severe pulmonary (3), Prior solid tumor (3). Age adjustment adds 1 point if age ≥40 years.",
+  "notes": [
+    "Pulmonary dysfunction definitions: Mild = DLco and/or FEV1 81-90% or dyspnea on moderate exertion; Moderate = DLco and/or FEV1 66-80% or dyspnea on slight activity; Severe = DLco and/or FEV1 ≤65% or dyspnea at rest or requiring oxygen",
+    "Hepatic dysfunction definitions: Mild = chronic hepatitis, bilirubin > ULN to 1.5x ULN, or AST/ALT > ULN to 2.5x ULN; Moderate/severe = liver cirrhosis, bilirubin >1.5x ULN, or AST/ALT >2.5x ULN",
+    "Renal dysfunction: Moderate/severe = serum creatinine >2 mg/dL, on dialysis, or prior renal transplant",
+    "Rheumatologic diseases include: SLE, RA, polymyositis, mixed CTD, polymyalgia rheumatica",
+    "Consider other factors including disease stage and donor characteristics in transplant decision-making"
+  ]
+}

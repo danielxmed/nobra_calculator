@@ -1,0 +1,168 @@
+{
+  "id": "moca",
+  "title": "Montreal Cognitive Assessment (MoCA)",
+  "description": "Screens for mild cognitive impairment with assessment of multiple cognitive domains including attention, executive function, memory, language, visuospatial skills, abstraction, and orientation.",
+  "category": "neurology",
+  "version": "2005",
+  "parameters": [
+    {
+      "name": "visuospatial_executive",
+      "type": "integer",
+      "required": true,
+      "description": "Visuospatial/Executive Function: Alternating Trail Making Task (1 point), Cube Copy (1 point), Clock Drawing (3 points)",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "unit": "points"
+    },
+    {
+      "name": "naming",
+      "type": "integer",
+      "required": true,
+      "description": "Naming: Lion, Rhinoceros, Camel",
+      "validation": {
+        "min": 0,
+        "max": 3
+      },
+      "unit": "points"
+    },
+    {
+      "name": "memory_registration",
+      "type": "integer",
+      "required": true,
+      "description": "Memory Registration: 5 words (Face, Velvet, Church, Daisy, Red) - this score is not included in total but used for delayed recall",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "unit": "points"
+    },
+    {
+      "name": "attention",
+      "type": "integer",
+      "required": true,
+      "description": "Attention: Forward Digit Span (1 point), Backward Digit Span (1 point), Vigilance Task (1 point), Serial 7s (3 points)",
+      "validation": {
+        "min": 0,
+        "max": 6
+      },
+      "unit": "points"
+    },
+    {
+      "name": "language",
+      "type": "integer",
+      "required": true,
+      "description": "Language: Sentence Repetition (2 points), Phonemic Fluency (1 point)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      },
+      "unit": "points"
+    },
+    {
+      "name": "abstraction",
+      "type": "integer",
+      "required": true,
+      "description": "Abstraction: Similarities (2 points)",
+      "validation": {
+        "min": 0,
+        "max": 2
+      },
+      "unit": "points"
+    },
+    {
+      "name": "delayed_recall",
+      "type": "integer",
+      "required": true,
+      "description": "Delayed Recall: 5 words with no cues (5 points)",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "unit": "points"
+    },
+    {
+      "name": "orientation",
+      "type": "integer",
+      "required": true,
+      "description": "Orientation: Date (1 point), Month (1 point), Year (1 point), Day (1 point), Place (1 point), City (1 point)",
+      "validation": {
+        "min": 0,
+        "max": 6
+      },
+      "unit": "points"
+    },
+    {
+      "name": "education_level",
+      "type": "string",
+      "required": true,
+      "description": "Education level for score adjustment",
+      "options": ["less_than_12_years", "12_or_more_years"],
+      "validation": {
+        "enum": ["less_than_12_years", "12_or_more_years"]
+      }
+    }
+  ],
+  "result": {
+    "name": "moca_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "MoCA total score ranging from 0-30 points (adjusted for education)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 26,
+        "max": 30,
+        "stage": "Normal Cognition",
+        "description": "Normal cognitive function",
+        "interpretation": "Score indicates normal cognitive function. No cognitive impairment detected."
+      },
+      {
+        "min": 18,
+        "max": 25,
+        "stage": "Mild Cognitive Impairment",
+        "description": "Possible mild cognitive impairment",
+        "interpretation": "Score suggests possible mild cognitive impairment. Further evaluation and monitoring recommended."
+      },
+      {
+        "min": 10,
+        "max": 17,
+        "stage": "Moderate Cognitive Impairment",
+        "description": "Moderate cognitive impairment",
+        "interpretation": "Score indicates moderate cognitive impairment. Comprehensive evaluation and intervention needed."
+      },
+      {
+        "min": 0,
+        "max": 9,
+        "stage": "Severe Cognitive Impairment",
+        "description": "Severe cognitive impairment",
+        "interpretation": "Score suggests severe cognitive impairment. Immediate comprehensive evaluation and care planning required."
+      }
+    ]
+  },
+  "references": [
+    "Nasreddine ZS, Phillips NA, Bédirian V, Charbonneau S, Whitehead V, Collin I, et al. The Montreal Cognitive Assessment, MoCA: a brief screening tool for mild cognitive impairment. J Am Geriatr Soc. 2005;53(4):695-9. doi: 10.1111/j.1532-5415.2005.53221.x.",
+    "Luis CA, Keegan AP, Mullan M. Cross validation of the Montreal Cognitive Assessment in community dwelling older adults residing in the Southeastern US. Int J Geriatr Psychiatry. 2009;24(2):197-201. doi: 10.1002/gps.2101.",
+    "Roalf DR, Moberg PJ, Xie SX, Wolk DA, Moelter ST, Arnold SE. Comparative accuracies of two common screening instruments for classification of Alzheimer's disease, mild cognitive impairment, and healthy aging. Alzheimers Dement. 2013;9(5):529-37. doi: 10.1016/j.jalz.2012.10.001."
+  ],
+  "formula": "MoCA Score = Sum of domain scores (Visuospatial/Executive + Naming + Attention + Language + Abstraction + Delayed Recall + Orientation). Add 1 point if education ≤12 years. Maximum total: 30 points.",
+  "notes": [
+    "Takes approximately 10-15 minutes to administer",
+    "More sensitive than MMSE for detecting mild cognitive impairment",
+    "Education adjustment: add 1 point if ≤12 years of formal education",
+    "Memory registration score not included in total (used for delayed recall only)",
+    "Cut-off of <26 suggests cognitive impairment",
+    "Available in multiple languages and versions",
+    "Should be administered by trained healthcare professionals",
+    "Visuospatial/Executive includes Trail Making, Cube Copy, Clock Drawing",
+    "Attention includes digit spans, vigilance, and serial 7 subtraction",
+    "Language includes sentence repetition and phonemic fluency",
+    "Abstraction tests similarities between word pairs",
+    "Delayed recall tests memory for 5 words after interference",
+    "Orientation tests temporal and spatial awareness",
+    "Widely used in clinical practice and research",
+    "Validated across multiple populations and cultures"
+  ]
+}

@@ -1,0 +1,241 @@
+{
+  "id": "itas_2010",
+  "title": "Indian Takayasu Clinical Activity Score (ITAS2010)",
+  "description": "Differentiates between active and inactive disease in Takayasu arteritis (TA). The ITAS2010 is a validated clinical activity measure specifically developed for Takayasu arteritis, incorporating 44 clinical items with emphasis on cardiovascular manifestations (33 out of 44 items). The score was developed from the Disease Extent Index (DEI.Tak) and validated in over 300 TA patients with excellent inter-observer reliability (IRR 0.97). It assesses new or worsening symptoms within the past 3 months across multiple organ systems including systemic, abdominal, genitourinary, renal, neurological, and cardiovascular domains. Seven key cardiovascular items carry higher weight (2 points each) reflecting their clinical significance in disease activity assessment.",
+  "category": "rheumatology",
+  "version": "2010",
+  "parameters": [
+    {
+      "name": "malaise_weight_loss",
+      "type": "string",
+      "required": true,
+      "description": "Malaise or weight loss >2 kg within past 3 months. Systemic manifestations indicating active inflammatory process",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "myalgia_arthralgia",
+      "type": "string",
+      "required": true,
+      "description": "Myalgia, arthralgia, or frank arthritis within past 3 months. Musculoskeletal manifestations of systemic inflammation",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "headache",
+      "type": "string",
+      "required": true,
+      "description": "New or worsening headache within past 3 months. May indicate intracranial vascular involvement or systemic inflammation",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "severe_abdominal_pain",
+      "type": "string",
+      "required": true,
+      "description": "Severe abdominal pain within past 3 months. May indicate mesenteric vessel involvement or gastrointestinal complications",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "recent_spontaneous_abortion",
+      "type": "string",
+      "required": true,
+      "description": "Recent spontaneous abortion within past 3 months. Reproductive complication potentially related to vascular involvement",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "systolic_bp_over_140",
+      "type": "string",
+      "required": true,
+      "description": "Systolic blood pressure >140 mmHg. Indicates renal artery involvement or secondary hypertension",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "diastolic_bp_over_90",
+      "type": "string",
+      "required": true,
+      "description": "Diastolic blood pressure >90 mmHg. Indicates significant renal vascular involvement (weighted 2 points)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "stroke",
+      "type": "string",
+      "required": true,
+      "description": "Stroke within past 3 months. Major neurological complication indicating cerebrovascular involvement (weighted 2 points)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "seizures",
+      "type": "string",
+      "required": true,
+      "description": "New or worsening seizures within past 3 months. Neurological manifestation of cerebrovascular involvement",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "syncope",
+      "type": "string",
+      "required": true,
+      "description": "Syncope episodes within past 3 months. May indicate carotid or subclavian artery involvement affecting cerebral perfusion",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "vertigo_dizziness",
+      "type": "string",
+      "required": true,
+      "description": "Vertigo or dizziness within past 3 months. Neurological symptoms potentially related to vertebrobasilar insufficiency",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "bruits",
+      "type": "string",
+      "required": true,
+      "description": "New or worsening arterial bruits within past 3 months. Key cardiovascular sign indicating active vascular stenosis (weighted 2 points)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "pulse_inequality",
+      "type": "string",
+      "required": true,
+      "description": "New or worsening pulse inequality between limbs within past 3 months. Indicates asymmetric arterial involvement (weighted 2 points)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "new_loss_of_pulses",
+      "type": "string",
+      "required": true,
+      "description": "New loss of pulses within past 3 months. Indicates progressive arterial occlusion (weighted 2 points)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "claudication",
+      "type": "string",
+      "required": true,
+      "description": "New or worsening claudication within past 3 months. Indicates significant arterial stenosis affecting limb perfusion (weighted 2 points)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "carotidynia",
+      "type": "string",
+      "required": true,
+      "description": "Carotidynia (carotid artery tenderness) within past 3 months. Classic sign of active carotid artery inflammation (weighted 2 points)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "aortic_incompetence",
+      "type": "string",
+      "required": true,
+      "description": "New or worsening aortic incompetence within past 3 months. Cardiac complication of aortic root involvement",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "mi_angina",
+      "type": "string",
+      "required": true,
+      "description": "Myocardial infarction or angina within past 3 months. Indicates coronary artery involvement or secondary cardiac ischemia",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "cardiomyopathy_cardiac_failure",
+      "type": "string",
+      "required": true,
+      "description": "New or worsening cardiomyopathy or cardiac failure within past 3 months. Advanced cardiac complication of systemic arteritis",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "score",
+    "type": "integer",
+    "unit": "points",
+    "description": "ITAS2010 score (range 0-29 points based on available parameters)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Inactive",
+        "description": "Score <2 points",
+        "interpretation": "Inactive disease. No evidence of active Takayasu arteritis. Continue current maintenance therapy and monitor for disease recurrence."
+      },
+      {
+        "min": 2,
+        "max": 29,
+        "stage": "Active",
+        "description": "Score ≥2 points", 
+        "interpretation": "Active disease. Evidence of active Takayasu arteritis requiring treatment intensification. Consider immunosuppressive therapy escalation or initiation of biological agents."
+      }
+    ]
+  },
+  "references": [
+    "Misra R, Danda D, Rajappa SM, et al. Development and initial validation of the Indian Takayasu Clinical Activity Score (ITAS2010). Rheumatology (Oxford). 2013 Oct;52(10):1795-801. doi: 10.1093/rheumatology/ket128.",
+    "Abularrage CJ, Sidawy AN, White PW, et al. Evaluation of the clinical effectiveness of percutaneous transluminal angioplasty for Takayasu arteritis. J Vasc Surg. 2007;45(2):314-318.",
+    "Kerr GS, Hallahan CW, Giordano J, et al. Takayasu arteritis. Ann Intern Med. 1994;120(11):919-929."
+  ],
+  "formula": "Score = Sum of all positive items: Systemic (3 items, 1 point each) + Abdominal (1 item, 1 point) + Genitourinary (1 item, 1 point) + Renal (systolic BP >140: 1 point, diastolic BP >90: 2 points) + Neurological (4 items: stroke 2 points, others 1 point each) + Cardiovascular (8 items: bruits, pulse inequality, new loss of pulses, claudication, carotidynia 2 points each; aortic incompetence, MI/angina, cardiomyopathy 1 point each)",
+  "notes": [
+    "Assesses new or worsening symptoms within the past 3 months only",
+    "Validated in over 300 Takayasu arteritis patients with excellent inter-observer reliability (IRR 0.97)",
+    "Score <2 indicates inactive disease; score ≥2 indicates active disease requiring treatment",
+    "Seven key cardiovascular items are weighted at 2 points each due to clinical significance",
+    "Focuses predominantly on vascular manifestations (cardiovascular system features)",
+    "Useful for monitoring disease activity and treatment response in clinical practice",
+    "Can be combined with acute phase reactants (ESR/CRP) as ITAS-A for enhanced assessment",
+    "Higher scores indicate greater disease activity and need for therapeutic intervention",
+    "Should be used in conjunction with clinical judgment and imaging studies",
+    "Regular monitoring recommended to assess treatment response and disease progression"
+  ]
+}

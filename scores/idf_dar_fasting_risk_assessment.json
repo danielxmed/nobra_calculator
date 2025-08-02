@@ -1,0 +1,208 @@
+{
+  "id": "idf_dar_fasting_risk_assessment",
+  "title": "International Diabetes Federation-Diabetes and Ramadan Alliance (IDF-DAR) Fasting Risk Assessment",
+  "description": "Stratifies risk of fasting during Ramadan in diabetic patients using validated clinical parameters. The IDF-DAR tool provides evidence-based guidance for healthcare providers and patients to make informed decisions about the safety of fasting during Ramadan based on diabetes type, glycemic control, complications, and other risk factors.",
+  "category": "endocrinology",
+  "version": "2021",
+  "parameters": [
+    {
+      "name": "diabetes_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of diabetes mellitus. Type 1 diabetes carries higher baseline fasting risk due to insulin dependence and greater glycemic variability",
+      "options": ["type_1", "type_2"],
+      "validation": {
+        "enum": ["type_1", "type_2"]
+      },
+      "unit": null
+    },
+    {
+      "name": "years_since_diagnosis",
+      "type": "string",
+      "required": true,
+      "description": "Duration of diabetes diagnosis. Longer duration associated with increased risk of complications and glucose variability",
+      "options": ["less_than_10", "10_or_more"],
+      "validation": {
+        "enum": ["less_than_10", "10_or_more"]
+      },
+      "unit": "years"
+    },
+    {
+      "name": "hypoglycemia_frequency",
+      "type": "string",
+      "required": true,
+      "description": "Frequency and severity of hypoglycemic episodes. Recent severe hypoglycemia or hypoglycemia unawareness significantly increases fasting risk",
+      "options": ["none", "less_than_weekly", "multiple_weekly", "recent_severe", "unawareness"],
+      "validation": {
+        "enum": ["none", "less_than_weekly", "multiple_weekly", "recent_severe", "unawareness"]
+      },
+      "unit": null
+    },
+    {
+      "name": "hba1c_level",
+      "type": "string",
+      "required": true,
+      "description": "Glycemic control measured by HbA1c. Poor control (>9%) indicates higher risk of acute complications during fasting",
+      "options": ["less_than_7_5", "7_5_to_9", "greater_than_9"],
+      "validation": {
+        "enum": ["less_than_7_5", "7_5_to_9", "greater_than_9"]
+      },
+      "unit": "%"
+    },
+    {
+      "name": "treatment_type",
+      "type": "string",
+      "required": true,
+      "description": "Current diabetes treatment regimen. Insulin therapy and certain sulfonylureas increase hypoglycemia risk during fasting",
+      "options": ["other_therapy", "short_acting_sulfonylurea", "long_acting_sulfonylurea", "basal_insulin", "mixed_insulin", "intensive_insulin"],
+      "validation": {
+        "enum": ["other_therapy", "short_acting_sulfonylurea", "long_acting_sulfonylurea", "basal_insulin", "mixed_insulin", "intensive_insulin"]
+      },
+      "unit": null
+    },
+    {
+      "name": "self_monitoring_frequency",
+      "type": "string",
+      "required": true,
+      "description": "Blood glucose self-monitoring frequency. Regular monitoring enables safer fasting through early detection of glucose abnormalities",
+      "options": ["regular", "irregular", "none"],
+      "validation": {
+        "enum": ["regular", "irregular", "none"]
+      },
+      "unit": null
+    },
+    {
+      "name": "acute_complications",
+      "type": "string",
+      "required": true,
+      "description": "History of acute diabetic complications including diabetic ketoacidosis (DKA) or hyperosmolar hyperglycemic state (HHS) within the past 3 months",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "macrovascular_disease",
+      "type": "string",
+      "required": true,
+      "description": "Presence of macrovascular complications including coronary artery disease, cerebrovascular disease, or peripheral arterial disease",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "renal_complications",
+      "type": "string",
+      "required": true,
+      "description": "Diabetic nephropathy or chronic kidney disease stage 4-5 (eGFR <30 mL/min/1.73m²)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "pregnancy_status",
+      "type": "string",
+      "required": true,
+      "description": "Pregnancy or breastfeeding status. Pregnant and breastfeeding women with diabetes are generally advised against fasting",
+      "options": ["pregnant_breastfeeding", "not_applicable"],
+      "validation": {
+        "enum": ["pregnant_breastfeeding", "not_applicable"]
+      },
+      "unit": null
+    },
+    {
+      "name": "frailty_cognitive_function",
+      "type": "string",
+      "required": true,
+      "description": "Frailty or cognitive impairment that may impair ability to recognize or respond to hypoglycemia symptoms",
+      "options": ["impaired", "normal"],
+      "validation": {
+        "enum": ["impaired", "normal"]
+      },
+      "unit": null
+    },
+    {
+      "name": "physical_labor",
+      "type": "string",
+      "required": true,
+      "description": "Occupation involving intense physical labor or activity that increases metabolic demands and hypoglycemia risk during fasting",
+      "options": ["intense", "moderate", "light"],
+      "validation": {
+        "enum": ["intense", "moderate", "light"]
+      },
+      "unit": null
+    },
+    {
+      "name": "previous_ramadan_experience",
+      "type": "string",
+      "required": true,
+      "description": "Experience with previous Ramadan fasting. Prior successful fasting may indicate better tolerance and risk management",
+      "options": ["successful", "unsuccessful", "never_fasted"],
+      "validation": {
+        "enum": ["successful", "unsuccessful", "never_fasted"]
+      },
+      "unit": null
+    },
+    {
+      "name": "fasting_hours",
+      "type": "string",
+      "required": true,
+      "description": "Duration of daily fasting hours based on geographic location and season. Longer fasting periods increase dehydration and hypoglycemia risk",
+      "options": ["less_than_15", "15_or_more"],
+      "validation": {
+        "enum": ["less_than_15", "15_or_more"]
+      },
+      "unit": "hours"
+    }
+  ],
+  "result": {
+    "name": "risk_score",
+    "type": "float",
+    "unit": "points",
+    "description": "IDF-DAR fasting risk score with risk category classification"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Low Risk",
+        "description": "Fasting probably safe",
+        "interpretation": "Low risk for complications during Ramadan fasting. Patient can likely fast safely with appropriate education and monitoring. Recommend pre-Ramadan counseling on meal timing, glucose monitoring, and recognition of hypoglycemia symptoms. Consider adjusting medication timing but major therapy changes usually not required. Monitor for breakthrough hypoglycemia and maintain regular follow-up."
+      },
+      {
+        "min": 3.5,
+        "max": 6,
+        "stage": "Moderate Risk",
+        "description": "Fasting safety uncertain",
+        "interpretation": "Moderate risk for complications during Ramadan fasting. Requires careful evaluation and enhanced monitoring. Consider medication adjustments, intensified glucose monitoring, and structured diabetes education. Patients should have clear action plans for hypoglycemia and hyperglycemia. Close supervision by healthcare team recommended. May fast with medical supervision if patient strongly desires."
+      },
+      {
+        "min": 6.5,
+        "max": 20,
+        "stage": "High Risk",
+        "description": "Fasting probably unsafe",
+        "interpretation": "High risk for serious complications during Ramadan fasting. Generally advised against fasting due to significant risk of hypoglycemia, hyperglycemia, diabetic ketoacidosis, or other acute complications. If patient insists on fasting despite medical advice, requires intensive monitoring, immediate access to medical care, and detailed emergency action plans. Consider alternative spiritual practices and emphasize that health preservation is a religious priority."
+      }
+    ]
+  },
+  "references": [
+    "Hassanein M, Sahay BK, Hafidh K, Djaballah K, Li H, Rahim MA, et al. Diabetes and Ramadan: Practical guidelines 2021. Diabetes Res Clin Pract. 2022 Mar;185:109185. doi: 10.1016/j.diabres.2021.109185.",
+    "Ibrahim M, Al Magd MA, Annabi FA, Assaad-Khalil S, Ba-Essa EM, Fahdil I, et al. Recommendations for management of diabetes during Ramadan: update 2020, applying evidence from a decade of research. BMJ Open Diabetes Res Care. 2020 May;8(1):e001248. doi: 10.1136/bmjdrc-2020-001248.",
+    "Alam F, Oubari S, Ahmad J, Eba-Alkhayri A, Almadani A, Babineaux S, et al. Validity of the International Diabetes Federation risk stratification score of Ramadan fasting in individuals with diabetes mellitus. Saudi Med J. 2024 Jan;45(1):86-92. doi: 10.15537/smj.2024.45.1.20230497."
+  ],
+  "formula": "Risk Score = Diabetes Type + Years Since Diagnosis + Hypoglycemia Score + HbA1c Score + Treatment Score + Monitoring Score + Complication Scores + Social Factors",
+  "notes": [
+    "The IDF-DAR tool was developed through international consensus and validated across multiple populations",
+    "Fasting during Ramadan is a personal decision that should involve patient preference and medical guidance",
+    "Patients in all risk categories should receive pre-Ramadan education on glucose monitoring and symptom recognition",
+    "Medication timing adjustments may be necessary regardless of risk category",
+    "Emergency action plans should be established for all patients who choose to fast",
+    "Regular medical follow-up is essential during Ramadan fasting period"
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "id": "intraoperative_fluid_dosing",
+  "title": "Intraoperative Fluid Dosing in Adult Patients",
+  "description": "Calculates intraoperative IV fluid requirements for adult patients during surgery, providing hourly fluid requirement, fluid deficit, and hour-by-hour fluid requirement based on surgical needs. Uses patient weight, NPO time, and surgical trauma severity to guide perioperative fluid management and optimize patient outcomes.",
+  "category": "emergency",
+  "version": "2024",
+  "parameters": [
+    {
+      "name": "weight_kg",
+      "type": "float",
+      "required": true,
+      "description": "Patient body weight in kilograms (must be ≥20 kg for adult calculator)",
+      "validation": {
+        "min": 20,
+        "max": 300
+      },
+      "unit": "kg"
+    },
+    {
+      "name": "hours_npo",
+      "type": "float",
+      "required": true,
+      "description": "Time spent NPO (nothing by mouth) before surgery in hours",
+      "validation": {
+        "min": 0,
+        "max": 48
+      },
+      "unit": "hours"
+    },
+    {
+      "name": "surgical_trauma",
+      "type": "string",
+      "required": true,
+      "description": "Estimated surgical trauma severity based on procedure type and invasiveness",
+      "options": ["minimal", "moderate", "severe"],
+      "validation": {
+        "enum": ["minimal", "moderate", "severe"]
+      }
+    }
+  ],
+  "result": {
+    "name": "fluid_plan",
+    "type": "string",
+    "unit": "mL",
+    "description": "Structured intraoperative fluid dosing plan with hourly requirements"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 100,
+        "stage": "Minimal Trauma",
+        "description": "Low fluid loss procedures",
+        "interpretation": "Procedures with minimal tissue trauma and fluid loss such as laparoscopic procedures. Requires 3 mL/kg/hr additional fluid replacement for surgical losses."
+      },
+      {
+        "min": 100,
+        "max": 200,
+        "stage": "Moderate Trauma", 
+        "description": "Moderate fluid loss procedures",
+        "interpretation": "Procedures with moderate tissue trauma and fluid loss such as open cholecystectomy. Requires 5 mL/kg/hr additional fluid replacement for surgical losses."
+      },
+      {
+        "min": 200,
+        "max": 500,
+        "stage": "Severe Trauma",
+        "description": "High fluid loss procedures",
+        "interpretation": "Procedures with significant tissue trauma and fluid loss such as bowel resection or major abdominal surgery. Requires 7 mL/kg/hr additional fluid replacement for surgical losses."
+      }
+    ]
+  },
+  "references": [
+    "Miller RD, et al. Miller's Anesthesia. 8th ed. Philadelphia: Elsevier Saunders; 2015.",
+    "Holte K, Sharrock NE, Kehlet H. Pathophysiology and clinical implications of perioperative fluid excess. Br J Anaesth. 2002;89(4):622-32.",
+    "Brandstrup B, et al. Effects of intravenous fluid restriction on postoperative complications: comparison of two perioperative fluid regimens: a randomized assessor-blinded multicenter trial. Ann Surg. 2003;238(5):641-8.",
+    "Gan TJ, et al. Goal-directed intraoperative fluid administration reduces length of hospital stay after major surgery. Anesthesiology. 2002;97(4):820-6."
+  ],
+  "formula": "Hourly maintenance = weight (kg) + 40 mL; NPO deficit = hourly maintenance × hours NPO; Hour 1 = ½ NPO deficit + maintenance; Hours 2-3 = ¼ NPO deficit + maintenance + surgical trauma loss; Hour 4+ = maintenance + surgical trauma loss",
+  "notes": [
+    "Designed for patients weighing ≥20 kg undergoing surgery",
+    "Not recommended for patients with fluid overload risks (heart failure, COPD, kidney failure)",
+    "Surgical trauma classifications: Minimal (3 mL/kg/hr), Moderate (5 mL/kg/hr), Severe (7 mL/kg/hr)",
+    "This calculator provides baseline fluid requirements - clinical judgment required for adjustments",
+    "Monitor urine output, blood pressure, and other hemodynamic parameters during surgery",
+    "Consider goal-directed fluid therapy and individualized patient needs"
+  ]
+}

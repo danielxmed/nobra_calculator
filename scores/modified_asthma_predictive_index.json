@@ -1,0 +1,113 @@
+{
+  "id": "modified_asthma_predictive_index",
+  "title": "Modified Asthma Predictive Index (mAPI)",
+  "description": "Predicts future asthma onset probability in pediatric patients ≤3 years old with recurrent wheezing episodes",
+  "category": "pediatrics",
+  "version": "2007",
+  "parameters": [
+    {
+      "name": "wheezing_episodes_per_year",
+      "type": "integer",
+      "required": true,
+      "description": "Number of wheezing episodes per year (≥4 required for mAPI applicability)",
+      "validation": {
+        "min": 0,
+        "max": 50
+      },
+      "unit": "episodes/year"
+    },
+    {
+      "name": "parent_asthma",
+      "type": "string",
+      "required": true,
+      "description": "Parent has asthma (major criteria)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "atopic_dermatitis",
+      "type": "string",
+      "required": true,
+      "description": "Patient has physician-diagnosed atopic dermatitis (major criteria)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "aeroallergen_sensitivity",
+      "type": "string",
+      "required": true,
+      "description": "Patient has demonstrated aeroallergen sensitivity through skin tests or blood tests (major criteria)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "wheezing_unrelated_colds",
+      "type": "string",
+      "required": true,
+      "description": "Wheezing unrelated to colds (minor criteria)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "eosinophils_4_percent",
+      "type": "string",
+      "required": true,
+      "description": "Eosinophils ≥4% on complete blood count (minor criteria)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "food_allergies",
+      "type": "string",
+      "required": true,
+      "description": "Documented allergy to milk, egg, or peanuts (minor criteria)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "mapi_result",
+    "type": "string",
+    "unit": "result",
+    "description": "mAPI result indicating asthma risk prediction"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "condition": "negative",
+        "description": "Negative mAPI",
+        "interpretation": "Low risk of future asthma development. mAPI is negative when <4 wheezing episodes per year OR (<1 major criteria AND <2 minor criteria)."
+      },
+      {
+        "condition": "positive",
+        "description": "Positive mAPI", 
+        "interpretation": "Increased risk of future asthma development. mAPI is positive when ≥4 wheezing episodes per year AND (≥1 major criteria OR ≥2 minor criteria)."
+      }
+    ]
+  },
+  "references": [
+    "Guilbert TW, Morgan WJ, Zeiger RS, Mauger DT, Boehmer SJ, Szefler SJ, et al. Long-term inhaled corticosteroids in preschool children at high risk for asthma. N Engl J Med. 2006 May 11;354(19):1985-97. doi: 10.1056/NEJMoa051378.",
+    "Chang TS, Lemanske RF, Guilbert TW, Gern JE, Coen MH, Evans MD, et al. Evaluation of the modified asthma predictive index in high-risk preschoolers. J Allergy Clin Immunol Pract. 2013 Mar-Apr;1(2):152-6. doi: 10.1016/j.jaip.2012.10.008.",
+    "Castro-Rodríguez JA, Holberg CJ, Wright AL, Martinez FD. A clinical index to define risk of asthma in young children with recurrent wheezing. Am J Respir Crit Care Med. 2000 Oct;162(4 Pt 1):1403-6. doi: 10.1164/ajrccm.162.4.9912111."
+  ],
+  "formula": "mAPI positive if: ≥4 wheezing episodes per year AND (≥1 major criteria OR ≥2 minor criteria). Major criteria: parent asthma, atopic dermatitis, aeroallergen sensitivity. Minor criteria: wheezing unrelated to colds, eosinophils ≥4%, food allergies.",
+  "notes": [
+    "Only applicable to children ≤3 years old with ≥4 wheezing episodes per year",
+    "High specificity (98-100%) but variable sensitivity (8.2-19%)",
+    "Does not guarantee future asthma diagnosis",
+    "Clinical utility depends on local asthma prevalence",
+    "Modified version adds food allergies as minor criteria compared to original API"
+  ]
+}

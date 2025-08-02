@@ -1,0 +1,108 @@
+{
+  "id": "truelove_witts_severity_index",
+  "title": "Truelove and Witts Severity Index for Ulcerative Colitis",
+  "description": "Stratifies severity of ulcerative colitis into mild, moderate, or severe categories based on clinical and laboratory parameters",
+  "category": "gastroenterology",
+  "version": "1955",
+  "parameters": [
+    {
+      "name": "bowel_movements",
+      "type": "string",
+      "required": true,
+      "description": "Number of bowel movements per day",
+      "options": ["less_than_4", "4_to_5", "6_or_more"],
+      "validation": {
+        "enum": ["less_than_4", "4_to_5", "6_or_more"]
+      }
+    },
+    {
+      "name": "blood_in_stool",
+      "type": "string",
+      "required": true,
+      "description": "Presence and severity of blood in stool",
+      "options": ["none_or_small", "between_mild_severe", "visible_blood"],
+      "validation": {
+        "enum": ["none_or_small", "between_mild_severe", "visible_blood"]
+      }
+    },
+    {
+      "name": "pyrexia",
+      "type": "string",
+      "required": true,
+      "description": "Presence of fever (temperature ≥100.04°F or 37.8°C)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "tachycardia",
+      "type": "string",
+      "required": true,
+      "description": "Pulse greater than 90 beats per minute",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "anemia",
+      "type": "string",
+      "required": true,
+      "description": "Presence of anemia (hemoglobin ≤10.5 g/dL or 105 g/L)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "esr_elevated",
+      "type": "string",
+      "required": true,
+      "description": "Erythrocyte sedimentation rate greater than 30 mm/hr",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "severity",
+    "type": "string",
+    "unit": "",
+    "description": "Severity classification of ulcerative colitis"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "stage": "Mild",
+        "description": "Mild ulcerative colitis",
+        "interpretation": "Mild disease with minimal systemic symptoms. Can usually be managed with topical or oral aminosalicylates. Monitor closely for response to treatment."
+      },
+      {
+        "stage": "Moderate",
+        "description": "Moderate ulcerative colitis",
+        "interpretation": "Moderate disease with some systemic symptoms. Consider oral corticosteroids or immunomodulators. May require hospitalization for monitoring and treatment optimization."
+      },
+      {
+        "stage": "Severe",
+        "description": "Severe ulcerative colitis",
+        "interpretation": "Severe disease with significant systemic symptoms. Requires immediate hospitalization and intensive medical therapy. Consider intravenous corticosteroids, biologics, or surgical consultation. Monitor for complications such as toxic megacolon or perforation."
+      }
+    ]
+  },
+  "references": [
+    "Truelove SC, Witts LJ. Cortisone in ulcerative colitis; final report on a therapeutic trial. Br Med J. 1955;2(4947):1041-8. PMID: 13260656; PMCID: PMC2061071.",
+    "Danese S, Fiocchi C. Ulcerative colitis. N Engl J Med. 2011 Nov 3;365(18):1713-25. doi: 10.1056/NEJMra1102942.",
+    "Rubin DT, Ananthakrishnan AN, Siegel CA, Sauer BG, Long MD. ACG Clinical Guideline: Ulcerative Colitis in Adults. Am J Gastroenterol. 2019 Mar;114(3):384-413. doi: 10.14309/ajg.0000000000000152."
+  ],
+  "formula": "Classification based on presence of criteria: Mild = all criteria for mild severity met (bowel movements <4, no/small blood, no fever, pulse ≤90, no anemia, ESR ≤30); Severe = ≥6 bowel movements AND ≥1 systemic feature (fever, tachycardia, anemia); Moderate = between mild and severe criteria",
+  "notes": [
+    "The index was originally developed in 1955 as part of the first clinical trial demonstrating effectiveness of cortisone in ulcerative colitis",
+    "Pyrexia is defined as temperature ≥100.04°F (37.8°C)",
+    "Anemia is defined as hemoglobin ≤10.5 g/dL (105 g/L)",
+    "ESR threshold is 30 mm/hr",
+    "This index is widely used for initial assessment and clinical trials but should be combined with endoscopic findings for comprehensive evaluation",
+    "Severe classification requires urgent medical attention and possible hospitalization"
+  ]
+}

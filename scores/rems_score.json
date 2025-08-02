@@ -1,0 +1,155 @@
+{
+  "id": "rems_score",
+  "title": "REMS Score (Rapid Emergency Medicine Score)",
+  "description": "Emergency department mortality risk prediction score using six physiological and demographic variables. REMS is an attenuated version of APACHE II that allows for prompt calculation and has been validated across multiple patient populations including sepsis, trauma, COVID-19, and general emergency department patients.",
+  "category": "emergency",
+  "version": "2003",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 0,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "body_temperature",
+      "type": "float",
+      "required": true,
+      "description": "Body temperature in degrees Celsius",
+      "validation": {
+        "min": 25.0,
+        "max": 45.0
+      },
+      "unit": "°C"
+    },
+    {
+      "name": "mean_arterial_pressure",
+      "type": "integer",
+      "required": true,
+      "description": "Mean arterial pressure in mmHg",
+      "validation": {
+        "min": 20,
+        "max": 250
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "heart_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Heart rate in beats per minute",
+      "validation": {
+        "min": 20,
+        "max": 250
+      },
+      "unit": "bpm"
+    },
+    {
+      "name": "respiratory_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Respiratory rate in breaths per minute",
+      "validation": {
+        "min": 1,
+        "max": 80
+      },
+      "unit": "breaths/min"
+    },
+    {
+      "name": "oxygen_saturation",
+      "type": "integer",
+      "required": true,
+      "description": "Peripheral oxygen saturation (SpO2) percentage",
+      "validation": {
+        "min": 50,
+        "max": 100
+      },
+      "unit": "%"
+    },
+    {
+      "name": "glasgow_coma_scale",
+      "type": "integer",
+      "required": true,
+      "description": "Glasgow Coma Scale score",
+      "validation": {
+        "min": 3,
+        "max": 15
+      },
+      "unit": "score"
+    }
+  ],
+  "result": {
+    "name": "rems_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "REMS Score (0-26 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Very Low Risk",
+        "description": "Very low mortality risk",
+        "interpretation": "REMS Score 0-2 points. Very low risk of in-hospital mortality (0.3%). Standard care and monitoring appropriate."
+      },
+      {
+        "min": 3,
+        "max": 5,
+        "stage": "Low Risk",
+        "description": "Low mortality risk",
+        "interpretation": "REMS Score 3-5 points. Low risk of in-hospital mortality (2%). Close monitoring recommended."
+      },
+      {
+        "min": 6,
+        "max": 9,
+        "stage": "Moderate Risk",
+        "description": "Moderate mortality risk",
+        "interpretation": "REMS Score 6-9 points. Moderate risk of in-hospital mortality (6.7%). Enhanced monitoring and prompt intervention indicated."
+      },
+      {
+        "min": 10,
+        "max": 11,
+        "stage": "High Risk",
+        "description": "High mortality risk",
+        "interpretation": "REMS Score 10-11 points. High risk of in-hospital mortality (20.3%). Intensive monitoring and aggressive intervention required."
+      },
+      {
+        "min": 12,
+        "max": 21,
+        "stage": "Very High Risk",
+        "description": "Very high mortality risk",
+        "interpretation": "REMS Score 12-21 points. Very high risk of in-hospital mortality (>20%). Critical care management and intensive intervention required."
+      },
+      {
+        "min": 22,
+        "max": 26,
+        "stage": "Extremely High Risk",
+        "description": "Extremely high mortality risk",
+        "interpretation": "REMS Score 22-26 points. Extremely high risk of in-hospital mortality (approaching 100%). Palliative care considerations may be appropriate."
+      }
+    ]
+  },
+  "references": [
+    "Olsson T, Terent A, Lind L. Rapid Emergency Medicine score: a new prognostic tool for in-hospital mortality in nonsurgical emergency department patients. J Intern Med. 2004;255(5):579-587. doi: 10.1111/j.1365-2796.2004.01321.x.",
+    "Goodacre S, Turner J, Nicholl J. Prediction of mortality among emergency medical admissions. Emerg Med J. 2006;23(5):372-375. doi: 10.1136/emj.2005.028522.",
+    "Imhoff BF, Thompson NJ, Hastings MA, et al. Rapid Emergency Medicine Score (REMS) in the trauma population: a retrospective study. BMJ Open. 2014;4(5):e004738. doi: 10.1136/bmjopen-2013-004738.",
+    "Chuang CL, Tsai KC, Wu CL, et al. The utility of the rapid emergency medicine score (REMS) compared with SIRS, qSOFA and NEWS for predicting in-hospital mortality among patients with suspicion of sepsis in an emergency department. BMC Emerg Med. 2021;21(1):2. doi: 10.1186/s12873-020-00396-x."
+  ],
+  "formula": "REMS Score = Age points + Body temperature points + Mean arterial pressure points + Heart rate points + Respiratory rate points + Oxygen saturation points + Glasgow Coma Scale points. Maximum score: 26 points.",
+  "notes": [
+    "REMS is an attenuated version of APACHE II designed for rapid calculation in emergency settings",
+    "Validated in multiple patient populations including sepsis, trauma, COVID-19, and general emergency department patients",
+    "Higher scores indicate worse prognosis and increased mortality risk",
+    "Score ≥10 indicates high risk requiring intensive monitoring and intervention",
+    "REMS has shown superior or comparable performance to other emergency scoring systems like NEWS, qSOFA, and SIRS",
+    "Every point increase in REMS score is associated with a 40% increase in odds of in-hospital mortality",
+    "Particularly useful for early risk stratification and triage decisions in emergency departments",
+    "Can be calculated quickly using readily available clinical parameters"
+  ]
+}

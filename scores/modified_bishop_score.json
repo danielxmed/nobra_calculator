@@ -1,0 +1,154 @@
+{
+  "id": "modified_bishop_score",
+  "title": "Modified Bishop Score for Vaginal Delivery and Induction of Labor",
+  "description": "Predicts likelihood of successful vaginal delivery with additional parameters to the original Bishop score, using simplified cervical assessment criteria",
+  "category": "gynecology",
+  "version": "Modified",
+  "parameters": [
+    {
+      "name": "cervical_dilation",
+      "type": "string",
+      "required": true,
+      "description": "Cervical dilation in centimeters",
+      "options": ["closed", "1_2_cm", "3_4_cm", "greater_than_4_cm"],
+      "validation": {
+        "enum": ["closed", "1_2_cm", "3_4_cm", "greater_than_4_cm"]
+      }
+    },
+    {
+      "name": "cervical_length",
+      "type": "string",
+      "required": true,
+      "description": "Cervical length in centimeters",
+      "options": ["3_cm", "2_cm", "1_cm", "0_cm"],
+      "validation": {
+        "enum": ["3_cm", "2_cm", "1_cm", "0_cm"]
+      }
+    },
+    {
+      "name": "fetal_station",
+      "type": "string",
+      "required": true,
+      "description": "Fetal station relative to ischial spines",
+      "options": ["minus_3", "minus_2", "minus_1_or_0", "plus_1_or_2"],
+      "validation": {
+        "enum": ["minus_3", "minus_2", "minus_1_or_0", "plus_1_or_2"]
+      }
+    },
+    {
+      "name": "cervical_position",
+      "type": "string",
+      "required": true,
+      "description": "Position of cervix",
+      "options": ["posterior", "mid_position", "anterior"],
+      "validation": {
+        "enum": ["posterior", "mid_position", "anterior"]
+      }
+    },
+    {
+      "name": "cervical_consistency",
+      "type": "string",
+      "required": true,
+      "description": "Consistency of cervix",
+      "options": ["firm", "medium", "soft"],
+      "validation": {
+        "enum": ["firm", "medium", "soft"]
+      }
+    },
+    {
+      "name": "prior_vaginal_deliveries",
+      "type": "string",
+      "required": true,
+      "description": "History of prior vaginal deliveries",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "preeclampsia",
+      "type": "string",
+      "required": true,
+      "description": "Presence of pre-eclampsia",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "postdate_pregnancy",
+      "type": "string",
+      "required": true,
+      "description": "Postdate pregnancy (>42 weeks gestation)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "nulliparity",
+      "type": "string",
+      "required": true,
+      "description": "Nulliparous patient (no prior births)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "pprom",
+      "type": "string",
+      "required": true,
+      "description": "Preterm premature rupture of membranes (PPROM)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "bishop_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Modified Bishop Score indicating cervical favorability for delivery"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 5,
+        "stage": "Unfavorable",
+        "description": "Unfavorable cervix",
+        "interpretation": "Low likelihood of successful vaginal delivery. Consider cervical ripening agents before induction of labor. May require cesarean delivery."
+      },
+      {
+        "min": 6,
+        "max": 7,
+        "stage": "Intermediate",
+        "description": "Intermediate favorability",
+        "interpretation": "Uncertain prediction for successful vaginal delivery. Clinical judgment required. Consider individual patient factors and obstetric history."
+      },
+      {
+        "min": 8,
+        "max": 20,
+        "stage": "Favorable",
+        "description": "Favorable cervix",
+        "interpretation": "High likelihood of successful vaginal delivery. Induction of labor likely to be successful. Consider proceeding with induction."
+      }
+    ]
+  },
+  "references": [
+    "Bishop EH. Pelvic scoring for elective induction. Obstet Gynecol. 1964 Aug;24:266-8. PMID: 14199536.",
+    "Laughon SK, Zhang J, Troendle J, Sun L, Reddy UM. Using a simplified Bishop score to predict vaginal delivery. Obstet Gynecol. 2011 Apr;117(4):805-11. doi: 10.1097/AOG.0b013e3182114ad2.",
+    "Kolkman DG, Verhoeven CJ, Brinkhorst SJ, van der Post JA, Pajkrt E, Opmeer BC, et al. The Bishop score as a predictor of labor induction success: a systematic review. Am J Perinatol. 2013 Sep;30(8):625-30. doi: 10.1055/s-0032-1331024."
+  ],
+  "formula": "Sum of points from cervical dilation (0-6), cervical length (0-3), fetal station (0-3), cervical position (0-2), cervical consistency (0-2), plus modifiers for prior deliveries, pre-eclampsia, postdate pregnancy, nulliparity, and PPROM",
+  "notes": [
+    "Modified version uses additional clinical factors beyond the original 5 Bishop score components",
+    "Score ≥8 indicates favorable cervix for induction",
+    "Score ≤5 suggests need for cervical ripening before induction",
+    "Clinical judgment should always be used in conjunction with the score",
+    "Original Bishop score uses effacement instead of cervical length in some versions",
+    "Simplified 3-component version (dilation, effacement, station) performs similarly to full score"
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "id": "winters_formula_metabolic_acidosis",
+  "title": "Winters' Formula for Metabolic Acidosis Compensation",
+  "description": "Calculates the expected arterial pCO₂ compensation in pure metabolic acidosis to assess the adequacy of respiratory compensation. This formula helps clinicians determine if respiratory compensation is appropriate, insufficient, or excessive in patients with metabolic acidosis.",
+  "category": "emergency",
+  "version": "1967",
+  "parameters": [
+    {
+      "name": "bicarbonate",
+      "type": "float",
+      "required": true,
+      "description": "Serum bicarbonate (HCO₃⁻) concentration",
+      "validation": {
+        "min": 5,
+        "max": 35
+      },
+      "unit": "mEq/L"
+    },
+    {
+      "name": "measured_pco2",
+      "type": "float",
+      "required": false,
+      "description": "Measured arterial pCO₂ (optional, for comparison with expected value)",
+      "validation": {
+        "min": 10,
+        "max": 80
+      },
+      "unit": "mmHg"
+    }
+  ],
+  "result": {
+    "name": "expected_pco2",
+    "type": "float",
+    "unit": "mmHg",
+    "description": "Expected arterial pCO₂ for metabolic acidosis compensation"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": -10,
+        "max": -2.1,
+        "stage": "Overcompensation",
+        "description": "Respiratory overcompensation",
+        "interpretation": "The measured pCO₂ is significantly lower than expected, suggesting respiratory overcompensation or a concurrent primary respiratory alkalosis. Consider mixed acid-base disorder."
+      },
+      {
+        "min": -2,
+        "max": 2,
+        "stage": "Appropriate Compensation",
+        "description": "Expected respiratory compensation",
+        "interpretation": "The measured pCO₂ is within the expected range for metabolic acidosis, indicating appropriate respiratory compensation. Focus on treating the underlying cause of metabolic acidosis."
+      },
+      {
+        "min": 2.1,
+        "max": 10,
+        "stage": "Undercompensation",
+        "description": "Inadequate respiratory compensation",
+        "interpretation": "The measured pCO₂ is higher than expected, suggesting inadequate respiratory compensation or a concurrent primary respiratory acidosis. Consider respiratory impairment or mixed acid-base disorder."
+      }
+    ]
+  },
+  "references": [
+    "Winters RW, Engel K, Dell RB. Acid-base physiology in medicine. A self-instruction program. London, UK: The London Company; 1967.",
+    "Adrogué HJ, Madias NE. Secondary responses to altered acid-base status: the rules of engagement. J Am Soc Nephrol. 2010;21(6):920-923. doi: 10.1681/ASN.2009121211",
+    "Berend K, de Vries AP, Gans RO. Physiological approach to assessment of acid-base disturbances. N Engl J Med. 2014;371(15):1434-1445. doi: 10.1056/NEJMra1003327",
+    "Kraut JA, Madias NE. Serum anion gap: its uses and limitations in clinical medicine. Clin J Am Soc Nephrol. 2007;2(1):162-174. doi: 10.2215/CJN.03020906"
+  ],
+  "formula": "Expected pCO₂ = 1.5 × [HCO₃⁻] + 8 (± 2 mmHg). The measured pCO₂ should fall within ± 2 mmHg of the calculated expected value for appropriate respiratory compensation in metabolic acidosis.",
+  "notes": [
+    "Also known as Winter-Engel formula",
+    "Applies only to pure metabolic acidosis with appropriate respiratory compensation",
+    "Normal range for serum bicarbonate: 22-28 mEq/L",
+    "Normal range for arterial pCO₂: 35-45 mmHg",
+    "Formula assumes steady-state conditions (6-24 hours after onset)",
+    "Does not apply to mixed acid-base disorders",
+    "Measured pCO₂ within ±2 mmHg of expected indicates appropriate compensation",
+    "Deviation >2 mmHg suggests concurrent respiratory disorder",
+    "Should be used in conjunction with clinical assessment and other laboratory values",
+    "pH should be <7.35 to confirm metabolic acidosis",
+    "Calculate anion gap to determine if acidosis is high or normal anion gap",
+    "Formula may be less accurate in severe acidosis (bicarbonate <10 mEq/L)",
+    "Consider arterial blood gas analysis for accurate pCO₂ measurement",
+    "Venous bicarbonate may be used as approximation but arterial preferred for pCO₂"
+  ]
+}

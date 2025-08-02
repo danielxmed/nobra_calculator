@@ -1,0 +1,118 @@
+{
+  "id": "hiri_msm",
+  "title": "HIV Incidence Risk Index for MSM (HIRI-MSM)",
+  "description": "Identifies men who have sex with men (MSM) at high risk for HIV infection to prioritize for intensive prevention interventions including pre-exposure prophylaxis (PrEP).",
+  "category": "infectious_disease",
+  "version": "2012",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "num_male_partners",
+      "type": "string",
+      "required": true,
+      "description": "Number of male sex partners in last 6 months",
+      "options": ["0_to_5", "6_to_10", "more_than_10"],
+      "validation": {
+        "enum": ["0_to_5", "6_to_10", "more_than_10"]
+      }
+    },
+    {
+      "name": "receptive_anal_no_condom",
+      "type": "string",
+      "required": true,
+      "description": "Receptive anal sex without condom in last 6 months",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "num_hiv_positive_partners",
+      "type": "string",
+      "required": true,
+      "description": "Number of HIV-positive male sex partners in last 6 months",
+      "options": ["none", "one", "more_than_one"],
+      "validation": {
+        "enum": ["none", "one", "more_than_one"]
+      }
+    },
+    {
+      "name": "insertive_anal_hiv_positive",
+      "type": "string",
+      "required": true,
+      "description": "Insertive anal sex without condom with HIV-positive partner in last 6 months",
+      "options": ["0_to_4_times", "5_or_more_times"],
+      "validation": {
+        "enum": ["0_to_4_times", "5_or_more_times"]
+      }
+    },
+    {
+      "name": "methamphetamine_use",
+      "type": "string",
+      "required": true,
+      "description": "Methamphetamine use in last 6 months",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "poppers_use",
+      "type": "string",
+      "required": true,
+      "description": "Poppers (amyl nitrate) use in last 6 months",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "hiri_msm_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "HIRI-MSM risk score for HIV incidence"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 9,
+        "stage": "Low Risk",
+        "description": "Score <10",
+        "interpretation": "Low HIV risk. Standard HIV prevention counseling recommended. Continue routine HIV testing and safer sex practices."
+      },
+      {
+        "min": 10,
+        "max": 47,
+        "stage": "High Risk",
+        "description": "Score ≥10",
+        "interpretation": "High HIV risk. This score has 84% sensitivity and 45% specificity for predicting incident HIV infection in the next 6 months. Strongly consider pre-exposure prophylaxis (PrEP) and intensive HIV prevention interventions. Discuss risk reduction strategies and increase HIV testing frequency."
+      }
+    ]
+  },
+  "references": [
+    "Smith DK, Pals SL, Herbst JH, Shinde S, Carey JW. Development of a clinical screening index predictive of incident HIV infection among men who have sex with men in the United States. J Acquir Immune Defic Syndr. 2012 Aug 1;60(4):421-7.",
+    "Wilton J, Noor SW, Schnubb A, Lawless J, Hart TA, Grennan T, et al. High HIV risk and syndemic burden regardless of referral source among MSM screening for a PrEP demonstration project in Toronto, Canada. BMC Public Health. 2018 Mar 2;18(1):292.",
+    "Jones J, Hoenigl M, Siegler AJ, Sullivan PS, Little S, Rosenberg E. Assessing the Performance of 3 Human Immunodeficiency Virus Incidence Risk Scores in a Cohort of Black and White Men Who Have Sex With Men in the South. Sex Transm Dis. 2017 May;44(5):297-302."
+  ],
+  "formula": "Sum of points from 7 risk factors: age category + number of partners + receptive anal sex + HIV-positive partners + insertive anal sex with HIV-positive + methamphetamine use + poppers use",
+  "notes": [
+    "All behaviors assessed over the last 6 months",
+    "Designed for MSM aged 18 years and older",
+    "Score ranges from 0 to 47 points",
+    "Cutoff of ≥10 recommended for PrEP consideration",
+    "Performance may vary by population and geographic region",
+    "Should be used alongside clinical judgment and local HIV epidemiology"
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "id": "dlbcl_ipi",
+  "title": "International Prognostic Index for Diffuse Large B-cell Lymphoma (IPI and R-IPI)",
+  "description": "Predicts overall and progression-free survival in diffuse large B-cell lymphoma (DLBCL) based on five independent risk factors. The original IPI (International Prognostic Index) was developed in the pre-rituximab era and identifies four risk groups based on age, performance status, disease stage, LDH level, and extranodal involvement. The R-IPI (Revised IPI) was developed for the rituximab era to better discriminate outcomes in patients receiving R-CHOP therapy, redistributing patients into three prognostic groups with improved clinical utility. Both indices provide valuable prognostic information for treatment planning, clinical trial stratification, and patient counseling in DLBCL management.",
+  "category": "hematology",
+  "version": "2007",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "string",
+      "required": true,
+      "description": "Patient age at diagnosis",
+      "options": ["60_or_younger", "older_than_60"],
+      "validation": {
+        "enum": ["60_or_younger", "older_than_60"]
+      },
+      "unit": "years"
+    },
+    {
+      "name": "ldh_level",
+      "type": "string",
+      "required": true,
+      "description": "Serum lactate dehydrogenase (LDH) level relative to upper limit of normal",
+      "options": ["normal", "elevated"],
+      "validation": {
+        "enum": ["normal", "elevated"]
+      },
+      "unit": null
+    },
+    {
+      "name": "ann_arbor_stage",
+      "type": "string",
+      "required": true,
+      "description": "Ann Arbor staging for lymphoma extent",
+      "options": ["stage_i_ii", "stage_iii_iv"],
+      "validation": {
+        "enum": ["stage_i_ii", "stage_iii_iv"]
+      },
+      "unit": null
+    },
+    {
+      "name": "ecog_performance_status",
+      "type": "string",
+      "required": true,
+      "description": "Eastern Cooperative Oncology Group (ECOG) performance status",
+      "options": ["0_1", "2_or_higher"],
+      "validation": {
+        "enum": ["0_1", "2_or_higher"]
+      },
+      "unit": null
+    },
+    {
+      "name": "extranodal_sites",
+      "type": "string",
+      "required": true,
+      "description": "Number of extranodal disease sites",
+      "options": ["0_1_sites", "more_than_1"],
+      "validation": {
+        "enum": ["0_1_sites", "more_than_1"]
+      },
+      "unit": "sites"
+    }
+  ],
+  "result": {
+    "name": "dlbcl_ipi_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "IPI score (range 0-5 points) with both IPI and R-IPI risk stratification"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Low Risk (IPI) / Very Good (R-IPI)",
+        "description": "Score 0-1 points",
+        "interpretation": "Excellent prognosis. IPI Low Risk: 5-year OS ~73%. R-IPI Very Good: 4-year PFS 94%, OS 94%. Standard R-CHOP therapy appropriate. These patients have the best outcomes with conventional treatment and may be candidates for less intensive approaches in clinical trials."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Low-Intermediate Risk (IPI) / Good (R-IPI)",
+        "description": "Score 2 points",
+        "interpretation": "Good prognosis. IPI Low-Intermediate Risk: 5-year OS ~51%. R-IPI Good: Intermediate survival outcomes. Standard R-CHOP therapy recommended. Consider standard treatment approaches with close monitoring for response assessment."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "High-Intermediate Risk (IPI) / Poor (R-IPI)",
+        "description": "Score 3 points",
+        "interpretation": "Intermediate prognosis. IPI High-Intermediate Risk: 5-year OS ~43%. R-IPI Poor: Lower survival expectations. Consider intensified treatment approaches, clinical trial enrollment, or novel therapeutic strategies. Close monitoring and aggressive supportive care recommended."
+      },
+      {
+        "min": 4,
+        "max": 5,
+        "stage": "High Risk (IPI) / Poor (R-IPI)",
+        "description": "Score 4-5 points",
+        "interpretation": "Poor prognosis. IPI High Risk: 5-year OS ~26%. R-IPI Poor: Lowest survival expectations. Strong consideration for clinical trials, intensified regimens, or novel therapies. Consider CNS prophylaxis. Aggressive supportive care and close monitoring essential. May benefit from consolidative therapies."
+      }
+    ]
+  },
+  "references": [
+    "A predictive model for aggressive non-Hodgkin's lymphoma. The International Non-Hodgkin's Lymphoma Prognostic Factors Project. N Engl J Med. 1993 Sep 30;329(14):987-94. doi: 10.1056/NEJM199309303291402.",
+    "The revised International Prognostic Index (R-IPI) is a better predictor of outcome than the standard IPI for patients with diffuse large B-cell lymphoma treated with R-CHOP. Blood. 2007 Mar 1;109(5):1857-61. doi: 10.1182/blood-2006-08-038257.",
+    "International prognostic indices in diffuse large B-cell lymphoma: a comparison of IPI, R-IPI, and NCCN-IPI. Blood. 2020 Jun 11;135(23):2041-2048. doi: 10.1182/blood.2019002729."
+  ],
+  "formula": "IPI Score = Age >60 (1) + LDH elevated (1) + Ann Arbor III/IV (1) + ECOG ≥2 (1) + >1 extranodal site (1). R-IPI redistributes into 3 groups: Very Good (0-1), Good (2), Poor (3-5)",
+  "notes": [
+    "The IPI was originally developed in 1993 before the rituximab era using data from 2031DLBCL patients",
+    "Five independent risk factors: Age >60 years, LDH above ULN, Ann Arbor stage III/IV, ECOG ≥2, >1 extranodal site",
+    "Each risk factor contributes 1 point to the total score (range 0-5)",
+    "Original IPI identifies 4 risk groups: Low (0-1), Low-Int (2), High-Int (3), High (4-5)",
+    "R-IPI was developed in 2007 for patients receiving rituximab-based therapy (R-CHOP)",
+    "R-IPI redistributes patients into 3 groups with better discrimination in rituximab era",
+    "R-IPI Very Good (0-1 points): 4-year PFS 94%, OS 94%",
+    "R-IPI Good (2 points): Intermediate outcomes between very good and poor groups",
+    "R-IPI Poor (3-5 points): Lowest survival rates, requires aggressive management",
+    "LDH elevation reflects tumor burden and proliferative activity",
+    "ECOG performance status: 0=fully active, 1=restricted strenuous activity, 2=ambulatory >50% time",
+    "Ann Arbor staging: I/II=limited disease, III/IV=advanced disease",
+    "Extranodal sites include CNS, bone marrow, liver, lungs, GI tract, bone, kidney",
+    "The IPI remains useful for treatment planning and clinical trial stratification",
+    "R-IPI provides better prognostic discrimination in the rituximab era",
+    "NCCN-IPI may have superior discrimination but uses more complex age stratification",
+    "Both indices are validated across multiple international cohorts",
+    "Use for risk stratification, treatment intensity selection, and patient counseling",
+    "High-risk patients should be considered for clinical trials and intensified therapy",
+    "CNS prophylaxis may be considered for high-risk patients with specific features",
+    "Regular reassessment during treatment to monitor response and adjust therapy"
+  ]
+}

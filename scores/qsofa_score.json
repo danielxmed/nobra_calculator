@@ -1,0 +1,86 @@
+{
+  "id": "qsofa_score",
+  "title": "qSOFA (Quick SOFA) Score for Sepsis",
+  "description": "Identifies high-risk patients for in-hospital mortality with suspected infection outside the ICU. This simplified bedside assessment tool helps rapidly identify patients at greater risk for poor outcomes and guides clinical decision-making in sepsis management.",
+  "category": "emergency",
+  "version": "2016",
+  "parameters": [
+    {
+      "name": "respiratory_rate_22_or_higher",
+      "type": "string",
+      "required": true,
+      "description": "Respiratory rate 22 breaths per minute or higher",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "altered_mental_status",
+      "type": "string",
+      "required": true,
+      "description": "Altered mental status (Glasgow Coma Scale less than 15)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "systolic_bp_100_or_lower",
+      "type": "string",
+      "required": true,
+      "description": "Systolic blood pressure 100 mmHg or lower",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "qsofa_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "qSOFA score determining sepsis mortality risk outside the ICU"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "Low mortality risk",
+        "interpretation": "qSOFA score <2. Lower risk for poor outcomes. Continue standard infection management and monitoring. Consider full SOFA score if clinical suspicion remains high for sepsis. Monitor for clinical deterioration and reassess if condition changes."
+      },
+      {
+        "min": 2,
+        "max": 3,
+        "stage": "High Risk",
+        "description": "High mortality risk",
+        "interpretation": "qSOFA score ≥2. Significantly increased risk for in-hospital mortality (3- to 14-fold increase). Suggests sepsis and requires immediate aggressive management. Consider ICU evaluation, obtain blood cultures, initiate broad-spectrum antibiotics within 1 hour, and implement sepsis bundle protocols."
+      }
+    ]
+  },
+  "references": [
+    "Seymour CW, Liu VX, Iwashyna TJ, Brunkhorst FM, Rea TD, Scherag A, et al. Assessment of Clinical Criteria for Sepsis: For the Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016 Feb 23;315(8):762-74. doi: 10.1001/jama.2016.0288.",
+    "Singer M, Deutschman CS, Seymour CW, Shankar-Hari M, Annane D, Bauer M, et al. The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016 Feb 23;315(8):801-10. doi: 10.1001/jama.2016.0287.",
+    "Freund Y, Lemachatti N, Krastinova E, Van Laer M, Claessens YE, Avondo A, et al. Prognostic Accuracy of Sepsis-3 Criteria for In-Hospital Mortality Among Patients With Suspected Infection Presenting to the Emergency Department. JAMA. 2017 Jan 17;317(3):301-308. doi: 10.1001/jama.2016.20328."
+  ],
+  "formula": "qSOFA Score = 1×(if respiratory rate ≥22/min) + 1×(if altered mental status GCS <15) + 1×(if systolic BP ≤100 mmHg)",
+  "notes": [
+    "Simple 3-variable bedside score requiring no laboratory tests",
+    "Respiratory rate ≥22 breaths/min contributes 1 point",
+    "Altered mental status (GCS <15) contributes 1 point",
+    "Systolic blood pressure ≤100 mmHg contributes 1 point",
+    "Score ranges from 0 to 3 points",
+    "qSOFA ≥2 suggests sepsis with significantly increased mortality risk",
+    "3- to 14-fold increase in in-hospital mortality with qSOFA ≥2",
+    "Mortality predictor, not a diagnostic test for sepsis",
+    "Designed for use outside the ICU setting",
+    "Can be calculated serially with clinical changes",
+    "If qSOFA <2, consider full SOFA score with laboratory results",
+    "Introduced by Sepsis-3 task force in February 2016",
+    "Derived and validated in >148,000 patients with suspected infection",
+    "Triggers immediate sepsis management protocols when ≥2",
+    "Should be used in conjunction with clinical judgment and infection suspicion"
+  ]
+}

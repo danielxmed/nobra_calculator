@@ -1,0 +1,103 @@
+{
+  "id": "mskcc_motzer_score",
+  "title": "Memorial Sloan-Kettering Cancer Center (MSKCC/Motzer) Score for Metastatic Renal Cell Carcinoma (RCC)",
+  "description": "Predicts survival based on clinical and laboratory data in metastatic RCC patients",
+  "category": "oncology",
+  "version": "1999",
+  "parameters": [
+    {
+      "name": "time_to_treatment_less_than_1_year",
+      "type": "string",
+      "required": true,
+      "description": "Time from initial diagnosis to systemic treatment < 1 year",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hemoglobin_low",
+      "type": "string",
+      "required": true,
+      "description": "Hemoglobin < lower limit of normal (Men: <13.5 g/dL, Women: <12.0 g/dL)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "calcium_high",
+      "type": "string",
+      "required": true,
+      "description": "Corrected calcium > 10 mg/dL (>2.5 mmol/L)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "ldh_high",
+      "type": "string",
+      "required": true,
+      "description": "LDH > 1.5x upper limit of normal (Normal ULN: 140 U/L, so >210 U/L)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "performance_status_low",
+      "type": "string",
+      "required": true,
+      "description": "Karnofsky Performance Status < 80%",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "mskcc_score",
+    "type": "integer",
+    "unit": "risk factors",
+    "description": "Number of risk factors present"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Good Risk",
+        "description": "0 risk factors",
+        "interpretation": "Good risk group with median survival of 20 months. These patients have the best prognosis and may be candidates for a variety of treatment approaches including targeted therapy, immunotherapy, or clinical trials."
+      },
+      {
+        "min": 1,
+        "max": 2,
+        "stage": "Intermediate Risk",
+        "description": "1-2 risk factors",
+        "interpretation": "Intermediate risk group with median survival of 10 months. These patients require active treatment with targeted therapy or immunotherapy. Close monitoring is essential."
+      },
+      {
+        "min": 3,
+        "max": 5,
+        "stage": "High Risk",
+        "description": "≥3 risk factors",
+        "interpretation": "High risk group with median survival of 4 months. These patients have poor prognosis and may benefit from aggressive systemic therapy, clinical trial enrollment, or supportive care depending on overall condition."
+      }
+    ]
+  },
+  "references": [
+    "Motzer RJ, Mazumdar M, Bacik J, Berg W, Amsterdam A, Ferrara J. Survival and prognostic stratification of 670 patients with advanced renal cell carcinoma. J Clin Oncol. 1999 Aug;17(8):2530-40. doi: 10.1200/JCO.1999.17.8.2530.",
+    "Motzer RJ, Bacik J, Murphy BA, Russo P, Mazumdar M. Interferon-alfa as a comparative treatment for clinical trials of new therapies against advanced renal cell carcinoma. J Clin Oncol. 2002 Jan 1;20(1):289-96. doi: 10.1200/JCO.2002.20.1.289.",
+    "Motzer RJ, Bacik J, Schwartz LH, Reuter V, Russo P, Marion S, et al. Prognostic factors for survival in previously treated patients with metastatic renal cell carcinoma. J Clin Oncol. 2004 Feb 1;22(3):454-63. doi: 10.1200/JCO.2004.06.132."
+  ],
+  "formula": "Score = Sum of present risk factors (0-5)",
+  "notes": [
+    "Use baseline factors at the start of systemic therapy",
+    "Always correct calcium concentration for low albumin using formula: Corrected Ca = Measured Ca + 0.8 × (4 - Albumin)",
+    "Originally developed for patients treated with interferon-alpha",
+    "The IMDC Risk Model is now preferred for patients receiving targeted therapy",
+    "Karnofsky Performance Status < 80% indicates inability to carry out normal activities"
+  ]
+}

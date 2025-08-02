@@ -1,0 +1,107 @@
+{
+  "id": "hypoglycemia_risk_score",
+  "title": "Hypoglycemia Risk Score",
+  "description": "Predicts 12-month risk of hypoglycemic episodes in Type 2 Diabetes Mellitus (T2DM) patients for population management and targeted interventions",
+  "category": "endocrinology",
+  "version": "2017",
+  "parameters": [
+    {
+      "name": "hypoglycemia_admissions",
+      "type": "string",
+      "required": true,
+      "description": "Number of previous hypoglycemia-related hospital admissions",
+      "validation": {
+        "enum": ["0", "1-2", "3_or_more"]
+      },
+      "options": ["0", "1-2", "3_or_more"]
+    },
+    {
+      "name": "ed_visits_12_months",
+      "type": "string", 
+      "required": true,
+      "description": "Number of emergency department visits in the last 12 months",
+      "validation": {
+        "enum": ["less_than_2", "2_or_more"]
+      },
+      "options": ["less_than_2", "2_or_more"]
+    },
+    {
+      "name": "insulin_use",
+      "type": "string",
+      "required": true,
+      "description": "Current insulin use",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "sulfonylurea_use",
+      "type": "string",
+      "required": true,
+      "description": "Current sulfonylurea use",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "severe_kidney_disease",
+      "type": "string",
+      "required": true,
+      "description": "Severe kidney disease (eGFR ≤29 mL/min/1.73 m²)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "age_77_or_older",
+      "type": "string",
+      "required": true,
+      "description": "Age 77 years or older",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    }
+  ],
+  "result": {
+    "name": "risk_category",
+    "type": "string",
+    "description": "12-month hypoglycemia risk category",
+    "unit": "category"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "category": "Low Risk",
+        "description": "<1% hypoglycemia admission risk",
+        "interpretation": "Low risk of hypoglycemia-related hospitalization. No previous admissions, no high-risk medications (insulin/sulfonylurea), age <77 years, and no severe kidney disease."
+      },
+      {
+        "category": "Intermediate Risk", 
+        "description": "1-5% hypoglycemia admission risk",
+        "interpretation": "Moderate risk of hypoglycemia-related hospitalization. Consider clinical review and targeted interventions based on individual risk factors."
+      },
+      {
+        "category": "High Risk",
+        "description": ">5% hypoglycemia admission risk", 
+        "interpretation": "High risk of hypoglycemia-related hospitalization. Priority for targeted interventions including medication review, continuous glucose monitoring, and specialized care coordination."
+      }
+    ]
+  },
+  "references": [
+    "Karter AJ, Warton EM, Lipska KJ, et al. Development and Validation of a Tool to Identify Patients With Type 2 Diabetes at High Risk of Hypoglycemia-Related Emergency Department or Hospital Use. JAMA Intern Med. 2017;177(10):1461-1470. doi:10.1001/jamainternmed.2017.3844",
+    "Lipska KJ, Warton EM, Huang ES, et al. HbA1c and risk of severe hypoglycemia in type 2 diabetes: the Diabetes and Aging Study. Diabetes Care. 2013;36(11):3535-42. doi: 10.2337/dc13-0610"
+  ],
+  "formula": "Risk stratification based on clinical risk factors: previous hypoglycemia admissions (highest weight), insulin/sulfonylurea use, severe kidney disease (eGFR ≤29), age ≥77 years, and frequent ED visits",
+  "notes": [
+    "Designed for population management rather than individual patient risk assessment",
+    "High-risk patients: ≥3 previous hypoglycemia admissions OR 1-2 previous admissions with insulin use",
+    "Low-risk patients: No previous admissions, no insulin/sulfonylurea, age <77, no severe kidney disease",
+    "All other combinations classify as intermediate risk",
+    "Validated in multiple external cohorts but prospective application studies are needed",
+    "Intended to facilitate targeted interventions: medication simplification, CGM, psychosocial support"
+  ]
+}

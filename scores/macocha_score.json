@@ -1,0 +1,137 @@
+{
+  "id": "macocha_score",
+  "title": "MACOCHA Score",
+  "description": "Predicts difficult intubation in ICU patients",
+  "category": "emergency",
+  "version": "2013",
+  "parameters": [
+    {
+      "name": "mallampati_3_or_4",
+      "type": "string",
+      "required": true,
+      "description": "Mallampati score III or IV",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "obstructive_sleep_apnea",
+      "type": "string",
+      "required": true,
+      "description": "Obstructive sleep apnea syndrome",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "reduced_cervical_mobility",
+      "type": "string",
+      "required": true,
+      "description": "Reduced mobility of cervical spine",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "limited_mouth_opening",
+      "type": "string",
+      "required": true,
+      "description": "Limited mouth opening (<3 cm)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "coma",
+      "type": "string",
+      "required": true,
+      "description": "Coma",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "severe_hypoxemia",
+      "type": "string",
+      "required": true,
+      "description": "Severe hypoxemia (SpO₂ <80%)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "non_anesthesiologist",
+      "type": "string",
+      "required": true,
+      "description": "Non-anesthesiologist operator",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "macocha_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "MACOCHA Score (0-12 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Low Risk",
+        "description": "Low risk for difficult intubation",
+        "interpretation": "Difficult intubation unlikely. Standard intubation preparation and techniques appropriate."
+      },
+      {
+        "min": 3,
+        "max": 5,
+        "stage": "Intermediate Risk",
+        "description": "Intermediate risk for difficult intubation",
+        "interpretation": "Moderate risk for difficult intubation. Consider additional preparation and experienced personnel."
+      },
+      {
+        "min": 6,
+        "max": 12,
+        "stage": "High Risk",
+        "description": "High risk for difficult intubation",
+        "interpretation": "High risk for difficult intubation. Prepare for difficult airway management with additional equipment and experienced personnel."
+      }
+    ]
+  },
+  "references": [
+    "De Jong A, Molinari N, Terzi N, Mongardon N, Arnal JM, Guitton C, et al. Early identification of patients at risk for difficult intubation in the intensive care unit: development and validation of the MACOCHA score in a multicenter cohort study. Am J Respir Crit Care Med. 2013 Apr 15;187(8):832-9. doi: 10.1164/rccm.201210-1851OC.",
+    "De Jong A, Clavieras N, Conseil M, Coisel Y, Moury PH, Pouzeratte Y, et al. Implementation of a combo videolaryngoscope for intubation in critically ill patients: a before-after comparative study. Intensive Care Med. 2013 Dec;39(12):2144-52. doi: 10.1007/s00134-013-3099-1.",
+    "Mosier JM, Whitmore SP, Bloom JW, Bohnert S, Cairns BA, Sakles JC. Video laryngoscopy improves intubation success and reduces esophageal intubations compared to direct laryngoscopy in the medical intensive care unit. Crit Care. 2013 Oct 11;17(5):R237. doi: 10.1186/cc13061."
+  ],
+  "formula": "MACOCHA = Mallampati III/IV (5 pts) + OSA (2 pts) + Reduced cervical mobility (1 pt) + Limited mouth opening (1 pt) + Coma (1 pt) + Severe hypoxemia (1 pt) + Non-anesthesiologist (1 pt)",
+  "notes": [
+    "Developed and validated in ICU settings with over 1,000 intubations from 42 ICUs",
+    "External validation performed in 400 consecutive intubations from 18 ICUs",
+    "Area under the curve (AUC) of 0.89 in development cohort and 0.86 in validation cohort",
+    "Sensitivity 73%, specificity 89%, negative predictive value 98%, positive predictive value 36%",
+    "Difficult intubation strongly associated with moderate and severe life-threatening complications",
+    "Score ranges from 0 (easy) to 12 (very difficult intubation)",
+    "High negative predictive value makes it particularly useful for ruling out difficult intubation",
+    "Should be calculated before intubation to allow preparation of additional equipment and personnel",
+    "Mallampati score assesses tongue size relative to mouth opening (Class I-IV)",
+    "Consider fiberoptic intubation, videolaryngoscopy, or surgical airway for high-risk patients",
+    "Complications include severe hypoxia, cardiovascular collapse, cardiac arrest, and death",
+    "First validated predictive score specifically developed for ICU intubation setting"
+  ]
+}

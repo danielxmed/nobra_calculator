@@ -1,0 +1,129 @@
+{
+  "id": "licurse_score",
+  "title": "Licurse Score for Renal Ultrasound",
+  "description": "Predicts likelihood of hydronephrosis on renal ultrasound (RUS) requiring urological intervention in adult patients with acute kidney injury",
+  "category": "nephrology",
+  "version": "2010",
+  "parameters": [
+    {
+      "name": "history_hydronephrosis",
+      "type": "string",
+      "required": true,
+      "description": "History of hydronephrosis (if yes, automatically assigns to high-risk group)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "race",
+      "type": "string",
+      "required": true,
+      "description": "Patient race (non-black race is associated with higher risk)",
+      "options": ["black", "non_black"],
+      "validation": {
+        "enum": ["black", "non_black"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "recurrent_utis",
+      "type": "string",
+      "required": true,
+      "description": "History of recurrent urinary tract infections",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "obstruction_diagnosis",
+      "type": "string",
+      "required": true,
+      "description": "Diagnosis consistent with possible obstruction (BPH, abdominal/pelvic malignancy, neurogenic bladder, single functioning kidney, pelvic surgery)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "history_chf",
+      "type": "string",
+      "required": true,
+      "description": "History of congestive heart failure",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "prerenal_aki_sepsis",
+      "type": "string",
+      "required": true,
+      "description": "History of sepsis, prerenal AKI, pressors, or hypotension",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "nephrotoxic_exposure",
+      "type": "string",
+      "required": true,
+      "description": "Exposure to nephrotoxic medications",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "licurse_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Licurse Score for risk stratification of hydronephrosis on renal ultrasound"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Low Risk",
+        "description": "Low risk for hydronephrosis",
+        "interpretation": "Low risk group with 4.0% risk of hydronephrosis and 1.1% risk of intervention. Renal ultrasound may be deferred until other diagnostic studies prove unrevealing or inadequate response to conservative measures"
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Medium Risk",
+        "description": "Medium risk for hydronephrosis",
+        "interpretation": "Medium risk group with 6.8% risk of hydronephrosis and 0.5% risk of intervention. Consider clinical context and other factors when deciding on renal ultrasound"
+      },
+      {
+        "min": 4,
+        "max": 7,
+        "stage": "High Risk",
+        "description": "High risk for hydronephrosis",
+        "interpretation": "High risk group with 20.9% risk of hydronephrosis and 4.9% risk of urological intervention. Renal ultrasound is indicated for evaluation of possible obstruction"
+      }
+    ]
+  },
+  "references": [
+    "Licurse A, Dziura J, Spinella PC, et al. Renal ultrasonography in the evaluation of acute kidney injury: developing a risk stratification framework. Archives of Internal Medicine. 2010;170(21):1900-7. doi: 10.1001/archinternmed.2010.362.",
+    "Ip IK, Silveira PC, Alper EC, et al. External validation of risk stratification strategy in the use of renal ultrasonography in the evaluation of acute kidney injury. Journal of Hospital Medicine. 2016;11(5):316-21. doi: 10.1002/jhm.2598."
+  ],
+  "formula": "Score = (Non-black race: 1 pt) + (Recurrent UTIs: 1 pt) + (Obstruction diagnosis: 1 pt) + (No CHF: 1 pt) + (No prerenal AKI/sepsis: 1 pt) + (No nephrotoxic exposure: 1 pt). History of hydronephrosis automatically assigns to high-risk group regardless of score.",
+  "notes": [
+    "Developed from 223 patients at Yale-New Haven Hospital (2005-2009)",
+    "External validation showed 91.3% sensitivity for urologic intervention and 93.4% for hydronephrosis",
+    "Cost-effectiveness: NNS of 32 for hydronephrosis in low-risk group ($6,371 per positive study)",
+    "Should be used in conjunction with clinical judgment and patient presentation",
+    "Score helps reduce unnecessary ultrasounds while maintaining diagnostic accuracy"
+  ]
+}

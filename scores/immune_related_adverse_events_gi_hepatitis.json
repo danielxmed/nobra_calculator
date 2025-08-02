@@ -1,0 +1,142 @@
+{
+  "id": "immune_related_adverse_events_gi_hepatitis",
+  "title": "Immune-Related Adverse Events for GI Toxicity - Hepatitis",
+  "description": "Grades severity of hepatitis secondary to immune checkpoint inhibitor (ICPi) therapy based on Common Terminology Criteria for Adverse Events (CTCAE) Version 5.0 criteria. This standardized grading system evaluates liver function tests including AST, ALT, and total bilirubin levels to determine the severity of immune-mediated hepatitis and guide clinical management decisions including ICPi therapy continuation, corticosteroid treatment, hepatology consultation needs, and monitoring for life-threatening complications. ICPi-induced hepatitis has an incidence of 5-10% in single-agent therapy but severe toxicity occurs in less than 2% of cases. The calculator provides evidence-based management recommendations essential for oncologists, hepatologists, and multidisciplinary teams managing patients on immunotherapy.",
+  "category": "oncology",
+  "version": "CTCAE v5.0",
+  "parameters": [
+    {
+      "name": "ast_level",
+      "type": "float",
+      "required": true,
+      "description": "Aspartate aminotransferase (AST) level in U/L. Key parameter for hepatitis grading. Normal range typically 10-40 U/L depending on laboratory. Used to calculate AST fold increase over upper limit of normal (ULN)",
+      "validation": {
+        "min": 5,
+        "max": 5000
+      },
+      "unit": "U/L"
+    },
+    {
+      "name": "ast_uln",
+      "type": "float",
+      "required": true,
+      "description": "Upper limit of normal (ULN) for AST at your laboratory. Typically 40 U/L but may vary by institution. Required to calculate fold increase over normal values for CTCAE grading",
+      "validation": {
+        "min": 20,
+        "max": 80
+      },
+      "unit": "U/L"
+    },
+    {
+      "name": "alt_level",
+      "type": "float",
+      "required": true,
+      "description": "Alanine aminotransferase (ALT) level in U/L. Key parameter for hepatitis grading. Normal range typically 7-56 U/L depending on laboratory. Used to calculate ALT fold increase over upper limit of normal (ULN)",
+      "validation": {
+        "min": 5,
+        "max": 5000
+      },
+      "unit": "U/L"
+    },
+    {
+      "name": "alt_uln",
+      "type": "float",
+      "required": true,
+      "description": "Upper limit of normal (ULN) for ALT at your laboratory. Typically 40-56 U/L but may vary by institution. Required to calculate fold increase over normal values for CTCAE grading",
+      "validation": {
+        "min": 20,
+        "max": 80
+      },
+      "unit": "U/L"
+    },
+    {
+      "name": "total_bilirubin",
+      "type": "float",
+      "required": true,
+      "description": "Total bilirubin level in mg/dL. Critical parameter for severe hepatitis grading. Normal range typically 0.2-1.2 mg/dL. Elevated levels indicate hepatocellular injury or cholestasis",
+      "validation": {
+        "min": 0.1,
+        "max": 50.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "bilirubin_uln",
+      "type": "float",
+      "required": true,
+      "description": "Upper limit of normal (ULN) for total bilirubin at your laboratory. Typically 1.0-1.2 mg/dL but may vary by institution. Required to calculate fold increase for CTCAE grading",
+      "validation": {
+        "min": 0.8,
+        "max": 2.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "hepatic_decompensation",
+      "type": "string",
+      "required": true,
+      "description": "Presence of signs of hepatic decompensation including ascites, hepatic encephalopathy, coagulopathy, or variceal bleeding. Any decompensation warrants Grade 4 classification regardless of laboratory values",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "grade",
+    "type": "integer",
+    "unit": "grade",
+    "description": "CTCAE grade for immune-related hepatitis (1-4)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Grade 1",
+        "description": "Mild - AST/ALT 1-3× ULN OR total bilirubin 1-1.5× ULN",
+        "interpretation": "Continue ICPi with close monitoring. Repeat liver chemistries 1-2 times weekly. Rule out alternative causes of hepatitis (viral, drug-induced, autoimmune, alcohol). Monitor for progression to higher grades. Consider hepatology consultation if persistent or worsening."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Grade 2",
+        "description": "Moderate - AST/ALT 3-5× ULN OR total bilirubin 1.5-3× ULN",
+        "interpretation": "Hold ICPi until symptoms improve to grade ≤1. Start corticosteroids (methylprednisolone 1 mg/kg/day or equivalent). Obtain hepatology consultation. Rule out infectious and autoimmune causes. Consider liver biopsy if diagnosis unclear. Monitor liver function tests closely. Resume ICPi when grade ≤1 and steroids tapered."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Grade 3",
+        "description": "Severe - AST/ALT 5-20× ULN OR total bilirubin 3-10× ULN",
+        "interpretation": "Permanently discontinue ICPi. Start high-dose corticosteroids (methylprednisolone 2 mg/kg/day or equivalent). Immediate hepatology consultation required. Consider hospitalization for monitoring. Rule out drug-induced liver injury and autoimmune hepatitis. Consider liver biopsy. If no improvement in 3-5 days, add mycophenolate mofetil or other immunosuppressants. Monitor for hepatic decompensation."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Grade 4",
+        "description": "Life-threatening - AST/ALT >20× ULN OR total bilirubin >10× ULN OR hepatic decompensation",
+        "interpretation": "Permanently discontinue ICPi. Immediate hospitalization required. Start high-dose IV corticosteroids (methylprednisolone 2 mg/kg/day). Urgent hepatology and intensive care consultation. Consider liver transplant evaluation if fulminant hepatic failure. Rule out drug-induced liver injury. Monitor coagulation parameters closely. Consider plasmapheresis or other rescue therapies if refractory to steroids."
+      }
+    ]
+  },
+  "references": [
+    "Brahmer JR, Lacchetti C, Schneider BJ, Atkins MB, Brassil KJ, Caterino JM, et al. Management of Immune-Related Adverse Events in Patients Treated With Immune Checkpoint Inhibitor Therapy: American Society of Clinical Oncology Clinical Practice Guideline. J Clin Oncol. 2018 Jun 10;36(17):1714-1768. doi: 10.1200/JCO.2017.77.6385.",
+    "Thompson JA, Schneider BJ, Brahmer J, Andrews S, Armand P, Bhatia S, et al. NCCN Guidelines Insights: Management of Immunotherapy-Related Toxicities, Version 1.2020. J Natl Compr Canc Netw. 2020 Mar 1;18(3):230-241. doi: 10.6004/jnccn.2020.0012.",
+    "Wang DY, Salem JE, Cohen JV, Chandra S, Menzer C, Ye F, et al. Fatal Toxic Effects Associated With Immune Checkpoint Inhibitors: A Systematic Review and Meta-analysis. JAMA Oncol. 2018 Dec 1;4(12):1721-1728. doi: 10.1001/jamaoncol.2018.3923.",
+    "De Martin E, Michot JM, Papoular B, Champiat S, Mateus C, Lambotte O, et al. Characterization of liver injury induced by cancer immunotherapy using immune checkpoint inhibitors. J Hepatol. 2018 Jun;68(6):1181-1190. doi: 10.1016/j.jhep.2018.01.033."
+  ],
+  "formula": "CTCAE grading based on AST/ALT fold increase over ULN and total bilirubin fold increase over ULN: Grade 1: AST/ALT 1-3× ULN OR bilirubin 1-1.5× ULN; Grade 2: AST/ALT 3-5× ULN OR bilirubin 1.5-3× ULN; Grade 3: AST/ALT 5-20× ULN OR bilirubin 3-10× ULN; Grade 4: AST/ALT >20× ULN OR bilirubin >10× ULN OR hepatic decompensation",
+  "notes": [
+    "Hepatic irAEs have an incidence of 5-10% in single-agent ICI therapy with severe toxicity in <2% of cases",
+    "All patients should undergo baseline liver chemistry evaluation before ICI therapy initiation",
+    "Liver chemistries should be repeated before each ICI treatment cycle",
+    "Consider alternative etiologies: viral hepatitis, drug-induced liver injury, autoimmune hepatitis, alcohol",
+    "Hepatitis pattern analysis: R value = (ALT/ULN)/(ALP/ULN) - hepatocellular (R≥5), mixed (2<R<5), cholestatic (R≤2)",
+    "Liver biopsy should be considered when diagnosis is unclear or for refractory cases",
+    "Permanent ICPi discontinuation is recommended for Grade 3-4 hepatitis",
+    "Corticosteroids are first-line treatment for Grade 2-4 hepatitis",
+    "Mycophenolate mofetil may be needed for steroid-refractory cases",
+    "Monitor for hepatic decompensation in severe cases - ascites, encephalopathy, coagulopathy"
+  ]
+}

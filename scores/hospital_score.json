@@ -1,0 +1,128 @@
+{
+  "id": "hospital_score",
+  "title": "HOSPITAL Score for Readmissions",
+  "description": "Predicts potentially avoidable 30-day hospital readmissions in medical patients using seven readily available clinical predictors.",
+  "category": "general",
+  "version": "2013",
+  "parameters": [
+    {
+      "name": "hemoglobin",
+      "type": "string",
+      "required": true,
+      "description": "Hemoglobin level at discharge",
+      "options": ["gte_12", "lt_12"],
+      "validation": {
+        "enum": ["gte_12", "lt_12"]
+      }
+    },
+    {
+      "name": "oncology_discharge",
+      "type": "string",
+      "required": true,
+      "description": "Discharge from an oncology service",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "sodium",
+      "type": "string",
+      "required": true,
+      "description": "Sodium level at discharge",
+      "options": ["gte_135", "lt_135"],
+      "validation": {
+        "enum": ["gte_135", "lt_135"]
+      }
+    },
+    {
+      "name": "procedure",
+      "type": "string",
+      "required": true,
+      "description": "ICD-9 coded procedure during hospital stay",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "admission_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of admission",
+      "options": ["elective", "urgent_emergent"],
+      "validation": {
+        "enum": ["elective", "urgent_emergent"]
+      }
+    },
+    {
+      "name": "previous_admissions",
+      "type": "string",
+      "required": true,
+      "description": "Number of hospital admissions in the previous year",
+      "options": ["0_to_1", "2_to_5", "over_5"],
+      "validation": {
+        "enum": ["0_to_1", "2_to_5", "over_5"]
+      }
+    },
+    {
+      "name": "length_of_stay",
+      "type": "string",
+      "required": true,
+      "description": "Length of stay for current admission",
+      "options": ["lt_5_days", "gte_5_days"],
+      "validation": {
+        "enum": ["lt_5_days", "gte_5_days"]
+      }
+    }
+  ],
+  "result": {
+    "name": "hospital_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "HOSPITAL score indicating risk of potentially avoidable readmission"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 4,
+        "stage": "Low Risk",
+        "description": "Score 0-4",
+        "interpretation": "Low risk of potentially avoidable 30-day readmission (5.8%). Standard discharge planning and follow-up may be sufficient."
+      },
+      {
+        "min": 5,
+        "max": 6,
+        "stage": "Intermediate Risk",
+        "description": "Score 5-6",
+        "interpretation": "Intermediate risk of potentially avoidable 30-day readmission (12.0%). Consider enhanced discharge planning and closer outpatient follow-up."
+      },
+      {
+        "min": 7,
+        "max": 13,
+        "stage": "High Risk",
+        "description": "Score ≥7",
+        "interpretation": "High risk of potentially avoidable 30-day readmission (22.8%). Intensive transitional care interventions recommended, including early follow-up, medication reconciliation, and care coordination."
+      }
+    ]
+  },
+  "references": [
+    "Donzé J, Aujesky D, Williams D, Schnipper JL. Potentially avoidable 30-day hospital readmissions in medical patients: derivation and validation of a prediction model. JAMA Intern Med. 2013 Apr 22;173(8):632-8.",
+    "Donzé JD, Williams MV, Robinson EJ, Zimlichman E, Aujesky D, Vasilevskis EE, et al. International Validity of the HOSPITAL Score to Predict 30-Day Potentially Avoidable Hospital Readmissions. JAMA Intern Med. 2016 Apr;176(4):496-502."
+  ],
+  "formula": "HOSPITAL Score = Hemoglobin points + Oncology points + Sodium points + Procedure points + Index admission type points + Admissions points + Length of stay points",
+  "notes": [
+    "HOSPITAL is an acronym for the included variables",
+    "Specifically designed to predict potentially avoidable readmissions, not all readmissions",
+    "Does not account for social determinants of health that may impact readmission risk",
+    "Hemoglobin <12 g/dL scores 1 point",
+    "Oncology service discharge scores 2 points",
+    "Sodium <135 mEq/L scores 1 point",
+    "ICD-9 coded procedure scores 1 point",
+    "Urgent/emergent admission scores 1 point",
+    "2-5 previous admissions scores 2 points, >5 scores 5 points",
+    "Length of stay ≥5 days scores 2 points",
+    "Validated internationally across multiple healthcare systems"
+  ]
+}

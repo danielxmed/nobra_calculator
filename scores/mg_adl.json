@@ -1,0 +1,215 @@
+{
+  "id": "mg_adl",
+  "title": "Myasthenia Gravis Activities of Daily Living (MG-ADL) Scale",
+  "description": "Assesses disease severity and functional status in patients with myasthenia gravis by evaluating 8 activities of daily living commonly affected by MG symptoms. This patient-reported scale measures symptom impact on bulbar, respiratory, gross motor, and ocular functions.",
+  "category": "neurology",
+  "version": "1999",
+  "parameters": [
+    {
+      "name": "talking",
+      "type": "integer",
+      "required": true,
+      "description": "Difficulty with speech due to muscle weakness affecting vocal cords and mouth muscles",
+      "options": [0, 1, 2, 3],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "scoring": {
+        "0": "Normal speech",
+        "1": "Intermittent slurring or nasal speech",
+        "2": "Constant slurring or nasal speech, but can be understood",
+        "3": "Difficult to understand speech"
+      }
+    },
+    {
+      "name": "chewing",
+      "type": "integer",
+      "required": true,
+      "description": "Difficulty with chewing due to weakness of masticatory muscles",
+      "options": [0, 1, 2, 3],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "scoring": {
+        "0": "Normal chewing",
+        "1": "Fatigue with solid food",
+        "2": "Fatigue with soft food",
+        "3": "Gastric tube required"
+      }
+    },
+    {
+      "name": "swallowing",
+      "type": "integer",
+      "required": true,
+      "description": "Difficulty with swallowing due to weakness of pharyngeal and esophageal muscles",
+      "options": [0, 1, 2, 3],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "scoring": {
+        "0": "Normal swallowing",
+        "1": "Rare episode of choking",
+        "2": "Frequent choking necessitating changes in diet",
+        "3": "Gastric tube required"
+      }
+    },
+    {
+      "name": "breathing",
+      "type": "integer",
+      "required": true,
+      "description": "Respiratory muscle weakness affecting breathing function",
+      "options": [0, 1, 2, 3],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "scoring": {
+        "0": "Normal breathing",
+        "1": "Shortness of breath with exertion",
+        "2": "Shortness of breath at rest",
+        "3": "Ventilator dependency"
+      }
+    },
+    {
+      "name": "brushing_teeth_combing_hair",
+      "type": "integer",
+      "required": true,
+      "description": "Difficulty with arm elevation and sustained muscle activity for personal care",
+      "options": [0, 1, 2, 3],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "scoring": {
+        "0": "Normal function",
+        "1": "Fatigue after prolonged activity",
+        "2": "Fatigue after brief activity",
+        "3": "Cannot perform activity"
+      }
+    },
+    {
+      "name": "rising_from_chair",
+      "type": "integer",
+      "required": true,
+      "description": "Difficulty rising from seated position due to proximal leg muscle weakness",
+      "options": [0, 1, 2, 3],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "scoring": {
+        "0": "Normal function",
+        "1": "Mild difficulty",
+        "2": "Moderate difficulty requiring assistance",
+        "3": "Severe difficulty, cannot rise without help"
+      }
+    },
+    {
+      "name": "eyelid_droop",
+      "type": "integer",
+      "required": true,
+      "description": "Ptosis - drooping of upper eyelids due to weakness of levator palpebrae muscles",
+      "options": [0, 1, 2, 3],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "scoring": {
+        "0": "No ptosis",
+        "1": "Mild ptosis not affecting vision",
+        "2": "Moderate ptosis slightly affecting vision",
+        "3": "Severe ptosis completely affecting vision"
+      }
+    },
+    {
+      "name": "double_vision",
+      "type": "integer",
+      "required": true,
+      "description": "Diplopia - double vision due to weakness of extraocular muscles",
+      "options": [0, 1, 2, 3],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "scoring": {
+        "0": "No double vision",
+        "1": "Occasional double vision",
+        "2": "Double vision relieved by patching one eye",
+        "3": "Constant double vision"
+      }
+    }
+  ],
+  "result": {
+    "name": "mg_adl_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total MG-ADL score ranging from 0-24 points with corresponding severity assessment"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Minimal",
+        "description": "Minimal functional impairment",
+        "interpretation": "Minimal functional impairment from myasthenia gravis. Normal or near-normal daily activities with little to no impact on quality of life."
+      },
+      {
+        "min": 3,
+        "max": 6,
+        "stage": "Mild",
+        "description": "Mild functional impairment",
+        "interpretation": "Mild functional impairment with some limitation in daily activities. May require minor adjustments but generally maintains independence."
+      },
+      {
+        "min": 7,
+        "max": 12,
+        "stage": "Moderate",
+        "description": "Moderate functional impairment",
+        "interpretation": "Moderate functional impairment with noticeable limitations in daily activities. May require assistance for some tasks and therapeutic intervention."
+      },
+      {
+        "min": 13,
+        "max": 18,
+        "stage": "Severe",
+        "description": "Severe functional impairment",
+        "interpretation": "Severe functional impairment with significant limitations requiring assistance for many daily activities. Active treatment optimization needed."
+      },
+      {
+        "min": 19,
+        "max": 24,
+        "stage": "Very Severe",
+        "description": "Very severe functional impairment",
+        "interpretation": "Very severe functional impairment with dependency for most daily activities. May require intensive care, respiratory support, or nutritional assistance."
+      }
+    ]
+  },
+  "references": [
+    "Wolfe GI, Herbelin L, Nations SP, Foster B, Bryan WW, Barohn RJ. Myasthenia gravis activities of daily living profile. Neurology. 1999;52(7):1487-9. doi: 10.1212/wnl.52.7.1487.",
+    "Muppidi S, Wolfe GI, Conaway M, Burns TM; MG Composite and MG-QOL15 Study Group. MG-ADL: still a relevant outcome measure. Muscle Nerve. 2011;44(5):727-31. doi: 10.1002/mus.22140.",
+    "Burns TM, Conaway M, Sanders DB; MG Composite and MG-QOL15 Study Group. The MG Composite: A valid and reliable outcome measure for myasthenia gravis. Neurology. 2010;74(18):1434-40. doi: 10.1212/WNL.0b013e3181dc1b1e."
+  ],
+  "formula": "MG-ADL Total Score = Talking + Chewing + Swallowing + Breathing + Brushing teeth/combing hair + Rising from chair + Eyelid droop + Double vision (each item scored 0-3)",
+  "notes": [
+    "The MG-ADL scale is an 8-item patient-reported outcome measure specifically designed for myasthenia gravis",
+    "Each item is scored from 0 (normal) to 3 (most severe), giving a total possible score of 0-24",
+    "A 2-point reduction in total score represents clinically meaningful improvement",
+    "The scale evaluates bulbar functions (talking, chewing, swallowing), respiratory function, gross motor function, and ocular symptoms",
+    "Administered based on patient recall of symptoms during the prior week",
+    "Easy to use, requires no special training, and can be completed in under 10 minutes",
+    "Correlates well with other MG severity measures including QMG score and MG Composite",
+    "Widely used in clinical trials and routine clinical practice for monitoring disease severity and treatment response",
+    "Each individual item score may be clinically significant even when total score appears low"
+  ]
+}

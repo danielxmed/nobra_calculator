@@ -1,0 +1,255 @@
+{
+  "id": "urticaria_activity_score",
+  "title": "Urticaria Activity Score (UAS)",
+  "description": "Stratifies severity of urticaria through diary-based assessment of wheals and itch intensity. The UAS7 score (weekly score) is calculated by summing daily scores over 7 consecutive days, providing a standardized measure for chronic spontaneous urticaria activity monitoring and treatment response assessment.",
+  "category": "dermatology",
+  "version": "2014",
+  "parameters": [
+    {
+      "name": "day1_wheals",
+      "type": "integer",
+      "required": true,
+      "description": "Day 1 - Number of wheals (hives) in past 24 hours",
+      "options": ["0", "1", "2", "3"],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "day1_itch",
+      "type": "integer",
+      "required": true,
+      "description": "Day 1 - Itch intensity in past 24 hours",
+      "options": ["0", "1", "2", "3"],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "day2_wheals",
+      "type": "integer",
+      "required": true,
+      "description": "Day 2 - Number of wheals (hives) in past 24 hours",
+      "options": ["0", "1", "2", "3"],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "day2_itch",
+      "type": "integer",
+      "required": true,
+      "description": "Day 2 - Itch intensity in past 24 hours",
+      "options": ["0", "1", "2", "3"],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "day3_wheals",
+      "type": "integer",
+      "required": true,
+      "description": "Day 3 - Number of wheals (hives) in past 24 hours",
+      "options": ["0", "1", "2", "3"],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "day3_itch",
+      "type": "integer",
+      "required": true,
+      "description": "Day 3 - Itch intensity in past 24 hours",
+      "options": ["0", "1", "2", "3"],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "day4_wheals",
+      "type": "integer",
+      "required": true,
+      "description": "Day 4 - Number of wheals (hives) in past 24 hours",
+      "options": ["0", "1", "2", "3"],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "day4_itch",
+      "type": "integer",
+      "required": true,
+      "description": "Day 4 - Itch intensity in past 24 hours",
+      "options": ["0", "1", "2", "3"],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "day5_wheals",
+      "type": "integer",
+      "required": true,
+      "description": "Day 5 - Number of wheals (hives) in past 24 hours",
+      "options": ["0", "1", "2", "3"],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "day5_itch",
+      "type": "integer",
+      "required": true,
+      "description": "Day 5 - Itch intensity in past 24 hours",
+      "options": ["0", "1", "2", "3"],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "day6_wheals",
+      "type": "integer",
+      "required": true,
+      "description": "Day 6 - Number of wheals (hives) in past 24 hours",
+      "options": ["0", "1", "2", "3"],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "day6_itch",
+      "type": "integer",
+      "required": true,
+      "description": "Day 6 - Itch intensity in past 24 hours",
+      "options": ["0", "1", "2", "3"],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "day7_wheals",
+      "type": "integer",
+      "required": true,
+      "description": "Day 7 - Number of wheals (hives) in past 24 hours",
+      "options": ["0", "1", "2", "3"],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "day7_itch",
+      "type": "integer",
+      "required": true,
+      "description": "Day 7 - Itch intensity in past 24 hours",
+      "options": ["0", "1", "2", "3"],
+      "validation": {
+        "min": 0,
+        "max": 3,
+        "enum": [0, 1, 2, 3]
+      },
+      "unit": "points"
+    }
+  ],
+  "result": {
+    "name": "uas7_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total UAS7 score (sum of daily scores over 7 days)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Urticaria-free",
+        "description": "No urticaria activity",
+        "interpretation": "No wheals or itch reported over the 7-day period. This indicates complete disease control or absence of urticaria activity. Continue current management approach."
+      },
+      {
+        "min": 1,
+        "max": 6,
+        "stage": "Well-controlled",
+        "description": "Very mild urticaria activity",
+        "interpretation": "Minimal urticaria activity with very mild symptoms. Disease is well-controlled with current therapy. Consider maintaining current treatment regimen."
+      },
+      {
+        "min": 7,
+        "max": 15,
+        "stage": "Mild",
+        "description": "Mild urticaria activity",
+        "interpretation": "Mild urticaria activity that may require monitoring and potential adjustment of therapy. A UAS7 score <7 generally indicates adequate disease control, so scores in this range suggest mild but noticeable disease activity."
+      },
+      {
+        "min": 16,
+        "max": 27,
+        "stage": "Moderate",
+        "description": "Moderate urticaria activity",
+        "interpretation": "Moderate urticaria activity that likely impacts quality of life and daily activities. Consider intensifying treatment or adding therapies. Regular monitoring and reassessment of therapeutic approach recommended."
+      },
+      {
+        "min": 28,
+        "max": 42,
+        "stage": "Severe",
+        "description": "Severe urticaria activity",
+        "interpretation": "Severe urticaria activity with significant impact on quality of life, daily activities, and sleep. UAS7 scores >28 indicate severe disease requiring aggressive treatment optimization, possible specialist referral, and consideration of advanced therapies."
+      }
+    ]
+  },
+  "references": [
+    "Młynek A, Zalewska-Janowska A, Martus P, et al. How to assess disease activity in patients with chronic urticaria? Allergy. 2008;63(6):777-780.",
+    "Hawro T, Ohanyan T, Schoepke N, et al. The Urticaria Activity Score--Validity, Reliability, and Responsiveness. J Allergy Clin Immunol Pract. 2018;6(4):1185-1190.e1.",
+    "Zuberbier T, Aberer W, Asero R, et al. The EAACI/GA²LEN/EDF/WAO Guideline for the definition, classification, diagnosis, and management of urticaria: the 2014 revision. Allergy. 2014;69(7):868-887."
+  ],
+  "formula": "UAS7 = Σ(daily wheals score + daily itch score) over 7 consecutive days",
+  "notes": [
+    "Wheals scoring: 0=None, 1=Mild (<20 wheals/24h), 2=Moderate (20-50 wheals/24h), 3=Intense (>50 wheals/24h or large confluent areas)",
+    "Itch scoring: 0=None, 1=Mild (present but not annoying), 2=Moderate (troublesome but doesn't interfere with daily activity), 3=Intense (severe, interferes with daily activity or sleep)",
+    "Daily UAS = wheals score + itch score (range 0-6 per day)",
+    "UAS7 = sum of daily UAS scores over 7 consecutive days (range 0-42)",
+    "A cutoff of UAS7 ≥11 has shown sensitivity of 74% and specificity of 86% for identifying active disease",
+    "UAS7 <7 generally indicates adequate disease control",
+    "UAS7 >28 indicates severe disease activity requiring intensive management",
+    "The UAS is recommended by international guidelines for monitoring chronic spontaneous urticaria",
+    "Daily assessments should be completed at the same time each day, preferably in the evening",
+    "The UAS7 is the primary endpoint in many clinical trials for chronic urticaria treatments",
+    "Consider using UAS for treatment response assessment and therapy optimization decisions"
+  ]
+}

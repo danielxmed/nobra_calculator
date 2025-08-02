@@ -1,0 +1,131 @@
+{
+  "id": "rose_rule",
+  "title": "ROSE (Risk Stratification of Syncope in the Emergency Department) Rule",
+  "description": "Predicts 1-month serious outcome or death in patients presenting with syncope to the emergency department. The ROSE rule identifies high-risk patients who require admission and further workup versus those who can be safely discharged. This validated clinical decision tool uses 7 readily available clinical variables to stratify syncope patients and reduce unnecessary admissions while identifying those at risk for serious cardiovascular outcomes.",
+  "category": "emergency",
+  "version": "2010",
+  "parameters": [
+    {
+      "name": "bnp_level",
+      "type": "string",
+      "required": true,
+      "description": "B-type natriuretic peptide (BNP) level ≥300 pg/ml",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - BNP ≥300 pg/ml indicating elevated cardiac stress", "no - BNP <300 pg/ml or not available"]
+    },
+    {
+      "name": "bradycardia",
+      "type": "string",
+      "required": true,
+      "description": "Bradycardia ≤50 bpm in ED or pre-hospital",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Heart rate ≤50 bpm documented in ED or by EMS", "no - Heart rate >50 bpm"]
+    },
+    {
+      "name": "fecal_occult_blood",
+      "type": "string",
+      "required": true,
+      "description": "Rectal examination showing fecal occult blood (if suspecting GI bleed)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Positive fecal occult blood test on rectal examination", "no - Negative fecal occult blood test or not performed"]
+    },
+    {
+      "name": "anemia",
+      "type": "string",
+      "required": true,
+      "description": "Anemia with hemoglobin ≤90 g/l (≤9.0 g/dl)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Hemoglobin ≤90 g/l (≤9.0 g/dl)", "no - Hemoglobin >90 g/l (>9.0 g/dl)"]
+    },
+    {
+      "name": "chest_pain",
+      "type": "string",
+      "required": true,
+      "description": "Chest pain associated with syncope",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Chest pain present with or around time of syncope", "no - No chest pain associated with syncope"]
+    },
+    {
+      "name": "q_wave_ecg",
+      "type": "string",
+      "required": true,
+      "description": "ECG showing Q wave (not in lead III)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Pathologic Q wave present on ECG (excluding lead III)", "no - No pathologic Q waves on ECG"]
+    },
+    {
+      "name": "oxygen_saturation",
+      "type": "string",
+      "required": true,
+      "description": "Oxygen saturation ≤94% on room air",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Oxygen saturation ≤94% on room air", "no - Oxygen saturation >94% on room air"]
+    }
+  ],
+  "result": {
+    "name": "rose_risk_assessment",
+    "type": "string",
+    "unit": "risk level",
+    "description": "ROSE rule risk stratification result for 1-month serious outcome or death"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "No ROSE criteria present",
+        "interpretation": "Low risk for 1-month serious outcome or death. Patient may be considered for discharge with appropriate follow-up. The ROSE rule has a negative predictive value of 98.5% when no criteria are present. Consider outpatient cardiology follow-up, primary care follow-up within 24-48 hours, and patient education about return precautions. Ensure no other clinical concerns that would warrant admission independent of syncope risk stratification."
+      },
+      {
+        "min": 1,
+        "max": 7,
+        "stage": "High Risk",
+        "description": "One or more ROSE criteria present",
+        "interpretation": "High risk for 1-month serious outcome or death. Strong consideration for hospital admission and further workup is recommended. Patients meeting ROSE criteria have significantly increased risk of cardiovascular events, arrhythmias, or death within 30 days. Appropriate evaluation may include cardiac monitoring, echocardiography, stress testing, electrophysiology consultation, and other investigations based on specific risk factors present. The most predictive single factor is elevated BNP (associated with 36% of serious cardiovascular outcomes and 89% of deaths)."
+      }
+    ]
+  },
+  "references": [
+    "Reed MJ, Newby DE, Coull AJ, Prescott RJ, Jacques KG, Gray AJ. The ROSE (risk stratification of syncope in the emergency department) study. J Am Coll Cardiol. 2010 Feb 23;55(8):713-21. doi: 10.1016/j.jacc.2009.09.049.",
+    "Reed MJ, Mills NL, Weir CJ. Sensitive troponin assay predicts outcome in syncope. Emerg Med J. 2012 Dec;29(12):1001-3. doi: 10.1136/emermed-2011-200456.",
+    "Colivicchi F, Ammirati F, Melina D, Guido V, Imperoli G, Santini M; OESIL (Osservatorio Epidemiologico sulla Sincope nel Lazio) Study Investigators. Development and prospective validation of a risk stratification system for patients with syncope in the emergency department: the OESIL risk score. Eur Heart J. 2003 May;24(9):811-9. doi: 10.1016/s0195-668x(02)00713-0."
+  ],
+  "formula": "ROSE Rule = Presence of ANY of the following: (1) BNP ≥300 pg/ml OR (2) Bradycardia ≤50 bpm OR (3) Positive fecal occult blood OR (4) Hemoglobin ≤90 g/l OR (5) Chest pain with syncope OR (6) Q wave on ECG (not lead III) OR (7) Oxygen saturation ≤94%",
+  "notes": [
+    "ROSE rule predicts 1-month serious outcome or death in syncope patients",
+    "ANY positive criterion indicates high risk requiring admission consideration",
+    "Original validation showed 87.2% sensitivity and 65.5% specificity",
+    "Negative predictive value of 98.5% for serious outcomes",
+    "BNP is the strongest single predictor (OR 7.3)",
+    "Positive fecal occult blood has highest odds ratio (OR 13.2)",
+    "Serious outcomes occurred in 7.1-7.3% of study patients",
+    "Rule requires BNP testing which may not be readily available in all EDs",
+    "Consider in conjunction with clinical judgment and other risk factors",
+    "Validated in emergency department setting for adult patients",
+    "Does not replace clinical assessment for other admission indications",
+    "Chest pain criterion refers to pain associated temporally with syncope",
+    "Q waves in lead III are specifically excluded due to positional artifacts",
+    "Oxygen saturation must be measured on room air for accuracy",
+    "Bradycardia criterion includes pre-hospital documentation by EMS",
+    "Anemia threshold corresponds to WHO definition for severe anemia",
+    "Fecal occult blood testing recommended if GI bleeding suspected",
+    "Rule performance may vary in different healthcare systems and populations",
+    "Follow-up studies have examined troponin as additional predictor",
+    "Consider other syncope risk stratification tools if ROSE unavailable"
+  ]
+}

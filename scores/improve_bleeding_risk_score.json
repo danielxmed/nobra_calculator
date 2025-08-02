@@ -1,0 +1,166 @@
+{
+  "id": "improve_bleeding_risk_score",
+  "title": "IMPROVE Bleeding Risk Score",
+  "description": "Assesses bleeding risk at hospital admission for acutely ill medical patients, particularly when considering anticoagulation therapy. The IMPROVE Bleeding Risk Score was developed from an international observational database of 15,156 patients across 52 hospitals in 12 countries to predict major bleeding and clinically relevant non-major bleeding within 14 days of admission. The cumulative incidence of major and non-major but clinically relevant in-hospital bleeding within 14 days of admission was 3.2%. This validated tool helps clinicians identify patients at high risk for bleeding complications and assess the risk-benefit ratio of pharmacological thromboprophylaxis. Patients with scores ≥7 have significantly greater rates of major bleeding (3.9% vs 1.2%) and should be carefully evaluated before anticoagulation.",
+  "category": "hematology",
+  "version": "2013 Spyropoulos",
+  "parameters": [
+    {
+      "name": "age_category",
+      "type": "string",
+      "required": true,
+      "description": "Patient age category. Age is a significant predictor of bleeding risk, with risk increasing progressively with advanced age due to physiological changes, comorbidities, and polypharmacy",
+      "options": ["under_40", "40_to_84", "85_or_over"],
+      "validation": {
+        "enum": ["under_40", "40_to_84", "85_or_over"]
+      }
+    },
+    {
+      "name": "gender",
+      "type": "string",
+      "required": true,
+      "description": "Patient gender. Male gender is associated with increased bleeding risk in hospitalized patients, possibly due to higher rates of cardiovascular disease and antiplatelet therapy use",
+      "options": ["female", "male"],
+      "validation": {
+        "enum": ["female", "male"]
+      }
+    },
+    {
+      "name": "renal_function",
+      "type": "string",
+      "required": true,
+      "description": "Glomerular filtration rate (GFR) category. Reduced renal function increases bleeding risk through impaired drug clearance, uremic bleeding tendency, and altered platelet function",
+      "options": ["gfr_60_or_above", "gfr_30_to_59", "gfr_under_30"],
+      "validation": {
+        "enum": ["gfr_60_or_above", "gfr_30_to_59", "gfr_under_30"]
+      }
+    },
+    {
+      "name": "current_cancer",
+      "type": "string",
+      "required": true,
+      "description": "Active cancer within 6 months prior to admission. Cancer increases bleeding risk through tumor-related factors, chemotherapy effects, thrombocytopenia, and invasive procedures",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "rheumatic_disease",
+      "type": "string",
+      "required": true,
+      "description": "Presence of rheumatic disease (rheumatoid arthritis, systemic lupus erythematosus, other autoimmune conditions). Associated with increased bleeding risk due to disease-related factors and immunosuppressive medications",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "central_venous_catheter",
+      "type": "string",
+      "required": true,
+      "description": "Presence of central venous catheter. Central lines increase bleeding risk through direct vascular access, procedural complications, and potential for catheter-related bleeding",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "icu_ccu_stay",
+      "type": "string",
+      "required": true,
+      "description": "Current stay in intensive care unit (ICU) or coronary care unit (CCU). Critical care setting indicates severe illness with increased bleeding risk from procedures, medications, and hemodynamic instability",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hepatic_failure",
+      "type": "string",
+      "required": true,
+      "description": "Hepatic failure defined as INR >1.5. Liver dysfunction significantly increases bleeding risk through reduced synthesis of coagulation factors and impaired hemostasis",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "platelet_count_category",
+      "type": "string",
+      "required": true,
+      "description": "Platelet count category. Thrombocytopenia (<50,000/μL) significantly increases bleeding risk through impaired primary hemostasis and platelet plug formation",
+      "options": ["50_or_above", "under_50"],
+      "validation": {
+        "enum": ["50_or_above", "under_50"]
+      }
+    },
+    {
+      "name": "bleeding_in_3_months",
+      "type": "string",
+      "required": true,
+      "description": "History of bleeding in the 3 months prior to admission. Recent bleeding history is a strong predictor of recurrent bleeding events and indicates underlying bleeding tendency",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "active_gastroduodenal_ulcer",
+      "type": "string",
+      "required": true,
+      "description": "Presence of active gastroduodenal ulcer. Active peptic ulcer disease represents the highest bleeding risk factor due to ongoing mucosal erosion and potential for life-threatening hemorrhage",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "score",
+    "type": "float",
+    "unit": "points",
+    "description": "IMPROVE Bleeding Risk Score (range 0-30.5 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 6.9,
+        "stage": "No Increased Risk",
+        "description": "Score <7 points",
+        "interpretation": "No increased bleeding risk identified. Standard anticoagulation protocols may be followed as clinically indicated. Routine monitoring for bleeding complications recommended."
+      },
+      {
+        "min": 7,
+        "max": 30.5,
+        "stage": "Increased Risk",
+        "description": "Score ≥7 points",
+        "interpretation": "Increased bleeding risk identified. Major bleeding rate 3.9% vs 1.2% in low-risk patients. Consider avoiding anticoagulants if possible, using non-pharmacologic thromboprophylaxis interventions, or implementing enhanced monitoring for bleeding events if anticoagulation is necessary. Careful risk-benefit assessment required."
+      }
+    ]
+  },
+  "references": [
+    "Spyropoulos AC, Anderson FA Jr, FitzGerald G, et al. Predictive and associative models to identify hospitalized medical patients at risk for VTE. Chest. 2011 Sep;140(3):706-714. doi: 10.1378/chest.10-1944.",
+    "Hostler DC, Marx ES, Moores LK, et al. Validation of the International Medical Prevention Registry on Venous Thromboembolism bleeding risk model. Chest. 2016 Apr;149(4):1002-1009. doi: 10.1378/chest.15-2082.",
+    "Rosenberg D, Eichorn A, Alarcon M, et al. External validation of the risk assessment model of the International Medical Prevention Registry on Venous Thromboembolism (IMPROVE) for medical patients in a tertiary health system. J Am Heart Assoc. 2014 Nov 4;3(6):e001152. doi: 10.1161/JAHA.114.001152.",
+    "Stuck AK, Spirk D, Schaudt J, Kucher N. Risk assessment models for venous thromboembolism in acutely ill medical patients. A systematic review. Thromb Haemost. 2017 May 3;117(5):801-808. doi: 10.1160/TH16-08-0631."
+  ],
+  "formula": "Score = Age points (0, 1.5, or 3.5) + Male gender (1) + Renal function points (0, 1, or 2.5) + Cancer (2) + Rheumatic disease (2) + Central venous catheter (2) + ICU/CCU (2.5) + Hepatic failure (2.5) + Platelet <50k (4) + Recent bleeding (4) + Active GI ulcer (4.5)",
+  "notes": [
+    "Developed from international IMPROVE database of 15,156 patients across 52 hospitals in 12 countries",
+    "Cumulative incidence of major and non-major but clinically relevant bleeding: 3.2% within 14 days",
+    "Score ≥7 associated with significantly higher bleeding rates: major bleeding 3.9% vs 1.2%",  
+    "High-risk patients (≥7) had 5.6% clinically relevant bleeding vs 0.94% in low-risk",
+    "Designed specifically for acutely ill medical patients considering anticoagulation",
+    "Age categories: <40 years (0 pts), 40-84 years (1.5 pts), ≥85 years (3.5 pts)",
+    "Renal function based on GFR: ≥60 (0 pts), 30-59 (1 pt), <30 mL/min/m² (2.5 pts)",
+    "Platelet count threshold: ≥50,000/μL (0 pts), <50,000/μL (4 pts)",
+    "Active gastroduodenal ulcer carries highest individual risk factor weight (4.5 pts)",
+    "Score validated in multiple external cohorts with consistent discrimination",
+    "Consider non-pharmacologic thromboprophylaxis in high-risk patients",
+    "Enhanced bleeding monitoring recommended for high-risk patients requiring anticoagulation",
+    "May be used in conjunction with VTE risk assessment for comprehensive evaluation",
+    "Score calculated at hospital admission, reassess if clinical status changes"
+  ]
+}

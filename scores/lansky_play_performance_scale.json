@@ -1,0 +1,116 @@
+{
+  "id": "lansky_play_performance_scale",
+  "title": "Lansky Play-Performance Scale for Pediatric Functional Status",
+  "description": "Assesses functional status in pediatric patients (under 16 years) using parent description of child's play activity and daily function, primarily used in pediatric oncology to evaluate treatment response and disease progression",
+  "category": "pediatrics", 
+  "version": "original_1987",
+  "parameters": [
+    {
+      "name": "performance_status",
+      "type": "integer",
+      "required": true,
+      "description": "Child's current functional performance status based on activity level and play capacity",
+      "validation": {
+        "min": 0,
+        "max": 100,
+        "enum": [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+      },
+      "options": [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+      "unit": "points"
+    }
+  ],
+  "result": {
+    "name": "lansky_performance_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Lansky Play-Performance Scale score reflecting pediatric functional status"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Unresponsive",
+        "description": "Completely unresponsive",
+        "interpretation": "Child is unresponsive and requires complete care. This represents the most severe functional impairment with poor prognosis."
+      },
+      {
+        "min": 10,
+        "max": 10,
+        "stage": "Severe Disability",
+        "description": "Does not play; does not get out of bed",
+        "interpretation": "Child has severe functional limitation, is bed-bound, and unable to engage in any play activities. Requires extensive care and support."
+      },
+      {
+        "min": 20,
+        "max": 20,
+        "stage": "Major Disability",
+        "description": "Sleeping often; play entirely limited to very passive activities",
+        "interpretation": "Child spends most time sleeping with very limited passive play only. Represents major functional impairment requiring significant care."
+      },
+      {
+        "min": 30,
+        "max": 30,
+        "stage": "Moderate-Severe Disability",
+        "description": "Bedbound; needing assistance even for quiet play",
+        "interpretation": "Child is confined to bed and requires assistance even for simple, quiet activities. Significant functional limitation present."
+      },
+      {
+        "min": 40,
+        "max": 40,
+        "stage": "Moderate Disability",
+        "description": "Mainly in bed; participates in quiet activities",
+        "interpretation": "Child spends most time in bed but can participate in quiet activities independently. Moderate functional impairment."
+      },
+      {
+        "min": 50,
+        "max": 60,
+        "stage": "Mild-Moderate Disability",
+        "description": "Up and around but with limited activity",
+        "interpretation": "Child can get up and move around but has significant restrictions in play and activity level. Mild to moderate functional impairment."
+      },
+      {
+        "min": 70,
+        "max": 70,
+        "stage": "Mild Disability",
+        "description": "Greater restriction of play and less time spent in play activity",
+        "interpretation": "Child has mild functional limitations with some restrictions in play activities but maintains reasonable function."
+      },
+      {
+        "min": 80,
+        "max": 90,
+        "stage": "Minimal Disability",
+        "description": "Active but with some limitations",
+        "interpretation": "Child is active with only minor restrictions. Near-normal functional status with good quality of life."
+      },
+      {
+        "min": 100,
+        "max": 100,
+        "stage": "Normal Function",
+        "description": "Fully active, normal",
+        "interpretation": "Child has completely normal functional status with no limitations in activity or play. Excellent functional capacity."
+      }
+    ]
+  },
+  "references": [
+    "Lansky SB, List MA, Lansky LL, Ritter-Sterr C, Miller DR. The measurement of performance in childhood cancer patients. Cancer. 1987 Oct 1;60(7):1651-6.",
+    "Lansky LL, Cairns NU, Clark GM, Lowman J, Miller L, Trueworthy R. Childhood leukemia: nonrandomized therapy with adriamycin. Cancer. 1975 Jan;35(1):306-17.",
+    "Steineck A, Bradford MC, Erickson JM, Johnson G, Klages KL, Words B, et al. Toward the development of a play performance scale for children (PPSC). Cancer. 1987 Oct 1;60(7):1651-6.",
+    "Chung OK, Li HC, Chiu SY, Ho KY, Lopez V. The impact of cancer and its treatment on physical activity levels and behavior in Hong Kong Chinese childhood cancer survivors. Cancer Nurs. 2014 May-Jun;37(3):E43-51."
+  ],
+  "formula": "Direct assessment based on clinical observation and parent report of child's functional status and play activity level",
+  "notes": [
+    "Designed for children under 16 years of age",
+    "Primarily used in pediatric oncology settings",
+    "Parent/caregiver input is essential for accurate assessment",
+    "Should be assessed regularly to monitor disease progression and treatment response",
+    "Scores ≥80 generally indicate ability to participate in normal activities",
+    "Scores 50-70 suggest moderate functional impairment requiring support",
+    "Scores <50 indicate severe functional limitation requiring extensive care",
+    "May be used for clinical trial eligibility determination",
+    "Consider combining with other functional assessments for comprehensive evaluation",
+    "Cultural and age-appropriate play activities should be considered",
+    "Assessment should reflect child's typical performance over recent period",
+    "Not intended as sole criterion for major treatment decisions"
+  ]
+}

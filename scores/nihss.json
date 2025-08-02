@@ -1,0 +1,218 @@
+{
+  "id": "nihss",
+  "title": "NIH Stroke Scale/Score (NIHSS)",
+  "description": "Quantifies stroke severity based on weighted evaluation findings. The NIHSS is a 15-item neurological examination stroke scale used to evaluate the effect of acute cerebral infarction on the levels of consciousness, language, neglect, visual-field loss, extraocular movement, motor strength, ataxia, dysarthria, and sensory loss.",
+  "category": "neurology",
+  "version": "2024",
+  "parameters": [
+    {
+      "name": "loc_responsiveness",
+      "type": "integer",
+      "required": true,
+      "description": "1a. Level of consciousness",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "loc_questions",
+      "type": "integer",
+      "required": true,
+      "description": "1b. LOC questions (month and age)",
+      "validation": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    {
+      "name": "loc_commands",
+      "type": "integer",
+      "required": true,
+      "description": "1c. LOC commands (close eyes, make fist)",
+      "validation": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    {
+      "name": "best_gaze",
+      "type": "integer",
+      "required": true,
+      "description": "2. Best gaze (horizontal eye movement)",
+      "validation": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    {
+      "name": "visual_fields",
+      "type": "integer",
+      "required": true,
+      "description": "3. Visual fields",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "facial_palsy",
+      "type": "integer",
+      "required": true,
+      "description": "4. Facial palsy",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "motor_arm_left",
+      "type": "integer",
+      "required": true,
+      "description": "5a. Motor arm - left",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "motor_arm_right",
+      "type": "integer",
+      "required": true,
+      "description": "5b. Motor arm - right",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "motor_leg_left",
+      "type": "integer",
+      "required": true,
+      "description": "6a. Motor leg - left",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "motor_leg_right",
+      "type": "integer",
+      "required": true,
+      "description": "6b. Motor leg - right",
+      "validation": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "name": "limb_ataxia",
+      "type": "integer",
+      "required": true,
+      "description": "7. Limb ataxia",
+      "validation": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    {
+      "name": "sensory",
+      "type": "integer",
+      "required": true,
+      "description": "8. Sensory",
+      "validation": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    {
+      "name": "best_language",
+      "type": "integer",
+      "required": true,
+      "description": "9. Best language (aphasia)",
+      "validation": {
+        "min": 0,
+        "max": 3
+      }
+    },
+    {
+      "name": "dysarthria",
+      "type": "integer",
+      "required": true,
+      "description": "10. Dysarthria",
+      "validation": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    {
+      "name": "extinction_inattention",
+      "type": "integer",
+      "required": true,
+      "description": "11. Extinction and inattention (neglect)",
+      "validation": {
+        "min": 0,
+        "max": 2
+      }
+    }
+  ],
+  "result": {
+    "name": "nihss_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total NIH Stroke Scale score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "No stroke symptoms",
+        "description": "No stroke symptoms",
+        "interpretation": "No stroke symptoms present"
+      },
+      {
+        "min": 1,
+        "max": 4,
+        "stage": "Minor stroke",
+        "description": "Minor stroke",
+        "interpretation": "Minor stroke symptoms that typically do not require urgent treatment but should be monitored closely"
+      },
+      {
+        "min": 5,
+        "max": 15,
+        "stage": "Moderate stroke",
+        "description": "Moderate stroke",
+        "interpretation": "Moderate stroke requiring urgent evaluation and treatment. May be eligible for thrombolytic therapy if within time window"
+      },
+      {
+        "min": 16,
+        "max": 20,
+        "stage": "Moderate to severe stroke",
+        "description": "Moderate to severe stroke",
+        "interpretation": "Moderate to severe stroke requiring immediate intensive treatment and monitoring"
+      },
+      {
+        "min": 21,
+        "max": 42,
+        "stage": "Severe stroke",
+        "description": "Severe stroke",
+        "interpretation": "Severe stroke with significant neurological impairment. Requires immediate intensive care and may have poor prognosis"
+      }
+    ]
+  },
+  "references": [
+    "Brott T, Adams HP Jr, Olinger CP, Marler JR, Barsan WG, Biller J, et al. Measurements of acute cerebral infarction: a clinical examination scale. Stroke. 1989 Jul;20(7):864-70. doi: 10.1161/01.str.20.7.864.",
+    "Lyden P, Brott T, Tilley B, Welch KM, Mascha EJ, Levine S, et al. Improved reliability of the NIH Stroke Scale using video training. NINDS TPA Stroke Study Group. Stroke. 1994 Nov;25(11):2220-6. doi: 10.1161/01.str.25.11.2220.",
+    "National Institute of Neurological Disorders and Stroke. NIH Stroke Scale. Available at: https://www.ninds.nih.gov/health-information/stroke/assess-and-treat/nih-stroke-scale"
+  ],
+  "formula": "NIHSS Score = Sum of all 15 items (1a + 1b + 1c + 2 + 3 + 4 + 5a + 5b + 6a + 6b + 7 + 8 + 9 + 10 + 11)",
+  "notes": [
+    "Proper training in administration of the NIHSS is necessary. NIHSS training is available online for free",
+    "The examiner must not coach or help with the assigned task",
+    "Scores should reflect what the patient does, not what the clinician thinks the patient can do",
+    "Do not go back and change scores",
+    "The scale should be performed in order and scored while administering",
+    "Higher scores indicate greater stroke severity"
+  ]
+}

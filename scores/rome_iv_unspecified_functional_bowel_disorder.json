@@ -1,0 +1,191 @@
+{
+  "id": "rome_iv_unspecified_functional_bowel_disorder",
+  "title": "Rome IV Diagnostic Criteria for Unspecified Functional Bowel Disorder",
+  "description": "Official Rome IV diagnostic criteria for unspecified functional bowel disorder, a catch-all diagnosis for functional bowel symptoms that do not meet specific criteria for IBS, functional constipation, functional diarrhea, or functional abdominal bloating/distension. This diagnosis applies to patients with bowel symptoms not attributable to organic etiology that persist for ≥3 months with onset ≥6 months prior to diagnosis.",
+  "category": "gastroenterology",
+  "version": "Rome IV (2016)",
+  "parameters": [
+    {
+      "name": "bowel_symptoms_duration",
+      "type": "string",
+      "required": true,
+      "description": "Bowel symptoms present for ≥3 months with symptom onset ≥6 months prior to diagnosis",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Patient has bowel symptoms for ≥3 months with onset ≥6 months ago meeting temporal criteria", "no - Patient does not meet the temporal requirements (symptoms <3 months or onset <6 months ago)"]
+    },
+    {
+      "name": "symptoms_not_organic",
+      "type": "string",
+      "required": true,
+      "description": "Bowel symptoms not attributable to an organic etiology",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Symptoms are functional in nature without identifiable organic cause", "no - Organic etiology identified or suspected for bowel symptoms"]
+    },
+    {
+      "name": "exclusion_ibs_criteria",
+      "type": "string",
+      "required": true,
+      "description": "Does not meet Rome IV criteria for Irritable Bowel Syndrome (IBS)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Patient does not meet Rome IV criteria for IBS", "no - Patient meets criteria for IBS"]
+    },
+    {
+      "name": "exclusion_functional_constipation",
+      "type": "string",
+      "required": true,
+      "description": "Does not meet Rome IV criteria for functional constipation",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Patient does not meet Rome IV criteria for functional constipation", "no - Patient meets criteria for functional constipation"]
+    },
+    {
+      "name": "exclusion_functional_diarrhea",
+      "type": "string",
+      "required": true,
+      "description": "Does not meet Rome IV criteria for functional diarrhea",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Patient does not meet Rome IV criteria for functional diarrhea", "no - Patient meets criteria for functional diarrhea"]
+    },
+    {
+      "name": "exclusion_functional_bloating",
+      "type": "string",
+      "required": true,
+      "description": "Does not meet Rome IV criteria for functional abdominal bloating/distension",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Patient does not meet Rome IV criteria for functional abdominal bloating/distension", "no - Patient meets criteria for functional abdominal bloating/distension"]
+    },
+    {
+      "name": "exclusion_gi_bleeding",
+      "type": "string",
+      "required": true,
+      "description": "Exclusion of signs of gastrointestinal bleeding",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - No evidence of gastrointestinal bleeding (melena, hematemesis, hematochezia)", "no - Signs of gastrointestinal bleeding present requiring investigation"]
+    },
+    {
+      "name": "exclusion_iron_deficiency_anemia",
+      "type": "string",
+      "required": true,
+      "description": "Exclusion of unexplained iron deficiency anemia",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - No unexplained iron deficiency anemia present", "no - Unexplained iron deficiency anemia present requiring evaluation"]
+    },
+    {
+      "name": "exclusion_weight_loss",
+      "type": "string",
+      "required": true,
+      "description": "Exclusion of unintentional weight loss",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - No unintentional weight loss (>10% body weight over 6 months)", "no - Unintentional weight loss present requiring evaluation"]
+    },
+    {
+      "name": "exclusion_abdominal_mass_lymphadenopathy",
+      "type": "string",
+      "required": true,
+      "description": "Exclusion of palpable abdominal mass or lymphadenopathy",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - No palpable abdominal mass or lymphadenopathy on examination", "no - Palpable abdominal mass or lymphadenopathy present"]
+    },
+    {
+      "name": "exclusion_family_history_colon_cancer",
+      "type": "string",
+      "required": true,
+      "description": "Exclusion of family history of colon cancer without appropriate screening",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - No family history of colon cancer or appropriate screening completed", "no - Family history of colon cancer present without appropriate screening"]
+    },
+    {
+      "name": "exclusion_age_over_50_without_screening",
+      "type": "string",
+      "required": true,
+      "description": "Exclusion of symptom onset after age 50 without cancer screening",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - Symptoms did not begin after age 50 or appropriate cancer screening completed", "no - Symptoms began after age 50 without appropriate cancer screening"]
+    },
+    {
+      "name": "exclusion_sudden_bowel_habit_change",
+      "type": "string",
+      "required": true,
+      "description": "Exclusion of sudden change in bowel habits",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes - No sudden change in bowel habits", "no - Sudden change in bowel habits present requiring evaluation"]
+    }
+  ],
+  "result": {
+    "name": "rome_iv_unspecified_functional_bowel_disorder_diagnosis",
+    "type": "string",
+    "unit": "diagnosis",
+    "description": "Rome IV diagnostic assessment for unspecified functional bowel disorder based on fulfillment of all required criteria"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Criteria Not Met",
+        "description": "Does not meet Rome IV criteria",
+        "interpretation": "Patient does not fulfill Rome IV diagnostic criteria for unspecified functional bowel disorder. Either temporal criteria are not met, organic etiology is suspected, or patient meets criteria for a more specific functional bowel disorder (IBS, functional constipation, functional diarrhea, or functional abdominal bloating/distension). Consider appropriate evaluation based on specific criteria not met. If alarm symptoms are present, further investigation including imaging, endoscopy, and laboratory studies may be indicated."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Criteria Met",
+        "description": "Meets Rome IV criteria",
+        "interpretation": "Patient fulfills Rome IV diagnostic criteria for unspecified functional bowel disorder. This diagnosis applies to bowel symptoms not attributable to organic etiology that do not meet criteria for IBS, functional constipation, functional diarrhea, or functional abdominal bloating/distension disorders. Management should be guided by individual patient symptoms and severity. No specific standardized treatment exists, but symptom-directed therapy may include dietary modifications, probiotics, antispasmodics, or other supportive measures as clinically indicated."
+      }
+    ]
+  },
+  "references": [
+    "Lacy BE, Mearin F, Chang L, Chey WD, Lembo AJ, Simren M, Spiller R. Bowel disorders. Gastroenterology. 2016 May;150(6):1393-1407.e5. doi: 10.1053/j.gastro.2016.02.031.",
+    "Rome Foundation. Rome IV Diagnostic Criteria for Functional Gastrointestinal Disorders. 4th ed. Raleigh, NC: Rome Foundation; 2016.",
+    "Palsson OS, Whitehead WE, van Tilburg MA, Chang L, Chey W, Crowell MD, Keefer L, Lembo AJ, Parkman HP, Rao SS, Sperber A, Spiegel B, Tack J, Vanner S, Walker LS, Whorwell P, Yang M. Rome IV diagnostic questionnaires and tables for investigators and clinicians. Gastroenterology. 2016 May;150(6):1481-1491. doi: 10.1053/j.gastro.2016.02.014."
+  ],
+  "formula": "Rome IV Unspecified Functional Bowel Disorder Diagnosis = ALL criteria must be met for ≥3 months (onset ≥6 months ago): (1) Bowel symptoms not attributable to organic etiology + (2) Does not meet criteria for IBS, functional constipation, functional diarrhea, or functional bloating + (3) Exclusion of all alarm symptoms (GI bleeding, anemia, weight loss, masses, family history without screening, age >50 without screening, sudden bowel habit changes)",
+  "notes": [
+    "Rome IV diagnostic criteria for functional bowel disorders",
+    "Catch-all diagnosis for functional bowel symptoms not meeting specific criteria",
+    "All criteria must be fulfilled for positive diagnosis",
+    "Temporal requirement: symptoms ≥3 months with onset ≥6 months ago",
+    "Must exclude organic etiology through appropriate clinical evaluation",
+    "Patient must not meet criteria for more specific functional disorders",
+    "IBS criteria: recurrent abdominal pain with altered bowel habits",
+    "Functional constipation: difficult, infrequent, or incomplete defecation",
+    "Functional diarrhea: loose stools without abdominal pain",
+    "Functional bloating: bothersome abdominal bloating/distension",
+    "Alarm symptoms require immediate evaluation and exclude diagnosis",
+    "No standardized treatment exists - management is symptom-directed",
+    "May benefit from dietary modifications, probiotics, or antispasmodics",
+    "Patient education about functional nature important for management",
+    "Regular follow-up to monitor symptoms and response to interventions",
+    "Consider referral to gastroenterology for complex cases",
+    "Functional bowel disorders represent a spectrum rather than isolated entities",
+    "Significant overlap exists between different functional bowel disorders",
+    "Diagnosis may evolve over time as symptoms change or clarify",
+    "Quality of life assessment important for treatment planning"
+  ]
+}

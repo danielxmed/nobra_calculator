@@ -1,0 +1,140 @@
+{
+  "id": "he_macs",
+  "title": "History and Electrocardiogram-only Manchester Acute Coronary Syndromes (HE-MACS)",
+  "description": "Rules out acute coronary syndrome (ACS) using only patient history and ECG findings, without requiring troponin results. Stratifies patients into risk categories for ACS or major adverse cardiac events within 30 days.",
+  "category": "emergency",
+  "version": "2018",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient sex",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "sweating",
+      "type": "string",
+      "required": true,
+      "description": "Sweating observed",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "acute_ecg_ischemia",
+      "type": "string",
+      "required": true,
+      "description": "Acute ECG ischemia (new ST depression ≥0.5mm or T wave inversion ≥1mm in ≥2 contiguous leads)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "pain_radiating_right_arm",
+      "type": "string",
+      "required": true,
+      "description": "Pain radiating to right arm or shoulder",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "vomiting",
+      "type": "string",
+      "required": true,
+      "description": "Vomiting associated with pain",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "systolic_bp_low",
+      "type": "string",
+      "required": true,
+      "description": "Systolic blood pressure <100 mmHg",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "current_smoker",
+      "type": "string",
+      "required": true,
+      "description": "Current tobacco smoker",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "acs_probability",
+    "type": "float",
+    "unit": "percent",
+    "description": "Probability of ACS or MACE within 30 days"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3.99,
+        "stage": "Very Low Risk",
+        "description": "<4% risk",
+        "interpretation": "Very low risk of ACS or major adverse cardiac events within 30 days. Consider discharge with appropriate follow-up."
+      },
+      {
+        "min": 4.0,
+        "max": 6.99,
+        "stage": "Low Risk",
+        "description": "4-6.9% risk",
+        "interpretation": "Low risk of ACS or major adverse cardiac events within 30 days. Consider serial troponins and further observation."
+      },
+      {
+        "min": 7.0,
+        "max": 49.99,
+        "stage": "Moderate Risk",
+        "description": "7-49.9% risk",
+        "interpretation": "Moderate risk of ACS or major adverse cardiac events within 30 days. Requires further investigation with troponins and possible admission."
+      },
+      {
+        "min": 50.0,
+        "max": 100,
+        "stage": "High Risk",
+        "description": "≥50% risk",
+        "interpretation": "High risk of ACS or major adverse cardiac events within 30 days. Requires urgent cardiology consultation and admission."
+      }
+    ]
+  },
+  "references": [
+    "Alghamdi A, Cook E, Carlton E, Siriwardena A, Hann M, Thompson A, et al. Enhanced triage for patients with suspected cardiac chest pain: the History and Electrocardiogram-only Manchester Acute Coronary Syndromes (HE-MACS) decision aid. Eur J Emerg Med. 2019 Oct;26(5):356-361.",
+    "Body R, Carley S, Wibberley C, McDowell G, Ferguson J, Mackway-Jones K. The value of symptoms and signs in the emergent diagnosis of acute coronary syndromes. Resuscitation. 2010 Mar;81(3):281-6."
+  ],
+  "formula": "Probability = 1 / (1 + e^x); where x = -[(1.426×sweating) + (1.838×ECG) + (0.734×pain) + (0.996×vomiting) + (1.353×systolic_BP) + (0.675×tobacco) + (0.024×age) + (0.462×sex) - 4.416]",
+  "notes": [
+    "For patients ≥18 years with suspected cardiac chest pain within 24 hours",
+    "Not yet prospectively validated - use with clinical judgment",
+    "ECG ischemia defined as new ST depression ≥0.5mm or T wave inversion ≥1mm in ≥2 contiguous leads",
+    "Does not require troponin results, allowing for rapid triage",
+    "Part of the Manchester ACS family of decision aids"
+  ]
+}

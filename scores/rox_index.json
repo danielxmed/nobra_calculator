@@ -1,0 +1,101 @@
+{
+  "id": "rox_index",
+  "title": "ROX Index for Intubation after HFNC",
+  "description": "Predicts high-flow nasal cannula (HFNC) failure and need for intubation in patients with acute hypoxemic respiratory failure. The ROX Index combines oxygen saturation, fraction of inspired oxygen, and respiratory rate to provide early prediction of treatment success or failure, helping clinicians make timely decisions about escalation of care to avoid delayed intubation and associated complications.",
+  "category": "emergency",
+  "version": "2019",
+  "parameters": [
+    {
+      "name": "spo2",
+      "type": "integer",
+      "required": true,
+      "description": "Pulse oximetry oxygen saturation measured on current HFNC settings",
+      "validation": {
+        "min": 70,
+        "max": 100
+      },
+      "unit": "%"
+    },
+    {
+      "name": "fio2",
+      "type": "float",
+      "required": true,
+      "description": "Fraction of inspired oxygen being delivered by HFNC (0.21-1.0)",
+      "validation": {
+        "min": 0.21,
+        "max": 1.0
+      },
+      "unit": "fraction"
+    },
+    {
+      "name": "respiratory_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Current respiratory rate in breaths per minute",
+      "validation": {
+        "min": 10,
+        "max": 50
+      },
+      "unit": "breaths/min"
+    }
+  ],
+  "result": {
+    "name": "rox_index_value",
+    "type": "float",
+    "unit": "index",
+    "description": "ROX Index value calculated from SpO2/FiO2 ratio divided by respiratory rate"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3.84,
+        "stage": "High Risk for HFNC Failure",
+        "description": "Early intubation consideration",
+        "interpretation": "High risk of HFNC failure requiring early intubation consideration. This ROX index value (<3.85) indicates poor response to high-flow nasal cannula therapy with significant risk for treatment failure. Prepare for early intubation and invasive mechanical ventilation. Optimize underlying conditions and consider alternative respiratory support strategies. Never delay intubation when clinical signs indicate impending respiratory decompensation. Monitor closely for signs of respiratory distress, work of breathing, and clinical deterioration."
+      },
+      {
+        "min": 3.85,
+        "max": 4.87,
+        "stage": "Indeterminate Risk",
+        "description": "Reassess in 1-2 hours",
+        "interpretation": "Indeterminate range requiring close monitoring and reassessment in 1-2 hours. This ROX index value (3.85-4.87) suggests uncertain prognosis with HFNC therapy. Optimize HFNC settings, treat underlying respiratory condition aggressively, and reassess ROX index within 1-2 hours. Consider factors contributing to respiratory failure and address reversible causes. Maintain high level of vigilance for clinical deterioration and be prepared for escalation to invasive ventilation if ROX index trends downward or clinical condition worsens."
+      },
+      {
+        "min": 4.88,
+        "max": 20,
+        "stage": "Lower Risk for Intubation",
+        "description": "Continue HFNC and wean FiO2",
+        "interpretation": "Lower risk for intubation with good response to HFNC therapy. This ROX index value (≥4.88) suggests successful treatment with high-flow nasal cannula and low likelihood of requiring intubation. Continue current HFNC therapy and consider weaning FiO2 as tolerated while maintaining adequate oxygenation. Monitor for continued improvement and plan for further de-escalation of respiratory support. Maintain standard monitoring protocols and continue treatment of underlying respiratory pathology. This favorable ROX index indicates effective HFNC therapy with good prognosis for avoiding invasive mechanical ventilation."
+      }
+    ]
+  },
+  "references": [
+    "Roca O, Messika J, Caralt B, García-de-Acilu M, Sztrymf B, Ricard JD, Masclans JR. Predicting success of high-flow nasal cannula in pneumonia patients with hypoxemic respiratory failure: The utility of the ROX index. J Crit Care. 2016 Oct;35:200-5. doi: 10.1016/j.jcrc.2016.05.022.",
+    "Roca O, Caralt B, Messika J, Samper M, Sztrymf B, Hernández G, García-de-Acilu M, Frat JP, Masclans JR, Ricard JD. An Index Combining Respiratory Rate and Oxygenation to Predict Outcome of Nasal High-Flow Therapy. Am J Respir Crit Care Med. 2019 Jun 1;199(11):1368-1376. doi: 10.1164/rccm.201803-0589OC.",
+    "Suliman LA, Abdelgawad TT, Farrag NS, Abdelwahab HW. Validity of ROX index in prediction of risk of intubation in patients with COVID-19 pneumonia. Adv Respir Med. 2021;89(1):1-6. doi: 10.5603/ARM.a2020.0176."
+  ],
+  "formula": "ROX Index = (SpO2/FiO2 × 100) / Respiratory Rate, where SpO2 is oxygen saturation (%), FiO2 is fraction of inspired oxygen (0.21-1.0), and Respiratory Rate is breaths per minute",
+  "notes": [
+    "ROX Index predicts HFNC failure and need for intubation in acute hypoxemic respiratory failure",
+    "Measure at 2, 6, and 12 hours after HFNC initiation for optimal prediction accuracy",
+    "Higher ROX index values indicate better prognosis and lower intubation risk",
+    "ROX ≥4.88 associated with >80% positive predictive value for HFNC success",
+    "ROX <3.85 has 98-99% specificity for predicting HFNC failure when measured <12 hours",
+    "Serial measurements more valuable than single time point assessment",
+    "Never delay intubation when clinical signs indicate respiratory decompensation",
+    "Modified ROX-HR index (ROX/heart rate × 100) may provide enhanced early prediction",
+    "Validated in multiple patient populations including COVID-19, pneumonia, and ARDS",
+    "Performance may vary in immunocompromised patients",
+    "Should be used in conjunction with clinical assessment and other markers",
+    "Cutoff values may vary by timing: 2.85 at 2 hours, 3.47 at 6 hours, 3.85 at 12 hours",
+    "Meta-analysis shows pooled sensitivity 67% and specificity 72% for HFNC failure prediction",
+    "Prediction accuracy improves over time with highest AUC at 12 hours",
+    "Optimal confidence interval for HFNC outcome prediction: 4.2-5.4",
+    "Simple bedside tool requiring only SpO2, FiO2, and respiratory rate",
+    "Cost-effective method for risk stratification in respiratory support decisions",
+    "May help reduce delayed intubation and associated complications",
+    "Useful for resource allocation and clinical decision-making in intensive care",
+    "Consider trending values rather than relying on single measurement"
+  ]
+}

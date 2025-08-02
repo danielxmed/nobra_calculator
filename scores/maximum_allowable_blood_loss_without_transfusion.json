@@ -1,0 +1,112 @@
+{
+  "id": "maximum_allowable_blood_loss_without_transfusion",
+  "title": "Maximum Allowable Blood Loss (ABL) Without Transfusion",
+  "description": "Estimates maximum allowable blood loss intraoperatively before transfusion should be considered. Essential for surgical blood loss management and transfusion decision-making based on patient weight, age group, initial hemoglobin, and acceptable final hemoglobin levels.",
+  "category": "hematology",
+  "version": "1983",
+  "parameters": [
+    {
+      "name": "age_group", 
+      "type": "string",
+      "required": true,
+      "description": "Patient age group determining average blood volume per kg. Each group has specific blood volume coefficients based on physiological differences",
+      "validation": {
+        "enum": ["adult_man", "adult_woman", "infant", "neonate", "premature_neonate"]
+      },
+      "options": ["adult_man", "adult_woman", "infant", "neonate", "premature_neonate"]
+    },
+    {
+      "name": "body_weight",
+      "type": "float",
+      "required": true,
+      "description": "Patient body weight in kg. Used to calculate estimated blood volume (EBV). Critical for accurate ABL calculation as blood volume directly correlates with weight",
+      "validation": {
+        "min": 0.5,
+        "max": 200
+      },
+      "unit": "kg"
+    },
+    {
+      "name": "initial_hemoglobin",
+      "type": "float", 
+      "required": true,
+      "description": "Preoperative hemoglobin level in g/dL. Baseline value before surgical blood loss. Normal ranges: men 13.5-17.5 g/dL, women 12.0-15.5 g/dL, children 11.0-15.0 g/dL",
+      "validation": {
+        "min": 3.0,
+        "max": 25.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "final_hemoglobin",
+      "type": "float",
+      "required": true, 
+      "description": "Lowest acceptable hemoglobin level in g/dL before transfusion is indicated. Typically 7-10 g/dL depending on patient condition and comorbidities. Critical patients may require higher thresholds",
+      "validation": {
+        "min": 3.0,
+        "max": 15.0
+      },
+      "unit": "g/dL"
+    }
+  ],
+  "result": {
+    "name": "maximum_allowable_blood_loss",
+    "type": "float",
+    "unit": "mL",
+    "description": "Maximum volume of blood loss in mL before transfusion should be considered"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 500,
+        "stage": "Low Volume Loss",
+        "description": "Small allowable blood loss",
+        "interpretation": "Limited allowable blood loss indicating either small patient size, low initial hemoglobin, or high transfusion threshold. Requires careful monitoring during surgery with minimal blood loss tolerance. Consider blood conservation strategies and frequent hemoglobin monitoring."
+      },
+      {
+        "min": 501,
+        "max": 1500,
+        "stage": "Moderate Volume Loss", 
+        "description": "Moderate allowable blood loss",
+        "interpretation": "Moderate allowable blood loss typical for average-sized patients undergoing procedures with expected moderate blood loss. Standard intraoperative monitoring protocols apply. Transfusion should be considered if blood loss approaches this threshold."
+      },
+      {
+        "min": 1501,
+        "max": 3000,
+        "stage": "High Volume Loss",
+        "description": "Large allowable blood loss",
+        "interpretation": "Large allowable blood loss indicating either large patient, high initial hemoglobin, or low transfusion threshold. Suitable for major surgical procedures with anticipated significant blood loss. Close monitoring of hemodynamic status and serial hemoglobin levels recommended."
+      },
+      {
+        "min": 3001,
+        "max": 10000,
+        "stage": "Very High Volume Loss",
+        "description": "Very large allowable blood loss", 
+        "interpretation": "Very large allowable blood loss indicating favorable baseline parameters for major surgery. Suitable for extensive procedures with high blood loss potential. Consider blood conservation techniques, autologous blood collection, and preparation for massive transfusion protocols if needed."
+      }
+    ]
+  },
+  "references": [
+    "Gross JB. Estimating allowable blood loss: corrected for dilution. Anesthesiology. 1983 Mar;58(3):277-80. doi: 10.1097/00000542-198303000-00016.",
+    "Miller RD, ed. Miller's Anesthesia. 8th ed. Philadelphia, PA: Elsevier Saunders; 2015.",
+    "American Society of Anesthesiologists Task Force on Perioperative Blood Management. Practice guidelines for perioperative blood management: an updated report by the American Society of Anesthesiologists Task Force on Perioperative Blood Management. Anesthesiology. 2015;122(2):241-75.",
+    "Carson JL, Grossman BJ, Kleinman S, Tinmouth AT, Marques MB, Fung MK, et al. Red blood cell transfusion: a clinical practice guideline from the AABB. Ann Intern Med. 2012;157(1):49-58."
+  ],
+  "formula": "ABL = [EBV × (Hi - Hf)] / Hav, where EBV = body weight × blood volume coefficient, Hav = (Hi + Hf) / 2",
+  "notes": [
+    "Developed by Jeffrey Gross in 1983 based on mathematical modeling of blood volume and hemoglobin dilution",
+    "Blood volume coefficients: Adult man 75 mL/kg, Adult woman 65 mL/kg, Infant 80 mL/kg, Neonate 85 mL/kg, Premature neonate 96 mL/kg",
+    "Calculation becomes inaccurate when blood loss exceeds 20% of estimated blood volume",
+    "Should be calculated preoperatively for any surgery with potential significant blood loss",
+    "Clinical judgment and hemodynamic status should always override calculated values",
+    "Transfusion thresholds: Most patients 7-10 g/dL, Critical patients may require higher levels",
+    "Acute blood loss may not immediately reflect in hemoglobin changes",
+    "Consider patient comorbidities, cardiac status, and ongoing blood loss when interpreting results",
+    "Particularly important for pediatric patients where small blood loss volumes are clinically significant",
+    "Alternative formula exists using hematocrit: ABL = EBV × (HCTi - HCTf) / HCTi",
+    "Should be used in conjunction with other clinical parameters including vital signs and urine output",
+    "Blood conservation strategies should be considered when ABL is low",
+    "Serial hemoglobin monitoring recommended during procedures with ongoing blood loss"
+  ]
+}

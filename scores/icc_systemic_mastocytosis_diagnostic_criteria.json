@@ -1,0 +1,98 @@
+{
+  "id": "icc_systemic_mastocytosis_diagnostic_criteria",
+  "title": "International Consensus Classification (ICC) Diagnostic Criteria for Systemic Mastocytosis",
+  "description": "Diagnoses systemic mastocytosis according to the International Consensus Classification (ICC) criteria using morphological, immunophenotypic, and molecular parameters. The ICC criteria refine the WHO classification system with enhanced diagnostic specificity for mast cell disorders.",
+  "category": "hematology",
+  "version": "2022",
+  "parameters": [
+    {
+      "name": "multifocal_mast_cell_infiltrates",
+      "type": "string",
+      "required": true,
+      "description": "Multifocal dense infiltrates of tryptase- and/or CD117-positive mast cells (≥15 mast cells in aggregates) detected in sections of bone marrow and/or other extracutaneous organ(s) - Major Criterion",
+      "options": ["present", "absent"],
+      "validation": {
+        "enum": ["present", "absent"]
+      },
+      "unit": null
+    },
+    {
+      "name": "atypical_mast_cell_morphology",
+      "type": "string",
+      "required": true,
+      "description": "In bone marrow/extracutaneous organs, >25% of mast cells are spindle-shaped or have atypical immature morphology - Minor Criterion 1",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "aberrant_mast_cell_markers",
+      "type": "string",
+      "required": true,
+      "description": "Mast cells express additional markers CD25, CD2, or CD30 (in addition to standard mast cell markers) - Minor Criterion 2",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "kit_mutation_detected",
+      "type": "string",
+      "required": true,
+      "description": "KIT D816V mutation or other activating KIT mutation detected in bone marrow, peripheral blood, or other extracutaneous organs using high-sensitivity PCR - Minor Criterion 3",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "elevated_serum_tryptase",
+      "type": "string",
+      "required": true,
+      "description": "Elevated serum tryptase level persistently >20 ng/mL (not applicable in SM with associated myeloid neoplasm) - Minor Criterion 4",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    }
+  ],
+  "result": {
+    "name": "diagnostic_result",
+    "type": "string",
+    "unit": null,
+    "description": "ICC diagnostic result for systemic mastocytosis"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "result": "Systemic Mastocytosis Diagnosed",
+        "description": "ICC criteria met",
+        "interpretation": "Diagnosis of systemic mastocytosis established according to ICC criteria. Requires comprehensive staging evaluation including bone marrow biopsy, imaging studies, and laboratory assessment. Consider subtype classification (ISM, SSM, ASM, MCL, SM-AMN) based on additional clinical and laboratory findings. Evaluate for organ dysfunction and associated symptoms. Discuss treatment options including symptom management, cytoreductive therapy, or targeted therapies based on subtype and severity."
+      },
+      {
+        "result": "Systemic Mastocytosis Not Diagnosed",
+        "description": "ICC criteria not met",
+        "interpretation": "ICC diagnostic criteria for systemic mastocytosis not satisfied. Consider alternative diagnoses including cutaneous mastocytosis, mast cell activation syndrome, or other hematologic malignancies. Recommend comprehensive evaluation with additional testing as clinically indicated. Consider repeat bone marrow biopsy if clinical suspicion remains high. Ensure adequate immunohistochemical staining and molecular testing with high-sensitivity assays for KIT mutations."
+      }
+    ]
+  },
+  "references": [
+    "Leguit RJ, van der Linden MP, Jansen JH, Hebeda KM, Lam KH, Leenders WP, et al. The international consensus classification of mastocytosis and related entities. Virchows Arch. 2023 Jan;482(1):99-112. doi: 10.1007/s00428-022-03454-6.",
+    "Arber DA, Orazi A, Hasserjian RP, Borowitz MJ, Calvo KR, Kvasnicka HM, et al. International Consensus Classification of Myeloid Neoplasms and Acute Leukemias: integrating morphologic, clinical, and genomic data. Blood. 2022 Sep 15;140(11):1200-1228. doi: 10.1182/blood.2022015850.",
+    "Valent P, Akin C, Bonadonna P, Hartmann K, Alvarez-Twose I, Brockow K, et al. Updated Diagnostic Criteria and Classification of Mast Cell Disorders: A Consensus Proposal. HemaSphere. 2021 Oct 29;5(11):e646. doi: 10.1097/HS9.0000000000000646."
+  ],
+  "formula": "Systemic Mastocytosis diagnosed if: Major Criterion present OR ≥3 Minor Criteria present",
+  "notes": [
+    "High-sensitivity PCR recommended for KIT mutation detection with variant allele frequency (VAF) ≥1%",
+    "Exclude other potential genetic variants and secondary causes of elevated tryptase",
+    "Consult additional pathology expertise if initial morphological results are inconclusive",
+    "The elevated tryptase criterion is not applicable in SM with associated myeloid neoplasm (SM-AMN)",
+    "Multifocal mast cell infiltrates must contain ≥15 mast cells in aggregates to meet major criterion",
+    "Atypical morphology includes spindle-shaped cells and immature mast cell features"
+  ]
+}

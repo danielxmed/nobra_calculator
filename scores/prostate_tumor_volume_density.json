@@ -1,0 +1,156 @@
+{
+  "id": "prostate_tumor_volume_density",
+  "title": "Prostate Tumor Volume & Density",
+  "description": "Calculates prostate volume using ellipsoid formula and PSA density to help distinguish between benign prostatic hyperplasia (BPH) and prostate cancer. This tool assists in biopsy decision-making, risk stratification, and treatment planning for patients with elevated PSA levels.",
+  "category": "oncology",
+  "version": "2012",
+  "parameters": [
+    {
+      "name": "prostate_length",
+      "type": "float",
+      "required": true,
+      "description": "Maximum anteroposterior (AP) diameter of prostate in cm",
+      "validation": {
+        "min": 1.0,
+        "max": 20.0
+      },
+      "unit": "cm"
+    },
+    {
+      "name": "prostate_width",
+      "type": "float",
+      "required": true,
+      "description": "Maximum transverse (left-right) diameter of prostate in cm",
+      "validation": {
+        "min": 1.0,
+        "max": 20.0
+      },
+      "unit": "cm"
+    },
+    {
+      "name": "prostate_height",
+      "type": "float",
+      "required": true,
+      "description": "Maximum craniocaudal (superior-inferior) diameter of prostate in cm",
+      "validation": {
+        "min": 1.0,
+        "max": 20.0
+      },
+      "unit": "cm"
+    },
+    {
+      "name": "psa_value",
+      "type": "float",
+      "required": true,
+      "description": "Serum prostate-specific antigen (PSA) level in ng/mL",
+      "validation": {
+        "min": 0.1,
+        "max": 1000.0
+      },
+      "unit": "ng/mL"
+    }
+  ],
+  "result": {
+    "name": "prostate_calculations",
+    "type": "object",
+    "description": "Calculated prostate volume and PSA density with clinical interpretation"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "parameter": "prostate_volume",
+        "ranges": [
+          {
+            "min": 0,
+            "max": 25,
+            "stage": "Small",
+            "description": "Small prostate volume",
+            "interpretation": "Below normal size, may indicate underdevelopment or atrophy."
+          },
+          {
+            "min": 25,
+            "max": 30,
+            "stage": "Normal",
+            "description": "Normal prostate volume",
+            "interpretation": "Normal prostate size for adult males."
+          },
+          {
+            "min": 30,
+            "max": 50,
+            "stage": "Mildly Enlarged",
+            "description": "Mild benign prostatic hyperplasia",
+            "interpretation": "Mild enlargement, may cause some urinary symptoms."
+          },
+          {
+            "min": 50,
+            "max": 80,
+            "stage": "Moderately Enlarged",
+            "description": "Moderate benign prostatic hyperplasia",
+            "interpretation": "Moderate enlargement, likely causing urinary symptoms."
+          },
+          {
+            "min": 80,
+            "max": 500,
+            "stage": "Severely Enlarged",
+            "description": "Severe benign prostatic hyperplasia",
+            "interpretation": "Severe enlargement, likely causing significant urinary obstruction."
+          }
+        ]
+      },
+      {
+        "parameter": "psa_density",
+        "ranges": [
+          {
+            "min": 0,
+            "max": 0.10,
+            "stage": "Low Risk",
+            "description": "Low cancer risk",
+            "interpretation": "Very low probability of clinically significant prostate cancer."
+          },
+          {
+            "min": 0.10,
+            "max": 0.15,
+            "stage": "Intermediate Risk",
+            "description": "Intermediate cancer risk",
+            "interpretation": "Moderate probability of prostate cancer, consider additional evaluation."
+          },
+          {
+            "min": 0.15,
+            "max": 0.20,
+            "stage": "High Risk",
+            "description": "High cancer risk",
+            "interpretation": "High probability of prostate cancer, biopsy strongly recommended."
+          },
+          {
+            "min": 0.20,
+            "max": 10.0,
+            "stage": "Very High Risk",
+            "description": "Very high cancer risk",
+            "interpretation": "Very high probability of clinically significant prostate cancer."
+          }
+        ]
+      }
+    ]
+  },
+  "references": [
+    "Terris MK, Stamey TA. Determination of prostate volume by transrectal ultrasound. J Urol. 1991;145(5):984-7. doi: 10.1016/s0022-5347(17)38491-9.",
+    "Benson MC, Whang IS, Olsson CA, McMahon DJ, Cooner WH. The use of prostate specific antigen density to enhance the predictive value of intermediate levels of serum prostate specific antigen. J Urol. 1992;147(3 Pt 2):817-21. doi: 10.1016/s0022-5347(17)37394-9.",
+    "Kalish J, Cooner WH, Graham SD Jr. Serum PSA adjusted for volume of transition zone (PSATZ) is more accurate than PSA adjusted for total gland volume (PSAD) in detecting adenocarcinoma of the prostate. Urology. 1994;43(5):601-6. doi: 10.1016/0090-4295(94)90170-8.",
+    "Zlotta AR, Egawa S, Pushkar D, Govorov A, Kimura T, Kido M, et al. Prevalence of prostate cancer on autopsy: cross-sectional study on unscreened Caucasian and Asian men. J Natl Cancer Inst. 2013;105(14):1050-8. doi: 10.1093/jnci/djt151."
+  ],
+  "formula": "Prostate Volume (mL) = Length × Width × Height × π/6; PSA Density (ng/mL²) = PSA (ng/mL) ÷ Prostate Volume (mL)",
+  "notes": [
+    "Prostate volume calculated using ellipsoid formula with π/6 correction factor",
+    "PSA density threshold of 0.15 ng/mL/cm³ commonly used to distinguish benign from malignant",
+    "Normal prostate volume is approximately 25-30 mL in adult males",
+    "PSA density >0.15 associated with higher probability of prostate cancer",
+    "Particularly useful in PSA 'gray zone' (4-10 ng/mL) for biopsy decision-making",
+    "Should be interpreted alongside clinical findings, DRE, and patient risk factors",
+    "Imaging measurements should be obtained from transrectal ultrasound (TRUS) or MRI",
+    "Age-related prostate enlargement should be considered in interpretation",
+    "May help guide active surveillance vs. treatment decisions",
+    "Useful for monitoring prostate size changes over time",
+    "Consider transition zone volume for more precise cancer risk assessment",
+    "Accuracy depends on precise imaging measurements and proper technique"
+  ]
+}

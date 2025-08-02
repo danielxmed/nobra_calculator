@@ -1,0 +1,162 @@
+{
+  "id": "hemorr2hages",
+  "title": "HEMORR₂HAGES Score for Major Bleeding Risk",
+  "description": "Quantifies hemorrhage risk in elderly patients with atrial fibrillation on anticoagulation therapy. The score helps clinicians assess bleeding risk when considering anticoagulation for stroke prevention in AF patients.",
+  "category": "hematology",
+  "version": "2006",
+  "parameters": [
+    {
+      "name": "hepatic_renal_disease",
+      "type": "string",
+      "required": true,
+      "description": "Hepatic or renal disease",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "ethanol_abuse",
+      "type": "string",
+      "required": true,
+      "description": "Ethanol (alcohol) abuse",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "malignancy",
+      "type": "string",
+      "required": true,
+      "description": "Malignancy history",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "older_age",
+      "type": "string",
+      "required": true,
+      "description": "Older age (>75 years)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "reduced_platelet",
+      "type": "string",
+      "required": true,
+      "description": "Reduced platelet count or function (includes aspirin use, thrombocytopenia, blood dyscrasia)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "rebleeding",
+      "type": "string",
+      "required": true,
+      "description": "Rebleeding risk (prior major bleed)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "hypertension",
+      "type": "string",
+      "required": true,
+      "description": "Hypertension (uncontrolled)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "anemia",
+      "type": "string",
+      "required": true,
+      "description": "Anemia (Hgb <13 g/dL for men, <12 g/dL for women)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "genetic_factors",
+      "type": "string",
+      "required": true,
+      "description": "Genetic factors (CYP 2C9 single-nucleotide polymorphisms)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "excessive_fall_risk",
+      "type": "string",
+      "required": true,
+      "description": "Excessive fall risk",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "stroke",
+      "type": "string",
+      "required": true,
+      "description": "Stroke history",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "hemorr2hages_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "HEMORR₂HAGES score (0-12 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "Score 0-1",
+        "interpretation": "Low risk of major bleeding. The benefit of anticoagulation for stroke prevention in AF likely outweighs the bleeding risk in most patients."
+      },
+      {
+        "min": 2,
+        "max": 3,
+        "stage": "Intermediate Risk",
+        "description": "Score 2-3",
+        "interpretation": "Intermediate risk of major bleeding. Careful assessment of individual risk-benefit ratio is recommended. Consider patient preferences and close monitoring if anticoagulation is initiated."
+      },
+      {
+        "min": 4,
+        "max": 12,
+        "stage": "High Risk",
+        "description": "Score ≥4",
+        "interpretation": "High risk of major bleeding. The bleeding risk may outweigh the benefit of anticoagulation in many patients. Consider alternative strategies for stroke prevention or more intensive monitoring if anticoagulation is necessary."
+      }
+    ]
+  },
+  "references": [
+    "Gage BF, Yan Y, Milligan PE, Waterman AD, Culverhouse R, Rich MW, et al. Clinical classification schemes for predicting hemorrhage: results from the National Registry of Atrial Fibrillation (NRAF). Am Heart J. 2006 Mar;151(3):713-9.",
+    "Apostolakis S, Lane DA, Guo Y, Buller H, Lip GY. Performance of the HEMORR(2)HAGES, ATRIA, and HAS-BLED bleeding risk-prediction scores in patients with atrial fibrillation undergoing anticoagulation: the AMADEUS (evaluating the use of SR34006 compared to warfarin or acenocoumarol in patients with atrial fibrillation) study. J Am Coll Cardiol. 2012 Aug 28;60(9):861-7."
+  ],
+  "formula": "HEMORR₂HAGES Score = H (1) + E (1) + M (1) + O (1) + R (1) + R (2) + H (1) + A (1) + G (1) + E (1) + S (1)",
+  "notes": [
+    "HEMORR₂HAGES is an acronym where each letter represents a risk factor",
+    "The second 'R' (Rebleeding) is worth 2 points, all other factors are worth 1 point",
+    "Designed specifically for elderly patients (>75 years) with atrial fibrillation",
+    "Should be used in conjunction with stroke risk assessment tools like CHA₂DS₂-VASc",
+    "Genetic factors (CYP 2C9 polymorphisms) may not be routinely available in clinical practice"
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "id": "intrauterine_rbc_transfusion_dosage",
+  "title": "Intrauterine RBC Transfusion Dosage",
+  "description": "Estimates volume of donor RBCs needed for intrauterine transfusion (IUT) in fetal anemia cases. Used primarily for severe fetal anemia in hemolytic disease of the fetus and newborn (HDFN) when maternal RBC alloantibodies threaten fetal health. Calculates precise transfusion volume to achieve target hematocrit while minimizing risks of over- or under-transfusion.",
+  "category": "pediatrics",
+  "version": "2024",
+  "parameters": [
+    {
+      "name": "fetal_weight_g",
+      "type": "float",
+      "required": true,
+      "description": "Estimated fetal weight in grams based on biometric measurements from ultrasound",
+      "validation": {
+        "min": 200,
+        "max": 5000
+      },
+      "unit": "g"
+    },
+    {
+      "name": "initial_hematocrit",
+      "type": "float",
+      "required": true,
+      "description": "Current fetal hematocrit percentage before transfusion",
+      "validation": {
+        "min": 5,
+        "max": 60
+      },
+      "unit": "%"
+    },
+    {
+      "name": "goal_hematocrit",
+      "type": "float",
+      "required": true,
+      "description": "Target fetal hematocrit percentage after transfusion (usually 40-45%)",
+      "validation": {
+        "min": 25,
+        "max": 60
+      },
+      "unit": "%"
+    },
+    {
+      "name": "transfused_hematocrit",
+      "type": "float",
+      "required": true,
+      "description": "Hematocrit percentage of the donor RBC unit to be transfused (typically 75-85%)",
+      "validation": {
+        "min": 60,
+        "max": 90
+      },
+      "unit": "%"
+    }
+  ],
+  "result": {
+    "name": "transfusion_volume",
+    "type": "float",
+    "unit": "mL",
+    "description": "Volume of donor RBCs needed for intrauterine transfusion"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 20,
+        "stage": "Small Volume",
+        "description": "Small transfusion volume",
+        "interpretation": "Small volume transfusion appropriate for early gestational age or mild anemia. Monitor closely for response and avoid volume overload."
+      },
+      {
+        "min": 20,
+        "max": 60,
+        "stage": "Moderate Volume",
+        "description": "Moderate transfusion volume",
+        "interpretation": "Moderate volume transfusion typical for established fetal anemia. Standard monitoring protocols apply with assessment of fetal well-being."
+      },
+      {
+        "min": 60,
+        "max": 200,
+        "stage": "Large Volume",
+        "description": "Large transfusion volume",
+        "interpretation": "Large volume transfusion for severe anemia or larger fetuses. Requires careful monitoring for circulatory overload and may need staged transfusions."
+      }
+    ]
+  },
+  "references": [
+    "Mandelbrot L, Daffos F, Forestier F, MacAleese J, Descamps P. Assessment of fetal blood volume for computer-assisted management of in utero transfusion. Fetal Ther. 1988;3(1-2):60-6.",
+    "Liley AW. Intrauterine transfusion of foetus in haemolytic disease. Br Med J. 1963;2(5365):1107-9.",
+    "Society for Maternal-Fetal Medicine (SMFM). Management of alloimmunization during pregnancy. Am J Obstet Gynecol. 2018;218(2):B7-B18.",
+    "Van Kamp IL, Klumper FJ, Oepkes D, Meerman RH, Scherjon SA, Vandenbussche FP, et al. Complications of intrauterine intravascular transfusion for fetal anemia due to maternal red-cell alloimmunization. Am J Obstet Gynecol. 2005;192(1):171-7."
+  ],
+  "formula": "Transfusion volume (mL) = Fetoplacental volume × [Hct(goal) - Hct(initial)] / Hct(transfused); Fetoplacental volume = fetal weight (g) × 0.14 mL/g",
+  "notes": [
+    "Used primarily for hemolytic disease of the fetus and newborn (HDFN) due to maternal alloantibodies",
+    "Target post-IUT hematocrit is typically 40-45%",
+    "Fetoplacental volume estimated as 14% of fetal weight (0.14 mL/g)",
+    "Donor RBCs should be CMV-negative, irradiated, and compatible with maternal serum",
+    "Requires specialized maternal-fetal medicine expertise and ultrasound guidance",
+    "Monitor for complications including fetal bradycardia, bleeding, and infection",
+    "Consider serial transfusions for severe cases or if single transfusion volume is excessive"
+  ]
+}

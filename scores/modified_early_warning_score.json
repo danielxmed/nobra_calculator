@@ -1,0 +1,108 @@
+{
+  "id": "modified_early_warning_score",
+  "title": "Modified Early Warning Score (MEWS) for Clinical Deterioration",
+  "description": "Determines the degree of illness of a patient and identifies patients at risk of clinical deterioration using physiological parameters",
+  "category": "emergency",
+  "version": "2001",
+  "parameters": [
+    {
+      "name": "systolic_bp",
+      "type": "integer",
+      "required": true,
+      "description": "Systolic blood pressure in mmHg",
+      "validation": {
+        "min": 50,
+        "max": 300
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "heart_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Heart rate in beats per minute",
+      "validation": {
+        "min": 20,
+        "max": 200
+      },
+      "unit": "bpm"
+    },
+    {
+      "name": "respiratory_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Respiratory rate in breaths per minute",
+      "validation": {
+        "min": 5,
+        "max": 60
+      },
+      "unit": "breaths/min"
+    },
+    {
+      "name": "temperature",
+      "type": "float",
+      "required": true,
+      "description": "Body temperature in degrees Celsius",
+      "validation": {
+        "min": 30.0,
+        "max": 45.0
+      },
+      "unit": "°C"
+    },
+    {
+      "name": "consciousness_level",
+      "type": "string",
+      "required": true,
+      "description": "Level of consciousness using AVPU scale",
+      "options": ["alert", "voice", "pain", "unresponsive"],
+      "validation": {
+        "enum": ["alert", "voice", "pain", "unresponsive"]
+      }
+    }
+  ],
+  "result": {
+    "name": "mews_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Modified Early Warning Score indicating degree of illness"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Low Risk",
+        "description": "Low risk of deterioration",
+        "interpretation": "Continue routine monitoring. Standard nursing observations as per protocol."
+      },
+      {
+        "min": 3,
+        "max": 4,
+        "stage": "Moderate Risk",
+        "description": "Moderate risk of deterioration",
+        "interpretation": "Increase monitoring frequency. Consider medical review within 1-2 hours. Alert healthcare team."
+      },
+      {
+        "min": 5,
+        "max": 15,
+        "stage": "High Risk",
+        "description": "High risk of deterioration",
+        "interpretation": "Immediate medical review required. Consider ICU consultation. Significantly increased risk of death or ICU admission."
+      }
+    ]
+  },
+  "references": [
+    "Subbe CP, Kruger M, Rutherford P, Gemmel L. Validation of a modified Early Warning Score in medical admissions. QJM. 2001 Oct;94(10):521-6. doi: 10.1093/qjmed/94.10.521.",
+    "Morgan RJM, Williams F, Wright MM. An early warning scoring system for detecting developing critical illness. Clinical Intensive Care. 1997;8:100.",
+    "Goldhill DR, McNarry AF, Mandersloot G, McGinley A. A physiologically-based early warning score for ward patients: the association between score and outcome. Anaesthesia. 2005 Jun;60(6):547-53. doi: 10.1111/j.1365-2044.2005.04186.x."
+  ],
+  "formula": "Sum of points from systolic BP (0-3), heart rate (0-3), respiratory rate (0-3), temperature (0-2), and consciousness level (0-3). Total range: 0-14 points.",
+  "notes": [
+    "Score ≥5 associated with increased likelihood of death or ICU admission",
+    "Any single parameter scoring 3 points suggests need for higher level of care",
+    "Originally developed for medical patients, validated in surgical populations",
+    "Some institutions may modify parameters or thresholds",
+    "Should be used as part of comprehensive clinical assessment",
+    "Designed for use by trained healthcare providers in hospital settings"
+  ]
+}

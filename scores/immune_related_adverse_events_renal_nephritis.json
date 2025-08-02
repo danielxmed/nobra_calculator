@@ -1,0 +1,142 @@
+{
+  "id": "immune_related_adverse_events_renal_nephritis",
+  "title": "Immune-Related Adverse Events for Renal Toxicities - Nephritis",
+  "description": "Grades severity of nephritis secondary to immune checkpoint inhibitor (ICPi) therapy based on Common Terminology Criteria for Adverse Events (CTCAE) Version 5.0 criteria. This standardized grading system evaluates serum creatinine levels, renal function changes, and clinical symptoms to determine the severity of immune-mediated nephritis and guide clinical management decisions including ICPi therapy continuation, corticosteroid treatment, nephrology consultation needs, and monitoring for life-threatening renal complications. ICPi-induced nephritis has an incidence of 1-2% in single-agent therapy and 4.5% in combination therapy, with median onset at 14 weeks (range 6.5-21 weeks). The calculator provides evidence-based management recommendations essential for oncologists, nephrologists, and multidisciplinary teams managing patients on immunotherapy.",
+  "category": "oncology",
+  "version": "CTCAE v5.0",
+  "parameters": [
+    {
+      "name": "baseline_creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Baseline serum creatinine level in mg/dL before ICPi therapy initiation. Essential reference point for calculating fold increase. Normal range typically 0.6-1.2 mg/dL but varies by age, sex, muscle mass, and laboratory",
+      "validation": {
+        "min": 0.3,
+        "max": 15.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "current_creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Current serum creatinine level in mg/dL. Used to calculate fold increase over baseline for CTCAE grading. Significant elevation indicates renal impairment and possible nephritis",
+      "validation": {
+        "min": 0.3,
+        "max": 30.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "proteinuria_present",
+      "type": "string",
+      "required": true,
+      "description": "Presence of proteinuria on urinalysis or urine protein/creatinine ratio. May indicate glomerular involvement in addition to interstitial nephritis. Important for differential diagnosis and prognosis",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hematuria_present",
+      "type": "string",
+      "required": true,
+      "description": "Presence of hematuria (blood in urine) on urinalysis. May suggest glomerular disease or more severe nephritis. Important for determining need for kidney biopsy and management approach",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "clinical_symptoms",
+      "type": "string",
+      "required": true,
+      "description": "Presence of clinical symptoms related to nephritis. Asymptomatic: no symptoms, lab changes only. Mild: minimal symptoms not affecting daily activities. Moderate: symptoms interfering with daily activities. Severe: significant symptoms limiting self-care",
+      "options": ["asymptomatic", "mild", "moderate", "severe"],
+      "validation": {
+        "enum": ["asymptomatic", "mild", "moderate", "severe"]
+      }
+    },
+    {
+      "name": "fluid_retention",
+      "type": "string",
+      "required": true,
+      "description": "Evidence of fluid retention including edema, weight gain, or volume overload. May manifest as facial, abdominal, or extremity edema, sudden weight gain, or hypertension. Indicates more severe nephritis",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "dialysis_required",
+      "type": "string",
+      "required": true,
+      "description": "Need for renal replacement therapy (hemodialysis, peritoneal dialysis, or continuous renal replacement therapy). Indicates Grade 4 severity regardless of other parameters. Life-threatening complication",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "grade",
+    "type": "integer",
+    "unit": "grade",
+    "description": "CTCAE grade for immune-related nephritis (1-4)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Grade 1",
+        "description": "Mild - Creatinine 1.5-2× baseline",
+        "interpretation": "Continue ICPi with close monitoring. Repeat creatinine and urinalysis in 1-2 weeks. Rule out alternative causes (dehydration, medications, contrast, obstruction). Consider nephrology consultation if persistent. Monitor for progression to higher grades. Ensure adequate hydration."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Grade 2",
+        "description": "Moderate - Creatinine 2-3× baseline",
+        "interpretation": "Hold ICPi until creatinine improves to grade ≤1. Start corticosteroids (prednisone 1 mg/kg/day or equivalent). Obtain nephrology consultation. Rule out infectious and obstructive causes. Consider kidney biopsy if diagnosis unclear or no improvement. Monitor creatinine closely. Resume ICPi when grade ≤1 and steroids tapered."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Grade 3",
+        "description": "Severe - Creatinine >3-6× baseline",
+        "interpretation": "Permanently discontinue ICPi. Start high-dose corticosteroids (methylprednisolone 1-2 mg/kg/day). Urgent nephrology consultation required. Consider hospitalization for monitoring. Kidney biopsy strongly recommended. If no improvement in 3-5 days, add mycophenolate mofetil or other immunosuppressants. Monitor for need for dialysis."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Grade 4",
+        "description": "Life-threatening - Creatinine >6× baseline OR dialysis required",
+        "interpretation": "Permanently discontinue ICPi. Immediate hospitalization required. Start high-dose IV corticosteroids (methylprednisolone 1-2 mg/kg/day). Urgent nephrology and intensive care consultation. Initiate renal replacement therapy if indicated. Kidney biopsy when stable. Add second-line immunosuppressants if refractory to steroids. Consider plasmapheresis for severe cases."
+      }
+    ]
+  },
+  "references": [
+    "Brahmer JR, Lacchetti C, Schneider BJ, Atkins MB, Brassil KJ, Caterino JM, et al. Management of Immune-Related Adverse Events in Patients Treated With Immune Checkpoint Inhibitor Therapy: American Society of Clinical Oncology Clinical Practice Guideline. J Clin Oncol. 2018 Jun 10;36(17):1714-1768. doi: 10.1200/JCO.2017.77.6385.",
+    "Thompson JA, Schneider BJ, Brahmer J, Andrews S, Armand P, Bhatia S, et al. NCCN Guidelines Insights: Management of Immunotherapy-Related Toxicities, Version 1.2020. J Natl Compr Canc Netw. 2020 Mar 1;18(3):230-241. doi: 10.6004/jnccn.2020.0012.",
+    "Cortazar FB, Marrone KA, Troxel AB, Ralto KM, Hoenig MP, Brahmer JR, et al. Clinicopathological features of acute kidney injury associated with immune checkpoint inhibitors. Kidney Int. 2016 Sep;90(3):638-47. doi: 10.1016/j.kint.2016.04.008.",
+    "Shirali AC, Perazella MA, Gettinger S. Association of Acute Interstitial Nephritis With Programmed Cell Death 1 Inhibitor Therapy in Lung Cancer Patients. Am J Kidney Dis. 2016 Aug;68(2):287-91. doi: 10.1053/j.ajkd.2016.02.057."
+  ],
+  "formula": "CTCAE grading based on serum creatinine fold increase over baseline: Grade 1: 1.5-2× baseline; Grade 2: 2-3× baseline; Grade 3: >3-6× baseline; Grade 4: >6× baseline OR dialysis required",
+  "notes": [
+    "ICPi-induced nephritis incidence: 1-2% single-agent, 4.5% combination therapy",
+    "Median time to onset: 14 weeks (range 6.5-21 weeks after treatment initiation)",
+    "Most common pathology: acute tubulointerstitial nephritis (AIN)",
+    "Less common manifestations: glomerular disease, thrombotic microangiopathy",
+    "Baseline creatinine essential for accurate grading - obtain before ICPi initiation",
+    "Monitor creatinine before each treatment cycle and as clinically indicated",
+    "Rule out alternative causes: dehydration, medications, contrast nephropathy, obstruction",
+    "Kidney biopsy recommended for Grade 3-4 or when diagnosis unclear",
+    "Grade 2+ requires holding ICPi and nephrology consultation",
+    "Permanent ICPi discontinuation recommended for Grade 3-4 nephritis",
+    "Corticosteroids are first-line treatment for Grade 2-4 nephritis",
+    "Second-line agents for steroid-refractory cases: mycophenolate mofetil, calcineurin inhibitors",
+    "Monitor for electrolyte abnormalities and acid-base disorders",
+    "Consider empiric treatment without biopsy if typical presentation and exclusion of other causes"
+  ]
+}

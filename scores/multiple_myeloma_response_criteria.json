@@ -1,0 +1,195 @@
+{
+  "id": "multiple_myeloma_response_criteria",
+  "title": "Multiple Myeloma Response Criteria (IMWG)",
+  "description": "Evaluates disease response in multiple myeloma according to International Myeloma Working Group (IMWG) criteria including Complete Response, Partial Response, and Progressive Disease categories.",
+  "category": "hematology",
+  "version": "2016",
+  "parameters": [
+    {
+      "name": "serum_immunofixation",
+      "type": "string",
+      "required": true,
+      "description": "Serum immunofixation result",
+      "options": ["negative", "positive"],
+      "validation": {
+        "enum": ["negative", "positive"]
+      }
+    },
+    {
+      "name": "urine_immunofixation",
+      "type": "string",
+      "required": true,
+      "description": "Urine immunofixation result",
+      "options": ["negative", "positive"],
+      "validation": {
+        "enum": ["negative", "positive"]
+      }
+    },
+    {
+      "name": "bone_marrow_plasma_cells",
+      "type": "float",
+      "required": true,
+      "description": "Percentage of plasma cells in bone marrow",
+      "unit": "%",
+      "validation": {
+        "min": 0,
+        "max": 100
+      }
+    },
+    {
+      "name": "soft_tissue_plasmacytomas",
+      "type": "string",
+      "required": true,
+      "description": "Presence of soft tissue plasmacytomas",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      }
+    },
+    {
+      "name": "free_light_chain_ratio",
+      "type": "float",
+      "required": false,
+      "description": "Serum free light chain ratio (involved/uninvolved)",
+      "validation": {
+        "min": 0.01,
+        "max": 1000
+      }
+    },
+    {
+      "name": "clonal_cells_bone_marrow",
+      "type": "string",
+      "required": false,
+      "description": "Clonal cells in bone marrow by immunohistochemistry/immunofluorescence",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      }
+    },
+    {
+      "name": "serum_m_protein_reduction",
+      "type": "float",
+      "required": false,
+      "description": "Percentage reduction in serum M protein from baseline",
+      "unit": "%",
+      "validation": {
+        "min": 0,
+        "max": 100
+      }
+    },
+    {
+      "name": "urine_m_protein_24h",
+      "type": "float",
+      "required": false,
+      "description": "24-hour urine M protein level",
+      "unit": "mg",
+      "validation": {
+        "min": 0,
+        "max": 10000
+      }
+    },
+    {
+      "name": "serum_electrophoresis_detectable",
+      "type": "string",
+      "required": false,
+      "description": "M component detectable by serum electrophoresis",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "plasmacytoma_reduction",
+      "type": "float",
+      "required": false,
+      "description": "Percentage reduction in soft tissue plasmacytoma size",
+      "unit": "%",
+      "validation": {
+        "min": 0,
+        "max": 100
+      }
+    }
+  ],
+  "result": {
+    "name": "response_category",
+    "type": "string",
+    "unit": "",
+    "description": "IMWG response category assessment"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Stringent Complete Response (sCR)",
+        "description": "Best possible response",
+        "interpretation": "Stringent Complete Response: Negative immunofixation of serum and urine, <5% plasma cells in bone marrow, disappearance of soft tissue plasmacytomas, normal free light chain ratio (0.26-1.65), and absence of clonal cells in bone marrow."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Complete Response (CR)",
+        "description": "Complete response",
+        "interpretation": "Complete Response: Negative immunofixation of serum and urine, <5% plasma cells in bone marrow, and disappearance of any soft tissue plasmacytomas."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Very Good Partial Response (VGPR)",
+        "description": "Very good partial response",
+        "interpretation": "Very Good Partial Response: Serum and urine M component detectable by immunofixation but not electrophoresis, OR ≥90% reduction in serum M component plus urine M component <100 mg per 24 hours."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Partial Response (PR)",
+        "description": "Partial response",
+        "interpretation": "Partial Response: ≥50% reduction of serum M protein, ≥90% reduction in 24-hour urinary M protein (or to <200 mg), and if present, ≥50% reduction in soft tissue plasmacytomas."
+      },
+      {
+        "min": 5,
+        "max": 5,
+        "stage": "Stable Disease (SD)",
+        "description": "Stable disease",
+        "interpretation": "Stable Disease: Not meeting criteria for Complete Response, Very Good Partial Response, Partial Response, or Progressive Disease."
+      },
+      {
+        "min": 6,
+        "max": 6,
+        "stage": "Progressive Disease (PD)",
+        "description": "Disease progression",
+        "interpretation": "Progressive Disease: 25% increase from lowest response value in serum M component (≥0.5 g/100 mL increase), urine M component (≥200 mg per 24 hours increase), new bone lesions, or hypercalcemia."
+      }
+    ]
+  },
+  "references": [
+    "Kumar S, Paiva B, Anderson KC, Durie B, Landgren O, Moreau P, et al. International Myeloma Working Group consensus criteria for response and minimal residual disease assessment in multiple myeloma. Lancet Oncol. 2016;17(8):e328-e346. doi: 10.1016/S1470-2045(16)30206-6.",
+    "Durie BG, Harousseau JL, Miguel JS, Bladé J, Barlogie B, Anderson K, et al. International uniform response criteria for multiple myeloma. Leukemia. 2006;20(9):1467-73. doi: 10.1038/sj.leu.2404284.",
+    "Rajkumar SV, Harousseau JL, Durie B, Anderson KC, Dimopoulos M, Kyle R, et al. Consensus guidelines for the uniform reporting of clinical trials: report of the International Myeloma Workshop Consensus Panel 1. Blood. 2011;117(18):4691-5. doi: 10.1182/blood-2010-10-299487."
+  ],
+  "formula": "IMWG Response Assessment: Based on immunofixation results, bone marrow plasma cell percentage, M protein levels, soft tissue plasmacytomas, free light chain ratio, and clonal cell presence to determine response category (sCR, CR, VGPR, PR, SD, or PD)",
+  "notes": [
+    "International Myeloma Working Group (IMWG) consensus criteria for response assessment",
+    "Stringent CR requires all CR criteria plus normal FLC ratio and absence of clonal cells",
+    "Complete Response requires negative immunofixation and <5% bone marrow plasma cells",
+    "VGPR requires M component detectable by immunofixation but not electrophoresis",
+    "Partial Response requires ≥50% reduction in serum M protein",
+    "Stable Disease is defined as not meeting criteria for other response categories",
+    "Progressive Disease requires 25% increase from lowest response value",
+    "Responses should be confirmed on two consecutive assessments",
+    "Used primarily in clinical trials and research settings",
+    "Helps standardize response assessment across institutions",
+    "Free light chain ratio normal range is 0.26-1.65",
+    "Bone marrow plasma cells <5% required for Complete Response",
+    "Soft tissue plasmacytomas must disappear for Complete Response",
+    "Immunofixation is more sensitive than electrophoresis",
+    "Urine M protein <100 mg per 24 hours for VGPR",
+    "Serum M protein reduction ≥90% for VGPR",
+    "Plasmacytoma reduction ≥50% required for Partial Response",
+    "Assessment frequency should be consistent with clinical protocols",
+    "Minimal residual disease (MRD) assessment may provide additional information",
+    "Response criteria may be modified based on evolving evidence",
+    "Clinical significance of response depth varies by patient population",
+    "Integration with survival outcomes guides treatment decisions"
+  ]
+}

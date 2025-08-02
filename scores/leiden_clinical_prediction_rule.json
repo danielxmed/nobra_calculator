@@ -1,0 +1,164 @@
+{
+  "id": "leiden_clinical_prediction_rule",
+  "title": "Leiden Clinical Prediction Rule for Undifferentiated Arthritis",
+  "description": "Diagnoses rheumatoid arthritis in patients with recent-onset undifferentiated arthritis by predicting the likelihood of progression from undifferentiated arthritis to rheumatoid arthritis within one year",
+  "category": "rheumatology",
+  "version": "van_der_helm_2007",
+  "parameters": [
+    {
+      "name": "age_years",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years (multiplied by 0.02 in calculation)",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient sex",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "joint_distribution",
+      "type": "string",
+      "required": true,
+      "description": "Distribution pattern of affected joints",
+      "options": ["small_hands_feet", "upper_extremities_only", "upper_and_lower_extremities", "other"],
+      "validation": {
+        "enum": ["small_hands_feet", "upper_extremities_only", "upper_and_lower_extremities", "other"]
+      }
+    },
+    {
+      "name": "symmetric_distribution",
+      "type": "string",
+      "required": true,
+      "description": "Whether joint involvement is symmetric",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "morning_stiffness_duration",
+      "type": "string",
+      "required": true,
+      "description": "Duration of morning stiffness",
+      "options": ["less_than_30_min", "30_to_59_min", "60_min_or_more"],
+      "validation": {
+        "enum": ["less_than_30_min", "30_to_59_min", "60_min_or_more"]
+      }
+    },
+    {
+      "name": "tender_joints_count",
+      "type": "integer",
+      "required": true,
+      "description": "Number of tender joints (out of 68 assessed joints)",
+      "validation": {
+        "min": 0,
+        "max": 68
+      },
+      "unit": "joints"
+    },
+    {
+      "name": "swollen_joints_count",
+      "type": "integer",
+      "required": true,
+      "description": "Number of swollen joints (out of 66 assessed joints)",
+      "validation": {
+        "min": 0,
+        "max": 66
+      },
+      "unit": "joints"
+    },
+    {
+      "name": "c_reactive_protein",
+      "type": "float",
+      "required": true,
+      "description": "C-reactive protein level",
+      "validation": {
+        "min": 0,
+        "max": 500
+      },
+      "unit": "mg/L"
+    },
+    {
+      "name": "rheumatoid_factor",
+      "type": "string",
+      "required": true,
+      "description": "Presence of rheumatoid factor",
+      "options": ["positive", "negative"],
+      "validation": {
+        "enum": ["positive", "negative"]
+      }
+    },
+    {
+      "name": "anti_ccp_antibodies",
+      "type": "string",
+      "required": true,
+      "description": "Presence of anti-cyclic citrullinated peptide (anti-CCP) antibodies",
+      "options": ["positive", "negative"],
+      "validation": {
+        "enum": ["positive", "negative"]
+      }
+    }
+  ],
+  "result": {
+    "name": "leiden_prediction_score",
+    "type": "float",
+    "unit": "points",
+    "description": "Leiden Clinical Prediction Rule score for rheumatoid arthritis progression"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0.0,
+        "max": 6.0,
+        "stage": "Low Risk",
+        "description": "Low risk of progression to rheumatoid arthritis",
+        "interpretation": "Low likelihood of progression from undifferentiated arthritis to rheumatoid arthritis within one year. Conservative management with watchful waiting may be appropriate. Regular follow-up recommended to monitor for disease progression."
+      },
+      {
+        "min": 6.01,
+        "max": 7.99,
+        "stage": "Indeterminate Risk",
+        "description": "Indeterminate risk of progression to rheumatoid arthritis",
+        "interpretation": "Intermediate likelihood of progression to rheumatoid arthritis. Clinical judgment and additional factors should guide treatment decisions. Consider close monitoring and potentially early intervention depending on patient characteristics and clinical presentation."
+      },
+      {
+        "min": 8.0,
+        "max": 20.0,
+        "stage": "High Risk",
+        "description": "High risk of progression to rheumatoid arthritis",
+        "interpretation": "High likelihood of progression from undifferentiated arthritis to rheumatoid arthritis within one year. Early initiation of disease-modifying antirheumatic drugs (DMARDs) should be strongly considered to prevent joint damage and disability."
+      }
+    ]
+  },
+  "references": [
+    "van der Helm-van Mil AHM, le Cessie S, van Dongen H, Breedveld FC, Toes REM, Huizinga TWJ. A prediction rule for disease outcome in patients with recent-onset undifferentiated arthritis: how to guide individual treatment decisions. Arthritis Rheum. 2007 Feb;56(2):433-40.",
+    "Kuriya B, Cheng CK, Chen HM, Bykerk VP. Validation of a prediction rule for development of rheumatoid arthritis in patients with early undifferentiated arthritis. Ann Rheum Dis. 2009 Sep;68(9):1482-5.",
+    "Tamai M, Kawakami A, Uetani M, Fukushima A, Arima K, Iwanaga N, et al. A prediction rule for disease outcome in patients with undifferentiated arthritis using magnetic resonance imaging of the wrists and finger joints and serologic autoantibodies. Arthritis Rheum. 2009 Oct 15;61(10):1324-31."
+  ],
+  "formula": "Score = (Age × 0.02) + Sex points + Joint distribution points + Symmetric distribution points + Morning stiffness points + Tender joints points + Swollen joints points + CRP points + RF points + Anti-CCP points",
+  "notes": [
+    "Developed from the Leiden Early Arthritis Clinic cohort study",
+    "Applies to adults with recent-onset undifferentiated arthritis (symptom duration <2 years)",
+    "Designed to predict progression to rheumatoid arthritis within 1 year",
+    "Score ranges from approximately 0 to 13 points",
+    "High specificity for identifying patients who will progress to RA",
+    "Should be used in conjunction with clinical judgment and other diagnostic criteria",
+    "Age component calculated as: age in years × 0.02",
+    "Validated across multiple populations and clinical settings",
+    "Helps guide early treatment decisions with DMARDs",
+    "Not intended to replace comprehensive rheumatological evaluation",
+    "Most accurate when applied to patients with symptom duration <6 months",
+    "Consider serial assessments for patients in indeterminate risk category"
+  ]
+}

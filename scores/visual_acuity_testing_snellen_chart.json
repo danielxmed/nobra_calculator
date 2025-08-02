@@ -1,0 +1,149 @@
+{
+  "id": "visual_acuity_testing_snellen_chart",
+  "title": "Visual Acuity Testing (Snellen Chart)",
+  "description": "Assesses binocular and monocular visual acuity using standardized Snellen optotypes. This test evaluates the clarity of vision by determining the smallest line of letters a patient can accurately read on a standardized chart at a specific distance. Visual acuity testing is a fundamental component of ophthalmologic and neurologic examinations, particularly for cranial nerve II (optic nerve) assessment.",
+  "category": "general",
+  "version": "2023",
+  "parameters": [
+    {
+      "name": "eye_tested",
+      "type": "string",
+      "required": true,
+      "description": "Which eye is being tested",
+      "options": ["right_eye", "left_eye", "both_eyes"],
+      "validation": {
+        "enum": ["right_eye", "left_eye", "both_eyes"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "lowest_line_read",
+      "type": "string",
+      "required": true,
+      "description": "The lowest (smallest) line that the patient can read correctly on the Snellen chart",
+      "options": [
+        "line_1_20_200",
+        "line_2_20_160",
+        "line_3_20_125",
+        "line_4_20_100",
+        "line_5_20_80",
+        "line_6_20_63",
+        "line_7_20_50",
+        "line_8_20_40",
+        "line_9_20_32",
+        "line_10_20_25",
+        "line_11_20_20",
+        "counting_fingers",
+        "hand_motion",
+        "light_perception",
+        "no_light_perception"
+      ],
+      "validation": {
+        "enum": [
+          "line_1_20_200",
+          "line_2_20_160",
+          "line_3_20_125",
+          "line_4_20_100",
+          "line_5_20_80",
+          "line_6_20_63",
+          "line_7_20_50",
+          "line_8_20_40",
+          "line_9_20_32",
+          "line_10_20_25",
+          "line_11_20_20",
+          "counting_fingers",
+          "hand_motion",
+          "light_perception",
+          "no_light_perception"
+        ]
+      },
+      "unit": ""
+    },
+    {
+      "name": "testing_distance",
+      "type": "string",
+      "required": true,
+      "description": "Distance at which the test was performed",
+      "options": ["20_feet", "6_meters", "4_feet_mobile"],
+      "validation": {
+        "enum": ["20_feet", "6_meters", "4_feet_mobile"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "corrective_lenses",
+      "type": "string",
+      "required": true,
+      "description": "Whether the patient was wearing corrective lenses during testing",
+      "options": ["yes", "no", "unknown"],
+      "validation": {
+        "enum": ["yes", "no", "unknown"]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "visual_acuity",
+    "type": "string",
+    "unit": "fraction",
+    "description": "Visual acuity measurement in standard notation"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": "20/20",
+        "max": "20/20",
+        "stage": "Normal",
+        "description": "Normal visual acuity",
+        "interpretation": "Visual acuity of 20/20 represents normal vision. The patient can read letters at 20 feet that a person with normal vision can read at 20 feet. No further evaluation is typically needed unless other visual complaints are present."
+      },
+      {
+        "min": "20/25",
+        "max": "20/40",
+        "stage": "Mild Impairment",
+        "description": "Mild visual impairment",
+        "interpretation": "Visual acuity between 20/25 and 20/40 indicates mild visual impairment. This may suggest need for corrective lenses or early eye disease. Ophthalmologic evaluation is recommended, particularly if this represents a change from baseline."
+      },
+      {
+        "min": "20/50",
+        "max": "20/100",
+        "stage": "Moderate Impairment",
+        "description": "Moderate visual impairment",
+        "interpretation": "Visual acuity between 20/50 and 20/100 represents moderate visual impairment. This level of vision loss significantly impacts daily activities and requires ophthalmologic evaluation to determine the underlying cause and appropriate treatment."
+      },
+      {
+        "min": "20/125",
+        "max": "20/200",
+        "stage": "Severe Impairment",
+        "description": "Severe visual impairment approaching legal blindness",
+        "interpretation": "Visual acuity between 20/125 and 20/200 represents severe visual impairment. Visual acuity of 20/200 or worse is considered legally blind in the United States. Urgent ophthalmologic evaluation is indicated."
+      },
+      {
+        "min": "CF",
+        "max": "NLP",
+        "stage": "Profound Impairment",
+        "description": "Profound visual impairment",
+        "interpretation": "Counting fingers (CF), hand motion (HM), light perception (LP), or no light perception (NLP) represent profound visual impairment. This requires immediate ophthalmologic evaluation to determine if the vision loss is reversible and to identify any treatable causes."
+      }
+    ]
+  },
+  "references": [
+    "Snellen H. Probebuchstaben zur Bestimmung der Sehschärfe. Utrecht: Van de Weijer; 1862.",
+    "Elliott DB. The good (logMAR), the bad (Snellen) and the ugly (BCVA, number of letters read) of visual acuity measurement. Ophthalmic Physiol Opt. 2016;36(4):355-358. doi: 10.1111/opo.12310",
+    "Flaxman SR, Bourne RRA, Resnikoff S, et al. Global causes of blindness and distance vision impairment 1990-2020: a systematic review and meta-analysis. Lancet Glob Health. 2017;5(12):e1221-e1234. doi: 10.1016/S2214-109X(17)30393-5",
+    "Bailey IL, Lovie JE. New design principles for visual acuity letter charts. Am J Optom Physiol Opt. 1976;53(11):740-745. doi: 10.1097/00006324-197611000-00006"
+  ],
+  "formula": "Visual acuity = Testing distance / Distance at which normal eye can read the same line. Standard notation: 20/X where X is the denominator corresponding to the smallest line read correctly.",
+  "notes": [
+    "Test each eye independently with the opposite eye covered",
+    "Ensure proper lighting and standardized testing distance",
+    "Visual acuity worse than 20/25 warrants professional ophthalmologic evaluation",
+    "Sudden changes in visual acuity require urgent evaluation",
+    "This test does not replace comprehensive eye examination",
+    "Mobile/smartphone testing should use 4-foot distance with maximum screen brightness",
+    "For patients over 40, presbyopia may affect near vision testing accuracy",
+    "If unable to read letters, test counting fingers, hand motion, light perception, and no light perception in sequence",
+    "Results should be documented as corrected or uncorrected visual acuity",
+    "Standard Snellen optotypes include letters C, D, E, F, L, O, P, T, and Z"
+  ]
+}

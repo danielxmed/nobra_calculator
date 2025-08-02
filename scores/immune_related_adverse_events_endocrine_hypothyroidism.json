@@ -1,0 +1,101 @@
+{
+  "id": "immune_related_adverse_events_endocrine_hypothyroidism",
+  "title": "Immune-Related Adverse Events for Endocrine Toxicities - Hypothyroidism",
+  "description": "Grades severity of hypothyroidism secondary to immune checkpoint inhibitor therapy and provides management recommendations",
+  "category": "oncology",
+  "version": "2021",
+  "parameters": [
+    {
+      "name": "tsh_miu_l",
+      "type": "float",
+      "required": true,
+      "description": "Thyroid-stimulating hormone (TSH) level in mIU/L",
+      "validation": {
+        "min": 0.01,
+        "max": 100.0
+      },
+      "unit": "mIU/L"
+    },
+    {
+      "name": "symptom_severity",
+      "type": "string",
+      "required": true,
+      "description": "Patient symptom severity and functional status",
+      "validation": {
+        "enum": ["asymptomatic", "moderate_able_adls", "severe_unable_adls"]
+      },
+      "options": ["asymptomatic", "moderate_able_adls", "severe_unable_adls"]
+    },
+    {
+      "name": "myxedema_signs",
+      "type": "string",
+      "required": true,
+      "description": "Evidence of myxedema or life-threatening hypothyroid complications",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    }
+  ],
+  "result": {
+    "name": "irae_grade",
+    "type": "integer",
+    "description": "irAE grade for endocrine hypothyroidism (1-4)",
+    "unit": "grade"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "grade": "Grade 1",
+        "description": "Mild - Asymptomatic with TSH <10 mIU/L",
+        "interpretation": "Continue immune checkpoint inhibitor (ICPi) with close monitoring. Check TSH and free thyroxine every 4-6 weeks during ICPi therapy. No thyroid hormone supplementation needed at this time. Monitor for development of symptoms or TSH elevation."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "grade": "Grade 2",
+        "description": "Moderate - Moderate symptoms, able to perform ADLs, TSH >10 mIU/L",
+        "interpretation": "May hold ICPi until symptoms resolve. Consider endocrinology consultation for thyroid hormone replacement therapy. Consider thyroid hormone supplementation with levothyroxine. Monitor TSH every 6-8 weeks. Use free thyroxine monitoring short-term if needed. Resume ICPi when symptoms controlled."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "grade": "Grade 3",
+        "description": "Severe - Severe symptoms, unable to perform ADLs",
+        "interpretation": "Hold ICPi until symptoms resolve to grade ≤1. Urgent endocrinology consultation required. Initiate thyroid hormone supplementation immediately. Consider hospital admission if signs of myxedema or cardiovascular complications. Monitor closely for myxedema coma risk. Reassess thyroid function as in grade 2."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "grade": "Grade 4",
+        "description": "Life-threatening - Myxedema coma or life-threatening consequences",
+        "interpretation": "Hold ICPi until symptoms resolve to grade ≤1. Immediate hospitalization required for myxedema coma management. Urgent endocrinology and critical care consultation. IV thyroid hormone replacement (levothyroxine or liothyronine). Supportive care for hypothermia, hypotension, hyponatremia. Consider permanent ICPi discontinuation."
+      }
+    ]
+  },
+  "references": [
+    "Brahmer JR, Lacchetti C, Schneider BJ, Atkins MB, Brassil KJ, Caterino JM, et al. Management of Immune-Related Adverse Events in Patients Treated With Immune Checkpoint Inhibitor Therapy: American Society of Clinical Oncology Clinical Practice Guideline. J Clin Oncol. 2018 Jun 10;36(17):1714-1768. doi: 10.1200/JCO.2017.77.6385.",
+    "Thompson JA, Schneider BJ, Brahmer J, Andrews S, Armand P, Bhatia S, et al. NCCN Guidelines Insights: Management of Immunotherapy-Related Toxicities, Version 1.2020. J Natl Compr Canc Netw. 2020 Mar 1;18(3):230-241. doi: 10.6004/jnccn.2020.0012.",
+    "Faje AT, Sullivan R, Lawrence D, Trombetta M, Fadden R, Klibanski A, et al. Ipilimumab-induced hypophysitis: a detailed longitudinal analysis in a large cohort of patients with metastatic melanoma. J Clin Endocrinol Metab. 2014 Nov;99(11):4078-85. doi: 10.1210/jc.2014-2306.",
+    "Barroso-Sousa R, Barry WT, Garrido-Castro AC, Hodi FS, Min Y, Krop IE, et al. Incidence of Endocrine Dysfunction Following the Use of Different Immune Checkpoint Inhibitor Regimens: A Systematic Review and Meta-analysis. JAMA Oncol. 2018 Feb 1;4(2):173-182. doi: 10.1001/jamaoncol.2017.3064."
+  ],
+  "formula": "Grading based on TSH levels (mIU/L), symptom severity, and presence of myxedema: Grade 1 (TSH <10, asymptomatic), Grade 2 (TSH >10 OR moderate symptoms with ADL preservation), Grade 3 (severe symptoms, unable to perform ADLs), Grade 4 (myxedema coma or life-threatening complications)",
+  "notes": [
+    "Based on Common Terminology Criteria for Adverse Events (CTCAE) Version 5.0",
+    "More common with anti-PD-1/PD-L1 agents than anti-CTLA-4",
+    "Can occur at any time during ICPi treatment, often irreversible",
+    "TSH elevation may precede clinical symptoms by weeks to months",
+    "Normal TSH range typically 0.4-4.0 mIU/L, varies by laboratory",
+    "Grade 2+ requires endocrinology consultation for hormone replacement",
+    "Most patients require lifelong thyroid hormone replacement",
+    "Monitor for concurrent adrenal insufficiency (up to 50% association)",
+    "Free T4 levels help distinguish primary from secondary hypothyroidism",
+    "Subclinical hypothyroidism (elevated TSH, normal T4) may not require treatment",
+    "ICPi therapy can often be resumed after hormone replacement initiated",
+    "Consider thyroid peroxidase (TPO) and thyroglobulin antibodies",
+    "Myxedema coma mortality rate 20-60% despite treatment",
+    "Distinguish from pre-existing thyroid disease or medication effects"
+  ]
+}

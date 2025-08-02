@@ -1,0 +1,112 @@
+{
+  "id": "michigan_picc_risk",
+  "title": "Michigan Risk Score for PICC-Related Thrombosis",
+  "description": "Predicts risk of deep vein thrombosis (DVT) in patients with peripherally inserted central catheter (PICC)",
+  "category": "hematology",
+  "version": "2017",
+  "parameters": [
+    {
+      "name": "another_cvc_present",
+      "type": "string",
+      "required": true,
+      "description": "Is another central venous catheter (CVC) present when PICC is placed?",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "wbc_over_12",
+      "type": "string",
+      "required": true,
+      "description": "Is white blood cell count > 12.0 × 10⁹/µL?",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "picc_lumens",
+      "type": "string",
+      "required": true,
+      "description": "Number of PICC lumens",
+      "options": ["1", "2", "3_or_4"],
+      "validation": {
+        "enum": ["1", "2", "3_or_4"]
+      }
+    },
+    {
+      "name": "history_of_vte",
+      "type": "string",
+      "required": true,
+      "description": "History of venous thromboembolism (VTE)?",
+      "options": ["never", "yes_over_30_days", "yes_within_30_days"],
+      "validation": {
+        "enum": ["never", "yes_over_30_days", "yes_within_30_days"]
+      }
+    },
+    {
+      "name": "active_cancer",
+      "type": "string",
+      "required": true,
+      "description": "Active cancer (on chemotherapy or cancer-related admission)?",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "michigan_picc_risk_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Risk score for PICC-related thrombosis"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Class I",
+        "description": "0.9% VTE probability",
+        "interpretation": "Low risk of PICC-related thrombosis. Standard monitoring and VTE prophylaxis as per institutional protocol."
+      },
+      {
+        "min": 1,
+        "max": 2,
+        "stage": "Class II",
+        "description": "1.6% VTE probability",
+        "interpretation": "Low-moderate risk of PICC-related thrombosis. Consider enhanced monitoring for VTE symptoms."
+      },
+      {
+        "min": 3,
+        "max": 4,
+        "stage": "Class III",
+        "description": "2.7% VTE probability",
+        "interpretation": "Moderate-high risk of PICC-related thrombosis. Consider alternative vascular access if feasible, or implement enhanced VTE prophylaxis and monitoring."
+      },
+      {
+        "min": 5,
+        "max": 10,
+        "stage": "Class IV",
+        "description": "4.7% VTE probability",
+        "interpretation": "High risk of PICC-related thrombosis. Strongly consider alternative vascular access options. If PICC necessary, implement aggressive VTE prophylaxis and frequent monitoring."
+      }
+    ]
+  },
+  "references": [
+    "Chopra V, Kaatz S, Conlon A, Paje D, Grant PJ, Rogers MAM, et al. The Michigan Risk Score to predict peripherally inserted central catheter-associated thrombosis. J Thromb Haemost. 2017 Oct;15(10):1951-1962. doi: 10.1111/jth.13794.",
+    "Chopra V, Anand S, Hickner A, Buist M, Rogers MA, Saint S, et al. Risk of venous thromboembolism associated with peripherally inserted central catheters: a systematic review and meta-analysis. Lancet. 2013 Jul 27;382(9889):311-25. doi: 10.1016/S0140-6736(13)60592-9.",
+    "Evans RS, Sharp JH, Linford LH, Lloyd JF, Tripp JS, Jones JP, et al. Risk of symptomatic DVT associated with peripherally inserted central catheters. Chest. 2010 Oct;138(4):803-10. doi: 10.1378/chest.10-0154."
+  ],
+  "formula": "Sum of points: Another CVC (+1), WBC >12 (+1), 2 lumens (+1), 3-4 lumens (+2), VTE >30 days prior (+2), VTE within 30 days (+3), Active cancer (+3)",
+  "notes": [
+    "Developed from Michigan Hospital Medicine Safety Consortium data",
+    "Validated in medical patients ≥18 years old",
+    "Not validated for surgical patients, pediatric patients, or pregnant patients",
+    "2.1% overall PICC-DVT rate in development cohort of 23,010 patients",
+    "Risk increases 5.2-fold from Class I to Class IV",
+    "Consider alternative vascular access for high-risk patients",
+    "Some validation studies have shown mixed results regarding accuracy"
+  ]
+}

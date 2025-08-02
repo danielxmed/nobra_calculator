@@ -26,6 +26,32 @@ from .gcs_pupils_score import GcsPupilsScoreRequest, GcsPupilsScoreResponse
 from .glasgow_coma_scale import GlasgowComaScaleRequest, GlasgowComaScaleResponse
 from .func_score import FuncScoreRequest, FuncScoreResponse
 from .hat_score import HatScoreRequest, HatScoreResponse
+from .hints import HintsRequest, HintsResponse
+from .hunt_hess_classification import HuntHessClassificationRequest, HuntHessClassificationResponse
+from .impact_score import ImpactScoreRequest, ImpactScoreResponse, ImpactScoreResult
+from .iwg2_alzheimer_criteria import Iwg2AlzheimerCriteriaRequest, Iwg2AlzheimerCriteriaResponse
+from .ich_score import IchScoreRequest, IchScoreResponse
+from .los_angeles_motor_scale import LosAngelesMotorScaleRequest, LosAngelesMotorScaleResponse
+from .mcdonald_criteria_multiple_sclerosis_2017_revision import (
+    McdonaldCriteriaMultipleSclerosis2017RevisionRequest,
+    McdonaldCriteriaMultipleSclerosis2017RevisionResponse
+)
+from .midas import MidasRequest, MidasResponse
+from .mtoq_4 import Mtoq4Request, Mtoq4Response
+from .modified_fatigue_impact_scale import ModifiedFatigueImpactScaleRequest, ModifiedFatigueImpactScaleResponse
+from .modified_fisher_grading_scale import ModifiedFisherGradingScaleRequest, ModifiedFisherGradingScaleResponse
+from .modified_hoehn_and_yahr_scale import ModifiedHoehnAndYahrScaleRequest, ModifiedHoehnAndYahrScaleResponse
+from .modified_nih_stroke_scale import ModifiedNihStrokeScaleRequest, ModifiedNihStrokeScaleResponse
+from .modified_rankin_scale import ModifiedRankinScaleRequest, ModifiedRankinScaleResponse
+from .modified_rankin_score_9q import ModifiedRankinScore9QRequest, ModifiedRankinScore9QResponse
+from .modified_soar_score import ModifiedSoarScoreRequest, ModifiedSoarScoreResponse
+from .moca import MocaRequest, MocaResponse
+from .mg_adl import MgAdlRequest, MgAdlResponse
+from .nihss import NihssRequest, NihssResponse
+from .onls import OnlsRequest, OnlsResponse
+from .sudbury_vertigo_risk_score import SudburyVertigoRiskScoreRequest, SudburyVertigoRiskScoreResponse
+from .tpa_contraindications import TpaContraindicationsRequest, TpaContraindicationsResponse
+from .trunk_impairment_scale import TrunkImpairmentScaleRequest, TrunkImpairmentScaleResponse
 
 __all__ = [
     "Abcd2Request",
@@ -76,4 +102,51 @@ __all__ = [
     "FuncScoreResponse",
     "HatScoreRequest",
     "HatScoreResponse",
+    "HintsRequest",
+    "HintsResponse",
+    "HuntHessClassificationRequest",
+    "HuntHessClassificationResponse",
+    "ImpactScoreRequest",
+    "ImpactScoreResponse",
+    "ImpactScoreResult",
+    "Iwg2AlzheimerCriteriaRequest",
+    "Iwg2AlzheimerCriteriaResponse",
+    "IchScoreRequest",
+    "IchScoreResponse",
+    "LosAngelesMotorScaleRequest",
+    "LosAngelesMotorScaleResponse",
+    "McdonaldCriteriaMultipleSclerosis2017RevisionRequest",
+    "McdonaldCriteriaMultipleSclerosis2017RevisionResponse",
+    "MidasRequest",
+    "MidasResponse",
+    "Mtoq4Request",
+    "Mtoq4Response",
+    "ModifiedFatigueImpactScaleRequest",
+    "ModifiedFatigueImpactScaleResponse",
+    "ModifiedFisherGradingScaleRequest",
+    "ModifiedFisherGradingScaleResponse",
+    "ModifiedHoehnAndYahrScaleRequest",
+    "ModifiedHoehnAndYahrScaleResponse",
+    "ModifiedNihStrokeScaleRequest",
+    "ModifiedNihStrokeScaleResponse",
+    "ModifiedRankinScaleRequest",
+    "ModifiedRankinScaleResponse",
+    "ModifiedRankinScore9QRequest",
+    "ModifiedRankinScore9QResponse",
+    "ModifiedSoarScoreRequest",
+    "ModifiedSoarScoreResponse",
+    "MocaRequest",
+    "MocaResponse",
+    "MgAdlRequest",
+    "MgAdlResponse",
+    "NihssRequest",
+    "NihssResponse",
+    "OnlsRequest",
+    "OnlsResponse",
+    "SudburyVertigoRiskScoreRequest",
+    "SudburyVertigoRiskScoreResponse",
+    "TpaContraindicationsRequest",
+    "TpaContraindicationsResponse",
+    "TrunkImpairmentScaleRequest",
+    "TrunkImpairmentScaleResponse"
 ]

@@ -1,0 +1,141 @@
+{
+  "id": "kruis_score_ibs",
+  "title": "Kruis Score for Diagnosis of Irritable Bowel Syndrome (IBS)",
+  "description": "Determines presence of IBS using clinically significant weighted criteria including symptoms and laboratory parameters to differentiate IBS from organic gastrointestinal disease",
+  "category": "emergency",
+  "version": "1984",
+  "parameters": [
+    {
+      "name": "symptoms_present",
+      "type": "string",
+      "required": true,
+      "description": "Symptoms of abdominal pain, flatulence, or bowel irregularity present",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "duration_over_2_years",
+      "type": "string",
+      "required": true,
+      "description": "Symptom duration greater than 2 years",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "pain_description",
+      "type": "string",
+      "required": true,
+      "description": "Pain described as burning, cutting, very strong, or similar severe descriptors",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "alternating_bowel_habits",
+      "type": "string",
+      "required": true,
+      "description": "Alternating constipation and diarrhea",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "abnormal_physical_findings",
+      "type": "string",
+      "required": true,
+      "description": "Abnormal physical findings on examination (red flag)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "esr_over_10",
+      "type": "string",
+      "required": true,
+      "description": "Erythrocyte sedimentation rate (ESR) greater than 10 mm/hr (red flag)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "wbc_over_10000",
+      "type": "string",
+      "required": true,
+      "description": "White blood cell count greater than 10,000/μL (red flag)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "low_hemoglobin",
+      "type": "string",
+      "required": true,
+      "description": "Low hemoglobin (female < 12 g/dL; male < 14 g/dL) indicating anemia (red flag)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "history_blood_in_stool",
+      "type": "string",
+      "required": true,
+      "description": "History of blood in stool (red flag)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    }
+  ],
+  "result": {
+    "name": "kruis_ibs_score",
+    "type": "object",
+    "unit": "points",
+    "description": "Kruis Score calculation for IBS diagnosis with symptom assessment and red flag evaluation"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": -305,
+        "max": 43,
+        "stage": "Negative for IBS",
+        "description": "Score < 44 points",
+        "interpretation": "IBS diagnosis unlikely. Consider further evaluation for organic gastrointestinal disease, especially if red flags are present."
+      },
+      {
+        "min": 44,
+        "max": 87,
+        "stage": "Positive for IBS",
+        "description": "Score ≥ 44 points",
+        "interpretation": "IBS diagnosis likely. Symptoms consistent with irritable bowel syndrome based on validated criteria."
+      }
+    ]
+  },
+  "references": [
+    "Kruis W, Thieme C, Weinzierl M, Schüssler P, Holl J, Paulus W. A diagnostic score for the irritable bowel syndrome. Its value in the exclusion of organic disease. Gastroenterology. 1984 Jul;87(1):1-7.",
+    "Frigerio G, Beretta A, Orsenigo G, Tadeo G, Imperiali G, Minoli G. Irritable bowel syndrome. Still a diagnosis of exclusion? Dig Dis Sci. 1992 Jan;37(1):164-7.",
+    "Bellini M, Tosetti C, Costa F, Biagi S, Stasi C, Del Punta A, et al. The general practitioner's approach to irritable bowel syndrome: from intention to practice. Dig Liver Dis. 2005 Dec;37(12):934-9.",
+    "Thompson WG. The road to Rome. Gastroenterology. 2006 Nov;131(5):1622-6."
+  ],
+  "formula": "Score = (+34 if symptoms present) + (+16 if duration >2 years) + (+23 if severe pain) + (+14 if alternating bowel habits) + (-47 if abnormal physical findings) + (-13 if ESR >10) + (-50 if WBC >10,000) + (-98 if low hemoglobin) + (-98 if blood in stool history)",
+  "notes": [
+    "Developed in 1984 by Kruis et al. as one of the first scoring systems for IBS diagnosis",
+    "Incorporates both positive symptoms and negative red flag indicators",
+    "Score ≥44 points suggests IBS diagnosis with 81% sensitivity and 91% specificity",
+    "Red flags (negative points) help exclude organic gastrointestinal disease",
+    "Has largely been superseded by Rome criteria in clinical practice but remains useful for research",
+    "Laboratory tests (ESR, WBC, hemoglobin) are integral to the scoring system",
+    "Originally designed to differentiate IBS from organic bowel disease",
+    "Emphasizes the importance of symptom duration (>2 years) in IBS diagnosis",
+    "Any presence of red flags warrants further evaluation for organic pathology"
+  ]
+}

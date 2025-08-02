@@ -1,0 +1,106 @@
+{
+  "id": "wound_closure_classification",
+  "title": "Wound Closure Classification",
+  "description": "Classifies wound closure types to guide surgical management strategies. Stratifies wounds based on contamination level, tissue loss, and time since injury to recommend appropriate closure method (primary, secondary, or tertiary closure).",
+  "category": "general",
+  "version": "Standard Classification",
+  "parameters": [
+    {
+      "name": "contamination_level",
+      "type": "string",
+      "required": true,
+      "description": "Level of wound contamination affecting infection risk",
+      "options": ["clean", "contaminated", "grossly_contaminated"],
+      "validation": {
+        "enum": ["clean", "contaminated", "grossly_contaminated"]
+      },
+      "unit": "categorical"
+    },
+    {
+      "name": "tissue_loss",
+      "type": "string",
+      "required": true,
+      "description": "Extent of tissue loss affecting ability to achieve tension-free closure",
+      "options": ["minimal", "moderate", "significant"],
+      "validation": {
+        "enum": ["minimal", "moderate", "significant"]
+      },
+      "unit": "categorical"
+    },
+    {
+      "name": "time_since_injury",
+      "type": "float",
+      "required": true,
+      "description": "Time elapsed since injury in hours",
+      "validation": {
+        "min": 0.0,
+        "max": 168.0
+      },
+      "unit": "hours"
+    },
+    {
+      "name": "vascularization",
+      "type": "string",
+      "required": true,
+      "description": "Wound bed vascularization status affecting healing potential",
+      "options": ["well_vascularized", "moderately_vascularized", "poorly_vascularized"],
+      "validation": {
+        "enum": ["well_vascularized", "moderately_vascularized", "poorly_vascularized"]
+      },
+      "unit": "categorical"
+    },
+    {
+      "name": "wound_location",
+      "type": "string",
+      "required": true,
+      "description": "Anatomical location of the wound affecting closure options",
+      "options": ["face_scalp", "extremities", "trunk", "hands_feet", "joints", "other"],
+      "validation": {
+        "enum": ["face_scalp", "extremities", "trunk", "hands_feet", "joints", "other"]
+      },
+      "unit": "categorical"
+    }
+  ],
+  "result": {
+    "name": "closure_type",
+    "type": "string",
+    "unit": "categorical",
+    "description": "Recommended wound closure classification"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "value": "primary_closure",
+        "stage": "Primary Closure",
+        "description": "Direct surgical closure indicated",
+        "interpretation": "Clean wound with minimal tissue loss suitable for immediate closure. Close within 6-8 hours ideally, up to 24 hours if well-vascularized."
+      },
+      {
+        "value": "secondary_closure",
+        "stage": "Secondary Closure",
+        "description": "Healing by secondary intention",
+        "interpretation": "Significant tissue loss preventing tension-free closure. Leave open to heal by granulation tissue and wound contraction with daily dressing changes."
+      },
+      {
+        "value": "tertiary_closure",
+        "stage": "Tertiary (Delayed Primary) Closure",
+        "description": "Delayed closure after observation",
+        "interpretation": "Contaminated wound requiring thorough debridement. Observe for 3-7 days before surgical closure or skin grafting to minimize infection risk."
+      }
+    ]
+  },
+  "references": [
+    "Hollander JE, Singer AJ. Laceration management. Ann Emerg Med. 1999;34(3):356-367. doi: 10.1016/s0196-0644(99)70131-9",
+    "Singer AJ, Hollander JE, Quinn JV. Evaluation and management of traumatic lacerations. N Engl J Med. 1997;337(16):1142-1148. doi: 10.1056/NEJM199710163371607",
+    "Forsch RT. Essentials of skin laceration repair. Am Fam Physician. 2008;78(8):945-951",
+    "Quinn J, Wells G, Sutcliffe T, et al. A randomized trial comparing octylcyanoacrylate tissue adhesive and sutures in the management of lacerations. JAMA. 1997;277(19):1527-1530"
+  ],
+  "formula": "Classification based on contamination level, tissue loss, time since injury, vascularization, and anatomical location",
+  "notes": [
+    "Surgeon experience and clinical judgment are critical in wound closure decisions",
+    "Patient-specific factors (comorbidities, medications, nutritional status) influence healing",
+    "Consider tetanus prophylaxis for contaminated wounds",
+    "Antibiotic prophylaxis may be indicated for high-risk wounds",
+    "Limited application in abdominal and orthopedic wounds"
+  ]
+}

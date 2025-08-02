@@ -1,0 +1,110 @@
+{
+  "id": "who_systemic_mastocytosis_criteria",
+  "title": "WHO Diagnostic Criteria for Systemic Mastocytosis (2016)",
+  "description": "World Health Organization 2016 diagnostic criteria for systemic mastocytosis. Requires 1 major criterion + 1 minor criterion OR 3 minor criteria for diagnosis. Used to distinguish systemic mastocytosis from cutaneous mastocytosis and other mast cell disorders.",
+  "category": "hematology",
+  "version": "2016",
+  "parameters": [
+    {
+      "name": "multifocal_mast_cell_infiltrates",
+      "type": "string",
+      "required": true,
+      "description": "Multifocal dense infiltrates of mast cells (≥15 mast cells in aggregates) in bone marrow biopsies and/or other extracutaneous organ sections",
+      "options": ["yes", "no", "not_assessed"],
+      "validation": {
+        "enum": ["yes", "no", "not_assessed"]
+      }
+    },
+    {
+      "name": "atypical_mast_cell_morphology",
+      "type": "string",
+      "required": true,
+      "description": "≥25% of mast cells are atypical (type I or II) on bone marrow smears or spindle-shaped in mast cell infiltrates",
+      "options": ["yes", "no", "not_assessed"],
+      "validation": {
+        "enum": ["yes", "no", "not_assessed"]
+      }
+    },
+    {
+      "name": "kit_mutation",
+      "type": "string",
+      "required": true,
+      "description": "KIT-activating point mutations at codon 816 (usually D816V) or other critical KIT regions",
+      "options": ["d816v_positive", "other_kit_positive", "negative", "not_tested"],
+      "validation": {
+        "enum": ["d816v_positive", "other_kit_positive", "negative", "not_tested"]
+      }
+    },
+    {
+      "name": "aberrant_cd_expression",
+      "type": "string",
+      "required": true,
+      "description": "Mast cells express CD2 and/or CD25 and/or CD30 (in addition to normal mast cell markers) by flow cytometry or immunohistochemistry",
+      "options": ["yes", "no", "not_assessed"],
+      "validation": {
+        "enum": ["yes", "no", "not_assessed"]
+      }
+    },
+    {
+      "name": "serum_tryptase",
+      "type": "float",
+      "required": true,
+      "description": "Baseline serum tryptase concentration in ng/mL (normal <11.4 ng/mL, criterion met if >20 ng/mL in absence of associated myeloid neoplasm)",
+      "validation": {
+        "min": 0.0,
+        "max": 200.0
+      },
+      "unit": "ng/mL"
+    },
+    {
+      "name": "associated_myeloid_neoplasm",
+      "type": "string",
+      "required": true,
+      "description": "Presence of associated myeloid neoplasm (affects interpretation of serum tryptase criterion)",
+      "options": ["yes", "no", "unknown"],
+      "validation": {
+        "enum": ["yes", "no", "unknown"]
+      }
+    }
+  ],
+  "result": {
+    "name": "diagnosis_status",
+    "type": "string",
+    "unit": "categorical",
+    "description": "Diagnostic result based on WHO 2016 criteria"
+  },
+  "interpretation": {
+    "categories": [
+      {
+        "value": "diagnosis_met",
+        "description": "WHO criteria for systemic mastocytosis diagnosis are met",
+        "interpretation": "Systemic mastocytosis diagnosis confirmed. Patient meets WHO 2016 diagnostic criteria. Proceed with staging, risk stratification, and appropriate management including specialist referral to hematology-oncology."
+      },
+      {
+        "value": "probable_sm",
+        "description": "Some criteria met but additional testing needed",
+        "interpretation": "Partial criteria met for systemic mastocytosis. Complete missing diagnostic workup including bone marrow evaluation, molecular testing, and immunophenotyping to confirm or exclude diagnosis."
+      },
+      {
+        "value": "criteria_not_met",
+        "description": "WHO criteria for systemic mastocytosis not fulfilled",
+        "interpretation": "Current findings do not meet WHO 2016 diagnostic criteria for systemic mastocytosis. Consider cutaneous mastocytosis, mast cell activation syndrome, or other conditions. May require specialist evaluation if clinical suspicion remains high."
+      }
+    ]
+  },
+  "references": [
+    "Valent P, Akin C, Hartmann K, et al. Updated diagnostic criteria and classification of mast cell disorders: a consensus proposal. HemaSphere. 2021;5(11):e646. doi: 10.1097/HS9.0000000000000646",
+    "Arber DA, Orazi A, Hasserjian R, et al. The 2016 revision to the World Health Organization classification of myeloid neoplasms and acute leukemia. Blood. 2016;127(20):2391-2405. doi: 10.1182/blood-2016-03-643544",
+    "Valent P, Alin C, Metcalfe DD. Mastocytosis: 2016 updated WHO classification and novel emerging treatment concepts. Blood. 2017;129(11):1420-1427. doi: 10.1182/blood-2016-09-731893",
+    "Pardanani A. Systemic mastocytosis in adults: 2023 update on diagnosis, risk stratification and management. Am J Hematol. 2023;98(8):1306-1325. doi: 10.1002/ajh.26962"
+  ],
+  "formula": "Diagnosis requires: (1 major criterion + 1 minor criterion) OR (3 minor criteria). Major criterion: multifocal mast cell infiltrates ≥15 cells. Minor criteria: (1) atypical morphology ≥25%, (2) KIT mutations, (3) aberrant CD expression, (4) serum tryptase >20 ng/mL.",
+  "notes": [
+    "Serum tryptase >20 ng/mL criterion only valid in absence of associated myeloid neoplasm",
+    "Most common mutation is KIT D816V found in >95% of adult systemic mastocytosis cases",
+    "Bone marrow biopsy with immunohistochemistry/flow cytometry typically required for definitive diagnosis",
+    "Hereditary alpha-tryptasemia can cause elevated tryptase and should be considered in differential",
+    "Distinguish from cutaneous mastocytosis which lacks systemic involvement",
+    "May be associated with other hematologic malignancies in aggressive forms"
+  ]
+}

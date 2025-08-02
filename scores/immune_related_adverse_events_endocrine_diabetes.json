@@ -1,0 +1,99 @@
+{
+  "id": "immune_related_adverse_events_endocrine_diabetes",
+  "title": "Immune-Related Adverse Events for Endocrine Toxicities - Diabetes Mellitus",
+  "description": "Grades severity of hyperglycemia secondary to immune checkpoint inhibitor therapy and provides management recommendations",
+  "category": "oncology",
+  "version": "2021",
+  "parameters": [
+    {
+      "name": "fasting_glucose_mg_dl",
+      "type": "float",
+      "required": true,
+      "description": "Fasting glucose level in mg/dL",
+      "validation": {
+        "min": 70,
+        "max": 1000
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "ketosis_or_t1dm_evidence",
+      "type": "string",
+      "required": true,
+      "description": "Evidence of ketosis or Type 1 Diabetes Mellitus at any glucose level",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "symptom_severity",
+      "type": "string",
+      "required": true,
+      "description": "Patient symptom severity and functional status",
+      "validation": {
+        "enum": ["asymptomatic_mild", "moderate_able_adls", "severe_unable_adls"]
+      },
+      "options": ["asymptomatic_mild", "moderate_able_adls", "severe_unable_adls"]
+    }
+  ],
+  "result": {
+    "name": "irae_grade",
+    "type": "integer",
+    "description": "irAE grade for endocrine diabetes mellitus (1-4)",
+    "unit": "grade"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "grade": "Grade 1",
+        "description": "Mild - Asymptomatic or mild symptoms",
+        "interpretation": "Continue immune checkpoint inhibitor (ICPi). Close clinical follow-up required. Consider oral medications for new-onset Type 2 diabetes. Screen for T1DM if clinically indicated. Fasting glucose >160 mg/dL (>8.9 mmol/L) without ketosis or T1DM evidence."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "grade": "Grade 2",
+        "description": "Moderate - Moderate symptoms, able to perform ADLs",
+        "interpretation": "May hold ICPi until glucose controlled. Titrate oral therapy or consider insulin. Obtain urgent endocrine consultation. Potential hospital admission if ketoacidosis present. Applies to glucose 160-250 mg/dL (8.9-13.9 mmol/L) OR ketosis/T1DM evidence at any glucose level."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "grade": "Grade 3",
+        "description": "Severe - Severe symptoms, unable to perform ADLs",
+        "interpretation": "Hold ICPi until toxicity recovers to grade ≤1. Urgent endocrine consultation required. Initiate insulin therapy. Admit if concern for diabetic ketoacidosis or symptomatic. Fasting glucose 250-500 mg/dL (13.9-27.8 mmol/L) with severe symptoms."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "grade": "Grade 4",
+        "description": "Life-threatening - Severe symptoms, life-threatening consequences",
+        "interpretation": "Hold ICPi until toxicity recovers to grade ≤1. Urgent endocrine consultation required. Initiate insulin therapy immediately. Hospital admission mandatory for diabetic ketoacidosis management. Fasting glucose >500 mg/dL (>27.8 mmol/L) with severe symptoms."
+      }
+    ]
+  },
+  "references": [
+    "Brahmer JR, Lacchetti C, Schneider BJ, Atkins MB, Brassil KJ, Caterino JM, et al. Management of Immune-Related Adverse Events in Patients Treated With Immune Checkpoint Inhibitor Therapy: American Society of Clinical Oncology Clinical Practice Guideline. J Clin Oncol. 2018 Jun 10;36(17):1714-1768. doi: 10.1200/JCO.2017.77.6385.",
+    "Thompson JA, Schneider BJ, Brahmer J, Andrews S, Armand P, Bhatia S, et al. NCCN Guidelines Insights: Management of Immunotherapy-Related Toxicities, Version 1.2020. J Natl Compr Canc Netw. 2020 Mar 1;18(3):230-241. doi: 10.6004/jnccn.2020.0012.",
+    "Stamatouli AM, Quandt Z, Perdigoto AL, Clark PL, Kluger H, Weiss SA, et al. Collateral Damage: Insulin-Dependent Diabetes Induced by Immune Checkpoint Inhibitors. Diabetes. 2018 Aug;67(8):1471-1480. doi: 10.2337/dbi18-0002.",
+    "Akturk HK, Alkanani A, Karanchi H, Nair V, Michels AW, Ostrom QT, et al. Immune checkpoint inhibitor-induced Type 1 diabetes: a systematic review and meta-analysis. Diabet Med. 2019 Sep;36(9):1075-1081. doi: 10.1111/dme.14050."
+  ],
+  "formula": "Grading based on fasting glucose levels (mg/dL), presence of ketosis/T1DM evidence, and symptom severity: Grade 1 (>160 mg/dL, no ketosis, mild symptoms), Grade 2 (160-250 mg/dL OR ketosis at any level, moderate symptoms), Grade 3 (250-500 mg/dL, severe symptoms), Grade 4 (>500 mg/dL, life-threatening symptoms)",
+  "notes": [
+    "Based on Common Terminology Criteria for Adverse Events (CTCAE) Version 5.0",
+    "Immune checkpoint inhibitor-induced diabetes mellitus often presents as fulminant Type 1 diabetes",
+    "67.4% of cases present with diabetic ketoacidosis (DKA)",
+    "Low C-peptide levels detected in 91.8% of cases indicating acute onset",
+    "Ketosis or T1DM evidence at any glucose level warrants at least Grade 2 classification",
+    "Grade 2+ requires urgent endocrine consultation",
+    "ICPi therapy can often be resumed after glucose control is achieved for Grade 1-2",
+    "Grade 3-4 typically requires permanent ICPi discontinuation",
+    "Monitor for HbA1c, fasting C-peptide, and GADA autoantibodies",
+    "Distinguish from pre-existing diabetes or steroid-induced hyperglycemia",
+    "Consider continuous glucose monitoring for severe cases",
+    "Multidisciplinary team approach recommended (oncology, endocrinology, pharmacy)"
+  ]
+}

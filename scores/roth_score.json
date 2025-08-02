@@ -1,0 +1,97 @@
+{
+  "id": "roth_score",
+  "title": "Roth Score for Hypoxia Screening",
+  "description": "Screens for hypoxia in dyspneic patients using a simple verbal counting test. The Roth Score evaluates respiratory distress by measuring how high a patient can count from 1 to 30 in a single breath and how long it takes. This tool was developed for telemedicine applications and can help risk-stratify dyspnea severity in terms of hypoxia, though it does not replace pulse oximetry or comprehensive clinical evaluation.",
+  "category": "emergency",
+  "version": "2016",
+  "parameters": [
+    {
+      "name": "max_number_reached",
+      "type": "integer",
+      "required": true,
+      "description": "Maximum number reached when counting from 1 to 30 in a single breath",
+      "validation": {
+        "min": 0,
+        "max": 30
+      },
+      "unit": "count"
+    },
+    {
+      "name": "total_seconds_counted",
+      "type": "float",
+      "required": true,
+      "description": "Total seconds taken to count (regardless of final number reached)",
+      "validation": {
+        "min": 0,
+        "max": 60
+      },
+      "unit": "seconds"
+    }
+  ],
+  "result": {
+    "name": "roth_score_assessment",
+    "type": "string",
+    "unit": "risk level",
+    "description": "Roth Score assessment for hypoxia screening based on counting performance"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "High Risk for Hypoxia",
+        "description": "Severe counting impairment",
+        "interpretation": "Patient shows severe respiratory distress with very limited counting ability. High risk for significant hypoxia (O2 sat likely <90%). Immediate pulse oximetry measurement and oxygen assessment required. Consider emergency respiratory support and further evaluation for underlying respiratory pathology. This finding suggests severe dyspnea that warrants urgent clinical intervention."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Moderate to High Risk",
+        "description": "Moderate counting impairment",
+        "interpretation": "Patient demonstrates moderate respiratory distress with impaired counting performance. Increased risk for hypoxia (O2 sat potentially <95%). Pulse oximetry measurement recommended to confirm oxygen saturation status. Consider oxygen supplementation if clinically indicated and evaluate for underlying respiratory conditions. Monitor closely for worsening respiratory status."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Low to Moderate Risk",
+        "description": "Mild counting impairment",
+        "interpretation": "Patient shows mild respiratory compromise with some counting difficulty. Lower risk for severe hypoxia but clinical correlation recommended. Pulse oximetry should be performed to confirm oxygen saturation. Consider underlying respiratory conditions and continue monitoring. May benefit from supportive care and further assessment based on clinical presentation."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Low Risk",
+        "description": "Normal counting performance",
+        "interpretation": "Patient demonstrates good respiratory reserve with normal counting ability. Low risk for significant hypoxia. While pulse oximetry remains the gold standard for oxygen assessment, this finding suggests adequate respiratory function. Continue routine monitoring and evaluate other clinical factors contributing to dyspnea symptoms if present."
+      }
+    ]
+  },
+  "references": [
+    "Chorin E, Padegimas A, Havakuk O, Birati EY, Shacham Y, Milman A, Flint N, Konigstein M, Nevzorov R, Moshe Y, Margolis G, Alcalai R, Topilsky Y. Assessment of Respiratory Distress by the Roth Score. Clin Cardiol. 2016 Nov;39(11):636-639. doi: 10.1002/clc.22570.",
+    "Sánchez-Martínez C, Freitas-Alvarenga T, Puerta-García E, Navarro-Martínez S, Iglesias-Vázquez JA, Rodríguez-Suárez P, Carbajales-Pérez C, Miró Ò. Validity of the 'Roth score' for hypoxemia screening. Am J Emerg Med. 2023 May;67:1-7. doi: 10.1016/j.ajem.2023.01.038.",
+    "García-Villafranca M, Escolano-Casado G, González-Del Castillo J, Martín-Sánchez FJ. The use of the Roth score in emergency department for patients with acute exacerbation of chronic obstructive pulmonary disease. Am J Emerg Med. 2024 Dec;86:164-165. doi: 10.1016/j.ajem.2024.09.025."
+  ],
+  "formula": "Roth Score Assessment = Combination of (1) Maximum number reached counting 1-30 in single breath AND (2) Total seconds taken to count. Thresholds: High risk if max <7 numbers OR <5 seconds; Moderate risk if max 7-9 numbers OR 5-7 seconds; Low risk if max ≥10 numbers AND ≥7 seconds",
+  "notes": [
+    "Roth Score screens for hypoxia in dyspneic patients using verbal counting test",
+    "Patient takes deep breath and counts 1-30 as fast as possible without stopping",
+    "Record both maximum number reached and total seconds elapsed",
+    "Maximum <10 numbers: 91% sensitive for O2 sat <95%",
+    "Maximum <7 numbers: 87% sensitive for O2 sat <90%",
+    "Total time <7 seconds: 83% sensitive for O2 sat <95%",
+    "Total time <5 seconds: 82% sensitive for O2 sat <90%",
+    "Developed for telemedicine and remote patient assessment",
+    "Particularly useful during pandemic screening situations",
+    "Does NOT replace pulse oximetry or comprehensive clinical evaluation",
+    "Based on original study of only 93 patients - limited validation",
+    "Not validated in all languages (Spanish version showed poor validity)",
+    "Tool provides gross screening for hypoxia only",
+    "Should be used in conjunction with clinical judgment",
+    "May be helpful when pulse oximetry unavailable",
+    "Consider patient's baseline respiratory function and comorbidities",
+    "False positives may occur in patients with vocal cord issues",
+    "False negatives possible in compensated respiratory conditions",
+    "Most useful for detecting moderate to severe respiratory distress",
+    "Results should prompt formal oxygen saturation measurement"
+  ]
+}

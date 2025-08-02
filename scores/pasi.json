@@ -1,0 +1,279 @@
+{
+  "id": "pasi",
+  "title": "Psoriasis Area and Severity Index (PASI)",
+  "description": "Quantifies the severity of psoriasis by combining assessment of lesion severity and affected body surface area. This standardized measurement tool evaluates four body regions (head, arms, trunk, legs) with scoring for erythema, induration, and desquamation, providing an objective assessment for clinical practice and research.",
+  "category": "rheumatology",
+  "version": "1978",
+  "parameters": [
+    {
+      "name": "head_erythema",
+      "type": "integer",
+      "required": true,
+      "description": "Erythema (redness) severity in head/neck region",
+      "options": [0, 1, 2, 3, 4],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "head_induration",
+      "type": "integer",
+      "required": true,
+      "description": "Induration (thickness) severity in head/neck region",
+      "options": [0, 1, 2, 3, 4],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "head_desquamation",
+      "type": "integer",
+      "required": true,
+      "description": "Desquamation (scaling) severity in head/neck region",
+      "options": [0, 1, 2, 3, 4],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "head_area",
+      "type": "integer",
+      "required": true,
+      "description": "Percentage of head/neck area affected by psoriasis",
+      "options": [0, 1, 2, 3, 4, 5, 6],
+      "validation": {
+        "min": 0,
+        "max": 6,
+        "enum": [0, 1, 2, 3, 4, 5, 6]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "arms_erythema",
+      "type": "integer",
+      "required": true,
+      "description": "Erythema (redness) severity in upper limbs/arms region",
+      "options": [0, 1, 2, 3, 4],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "arms_induration",
+      "type": "integer",
+      "required": true,
+      "description": "Induration (thickness) severity in upper limbs/arms region",
+      "options": [0, 1, 2, 3, 4],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "arms_desquamation",
+      "type": "integer",
+      "required": true,
+      "description": "Desquamation (scaling) severity in upper limbs/arms region",
+      "options": [0, 1, 2, 3, 4],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "arms_area",
+      "type": "integer",
+      "required": true,
+      "description": "Percentage of upper limbs/arms area affected by psoriasis",
+      "options": [0, 1, 2, 3, 4, 5, 6],
+      "validation": {
+        "min": 0,
+        "max": 6,
+        "enum": [0, 1, 2, 3, 4, 5, 6]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "trunk_erythema",
+      "type": "integer",
+      "required": true,
+      "description": "Erythema (redness) severity in trunk region",
+      "options": [0, 1, 2, 3, 4],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "trunk_induration",
+      "type": "integer",
+      "required": true,
+      "description": "Induration (thickness) severity in trunk region",
+      "options": [0, 1, 2, 3, 4],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "trunk_desquamation",
+      "type": "integer",
+      "required": true,
+      "description": "Desquamation (scaling) severity in trunk region",
+      "options": [0, 1, 2, 3, 4],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "trunk_area",
+      "type": "integer",
+      "required": true,
+      "description": "Percentage of trunk area affected by psoriasis",
+      "options": [0, 1, 2, 3, 4, 5, 6],
+      "validation": {
+        "min": 0,
+        "max": 6,
+        "enum": [0, 1, 2, 3, 4, 5, 6]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "legs_erythema",
+      "type": "integer",
+      "required": true,
+      "description": "Erythema (redness) severity in lower limbs/legs region",
+      "options": [0, 1, 2, 3, 4],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "legs_induration",
+      "type": "integer",
+      "required": true,
+      "description": "Induration (thickness) severity in lower limbs/legs region",
+      "options": [0, 1, 2, 3, 4],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "legs_desquamation",
+      "type": "integer",
+      "required": true,
+      "description": "Desquamation (scaling) severity in lower limbs/legs region",
+      "options": [0, 1, 2, 3, 4],
+      "validation": {
+        "min": 0,
+        "max": 4,
+        "enum": [0, 1, 2, 3, 4]
+      },
+      "unit": "score"
+    },
+    {
+      "name": "legs_area",
+      "type": "integer",
+      "required": true,
+      "description": "Percentage of lower limbs/legs area affected by psoriasis",
+      "options": [0, 1, 2, 3, 4, 5, 6],
+      "validation": {
+        "min": 0,
+        "max": 6,
+        "enum": [0, 1, 2, 3, 4, 5, 6]
+      },
+      "unit": "score"
+    }
+  ],
+  "result": {
+    "name": "pasi_score",
+    "type": "float",
+    "unit": "points",
+    "description": "PASI score representing psoriasis severity"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 5,
+        "stage": "Mild",
+        "description": "Mild psoriasis",
+        "interpretation": "Mild psoriasis with minimal impact. Consider topical therapy, lifestyle modifications, and routine monitoring. Most patients can be managed with topical treatments and supportive care."
+      },
+      {
+        "min": 5,
+        "max": 10,
+        "stage": "Moderate",
+        "description": "Moderate psoriasis",
+        "interpretation": "Moderate psoriasis requiring active treatment. Consider phototherapy, systemic conventional therapy, or biologic therapy based on patient factors and treatment response. Regular monitoring and adjustment of therapy may be needed."
+      },
+      {
+        "min": 10,
+        "max": 20,
+        "stage": "Severe",
+        "description": "Severe psoriasis",
+        "interpretation": "Severe psoriasis requiring aggressive treatment. Strong consideration for systemic therapy including biologics, immunosuppressants, or phototherapy. May significantly impact quality of life and require multidisciplinary care."
+      },
+      {
+        "min": 20,
+        "max": 72,
+        "stage": "Very Severe",
+        "description": "Very severe psoriasis",
+        "interpretation": "Very severe psoriasis with major impact on quality of life. Requires immediate and aggressive systemic treatment, likely biologics or combination therapy. Consider hospitalization for severe cases. Regular specialist follow-up essential."
+      }
+    ]
+  },
+  "references": [
+    "Fredriksson T, Pettersson U. Severe psoriasis--oral therapy with a new retinoid. Dermatologica. 1978;157(4):238-44. doi: 10.1159/000250839.",
+    "Langley RG, Ellis CN. Evaluating psoriasis with Psoriasis Area and Severity Index, Psoriasis Global Assessment, and Lattice System Physician's Global Assessment. J Am Acad Dermatol. 2004;51(4):563-9. doi: 10.1016/j.jaad.2004.04.012.",
+    "Schmitt J, Wozel G. The psoriasis area and severity index is the adequate criterion to define severity in chronic plaque-type psoriasis. Dermatology. 2005;210(3):194-9. doi: 10.1159/000083509.",
+    "Puzenat E, Bronsard V, Prey S, Gourraud PA, Aractingi S, Bagot M, et al. What are the best outcome measures for assessing plaque psoriasis severity? A systematic review of the literature. J Eur Acad Dermatol Venereol. 2010;24 Suppl 2:10-6. doi: 10.1111/j.1468-3083.2009.03562.x."
+  ],
+  "formula": "PASI = 0.1 × (E_h + I_h + D_h) × A_h + 0.2 × (E_a + I_a + D_a) × A_a + 0.3 × (E_t + I_t + D_t) × A_t + 0.4 × (E_l + I_l + D_l) × A_l",
+  "notes": [
+    "Gold standard for psoriasis severity assessment in clinical practice and research",
+    "Severity scoring: 0=none, 1=slight, 2=moderate, 3=severe, 4=very severe",
+    "Area scoring: 0=0%, 1=1-9%, 2=10-29%, 3=30-49%, 4=50-69%, 5=70-89%, 6=90-100%",
+    "Body surface area weights: Head 0.1, Arms 0.2, Trunk 0.3, Legs 0.4",
+    "Total score range: 0-72 points (higher scores indicate more severe disease)",
+    "PASI 75 (75% improvement) is considered good therapeutic response",
+    "PASI 90 (90% improvement) is considered excellent therapeutic response",
+    "PASI 100 indicates complete clearance of psoriasis lesions",
+    "Less sensitive for mild psoriasis and localized disease",
+    "Requires experienced clinician for consistent scoring",
+    "Does not assess nail involvement or quality of life impact",
+    "Inter-rater reliability improves with training and experience",
+    "Used as primary endpoint in most psoriasis clinical trials",
+    "May underestimate disease severity in dark-skinned patients due to erythema assessment",
+    "Consider complementary assessments like BSA, PGA, and DLQI for comprehensive evaluation"
+  ]
+}

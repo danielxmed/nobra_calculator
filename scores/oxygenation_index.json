@@ -1,0 +1,93 @@
+{
+  "id": "oxygenation_index",
+  "title": "Oxygenation Index",
+  "description": "Predicts outcomes and assists in treatment decisions for pediatric patients with acute respiratory failure. This validated tool helps determine the need for extracorporeal membrane oxygenation (ECMO) and assesses the severity of acute lung injury and acute respiratory distress syndrome (ARDS). The index quantifies the intensity of ventilatory support required to maintain adequate oxygenation.",
+  "category": "pediatrics",
+  "version": "1988",
+  "parameters": [
+    {
+      "name": "fio2",
+      "type": "float",
+      "required": true,
+      "description": "Fraction of inspired oxygen (FiO2) as a percentage",
+      "validation": {
+        "min": 21.0,
+        "max": 100.0
+      },
+      "unit": "%"
+    },
+    {
+      "name": "mean_airway_pressure",
+      "type": "float",
+      "required": true,
+      "description": "Mean airway pressure (PAW) measured during mechanical ventilation",
+      "validation": {
+        "min": 1.0,
+        "max": 50.0
+      },
+      "unit": "cmH2O"
+    },
+    {
+      "name": "pao2",
+      "type": "float",
+      "required": true,
+      "description": "Partial pressure of arterial oxygen from arterial blood gas analysis",
+      "validation": {
+        "min": 20.0,
+        "max": 600.0
+      },
+      "unit": "mmHg"
+    }
+  ],
+  "result": {
+    "name": "oxygenation_index",
+    "type": "float",
+    "unit": "index",
+    "description": "Calculated oxygenation index value indicating severity of respiratory failure and potential need for ECMO"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 25,
+        "stage": "Good Outcome",
+        "description": "Low risk respiratory failure",
+        "interpretation": "Good prognosis with conventional mechanical ventilation and medical management likely to be successful."
+      },
+      {
+        "min": 25,
+        "max": 40,
+        "stage": "High Risk",
+        "description": "Moderate to severe respiratory failure",
+        "interpretation": "Mortality risk >40%. Consider advanced ventilatory strategies, optimization of medical management, and preparation for potential ECMO."
+      },
+      {
+        "min": 40,
+        "max": 100,
+        "stage": "ECMO Consideration",
+        "description": "Severe respiratory failure",
+        "interpretation": "Strong consideration for ECMO indicated. Sustained OI >40 (typically 3 of 5 measurements over 30-60 minutes) meets criteria for ECMO evaluation."
+      }
+    ]
+  },
+  "references": [
+    "Ortega M, Ramos AD, Platzker AC, Atkinson JB, Bowman CM, Laks H, et al. Early prediction of ultimate outcome in newborn infants with severe respiratory failure. J Pediatr. 1988;113(4):744-7. doi: 10.1016/s0022-3476(88)80394-8.",
+    "Bartlett RH, Roloff DW, Custer JR, Younger JG, Hirschl RB. Extracorporeal life support: the University of Michigan experience. JAMA. 2000;283(7):904-8. doi: 10.1001/jama.283.7.904.",
+    "ELSO Guidelines for Cardiopulmonary Extracorporeal Life Support. Extracorporeal Life Support Organization (ELSO). Ann Arbor, MI. 2017."
+  ],
+  "formula": "Oxygenation Index (OI) = (FiO2 × Mean Airway Pressure) ÷ PaO2",
+  "notes": [
+    "Lower values indicate better oxygenation and less severe respiratory failure",
+    "Primarily validated and used in pediatric populations, especially neonates",
+    "ECMO criteria: OI >40 sustained for 3 of 5 measurements taken 30-60 minutes apart",
+    "Should be calculated using postductal arterial blood gas measurements when possible",
+    "Values must be interpreted in context of overall clinical condition and reversibility",
+    "Alternative measure: Oxygen Saturation Index (OSI) can be used when arterial access unavailable",
+    "Created by Dr. Robert H. Bartlett, pioneer in extracorporeal life support",
+    "Used in research trials for entry criteria and outcome assessment in respiratory failure",
+    "Helps guide decisions about inhaled nitric oxide, surfactant, and other advanced therapies",
+    "Serial measurements more valuable than single determinations",
+    "Should be correlated with chest imaging and clinical assessment",
+    "ECMO centers may have institution-specific criteria and protocols"
+  ]
+}

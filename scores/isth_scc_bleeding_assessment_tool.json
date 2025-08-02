@@ -1,0 +1,253 @@
+{
+  "id": "isth_scc_bleeding_assessment_tool",
+  "title": "ISTH-SCC Bleeding Assessment Tool",
+  "description": "Assesses bleeding symptoms in patients with inherited bleeding disorders. This standardized questionnaire was developed by the International Society on Thrombosis and Haemostasis (ISTH) Scientific and Standardization Committee (SSC) to evaluate 14 different bleeding symptoms and identify patients who may have inherited bleeding disorders requiring further investigation.",
+  "category": "hematology",
+  "version": "2010",
+  "parameters": [
+    {
+      "name": "epistaxis",
+      "type": "integer",
+      "required": true,
+      "description": "Nosebleeds - frequency, duration, and severity",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "points"
+    },
+    {
+      "name": "cutaneous_bleeding",
+      "type": "integer",
+      "required": true,
+      "description": "Skin bleeding including bruising and petechiae",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "points"
+    },
+    {
+      "name": "minor_wounds",
+      "type": "integer",
+      "required": true,
+      "description": "Bleeding from minor wounds and cuts",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "points"
+    },
+    {
+      "name": "oral_cavity",
+      "type": "integer",
+      "required": true,
+      "description": "Bleeding from gums and oral cavity",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "points"
+    },
+    {
+      "name": "gi_bleeding",
+      "type": "integer",
+      "required": true,
+      "description": "Gastrointestinal bleeding symptoms",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "points"
+    },
+    {
+      "name": "hematuria",
+      "type": "integer",
+      "required": true,
+      "description": "Blood in urine",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "points"
+    },
+    {
+      "name": "tooth_extraction",
+      "type": "integer",
+      "required": true,
+      "description": "Bleeding after tooth extraction",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "points"
+    },
+    {
+      "name": "surgery",
+      "type": "integer",
+      "required": true,
+      "description": "Bleeding after surgical procedures",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "points"
+    },
+    {
+      "name": "menorrhagia",
+      "type": "integer",
+      "required": true,
+      "description": "Heavy menstrual bleeding (applicable to females)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "points"
+    },
+    {
+      "name": "postpartum_hemorrhage",
+      "type": "integer",
+      "required": true,
+      "description": "Bleeding after childbirth (applicable to females with delivery history)",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "points"
+    },
+    {
+      "name": "muscle_hematomas",
+      "type": "integer",
+      "required": true,
+      "description": "Muscle bleeding and hematomas",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "points"
+    },
+    {
+      "name": "hemarthrosis",
+      "type": "integer",
+      "required": true,
+      "description": "Joint bleeding",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "points"
+    },
+    {
+      "name": "cns_bleeding",
+      "type": "string",
+      "required": true,
+      "description": "Central nervous system bleeding (special scoring: never=0, subdural=3, intracerebral=4)",
+      "options": ["never", "subdural", "intracerebral"],
+      "validation": {
+        "enum": ["never", "subdural", "intracerebral"]
+      },
+      "unit": "points"
+    },
+    {
+      "name": "other_bleeding",
+      "type": "integer",
+      "required": true,
+      "description": "Other bleeding symptoms not covered above",
+      "validation": {
+        "min": 0,
+        "max": 4
+      },
+      "unit": "points"
+    },
+    {
+      "name": "age_group",
+      "type": "string",
+      "required": true,
+      "description": "Patient age group for interpretation thresholds",
+      "options": ["child", "adult_male", "adult_female"],
+      "validation": {
+        "enum": ["child", "adult_male", "adult_female"]
+      }
+    },
+    {
+      "name": "gender",
+      "type": "string",
+      "required": true,
+      "description": "Patient gender for score interpretation",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    }
+  ],
+  "result": {
+    "name": "bleeding_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total ISTH-SCC bleeding assessment score (0-55 points maximum)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Child - Typical",
+        "description": "Typical bleeding pattern for children",
+        "interpretation": "Score 0-2 points for children <18 years: Typical bleeding pattern. Low likelihood of inherited bleeding disorder. Consider clinical context and family history."
+      },
+      {
+        "min": 3,
+        "max": 55,
+        "stage": "Child - Atypical",
+        "description": "Atypical bleeding pattern for children",
+        "interpretation": "Score ≥3 points for children <18 years: Atypical bleeding pattern. Increased likelihood of inherited bleeding disorder. Consider hematologic evaluation and laboratory testing."
+      },
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Adult Male - Typical",
+        "description": "Typical bleeding pattern for adult males",
+        "interpretation": "Score 0-3 points for adult males: Typical bleeding pattern. Low likelihood of inherited bleeding disorder. Consider clinical context and family history."
+      },
+      {
+        "min": 4,
+        "max": 55,
+        "stage": "Adult Male - Atypical",
+        "description": "Atypical bleeding pattern for adult males",
+        "interpretation": "Score ≥4 points for adult males: Atypical bleeding pattern. Increased likelihood of inherited bleeding disorder. Consider hematologic evaluation and laboratory testing."
+      },
+      {
+        "min": 0,
+        "max": 5,
+        "stage": "Adult Female - Typical",
+        "description": "Typical bleeding pattern for adult females",
+        "interpretation": "Score 0-5 points for adult females: Typical bleeding pattern. Low likelihood of inherited bleeding disorder. Consider clinical context and family history."
+      },
+      {
+        "min": 6,
+        "max": 55,
+        "stage": "Adult Female - Atypical",
+        "description": "Atypical bleeding pattern for adult females",
+        "interpretation": "Score ≥6 points for adult females: Atypical bleeding pattern. Increased likelihood of inherited bleeding disorder. Consider hematologic evaluation including von Willebrand disease and platelet function studies."
+      }
+    ]
+  },
+  "references": [
+    "Rodeghiero F, Tosetto A, Abshire T, Arnold DM, Coller B, James P, Neunert C, Lillicrap D. ISTH/SSC bleeding assessment tool: a standardized questionnaire and a proposal for a new bleeding score for inherited bleeding disorders. J Thromb Haemost. 2010 Sep;8(9):2063-5.",
+    "Elbatarny M, Mollah S, Grabell J, Bae S, Deforest M, Tuttle A, Hopman W, Clark DS, Mauer AC, Bowman M, Riddel J, Christopherson PA, Montgomery RR, James PD. Normal range of bleeding scores for the ISTH-BAT: adult and pediatric data from the merging project. Haemophilia. 2014 Nov;20(6):831-5.",
+    "Deforest M, Grabell J, Albert S, Young E, Tuttle A, Hopman WM, Heddle N, James PD. Generation and optimization of the self-administered bleeding assessment tool and its validation as a screening test for von Willebrand disease. Haemophilia. 2015 May;21(3):e132-9.",
+    "Quiroga T, Goycoolea M, Panes O, Aranda E, Martínez C, Belmont S, Muñoz B, Zúñiga P, Pereira J, Mezzano D. High prevalence of bleeders of unknown cause among patients with inherited mucocutaneous bleeding. A prospective study of 280 patients and 299 controls. Haematologica. 2007 Mar;92(3):357-65."
+  ],
+  "formula": "Sum of all 14 bleeding variable scores (0-4 points each, except CNS bleeding with 0/3/4 scoring)",
+  "notes": [
+    "Designed for patients with suspected inherited bleeding disorders",
+    "Score only bleeding symptoms present BEFORE and AT diagnosis",
+    "Distinction between score 0 (no/trivial bleeding) and 1+ is critical",
+    "CNS bleeding has unique scoring: 0 (never), 3 (subdural), 4 (intracerebral)",
+    "Different thresholds for children (<18 years), adult males, and adult females",
+    "Requires trained assessor (physician or health professional) for reliability",
+    "Tool is relatively insensitive for children with possible inherited bleeding disorders",
+    "Useful for screening but not diagnostic - laboratory testing required for confirmation",
+    "Consider family history and clinical context in interpretation"
+  ]
+}

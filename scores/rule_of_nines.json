@@ -1,0 +1,174 @@
+{
+  "id": "rule_of_nines",
+  "title": "Rule of Nines",
+  "description": "Calculates total body surface area (TBSA) affected by burns using standardized body segment percentages. This rapid assessment tool helps emergency providers estimate burn severity for fluid resuscitation calculations, burn center transfer decisions, and initial treatment planning. Different calculations are used for adults and children due to varying body proportions.",
+  "category": "emergency",
+  "version": "1951",
+  "parameters": [
+    {
+      "name": "patient_age_group",
+      "type": "string",
+      "required": true,
+      "description": "Patient age group determining body proportion calculations",
+      "validation": {
+        "enum": ["adult", "child", "infant"]
+      },
+      "options": ["adult", "child", "infant"]
+    },
+    {
+      "name": "head_neck_percentage",
+      "type": "float",
+      "required": true,
+      "description": "Percentage of head and neck area burned (0-100%)",
+      "validation": {
+        "min": 0,
+        "max": 100
+      },
+      "unit": "%"
+    },
+    {
+      "name": "anterior_torso_percentage",
+      "type": "float",
+      "required": true,
+      "description": "Percentage of anterior torso (chest and abdomen) area burned (0-100%)",
+      "validation": {
+        "min": 0,
+        "max": 100
+      },
+      "unit": "%"
+    },
+    {
+      "name": "posterior_torso_percentage",
+      "type": "float",
+      "required": true,
+      "description": "Percentage of posterior torso (back) area burned (0-100%)",
+      "validation": {
+        "min": 0,
+        "max": 100
+      },
+      "unit": "%"
+    },
+    {
+      "name": "right_arm_percentage",
+      "type": "float",
+      "required": true,
+      "description": "Percentage of right arm (entire arm including hand) area burned (0-100%)",
+      "validation": {
+        "min": 0,
+        "max": 100
+      },
+      "unit": "%"
+    },
+    {
+      "name": "left_arm_percentage",
+      "type": "float",
+      "required": true,
+      "description": "Percentage of left arm (entire arm including hand) area burned (0-100%)",
+      "validation": {
+        "min": 0,
+        "max": 100
+      },
+      "unit": "%"
+    },
+    {
+      "name": "right_leg_percentage",
+      "type": "float",
+      "required": true,
+      "description": "Percentage of right leg (entire leg including foot) area burned (0-100%)",
+      "validation": {
+        "min": 0,
+        "max": 100
+      },
+      "unit": "%"
+    },
+    {
+      "name": "left_leg_percentage",
+      "type": "float",
+      "required": true,
+      "description": "Percentage of left leg (entire leg including foot) area burned (0-100%)",
+      "validation": {
+        "min": 0,
+        "max": 100
+      },
+      "unit": "%"
+    },
+    {
+      "name": "genitalia_percentage",
+      "type": "float",
+      "required": true,
+      "description": "Percentage of genitalia/perineum area burned (0-100%)",
+      "validation": {
+        "min": 0,
+        "max": 100
+      },
+      "unit": "%"
+    }
+  ],
+  "result": {
+    "name": "total_body_surface_area",
+    "type": "float",
+    "unit": "%",
+    "description": "Total body surface area (TBSA) burned calculated using Rule of Nines"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 9.9,
+        "stage": "Minor Burn",
+        "description": "Outpatient management usually appropriate",
+        "interpretation": "Minor burn (<10% TBSA) typically manageable on outpatient basis with proper wound care and follow-up. Ensure adequate pain management, tetanus prophylaxis, and wound care education. Monitor for signs of infection and provide clear return precautions. Consider referral to burn specialist for complex burns involving face, hands, feet, joints, or genitalia even if <10% TBSA."
+      },
+      {
+        "min": 10,
+        "max": 19.9,
+        "stage": "Moderate Burn",
+        "description": "Consider hospital admission and burn center consultation",
+        "interpretation": "Moderate burn (10-19% TBSA) requires careful assessment for hospital admission and burn center consultation. Initiate fluid resuscitation if ≥10% TBSA in adults or ≥5% in children. Calculate fluid requirements using Parkland formula: 4 mL/kg/% TBSA burned over first 24 hours (half in first 8 hours). Monitor urine output, vital signs, and pain control. Consider early burn center transfer for optimal care."
+      },
+      {
+        "min": 20,
+        "max": 29.9,
+        "stage": "Major Burn",
+        "description": "Hospital admission and burn center transfer required",
+        "interpretation": "Major burn (20-29% TBSA) requires immediate hospital admission and burn center transfer. Begin aggressive fluid resuscitation using Parkland formula. Monitor for complications including compartment syndrome, respiratory compromise, and burn shock. Establish central venous access, urinary catheter, and nasogastric tube as indicated. Early surgical consultation for escharotomy if circumferential burns present."
+      },
+      {
+        "min": 30,
+        "max": 100,
+        "stage": "Severe Burn",
+        "description": "Life-threatening injury requiring immediate intensive care",
+        "interpretation": "Severe burn (≥30% TBSA) represents life-threatening injury requiring immediate intensive care and burn center management. High mortality risk necessitating aggressive resuscitation, airway management, and multi-organ support. Early intubation may be required for airway protection. Massive fluid resuscitation requirements with careful monitoring to avoid fluid overload. Early surgical intervention for escharotomy and burn excision. Nutritional support and infection prevention critical."
+      }
+    ]
+  },
+  "references": [
+    "Pulaski EJ, Tennison CW. Burn therapy; a comparative study of various methods of treatment; review of the literature and report of 300 cases. AMA Arch Surg. 1947 Dec;55(6):689-723. doi: 10.1001/archsurg.1947.01230180111007.",
+    "Wallace AB. The exposure treatment of burns. Lancet. 1951 Mar 17;1(6659):501-4. doi: 10.1016/s0140-6736(51)91975-7.",
+    "Hettiaratchy S, Papini R. Initial management of a major burn: II--assessment and resuscitation. BMJ. 2004 Jul 17;329(7458):101-3. doi: 10.1136/bmj.329.7458.101.",
+    "American Burn Association. Guidelines for the operation of burn centers. J Burn Care Res. 2007 Jan-Feb;28(1):134-41. doi: 10.1097/BCR.0B013E318031AA21."
+  ],
+  "formula": "Rule of Nines TBSA = Σ(% of each body region burned × anatomical percentage for that region). Adult: Head=9%, Arms=9% each, Anterior torso=18%, Posterior torso=18%, Legs=18% each, Genitalia=1%. Child: Head=18%, Arms=9% each, Anterior torso=18%, Posterior torso=18%, Legs=13.5% each, Genitalia=1%",
+  "notes": [
+    "Rule of Nines provides rapid estimation of total body surface area burned",
+    "Adult percentages: Head 9%, each arm 9%, anterior torso 18%, posterior torso 18%, each leg 18%, genitalia 1%",
+    "Child percentages: Head 18%, each arm 9%, anterior torso 18%, posterior torso 18%, each leg 13.5%, genitalia 1%",
+    "Infant head larger (18%) and legs smaller (13.5%) compared to adults",
+    "Burns ≥10% TBSA in adults or ≥5% in children require fluid resuscitation",
+    "Burns ≥20% TBSA considered major burns requiring burn center care",
+    "Burns ≥30% TBSA have significant mortality risk",
+    "Less accurate in obese patients - consider alternative methods",
+    "Lund-Browder chart more accurate for children and complex cases",
+    "Rule of Palms (1% TBSA per palm) useful for small scattered burns",
+    "Consider burn center transfer for burns >10% TBSA",
+    "Circumferential burns may require escharotomy",
+    "Special areas (face, hands, feet, genitalia, joints) always need specialist care",
+    "Inhalation injury increases morbidity and mortality significantly",
+    "Electrical burns may have extensive internal injury despite small skin burns",
+    "Chemical burns require specific decontamination procedures",
+    "Pain management essential for patient comfort and healing",
+    "Tetanus prophylaxis required for all burn patients",
+    "Early nutrition support important for healing and immune function",
+    "Infection prevention critical especially in large burns"
+  ]
+}

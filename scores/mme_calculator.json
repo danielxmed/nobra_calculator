@@ -1,0 +1,72 @@
+{
+  "id": "mme_calculator",
+  "title": "Morphine Milligram Equivalents (MME) Calculator",
+  "description": "Calculates total daily morphine milligram equivalents to assess opioid dosing, guide safe prescribing practices, and evaluate overdose risk.",
+  "category": "general",
+  "version": "2022",
+  "parameters": [
+    {
+      "name": "opioid_medications",
+      "type": "string",
+      "required": true,
+      "description": "JSON array of opioid medications with dosing details: [{\"medication\": \"morphine\", \"dose\": 30, \"frequency_per_day\": 2, \"route\": \"oral\"}]",
+      "validation": {
+        "pattern": "^\\[.*\\]$"
+      }
+    }
+  ],
+  "result": {
+    "name": "total_mme",
+    "type": "float",
+    "unit": "mg/day morphine equivalents",
+    "description": "Total daily morphine milligram equivalents"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 49,
+        "stage": "Low Risk",
+        "description": "Standard monitoring recommended",
+        "interpretation": "MME <50 mg/day: Standard monitoring and counseling on opioid safety recommended."
+      },
+      {
+        "min": 50,
+        "max": 89,
+        "stage": "Moderate Risk", 
+        "description": "Increased monitoring recommended",
+        "interpretation": "MME 50-89 mg/day: Increased monitoring, consider tapering, review benefits vs risks, naloxone prescription recommended."
+      },
+      {
+        "min": 90,
+        "max": 999,
+        "stage": "High Risk",
+        "description": "High-risk dosing requiring careful evaluation",
+        "interpretation": "MME ≥90 mg/day: High-risk dosing. Careful evaluation of benefits vs risks, consider tapering, naloxone prescription essential, frequent monitoring required."
+      }
+    ]
+  },
+  "references": [
+    "Dowell D, Haegerich TM, Chou R. CDC Guideline for Prescribing Opioids for Chronic Pain--United States, 2016. JAMA. 2016;315(15):1624-45. doi: 10.1001/jama.2016.1464.",
+    "Centers for Disease Control and Prevention. CDC Clinical Practice Guideline for Prescribing Opioids for Pain — United States, 2022. MMWR Recomm Rep. 2022;71(3):1-95. doi: 10.15585/mmwr.rr7103a1.",
+    "Nielsen S, Degenhardt L, Hoban B, Gisev N. A synthesis of oral morphine equivalents (OME) for opioid utilisation studies. Pharmacoepidemiol Drug Saf. 2016;25(6):733-7. doi: 10.1002/pds.3945."
+  ],
+  "formula": "MME = Σ(Daily Dose × Conversion Factor) for each opioid medication. Conversion factors based on CDC guidelines and established pharmacokinetic data.",
+  "notes": [
+    "Based on CDC 2022 Clinical Practice Guideline for Prescribing Opioids",
+    "Conversion factors may vary between sources - CDC factors used here",
+    "MME ≥50 mg/day associated with increased overdose risk",
+    "MME ≥90 mg/day associated with significantly increased overdose risk",
+    "Consider tapering when MME ≥50 mg/day without clear benefit",
+    "Naloxone prescription recommended for MME ≥50 mg/day",
+    "Conversion factors apply to chronic, steady-state dosing",
+    "Acute post-operative dosing may require different considerations",
+    "Fentanyl patches calculated based on 72-hour dosing",
+    "Incomplete cross-tolerance may require dose reduction when rotating opioids",
+    "Individual patient factors affect actual equivalency",
+    "Use clinical judgment in addition to calculated MME",
+    "Monitor for signs of oversedation or respiratory depression",
+    "Document rationale for high MME dosing",
+    "Consider consultation with pain specialists for complex cases"
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "id": "urine_output_fluid_balance",
+  "title": "Urine Output and Fluid Balance",
+  "description": "Calculates 24-hour urine output rate and fluid balance for assessment of renal function and fluid status. Helps identify oliguria, polyuria, and fluid imbalances in hospitalized patients.",
+  "category": "nephrology",
+  "version": "1987",
+  "parameters": [
+    {
+      "name": "weight_kg",
+      "type": "float",
+      "required": true,
+      "description": "Patient body weight in kilograms",
+      "validation": {
+        "min": 1,
+        "max": 300
+      },
+      "unit": "kg"
+    },
+    {
+      "name": "urine_output_ml",
+      "type": "float",
+      "required": true,
+      "description": "Total urine output in milliliters over the collection period",
+      "validation": {
+        "min": 0,
+        "max": 10000
+      },
+      "unit": "mL"
+    },
+    {
+      "name": "collection_hours",
+      "type": "float",
+      "required": true,
+      "description": "Number of hours for urine collection period",
+      "validation": {
+        "min": 1,
+        "max": 48
+      },
+      "unit": "hours"
+    },
+    {
+      "name": "fluid_intake_ml",
+      "type": "float",
+      "required": true,
+      "description": "Total fluid intake in milliliters during the same collection period",
+      "validation": {
+        "min": 0,
+        "max": 20000
+      },
+      "unit": "mL"
+    }
+  ],
+  "result": {
+    "name": "urine_output_rate",
+    "type": "float",
+    "unit": "mL/kg/hr",
+    "description": "Calculated urine output rate per kg body weight per hour"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0.3,
+        "stage": "Anuria/Severe Oliguria",
+        "description": "Critically low urine output",
+        "interpretation": "Critically low urine output (<0.3 mL/kg/hr) indicating severe acute renal failure or anuria. This level sustained for >24 hours or complete anuria for >12 hours suggests acute kidney injury requiring immediate nephrology consultation and intervention."
+      },
+      {
+        "min": 0.3,
+        "max": 0.5,
+        "stage": "Oliguria",
+        "description": "Low urine output",
+        "interpretation": "Low urine output (0.3-0.5 mL/kg/hr) indicating oliguria. This level sustained for >12 hours may indicate acute kidney injury. Monitor closely and evaluate for underlying causes such as volume depletion, nephrotoxic medications, or intrinsic renal disease."
+      },
+      {
+        "min": 0.5,
+        "max": 1.0,
+        "stage": "Normal Low",
+        "description": "Lower normal range",
+        "interpretation": "Lower normal urine output (0.5-1.0 mL/kg/hr). This is within acceptable range but monitor for trends. Ensure adequate hydration and evaluate if sustained at lower end of range with clinical signs of volume depletion."
+      },
+      {
+        "min": 1.0,
+        "max": 2.0,
+        "stage": "Normal",
+        "description": "Normal urine output",
+        "interpretation": "Normal urine output (1.0-2.0 mL/kg/hr) indicating adequate renal function and fluid balance. This range suggests normal kidney function and appropriate fluid status in most clinical contexts."
+      },
+      {
+        "min": 2.0,
+        "max": 100,
+        "stage": "Polyuria",
+        "description": "High urine output",
+        "interpretation": "High urine output (>2.0 mL/kg/hr) indicating polyuria. Evaluate for diabetes insipidus, diabetes mellitus, diuretic use, excessive fluid intake, or resolving acute tubular necrosis. May require further investigation and management."
+      }
+    ]
+  },
+  "references": [
+    "Kellum JA, Lameire N, Aspelin P, et al. Kidney disease: improving global outcomes (KDIGO) acute kidney injury work group. KDIGO clinical practice guideline for acute kidney injury. Kidney Int Suppl. 2012;2(1):1-138.",
+    "Macedo E, Malhotra R, Bouchard J, Wynn SK, Mehta RL. Oliguria is an early predictor of higher mortality in critically ill patients. Kidney Int. 2011;80(7):760-767."
+  ],
+  "formula": "Urine Output Rate (mL/kg/hr) = Total Urine Output (mL) / (Weight (kg) × Collection Hours)",
+  "notes": [
+    "Normal 24-hour urine output in adults is 800-2000 mL (approximately 1 mL/kg/hr)",
+    "Oliguria is defined as <400 mL urine output in 24 hours or <0.5 mL/kg/hr for >6 hours",
+    "Anuria is defined as <50 mL urine output in 24 hours or absent urine output for >12 hours",
+    "Polyuria is defined as >3000 mL urine output in 24 hours or >50 mL/kg in 24 hours",
+    "Fluid balance calculation: Intake - Output = Net fluid balance (positive = retention, negative = loss)",
+    "Consider insensible losses (approximately 400-800 mL/day in adults) when assessing total fluid balance",
+    "Urine output monitoring is essential in critically ill patients and those with AKI risk factors",
+    "Factors affecting urine output: age, medications, comorbidities, fluid status, and renal function",
+    "Use in conjunction with serum creatinine, BUN, and clinical assessment for complete evaluation",
+    "Important for monitoring response to diuretics, fluid resuscitation, and nephrotoxic medications"
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "id": "woman_abuse_screening_tool",
+  "title": "Woman Abuse Screening Tool (WAST)",
+  "description": "Validated screening instrument for detecting intimate partner violence (domestic abuse) in women in healthcare settings. The WAST uses 8 questions to assess past and current relationship dynamics, emotional and physical abuse patterns, and immediate safety concerns. This evidence-based tool helps healthcare providers identify women experiencing domestic violence in clinical settings.",
+  "category": "emergency",
+  "version": "1996",
+  "parameters": [
+    {
+      "name": "tension_arguments_relationship",
+      "type": "string",
+      "required": true,
+      "description": "In general, how would you describe your relationship? (1=lots of tension, 2=some tension, 3=no tension)",
+      "options": ["lots_of_tension", "some_tension", "no_tension"],
+      "validation": {
+        "enum": ["lots_of_tension", "some_tension", "no_tension"]
+      },
+      "unit": "category"
+    },
+    {
+      "name": "partner_jealousy_possessiveness",
+      "type": "string",
+      "required": true,
+      "description": "Do you and your partner work out arguments with: (1=great difficulty, 2=some difficulty, 3=no difficulty)",
+      "options": ["great_difficulty", "some_difficulty", "no_difficulty"],
+      "validation": {
+        "enum": ["great_difficulty", "some_difficulty", "no_difficulty"]
+      },
+      "unit": "category"
+    },
+    {
+      "name": "arguments_resolution",
+      "type": "string",
+      "required": true,
+      "description": "Do arguments ever result in you feeling down or bad about yourself? (1=often, 2=sometimes, 3=never)",
+      "options": ["often", "sometimes", "never"],
+      "validation": {
+        "enum": ["often", "sometimes", "never"]
+      },
+      "unit": "category"
+    },
+    {
+      "name": "arguments_feeling_bad",
+      "type": "string",
+      "required": true,
+      "description": "Do arguments ever result in hitting, kicking or pushing? (1=often, 2=sometimes, 3=never)",
+      "options": ["often", "sometimes", "never"],
+      "validation": {
+        "enum": ["often", "sometimes", "never"]
+      },
+      "unit": "category"
+    },
+    {
+      "name": "physical_violence_frequency",
+      "type": "string",
+      "required": true,
+      "description": "Do you ever feel frightened by what your partner says or does? (1=often, 2=sometimes, 3=never)",
+      "options": ["often", "sometimes", "never"],
+      "validation": {
+        "enum": ["often", "sometimes", "never"]
+      },
+      "unit": "category"
+    },
+    {
+      "name": "feel_frightened",
+      "type": "string",
+      "required": true,
+      "description": "Has your partner ever abused you physically? (1=yes, 2=no)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": "category"
+    },
+    {
+      "name": "physical_abuse_history",
+      "type": "string",
+      "required": true,
+      "description": "Has your partner ever abused you emotionally? (1=yes, 2=no)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": "category"
+    },
+    {
+      "name": "emotional_abuse_history",
+      "type": "string",
+      "required": true,
+      "description": "Has your partner ever abused you sexually? (1=yes, 2=no)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": "category"
+    }
+  ],
+  "result": {
+    "name": "wast_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "WAST total score indicating domestic violence risk level"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 8,
+        "max": 12,
+        "stage": "High Risk",
+        "description": "High probability of intimate partner violence",
+        "interpretation": "Score indicates high likelihood of domestic violence. Immediate safety assessment and intervention planning required. Provide resources, safety planning, and appropriate referrals to domestic violence services."
+      },
+      {
+        "min": 13,
+        "max": 17,
+        "stage": "Moderate Risk", 
+        "description": "Moderate probability of intimate partner violence",
+        "interpretation": "Score suggests possible intimate partner violence. Further assessment recommended. Provide information about domestic violence resources and support services. Consider follow-up screening."
+      },
+      {
+        "min": 18,
+        "max": 24,
+        "stage": "Low Risk",
+        "description": "Low probability of intimate partner violence",
+        "interpretation": "Score indicates low likelihood of domestic violence. Continue routine care. Provide general information about healthy relationships if appropriate."
+      }
+    ]
+  },
+  "references": [
+    "Brown JB, Lent B, Brett PJ, Sas G, Pederson LL. Development of the Woman Abuse Screening Tool for use in family practice. Fam Med. 1996;28(6):422-428.",
+    "Brown JB, Lent B, Schmidt G, Sas G. Application of the Woman Abuse Screening Tool (WAST) and WAST-short in the family practice setting. J Fam Pract. 2000;49(10):896-903.",
+    "MacMillan HL, Wathen CN, Jamieson E, et al. Screening for intimate partner violence in health care settings: a randomized trial. JAMA. 2009;302(5):493-501. doi: 10.1001/jama.2009.1089",
+    "Rabin RF, Jennings JM, Campbell JC, Bair-Merritt MH. Intimate partner violence screening tools: a systematic review. Am J Prev Med. 2009;36(5):439-445.e4. doi: 10.1016/j.amepre.2009.01.024"
+  ],
+  "formula": "Sum of scores for 8 intimate partner violence screening questions. Questions 1-5 scored 1-3 points (1=highest risk), Questions 6-8 scored 1-2 points (1=yes=highest risk). Total score ranges from 8-24 points, with lower scores indicating higher risk of intimate partner violence.",
+  "notes": [
+    "Validated for use in healthcare settings to screen for intimate partner violence",
+    "Should be administered in private, confidential setting without partner present",
+    "Lower scores indicate higher risk of domestic violence",
+    "Questions 1-5 assess relationship dynamics and emotional impact",
+    "Questions 6-8 assess history of physical, emotional, and sexual abuse",
+    "Requires training for appropriate administration and response",
+    "Should be integrated with safety planning and resource provision",
+    "Not intended for use in emergency situations where immediate safety is at risk",
+    "Consider cultural and linguistic factors when administering",
+    "Follow institutional protocols for positive screens and mandatory reporting",
+    "Provide trauma-informed care principles during screening",
+    "Ensure confidentiality and safety of screening process",
+    "Have domestic violence resources readily available",
+    "Consider repeat screening as relationship dynamics may change",
+    "Document findings appropriately per institutional policy",
+    "Be prepared to provide immediate safety interventions if needed"
+  ]
+}

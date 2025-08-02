@@ -1,0 +1,205 @@
+{
+  "id": "utah_covid19_risk_score",
+  "title": "Utah COVID-19 Risk Score",
+  "description": "Identifies high-risk individuals appropriate for COVID-19 treatment and helps prioritize oral antiviral treatment during medication shortages. Updated February 2022 to optimize treatment allocation based on hospitalization risk factors.",
+  "category": "emergency",
+  "version": "2022",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 16,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "diabetes_mellitus",
+      "type": "string",
+      "required": true,
+      "description": "Diabetes mellitus (highest risk comorbidity, 2 points)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "obesity",
+      "type": "string",
+      "required": true,
+      "description": "Obesity with BMI >30 kg/m² (highest risk comorbidity, 2 points)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "active_cancer",
+      "type": "string",
+      "required": true,
+      "description": "Active cancer (high-risk comorbidity, 1 point)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "immunosuppressive_therapies",
+      "type": "string",
+      "required": true,
+      "description": "Immunosuppressive therapies (high-risk comorbidity, 1 point)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hypertension",
+      "type": "string",
+      "required": true,
+      "description": "Hypertension (high-risk comorbidity, 1 point)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "coronary_artery_disease",
+      "type": "string",
+      "required": true,
+      "description": "Coronary artery disease (high-risk comorbidity, 1 point)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "cardiac_arrhythmia",
+      "type": "string",
+      "required": true,
+      "description": "Cardiac arrhythmia (high-risk comorbidity, 1 point)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "congestive_heart_failure",
+      "type": "string",
+      "required": true,
+      "description": "Congestive heart failure (high-risk comorbidity, 1 point)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "chronic_kidney_disease",
+      "type": "string",
+      "required": true,
+      "description": "Chronic kidney disease (high-risk comorbidity, 1 point)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "chronic_pulmonary_disease",
+      "type": "string",
+      "required": true,
+      "description": "Chronic pulmonary disease (high-risk comorbidity, 1 point)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "chronic_liver_disease",
+      "type": "string",
+      "required": true,
+      "description": "Chronic liver disease (high-risk comorbidity, 1 point)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "cerebrovascular_disease",
+      "type": "string",
+      "required": true,
+      "description": "Cerebrovascular disease (high-risk comorbidity, 1 point)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "chronic_neurologic_disease",
+      "type": "string",
+      "required": true,
+      "description": "Chronic neurologic disease (high-risk comorbidity, 1 point)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "shortness_of_breath",
+      "type": "string",
+      "required": true,
+      "description": "New shortness of breath (symptom risk factor, 1 point)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "vaccination_status",
+      "type": "string",
+      "required": true,
+      "description": "COVID-19 vaccination status",
+      "options": ["vaccinated", "unvaccinated_not_pregnant", "unvaccinated_pregnant"],
+      "validation": {
+        "enum": ["vaccinated", "unvaccinated_not_pregnant", "unvaccinated_pregnant"]
+      }
+    }
+  ],
+  "result": {
+    "name": "risk_score",
+    "type": "float",
+    "unit": "points",
+    "description": "Total risk score and treatment eligibility determination"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "stage": "Treatment Eligible",
+        "description": "Qualifies for COVID-19 treatment",
+        "interpretation": "Patient meets criteria for COVID-19 antiviral treatment based on risk factors and vaccination status. Consider oral antivirals if within 10 days of symptom onset."
+      },
+      {
+        "stage": "Treatment Not Eligible",
+        "description": "Does not meet treatment criteria",
+        "interpretation": "Patient does not meet current criteria for COVID-19 antiviral treatment. Continue supportive care and monitor for symptom progression."
+      }
+    ]
+  },
+  "references": [
+    "Utah Department of Health. COVID-19 Treatment Risk Score Calculator. Updated February 2022. Available at: https://coronavirus.utah.gov/",
+    "Intermountain Healthcare. Utah COVID-19 Risk Assessment for Treatment Prioritization. 2022.",
+    "Centers for Disease Control and Prevention. Emergency Use Authorization for COVID-19 Treatments. Updated 2022."
+  ],
+  "formula": "Age points + Diabetes (2 pts) + Obesity (2 pts) + Other comorbidities (1 pt each) + Shortness of breath (1 pt). Thresholds: Vaccinated ≥8 pts, Unvaccinated ≥6 pts, Unvaccinated pregnant ≥4 pts",
+  "notes": [
+    "For use within 10 days of COVID-19 symptom onset",
+    "Helps prioritize antiviral treatment during medication shortages",
+    "Should complement clinical judgment, not replace comprehensive medical evaluation",
+    "Developed during COVID-19 crisis and not externally validated",
+    "Updated February 2022 to remove race/ethnicity and gender criteria",
+    "Use with caution and consider individual patient factors",
+    "Treatment thresholds may vary based on local resource availability"
+  ]
+}

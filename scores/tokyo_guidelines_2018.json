@@ -1,0 +1,180 @@
+{
+  "id": "tokyo_guidelines_2018",
+  "title": "Tokyo Guidelines 2018 for Acute Cholecystitis",
+  "description": "Provides diagnostic criteria and severity grading for acute cholecystitis according to TG18 (Tokyo Guidelines 2018).",
+  "category": "gastroenterology",
+  "version": "2018",
+  "parameters": [
+    {
+      "name": "murphys_sign",
+      "type": "string",
+      "required": true,
+      "description": "Murphy's sign - Cessation of breathing during deep palpation of right upper quadrant",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "ruq_pain",
+      "type": "string",
+      "required": true,
+      "description": "Right upper abdominal quadrant mass, pain, or tenderness",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "fever",
+      "type": "string",
+      "required": true,
+      "description": "Fever (>38°C or >100.4°F)",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "elevated_crp",
+      "type": "string",
+      "required": true,
+      "description": "Elevated CRP (>3 mg/dL)",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "elevated_wbc",
+      "type": "string",
+      "required": true,
+      "description": "Elevated WBC count (>10,000/mm³)",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "imaging_findings",
+      "type": "string",
+      "required": true,
+      "description": "Imaging findings characteristic of acute cholecystitis (e.g. pericholecystic fluid, gallstones/debris)",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "cardiovascular_dysfunction",
+      "type": "string",
+      "required": true,
+      "description": "Cardiovascular dysfunction - Hypotension requiring treatment with dopamine ≥5 μg/kg per min or any dose of norepinephrine",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "neurological_dysfunction",
+      "type": "string",
+      "required": true,
+      "description": "Neurological dysfunction - Decreased level of consciousness",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "respiratory_dysfunction",
+      "type": "string",
+      "required": true,
+      "description": "Respiratory dysfunction - PaO2/FiO2 ratio <300",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "renal_dysfunction",
+      "type": "string",
+      "required": true,
+      "description": "Renal dysfunction - Oliguria or creatinine >2.0 mg/dL",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "hepatic_dysfunction",
+      "type": "string",
+      "required": true,
+      "description": "Hepatic dysfunction - PT-INR >1.5",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "hematological_dysfunction",
+      "type": "string",
+      "required": true,
+      "description": "Hematological dysfunction - Platelet count <100,000/mm³",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "wbc_over_18000",
+      "type": "string",
+      "required": true,
+      "description": "Elevated WBC count >18,000/mm³",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "palpable_mass",
+      "type": "string",
+      "required": true,
+      "description": "Palpable tender mass in the right upper abdominal quadrant",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "duration_over_72h",
+      "type": "string",
+      "required": true,
+      "description": "Duration of complaints >72 hours",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "marked_inflammation",
+      "type": "string",
+      "required": true,
+      "description": "Marked local inflammation (gangrenous cholecystitis, pericholecystic abscess, hepatic abscess, biliary peritonitis, emphysematous cholecystitis)",
+      "options": ["yes", "no"]
+    }
+  ],
+  "result": {
+    "name": "tokyo_guidelines_result",
+    "type": "string",
+    "unit": "",
+    "description": "Diagnostic and severity grading result"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "criteria": "no_diagnosis",
+        "stage": "Not Acute Cholecystitis",
+        "description": "Entry criteria not met",
+        "interpretation": "Does not meet diagnostic criteria for acute cholecystitis. Consider other diagnoses."
+      },
+      {
+        "criteria": "suspected",
+        "stage": "Suspected Acute Cholecystitis",
+        "description": "Suspected diagnosis",
+        "interpretation": "Meets diagnostic criteria for suspected acute cholecystitis. Further evaluation recommended."
+      },
+      {
+        "criteria": "definite",
+        "stage": "Definite Acute Cholecystitis",
+        "description": "Definite diagnosis",
+        "interpretation": "Meets diagnostic criteria for definite acute cholecystitis. Proceed with severity grading."
+      },
+      {
+        "criteria": "grade_i",
+        "stage": "Grade I (Mild)",
+        "description": "Mild acute cholecystitis",
+        "interpretation": "Mild acute cholecystitis without organ dysfunction. 1.1% 30-day mortality. Early laparoscopic cholecystectomy recommended."
+      },
+      {
+        "criteria": "grade_ii",
+        "stage": "Grade II (Moderate)",
+        "description": "Moderate acute cholecystitis",
+        "interpretation": "Moderate acute cholecystitis with local inflammation. 5.4% 30-day mortality. Immediate supportive care, antibiotics, and urgent cholecystectomy."
+      },
+      {
+        "criteria": "grade_iii",
+        "stage": "Grade III (Severe)",
+        "description": "Severe acute cholecystitis",
+        "interpretation": "Severe acute cholecystitis with organ dysfunction. 18.8% 30-day mortality. ICU admission, organ support, emergent drainage or cholecystectomy."
+      }
+    ]
+  },
+  "references": [
+    "Yokoe M, Hata J, Takada T, Strasberg SM, Asbun HJ, Wakabayashi G, et al. Tokyo Guidelines 2018: diagnostic criteria and severity grading of acute cholecystitis (with videos). J Hepatobiliary Pancreat Sci. 2018 Jan;25(1):41-54. doi: 10.1002/jhbp.515.",
+    "Takada T, Strasberg SM, Solomkin JS, Pitt HA, Gomi H, Yoshida M, et al. TG13: Updated Tokyo Guidelines for the management of acute cholangitis and cholecystitis. J Hepatobiliary Pancreat Sci. 2013 Jan;20(1):1-7. doi: 10.1007/s00534-012-0566-y.",
+    "Gomi H, Solomkin JS, Schlossberg D, Okamoto K, Takada T, Strasberg SM, et al. Tokyo Guidelines 2018: antimicrobial therapy for acute cholangitis and cholecystitis. J Hepatobiliary Pancreat Sci. 2018 Jan;25(1):3-16. doi: 10.1002/jhbp.518."
+  ],
+  "formula": "Diagnostic: ≥1 item from Part A + ≥1 item from Part B (suspected) or Part A + Part B + Part C (definite). Severity: Grade III if any organ dysfunction, Grade II if any moderate criteria, Grade I if neither.",
+  "notes": [
+    "TG18 diagnostic criteria remain unchanged from TG13",
+    "Suspected diagnosis: Part A + Part B",
+    "Definite diagnosis: Part A + Part B + Part C",
+    "Grade III criteria supersede Grade II criteria",
+    "Early laparoscopic cholecystectomy is recommended for all grades if patient can tolerate surgery"
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "id": "promise_score_malignant_pleural_effusion",
+  "title": "PROMISE Score for Malignant Pleural Effusion",
+  "description": "Predicts 3-month mortality in patients with malignant pleural effusion using clinical and biological parameters. This validated prognostic tool combines patient characteristics, performance status, laboratory values, and treatment history to provide accurate risk stratification and guide clinical decision-making for patients with malignant pleural effusion.",
+  "category": "oncology",
+  "version": "2018",
+  "parameters": [
+    {
+      "name": "previous_chemotherapy",
+      "type": "string",
+      "required": true,
+      "description": "History of previous chemotherapy treatment",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "previous_radiotherapy",
+      "type": "string",
+      "required": true,
+      "description": "History of previous radiotherapy treatment",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "hemoglobin",
+      "type": "string",
+      "required": true,
+      "description": "Hemoglobin level in g/dL",
+      "options": ["≥16", "14_to_<16", "12_to_<14", "10_to_<12", "<10"],
+      "validation": {
+        "enum": ["≥16", "14_to_<16", "12_to_<14", "10_to_<12", "<10"]
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "wbc_count",
+      "type": "string",
+      "required": true,
+      "description": "Serum white blood cell count in 10⁹ cells/L",
+      "options": ["<4", "4_to_<6.3", "6.3_to_<10", "10_to_<15.8", "≥15.8"],
+      "validation": {
+        "enum": ["<4", "4_to_<6.3", "6.3_to_<10", "10_to_<15.8", "≥15.8"]
+      },
+      "unit": "×10⁹ cells/L"
+    },
+    {
+      "name": "crp",
+      "type": "string",
+      "required": true,
+      "description": "C-reactive protein level in mg/L",
+      "options": ["<3", "3_to_<10", "10_to_<32", "32_to_<100", "≥100"],
+      "validation": {
+        "enum": ["<3", "3_to_<10", "10_to_<32", "32_to_<100", "≥100"]
+      },
+      "unit": "mg/L"
+    },
+    {
+      "name": "ecog_status",
+      "type": "string",
+      "required": true,
+      "description": "ECOG Performance Status",
+      "options": ["0-1", "2-4"],
+      "validation": {
+        "enum": ["0-1", "2-4"]
+      }
+    },
+    {
+      "name": "cancer_type",
+      "type": "string",
+      "required": true,
+      "description": "Primary cancer type",
+      "options": ["mesothelioma", "lung", "other"],
+      "validation": {
+        "enum": ["mesothelioma", "lung", "other"]
+      }
+    }
+  ],
+  "result": {
+    "name": "promise_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "PROMISE score predicting 3-month mortality risk in malignant pleural effusion"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 20,
+        "stage": "Low Risk",
+        "description": "3-month mortality <25%",
+        "interpretation": "Very low mortality risk with good prognosis. Aggressive treatment approaches including pleurodesis should be considered."
+      },
+      {
+        "min": 21,
+        "max": 30,
+        "stage": "Intermediate-Low Risk",
+        "description": "3-month mortality 25-50%",
+        "interpretation": "Low-intermediate mortality risk. Treatment decisions should balance benefits and burdens based on individual patient factors."
+      },
+      {
+        "min": 31,
+        "max": 40,
+        "stage": "Intermediate-High Risk",
+        "description": "3-month mortality 50-75%",
+        "interpretation": "High-intermediate mortality risk. Focus on symptom control with selective use of invasive procedures."
+      },
+      {
+        "min": 41,
+        "max": 80,
+        "stage": "High Risk",
+        "description": "3-month mortality >75%",
+        "interpretation": "Very high mortality risk. Primarily palliative care approach with comfort-focused interventions."
+      }
+    ]
+  },
+  "references": [
+    "Psallidas I, Kanellakis NI, Gerry S, Thakur N, Bamber J, Dipper A, et al. Development and validation of response markers to predict survival and pleurodesis success in patients with malignant pleural effusion (PROMISE): a multicohort analysis. Lancet Oncol. 2018;19(7):930-939. doi: 10.1016/S1470-2045(18)30294-8.",
+    "Clive AO, Kahan BC, Hooper CE, Bhatnagar R, Morley AJ, Zahan-Evans N, et al. Predicting survival in malignant pleural effusion: development and validation of the LENT prognostic score. Thorax. 2014;69(12):1098-104. doi: 10.1136/thoraxjnl-2014-205285.",
+    "Yap E, Anderson B, Nair A, Vaska K, Ferland L, Penney B, et al. The role of LENT and PROMISE scores in predicting survival in malignant pleural effusion. Lung. 2022;200(4):459-465. doi: 10.1007/s00408-022-00547-5."
+  ],
+  "formula": "Sum of weighted points from: Previous chemotherapy (0-4), Previous radiotherapy (0-2), Hemoglobin level (0-4), WBC count (0-9), CRP level (0-11), ECOG status (0-7), Cancer type (0-6)",
+  "notes": [
+    "First prospectively validated prognostic model for malignant pleural effusion",
+    "Combines clinical and biological parameters for accurate 3-month mortality prediction",
+    "Superior to LENT score and ECOG Performance Status alone in predicting survival",
+    "Helps guide treatment decisions including pleurodesis, drainage procedures, and palliative care",
+    "Validated across multiple cancer types including lung cancer, breast cancer, and mesothelioma",
+    "Can be used to stratify patients in clinical trials and research studies",
+    "Assists in prognostic discussions with patients and families",
+    "Lower scores indicate candidates for aggressive interventions including pleurodesis",
+    "Higher scores suggest focus on symptom palliation and comfort care",
+    "Regular reassessment may be needed as clinical status changes",
+    "Should be interpreted within the context of overall clinical picture",
+    "Useful for healthcare resource planning and quality improvement initiatives"
+  ]
+}

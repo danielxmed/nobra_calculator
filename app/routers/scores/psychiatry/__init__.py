@@ -32,6 +32,10 @@ from .glasgow_modified_alcohol_withdrawal_scale import router as glasgow_modifie
 from .hamilton_anxiety_scale import router as hamilton_anxiety_scale_router
 from .hamilton_depression_rating_scale import router as hamilton_depression_rating_scale_router
 from .heads_ed import router as heads_ed_router
+from .madrs import router as madrs_router
+from .major_depression_index import router as major_depression_index_router
+from .modified_minnesota_detoxification_scale import router as modified_minnesota_detoxification_scale_router
+from .qids_sr16 import router as qids_sr16_router
 
 # Create main specialty router
 router = APIRouter()
@@ -64,3 +68,7 @@ router.include_router(glasgow_modified_alcohol_withdrawal_scale_router)
 router.include_router(hamilton_anxiety_scale_router)
 router.include_router(hamilton_depression_rating_scale_router)
 router.include_router(heads_ed_router)
+router.include_router(madrs_router)
+router.include_router(major_depression_index_router)
+router.include_router(modified_minnesota_detoxification_scale_router)
+router.include_router(qids_sr16_router)

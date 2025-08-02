@@ -1,0 +1,75 @@
+{
+  "id": "modified_mallampati_classification",
+  "title": "Modified Mallampati Classification",
+  "description": "Stratifies predicted difficulty of endotracheal intubation based on anatomical features visible during oral examination",
+  "category": "emergency",
+  "version": "Modified (Samsoon 1987)",
+  "parameters": [
+    {
+      "name": "visible_structures",
+      "type": "string",
+      "required": true,
+      "description": "Anatomical structures visible during oral examination with mouth open and tongue protruded",
+      "options": ["class_1", "class_2", "class_3", "class_4"],
+      "validation": {
+        "enum": ["class_1", "class_2", "class_3", "class_4"]
+      }
+    }
+  ],
+  "result": {
+    "name": "mallampati_class",
+    "type": "integer",
+    "unit": "class",
+    "description": "Modified Mallampati class indicating predicted intubation difficulty"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Class I",
+        "description": "Easy intubation predicted",
+        "interpretation": "Faucial pillars, soft palate, and uvula visualized. Low risk of difficult intubation."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Class II",
+        "description": "Mild difficulty possible",
+        "interpretation": "Faucial pillars and soft palate visualized, but uvula masked by tongue base. Mildly increased intubation difficulty."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Class III",
+        "description": "Moderate difficulty likely",
+        "interpretation": "Only soft palate visualized. Moderately difficult intubation predicted. Consider alternative strategies."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Class IV",
+        "description": "Severe difficulty expected",
+        "interpretation": "Soft palate not visualized, only hard palate visible. High risk of difficult intubation. Plan alternative airway management."
+      }
+    ]
+  },
+  "references": [
+    "Mallampati SR, Gatt SP, Gugino LD, Desai SP, Waraksa B, Freiberger D, Liu PL. A clinical sign to predict difficult tracheal intubation: a prospective study. Can Anaesth Soc J. 1985 Jul;32(4):429-34. doi: 10.1007/BF03011357.",
+    "Samsoon GL, Young JR. Difficult tracheal intubation: a retrospective study. Anaesthesia. 1987 May;42(5):487-90. doi: 10.1111/j.1365-2044.1987.tb04039.x.",
+    "Lee A, Fan LT, Gin T, Karmakar MK, Ngan Kee WD. A systematic review (meta-analysis) of the accuracy of the Mallampati tests to predict the difficult airway. Anesth Analg. 2006 Jun;102(6):1867-78. doi: 10.1213/01.ane.0000217211.12232.ea."
+  ],
+  "formula": "Visual assessment of oropharyngeal structures. Class I: Faucial pillars + soft palate + uvula visible. Class II: Faucial pillars + soft palate visible, uvula masked. Class III: Only soft palate visible. Class IV: Only hard palate visible.",
+  "notes": [
+    "Assessment performed with patient seated upright, mouth open, tongue maximally protruded",
+    "Classically performed without phonation (patient should not say 'ah')",
+    "Higher classes (III-IV) associated with increased intubation difficulty",
+    "Should not be used in isolation but as part of comprehensive airway assessment",
+    "Sensitivity 0.51, specificity 0.87 for predicting difficult intubation",
+    "Other factors to consider: thick neck (>40 cm), limited neck mobility, small mouth opening (<3 finger breadths)",
+    "Additional factors: short thyromental distance (<6 cm), limited mandibular protrusion, history of difficult airway",
+    "Also used to predict sleep apnea risk (classes III-IV associated with higher OSA incidence)",
+    "Consider video laryngoscopy, fiber-optic intubation, or surgical airway for predicted difficult cases",
+    "Mnemonic 'PUSH': Pillars, Uvula, Soft palate, Hard palate (Class I has all visible)"
+  ]
+}

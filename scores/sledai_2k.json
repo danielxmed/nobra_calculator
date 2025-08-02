@@ -1,0 +1,235 @@
+{
+  "id": "sledai_2k",
+  "title": "Systemic Lupus Erythematosus Disease Activity Index 2000 (SLEDAI-2K)",
+  "description": "Stratifies severity of systemic lupus erythematosus (SLE) based on 24 clinical and laboratory parameters, allowing documentation of persistent disease activity.",
+  "category": "rheumatology",
+  "version": "2000",
+  "parameters": [
+    {
+      "name": "seizure",
+      "type": "string",
+      "required": true,
+      "description": "Recent onset seizure (exclude metabolic, infectious, or drug causes)",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "psychosis",
+      "type": "string",
+      "required": true,
+      "description": "Altered mental function with impaired reality perception (exclude uremia, drugs)",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "organic_brain_syndrome",
+      "type": "string",
+      "required": true,
+      "description": "Altered mental function with impaired cognition, memory, or concentration",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "visual_disturbance",
+      "type": "string",
+      "required": true,
+      "description": "Retinal changes of SLE (cytoid bodies, retinal hemorrhages, exudates, hemorrhage in choroid or optic neuritis)",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "cranial_nerve_disorder",
+      "type": "string",
+      "required": true,
+      "description": "New onset sensory or motor neuropathy involving cranial nerves",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "lupus_headache",
+      "type": "string",
+      "required": true,
+      "description": "Severe persistent headache, may be migrainous, nonresponsive to narcotic analgesia",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "cva",
+      "type": "string",
+      "required": true,
+      "description": "New onset cerebrovascular accident (stroke)",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "vasculitis",
+      "type": "string",
+      "required": true,
+      "description": "Ulceration, gangrene, tender finger nodules, periungual infarction, splinter hemorrhages, or biopsy/angiogram proof",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "arthritis",
+      "type": "string",
+      "required": true,
+      "description": "≥2 joints with pain and signs of inflammation (tenderness, swelling, or effusion)",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "myositis",
+      "type": "string",
+      "required": true,
+      "description": "Proximal muscle aching/weakness with elevated CPK/aldolase or EMG changes or biopsy showing myositis",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "urinary_casts",
+      "type": "string",
+      "required": true,
+      "description": "Heme-granular or red blood cell casts",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "hematuria",
+      "type": "string",
+      "required": true,
+      "description": ">5 RBCs/high power field (exclude stone, infection, or other causes)",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "proteinuria",
+      "type": "string",
+      "required": true,
+      "description": "New onset or recent increase >0.5 g/24 hours",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "pyuria",
+      "type": "string",
+      "required": true,
+      "description": ">5 WBCs/high power field (exclude infection)",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "rash",
+      "type": "string",
+      "required": true,
+      "description": "New or ongoing inflammatory type rash",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "alopecia",
+      "type": "string",
+      "required": true,
+      "description": "New or ongoing abnormal patchy or diffuse hair loss",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "mucosal_ulcers",
+      "type": "string",
+      "required": true,
+      "description": "New or ongoing oral or nasal ulcerations",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "pleurisy",
+      "type": "string",
+      "required": true,
+      "description": "Pleuritic chest pain with pleural rub, effusion, or pleural thickening",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "pericarditis",
+      "type": "string",
+      "required": true,
+      "description": "Pericardial pain with rub, effusion, or ECG/echo confirmation",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "low_complement",
+      "type": "string",
+      "required": true,
+      "description": "Decreased C3, C4, or CH50 below normal lab limits",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "increased_dna_binding",
+      "type": "string",
+      "required": true,
+      "description": "Increased anti-dsDNA antibody binding above normal range",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "fever",
+      "type": "string",
+      "required": true,
+      "description": "Temperature >100.4°F (38°C) excluding infection",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "thrombocytopenia",
+      "type": "string",
+      "required": true,
+      "description": "Platelets <100 × 10⁹/L excluding drug causes",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "leukopenia",
+      "type": "string",
+      "required": true,
+      "description": "WBC <3 × 10⁹/L excluding drug causes",
+      "options": ["yes", "no"]
+    }
+  ],
+  "result": {
+    "name": "sledai_2k_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total SLEDAI-2K score (range 0-105)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "No Activity",
+        "description": "No disease activity",
+        "interpretation": "No active disease. Continue routine monitoring and current management."
+      },
+      {
+        "min": 3,
+        "max": 4,
+        "stage": "Mild Activity",
+        "description": "Mild disease activity",
+        "interpretation": "Mild disease activity. Consider treatment adjustment if symptoms are bothersome or if there is organ involvement."
+      },
+      {
+        "min": 5,
+        "max": 10,
+        "stage": "Moderate Activity",
+        "description": "Moderate disease activity",
+        "interpretation": "Moderate disease activity. Treatment modification usually indicated. Consider increasing immunosuppression."
+      },
+      {
+        "min": 11,
+        "max": 19,
+        "stage": "High Activity",
+        "description": "High disease activity",
+        "interpretation": "High disease activity. Significant treatment intensification needed. Consider aggressive immunosuppression."
+      },
+      {
+        "min": 20,
+        "max": 105,
+        "stage": "Very High Activity",
+        "description": "Very high disease activity",
+        "interpretation": "Very high disease activity. Urgent aggressive treatment required. Consider hospitalization and high-dose immunosuppression."
+      }
+    ]
+  },
+  "references": [
+    "Gladman DD, Ibañez D, Urowitz MB. Systemic lupus erythematosus disease activity index 2000. J Rheumatol. 2002 Feb;29(2):288-91.",
+    "Buyon JP, Petri MA, Kim MY, Kalunian KC, Grossman J, Hahn BH, et al. The effect of combined estrogen and progesterone hormone replacement therapy on disease activity in systemic lupus erythematosus: a randomized trial. Ann Intern Med. 2005 Jun 21;142(12 Pt 1):953-62.",
+    "Touma Z, Urowitz MB, Gladman DD. SLEDAI-2K for a 30-day window. Lupus. 2010 Jan;19(1):49-51. doi: 10.1177/0961203309346505."
+  ],
+  "formula": "Sum of weighted scores for 24 items (8 points for CNS/vascular, 4 points for renal/musculoskeletal, 2 points for serositis/dermatologic/immunologic, 1 point for constitutional/hematologic)",
+  "notes": [
+    "SLEDAI-2K allows documentation of persistent disease activity in rash, alopecia, mucosal ulcers, and proteinuria",
+    "The most appropriate cutoff for active disease is 3-4 points",
+    "A score ≥6 generally indicates need for therapy",
+    "Scores >45 are uncommon in clinical practice",
+    "Can use 10-day or 30-day assessment window"
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "id": "cll_ipi",
+  "title": "International Prognostic Index for Chronic Lymphocytic Leukemia (CLL-IPI)",
+  "description": "Stratifies chronic lymphocytic leukemia patients into four risk categories based on five independent prognostic factors. The CLL-IPI combines genetic (TP53 status, IGHV mutational status), biochemical (β2-microglobulin), and clinical parameters (age, clinical stage) to predict overall survival and treatment outcomes. This validated prognostic model discriminates four risk groups with significantly different 5-year overall survival rates: low risk (93.2%), intermediate risk (79.3%), high risk (63.3%), and very high risk (23.3%). The CLL-IPI enables more targeted patient management and risk-adapted treatment strategies in clinical practice and clinical trials.",
+  "category": "hematology",
+  "version": "2016",
+  "parameters": [
+    {
+      "name": "tp53_status",
+      "type": "string",
+      "required": true,
+      "description": "TP53 gene abnormalities including del(17p) and/or TP53 mutation",
+      "options": ["normal", "abnormal"],
+      "validation": {
+        "enum": ["normal", "abnormal"]
+      },
+      "unit": null
+    },
+    {
+      "name": "ighv_status",
+      "type": "string",
+      "required": true,
+      "description": "IGHV (immunoglobulin heavy chain variable) mutational status",
+      "options": ["mutated", "unmutated"],
+      "validation": {
+        "enum": ["mutated", "unmutated"]
+      },
+      "unit": null
+    },
+    {
+      "name": "beta2_microglobulin",
+      "type": "string",
+      "required": true,
+      "description": "Serum β2-microglobulin concentration level",
+      "options": ["normal", "elevated"],
+      "validation": {
+        "enum": ["normal", "elevated"]
+      },
+      "unit": "mg/L"
+    },
+    {
+      "name": "clinical_stage",
+      "type": "string",
+      "required": true,
+      "description": "Clinical stage based on Binet or Rai staging systems",
+      "options": ["early", "advanced"],
+      "validation": {
+        "enum": ["early", "advanced"]
+      },
+      "unit": null
+    },
+    {
+      "name": "age",
+      "type": "string",
+      "required": true,
+      "description": "Patient age category",
+      "options": ["65_or_younger", "older_than_65"],
+      "validation": {
+        "enum": ["65_or_younger", "older_than_65"]
+      },
+      "unit": "years"
+    }
+  ],
+  "result": {
+    "name": "cll_ipi_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "CLL-IPI score (range 0-10 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "Score 0-1 points",
+        "interpretation": "Excellent prognosis with 5-year overall survival of 93.2% (95% CI 90.5-96.0%). These patients have favorable genetic and clinical characteristics with prolonged survival expected. Consider watchful waiting approach for asymptomatic patients. Lower intensity treatments may be appropriate when therapy is indicated."
+      },
+      {
+        "min": 2,
+        "max": 3,
+        "stage": "Intermediate Risk",
+        "description": "Score 2-3 points",
+        "interpretation": "Good prognosis with 5-year overall survival of 79.3% (95% CI 75.5-83.2%). These patients have mixed prognostic factors and moderate survival expectations. Standard treatment approaches are appropriate. Consider patient preferences and comorbidities when selecting therapy."
+      },
+      {
+        "min": 4,
+        "max": 6,
+        "stage": "High Risk",
+        "description": "Score 4-6 points",
+        "interpretation": "Unfavorable prognosis with 5-year overall survival of 63.3% (95% CI 57.9-68.8%). These patients have several adverse prognostic factors requiring closer monitoring. Consider more intensive treatment approaches and clinical trial enrollment. Earlier intervention may be beneficial."
+      },
+      {
+        "min": 7,
+        "max": 10,
+        "stage": "Very High Risk",
+        "description": "Score 7-10 points",
+        "interpretation": "Poor prognosis with 5-year overall survival of 23.3% (95% CI 12.5-34.1%). These patients have multiple high-risk features requiring aggressive management. Strong consideration for clinical trials, novel targeted therapies, and intensive treatment regimens. Close monitoring and supportive care essential."
+      }
+    ]
+  },
+  "references": [
+    "An international prognostic index for patients with chronic lymphocytic leukaemia (CLL-IPI): a meta-analysis of individual patient data. Lancet Oncol. 2016 Jul;17(7):779-90. doi: 10.1016/S1470-2045(16)30029-8.",
+    "Condoluci A, Terzi di Bergamo L, Langerbeins P, et al. International prognostic score for asymptomatic early-stage chronic lymphocytic leukemia. Blood. 2020 May 28;135(22):1859-1869. doi: 10.1182/blood.2019003453.",
+    "Gentile M, Shanafelt TD, Rossi D, et al. Validation of the CLL-IPI and comparison with the MDACC prognostic index in newly diagnosed patients. Blood. 2016 Oct 13;128(15):2093-2095. doi: 10.1182/blood-2016-07-728261."
+  ],
+  "formula": "Score = TP53 abnormal (4) + IGHV unmutated (2) + β2-microglobulin >3.5mg/L (2) + Advanced stage (1) + Age >65 years (1)",
+  "notes": [
+    "The CLL-IPI was developed from a meta-analysis of individual patient data from 8 studies including 3472 patients",
+    "Scoring parameters: TP53 abnormal (4 points), IGHV unmutated (2 points), β2-microglobulin >3.5 mg/L (2 points), Advanced clinical stage (1 point), Age >65 years (1 point)",
+    "TP53 abnormalities include del(17p) and/or TP53 mutation detected by FISH or sequencing",
+    "IGHV mutated is defined as <98% homology to germline sequence (favorable prognosis)",
+    "IGHV unmutated is defined as ≥98% homology to germline sequence (unfavorable prognosis)",
+    "β2-microglobulin normal ≤3.5 mg/L, elevated >3.5 mg/L (some labs use 3.0 mg/L cutoff)",
+    "Early stage: Binet A or Rai 0; Advanced stage: Binet B-C or Rai I-IV",
+    "Age cutoff is 65 years (≤65 years vs >65 years)",
+    "Four risk groups: Low (0-1), Intermediate (2-3), High (4-6), Very High (7-10)",
+    "5-year OS rates: Low 93.2%, Intermediate 79.3%, High 63.3%, Very High 23.3%",
+    "The CLL-IPI predicts overall survival and has been validated for time to first treatment",
+    "Use for risk stratification and patient counseling, not for determining need for treatment",
+    "Treatment decisions should be based on iwCLL (International Workshop on CLL) criteria",
+    "The index remains prognostically relevant in the era of targeted therapies",
+    "Consider clinical trial enrollment for high and very high risk patients",
+    "Genetic testing for TP53 and IGHV should be performed before treatment initiation",
+    "β2-microglobulin reflects tumor burden and is routinely available in clinical practice",
+    "The CLL-IPI has been validated across different geographic regions and treatment eras",
+    "Risk stratification guides treatment intensity and monitoring frequency",
+    "Regular reassessment may be appropriate as disease evolves over time"
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "id": "i_see_score",
+  "title": "Index of Severity for Eosinophilic Esophagitis (I-SEE)",
+  "description": "Classifies severity of eosinophilic esophagitis (EoE) using a comprehensive scoring system that evaluates symptoms, complications, inflammatory features, and fibrostenotic changes. The I-SEE was developed by a multidisciplinary international group of EoE experts to standardize disease severity assessment beyond eosinophil counts alone. This validated clinical tool helps guide practitioners in EoE management by providing standardized disease severity classification that correlates with clinical features, treatment response, and need for interventions such as dilation. The score evaluates multiple domains including symptom frequency, complications (food impaction, hospitalization), inflammatory features (edema, furrows, exudates, eosinophil counts), and fibrostenotic features (rings, strictures) to provide a comprehensive assessment of disease severity.",
+  "category": "gastroenterology",
+  "version": "2022 Hirano",
+  "parameters": [
+    {
+      "name": "symptoms_frequency",
+      "type": "string",
+      "required": true,
+      "description": "Frequency of EoE-related symptoms (dysphagia, food getting stuck, chest pain, heartburn). Symptom frequency correlates with disease activity and quality of life impact",
+      "options": ["none", "weekly", "daily", "multiple_daily"],
+      "validation": {
+        "enum": ["none", "weekly", "daily", "multiple_daily"]
+      }
+    },
+    {
+      "name": "food_impaction",
+      "type": "string",
+      "required": true,
+      "description": "History of food impaction requiring emergency room visit or endoscopic removal. Food impaction is a serious complication that may require urgent intervention and indicates significant esophageal dysfunction",
+      "options": ["none", "adult_with_er", "pediatric_with_er"],
+      "validation": {
+        "enum": ["none", "adult_with_er", "pediatric_with_er"]
+      }
+    },
+    {
+      "name": "hospitalization_due_eoe",
+      "type": "string",
+      "required": true,
+      "description": "Hospitalization specifically due to EoE-related complications. Hospitalization indicates severe disease requiring inpatient management and represents significant healthcare burden",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "esophageal_perforation",
+      "type": "string",
+      "required": true,
+      "description": "History of esophageal perforation. Perforation is the most serious complication of EoE, often requiring surgical intervention and carrying significant morbidity risk",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "malnutrition",
+      "type": "string",
+      "required": true,
+      "description": "Malnutrition defined as body mass <5th percentile or decreased growth velocity. Malnutrition indicates severe functional impact affecting nutritional status and growth, particularly important in pediatric patients",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "persistent_inflammation",
+      "type": "string",
+      "required": true,
+      "description": "Persistent inflammation requiring special treatments (immunosuppressives, biologics, elimination diets). Indicates refractory disease requiring advanced therapeutic interventions beyond standard topical steroids",
+      "options": ["none", "present"],
+      "validation": {
+        "enum": ["none", "present"]
+      }
+    },
+    {
+      "name": "inflammatory_features",
+      "type": "string",
+      "required": true,
+      "description": "Endoscopic inflammatory features: edema, furrows, and exudates (EFE). These findings represent active inflammatory changes in the esophageal mucosa and correlate with disease activity",
+      "options": ["none", "localized", "diffuse"],
+      "validation": {
+        "enum": ["none", "localized", "diffuse"]
+      }
+    },
+    {
+      "name": "eosinophil_count",
+      "type": "string",
+      "required": true,
+      "description": "Peak eosinophil count per high-power field (eos/hpf) on esophageal biopsy. Eosinophil count is the hallmark histologic feature of EoE, with ≥15 eos/hpf required for diagnosis",
+      "options": ["under_15", "15_to_60", "over_60"],
+      "validation": {
+        "enum": ["under_15", "15_to_60", "over_60"]
+      }
+    },
+    {
+      "name": "rings_strictures",
+      "type": "string",
+      "required": true,
+      "description": "Presence and severity of esophageal rings or strictures. Fibrostenotic changes represent chronic remodeling and may require mechanical intervention (dilation) for symptom relief",
+      "options": ["none", "endoscope_passes_easily", "requires_dilation", "cannot_pass_endoscope"],
+      "validation": {
+        "enum": ["none", "endoscope_passes_easily", "requires_dilation", "cannot_pass_endoscope"]
+      }
+    }
+  ],
+  "result": {
+    "name": "score",
+    "type": "integer",
+    "unit": "points",
+    "description": "I-SEE Severity Score (range 0-45 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Inactive",
+        "description": "Score 0 points",
+        "interpretation": "Inactive EoE. No evidence of active disease. Continue current management and monitor for disease recurrence."
+      },
+      {
+        "min": 1,
+        "max": 6,
+        "stage": "Mild",
+        "description": "Score 1-6 points",
+        "interpretation": "Mild EoE severity. Disease is present but with minimal impact on function and low complication risk. Standard topical corticosteroid therapy typically effective."
+      },
+      {
+        "min": 7,
+        "max": 14,
+        "stage": "Moderate",
+        "description": "Score 7-14 points",
+        "interpretation": "Moderate EoE severity. Significant disease activity with moderate functional impact. May require combination therapy or dietary interventions alongside standard treatment."
+      },
+      {
+        "min": 15,
+        "max": 45,
+        "stage": "Severe",
+        "description": "Score ≥15 points",
+        "interpretation": "Severe EoE. High disease burden with significant complications or refractory features. May require advanced therapies, mechanical interventions (dilation), or multidisciplinary management approach."
+      }
+    ]
+  },
+  "references": [
+    "Hirano I, Aceves SS, Blanchard C, et al. A Clinical Severity Index for Eosinophilic Esophagitis: Development, Consensus, and Future Directions. Gastroenterology. 2022 Jul;163(1):59-76.e16. doi: 10.1053/j.gastro.2022.02.048.",
+    "Rank MA, Shaffer K, Campion J, et al. A newly proposed severity index for eosinophilic esophagitis is associated with baseline clinical features and successful treatment response. Clin Gastroenterol Hepatol. 2023 Oct;21(11):2890-2897.e2. doi: 10.1016/j.cgh.2023.04.013.",
+    "Stern E, Schoepfer A, Spechler SJ, et al. The Index of Severity for Eosinophilic Esophagitis (I-SEE) Reflects Longitudinal Clinicopathologic Changes in Children. J Pediatr Gastroenterol Nutr. 2023 Dec;77(6):743-749. doi: 10.1097/MPG.0000000000003928."
+  ],
+  "formula": "Score = Symptoms (0-4) + Food impaction (0-4) + Hospitalization (0-4) + Perforation (0-15) + Malnutrition (0-15) + Persistent inflammation (0-15) + Inflammatory features (0-2) + Eosinophil count (0-2) + Rings/strictures (0-15)",
+  "notes": [
+    "Developed by multidisciplinary international group of EoE experts",
+    "Standardizes disease severity assessment beyond eosinophil counts alone",
+    "Inactive (0 points): No evidence of active disease",
+    "Mild (1-6 points): Minimal functional impact, standard therapy typically effective",
+    "Moderate (7-14 points): Significant disease activity, may require combination therapy",
+    "Severe (≥15 points): High disease burden, may require advanced therapies or dilation",
+    "Correlates with clinical features including BMI, symptom duration, and esophageal diameter",
+    "Predicts need for dilation at follow-up (C statistic: 0.81)",
+    "Severity improves with successful topical corticosteroid treatment",
+    "Can be completed at routine clinic visits to assess disease severity",
+    "Eosinophil count ≥15 eos/hpf required to define presence of active EoE",
+    "Inflammatory features assessed using abbreviated EREFS (edema, furrows, exudates)",
+    "Fibrostenotic features may require mechanical intervention for symptom relief",
+    "Score should be reassessed after treatment to monitor therapeutic response",
+    "Validated in both adult and pediatric EoE populations"
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "id": "liver_decompensation_risk_hcc",
+  "title": "Liver Decompensation Risk after Hepatectomy for Hepatocellular Carcinoma (HCC)",
+  "description": "Predicts risk of liver decompensation after hepatectomy for hepatocellular carcinoma (HCC)",
+  "category": "gastroenterology",
+  "version": "2016",
+  "parameters": [
+    {
+      "name": "portal_hypertension",
+      "type": "string",
+      "required": true,
+      "description": "Portal hypertension defined as F1 esophageal varices on endoscopy OR platelets <100,000/μL with splenomegaly",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "hepatectomy_extent",
+      "type": "string",
+      "required": true,
+      "description": "Extension of hepatectomy - Major resection = removal of ≥3 adjacent segments",
+      "options": ["minor", "major"],
+      "validation": {
+        "enum": ["minor", "major"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "meld_score_category",
+      "type": "string",
+      "required": false,
+      "description": "MELD score category (only required if no portal hypertension and minor hepatectomy)",
+      "options": ["9_or_less", "greater_than_9"],
+      "validation": {
+        "enum": ["9_or_less", "greater_than_9"]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "decompensation_rate",
+    "type": "float",
+    "unit": "%",
+    "description": "Liver decompensation rate percentage"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0.0,
+        "max": 5.0,
+        "stage": "Low Risk",
+        "description": "Low risk of liver decompensation",
+        "interpretation": "Low risk patients have a 4.9% decompensation rate, median length of stay of 7 days, and 4.4% risk of mortality. These patients had no portal hypertension, underwent minor resection, and had MELD score ≤9."
+      },
+      {
+        "min": 20.0,
+        "max": 35.0,
+        "stage": "Intermediate Risk",
+        "description": "Intermediate risk of liver decompensation",
+        "interpretation": "Intermediate risk patients have a 28.6% decompensation rate, median length of stay of 8 days, and 9.0% risk of mortality. These patients had no portal hypertension and underwent major resections, or had minor resections with portal hypertension or MELD score >9."
+      },
+      {
+        "min": 55.0,
+        "max": 65.0,
+        "stage": "High Risk",
+        "description": "High risk of liver decompensation",
+        "interpretation": "High risk patients have a 60.0% decompensation rate, median length of stay of 11 days, and 25.0% risk of mortality. These patients underwent major resection with portal hypertension present."
+      }
+    ]
+  },
+  "references": [
+    "Cescon M, Colecchia A, Cucchetti A, Peri E, Montrone L, Berretta M, et al. Value of transient elastography measured with FibroScan in predicting the outcome of hepatic resection for hepatocellular carcinoma. Ann Surg. 2012 Nov;256(5):706-12; discussion 712-3. doi: 10.1097/SLA.0b013e3182724258.",
+    "Cucchetti A, Ercolani G, Vivarelli M, Cescon M, Ravaioli M, La Barba G, et al. Impact of model for end-stage liver disease (MELD) score on prognosis after hepatectomy for hepatocellular carcinoma on cirrhosis. Liver Transpl. 2006 Jun;12(6):966-71. doi: 10.1002/lt.20769.",
+    "Santambrogio R, Kluger MD, Costa M, Belli A, Barabino M, Laurent A, et al. Hepatic resection for hepatocellular carcinoma in patients with Child-Pugh's A cirrhosis: is clinical evidence of portal hypertension a contraindication? HPB (Oxford). 2013 Jan;15(1):78-84. doi: 10.1111/j.1477-2574.2012.00583.x."
+  ],
+  "formula": "Risk stratification based on hierarchical interaction of portal hypertension, hepatectomy extent, and MELD score. Low risk: no portal hypertension + minor resection + MELD ≤9. Intermediate risk: no portal hypertension + major resection OR minor resection + (portal hypertension OR MELD >9). High risk: major resection + portal hypertension.",
+  "notes": [
+    "Derived from analysis of 543 patients with HCC undergoing hepatectomy",
+    "Portal hypertension defined as F1 esophageal varices on endoscopy OR platelets <100,000/μL with splenomegaly",
+    "Major hepatectomy defined as removal of ≥3 adjacent segments",
+    "MELD score calculated as: 3.8[ln bilirubin] + 11.2[ln INR] + 9.6[ln creatinine] + 6.4",
+    "Risk stratification helps guide patient selection and surgical planning",
+    "Higher risk patients may benefit from alternative treatments or enhanced perioperative monitoring"
+  ]
+}

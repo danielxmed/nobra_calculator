@@ -1,0 +1,99 @@
+{
+  "id": "ips_e_cll",
+  "title": "International Prognostic Score for Asymptomatic Early-stage CLL (IPS-E)",
+  "description": "Assesses prognosis of asymptomatic early-stage chronic lymphocytic leukemia (CLL) to predict time to first treatment (TTFT). The IPS-E was developed using individual patient data from 11 international cohorts (n=4933) and uses three independent prognostic factors to stratify patients into low, intermediate, and high-risk categories. This scoring system specifically addresses the clinical need for prognostic stratification in early-stage asymptomatic CLL patients who do not require immediate treatment according to iwCLL criteria. The IPS-E demonstrates excellent discrimination with C-index values of 0.74 in training and 0.70 in validation cohorts, making it a valuable tool for clinical management and early intervention clinical trial design. It enables clinicians to identify patients who may benefit from closer monitoring or consideration for clinical trials.",
+  "category": "hematology",
+  "version": "2020",
+  "parameters": [
+    {
+      "name": "ighv_status",
+      "type": "string",
+      "required": true,
+      "description": "Immunoglobulin heavy variable gene (IGHV) mutational status",
+      "options": ["mutated", "unmutated"],
+      "validation": {
+        "enum": ["mutated", "unmutated"]
+      },
+      "unit": null
+    },
+    {
+      "name": "lymphocyte_count",
+      "type": "string",
+      "required": true,
+      "description": "Absolute lymphocyte count at diagnosis",
+      "options": ["15_or_less", "greater_than_15"],
+      "validation": {
+        "enum": ["15_or_less", "greater_than_15"]
+      },
+      "unit": "×10⁹/L"
+    },
+    {
+      "name": "palpable_lymph_nodes",
+      "type": "string",
+      "required": true,
+      "description": "Presence of palpable lymph nodes on physical examination",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      },
+      "unit": null
+    }
+  ],
+  "result": {
+    "name": "ips_e_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "IPS-E score (range 0-3 points) for risk stratification of asymptomatic early-stage CLL"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "Score 0 points",
+        "interpretation": "Excellent prognosis. 5-year cumulative risk for treatment need: 8.4%. 1-year risk <0.1%. These patients have very low likelihood of requiring treatment in the near future. Standard surveillance every 3-6 months is appropriate. Ideal candidates for observation without intervention. Clinical trials for early intervention are generally not indicated."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Intermediate Risk",
+        "description": "Score 1 point",
+        "interpretation": "Intermediate prognosis. 5-year cumulative risk for treatment need: 28.4%. 1-year risk: 3.1%. Closer monitoring recommended every 3 months. Consider for early intervention clinical trials. Patients may benefit from more frequent assessment of disease progression markers."
+      },
+      {
+        "min": 2,
+        "max": 3,
+        "stage": "High Risk",
+        "description": "Score 2-3 points",
+        "interpretation": "Higher risk of disease progression. 5-year cumulative risk for treatment need: 61.2%. Close monitoring every 2-3 months recommended. Strong candidates for early intervention clinical trials. Consider evaluation for novel therapeutic approaches or investigational agents. Regular assessment for iwCLL treatment criteria development."
+      }
+    ]
+  },
+  "references": [
+    "Condoluci A, Terzi di Bergamo L, Langerbeins P, Hoechstetter MA, Herling CD, De Paoli L, et al. International prognostic score for asymptomatic early-stage chronic lymphocytic leukemia. Blood. 2020 May 21;135(21):1859-1869. doi: 10.1182/blood.2019003453.",
+    "Hallek M, Cheson BD, Catovsky D, Caligaris-Cappio F, Dighiero G, Döhner H, et al. iwCLL guidelines for diagnosis, indications for treatment, response assessment, and supportive management of CLL. Blood. 2018 Jun 21;131(25):2745-2760. doi: 10.1182/blood-2017-09-806398.",
+    "Rai KR, Sawitsky A, Cronkite EP, Chanana AD, Levy RN, Pasternack BS. Clinical staging of chronic lymphocytic leukemia. Blood. 1975 Aug;46(2):219-34. doi: 10.1182/blood.V46.2.219.219."
+  ],
+  "formula": "IPS-E Score = Unmutated IGHV (1) + Lymphocyte count >15×10⁹/L (1) + Palpable lymph nodes (1). Score ranges 0-3: Low risk (0), Intermediate risk (1), High risk (2-3)",
+  "notes": [
+    "The IPS-E was developed specifically for asymptomatic early-stage CLL patients (Binet A, Rai 0-I)",
+    "Based on analysis of 4,933 patients from 11 international cohorts",
+    "Three independent prognostic factors with equal weighting (1 point each)",
+    "Unmutated IGHV defined as <98% homology to germline sequences",
+    "Lymphocyte count >15×10⁹/L represents higher tumor burden at diagnosis",
+    "Palpable lymph nodes indicate more advanced disease within early stages",
+    "Primary endpoint is time to first treatment (TTFT) according to iwCLL criteria",
+    "C-index: 0.74 in training cohort, 0.70 in validation cohorts",
+    "Low-risk patients (score 0) have <0.1% 1-year and 8.4% 5-year treatment risk",
+    "Intermediate-risk patients (score 1) have 3.1% 1-year and 28.4% 5-year treatment risk",
+    "High-risk patients (score 2-3) have 61.2% 5-year treatment risk",
+    "Complements but does not replace the CLL-IPI for comprehensive prognostication",
+    "Useful for clinical trial stratification and early intervention study design",
+    "Should be applied only to patients meeting iwCLL watch-and-wait criteria",
+    "Regular monitoring intervals should be adjusted based on risk category",
+    "High-risk patients warrant consideration for early intervention trials",
+    "The score helps optimize surveillance schedules and patient counseling",
+    "Validated across multiple geographic regions and treatment eras"
+  ]
+}

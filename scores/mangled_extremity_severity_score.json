@@ -1,0 +1,110 @@
+{
+  "id": "mangled_extremity_severity_score",
+  "title": "Mangled Extremity Severity Score (MESS)",
+  "description": "Estimates viability of an extremity after trauma to determine need for salvage versus empirical amputation. Evaluates four key factors: limb ischemia, patient age, shock, and injury mechanism. Originally developed for lower extremity trauma decision-making in emergency settings.",
+  "category": "emergency",
+  "version": "1990",
+  "parameters": [
+    {
+      "name": "limb_ischemia",
+      "type": "string",
+      "required": true,
+      "description": "Assessment of limb perfusion and neurovascular status. Evaluates severity of ischemic injury to the affected extremity",
+      "validation": {
+        "enum": ["reduced_pulse_normal_perfusion", "pulseless_paresthesias_slow_capillary_refill", "cool_paralyzed_numb_insensate"]
+      },
+      "options": ["reduced_pulse_normal_perfusion", "pulseless_paresthesias_slow_capillary_refill", "cool_paralyzed_numb_insensate"]
+    },
+    {
+      "name": "ischemia_duration_hours",
+      "type": "float",
+      "required": true,
+      "description": "Duration of limb ischemia in hours since injury. Ischemia >6 hours doubles the ischemia component score due to increased tissue damage and reduced salvage potential",
+      "validation": {
+        "min": 0.0,
+        "max": 24.0
+      },
+      "unit": "hours"
+    },
+    {
+      "name": "patient_age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years. Older patients have reduced healing capacity and increased risk of complications, affecting limb salvage success rates",
+      "validation": {
+        "min": 0,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "shock_status",
+      "type": "string",
+      "required": true,
+      "description": "Hemodynamic status and blood pressure assessment. Shock indicates systemic compromise that affects limb salvage outcomes and overall prognosis",
+      "validation": {
+        "enum": ["no_shock_sbp_greater_than_90", "transient_hypotension", "persistent_hypotension"]
+      },
+      "options": ["no_shock_sbp_greater_than_90", "transient_hypotension", "persistent_hypotension"]
+    },
+    {
+      "name": "injury_mechanism",
+      "type": "string",
+      "required": true,
+      "description": "Energy level and mechanism of injury. Higher energy injuries cause more extensive tissue damage and contamination, reducing salvage potential",
+      "validation": {
+        "enum": ["low_energy", "medium_energy", "high_energy", "very_high_energy"]
+      },
+      "options": ["low_energy", "medium_energy", "high_energy", "very_high_energy"]
+    }
+  ],
+  "result": {
+    "name": "mess_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "MESS score ranging from 1-14 points, where higher scores indicate increased likelihood of amputation requirement"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 6,
+        "stage": "Limb Salvage Likely",
+        "description": "Low risk for amputation with good salvage potential",
+        "interpretation": "Score suggests limb salvage is likely to be successful. Proceed with aggressive limb preservation efforts including vascular repair, fracture stabilization, and soft tissue reconstruction. Close monitoring and multidisciplinary team approach recommended."
+      },
+      {
+        "min": 7,
+        "max": 7,
+        "stage": "Borderline Decision",
+        "description": "Traditional threshold for amputation consideration",
+        "interpretation": "Traditional MESS threshold of 7 points. Consider patient factors, available resources, surgeon experience, and modern surgical advances. Some experts now suggest higher thresholds (8-9) due to improved surgical techniques. Requires careful clinical judgment and multidisciplinary discussion."
+      },
+      {
+        "min": 8,
+        "max": 14,
+        "stage": "Amputation Likely",
+        "description": "High probability of amputation requirement",
+        "interpretation": "High MESS score suggests primary amputation may be most appropriate. Consider factors including patient comorbidities, available resources, surgical expertise, and patient preferences. Even with high scores, modern surgical advances may allow salvage in selected cases with experienced teams."
+      }
+    ]
+  },
+  "references": [
+    "Johansen K, Daines M, Howey T, Helfet D, Hansen ST Jr. Objective criteria accurately predict amputation following lower extremity trauma. J Trauma. 1990 May;30(5):568-73. doi: 10.1097/00005373-199005000-00007.",
+    "Bosse MJ, MacKenzie EJ, Kellam JF, Burgess AR, Webb LX, Swiontkowski MF, et al. A prospective evaluation of the clinical utility of the lower-extremity injury-severity scores. J Bone Joint Surg Am. 2001 Jan;83(1):3-14. doi: 10.2106/00004623-200101000-00002.",
+    "Georgiadis GM, Behrens FF, Joyce MJ, Earle AS, Simmons AL. Open tibial fractures with severe soft-tissue loss. Limb salvage compared with below-the-knee amputation. J Bone Joint Surg Am. 1993 Oct;75(10):1431-41. doi: 10.2106/00004623-199310000-00003."
+  ],
+  "formula": "MESS Score = Limb Ischemia points + Age points + Shock points + Injury Mechanism points. Limb Ischemia: reduced pulse (1), pulseless with paresthesias (2), cool/paralyzed/numb (3). Age: <30 years (0), 30-50 years (1), ≥50 years (2). Shock: no shock (0), transient hypotension (1), persistent hypotension (2). Injury: low energy (1), medium energy (2), high energy (3), very high energy (4). Note: Double limb ischemia points if duration >6 hours.",
+  "notes": [
+    "Originally developed in 1990 for lower extremity trauma evaluation",
+    "Traditional threshold of ≥7 points suggested amputation, but modern experts suggest 8-9 due to surgical advances",
+    "Less reliable for pediatric patients and upper extremity injuries",
+    "Should be used as a prognostic guide rather than definitive decision-making tool",
+    "Recent studies question sensitivity and specificity in contemporary trauma care",
+    "Advances in vascular, orthopedic, and plastic surgery have improved limb salvage rates",
+    "Final amputation decision should involve surgeon experience, available resources, and patient factors",
+    "Patient stabilization takes priority over limb salvage decisions in acute trauma",
+    "Multidisciplinary team approach involving orthopedic, vascular, and plastic surgeons recommended",
+    "Consider patient age, comorbidities, functional expectations, and quality of life in decision-making"
+  ]
+}

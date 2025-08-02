@@ -1,0 +1,155 @@
+{
+  "id": "hestia_criteria",
+  "title": "Hestia Criteria for Outpatient Pulmonary Embolism Treatment",
+  "description": "Identifies low-risk pulmonary embolism patients who may be safe for outpatient management. The criteria assess clinical stability, bleeding risk, social factors, and comorbidities to determine suitability for home treatment.",
+  "category": "emergency",
+  "version": "2011",
+  "parameters": [
+    {
+      "name": "hemodynamically_unstable",
+      "type": "string",
+      "required": true,
+      "description": "Hemodynamically unstable (sBP <100 mmHg and HR >100 bpm; or condition requiring ICU admission)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "thrombolysis_embolectomy",
+      "type": "string",
+      "required": true,
+      "description": "Thrombolysis or embolectomy needed",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "active_bleeding",
+      "type": "string",
+      "required": true,
+      "description": "Active bleeding or high risk for bleeding",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "oxygen_24hr",
+      "type": "string",
+      "required": true,
+      "description": ">24 hrs on supplemental oxygen required to maintain oxygen saturation >90%",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "pe_on_anticoagulation",
+      "type": "string",
+      "required": true,
+      "description": "PE diagnosed while on anticoagulation",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "severe_pain_iv_meds",
+      "type": "string",
+      "required": true,
+      "description": "Severe pain needing IV pain medication >24 hr",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "medical_social_reason",
+      "type": "string",
+      "required": true,
+      "description": "Medical or social reason for admission >24 hr (infection, malignancy, no support system)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "creatinine_clearance_low",
+      "type": "string",
+      "required": true,
+      "description": "Creatinine clearance <30 mL/min by Cockcroft-Gault",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "severe_liver_impairment",
+      "type": "string",
+      "required": true,
+      "description": "Severe liver impairment",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "pregnant",
+      "type": "string",
+      "required": true,
+      "description": "Pregnant",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "history_of_hit",
+      "type": "string",
+      "required": true,
+      "description": "Documented history of heparin-induced thrombocytopenia (HIT)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "hestia_score",
+    "type": "integer",
+    "unit": "criteria met",
+    "description": "Number of Hestia criteria met"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Low Risk",
+        "description": "Suitable for outpatient treatment",
+        "interpretation": "Patient meets criteria for outpatient management. Associated with 0% mortality and 2% VTE recurrence rate. Consider for home treatment with appropriate anticoagulation and close follow-up."
+      },
+      {
+        "min": 1,
+        "max": 11,
+        "stage": "Not Low Risk",
+        "description": "Not suitable for outpatient treatment",
+        "interpretation": "Patient has ≥1 exclusion criteria and should be considered for inpatient management. Hospitalization recommended for closer monitoring and treatment."
+      }
+    ]
+  },
+  "references": [
+    "Zondag W, Mos IC, Creemers-Schild D, Mulder JW, Herb-van Toumhout SJ, Hovens MM, et al.; Hestia Study Investigators. Outpatient treatment in patients with acute pulmonary embolism: the Hestia Study. J Thromb Haemost. 2011 Aug;9(8):1500-7.",
+    "Zondag W, den Exter PL, Crobach MJ, Dolsma A, Donker ML, Eijsvogel M, et al.; Hestia Study Investigators. Comparison of two methods for selection of out of hospital treatment in patients with acute pulmonary embolism. Thromb Haemost. 2013 Jan;109(1):47-52."
+  ],
+  "formula": "Score = Sum of all 'yes' responses (0 = low risk, ≥1 = not low risk)",
+  "notes": [
+    "Designed for hemodynamically stable PE patients only",
+    "All criteria must be 'no' for patient to be considered low risk",
+    "Requires careful patient counseling about treatment risks and warning signs",
+    "Associated with decreased hospital stay and lower healthcare costs",
+    "Should be used in conjunction with clinical judgment"
+  ]
+}

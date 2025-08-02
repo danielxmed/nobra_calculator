@@ -1,0 +1,116 @@
+{
+  "id": "ttkg",
+  "title": "Transtubular Potassium Gradient (TTKG)",
+  "description": "Evaluates renal potassium handling in patients with hyperkalemia or hypokalemia by estimating the ratio of potassium in the cortical collecting duct to that in the peritubular capillaries.",
+  "category": "nephrology",
+  "version": "1990",
+  "parameters": [
+    {
+      "name": "urine_potassium",
+      "type": "float",
+      "required": true,
+      "description": "Urine potassium concentration",
+      "validation": {
+        "min": 1,
+        "max": 200
+      },
+      "unit": "mEq/L"
+    },
+    {
+      "name": "serum_potassium",
+      "type": "float",
+      "required": true,
+      "description": "Serum potassium concentration",
+      "validation": {
+        "min": 1.5,
+        "max": 10
+      },
+      "unit": "mEq/L"
+    },
+    {
+      "name": "urine_osmolality",
+      "type": "float",
+      "required": true,
+      "description": "Urine osmolality",
+      "validation": {
+        "min": 50,
+        "max": 1400
+      },
+      "unit": "mOsm/kg"
+    },
+    {
+      "name": "serum_osmolality",
+      "type": "float",
+      "required": true,
+      "description": "Serum osmolality",
+      "validation": {
+        "min": 250,
+        "max": 350
+      },
+      "unit": "mOsm/kg"
+    }
+  ],
+  "result": {
+    "name": "ttkg",
+    "type": "float",
+    "unit": "",
+    "description": "Transtubular potassium gradient value"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "condition": "normal",
+        "min": 8,
+        "max": 9,
+        "stage": "Normal",
+        "description": "Normal TTKG",
+        "interpretation": "TTKG values between 8 and 9 are considered normal in patients with a normal diet."
+      },
+      {
+        "condition": "hyperkalemia_appropriate",
+        "min": 7,
+        "max": 100,
+        "stage": "Appropriate Response",
+        "description": "Normal renal K+ excretion in hyperkalemia",
+        "interpretation": "During hyperkalemia (K+ >5.0 mEq/L), TTKG ≥7 indicates appropriate renal potassium excretion. Expected TTKG >10 suggests optimal renal response."
+      },
+      {
+        "condition": "hyperkalemia_inappropriate",
+        "min": 0,
+        "max": 7,
+        "stage": "Hypoaldosteronism",
+        "description": "Impaired K+ excretion in hyperkalemia",
+        "interpretation": "During hyperkalemia (K+ >5.0 mEq/L), TTKG <7 suggests hypoaldosteronism or aldosterone resistance, indicating impaired renal potassium excretion."
+      },
+      {
+        "condition": "hypokalemia_appropriate",
+        "min": 0,
+        "max": 3,
+        "stage": "Appropriate Response",
+        "description": "Normal K+ conservation in hypokalemia",
+        "interpretation": "During hypokalemia (K+ <3.5 mEq/L), TTKG <3 indicates appropriate renal potassium conservation."
+      },
+      {
+        "condition": "hypokalemia_inappropriate",
+        "min": 3,
+        "max": 100,
+        "stage": "Renal K+ Wasting",
+        "description": "Inappropriate K+ loss in hypokalemia",
+        "interpretation": "During hypokalemia (K+ <3.5 mEq/L), TTKG ≥3 suggests renal potassium wasting, indicating inappropriate urinary potassium losses."
+      }
+    ]
+  },
+  "references": [
+    "Ethier JH, Kamel KS, Magner PO, Lemann J Jr, Halperin ML. The transtubular potassium concentration in patients with hypokalemia and hyperkalemia. Am J Kidney Dis. 1990 Apr;15(4):309-15.",
+    "Choi MJ, Ziyadeh FN. The utility of the transtubular potassium gradient in the evaluation of hyperkalemia. J Am Soc Nephrol. 2008 Mar;19(3):424-6.",
+    "Kamel KS, Halperin ML. Intrarenal urea recycling leads to a higher rate of renal excretion of potassium: an hypothesis with clinical implications. Curr Opin Nephrol Hypertens. 2011 Sep;20(5):547-54."
+  ],
+  "formula": "TTKG = (Urine K × Serum osmolality) / (Serum K × Urine osmolality)",
+  "notes": [
+    "TTKG is only valid when urine osmolality exceeds serum osmolality",
+    "Urine sodium should be >25 mmol/L for accurate interpretation",
+    "The formula assumes that potassium is neither secreted nor reabsorbed in the medullary collecting duct",
+    "TTKG has been criticized for potential inaccuracy, particularly in hyperkalemia evaluation",
+    "Should be interpreted in clinical context and not used as the sole decision-making tool"
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "id": "iota_simple_rules",
+  "title": "International Ovarian Tumor Analysis (IOTA) Simple Rules Risk Assessment",
+  "description": "Predicts risk of malignancy in adnexal masses using ultrasonographic features. The IOTA Simple Rules use 10 ultrasound features (5 benign B-rules and 5 malignant M-rules) to classify ovarian masses as benign, malignant, or inconclusive. This classification system achieves 86.8% sensitivity, 95.6% specificity, and 92.3% accuracy in distinguishing benign from malignant ovarian tumors. The rules are designed for preoperative evaluation of persistent adnexal masses in women considered for surgery, excluding classical masses with pathognomonic features (corpus luteum, endometrioma, dermoid cyst).",
+  "category": "gynecology",
+  "version": "IOTA 2008",
+  "parameters": [
+    {
+      "name": "unilocular_cyst",
+      "type": "string",
+      "required": true,
+      "description": "B1 - Unilocular cyst (single chamber with smooth wall)",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      },
+      "unit": null
+    },
+    {
+      "name": "solid_components_small",
+      "type": "string",
+      "required": true,
+      "description": "B2 - Solid components <7mm in largest diameter",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      },
+      "unit": null
+    },
+    {
+      "name": "acoustic_shadows",
+      "type": "string",
+      "required": true,
+      "description": "B3 - Acoustic shadows (hyperechoic areas with shadowing suggesting calcifications or fat)",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      },
+      "unit": null
+    },
+    {
+      "name": "smooth_multilocular_small",
+      "type": "string",
+      "required": true,
+      "description": "B4 - Smooth multilocular tumor <100mm in largest diameter",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      },
+      "unit": null
+    },
+    {
+      "name": "no_blood_flow",
+      "type": "string",
+      "required": true,
+      "description": "B5 - No blood flow on color Doppler (color score 1)",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      },
+      "unit": null
+    },
+    {
+      "name": "irregular_solid_tumor",
+      "type": "string",
+      "required": true,
+      "description": "M1 - Irregular solid tumor (completely solid mass with irregular outline)",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      },
+      "unit": null
+    },
+    {
+      "name": "ascites",
+      "type": "string",
+      "required": true,
+      "description": "M2 - Ascites (free fluid in the abdomen)",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      },
+      "unit": null
+    },
+    {
+      "name": "papillary_structures",
+      "type": "string",
+      "required": true,
+      "description": "M3 - At least 4 papillary structures (solid projections into cystic cavity)",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      },
+      "unit": null
+    },
+    {
+      "name": "irregular_multilocular_large",
+      "type": "string",
+      "required": true,
+      "description": "M4 - Irregular multilocular solid tumor with largest diameter ≥100mm",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      },
+      "unit": null
+    },
+    {
+      "name": "strong_blood_flow",
+      "type": "string",
+      "required": true,
+      "description": "M5 - Very strong blood flow on color Doppler (color score 4)",
+      "options": ["absent", "present"],
+      "validation": {
+        "enum": ["absent", "present"]
+      },
+      "unit": null
+    }
+  ],
+  "result": {
+    "name": "risk_classification",
+    "type": "string",
+    "unit": "classification",
+    "description": "IOTA Simple Rules risk classification (Benign, Malignant, or Inconclusive)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": null,
+        "max": null,
+        "stage": "Benign",
+        "description": "One or more B-features present, no M-features",
+        "interpretation": "Low risk of malignancy. Mass classified as benign based on IOTA Simple Rules. Consider routine gynecologic follow-up. Surgery may be considered for symptomatic masses or patient preference."
+      },
+      {
+        "min": null,
+        "max": null,
+        "stage": "Malignant",
+        "description": "One or more M-features present, no B-features",
+        "interpretation": "High risk of malignancy. Mass classified as malignant based on IOTA Simple Rules. Immediate referral to gynecologic oncology for comprehensive staging and management. Consider tumor markers (CA-125, HE4) and CT/MRI for surgical planning."
+      },
+      {
+        "min": null,
+        "max": null,
+        "stage": "Inconclusive",
+        "description": "Both B-features and M-features present, or no features present",
+        "interpretation": "Cannot be classified using Simple Rules (10-20% of cases). Consider additional diagnostic methods: subjective assessment by expert sonographer, IOTA ADNEX model, magnetic resonance imaging, or tumor markers. Multidisciplinary team discussion recommended."
+      }
+    ]
+  },
+  "references": [
+    "Timmerman D, Testa AC, Bourne T, et al. Logistic regression model to distinguish between the benign and malignant adnexal mass before surgery: a multicenter study by the International Ovarian Tumor Analysis Group. J Clin Oncol. 2005 Dec 1;23(34):8794-801. doi: 10.1200/JCO.2005.01.7632.",
+    "Timmerman D, Ameye L, Fischerova D, et al. Simple ultrasound rules to distinguish between benign and malignant adnexal masses before surgery: prospective validation study. BMJ. 2010 Dec 14;341:c6839. doi: 10.1136/bmj.c6839.",
+    "Nunes N, Ambler G, Foo X, et al. Use of IOTA simple rules for diagnosis of ovarian cancer: meta-analysis. Ultrasound Obstet Gynecol. 2014 Nov;44(5):503-14. doi: 10.1002/uog.13437."
+  ],
+  "formula": "If B-features present AND no M-features → Benign; If M-features present AND no B-features → Malignant; If both present OR neither present → Inconclusive",
+  "notes": [
+    "The IOTA Simple Rules achieved 86.8% sensitivity, 95.6% specificity, and 92.3% accuracy",
+    "Successfully classifies 76-80% of adnexal masses, with 10-20% remaining inconclusive",
+    "Developed by the International Ovarian Tumor Analysis (IOTA) group from 9 centers in 5 countries",
+    "B-features suggest benign etiology: B1 (unilocular cyst), B2 (solid components <7mm), B3 (acoustic shadows), B4 (smooth multilocular <100mm), B5 (no blood flow)",
+    "M-features suggest malignant etiology: M1 (irregular solid tumor), M2 (ascites), M3 (≥4 papillary structures), M4 (irregular multilocular ≥100mm), M5 (very strong blood flow)",
+    "Rules apply to persistent adnexal masses requiring surgical consideration",
+    "Excludes classical masses with pathognomonic features (corpus luteum, endometrioma, dermoid cyst)",
+    "Cannot replace proper ultrasound training and experience",
+    "Requires good quality ultrasound equipment and technique",
+    "For inconclusive cases, consider IOTA ADNEX model, expert subjective assessment, or MRI",
+    "Color score 1 = no blood flow, Color score 4 = very strong blood flow",
+    "Papillary structures are solid projections into cystic cavity from wall or septum",
+    "Multilocular = multiple chambers/compartments separated by septa",
+    "Solid components include any solid tissue within the mass",
+    "Irregular outline refers to non-smooth, bumpy, or lobulated contours",
+    "Acoustic shadows typically seen with calcifications, hair, or fat content",
+    "Rules designed for preoperative classification to aid surgical planning",
+    "High negative predictive value for benign classification reduces unnecessary oncology referrals"
+  ]
+}

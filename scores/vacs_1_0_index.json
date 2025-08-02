@@ -1,0 +1,136 @@
+{
+  "id": "vacs_1_0_index",
+  "title": "Veterans Aging Cohort Study (VACS) 1.0 Index",
+  "description": "Estimates 5-year all-cause mortality risk in patients with HIV and/or HCV by integrating HIV-specific biomarkers (CD4 count, HIV-1 RNA) with general health indicators (hemoglobin, liver function, kidney function, and hepatitis C co-infection).",
+  "category": "infectious_disease",
+  "version": "VACS 1.0",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient's age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "cd4_count",
+      "type": "integer",
+      "required": true,
+      "description": "CD4+ T cell count",
+      "validation": {
+        "min": 0,
+        "max": 5000
+      },
+      "unit": "cells/mm³"
+    },
+    {
+      "name": "hiv_rna_copies_ml",
+      "type": "integer",
+      "required": true,
+      "description": "HIV-1 RNA viral load",
+      "validation": {
+        "min": 0,
+        "max": 10000000
+      },
+      "unit": "copies/mL"
+    },
+    {
+      "name": "hemoglobin_g_dl",
+      "type": "float",
+      "required": true,
+      "description": "Hemoglobin level",
+      "validation": {
+        "min": 3.0,
+        "max": 25.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "fib4_index",
+      "type": "float",
+      "required": true,
+      "description": "FIB-4 Index for liver fibrosis assessment (calculated using age, ALT, AST, and platelet count)",
+      "validation": {
+        "min": 0.0,
+        "max": 50.0
+      },
+      "unit": "index"
+    },
+    {
+      "name": "egfr_ml_min",
+      "type": "float", 
+      "required": true,
+      "description": "Estimated glomerular filtration rate (eGFR)",
+      "validation": {
+        "min": 0.0,
+        "max": 200.0
+      },
+      "unit": "mL/min/1.73m²"
+    },
+    {
+      "name": "hepatitis_c_coinfection",
+      "type": "string",
+      "required": true,
+      "description": "Hepatitis C co-infection status",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "vacs_score",
+    "type": "integer",
+    "description": "VACS 1.0 Index score with 5-year mortality risk estimate"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 20,
+        "stage": "Low Risk",
+        "description": "Low 5-year mortality risk",
+        "interpretation": "VACS Index score indicates low 5-year mortality risk. Continue regular HIV care and monitoring. Focus on HIV suppression, adherence to antiretroviral therapy, and routine comorbidity screening."
+      },
+      {
+        "min": 21,
+        "max": 40,
+        "stage": "Moderate Risk",
+        "description": "Moderate 5-year mortality risk",
+        "interpretation": "VACS Index score indicates moderate 5-year mortality risk. Enhanced monitoring recommended. Address modifiable risk factors including liver disease, kidney function, and anemia. Consider more frequent clinical evaluations."
+      },
+      {
+        "min": 41,
+        "max": 60,
+        "stage": "High Risk",
+        "description": "High 5-year mortality risk",
+        "interpretation": "VACS Index score indicates high 5-year mortality risk. Intensive management recommended. Prioritize treatment of liver disease, kidney dysfunction, and severe anemia. Consider specialist referrals and more aggressive interventions."
+      },
+      {
+        "min": 61,
+        "max": 150,
+        "stage": "Very High Risk",
+        "description": "Very high 5-year mortality risk",
+        "interpretation": "VACS Index score indicates very high 5-year mortality risk. Urgent comprehensive management required. Immediate attention to life-threatening comorbidities. Consider palliative care discussions alongside aggressive treatment."
+      }
+    ]
+  },
+  "references": [
+    "Justice AC, McGinnis KA, Skanderson M, et al. Towards a combined prognostic index for survival in HIV infection: the role of 'non-HIV' biomarkers. HIV Med. 2010;11(2):143-151.",
+    "Tate JP, Justice AC, Hughes MD, et al. An internationally generalizable risk index for mortality prediction in HIV-infected adults. AIDS. 2013;27(4):563-572.",
+    "Justice AC, Dombrowski E, Conigliaro J, et al. Veterans Aging Cohort Study (VACS): Overview and description. Med Care. 2006;44(8 Suppl 2):S13-24."
+  ],
+  "formula": "VACS 1.0 Index = Age points + CD4 points + HIV RNA points + Hemoglobin points + FIB-4 points + eGFR points + HCV points\n\nAge: <50y=0, 50-64y=12, ≥65y=27\nCD4: ≥500=0, 350-499=6, 200-349=6, 100-199=10, 50-99=28, <50=29\nHIV RNA: <500=0, 500-99999=7, ≥100000=14\nHemoglobin: ≥14=0, 12-13.9=10, 10-11.9=22, <10=38\nFIB-4: <1.45=0, 1.45-3.25=6, >3.25=25\neGFR: ≥60=0, 45-59.9=6, 30-44.9=8, <30=26\nHCV: No=0, Yes=5",
+  "notes": [
+    "The VACS 1.0 Index has been validated in diverse HIV+ populations including both veterans and non-veterans.",
+    "Higher scores indicate increased 5-year all-cause mortality risk.",
+    "The index integrates both HIV-specific markers and general health biomarkers for comprehensive risk assessment.",
+    "FIB-4 Index calculation: (Age × AST) / (Platelet count × √ALT). Values >3.25 suggest advanced liver fibrosis.",
+    "This tool is most accurate in patients with at least 1 year of antiretroviral therapy exposure.",
+    "The VACS Index has shown better discrimination than HIV markers alone (C-statistic 0.77 vs 0.74)."
+  ]
+}

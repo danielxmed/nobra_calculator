@@ -1,0 +1,115 @@
+{
+  "id": "midas",
+  "title": "Migraine Disability Assessment (MIDAS)",
+  "description": "Quantifies headache-related disability over a 3-month period to guide treatment decisions",
+  "category": "neurology",
+  "version": "2.0",
+  "parameters": [
+    {
+      "name": "missed_work_school",
+      "type": "integer",
+      "required": true,
+      "description": "Days in last 3 months missed work or school because of headaches",
+      "validation": {
+        "min": 0,
+        "max": 90
+      },
+      "unit": "days"
+    },
+    {
+      "name": "reduced_work_school",
+      "type": "integer",
+      "required": true,
+      "description": "Days in last 3 months productivity at work/school reduced by half or more",
+      "validation": {
+        "min": 0,
+        "max": 90
+      },
+      "unit": "days"
+    },
+    {
+      "name": "missed_household",
+      "type": "integer",
+      "required": true,
+      "description": "Days in last 3 months did not do household work because of headaches",
+      "validation": {
+        "min": 0,
+        "max": 90
+      },
+      "unit": "days"
+    },
+    {
+      "name": "reduced_household",
+      "type": "integer",
+      "required": true,
+      "description": "Days in last 3 months productivity in household work reduced by half or more",
+      "validation": {
+        "min": 0,
+        "max": 90
+      },
+      "unit": "days"
+    },
+    {
+      "name": "missed_social",
+      "type": "integer",
+      "required": true,
+      "description": "Days in last 3 months missed family, social, or leisure activities",
+      "validation": {
+        "min": 0,
+        "max": 90
+      },
+      "unit": "days"
+    }
+  ],
+  "result": {
+    "name": "midas_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total MIDAS score indicating headache-related disability"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 5,
+        "stage": "Grade I",
+        "description": "Little or no disability",
+        "interpretation": "Patient has little or no headache-related disability. Consider simple analgesics and lifestyle modifications. Prophylactic treatment typically not required."
+      },
+      {
+        "min": 6,
+        "max": 10,
+        "stage": "Grade II",
+        "description": "Mild disability",
+        "interpretation": "Patient has mild headache-related disability. Consider migraine-specific acute treatments. Discuss prophylaxis if attacks are frequent or disabling."
+      },
+      {
+        "min": 11,
+        "max": 20,
+        "stage": "Grade III",
+        "description": "Moderate disability",
+        "interpretation": "Patient has moderate headache-related disability. Recommend migraine-specific acute treatments and strongly consider prophylactic treatment to reduce frequency and severity."
+      },
+      {
+        "min": 21,
+        "max": 999,
+        "stage": "Grade IV",
+        "description": "Severe disability",
+        "interpretation": "Patient has severe headache-related disability. Urgent need for effective acute treatment and prophylaxis. Consider referral to headache specialist if not already under specialist care."
+      }
+    ]
+  },
+  "references": [
+    "Stewart WF, Lipton RB, Kolodner K, Liberman J, Sawyer J. Reliability of the migraine disability assessment score in a population-based sample of headache sufferers. Cephalalgia. 1999 Mar;19(2):107-14; discussion 74.",
+    "Stewart WF, Lipton RB, Dowson AJ, Sawyer J. Development and testing of the Migraine Disability Assessment (MIDAS) Questionnaire to assess headache-related disability. Neurology. 2001;56(6 Suppl 1):S20-8.",
+    "Stewart WF, Lipton RB, Kolodner KB, Sawyer J, Lee C, Liberman JN. Validity of the Migraine Disability Assessment (MIDAS) score in comparison to a diary-based measure in a population sample of migraine sufferers. Pain. 2000 Oct;88(1):41-52."
+  ],
+  "formula": "MIDAS Score = Q1 + Q2 + Q3 + Q4 + Q5",
+  "notes": [
+    "MIDAS assesses headache impact over the past 3 months (90 days)",
+    "Score does not include days counted in previous questions",
+    "Can be used to track treatment response over time",
+    "Higher scores indicate greater disability and need for more aggressive treatment",
+    "The questionnaire also includes two additional questions (A and B) about headache frequency and pain intensity, but these are not included in the total score"
+  ]
+}

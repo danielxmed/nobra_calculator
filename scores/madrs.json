@@ -1,0 +1,175 @@
+{
+  "id": "madrs",
+  "title": "Montgomery-Asberg Depression Rating Scale (MADRS)",
+  "description": "Stratifies severity of depressive episodes in adults using 10 core mood symptoms, particularly sensitive to treatment-induced changes.",
+  "category": "psychiatry",
+  "version": "1979",
+  "parameters": [
+    {
+      "name": "apparent_sadness",
+      "type": "integer",
+      "required": true,
+      "description": "Apparent sadness - representing despondency, gloom and despair reflected in speech, facial expression and posture",
+      "validation": {
+        "min": 0,
+        "max": 6
+      },
+      "unit": "points"
+    },
+    {
+      "name": "reported_sadness",
+      "type": "integer",
+      "required": true,
+      "description": "Reported sadness - representing reports of depressed mood, regardless of whether it is reflected in appearance or not",
+      "validation": {
+        "min": 0,
+        "max": 6
+      },
+      "unit": "points"
+    },
+    {
+      "name": "inner_tension",
+      "type": "integer",
+      "required": true,
+      "description": "Inner tension - representing feelings of ill-defined discomfort, edginess, inner turmoil, mental tension mounting to panic, dread, or anguish",
+      "validation": {
+        "min": 0,
+        "max": 6
+      },
+      "unit": "points"
+    },
+    {
+      "name": "reduced_sleep",
+      "type": "integer",
+      "required": true,
+      "description": "Reduced sleep - representing the experience of reduced duration or depth of sleep compared to the subject's own normal pattern when well",
+      "validation": {
+        "min": 0,
+        "max": 6
+      },
+      "unit": "points"
+    },
+    {
+      "name": "reduced_appetite",
+      "type": "integer",
+      "required": true,
+      "description": "Reduced appetite - representing the feeling of loss of appetite compared with when well",
+      "validation": {
+        "min": 0,
+        "max": 6
+      },
+      "unit": "points"
+    },
+    {
+      "name": "concentration_difficulties",
+      "type": "integer",
+      "required": true,
+      "description": "Concentration difficulties - representing difficulties in collecting one's thoughts mounting to incapacitating lack of concentration",
+      "validation": {
+        "min": 0,
+        "max": 6
+      },
+      "unit": "points"
+    },
+    {
+      "name": "lassitude",
+      "type": "integer",
+      "required": true,
+      "description": "Lassitude - representing difficulty getting started or slowness in initiating and performing everyday activities",
+      "validation": {
+        "min": 0,
+        "max": 6
+      },
+      "unit": "points"
+    },
+    {
+      "name": "inability_to_feel",
+      "type": "integer",
+      "required": true,
+      "description": "Inability to feel - representing the subjective experience of reduced interest in the surroundings, or activities that normally give pleasure",
+      "validation": {
+        "min": 0,
+        "max": 6
+      },
+      "unit": "points"
+    },
+    {
+      "name": "pessimistic_thoughts",
+      "type": "integer",
+      "required": true,
+      "description": "Pessimistic thoughts - representing thoughts of guilt, inferiority, self-reproach, sinfulness, remorse and ruin",
+      "validation": {
+        "min": 0,
+        "max": 6
+      },
+      "unit": "points"
+    },
+    {
+      "name": "suicidal_thoughts",
+      "type": "integer",
+      "required": true,
+      "description": "Suicidal thoughts - representing the feeling that life is not worth living, that a natural death would be welcome, suicidal thoughts, and preparations for suicide",
+      "validation": {
+        "min": 0,
+        "max": 6
+      },
+      "unit": "points"
+    }
+  ],
+  "result": {
+    "name": "madrs_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "MADRS total score ranging from 0-60 points"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 6,
+        "stage": "Normal",
+        "description": "No or minimal depression",
+        "interpretation": "Normal mood or minimal depressive symptoms that do not significantly impact functioning."
+      },
+      {
+        "min": 7,
+        "max": 19,
+        "stage": "Mild Depression",
+        "description": "Mild depressive symptoms",
+        "interpretation": "Mild depression with some impact on daily functioning but generally manageable symptoms."
+      },
+      {
+        "min": 20,
+        "max": 34,
+        "stage": "Moderate Depression",
+        "description": "Moderate depressive symptoms",
+        "interpretation": "Moderate depression with significant impact on functioning requiring treatment intervention."
+      },
+      {
+        "min": 35,
+        "max": 60,
+        "stage": "Severe Depression",
+        "description": "Severe depressive symptoms",
+        "interpretation": "Severe depression with major impairment in functioning requiring intensive treatment and monitoring."
+      }
+    ]
+  },
+  "references": [
+    "Montgomery SA, Asberg M. A new depression scale designed to be sensitive to change. Br J Psychiatry. 1979;134:382-9. doi: 10.1192/bjp.134.4.382.",
+    "Snaith RP, Harrop FM, Newby DA, Teale C. Grade scores of the Montgomery-Asberg Depression and the Clinical Anxiety Scales. Br J Psychiatry. 1986;148:599-601. doi: 10.1192/bjp.148.5.599.",
+    "Turkoz I, Alphs L, Singh J, Jamieson C, Daly E, Shawi M, et al. Clinically meaningful changes on depressive symptom measures and patient-reported outcomes in patients with treatment-resistant depression. J Affect Disord. 2021;281:267-273. doi: 10.1016/j.jad.2020.12.021."
+  ],
+  "formula": "MADRS Score = Sum of all 10 items (each scored 0-6). Range: 0-60 points. Severity: Normal (0-6), Mild (7-19), Moderate (20-34), Severe (35-60).",
+  "notes": [
+    "Designed to be sensitive to changes from antidepressant treatment",
+    "More sensitive to treatment-induced changes than Hamilton Depression Rating Scale",
+    "Each item scored 0-6: 0 = normal/absent, 6 = severe/continuous presence",
+    "Response to treatment defined as ≥50% reduction from baseline",
+    "Remission typically defined as score ≤7-9 points",
+    "Clinically meaningful change: ≥6 points improvement",
+    "Clinically substantial change: ≥12 points improvement",
+    "Screening tool, not diagnostic - supplements clinical assessment",
+    "Focus on core mood symptoms rather than somatic symptoms",
+    "Widely used in clinical trials and practice for depression assessment"
+  ]
+}

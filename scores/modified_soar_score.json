@@ -1,0 +1,113 @@
+{
+  "id": "modified_soar_score",
+  "title": "Modified SOAR Score for Stroke",
+  "description": "Predicts short-term mortality in acute stroke by adding NIHSS score to the original SOAR criteria, improving prognostic accuracy while maintaining clinical practicality.",
+  "category": "neurology",
+  "version": "2015",
+  "parameters": [
+    {
+      "name": "age_category",
+      "type": "string",
+      "required": true,
+      "description": "Patient age category for stroke prognosis",
+      "options": ["65_or_less", "66_to_85", "85_or_more"],
+      "validation": {
+        "enum": ["65_or_less", "66_to_85", "85_or_more"]
+      }
+    },
+    {
+      "name": "stroke_subtype",
+      "type": "string",
+      "required": true,
+      "description": "Type of stroke based on clinical and neuroimaging findings",
+      "options": ["ischemic", "hemorrhagic"],
+      "validation": {
+        "enum": ["ischemic", "hemorrhagic"]
+      }
+    },
+    {
+      "name": "oxfordshire_classification",
+      "type": "string",
+      "required": true,
+      "description": "Oxfordshire Community Stroke Project classification based on clinical assessment and neuroimaging",
+      "options": ["partial_anterior_lacunar", "posterior_circulation", "total_anterior_circulation"],
+      "validation": {
+        "enum": ["partial_anterior_lacunar", "posterior_circulation", "total_anterior_circulation"]
+      }
+    },
+    {
+      "name": "prestroke_mrs",
+      "type": "string",
+      "required": true,
+      "description": "Pre-stroke modified Rankin Scale score indicating baseline functional status",
+      "options": ["0_to_2", "3_to_4", "5"],
+      "validation": {
+        "enum": ["0_to_2", "3_to_4", "5"]
+      }
+    },
+    {
+      "name": "nihss_score",
+      "type": "integer",
+      "required": true,
+      "description": "National Institutes of Health Stroke Scale score on admission",
+      "validation": {
+        "min": 0,
+        "max": 42
+      },
+      "unit": "points"
+    }
+  ],
+  "result": {
+    "name": "msoar_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Modified SOAR score ranging from 0-9 points predicting stroke mortality"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Low Risk",
+        "description": "3-7% early mortality risk",
+        "interpretation": "Low risk of early mortality with good functional outcomes expected."
+      },
+      {
+        "min": 3,
+        "max": 4,
+        "stage": "Moderate Risk",
+        "description": "8-20% early mortality risk",
+        "interpretation": "Moderate risk of early mortality requiring close monitoring and intensive care."
+      },
+      {
+        "min": 5,
+        "max": 6,
+        "stage": "High Risk",
+        "description": "21-35% early mortality risk",
+        "interpretation": "High risk of early mortality warranting aggressive treatment and family discussions."
+      },
+      {
+        "min": 7,
+        "max": 9,
+        "stage": "Very High Risk",
+        "description": ">35% early mortality risk",
+        "interpretation": "Very high risk of early mortality requiring palliative care considerations and extensive family communication."
+      }
+    ]
+  },
+  "references": [
+    "Myint PK, Clark AB, Kwok CS, Loke YK, Yeong JK, Luben RN, et al. The SOAR (Stroke subtype, Oxford Community Stroke Project classification, Age, prestroke modified Rankin) score strongly predicts early outcomes in acute stroke. Int J Stroke. 2014;9(3):278-83. doi: 10.1111/ijs.12088.",
+    "Abdul-Rahim AH, Fulton RL, Frank B, Tatlisumak T, Paciaroni M, Caso V, et al. Association of improved outcome in acute ischaemic stroke patients with atrial fibrillation who receive early antithrombotic therapy: analysis from VISTA. Eur J Neurol. 2015;22(8):1048-55. doi: 10.1111/ene.12577.",
+    "Myint PK, Clark AB, Kwok CS, Loke YK, Yeong JK, Luben RN, et al. Derivation and Validation of a Novel Prognostic Scale (Modified-Stroke Subtype, Oxfordshire Community Stroke Project Classification, Age, and Prestroke Modified Rankin) to Predict Early Mortality in Acute Stroke. J Am Heart Assoc. 2015;4(12):e002652. doi: 10.1161/JAHA.115.002652."
+  ],
+  "formula": "mSOAR Score = Age points (0-2) + Stroke subtype points (0-1) + Oxfordshire classification points (0-2) + Pre-stroke mRS points (0-2) + NIHSS points (0-2). Range: 0-9 points.",
+  "notes": [
+    "Modified version adds NIHSS score to improve prognostic accuracy over original SOAR",
+    "Area under ROC curve improved from 0.79 (SOAR) to 0.83 (mSOAR)",
+    "Validates for predicting early mortality, length of stay, and discharge disability",
+    "Simple bedside tool using easily accessible clinical information",
+    "External validation shows AUC of 0.84 for early mortality prediction",
+    "Mortality risk ranges from 3% (score 0-2) to >35% (score 7-9)",
+    "Useful for clinical decision-making and family communication regarding prognosis"
+  ]
+}

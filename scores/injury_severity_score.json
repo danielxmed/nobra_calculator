@@ -1,0 +1,140 @@
+{
+  "id": "injury_severity_score",
+  "title": "Injury Severity Score (ISS)",
+  "description": "Standardizes traumatic injury severity based on worst injury from 6 body systems using the Abbreviated Injury Scale (AIS). The ISS is an established medical score to assess trauma severity that correlates with mortality, morbidity and hospitalization time after trauma. The score divides the body into six regions and uses the three most severely injured systems to calculate the final score. Each region is scored using the AIS scale (0-6), and the ISS is calculated by squaring the three highest AIS scores and summing them (range 0-75). If any body system has an unsurvivable injury (AIS = 6), the total score automatically becomes 75.",
+  "category": "emergency",
+  "version": "1974 Baker",
+  "parameters": [
+    {
+      "name": "head_neck_ais",
+      "type": "integer",
+      "required": true,
+      "description": "Head and neck injury severity using AIS scale. Includes cervical spine injuries",
+      "validation": {
+        "min": 0,
+        "max": 6
+      }
+    },
+    {
+      "name": "face_ais",
+      "type": "integer",
+      "required": true,
+      "description": "Facial injury severity using AIS scale. Includes facial skeleton, nose, mouth, eyes and ears",
+      "validation": {
+        "min": 0,
+        "max": 6
+      }
+    },
+    {
+      "name": "chest_ais",
+      "type": "integer",
+      "required": true,
+      "description": "Chest injury severity using AIS scale. Includes rib cage, thoracic spine and diaphragm",
+      "validation": {
+        "min": 0,
+        "max": 6
+      }
+    },
+    {
+      "name": "abdomen_ais",
+      "type": "integer",
+      "required": true,
+      "description": "Abdominal injury severity using AIS scale. Includes abdominal organs and lumbar spine",
+      "validation": {
+        "min": 0,
+        "max": 6
+      }
+    },
+    {
+      "name": "extremity_ais",
+      "type": "integer",
+      "required": true,
+      "description": "Extremity injury severity using AIS scale. Includes pelvic skeleton injuries, sprains, fractures, dislocations",
+      "validation": {
+        "min": 0,
+        "max": 6
+      }
+    },
+    {
+      "name": "external_ais",
+      "type": "integer",
+      "required": true,
+      "description": "External injury severity using AIS scale. Includes skin and soft tissue injuries",
+      "validation": {
+        "min": 0,
+        "max": 6
+      }
+    }
+  ],
+  "result": {
+    "name": "iss_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Injury Severity Score (range 0-75 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 8,
+        "stage": "Minor Trauma",
+        "description": "ISS 0-8 points",
+        "interpretation": "Minor trauma. Low mortality risk. Standard trauma evaluation and management protocols apply."
+      },
+      {
+        "min": 9,
+        "max": 15,
+        "stage": "Moderate Trauma",
+        "description": "ISS 9-15 points",
+        "interpretation": "Moderate trauma. Increased morbidity risk. Consider trauma team activation and comprehensive evaluation."
+      },
+      {
+        "min": 16,
+        "max": 24,
+        "stage": "Major Trauma",
+        "description": "ISS 16-24 points",
+        "interpretation": "Major trauma. Significant mortality and morbidity risk. Trauma team activation indicated. Consider transfer to trauma center if not already at one."
+      },
+      {
+        "min": 25,
+        "max": 40,
+        "stage": "Severe Trauma",
+        "description": "ISS 25-40 points",
+        "interpretation": "Severe trauma. High mortality risk. Requires immediate trauma team response, aggressive resuscitation, and specialized trauma care."
+      },
+      {
+        "min": 41,
+        "max": 75,
+        "stage": "Critical Trauma",
+        "description": "ISS 41-75 points",
+        "interpretation": "Critical trauma. Very high mortality risk. Requires immediate life-saving interventions, maximum trauma team response, and consideration of damage control strategies."
+      }
+    ]
+  },
+  "references": [
+    "Baker SP, O'Neill B, Haddon W Jr, Long WB. The injury severity score: a method for describing patients with multiple injuries and evaluating emergency care. J Trauma. 1974 Mar;14(3):187-96.",
+    "Beverland DE, Rutherford WH. An assessment of the validity of the injury severity score when applied to gunshot wounds. Injury. 1983 Mar;14(5):471-5.",
+    "Copes WS, Champion HR, Sacco WJ, Lawnick MM, Keast SL, Bain LW. The Injury Severity Score revisited. J Trauma. 1988 Jan;28(1):69-77."
+  ],
+  "formula": "ISS = A² + B² + C², where A, B, and C are the AIS scores of the three most severely injured body systems. If any AIS = 6, then ISS = 75 automatically.",
+  "notes": [
+    "Developed by Baker and colleagues in 1974 for standardizing trauma severity",
+    "Uses Abbreviated Injury Scale (AIS) scores from 6 body regions",
+    "AIS Scale: 0=No injury, 1=Minor, 2=Moderate, 3=Serious, 4=Severe, 5=Critical, 6=Unsurvivable",
+    "Only the three most severely injured body systems are used in calculation",
+    "If multiple injuries exist in same body region, only the most severe is counted",
+    "Any AIS score of 6 (unsurvivable) automatically makes ISS = 75",
+    "Score ≥16 traditionally defines major trauma",
+    "Correlates linearly with mortality, morbidity, and hospitalization time",
+    "Used primarily for research and trauma system evaluation, not immediate clinical decisions",
+    "Does not account for age, comorbidities, or physiologic status",
+    "More accurate for blunt trauma than penetrating trauma",
+    "Cannot exceed 75 points (maximum possible score)",
+    "Head/neck region includes cervical spine injuries",
+    "Face region includes facial skeleton, sensory organs",
+    "Chest region includes thoracic spine and diaphragm",
+    "Abdomen region includes lumbar spine",
+    "External region covers skin and soft tissue injuries",
+    "Extremity region includes pelvis and all limb injuries"
+  ]
+}

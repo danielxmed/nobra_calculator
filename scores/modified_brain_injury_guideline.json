@@ -1,0 +1,145 @@
+{
+  "id": "modified_brain_injury_guideline",
+  "title": "Modified Brain Injury Guideline (mBIG)",
+  "description": "Defines management of traumatic brain injury by stratifying patients into three categories based on clinical and radiographic factors",
+  "category": "emergency",
+  "version": "2019",
+  "parameters": [
+    {
+      "name": "anticoagulation_antiplatelet",
+      "type": "string",
+      "required": true,
+      "description": "Patient on anticoagulation or antiplatelet medications",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "epidural_hematoma",
+      "type": "string",
+      "required": true,
+      "description": "Presence of epidural hematoma on CT scan",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "intraventricular_hemorrhage",
+      "type": "string",
+      "required": true,
+      "description": "Presence of intraventricular hemorrhage on CT scan",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "displaced_skull_fracture",
+      "type": "string",
+      "required": true,
+      "description": "Presence of displaced skull fracture on CT scan",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "subdural_hematoma_size",
+      "type": "string",
+      "required": true,
+      "description": "Size of subdural hematoma in millimeters",
+      "options": ["none", "4mm_or_less", "4_to_8mm", "8mm_or_more"],
+      "validation": {
+        "enum": ["none", "4mm_or_less", "4_to_8mm", "8mm_or_more"]
+      }
+    },
+    {
+      "name": "intraparenchymal_hemorrhage_size",
+      "type": "string",
+      "required": true,
+      "description": "Size and number of intraparenchymal hemorrhages",
+      "options": ["none", "4mm_or_less_single", "4_to_8mm_single", "8mm_or_more_or_multiple"],
+      "validation": {
+        "enum": ["none", "4mm_or_less_single", "4_to_8mm_single", "8mm_or_more_or_multiple"]
+      }
+    },
+    {
+      "name": "subarachnoid_hemorrhage_extent",
+      "type": "string",
+      "required": true,
+      "description": "Extent and thickness of subarachnoid hemorrhage",
+      "options": ["none", "limited_1_3mm", "1_hemisphere_over_3_sulci_1_3mm", "bihemispheric_or_over_3mm"],
+      "validation": {
+        "enum": ["none", "limited_1_3mm", "1_hemisphere_over_3_sulci_1_3mm", "bihemispheric_or_over_3mm"]
+      }
+    },
+    {
+      "name": "blood_alcohol_level",
+      "type": "string",
+      "required": true,
+      "description": "Blood alcohol level status",
+      "options": ["unknown_or_under_80", "over_80_mg_dl"],
+      "validation": {
+        "enum": ["unknown_or_under_80", "over_80_mg_dl"]
+      }
+    },
+    {
+      "name": "nondisplaced_skull_fracture",
+      "type": "string",
+      "required": true,
+      "description": "Presence of nondisplaced skull fracture on CT scan",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "mbig_category",
+    "type": "string",
+    "unit": "",
+    "description": "mBIG classification category determining management approach"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "mBIG 1",
+        "description": "Lowest severity - No admission required",
+        "interpretation": "6-hour ED observation with Q2 neurological assessments. No repeat head CT, no neurosurgery consult. Discharge when GCS 15."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "mBIG 2",
+        "description": "Intermediate severity - Hospital admission",
+        "interpretation": "Hospital admission to general medical floor for 24-48 hours. Q2 neurological assessments. No repeat head CT, no neurosurgery consult. Discharge when GCS 15."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "mBIG 3",
+        "description": "Highest severity - Standard of care",
+        "interpretation": "Continue with standard of care at your institution. Requires neurosurgical consultation and intensive monitoring."
+      }
+    ]
+  },
+  "references": [
+    "Joseph B, Friese RS, Sadoun M, Aziz H, Kulvatunyou N, Pandit V, et al. The BIG (brain injury guidelines) project: defining the management of traumatic brain injury by acute care surgeons. J Trauma Acute Care Surg. 2014 Oct;77(4):597-605. doi: 10.1097/TA.0000000000000379.",
+    "Hartwell EA, Fang R, Dzandu JK, Edwards KA, Walsh RM, Colombo CJ, Yarbrough K, Liu KC, Pasley JD, Mazzini FN, et al. A Multicenter Validation of the Modified Brain Injury Guidelines (mBIG): Are They Safe and Effective? J Trauma Acute Care Surg. 2022 Apr 1;92(4):e92-e98. doi: 10.1097/TA.0000000000003527."
+  ],
+  "formula": "Hierarchical classification based on radiographic and clinical findings. mBIG 3 criteria override mBIG 2, and mBIG 2 criteria override mBIG 1.",
+  "notes": [
+    "Applies only to traumatic brain injury patients with intracranial hemorrhage",
+    "Requires Glasgow Coma Score 13-15",
+    "Excludes patients with focal neurologic or pupillary findings",
+    "mBIG 1 patients can be safely discharged from ED after observation",
+    "mBIG 2 patients require hospital admission but not neurosurgical consultation",
+    "mBIG 3 patients require standard neurosurgical care",
+    "Validated in level 1 and 2 trauma centers",
+    "Significant cost savings demonstrated with implementation"
+  ]
+}

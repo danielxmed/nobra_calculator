@@ -1,0 +1,279 @@
+{
+  "id": "psi_port_score",
+  "title": "PSI/PORT Score: Pneumonia Severity Index for CAP",
+  "description": "Estimates mortality for adult patients with community-acquired pneumonia (CAP) and guides hospitalization decisions. This extensively validated clinical prediction rule uses demographics, comorbidities, physical examination findings, and laboratory results to stratify patients into risk classes. The score helps determine appropriate care settings and treatment intensity based on mortality risk assessment.",
+  "category": "emergency",
+  "version": "1997",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years (contributes absolute value as points)",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient sex",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "nursing_home_resident",
+      "type": "string",
+      "required": true,
+      "description": "Nursing home resident status",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "neoplastic_disease",
+      "type": "string",
+      "required": true,
+      "description": "History of neoplastic disease (any cancer excluding skin cancer)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "liver_disease",
+      "type": "string",
+      "required": true,
+      "description": "History of liver disease (cirrhosis or chronic hepatitis)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "congestive_heart_failure",
+      "type": "string",
+      "required": true,
+      "description": "History of congestive heart failure",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "cerebrovascular_disease",
+      "type": "string",
+      "required": true,
+      "description": "History of cerebrovascular disease (stroke or TIA)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "renal_disease",
+      "type": "string",
+      "required": true,
+      "description": "History of renal disease (chronic kidney disease)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "altered_mental_status",
+      "type": "string",
+      "required": true,
+      "description": "Altered mental status (confusion, disorientation, or decreased consciousness)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "respiratory_rate",
+      "type": "integer",
+      "required": true,
+      "description": "Respiratory rate in breaths per minute",
+      "validation": {
+        "min": 5,
+        "max": 60
+      },
+      "unit": "breaths/min"
+    },
+    {
+      "name": "systolic_blood_pressure",
+      "type": "integer",
+      "required": true,
+      "description": "Systolic blood pressure in mmHg",
+      "validation": {
+        "min": 50,
+        "max": 250
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "temperature",
+      "type": "float",
+      "required": true,
+      "description": "Body temperature in Celsius",
+      "validation": {
+        "min": 30.0,
+        "max": 45.0
+      },
+      "unit": "°C"
+    },
+    {
+      "name": "pulse",
+      "type": "integer",
+      "required": true,
+      "description": "Heart rate in beats per minute",
+      "validation": {
+        "min": 30,
+        "max": 200
+      },
+      "unit": "bpm"
+    },
+    {
+      "name": "ph",
+      "type": "float",
+      "required": false,
+      "description": "Arterial blood gas pH (optional, if available)",
+      "validation": {
+        "min": 6.5,
+        "max": 8.0
+      },
+      "unit": "pH units"
+    },
+    {
+      "name": "bun",
+      "type": "float",
+      "required": true,
+      "description": "Blood urea nitrogen (BUN) in mg/dL",
+      "validation": {
+        "min": 1.0,
+        "max": 200.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "sodium",
+      "type": "float",
+      "required": true,
+      "description": "Serum sodium in mmol/L",
+      "validation": {
+        "min": 100.0,
+        "max": 170.0
+      },
+      "unit": "mmol/L"
+    },
+    {
+      "name": "glucose",
+      "type": "float",
+      "required": true,
+      "description": "Serum glucose in mg/dL",
+      "validation": {
+        "min": 30.0,
+        "max": 800.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "hematocrit",
+      "type": "float",
+      "required": true,
+      "description": "Hematocrit percentage",
+      "validation": {
+        "min": 10.0,
+        "max": 70.0
+      },
+      "unit": "%"
+    },
+    {
+      "name": "pao2",
+      "type": "float",
+      "required": false,
+      "description": "Partial pressure of oxygen in arterial blood (PaO2) in mmHg (optional, if available)",
+      "validation": {
+        "min": 20.0,
+        "max": 200.0
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "pleural_effusion",
+      "type": "string",
+      "required": true,
+      "description": "Pleural effusion on chest X-ray",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "psi_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "PSI/PORT score determining pneumonia severity and mortality risk class"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 70,
+        "stage": "Class I-II (Low Risk)",
+        "description": "Low mortality risk",
+        "interpretation": "Low risk for mortality. Outpatient treatment recommended. 30-day mortality rate <1-3%. Consider outpatient oral antibiotics and close follow-up."
+      },
+      {
+        "min": 71,
+        "max": 90,
+        "stage": "Class III (Low Risk)",
+        "description": "Low mortality risk",
+        "interpretation": "Low risk for mortality. Outpatient treatment vs. observation admission. 30-day mortality rate <3%. Consider brief hospitalization or intensive outpatient monitoring."
+      },
+      {
+        "min": 91,
+        "max": 130,
+        "stage": "Class IV (Moderate Risk)",
+        "description": "Moderate mortality risk",
+        "interpretation": "Moderate risk for mortality. Inpatient admission recommended. 30-day mortality rate 8-9%. Requires hospitalization with standard care and monitoring."
+      },
+      {
+        "min": 131,
+        "max": 999,
+        "stage": "Class V (High Risk)",
+        "description": "High mortality risk",
+        "interpretation": "High risk for mortality. Inpatient admission with consideration for ICU care. 30-day mortality rate 27-31%. Requires aggressive treatment and close monitoring."
+      }
+    ]
+  },
+  "references": [
+    "Fine MJ, Auble TE, Yealy DM, Hanusa BH, Weissfeld LA, Singer DE, et al. A prediction rule to identify low-risk patients with community-acquired pneumonia. N Engl J Med. 1997;336(4):243-50. doi: 10.1056/NEJM199701233360402.",
+    "Fine MJ, Hanusa BH, Lave JR, Singer DE, Stone RA, Weissfeld LA, et al. Comparison of a disease-specific and a generic severity of illness measure for patients with community-acquired pneumonia. J Gen Intern Med. 1995;10(7):359-68. doi: 10.1007/BF02599829.",
+    "Metlay JP, Waterer GW, Long AC, Anzueto A, Brozek J, Crothers K, et al. Diagnosis and Treatment of Adults with Community-acquired Pneumonia. An Official Clinical Practice Guideline of the American Thoracic Society and Infectious Diseases Society of America. Am J Respir Crit Care Med. 2019;200(7):e45-e67. doi: 10.1164/rccm.201908-1581ST.",
+    "Aujesky D, Auble TE, Yealy DM, Stone RA, Obrosky DS, Meehan TP, et al. Prospective comparison of three validated prediction rules for prognosis in community-acquired pneumonia. Am J Med. 2005;118(4):384-92. doi: 10.1016/j.amjmed.2005.01.006."
+  ],
+  "formula": "Sum of demographic points (age + sex adjustment) + comorbidity points + clinical findings points + laboratory findings points",
+  "notes": [
+    "Most extensively validated pneumonia severity score with over 50,000 patients studied",
+    "Preferred over CURB-65 in 2019 ATS/IDSA guidelines for community-acquired pneumonia",
+    "Age contributes absolute value as points (e.g., 65-year-old gets 65 points for age)",
+    "Female sex provides -10 point adjustment due to lower mortality risk",
+    "Class I patients are young (<50 years) with no comorbidities or high-risk findings",
+    "May underestimate severity in young patients with severe pneumonia",
+    "Does not apply to patients with HIV, immunosuppression, or hospital-acquired pneumonia",
+    "Laboratory values (pH, PaO2) are optional but improve accuracy when available",
+    "Originally developed and validated in US and Canadian populations",
+    "Helps standardize admission decisions and reduce unnecessary hospitalizations",
+    "Should be used in conjunction with clinical judgment and patient preferences",
+    "Cost-effective tool for healthcare resource allocation and quality improvement"
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "id": "icc_pmf_diagnostic_criteria",
+  "title": "International Consensus Classification (ICC) Diagnostic Criteria for Primary Myelofibrosis (PMF)",
+  "description": "Diagnoses primary myelofibrosis according to the International Consensus Classification (ICC) criteria published in 2022. This systematic diagnostic framework distinguishes between prefibrotic (early) and overt (fibrotic) stages of primary myelofibrosis using morphological, genetic, and clinical criteria. The ICC criteria refine the WHO classification system by providing better diagnostic specificity for myeloproliferative neoplasms. The diagnosis requires all three major criteria plus at least one minor criterion, confirmed in two consecutive determinations. This classification facilitates accurate diagnosis, appropriate staging, prognostic assessment, and treatment planning for patients with suspected primary myelofibrosis. The tool is particularly valuable for hematologists and pathologists in differentiating PMF from other myeloproliferative neoplasms and establishing precise diagnostic categorization.",
+  "category": "hematology",
+  "version": "2022",
+  "parameters": [
+    {
+      "name": "bone_marrow_megakaryocytic_proliferation",
+      "type": "string",
+      "required": true,
+      "description": "Presence of megakaryocytic proliferation and atypia on bone marrow biopsy",
+      "options": ["present", "absent"],
+      "validation": {
+        "enum": ["present", "absent"]
+      },
+      "unit": null
+    },
+    {
+      "name": "bone_marrow_fibrosis_grade",
+      "type": "string",
+      "required": true,
+      "description": "Bone marrow reticulin and/or collagen fibrosis grade (WHO grading scale)",
+      "options": ["grade_0_1", "grade_2_3"],
+      "validation": {
+        "enum": ["grade_0_1", "grade_2_3"]
+      },
+      "unit": "grade"
+    },
+    {
+      "name": "genetic_mutation_present",
+      "type": "string",
+      "required": true,
+      "description": "Presence of JAK2, CALR, or MPL mutation, or another clonal genetic marker",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "reactive_fibrosis_excluded",
+      "type": "string",
+      "required": true,
+      "description": "Reactive bone marrow fibrosis due to infection, autoimmune disorder, or other cause excluded",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "other_mpn_excluded",
+      "type": "string",
+      "required": true,
+      "description": "Essential thrombocythemia, polycythemia vera, BCR::ABL1-positive CML, myelodysplastic syndromes, and other myeloid neoplasms excluded",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "anemia_present",
+      "type": "string",
+      "required": true,
+      "description": "Anemia not attributable to comorbid conditions (minor criterion)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "leukocytosis_present",
+      "type": "string",
+      "required": true,
+      "description": "Leukocytosis ≥11 × 10^9/L (minor criterion)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "splenomegaly_present",
+      "type": "string",
+      "required": true,
+      "description": "Palpable splenomegaly on physical examination (minor criterion)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    },
+    {
+      "name": "elevated_ldh",
+      "type": "string",
+      "required": true,
+      "description": "Lactate dehydrogenase above institutional reference range (minor criterion)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": null
+    }
+  ],
+  "result": {
+    "name": "diagnosis_result",
+    "type": "string",
+    "unit": null,
+    "description": "Diagnostic result with PMF stage classification"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Pre-PMF Diagnosed",
+        "description": "Prefibrotic Primary Myelofibrosis",
+        "interpretation": "Diagnosis of prefibrotic (early) primary myelofibrosis established. Early stage with megakaryocytic proliferation but minimal fibrosis (grade 0-1). Requires close hematologic monitoring and staging workup. Consider risk stratification with prognostic scoring systems (IPSS-R, GIPSS). Regular surveillance for disease progression to overt fibrotic stage. Discuss treatment options including observation, symptom management, or therapeutic intervention based on risk profile and symptoms."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Overt PMF Diagnosed",
+        "description": "Overt Fibrotic Primary Myelofibrosis",
+        "interpretation": "Diagnosis of overt (fibrotic) primary myelofibrosis established. Advanced stage with significant bone marrow fibrosis (grade 2-3). Requires comprehensive staging evaluation and risk assessment. Consider prognostic scoring (DIPSS, DIPSS-Plus, MIPSS70). Evaluate for complications including cytopenias, extramedullary hematopoiesis, and constitutional symptoms. Discuss treatment options including JAK inhibitors, supportive care, or stem cell transplantation based on risk profile and patient factors."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "PMF Not Diagnosed",
+        "description": "Diagnostic Criteria Not Met",
+        "interpretation": "Diagnostic criteria for primary myelofibrosis not satisfied. Consider alternative diagnoses including other myeloproliferative neoplasms, myelodysplastic syndromes, reactive bone marrow changes, or secondary myelofibrosis. Recommend comprehensive evaluation with additional testing as clinically indicated. Consider repeat bone marrow biopsy if clinical suspicion remains high. Ensure adequate genetic testing with high-sensitivity assays for JAK2, CALR, and MPL mutations."
+      }
+    ]
+  },
+  "references": [
+    "Arber DA, Orazi A, Hasserjian RP, Borowitz MJ, Calvo KR, Kvasnicka HM, et al. International Consensus Classification of Myeloid Neoplasms and Acute Leukemias: integrating morphologic, clinical, and genomic data. Blood. 2022 Sep 15;140(11):1200-1228. doi: 10.1182/blood.2022015850.",
+    "Tefferi A, Guglielmelli P, Larson DR, Finke C, Wassie EA, Pieri L, et al. Long-term survival and blast transformation in molecularly annotated essential thrombocythemia, polycythemia vera, and myelofibrosis. Blood. 2014 Oct 16;124(16):2507-13. doi: 10.1182/blood-2014-05-579136.",
+    "Barbui T, Thiele J, Gisslinger H, Kvasnicka HM, Vannucchi AM, Guglielmelli P, et al. The 2016 WHO classification and diagnostic criteria for myeloproliferative neoplasms: document summary and in-depth discussion. Blood Cancer J. 2018 Feb 15;8(2):15. doi: 10.1038/s41408-018-0054-y."
+  ],
+  "formula": "Diagnosis requires ALL 3 major criteria (megakaryocytic proliferation, genetic clonality, exclusion of other MPNs) + ≥1 minor criterion (anemia, leukocytosis, splenomegaly, elevated LDH). Stage determined by fibrosis grade: Pre-PMF (grade 0-1), Overt PMF (grade 2-3).",
+  "notes": [
+    "The ICC criteria were published in 2022 as an updated international consensus for myeloid neoplasm classification",
+    "Diagnosis must be confirmed in two consecutive determinations to ensure accuracy",
+    "Pre-PMF distinguished from overt PMF primarily by bone marrow fibrosis grade",
+    "Prefibrotic PMF: fibrosis grade 0-1 with megakaryocytic proliferation and atypia",
+    "Overt PMF: fibrosis grade 2-3 with reticulin and/or collagen fibrosis",
+    "Genetic testing should use high-sensitivity assays (VAF ≥1%) for JAK2, CALR, and MPL mutations",
+    "JAK2 V617F mutation found in ~50-60% of PMF patients",
+    "CALR mutations found in ~20-25% of PMF patients",
+    "MPL mutations found in ~5-10% of PMF patients",
+    "Triple-negative PMF (no JAK2/CALR/MPL mutations) requires other clonal markers",
+    "Bone marrow biopsy essential for morphological assessment and fibrosis grading",
+    "Exclude reactive causes: infection, autoimmune disorders, metastatic cancer, drug-induced",
+    "Differential diagnosis includes ET, PV, CML, MDS, and secondary myelofibrosis",
+    "Anemia criterion: not attributable to nutritional deficiency, chronic disease, or other comorbidities",
+    "Leukocytosis threshold: ≥11 × 10^9/L white blood cell count",
+    "Splenomegaly: palpable on physical examination (imaging may supplement clinical assessment)",
+    "LDH elevation: above institutional upper limit of normal reference range",
+    "Risk stratification should follow diagnosis using IPSS-R, DIPSS, or MIPSS70 scoring systems",
+    "Regular monitoring for disease progression and transformation to acute leukemia required",
+    "Treatment decisions based on risk profile, symptoms, and patient-specific factors",
+    "Consider stem cell transplantation evaluation for eligible high-risk patients"
+  ]
+}

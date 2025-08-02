@@ -17,6 +17,17 @@ from .creatinine_clearance_cockcroft_gault import router as creatinine_clearance
 from .fractional_excretion_sodium import router as fractional_excretion_sodium_router
 from .fractional_excretion_urea import router as fractional_excretion_urea_router
 from .free_water_deficit import router as free_water_deficit_router
+from .international_igan_prediction_tool import router as international_igan_prediction_tool_router
+from .kidney_failure_risk_calculator import router as kidney_failure_risk_calculator_router
+from .kinetic_egfr import router as kinetic_egfr_router
+from .ktv_dialysis_adequacy import router as ktv_dialysis_adequacy_router
+from .licurse_score import router as licurse_score_router
+from .mcmahon_score import router as mcmahon_score_router
+from .mdrd_gfr import router as mdrd_gfr_router
+from .ttkg import router as ttkg_router
+from .urinary_protein_excretion_estimation import router as urinary_protein_excretion_estimation_router
+from .urine_anion_gap import router as urine_anion_gap_router
+from .urine_output_fluid_balance import router as urine_output_fluid_balance_router
 
 # Create main specialty router
 router = APIRouter()
@@ -34,3 +45,14 @@ router.include_router(creatinine_clearance_cockcroft_gault_router)
 router.include_router(fractional_excretion_sodium_router)
 router.include_router(fractional_excretion_urea_router)
 router.include_router(free_water_deficit_router)
+router.include_router(international_igan_prediction_tool_router)
+router.include_router(kidney_failure_risk_calculator_router)
+router.include_router(kinetic_egfr_router)
+router.include_router(ktv_dialysis_adequacy_router)
+router.include_router(licurse_score_router)
+router.include_router(mcmahon_score_router)
+router.include_router(mdrd_gfr_router)
+router.include_router(ttkg_router)
+router.include_router(urinary_protein_excretion_estimation_router)
+router.include_router(urine_anion_gap_router)
+router.include_router(urine_output_fluid_balance_router)

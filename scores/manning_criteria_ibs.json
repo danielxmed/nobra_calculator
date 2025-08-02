@@ -1,0 +1,162 @@
+{
+  "id": "manning_criteria_ibs",
+  "title": "Manning Criteria for Diagnosis of Irritable Bowel Syndrome (IBS)",
+  "description": "Determines likelihood of irritable bowel syndrome diagnosis based on six clinically significant criteria related to abdominal pain and stool characteristics. Developed in 1978 from study of 109 patients with abdominal symptoms. Requires at least 3 of 6 criteria to suggest IBS diagnosis.",
+  "category": "gastroenterology",
+  "version": "1978",
+  "parameters": [
+    {
+      "name": "pain_onset_frequent_bowel_movements",
+      "type": "string",
+      "required": true,
+      "description": "Onset of abdominal pain linked to more frequent bowel movements. This association suggests functional bowel disorder rather than structural pathology",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "looser_stools_with_pain_onset",
+      "type": "string",
+      "required": true,
+      "description": "Looser stools associated with onset of abdominal pain. Change in stool consistency concurrent with pain onset is characteristic of IBS",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "pain_relief_with_defecation",
+      "type": "string",
+      "required": true,
+      "description": "Abdominal pain relieved by passage of stool. Pain relief with bowel movement is a hallmark feature of IBS distinguishing it from other causes of abdominal pain",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "noticeable_abdominal_bloating",
+      "type": "string",
+      "required": true,
+      "description": "Visible abdominal distension or bloating. Subjective or objective abdominal distension is common in functional bowel disorders",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "incomplete_evacuation_sensation",
+      "type": "string",
+      "required": true,
+      "description": "Sensation of incomplete evacuation more than 25% of the time. Feeling that bowel movement is incomplete despite attempting defecation",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "diarrhea_with_mucus",
+      "type": "string",
+      "required": true,
+      "description": "Diarrhea with mucus more than 25% of the time. Passage of mucus with loose stools suggests colonic irritation characteristic of IBS",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "patient_age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years. Age >50 years is a red flag requiring exclusion of organic disease before IBS diagnosis",
+      "validation": {
+        "min": 10,
+        "max": 100
+      },
+      "unit": "years"
+    },
+    {
+      "name": "weight_loss",
+      "type": "string",
+      "required": true,
+      "description": "Presence of unexplained weight loss. Weight loss is a red flag symptom that suggests organic disease rather than functional bowel disorder",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "blood_in_stools",
+      "type": "string",
+      "required": true,
+      "description": "Presence of blood in stools (hematochezia or melena). Blood in stools is a red flag requiring investigation for organic pathology",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "anemia",
+      "type": "string",
+      "required": true,
+      "description": "Presence of anemia on laboratory testing. Anemia may indicate gastrointestinal bleeding or malabsorption requiring further evaluation",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "fever",
+      "type": "string",
+      "required": true,
+      "description": "Presence of fever with gastrointestinal symptoms. Fever suggests inflammatory or infectious process rather than functional disorder",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    }
+  ],
+  "result": {
+    "name": "manning_criteria_score",
+    "type": "integer",
+    "unit": "criteria",
+    "description": "Number of Manning criteria met (0-6). Score ≥3 suggests IBS diagnosis, but red flags must be absent"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "IBS Unlikely",
+        "description": "Insufficient criteria for IBS diagnosis",
+        "interpretation": "Less than 3 Manning criteria met. IBS diagnosis is unlikely based on current symptoms. Consider alternative diagnoses including functional dyspepsia, inflammatory bowel disease, celiac disease, or other organic gastrointestinal conditions. Further evaluation may be warranted based on clinical presentation."
+      },
+      {
+        "min": 3,
+        "max": 6,
+        "stage": "IBS Likely",
+        "description": "Sufficient criteria for IBS diagnosis if no red flags present",
+        "interpretation": "Three or more Manning criteria met, suggesting IBS diagnosis. However, this is only valid if no red flag symptoms are present (age >50, weight loss, blood in stools, anemia, fever). If red flags are absent, diagnosis of IBS is supported and symptomatic treatment may be initiated. Consider Rome IV criteria for more current diagnostic standards."
+      }
+    ]
+  },
+  "references": [
+    "Manning AP, Thompson WG, Heaton KW, Morris AF. Towards positive diagnosis of the irritable bowel. Br Med J. 1978 Sep 2;2(6138):653-4. doi: 10.1136/bmj.2.6138.653.",
+    "Thompson WG, Heaton KW, Smyth GT, Smyth C. Irritable bowel syndrome in general practice: prevalence, characteristics, and referral. Gut. 2000 Jan;46(1):78-82. doi: 10.1136/gut.46.1.78.",
+    "Drossman DA, Chang L, Bellamy N, Gallo-Torres HE, Lembo A, Mearin F, et al. Severity in irritable bowel syndrome: a Rome Foundation Working Team report. Am J Gastroenterol. 2011 Oct;106(10):1749-59. doi: 10.1038/ajg.2011.201."
+  ],
+  "formula": "Manning Criteria Score = Sum of positive criteria (pain onset with frequent BM + looser stools with pain + pain relief with defecation + abdominal bloating + incomplete evacuation + diarrhea with mucus). Score ≥3 suggests IBS if no red flags present (age >50, weight loss, blood in stools, anemia, fever).",
+  "notes": [
+    "Developed in 1978 by Manning et al. from study of 109 patients with abdominal symptoms",
+    "Sensitivity ranges from 63-90%, specificity from 70-93% depending on study population",
+    "More specific than Rome criteria but less sensitive for IBS diagnosis",
+    "Red flag symptoms (age >50, weight loss, blood in stools, anemia, fever) invalidate diagnosis",
+    "Should be used in conjunction with clinical judgment and appropriate investigations",
+    "Rome IV criteria are more current and widely used for IBS diagnosis",
+    "Requires exclusion of organic gastrointestinal disease through appropriate testing",
+    "Not suitable as sole diagnostic tool - clinical assessment and red flag evaluation essential",
+    "Consider inflammatory markers, celiac serology, and colonoscopy in appropriate patients",
+    "Functional bowel disorders diagnosis of exclusion requiring systematic evaluation"
+  ]
+}

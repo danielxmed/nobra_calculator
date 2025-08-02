@@ -1,0 +1,90 @@
+{
+  "id": "hark",
+  "title": "Humiliation, Afraid, Rape, Kick (HARK)",
+  "description": "Detects domestic abuse (intimate partner violence) in women in primary care settings. Uses four questions to screen for different types of IPV including emotional, physical, and sexual abuse in the past year.",
+  "category": "emergency",
+  "version": "2001",
+  "parameters": [
+    {
+      "name": "humiliation",
+      "type": "string",
+      "required": true,
+      "description": "Within the last year, have you been humiliated or emotionally abused in other ways by your partner or ex-partner?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "afraid",
+      "type": "string",
+      "required": true,
+      "description": "Within the last year, have you been afraid of your partner or ex-partner?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "rape",
+      "type": "string",
+      "required": true,
+      "description": "Within the last year, have you been raped or forced to have any kind of sexual activity by your partner or ex-partner?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "kick",
+      "type": "string",
+      "required": true,
+      "description": "Within the last year, have you been kicked, hit, slapped or otherwise physically hurt by your partner or ex-partner?",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "hark_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "HARK score for intimate partner violence screening"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Negative Screen",
+        "description": "Score 0",
+        "interpretation": "Negative screen for intimate partner violence. No indication of IPV based on current screening. Continue to provide supportive care and maintain awareness for signs of abuse."
+      },
+      {
+        "min": 1,
+        "max": 4,
+        "stage": "Positive Screen",
+        "description": "Score ≥1",
+        "interpretation": "Positive screen for intimate partner violence. Patient has disclosed at least one form of IPV in the past year. Requires immediate safety assessment, documentation, resource provision, and follow-up care planning in accordance with institutional protocols."
+      }
+    ]
+  },
+  "references": [
+    "Sohal H, Eldridge S, Feder G. The sensitivity and specificity of four questions (HARK) to identify intimate partner violence: a diagnostic accuracy study in general practice. BMC Fam Pract. 2007 Oct 15;8:49.",
+    "Cronholm PF, Fogarty CT, Ambuel B, Harrison SL. Intimate partner violence. Am Fam Physician. 2011 Oct 15;84(8):945-52.",
+    "US Preventive Services Task Force. Screening for Intimate Partner Violence, Elder Abuse, and Abuse of Vulnerable Adults: US Preventive Services Task Force Recommendation Statement. JAMA. 2018 Oct 23;320(16):1678-1687."
+  ],
+  "formula": "HARK Score = sum of 'yes' responses to 4 questions (range 0-4). Score ≥1 indicates positive screen for IPV",
+  "notes": [
+    "Validated only in English and for adult women in heterosexual relationships",
+    "Should be administered in a private setting without partner or family present",
+    "Positive screen requires safety assessment and appropriate referrals",
+    "Healthcare providers should be familiar with local IPV resources and reporting requirements",
+    "Consider using validated safety planning tools when IPV is identified",
+    "Documentation should follow institutional guidelines for confidentiality and safety",
+    "Tool focuses on IPV in past year, not lifetime violence",
+    "Brief 4-question format suitable for busy clinical settings",
+    "Adapted from the Abuse Assessment Screen (AAS) with modifications for clarity and scope"
+  ]
+}

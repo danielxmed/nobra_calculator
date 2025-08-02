@@ -1,0 +1,136 @@
+{
+  "id": "ottawa_sah_rule",
+  "title": "Ottawa Subarachnoid Hemorrhage (SAH) Rule for Headache Evaluation",
+  "description": "Clinical decision rule to identify alert patients with acute headache who are at risk for subarachnoid hemorrhage. This validated tool has 100% sensitivity for ruling out SAH but should not be used alone to diagnose SAH due to low specificity (15.3%). Designed to guide decision-making for CT scanning and further investigation in emergency department patients.",
+  "category": "emergency",
+  "version": "2013",
+  "parameters": [
+    {
+      "name": "age_40_or_older",
+      "type": "string",
+      "required": true,
+      "description": "Patient age 40 years or older",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "scoring": {
+        "yes": "Age ≥40 years (positive criterion)",
+        "no": "Age <40 years (negative criterion)"
+      }
+    },
+    {
+      "name": "neck_pain_stiffness",
+      "type": "string",
+      "required": true,
+      "description": "Complaint of neck pain or neck stiffness",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "scoring": {
+        "yes": "Neck pain or stiffness present (positive criterion)",
+        "no": "No neck pain or stiffness (negative criterion)"
+      }
+    },
+    {
+      "name": "witnessed_loss_of_consciousness",
+      "type": "string",
+      "required": true,
+      "description": "Witnessed loss of consciousness at time of headache onset",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "scoring": {
+        "yes": "Witnessed loss of consciousness (positive criterion)",
+        "no": "No witnessed loss of consciousness (negative criterion)"
+      }
+    },
+    {
+      "name": "onset_during_exertion",
+      "type": "string",
+      "required": true,
+      "description": "Headache onset during exertion (physical activity, straining, sexual activity)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "scoring": {
+        "yes": "Onset during exertion (positive criterion)",
+        "no": "Not associated with exertion (negative criterion)"
+      }
+    },
+    {
+      "name": "thunderclap_headache",
+      "type": "string",
+      "required": true,
+      "description": "Thunderclap headache (instantly peaking pain reaching maximum intensity immediately)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "scoring": {
+        "yes": "Thunderclap headache present (positive criterion)",
+        "no": "Not a thunderclap headache (negative criterion)"
+      }
+    },
+    {
+      "name": "limited_neck_flexion",
+      "type": "string",
+      "required": true,
+      "description": "Limited neck flexion on examination (inability to touch chin to chest or flex neck due to pain)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "scoring": {
+        "yes": "Limited neck flexion on examination (positive criterion)",
+        "no": "Normal neck flexion (negative criterion)"
+      }
+    }
+  ],
+  "result": {
+    "name": "ottawa_sah_result",
+    "type": "string",
+    "unit": "result",
+    "description": "Rule result indicating whether subarachnoid hemorrhage can be ruled out based on Ottawa SAH criteria"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "SAH Ruled Out",
+        "description": "Subarachnoid hemorrhage ruled out",
+        "interpretation": "All criteria negative - SAH can be ruled out with 100% sensitivity. No further testing required specifically for SAH."
+      },
+      {
+        "min": 1,
+        "max": 6,
+        "stage": "Cannot Rule Out SAH",
+        "description": "Cannot rule out subarachnoid hemorrhage",
+        "interpretation": "One or more criteria positive - SAH cannot be ruled out. Further investigation with CT scan (within 6 hours) or lumbar puncture recommended."
+      }
+    ]
+  },
+  "references": [
+    "Perry JJ, Stiell IG, Sivilotti ML, Bullard MJ, Emond M, Symington C, et al. Sensitivity of computed tomography performed within six hours of onset of headache for diagnosis of subarachnoid haemorrhage: prospective cohort study. BMJ. 2011;343:d4277. doi: 10.1136/bmj.d4277.",
+    "Perry JJ, Stiell IG, Sivilotti ML, Bullard MJ, Lee JS, Eisenhauer M, et al. High risk clinical characteristics for subarachnoid haemorrhage in patients with acute headache: prospective cohort study. BMJ. 2010;341:c5204. doi: 10.1136/bmj.c5204.",
+    "Perry JJ, Sivilotti ML, Sutherland J, Hohl CM, Émond M, Calder LA, et al. Validation of the Ottawa Subarachnoid Hemorrhage Rule in patients with acute headache. CMAJ. 2017;189(45):E1379-E1385. doi: 10.1503/cmaj.170072."
+  ],
+  "formula": "Ottawa SAH Rule = Assessment of 6 criteria: Age ≥40 years + Neck pain/stiffness + Witnessed LOC + Onset with exertion + Thunderclap headache + Limited neck flexion",
+  "notes": [
+    "Rule has 100% sensitivity for subarachnoid hemorrhage but low specificity (15.3%)",
+    "Designed as a rule-out tool - negative result can safely exclude SAH",
+    "Any positive criterion means SAH cannot be ruled out and further investigation is needed",
+    "Application criteria: Alert patients ≥15 years, new severe atraumatic headache, maximum intensity within 1 hour, presenting within 14 days",
+    "Exclusion criteria: New neurologic deficits, prior aneurysm/SAH/brain tumor, chronic recurrent headaches",
+    "Validated in multiple studies with over 4,000 patients",
+    "Recommended workup for positive result: Non-contrast CT within 6 hours, consider LP if high suspicion",
+    "The rule should not be used to diagnose SAH due to low specificity",
+    "Original derivation study included 2,131 patients with 132 cases of SAH",
+    "External validation confirmed 100% sensitivity across multiple studies",
+    "Clinical impact: Reduces unnecessary imaging while maintaining safety"
+  ]
+}

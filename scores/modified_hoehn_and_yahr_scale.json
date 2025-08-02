@@ -1,0 +1,96 @@
+{
+  "id": "modified_hoehn_and_yahr_scale",
+  "title": "Modified Hoehn and Yahr Scale for Parkinson's Disease",
+  "description": "Grades severity of symptoms in Parkinson's disease with intermediate stages for better disease progression tracking",
+  "category": "neurology",
+  "version": "Modified",
+  "parameters": [
+    {
+      "name": "clinical_stage",
+      "type": "string",
+      "required": true,
+      "description": "Clinical stage based on motor symptoms and functional disability",
+      "options": ["stage_1", "stage_1_5", "stage_2", "stage_2_5", "stage_3", "stage_4", "stage_5"],
+      "validation": {
+        "enum": ["stage_1", "stage_1_5", "stage_2", "stage_2_5", "stage_3", "stage_4", "stage_5"]
+      }
+    }
+  ],
+  "result": {
+    "name": "hoehn_yahr_stage",
+    "type": "float",
+    "unit": "stage",
+    "description": "Modified Hoehn and Yahr stage indicating Parkinson's disease severity"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Stage 1",
+        "description": "Unilateral involvement only",
+        "interpretation": "Unilateral involvement only, usually with minimal or no functional disability."
+      },
+      {
+        "min": 1.5,
+        "max": 1.5,
+        "stage": "Stage 1.5",
+        "description": "Unilateral and axial involvement",
+        "interpretation": "Unilateral and axial involvement (neck, trunk) without impairment of balance."
+      },
+      {
+        "min": 2,
+        "max": 2,
+        "stage": "Stage 2",
+        "description": "Bilateral involvement without impairment of balance",
+        "interpretation": "Bilateral involvement without impairment of balance; minimal disability."
+      },
+      {
+        "min": 2.5,
+        "max": 2.5,
+        "stage": "Stage 2.5",
+        "description": "Mild bilateral disease with recovery on pull test",
+        "interpretation": "Mild bilateral disease with recovery on pull test; physically independent."
+      },
+      {
+        "min": 3,
+        "max": 3,
+        "stage": "Stage 3",
+        "description": "Bilateral disease; mild to moderate disability",
+        "interpretation": "Bilateral disease; mild to moderate disability with impaired postural reflexes; physically independent."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "stage": "Stage 4",
+        "description": "Severe disability; still able to walk or stand unassisted",
+        "interpretation": "Severely disabling disease; still able to walk or stand unassisted but markedly incapacitated."
+      },
+      {
+        "min": 5,
+        "max": 5,
+        "stage": "Stage 5",
+        "description": "Confinement to bed or wheelchair unless aided",
+        "interpretation": "Confinement to bed or wheelchair unless aided; complete invalidism."
+      }
+    ]
+  },
+  "references": [
+    "Hoehn MM, Yahr MD. Parkinsonism: onset, progression and mortality. Neurology. 1967 May;17(5):427-42. doi: 10.1212/wnl.17.5.427.",
+    "Goetz CG, Poewe W, Rascol O, Sampaio C, Stebbins GT, Counsell C, Giladi N, Holloway RG, Moore CG, Wenning GK, Yahr MD, Seidl L; Movement Disorder Society Task Force on Rating Scales for Parkinson's Disease. Movement Disorder Society Task Force report on the Hoehn and Yahr staging scale: Status and recommendations. Mov Disord. 2004 Sep;19(9):1020-8. doi: 10.1002/mds.20213.",
+    "Shulman LM, Gruber-Baldini AL, Anderson KE, Fishman PS, Reich SG, Weiner WJ. The clinically important difference on the unified Parkinson's disease rating scale. Arch Neurol. 2010 Jan;67(1):64-70. doi: 10.1001/archneurol.2009.295."
+  ],
+  "formula": "Clinical staging based on motor symptoms: Stage 1 (unilateral), 1.5 (unilateral + axial), 2 (bilateral, balance intact), 2.5 (bilateral, recovers on pull-test), 3 (bilateral, postural instability), 4 (severe disability, independent), 5 (wheelchair/bed-bound).",
+  "notes": [
+    "Modified version adds intermediate stages 1.5 and 2.5 to original 1967 scale",
+    "Higher stages correlate with greater disability and reduced quality of life",
+    "Stages 1-3 considered minimally disabling, stages 4-5 severely disabling",
+    "Movement Disorder Society recommends using original 1-5 scale due to lack of validation of 0.5 increments",
+    "Primary focus on motor symptoms; does not assess non-motor features",
+    "Useful for tracking disease progression and clinical decision-making",
+    "Can guide decisions about medication adjustments, surgical interventions, and care planning",
+    "Does not capture cognitive decline, mood disorders, or other non-motor symptoms",
+    "Should be used alongside other assessment tools for comprehensive evaluation",
+    "Pull test: examiner stands behind patient and pulls backward on shoulders"
+  ]
+}

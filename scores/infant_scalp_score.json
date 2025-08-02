@@ -1,0 +1,85 @@
+{
+  "id": "infant_scalp_score",
+  "title": "Infant Scalp Score",
+  "description": "Assesses risk of traumatic brain injury in infants with asymptomatic head injury and isolated scalp hematoma. The Infant Scalp Score (ISS) is a validated clinical tool specifically designed for infants ≤12 months old who present with isolated scalp hematoma after head trauma but are otherwise asymptomatic. The score stratifies risk for clinically important traumatic brain injury (ciTBI) or TBI on computed tomography (CT) to help guide clinical decision-making. This tool is particularly valuable in the pediatric emergency setting where infants are difficult to assess clinically and are most sensitive to ionizing radiation effects. The score considers patient age, hematoma size, and location to calculate risk, helping clinicians determine which infants require neuroimaging versus those who can be safely observed.",
+  "category": "pediatrics",
+  "version": "2021 Schutzman",
+  "parameters": [
+    {
+      "name": "patient_age_months",
+      "type": "string",
+      "required": true,
+      "description": "Patient age in months. Younger infants have higher risk for traumatic brain injury due to anatomical and physiological factors",
+      "options": ["over_12_months", "6_to_11_months", "3_to_5_months", "0_to_2_months"],
+      "validation": {
+        "enum": ["over_12_months", "6_to_11_months", "3_to_5_months", "0_to_2_months"]
+      }
+    },
+    {
+      "name": "hematoma_size",
+      "type": "string",
+      "required": true,
+      "description": "Size and consistency of scalp hematoma. Larger hematomas indicate greater force of impact and increased risk of underlying brain injury",
+      "options": ["none", "small_barely_palpable", "medium_easily_palpable", "large_boggy_consistency"],
+      "validation": {
+        "enum": ["none", "small_barely_palpable", "medium_easily_palpable", "large_boggy_consistency"]
+      }
+    },
+    {
+      "name": "hematoma_location",
+      "type": "string",
+      "required": true,
+      "description": "Anatomical location of scalp hematoma. Non-frontal locations, particularly temporal/parietal, carry higher risk for underlying TBI",
+      "options": ["frontal", "occipital", "temporal_parietal"],
+      "validation": {
+        "enum": ["frontal", "occipital", "temporal_parietal"]
+      }
+    }
+  ],
+  "result": {
+    "name": "score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Infant Scalp Score (range 0-8 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 3,
+        "stage": "Low Risk",
+        "description": "Score 0-3 points",
+        "interpretation": "Low risk of traumatic brain injury. Clinical observation may be appropriate. Consider shared decision-making with family regarding CT imaging based on clinical judgment and family concerns."
+      },
+      {
+        "min": 4,
+        "max": 8,
+        "stage": "High Risk",
+        "description": "Score 4-8 points",
+        "interpretation": "High risk of traumatic brain injury. Strong consideration for cranial CT imaging to evaluate for clinically important traumatic brain injury or TBI."
+      }
+    ]
+  },
+  "references": [
+    "Schutzman SA, Nigrovic LE, Mannix R, et al. The Infant Scalp Score: A Validated Tool to Stratify Risk of Traumatic Brain Injury in Infants With Isolated Scalp Hematoma. Acad Emerg Med. 2021;28(1):16-24. doi: 10.1111/acem.14087.",
+    "Kuppermann N, Holmes JF, Dayan PS, et al. Identification of children at very low risk of clinically-important brain injuries after head trauma: a prospective cohort study. Lancet. 2009;374(9696):1160-1170. doi: 10.1016/S0140-6736(09)61558-0.",
+    "Greenberg JK, Jeffe DB, Carpenter CR, et al. North American Survey of the Management of Minor Head Injury in Children. J Trauma Acute Care Surg. 2018;84(4):613-619. doi: 10.1097/TA.0000000000001808."
+  ],
+  "formula": "Score = Age points (0-3) + Hematoma size points (0-3) + Hematoma location points (0-2)",
+  "notes": [
+    "Validated for infants ≤12 months old with isolated scalp hematoma after head trauma",
+    "Only for use in asymptomatic infants (no loss of consciousness, seizures, mental status changes)",
+    "NOT for use in suspected non-accidental trauma cases",
+    "Score ≥4 indicates high risk and strong consideration for CT imaging",
+    "Score <4 indicates low risk where clinical observation may be appropriate",
+    "Some studies suggest ≥5 as cutoff for clinically important TBI",
+    "Helps avoid unnecessary radiation exposure in low-risk infants",
+    "Temporal/parietal hematomas carry highest risk (2 points)",
+    "Younger age groups have progressively higher point values",
+    "Large boggy hematomas indicate significant force and carry highest size points",
+    "Tool assists in shared decision-making with families",
+    "Should be used in conjunction with clinical judgment and PECARN guidelines",
+    "Particularly valuable when clinical assessment is challenging in infants",
+    "Validated against clinically important TBI and TBI on CT imaging"
+  ]
+}

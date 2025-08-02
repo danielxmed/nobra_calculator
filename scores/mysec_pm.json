@@ -1,0 +1,129 @@
+{
+  "id": "mysec_pm",
+  "title": "Myelofibrosis Secondary to PV and ET-Prognostic Model (MYSEC-PM)",
+  "description": "Predicts survival in patients with myelofibrosis secondary to polycythemia vera (PV) and essential thrombocythemia (ET). This specialized prognostic model was developed specifically for secondary myelofibrosis, incorporating clinical parameters and molecular genetic information to provide superior risk stratification compared to models designed for primary myelofibrosis.",
+  "category": "hematology",
+  "version": "2017",
+  "parameters": [
+    {
+      "name": "age_years",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years. Age is a continuous variable in MYSEC-PM, contributing 0.15 points per year",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "hemoglobin",
+      "type": "float",
+      "required": true,
+      "description": "Hemoglobin level in g/dL. Levels <11 g/dL indicate severe anemia and contribute 2 points to risk score",
+      "validation": {
+        "min": 3.0,
+        "max": 20.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "circulating_blasts",
+      "type": "float",
+      "required": true,
+      "description": "Percentage of circulating blasts in peripheral blood. ≥3% indicates disease progression and contributes 2 points",
+      "validation": {
+        "min": 0.0,
+        "max": 100.0
+      },
+      "unit": "%"
+    },
+    {
+      "name": "platelet_count",
+      "type": "float",
+      "required": true,
+      "description": "Platelet count in ×10⁹/L. Count <150 indicates thrombocytopenia and contributes 1 point to risk score",
+      "validation": {
+        "min": 1.0,
+        "max": 2000.0
+      },
+      "unit": "×10⁹/L"
+    },
+    {
+      "name": "constitutional_symptoms",
+      "type": "string",
+      "required": true,
+      "description": "Presence of constitutional symptoms (weight loss >10% in 6 months, night sweats, fever). Indicates systemic disease burden and contributes 1 point",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "calr_mutation_status",
+      "type": "string",
+      "required": true,
+      "description": "CALR (Calreticulin) mutation status. Unmutated CALR is associated with poor prognosis and contributes 2 points to risk score",
+      "options": ["mutated", "unmutated", "unknown"],
+      "validation": {
+        "enum": ["mutated", "unmutated", "unknown"]
+      }
+    }
+  ],
+  "result": {
+    "name": "mysec_pm_score",
+    "type": "float",
+    "unit": "points",
+    "description": "MYSEC-PM risk score with corresponding risk category and survival prediction"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 10.99,
+        "stage": "Low Risk",
+        "description": "Low risk secondary myelofibrosis",
+        "interpretation": "Excellent prognosis with median survival not reached. Regular monitoring and supportive care approach recommended."
+      },
+      {
+        "min": 11,
+        "max": 13.99,
+        "stage": "Intermediate-1 Risk",
+        "description": "Intermediate-1 risk secondary myelofibrosis",
+        "interpretation": "Good prognosis with median survival 9.3 years. Consider JAK inhibitor therapy for symptom control and quality of life improvement."
+      },
+      {
+        "min": 14,
+        "max": 15.99,
+        "stage": "Intermediate-2 Risk",
+        "description": "Intermediate-2 risk secondary myelofibrosis",
+        "interpretation": "Intermediate prognosis with median survival 4.4 years. Consider allogeneic stem cell transplantation evaluation if appropriate candidate."
+      },
+      {
+        "min": 16,
+        "max": 50,
+        "stage": "High Risk",
+        "description": "High risk secondary myelofibrosis",
+        "interpretation": "Poor prognosis with median survival 2.0 years. Prioritize allogeneic stem cell transplantation evaluation and aggressive treatment approach."
+      }
+    ]
+  },
+  "references": [
+    "Passamonti F, Giorgino T, Mora B, Guglielmelli P, Rumi E, Maffioli M, et al. A clinical-molecular prognostic model to predict survival in patients with post polycythemia vera and post essential thrombocythemia myelofibrosis. Leukemia. 2017;31(12):2726-2731. doi: 10.1038/leu.2017.169.",
+    "Guglielmelli P, Rotunno G, Pacilli A, Rumi E, Rosti V, Delaini F, et al. Prognostic impact of bone marrow fibrosis in primary myelofibrosis. A study of the AGIMM group on 490 patients. Am J Hematol. 2016;91(9):918-22. doi: 10.1002/ajh.24423.",
+    "Tefferi A, Guglielmelli P, Lasho TL, Rotunno G, Finke C, Mannarelli C, et al. MIPSS70+ Version 2.0: Mutation and Karyotype-Enhanced International Prognostic Scoring System for Primary Myelofibrosis. J Clin Oncol. 2018;36(17):1769-1770. doi: 10.1200/JCO.2018.78.9867."
+  ],
+  "formula": "MYSEC-PM Score = (Age × 0.15) + (Hemoglobin <11 g/dL × 2) + (Circulating blasts ≥3% × 2) + (Platelet count <150 × 1) + (Constitutional symptoms × 1) + (CALR unmutated × 2)",
+  "notes": [
+    "MYSEC-PM is specifically designed for patients with myelofibrosis secondary to polycythemia vera (PV) or essential thrombocythemia (ET)",
+    "This model is superior to IPSS and DIPSS for risk stratification in secondary myelofibrosis patients",
+    "CALR mutation status is a key molecular parameter - unmutated CALR indicates poor prognosis",
+    "Age is used as a continuous variable (0.15 points per year) rather than categorical cutoffs",
+    "The model has been validated in multiple cohorts and is adopted by NCCN and European guidelines",
+    "Particularly useful for treatment decisions including JAK inhibitor therapy and transplantation timing",
+    "Should not be used for primary myelofibrosis - use IPSS, DIPSS, or MIPSS70 instead",
+    "Regular reassessment is recommended as molecular and clinical parameters may evolve over time",
+    "Constitutional symptoms definition: weight loss >10% in 6 months, night sweats, or fever",
+    "CALR mutation testing is essential for accurate risk stratification using this model"
+  ]
+}

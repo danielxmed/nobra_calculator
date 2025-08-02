@@ -1,0 +1,148 @@
+{
+  "id": "mumtaz_score",
+  "title": "Mumtaz Score for Readmission in Cirrhosis",
+  "description": "Predicts 30-day readmission risk in patients with cirrhosis following hospital discharge. This prognostic tool helps clinicians identify high-risk patients who may benefit from enhanced discharge planning, close outpatient follow-up, and preventive interventions to reduce readmission rates.",
+  "category": "gastroenterology",
+  "version": "2019",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "serum_sodium",
+      "type": "float",
+      "required": true,
+      "description": "Serum sodium level. Hyponatremia is associated with increased readmission risk in cirrhosis patients",
+      "validation": {
+        "min": 100,
+        "max": 160
+      },
+      "unit": "mEq/L"
+    },
+    {
+      "name": "albumin",
+      "type": "float",
+      "required": true,
+      "description": "Serum albumin level. Lower albumin indicates poor synthetic liver function and higher readmission risk",
+      "validation": {
+        "min": 1.0,
+        "max": 6.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "length_of_stay",
+      "type": "integer",
+      "required": true,
+      "description": "Length of current hospital stay in days. Longer stays may indicate more severe illness",
+      "validation": {
+        "min": 1,
+        "max": 365
+      },
+      "unit": "days"
+    },
+    {
+      "name": "previous_admissions_6_months",
+      "type": "integer",
+      "required": true,
+      "description": "Number of hospital admissions in the previous 6 months. Prior admissions are strong predictors of readmission",
+      "validation": {
+        "min": 0,
+        "max": 20
+      },
+      "unit": "admissions"
+    },
+    {
+      "name": "meld_score",
+      "type": "integer",
+      "required": true,
+      "description": "Model for End-Stage Liver Disease (MELD) score at discharge. Higher MELD scores indicate more severe liver disease",
+      "validation": {
+        "min": 6,
+        "max": 40
+      },
+      "unit": "points"
+    },
+    {
+      "name": "hepatic_encephalopathy",
+      "type": "string",
+      "required": true,
+      "description": "Presence of hepatic encephalopathy during current admission. HE increases readmission risk",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "ascites",
+      "type": "string",
+      "required": true,
+      "description": "Presence of ascites during current admission. Ascites complications increase readmission risk",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "readmission_risk",
+    "type": "float",
+    "unit": "%",
+    "description": "Predicted 30-day readmission probability as a percentage"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 15,
+        "stage": "Low Risk",
+        "description": "Low 30-day readmission risk",
+        "interpretation": "Standard discharge planning and routine outpatient follow-up may be sufficient. Consider discharge coordination with primary care provider."
+      },
+      {
+        "min": 15,
+        "max": 30,
+        "stage": "Moderate Risk",
+        "description": "Moderate 30-day readmission risk",
+        "interpretation": "Enhanced discharge planning recommended. Consider early outpatient follow-up within 7-14 days, medication reconciliation, and patient education about warning signs."
+      },
+      {
+        "min": 30,
+        "max": 50,
+        "stage": "High Risk",
+        "description": "High 30-day readmission risk",
+        "interpretation": "Intensive discharge planning and close follow-up required. Consider early post-discharge contact within 48-72 hours, subspecialty referrals, home health services, and transitional care programs."
+      },
+      {
+        "min": 50,
+        "max": 100,
+        "stage": "Very High Risk",
+        "description": "Very high 30-day readmission risk",
+        "interpretation": "Comprehensive transitional care interventions strongly recommended. Consider prolonged hospitalization if clinical status allows optimization, intensive case management, frequent outpatient monitoring, and immediate subspecialty follow-up."
+      }
+    ]
+  },
+  "references": [
+    "Mumtaz K, Issak A, Porter K, Kelly S, Hanje J, Michaels AJ, et al. Validation of Risk Score in Predicting Early Readmissions in Decompensated Cirrhotic Patients: A Model Based on the Administrative Database. Hepatology. 2019;70(2):630-639. doi: 10.1002/hep.30274.",
+    "Berman K, Tandra S, Forssell K, Vuppalanchi R, Burton JR Jr, Nguyen JH, et al. Incidence and predictors of 30-day readmission among patients hospitalized for advanced liver disease. Clin Gastroenterol Hepatol. 2011;9(3):254-9. doi: 10.1016/j.cgh.2010.10.035.",
+    "Volk ML, Tocco RS, Bazick J, Rakoski MO, Lok AS. Hospital readmissions among patients with decompensated cirrhosis. Am J Gastroenterol. 2012;107(2):247-52. doi: 10.1038/ajg.2011.314."
+  ],
+  "formula": "Logistic regression model incorporating age, serum sodium, albumin, length of stay, previous admissions, MELD score, hepatic encephalopathy, and ascites with specific coefficients to calculate 30-day readmission probability",
+  "notes": [
+    "The Mumtaz Score was developed and validated in a large administrative database of cirrhosis patients",
+    "This score is specifically designed for patients with decompensated cirrhosis being discharged from hospital",
+    "The model showed good discrimination (C-statistic 0.68-0.72) and calibration in validation studies",
+    "Risk factors include markers of liver disease severity, complications, and healthcare utilization patterns",
+    "Should be used in conjunction with clinical judgment and comprehensive discharge planning",
+    "May help identify patients who would benefit from transitional care interventions and close follow-up",
+    "Not intended to replace clinical assessment but rather to supplement risk stratification efforts"
+  ]
+}

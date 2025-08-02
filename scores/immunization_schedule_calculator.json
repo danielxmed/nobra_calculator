@@ -1,0 +1,86 @@
+{
+  "id": "immunization_schedule_calculator",
+  "title": "Immunization Schedule Calculator",
+  "description": "Determines what immunizations/vaccinations are due based on patient's age according to CDC vaccination guidelines. This clinical decision support tool helps healthcare providers identify appropriate vaccinations for pediatric and adult patients based on standardized immunization schedules. The calculator provides general vaccination recommendations but requires clinical judgment and knowledge of patient's vaccination history for optimal use.",
+  "category": "pediatrics",
+  "version": "2024",
+  "parameters": [
+    {
+      "name": "age_group",
+      "type": "string",
+      "required": true,
+      "description": "Patient age group category to determine appropriate vaccination schedule",
+      "options": ["under_2_years", "2_years_and_over"],
+      "validation": {
+        "enum": ["under_2_years", "2_years_and_over"]
+      }
+    },
+    {
+      "name": "age_months", 
+      "type": "integer",
+      "required": false,
+      "description": "Patient age in months (required if age group is under 2 years)",
+      "validation": {
+        "min": 0,
+        "max": 23
+      },
+      "unit": "months"
+    },
+    {
+      "name": "age_years",
+      "type": "integer", 
+      "required": false,
+      "description": "Patient age in years (required if age group is 2 years and over)",
+      "validation": {
+        "min": 2,
+        "max": 120
+      },
+      "unit": "years"
+    }
+  ],
+  "result": {
+    "name": "vaccination_recommendations",
+    "type": "string",
+    "unit": null,
+    "description": "List of recommended vaccinations based on patient age and CDC guidelines"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 23,
+        "stage": "Pediatric Schedule",
+        "description": "Infant and toddler vaccination schedule",
+        "interpretation": "Follow CDC pediatric immunization schedule with appropriate spacing between doses. Consider patient's vaccination history and any contraindications."
+      },
+      {
+        "min": 2,
+        "max": 17,
+        "stage": "Child/Adolescent Schedule",
+        "description": "Childhood and adolescent vaccination schedule", 
+        "interpretation": "Follow CDC child and adolescent immunization schedule. Ensure catch-up vaccinations as needed and consider HPV series for adolescents."
+      },
+      {
+        "min": 18,
+        "max": 120,
+        "stage": "Adult Schedule",
+        "description": "Adult vaccination schedule",
+        "interpretation": "Follow CDC adult immunization schedule based on age, risk factors, and previous vaccination history. Consider annual influenza and age-appropriate boosters."
+      }
+    ]
+  },
+  "references": [
+    "Centers for Disease Control and Prevention. Child and Adolescent Immunization Schedule by Age. Atlanta, GA: CDC; 2024.",
+    "Centers for Disease Control and Prevention. Adult Immunization Schedule by Age. Atlanta, GA: CDC; 2024.",
+    "Advisory Committee on Immunization Practices (ACIP). General recommendations on immunization. MMWR Recomm Rep. 2011;60(RR-2):1-64.",
+    "Kroger AT, Duchin J, Vázquez M. General Best Practice Guidelines for Immunization. Best Practices Guidance of the Advisory Committee on Immunization Practices (ACIP). Atlanta, GA: CDC; 2017."
+  ],
+  "formula": "Age-based vaccination recommendations according to CDC immunization schedules",
+  "notes": [
+    "This calculator provides general vaccination recommendations and is not a substitute for clinical judgment",
+    "Vaccination recommendations change frequently - consult current CDC guidelines for most up-to-date information",
+    "Consider patient's complete vaccination history, contraindications, and risk factors",
+    "Live vaccines are contraindicated in pregnancy and immunocompromised patients",
+    "Some vaccines may require catch-up schedules if patient is behind recommended timing"
+  ]
+}

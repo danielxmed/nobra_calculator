@@ -1,0 +1,83 @@
+{
+  "id": "kidney_failure_risk_calculator",
+  "title": "Kidney Failure Risk Calculator (4-Variable)",
+  "description": "Predicts progression to kidney failure (dialysis or transplantation) in patients with CKD stages 3-5 using age, sex, eGFR, and urine albumin/creatinine ratio. Validated in over 700,000 individuals across 30+ countries.",
+  "category": "nephrology",
+  "version": "2011_tangri",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 110
+      },
+      "unit": "years"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Biological sex of the patient",
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "egfr",
+      "type": "float",
+      "required": true,
+      "description": "Estimated glomerular filtration rate (eGFR) in mL/min/1.73 m². Calculator is validated for CKD stages 3-5 (eGFR <60)",
+      "validation": {
+        "min": 1,
+        "max": 60
+      },
+      "unit": "mL/min/1.73 m²"
+    },
+    {
+      "name": "urine_acr",
+      "type": "float",
+      "required": true,
+      "description": "Urine albumin-to-creatinine ratio (ACR) in mg/g. Can also use mg/mmol by multiplying by 8.84",
+      "validation": {
+        "min": 0.1,
+        "max": 25000
+      },
+      "unit": "mg/g"
+    },
+    {
+      "name": "region",
+      "type": "string",
+      "required": true,
+      "description": "Geographic region for calibration. Non-North American cohorts have different calibration factors",
+      "validation": {
+        "enum": ["north_america", "non_north_america"]
+      }
+    }
+  ],
+  "result": {
+    "name": "kidney_failure_risk",
+    "type": "object",
+    "unit": "percentage",
+    "description": "2-year and 5-year risk of kidney failure requiring dialysis or transplantation"
+  },
+  "references": [
+    "Tangri N, Stevens LA, Griffith J, Tighiouart H, Djurdjev O, Naimark D, et al. A predictive model for progression of chronic kidney disease to kidney failure. JAMA. 2011;305(15):1553-9.",
+    "Tangri N, Grams ME, Levey AS, Coresh J, Appel LJ, Astor BC, et al. Multinational Assessment of Accuracy of Equations for Predicting Risk of Kidney Failure: A Meta-analysis. JAMA. 2016;315(2):164-74.",
+    "Ramspek CL, de Jong Y, Dekker FW, van Diepen M. Towards the best kidney failure prediction tool: a systematic review and selection aid. Nephrol Dial Transplant. 2020;35(9):1527-1538.",
+    "Major RW, Shepherd D, Medcalf JF, Xu G, Gray LJ, Brunskill NJ. The Kidney Failure Risk Equation for prediction of end stage renal disease in UK primary care: An external validation and clinical impact projection cohort study. PLoS Med. 2019;16(11):e1002955."
+  ],
+  "formula": "4-variable KFRE: exp(1 - S0(t)^exp(Xβ)) where Xβ = -0.2201 × (age/10 - 7.036) + 0.2467 × (male - 0.5642) - 0.5567 × (eGFR/5 - 7.222) + 0.4510 × (log(ACR) - 5.137)",
+  "notes": [
+    "Validated for CKD stages 3-5 (eGFR <60 mL/min/1.73 m²)",
+    "Most accurate kidney failure prediction tool, validated in >700,000 individuals across 30+ countries",
+    "Used for nephrology referral triage, dialysis planning, and transplant timing",
+    "2-year risk >5% or 5-year risk >15% often triggers nephrology referral",
+    "Missing ACR is common; imputation or using PCR (protein-to-creatinine ratio) may be considered",
+    "8-variable equation available for more detailed assessment including albumin, phosphorus, bicarbonate, and calcium",
+    "Calibration differs between North American and non-North American populations",
+    "Not validated for acute kidney injury or rapidly progressive glomerulonephritis"
+  ]
+}

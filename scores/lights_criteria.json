@@ -1,0 +1,102 @@
+{
+  "id": "lights_criteria",
+  "title": "Light's Criteria for Exudative Effusions",
+  "description": "Determines if pleural fluid is exudative or transudative by comparing pleural fluid and serum protein and LDH levels",
+  "category": "pulmonology",
+  "version": "1972",
+  "parameters": [
+    {
+      "name": "serum_protein",
+      "type": "float",
+      "required": true,
+      "description": "Total serum protein level in g/dL",
+      "validation": {
+        "min": 1.0,
+        "max": 15.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "pleural_fluid_protein",
+      "type": "float",
+      "required": true,
+      "description": "Pleural fluid protein level in g/dL",
+      "validation": {
+        "min": 0.1,
+        "max": 10.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "serum_ldh",
+      "type": "float",
+      "required": true,
+      "description": "Serum lactate dehydrogenase level in U/L",
+      "validation": {
+        "min": 50.0,
+        "max": 2000.0
+      },
+      "unit": "U/L"
+    },
+    {
+      "name": "pleural_fluid_ldh",
+      "type": "float",
+      "required": true,
+      "description": "Pleural fluid lactate dehydrogenase level in U/L",
+      "validation": {
+        "min": 10.0,
+        "max": 5000.0
+      },
+      "unit": "U/L"
+    },
+    {
+      "name": "serum_ldh_upper_normal",
+      "type": "float",
+      "required": false,
+      "description": "Upper limit of normal for serum LDH (typically 222 U/L)",
+      "validation": {
+        "min": 100.0,
+        "max": 500.0
+      },
+      "unit": "U/L"
+    }
+  ],
+  "result": {
+    "name": "effusion_type",
+    "type": "string",
+    "unit": "",
+    "description": "Classification of pleural effusion as exudative or transudative"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Transudate",
+        "description": "Transudative effusion",
+        "interpretation": "Effusion is transudative. None of Light's criteria are met. This suggests conditions like congestive heart failure, cirrhosis, or nephrotic syndrome. Focus treatment on underlying condition."
+      },
+      {
+        "min": 1,
+        "max": 3,
+        "stage": "Exudate",
+        "description": "Exudative effusion",
+        "interpretation": "Effusion is exudative. At least one of Light's criteria is met. This suggests conditions like pneumonia, malignancy, tuberculosis, or pulmonary embolism. Further diagnostic workup is indicated."
+      }
+    ]
+  },
+  "references": [
+    "Light RW, Macgregor MI, Luchsinger PC, Ball WC Jr. Pleural effusions: the diagnostic separation of transudates and exudates. Ann Intern Med. 1972 Oct;77(4):507-13. doi: 10.7326/0003-4819-77-4-507.",
+    "Heffner JE, Brown LK, Barbieri C, DeLeo JM. Pleural fluid chemical analysis in parapneumonic effusions. A meta-analysis. Am J Respir Crit Care Med. 1995 Jun;151(6):1700-8. doi: 10.1164/ajrccm.151.6.7767510.",
+    "Porcel JM, Light RW. Diagnostic approach to pleural effusion in adults. Am Fam Physician. 2006 Apr 1;73(7):1211-20."
+  ],
+  "formula": "Exudate if any one of: (1) Pleural fluid protein / Serum protein > 0.5, (2) Pleural fluid LDH / Serum LDH > 0.6, (3) Pleural fluid LDH > (2/3 × Upper limit normal serum LDH)",
+  "notes": [
+    "Sensitivity: 98% for identifying exudates",
+    "Specificity: 83% for identifying exudates",
+    "Only ONE criterion needs to be met for exudate classification",
+    "Diuretic therapy can cause 'pseudoexudates' (transudates meeting exudate criteria)",
+    "Consider serum-pleural fluid protein gradient >3.1 g/dL or albumin gradient >1.2 g/dL to identify pseudoexudates",
+    "Most commonly used criteria for pleural effusion classification since 1972"
+  ]
+}

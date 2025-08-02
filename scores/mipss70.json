@@ -1,0 +1,148 @@
+{
+  "id": "mipss70",
+  "title": "Mutation-Enhanced International Prognostic Score System (MIPSS70/MIPSS70+)",
+  "description": "Stratifies risk for patients with overt primary myelofibrosis (PMF) using clinical, laboratory, and molecular genetic parameters. This enhanced prognostic system incorporates high molecular risk mutations to improve risk stratification beyond traditional clinical factors.",
+  "category": "hematology",
+  "version": "2018",
+  "parameters": [
+    {
+      "name": "age_years",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years. Age is a key prognostic factor in primary myelofibrosis",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "hemoglobin",
+      "type": "float",
+      "required": true,
+      "description": "Hemoglobin level in g/dL. Anemia is an independent prognostic factor in myelofibrosis",
+      "validation": {
+        "min": 3.0,
+        "max": 20.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "white_blood_count",
+      "type": "float",
+      "required": true,
+      "description": "White blood cell count in ×10⁹/L. Leukocytosis indicates disease burden and poor prognosis",
+      "validation": {
+        "min": 0.1,
+        "max": 500.0
+      },
+      "unit": "×10⁹/L"
+    },
+    {
+      "name": "platelet_count",
+      "type": "float",
+      "required": true,
+      "description": "Platelet count in ×10⁹/L. Thrombocytopenia is associated with advanced disease and poor prognosis",
+      "validation": {
+        "min": 1.0,
+        "max": 2000.0
+      },
+      "unit": "×10⁹/L"
+    },
+    {
+      "name": "circulating_blasts",
+      "type": "float",
+      "required": true,
+      "description": "Percentage of circulating blasts in peripheral blood. Higher blast percentage indicates disease progression",
+      "validation": {
+        "min": 0.0,
+        "max": 100.0
+      },
+      "unit": "%"
+    },
+    {
+      "name": "constitutional_symptoms",
+      "type": "string",
+      "required": true,
+      "description": "Presence of constitutional symptoms (weight loss >10% in 6 months, night sweats, fever). Indicates advanced disease",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "high_molecular_risk_mutations",
+      "type": "string",
+      "required": true,
+      "description": "Presence of high molecular risk mutations (ASXL1, EZH2, SRSF2, IDH1/2). These mutations confer poor prognosis",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "very_high_molecular_risk",
+      "type": "string",
+      "required": false,
+      "description": "Presence of very high molecular risk mutations (≥2 high-risk mutations or specific mutation patterns). Used in MIPSS70+ version",
+      "options": ["yes", "no", "unknown"],
+      "validation": {
+        "enum": ["yes", "no", "unknown"]
+      }
+    }
+  ],
+  "result": {
+    "name": "mipss70_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "MIPSS70/MIPSS70+ risk score with corresponding risk category"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 2,
+        "stage": "Low Risk",
+        "description": "Low risk primary myelofibrosis",
+        "interpretation": "Excellent prognosis with median survival >20 years. Standard monitoring and supportive care. Consider clinical trials or observation."
+      },
+      {
+        "min": 3,
+        "max": 4,
+        "stage": "Intermediate-1 Risk",
+        "description": "Intermediate-1 risk primary myelofibrosis",
+        "interpretation": "Good prognosis with median survival 8-20 years. Regular monitoring and symptom management. Consider JAK inhibitor therapy for symptomatic disease."
+      },
+      {
+        "min": 5,
+        "max": 6,
+        "stage": "Intermediate-2 Risk",
+        "description": "Intermediate-2 risk primary myelofibrosis",
+        "interpretation": "Intermediate prognosis with median survival 4-8 years. Consider allogeneic stem cell transplantation evaluation if appropriate candidate. JAK inhibitor therapy for symptom control."
+      },
+      {
+        "min": 7,
+        "max": 15,
+        "stage": "High Risk",
+        "description": "High risk primary myelofibrosis",
+        "interpretation": "Poor prognosis with median survival <4 years. Prioritize allogeneic stem cell transplantation evaluation. Aggressive supportive care and experimental therapies."
+      }
+    ]
+  },
+  "references": [
+    "Guglielmelli P, Lasho TL, Rotunno G, Mudireddy M, Mannarelli C, Nicolosi M, et al. MIPSS70: Mutation-Enhanced International Prognostic Score System for transplantation-age patients with primary myelofibrosis. J Clin Oncol. 2018;36(4):310-318. doi: 10.1200/JCO.2017.76.4886.",
+    "Tefferi A, Guglielmelli P, Lasho TL, Rotunno G, Finke C, Mannarelli C, et al. MIPSS70+ Version 2.0: Mutation and Karyotype-Enhanced International Prognostic Scoring System for Primary Myelofibrosis. J Clin Oncol. 2018;36(17):1769-1770. doi: 10.1200/JCO.2018.78.9867.",
+    "Passamonti F, Cervantes F, Vannucchi AM, Morra E, Rumi E, Pereira A, et al. A dynamic prognostic model to predict survival in primary myelofibrosis: a study by the IWG-MRT (International Working Group for Myeloproliferative Neoplasms Research and Treatment). Blood. 2010;115(9):1703-8. doi: 10.1182/blood-2009-09-245837."
+  ],
+  "formula": "MIPSS70 score = Age points + Hemoglobin points + WBC points + Platelet points + Blast points + Constitutional symptoms points + High molecular risk points (+ Very high molecular risk points for MIPSS70+)",
+  "notes": [
+    "MIPSS70 is designed specifically for transplantation-age patients (≤70 years) with primary myelofibrosis",
+    "The score incorporates high molecular risk mutations (ASXL1, EZH2, SRSF2, IDH1/2) which are independent prognostic factors",
+    "MIPSS70+ version includes very high molecular risk category for patients with ≥2 high-risk mutations",
+    "This scoring system has superior prognostic accuracy compared to DIPSS in transplant-eligible patients",
+    "Molecular testing is essential for accurate risk stratification using this system",
+    "Risk categories guide treatment decisions including timing of allogeneic stem cell transplantation",
+    "Regular reassessment may be needed as molecular profile can evolve over time",
+    "Should be used in conjunction with other clinical factors and patient preferences for treatment planning"
+  ]
+}

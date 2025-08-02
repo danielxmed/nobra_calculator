@@ -1,0 +1,276 @@
+{
+  "id": "modified_finnegan_neonatal_abstinence_score",
+  "title": "Modified Finnegan Neonatal Abstinence Score (NAS)",
+  "description": "Stratifies severity of opioid withdrawal in neonates and guides pharmacologic treatment decisions",
+  "category": "pediatrics",
+  "version": "Modified",
+  "parameters": [
+    {
+      "name": "cry",
+      "type": "string",
+      "required": true,
+      "description": "Crying pattern assessment",
+      "options": ["normal", "excessive_high_pitched_under_5min", "continuous_high_pitched_over_5min"],
+      "validation": {
+        "enum": ["normal", "excessive_high_pitched_under_5min", "continuous_high_pitched_over_5min"]
+      }
+    },
+    {
+      "name": "sleep",
+      "type": "string",
+      "required": true,
+      "description": "Sleep duration after feeding",
+      "options": ["normal", "sleeps_under_3hrs", "sleeps_under_2hrs", "sleeps_under_1hr"],
+      "validation": {
+        "enum": ["normal", "sleeps_under_3hrs", "sleeps_under_2hrs", "sleeps_under_1hr"]
+      }
+    },
+    {
+      "name": "moro_reflex",
+      "type": "string",
+      "required": true,
+      "description": "Moro reflex activity assessment",
+      "options": ["normal", "hyperactive", "markedly_hyperactive"],
+      "validation": {
+        "enum": ["normal", "hyperactive", "markedly_hyperactive"]
+      }
+    },
+    {
+      "name": "tremors",
+      "type": "string",
+      "required": true,
+      "description": "Tremor severity and occurrence",
+      "options": ["none", "mild_when_disturbed", "moderate_severe_when_disturbed", "mild_when_undisturbed", "moderate_severe_when_undisturbed"],
+      "validation": {
+        "enum": ["none", "mild_when_disturbed", "moderate_severe_when_disturbed", "mild_when_undisturbed", "moderate_severe_when_undisturbed"]
+      }
+    },
+    {
+      "name": "increased_muscle_tone",
+      "type": "string",
+      "required": true,
+      "description": "Presence of increased muscle tone",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "excoriation",
+      "type": "string",
+      "required": true,
+      "description": "Presence of skin excoriation from excessive movement",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "myoclonic_jerks",
+      "type": "string",
+      "required": true,
+      "description": "Presence of myoclonic jerks",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "generalized_convulsions",
+      "type": "string",
+      "required": true,
+      "description": "Presence of generalized convulsions",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "sweating",
+      "type": "string",
+      "required": true,
+      "description": "Presence of excessive sweating",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "hyperthermia",
+      "type": "string",
+      "required": true,
+      "description": "Body temperature elevation",
+      "options": ["normal", "mild_99_to_100_9F", "severe_over_100_9F"],
+      "validation": {
+        "enum": ["normal", "mild_99_to_100_9F", "severe_over_100_9F"]
+      }
+    },
+    {
+      "name": "frequent_yawning",
+      "type": "string",
+      "required": true,
+      "description": "Frequent yawning (>3-4 times per interval)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "mottling",
+      "type": "string",
+      "required": true,
+      "description": "Presence of skin mottling",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "nasal_flaring",
+      "type": "string",
+      "required": true,
+      "description": "Presence of nasal flaring",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "respiratory_rate",
+      "type": "string",
+      "required": true,
+      "description": "Respiratory rate and retractions",
+      "options": ["normal", "over_60_no_retractions", "over_60_with_retractions"],
+      "validation": {
+        "enum": ["normal", "over_60_no_retractions", "over_60_with_retractions"]
+      }
+    },
+    {
+      "name": "sneezing",
+      "type": "string",
+      "required": true,
+      "description": "Frequent sneezing (>3-4 times per interval)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "nasal_stuffiness",
+      "type": "string",
+      "required": true,
+      "description": "Presence of nasal stuffiness",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "excessive_sucking",
+      "type": "string",
+      "required": true,
+      "description": "Excessive or frantic sucking behavior",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "poor_feeding",
+      "type": "string",
+      "required": true,
+      "description": "Poor feeding with infrequent or uncoordinated suck",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "regurgitation",
+      "type": "string",
+      "required": true,
+      "description": "Regurgitation (≥2 times during/post feeding)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "projectile_vomiting",
+      "type": "string",
+      "required": true,
+      "description": "Presence of projectile vomiting",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "loose_stools",
+      "type": "string",
+      "required": true,
+      "description": "Loose stools (curds/seedy)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "watery_stools",
+      "type": "string",
+      "required": true,
+      "description": "Watery stools",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "nas_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Modified Finnegan NAS score indicating severity of neonatal opioid withdrawal"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 7,
+        "stage": "No Treatment",
+        "description": "Mild or no withdrawal symptoms",
+        "interpretation": "Continue supportive care and monitoring. No pharmacologic treatment indicated."
+      },
+      {
+        "min": 8,
+        "max": 11,
+        "stage": "Monitor Closely",
+        "description": "Moderate withdrawal symptoms",
+        "interpretation": "Monitor closely. Consider pharmacologic treatment if three consecutive scores ≥8."
+      },
+      {
+        "min": 12,
+        "max": 50,
+        "stage": "Treat",
+        "description": "Severe withdrawal symptoms",
+        "interpretation": "Initiate pharmacologic treatment. Two consecutive scores ≥12 indicate need for medication."
+      }
+    ]
+  },
+  "references": [
+    "Finnegan LP, Connaughton JF Jr, Kron RE, Emich JP. Neonatal abstinence syndrome: assessment and management. Addict Dis. 1975;2(1-2):141-58.",
+    "Jansson LM, Velez M, Harrow C. The opioid-exposed newborn: assessment and pharmacologic management. J Opioid Manag. 2009 Jan-Feb;5(1):47-55.",
+    "Hudak ML, Tan RC; Committee on Drugs; Committee on Fetus and Newborn; American Academy of Pediatrics. Neonatal drug withdrawal. Pediatrics. 2012 Feb;129(2):e540-60. doi: 10.1542/peds.2011-3212."
+  ],
+  "formula": "Sum of points from all assessed categories: CNS disturbances (cry, sleep, reflexes, tremors, tone, excoriation, jerks, convulsions), metabolic/vasomotor (sweating, fever, yawning, mottling), respiratory (flaring, rate, sneezing, stuffiness), and GI (feeding, vomiting, stools).",
+  "notes": [
+    "Score every 3-4 hours during hospitalization",
+    "Two consecutive scores ≥12 OR three consecutive scores ≥8 indicate need for pharmacologic treatment",
+    "Most commonly used tool for neonatal abstinence syndrome assessment",
+    "Modified version removes some items and adds irritability and failure to thrive",
+    "Goal of treatment is to stabilize symptomatic infants to allow feeding, sleeping, and weight gain",
+    "Requires trained healthcare providers familiar with neonatal assessment",
+    "Consider non-pharmacologic interventions first (swaddling, minimal stimulation, frequent small feeds)",
+    "Morphine or methadone are first-line pharmacologic treatments"
+  ]
+}

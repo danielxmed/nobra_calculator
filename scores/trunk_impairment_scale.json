@@ -1,0 +1,238 @@
+{
+  "id": "trunk_impairment_scale",
+  "title": "Trunk Impairment Scale",
+  "description": "Quantifies disability after stroke; also validated in Parkinson's disease. Assesses static sitting balance, dynamic sitting balance, and coordination through 17 specific motor tasks.",
+  "category": "neurology",
+  "version": "2004",
+  "parameters": [
+    {
+      "name": "static_item_1",
+      "type": "string",
+      "required": true,
+      "description": "Patient maintains starting position without support for 10 seconds",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "static_item_2",
+      "type": "string",
+      "required": true,
+      "description": "Therapist crosses unaffected leg over hemiplegic leg - patient maintains sitting position",
+      "options": ["falls_or_cannot_maintain", "maintains_position"],
+      "validation": {
+        "enum": ["falls_or_cannot_maintain", "maintains_position"]
+      }
+    },
+    {
+      "name": "static_item_3",
+      "type": "string",
+      "required": true,
+      "description": "Patient crosses unaffected leg over the hemiplegic leg",
+      "options": ["falls", "cannot_cross_without_arm_support", "crosses_with_displacement_or_assistance", "crosses_without_displacement"],
+      "validation": {
+        "enum": ["falls", "cannot_cross_without_arm_support", "crosses_with_displacement_or_assistance", "crosses_without_displacement"]
+      }
+    },
+    {
+      "name": "dynamic_item_1",
+      "type": "string",
+      "required": true,
+      "description": "Patient touches bed/table with hemiplegic elbow and returns to starting position",
+      "options": ["falls_needs_support_or_no_touch", "moves_actively_and_touches"],
+      "validation": {
+        "enum": ["falls_needs_support_or_no_touch", "moves_actively_and_touches"]
+      }
+    },
+    {
+      "name": "dynamic_item_2",
+      "type": "string",
+      "required": true,
+      "description": "Repeat item 1 - shortening/lengthening assessment",
+      "options": ["no_or_opposite_shortening", "appropriate_shortening"],
+      "validation": {
+        "enum": ["no_or_opposite_shortening", "appropriate_shortening"]
+      }
+    },
+    {
+      "name": "dynamic_item_3",
+      "type": "string",
+      "required": true,
+      "description": "Repeat item 1 - compensation assessment",
+      "options": ["compensation_present", "moves_without_compensation"],
+      "validation": {
+        "enum": ["compensation_present", "moves_without_compensation"]
+      }
+    },
+    {
+      "name": "dynamic_item_4",
+      "type": "string",
+      "required": true,
+      "description": "Patient touches bed/table with unaffected elbow and returns to starting position",
+      "options": ["falls_needs_support_or_no_touch", "moves_actively_and_touches"],
+      "validation": {
+        "enum": ["falls_needs_support_or_no_touch", "moves_actively_and_touches"]
+      }
+    },
+    {
+      "name": "dynamic_item_5",
+      "type": "string",
+      "required": true,
+      "description": "Repeat item 4 - shortening/lengthening assessment",
+      "options": ["no_or_opposite_shortening", "appropriate_shortening"],
+      "validation": {
+        "enum": ["no_or_opposite_shortening", "appropriate_shortening"]
+      }
+    },
+    {
+      "name": "dynamic_item_6",
+      "type": "string",
+      "required": true,
+      "description": "Repeat item 4 - compensation assessment",
+      "options": ["compensation_present", "moves_without_compensation"],
+      "validation": {
+        "enum": ["compensation_present", "moves_without_compensation"]
+      }
+    },
+    {
+      "name": "dynamic_item_7",
+      "type": "string",
+      "required": true,
+      "description": "Lifts pelvis at hemiplegic side and returns to starting position",
+      "options": ["no_or_opposite_shortening", "appropriate_shortening"],
+      "validation": {
+        "enum": ["no_or_opposite_shortening", "appropriate_shortening"]
+      }
+    },
+    {
+      "name": "dynamic_item_8",
+      "type": "string",
+      "required": true,
+      "description": "Repeat item 7 - compensation assessment",
+      "options": ["compensation_present", "moves_without_compensation"],
+      "validation": {
+        "enum": ["compensation_present", "moves_without_compensation"]
+      }
+    },
+    {
+      "name": "dynamic_item_9",
+      "type": "string",
+      "required": true,
+      "description": "Lifts pelvis at unaffected side and returns to starting position",
+      "options": ["no_or_opposite_shortening", "appropriate_shortening"],
+      "validation": {
+        "enum": ["no_or_opposite_shortening", "appropriate_shortening"]
+      }
+    },
+    {
+      "name": "dynamic_item_10",
+      "type": "string",
+      "required": true,
+      "description": "Repeat item 9 - compensation assessment",
+      "options": ["compensation_present", "moves_without_compensation"],
+      "validation": {
+        "enum": ["compensation_present", "moves_without_compensation"]
+      }
+    },
+    {
+      "name": "coordination_item_1",
+      "type": "string",
+      "required": true,
+      "description": "Rotates upper trunk 6x (each shoulder moved forward 3x), hemiplegic side must move first",
+      "options": ["hemiplegic_not_moved_3x", "asymmetrical_rotation", "symmetrical_rotation"],
+      "validation": {
+        "enum": ["hemiplegic_not_moved_3x", "asymmetrical_rotation", "symmetrical_rotation"]
+      }
+    },
+    {
+      "name": "coordination_item_2",
+      "type": "string",
+      "required": true,
+      "description": "Repeat item 1 within 6 seconds",
+      "options": ["asymmetrical_rotation", "symmetrical_rotation"],
+      "validation": {
+        "enum": ["asymmetrical_rotation", "symmetrical_rotation"]
+      }
+    },
+    {
+      "name": "coordination_item_3",
+      "type": "string",
+      "required": true,
+      "description": "Rotate lower trunk 6x (each knee moved forward 3x), hemiplegic side must move first",
+      "options": ["hemiplegic_not_moved_3x", "asymmetrical_rotation", "symmetrical_rotation"],
+      "validation": {
+        "enum": ["hemiplegic_not_moved_3x", "asymmetrical_rotation", "symmetrical_rotation"]
+      }
+    },
+    {
+      "name": "coordination_item_4",
+      "type": "string",
+      "required": true,
+      "description": "Repeat item 3 within 6 seconds",
+      "options": ["asymmetrical_rotation", "symmetrical_rotation"],
+      "validation": {
+        "enum": ["asymmetrical_rotation", "symmetrical_rotation"]
+      }
+    }
+  ],
+  "result": {
+    "name": "total_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total Trunk Impairment Scale score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Severe Impairment",
+        "description": "Unable to maintain starting position",
+        "interpretation": "Patient cannot maintain the basic sitting position without support for 10 seconds. This indicates severe trunk impairment requiring intensive rehabilitation and support. Complete assessment cannot be performed due to inability to maintain starting position."
+      },
+      {
+        "min": 1,
+        "max": 7,
+        "stage": "Severe Impairment",
+        "description": "Severe trunk motor impairment",
+        "interpretation": "Significant trunk motor impairment with limited static and dynamic sitting balance. Requires intensive rehabilitation focusing on basic trunk control and sitting balance. High risk for falls and functional limitations in daily activities."
+      },
+      {
+        "min": 8,
+        "max": 15,
+        "stage": "Moderate Impairment",
+        "description": "Moderate trunk motor impairment",
+        "interpretation": "Moderate trunk impairment with some preserved sitting balance but difficulties with dynamic movements and coordination. May benefit from targeted trunk rehabilitation exercises. Some functional activities may be compromised."
+      },
+      {
+        "min": 16,
+        "max": 19,
+        "stage": "Mild Impairment",
+        "description": "Mild trunk motor impairment",
+        "interpretation": "Mild trunk impairment with generally good sitting balance but some deficits in coordination or dynamic movements. Rehabilitation should focus on fine-tuning trunk control and coordination."
+      },
+      {
+        "min": 20,
+        "max": 23,
+        "stage": "Normal/Near Normal",
+        "description": "Normal or near-normal trunk function",
+        "interpretation": "Excellent trunk function with minimal or no impairment. Good sitting balance, dynamic control, and coordination. May require minimal intervention or maintenance therapy."
+      }
+    ]
+  },
+  "references": [
+    "Verheyden G, Nieuwboer A, Mertin J, Preger R, Kiekens C, De weerdt W. The Trunk Impairment Scale: a new tool to measure motor impairment of the trunk after stroke. Clin Rehabil. 2004;18(3):326-34.",
+    "Verheyden G, Willems AM, Ooms L, Nieuwboer A. Validity of the trunk impairment scale as a measure of trunk performance in people with Parkinson's disease. Arch Phys Med Rehabil. 2007;88(10):1304-8."
+  ],
+  "formula": "Addition of points from 17 items divided into 3 categories: Static sitting balance (3 items, 0-7 points), Dynamic sitting balance (10 items, 0-10 points), and Coordination (4 items, 0-6 points). Special rule: If static item 1 = 0, total score = 0. Various dependency rules apply where failing certain items automatically scores 0 for related items.",
+  "notes": [
+    "Starting position: Patient sits on edge of bed/table without back or arm support, thighs fully in contact with surface, knees bent at 90°, feet hip-width apart and flat on floor, arms resting on legs, head and trunk in midline position",
+    "Each item can be performed 3 times; the highest score is recorded",
+    "Tests are verbally explained and can be demonstrated if needed",
+    "If patient scores 0 on the first item (static sitting balance), the total score is 0",
+    "Originally developed for stroke assessment but also validated in Parkinson's disease",
+    "Assessment requires trained healthcare professional",
+    "Dependency rules apply: failing certain dynamic or coordination items automatically scores 0 for related follow-up items"
+  ]
+}

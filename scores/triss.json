@@ -1,0 +1,107 @@
+{
+  "id": "triss",
+  "title": "Trauma Score and Injury Severity Score (TRISS)",
+  "description": "Estimates the probability of survival for trauma patients based on physiological and anatomical parameters. Intended for quality assurance reviews or research to compare actual and predicted outcomes.",
+  "category": "emergency",
+  "version": "1987",
+  "parameters": [
+    {
+      "name": "trauma_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of trauma mechanism",
+      "validation": {
+        "enum": ["blunt", "penetrating"]
+      }
+    },
+    {
+      "name": "rts_score",
+      "type": "float",
+      "required": true,
+      "description": "Revised Trauma Score (RTS)",
+      "validation": {
+        "min": 0,
+        "max": 8
+      },
+      "unit": "points"
+    },
+    {
+      "name": "iss_score",
+      "type": "integer",
+      "required": true,
+      "description": "Injury Severity Score (ISS)",
+      "validation": {
+        "min": 0,
+        "max": 75
+      },
+      "unit": "points"
+    },
+    {
+      "name": "age_over_54",
+      "type": "string",
+      "required": true,
+      "description": "Whether patient is over 54 years old",
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "survival_probability",
+    "type": "float",
+    "unit": "%",
+    "description": "Probability of survival"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 90,
+        "max": 100,
+        "stage": "Very High",
+        "description": "Very high probability of survival",
+        "interpretation": "Patient has >90% probability of survival based on TRISS calculation. Continue aggressive trauma care as indicated."
+      },
+      {
+        "min": 75,
+        "max": 89.99,
+        "stage": "High",
+        "description": "High probability of survival",
+        "interpretation": "Patient has 75-90% probability of survival. Continue full trauma resuscitation and care."
+      },
+      {
+        "min": 50,
+        "max": 74.99,
+        "stage": "Moderate",
+        "description": "Moderate probability of survival",
+        "interpretation": "Patient has 50-75% probability of survival. Aggressive care is warranted with close monitoring."
+      },
+      {
+        "min": 25,
+        "max": 49.99,
+        "stage": "Low",
+        "description": "Low probability of survival",
+        "interpretation": "Patient has 25-50% probability of survival. Consider goals of care discussion while continuing resuscitation efforts."
+      },
+      {
+        "min": 0,
+        "max": 24.99,
+        "stage": "Very Low",
+        "description": "Very low probability of survival",
+        "interpretation": "Patient has <25% probability of survival. Critical condition requiring immediate intervention. Consider resource allocation and family discussion."
+      }
+    ]
+  },
+  "references": [
+    "Boyd CR, Tolson MA, Copes WS. Evaluating trauma care: the TRISS method. Trauma Score and the Injury Severity Score. J Trauma. 1987;27(4):370-378.",
+    "Champion HR, Copes WS, Sacco WJ, et al. The Major Trauma Outcome Study: establishing national norms for trauma care. J Trauma. 1990;30(11):1356-65.",
+    "Driessen MLS, Sturms LM, Bloemers FW, et al. The detrimental impact of the COVID-19 pandemic on major trauma outcomes in the Netherlands: a comprehensive nationwide study. Ann Surg. 2022;275(2):252-258."
+  ],
+  "formula": "Probability of survival = 1/(1 + e^(-b)) where b = b0 + b1(RTS) + b2(ISS) + b3(A); A = 0 if age ≤54, A = 1 if age >54",
+  "notes": [
+    "TRISS is intended for quality assurance and research purposes, not individual patient decision-making",
+    "Requires both RTS (Revised Trauma Score) and ISS (Injury Severity Score) calculations",
+    "Coefficients differ between blunt and penetrating trauma",
+    "Age cutoff of 54 years is based on original study data",
+    "Should be used in conjunction with clinical judgment and not as sole predictor"
+  ]
+}

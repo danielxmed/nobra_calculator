@@ -1,0 +1,170 @@
+{
+  "id": "iwg2_alzheimer_criteria",
+  "title": "International Working Group (IWG) 2 Criteria for Alzheimer's Disease Diagnosis",
+  "description": "Diagnoses Alzheimer's disease (AD) using revised research diagnostic criteria that integrate clinical phenotypes with pathophysiological biomarkers. The IWG-2 criteria represent a major advancement over previous diagnostic approaches by requiring both an appropriate clinical AD phenotype (typical or atypical) and pathophysiological biomarker evidence of Alzheimer pathology. This framework covers the full disease spectrum from asymptomatic at-risk individuals to typical and atypical AD presentations. The IWG-2 criteria distinguish between pathophysiological markers (CSF Aβ1-42, T-tau, P-tau, amyloid PET) used for diagnosis and topographical markers (volumetric MRI, FDG-PET) used for progression monitoring. This diagnostic tool enables earlier and more accurate identification of AD across the disease continuum, facilitating appropriate treatment planning and research enrollment.",
+  "category": "neurology",
+  "version": "2014",
+  "parameters": [
+    {
+      "name": "clinical_phenotype",
+      "type": "string",
+      "required": true,
+      "description": "Clinical presentation pattern of cognitive impairment",
+      "options": ["typical_ad", "atypical_ad", "mixed_ad", "asymptomatic"],
+      "validation": {
+        "enum": ["typical_ad", "atypical_ad", "mixed_ad", "asymptomatic"]
+      },
+      "unit": null
+    },
+    {
+      "name": "memory_impairment",
+      "type": "string",
+      "required": true,
+      "description": "Presence of episodic memory impairment (typical AD pattern)",
+      "options": ["present", "absent"],
+      "validation": {
+        "enum": ["present", "absent"]
+      },
+      "unit": null
+    },
+    {
+      "name": "cognitive_domains_affected",
+      "type": "string",
+      "required": true,
+      "description": "Number of cognitive domains significantly impaired",
+      "options": ["single_domain", "multiple_domains"],
+      "validation": {
+        "enum": ["single_domain", "multiple_domains"]
+      },
+      "unit": null
+    },
+    {
+      "name": "csf_amyloid_beta",
+      "type": "string",
+      "required": true,
+      "description": "CSF Aβ1-42 levels (pathophysiological biomarker)",
+      "options": ["normal", "decreased", "not_available"],
+      "validation": {
+        "enum": ["normal", "decreased", "not_available"]
+      },
+      "unit": "pg/mL"
+    },
+    {
+      "name": "csf_tau",
+      "type": "string",
+      "required": true,
+      "description": "CSF total tau (T-tau) levels (pathophysiological biomarker)",
+      "options": ["normal", "elevated", "not_available"],
+      "validation": {
+        "enum": ["normal", "elevated", "not_available"]
+      },
+      "unit": "pg/mL"
+    },
+    {
+      "name": "csf_ptau",
+      "type": "string",
+      "required": true,
+      "description": "CSF phosphorylated tau (P-tau) levels (pathophysiological biomarker)",
+      "options": ["normal", "elevated", "not_available"],
+      "validation": {
+        "enum": ["normal", "elevated", "not_available"]
+      },
+      "unit": "pg/mL"
+    },
+    {
+      "name": "amyloid_pet",
+      "type": "string",
+      "required": true,
+      "description": "Amyloid PET imaging results (pathophysiological biomarker)",
+      "options": ["negative", "positive", "not_available"],
+      "validation": {
+        "enum": ["negative", "positive", "not_available"]
+      },
+      "unit": null
+    },
+    {
+      "name": "functional_decline",
+      "type": "string",
+      "required": true,
+      "description": "Progressive functional decline in activities of daily living",
+      "options": ["present", "absent", "mild"],
+      "validation": {
+        "enum": ["present", "absent", "mild"]
+      },
+      "unit": null
+    }
+  ],
+  "result": {
+    "name": "iwg2_diagnosis",
+    "type": "string",
+    "unit": "diagnosis",
+    "description": "IWG-2 diagnostic classification for Alzheimer's disease"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": "typical_ad",
+        "max": "typical_ad",
+        "stage": "Typical AD",
+        "description": "Meets criteria for typical Alzheimer's disease",
+        "interpretation": "Diagnosis of typical Alzheimer's disease confirmed. Clinical phenotype shows characteristic episodic memory impairment with pathophysiological biomarker evidence. Recommend standard AD treatment protocols, monitoring for disease progression, and consideration for appropriate clinical trials. Discuss prognosis and long-term care planning with patient and family."
+      },
+      {
+        "min": "atypical_ad",
+        "max": "atypical_ad",
+        "stage": "Atypical AD",
+        "description": "Meets criteria for atypical Alzheimer's disease",
+        "interpretation": "Diagnosis of atypical Alzheimer's disease confirmed. Non-amnestic presentation with pathophysiological biomarker evidence of AD pathology. Consider specialized management for atypical presentations. Monitor for progression and adapt treatment strategies accordingly. Clinical trial enrollment may be appropriate."
+      },
+      {
+        "min": "mixed_ad",
+        "max": "mixed_ad",
+        "stage": "Mixed AD",
+        "description": "Meets criteria for mixed Alzheimer's disease",
+        "interpretation": "Diagnosis of mixed Alzheimer's disease confirmed. AD pathology coexisting with other neurodegenerative processes. Comprehensive management addressing multiple pathologies may be needed. Consider interdisciplinary approach and targeted interventions for mixed presentations."
+      },
+      {
+        "min": "asymptomatic_at_risk",
+        "max": "asymptomatic_at_risk",
+        "stage": "Asymptomatic at Risk",
+        "description": "Asymptomatic at risk for Alzheimer's disease",
+        "interpretation": "Positive amyloid biomarkers in cognitively normal individual. Increased lifetime risk of developing symptomatic AD. Consider enrollment in prevention trials. Regular cognitive monitoring recommended. Lifestyle interventions and risk factor management may be beneficial."
+      },
+      {
+        "min": "insufficient_criteria",
+        "max": "insufficient_criteria",
+        "stage": "Insufficient Criteria",
+        "description": "Does not meet IWG-2 criteria for AD diagnosis",
+        "interpretation": "Insufficient evidence to diagnose AD by IWG-2 criteria. Either clinical phenotype or pathophysiological biomarkers do not support AD diagnosis. Consider alternative diagnoses, additional testing, or monitoring for development of diagnostic criteria over time."
+      }
+    ]
+  },
+  "references": [
+    "Dubois B, Feldman HH, Jacova C, Hampel H, Molinuevo JL, Blennow K, et al. Advancing research diagnostic criteria for Alzheimer's disease: the IWG-2 criteria. Lancet Neurol. 2014 Jun;13(6):614-29. doi: 10.1016/S1474-4422(14)70090-0.",
+    "Jack CR Jr, Bennett DA, Blennow K, Carrillo MC, Dunn B, Haeberlein SB, et al. NIA-AA Research Framework: Toward a biological definition of Alzheimer's disease. Alzheimers Dement. 2018 Apr;14(4):535-562. doi: 10.1016/j.jalz.2018.02.018.",
+    "Dubois B, Hampel H, Feldman HH, Scheltens P, Aisen P, Andrieu S, et al. Preclinical Alzheimer's disease: Definition, natural history, and diagnostic criteria. Alzheimers Dement. 2016 Mar;12(3):292-323. doi: 10.1016/j.jalz.2016.02.002."
+  ],
+  "formula": "Diagnosis requires: Clinical AD phenotype (typical/atypical/mixed) + Pathophysiological biomarker evidence (CSF Aβ1-42 ↓ and/or T-tau ↑ and/or P-tau ↑ and/or Amyloid PET +). Topographical markers (MRI, FDG-PET) used for progression monitoring only.",
+  "notes": [
+    "The IWG-2 criteria were published in 2014 as revised research diagnostic criteria for AD",
+    "Core requirement: Clinical AD phenotype + pathophysiological biomarker evidence",
+    "Pathophysiological markers (diagnostic): CSF Aβ1-42, T-tau, P-tau, amyloid PET",
+    "Topographical markers (progression): volumetric MRI, FDG-PET (not used for diagnosis)",
+    "CSF Aβ1-42 inversely reflects brain amyloid burden (decreased = pathological)",
+    "CSF T-tau directly reflects neuronal degeneration intensity (elevated = pathological)",
+    "CSF P-tau is a direct marker of tau pathology (elevated = pathological)",
+    "Amyloid PET imaging provides in vivo assessment of brain amyloid plaques",
+    "Typical AD: Most common presentation with episodic memory impairment",
+    "Atypical AD: Non-amnestic presentations (e.g., posterior cortical atrophy, logopenic aphasia)",
+    "Mixed AD: AD pathology coexisting with other neurodegenerative processes",
+    "Asymptomatic at risk: Cognitively normal with positive amyloid biomarkers only",
+    "The criteria enable diagnosis across the full AD disease spectrum",
+    "Biomarker-supported diagnosis allows for earlier intervention",
+    "The framework facilitates research enrollment and clinical trial design",
+    "Progressive functional decline supports clinical significance",
+    "Criteria have been validated in multiple international cohorts",
+    "The IWG-2 approach has influenced other diagnostic frameworks (e.g., NIA-AA)",
+    "Regular reassessment may be needed as biomarkers evolve over time",
+    "Clinical judgment remains essential in applying these research criteria"
+  ]
+}

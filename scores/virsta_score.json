@@ -1,0 +1,158 @@
+{
+  "id": "virsta_score",
+  "title": "VIRSTA Score for Infective Endocarditis Risk Assessment",
+  "description": "The VIRSTA Score is a clinical decision tool used to risk-stratify suspected infective endocarditis cases before obtaining echocardiography. This score helps identify patients at very low risk for infective endocarditis who may not require immediate echocardiographic evaluation, thereby reducing unnecessary testing and healthcare costs while maintaining diagnostic safety.",
+  "category": "cardiology",
+  "version": "2019",
+  "parameters": [
+    {
+      "name": "valve_disease_or_prosthetic_valve",
+      "type": "string",
+      "required": true,
+      "description": "Presence of known valve disease (including rheumatic heart disease, congenital valve disease, or degenerative valve disease) or prosthetic valve",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "injection_drug_use",
+      "type": "string",
+      "required": true,
+      "description": "History of injection drug use (current or past)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "vascular_phenomena",
+      "type": "string",
+      "required": true,
+      "description": "Presence of vascular phenomena including major arterial emboli, septic pulmonary infarcts, mycotic aneurysm, intracranial hemorrhage, conjunctival hemorrhages, or Janeway lesions",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "immunologic_phenomena",
+      "type": "string",
+      "required": true,
+      "description": "Presence of immunologic phenomena including glomerulonephritis, Osler nodes, Roth spots, or rheumatoid factor",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "systemic_emboli",
+      "type": "string",
+      "required": true,
+      "description": "Evidence of systemic arterial emboli (excluding those included in vascular phenomena)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "temperature_over_38c",
+      "type": "string",
+      "required": true,
+      "description": "Fever with temperature greater than 38°C (100.4°F)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "age_over_60",
+      "type": "string",
+      "required": true,
+      "description": "Patient age greater than 60 years",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "wbc_over_11000",
+      "type": "string",
+      "required": true,
+      "description": "White blood cell count greater than 11,000/μL (11.0 × 10⁹/L)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "central_venous_catheter",
+      "type": "string",
+      "required": true,
+      "description": "Presence of central venous catheter or other intravascular device",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "staph_aureus_bacteremia",
+      "type": "string",
+      "required": true,
+      "description": "Staphylococcus aureus bacteremia (methicillin-sensitive or methicillin-resistant)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "unit": ""
+    }
+  ],
+  "result": {
+    "name": "virsta_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "VIRSTA score for infective endocarditis risk assessment"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Very Low Risk",
+        "description": "Very low probability of infective endocarditis",
+        "interpretation": "VIRSTA score 0-1 indicates very low risk for infective endocarditis (negative predictive value >99%). Echocardiography may be deferred in these patients unless clinical suspicion remains high based on other factors. Consider alternative diagnoses and outpatient management with close follow-up."
+      },
+      {
+        "min": 2,
+        "max": 50,
+        "stage": "Higher Risk",
+        "description": "Increased probability of infective endocarditis",
+        "interpretation": "VIRSTA score ≥2 indicates increased risk for infective endocarditis. Echocardiography is recommended for further evaluation. Consider transesophageal echocardiography if transthoracic echocardiography is negative and clinical suspicion remains high. Initiate appropriate antimicrobial therapy and monitor for complications."
+      }
+    ]
+  },
+  "references": [
+    "Sunnerhagen T, Törnell A, Vikbrant M, et al. VIRSTA score: prediction of infective endocarditis and mortality in Staphylococcus aureus bacteremia; a cohort study. Clin Microbiol Infect. 2019;25(4):480-486. doi: 10.1016/j.cmi.2018.06.021",
+    "Palraj BR, Baddour LM, Hess EP, et al. Predicting risk of endocarditis using a clinical tool (PREDICT): scoring system to guide use of echocardiography in the setting of Staphylococcus aureus bacteremia. Clin Infect Dis. 2015;61(1):18-28. doi: 10.1093/cid/civ235",
+    "Bouza E, Kestler M, Beca T, et al. The NOVA score: a proposal to reduce the need for transesophageal echocardiography in patients with enterococcal bacteremia. Clin Infect Dis. 2015;60(4):528-535. doi: 10.1093/cid/ciu872"
+  ],
+  "formula": "Sum of positive criteria: Valve disease/prosthetic valve (5 points) + Injection drug use (5 points) + Vascular phenomena (4 points) + Immunologic phenomena (3 points) + Systemic emboli (3 points) + Temperature >38°C (2 points) + Age >60 years (2 points) + WBC >11,000/μL (1 point) + Central venous catheter (1 point) + Staphylococcus aureus bacteremia (1 point)",
+  "notes": [
+    "Originally developed and validated in patients with Staphylococcus aureus bacteremia",
+    "Score ≤1 has negative predictive value >99% for ruling out infective endocarditis",
+    "Should be used in conjunction with clinical judgment and not as sole determinant",
+    "Particularly useful in emergency department and inpatient settings for triaging patients",
+    "May help reduce unnecessary echocardiographic studies while maintaining diagnostic safety",
+    "Validation studies have shown good discrimination ability (AUC 0.87-0.89)",
+    "Best performance when applied to patients with confirmed bacteremia and clinical suspicion of endocarditis"
+  ]
+}

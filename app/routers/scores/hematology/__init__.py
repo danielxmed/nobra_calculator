@@ -31,6 +31,40 @@ from .geneva_vte_prophylaxis import router as geneva_vte_prophylaxis_router
 from .glasgow_prognostic_score import router as glasgow_prognostic_score_router
 from .gelf_criteria import router as gelf_criteria_router
 from .has_bled_score import router as has_bled_score_router
+from .hct_ci import router as hct_ci_router
+from .hemorr2hages import router as hemorr2hages_router
+from .hep_hit import router as hep_hit_router
+from .herdoo2 import router as herdoo2_router
+from .hscore import router as hscore_router
+from .impede_vte import router as impede_vte_router
+from .improve_bleeding_risk_score import router as improve_bleeding_risk_score_router
+from .improve_vte_risk_score import router as improve_vte_risk_score_router
+from .improvedd_vte_risk_score import router as improvedd_vte_risk_score_router
+from .cll_ipi import router as cll_ipi_router
+from .dlbcl_ipi import router as dlbcl_ipi_router
+from .ips_e_cll import router as ips_e_cll_router
+from .icc_pmf_diagnostic_criteria import router as icc_pmf_diagnostic_criteria_router
+from .icc_systemic_mastocytosis_diagnostic_criteria import router as icc_systemic_mastocytosis_diagnostic_criteria_router
+from .isth_dic_criteria import router as isth_dic_criteria_router
+from .isth_scc_bleeding_assessment_tool import router as isth_scc_bleeding_assessment_tool_router
+from .malt_lymphoma_prognostic_index import router as malt_lymphoma_prognostic_index_router
+from .mantle_cell_lymphoma_international_prognostic_index import router as mantle_cell_lymphoma_international_prognostic_index_router
+from .mascc_risk_index_febrile_neutropenia import router as mascc_risk_index_febrile_neutropenia_router
+from .maternal_fetal_hemorrhage_rhd_immune_globulin_dosage import router as maternal_fetal_hemorrhage_rhd_immune_globulin_dosage_router
+from .maximum_allowable_blood_loss_without_transfusion import router as maximum_allowable_blood_loss_without_transfusion_router
+from .mayo_alliance_prognostic_system_maps_score import router as mayo_alliance_prognostic_system_maps_score_router
+from .mentzer_index import router as mentzer_index_router
+from .michigan_picc_risk import router as michigan_picc_risk_router
+from .multiple_myeloma_diagnostic_criteria import router as multiple_myeloma_diagnostic_criteria_router
+from .multiple_myeloma_iss import router as multiple_myeloma_iss_router
+from .multiple_myeloma_response_criteria import router as multiple_myeloma_response_criteria_router
+from .mipss70 import router as mipss70_router
+from .mysec_pm import router as mysec_pm_router
+from .villalta_score import router as villalta_score_router
+from .vte_bleed_score import router as vte_bleed_score_router
+from .who_polycythemia_vera_criteria import router as who_polycythemia_vera_criteria_router
+from .who_systemic_mastocytosis_criteria import router as who_systemic_mastocytosis_criteria_router
+from .wpss_mds import router as wpss_mds_router
 
 # Create main specialty router
 router = APIRouter()
@@ -62,3 +96,37 @@ router.include_router(geneva_vte_prophylaxis_router)
 router.include_router(glasgow_prognostic_score_router)
 router.include_router(gelf_criteria_router)
 router.include_router(has_bled_score_router)
+router.include_router(hct_ci_router)
+router.include_router(hemorr2hages_router)
+router.include_router(hep_hit_router)
+router.include_router(herdoo2_router)
+router.include_router(hscore_router)
+router.include_router(impede_vte_router)
+router.include_router(improve_bleeding_risk_score_router)
+router.include_router(improve_vte_risk_score_router)
+router.include_router(improvedd_vte_risk_score_router)
+router.include_router(cll_ipi_router)
+router.include_router(dlbcl_ipi_router)
+router.include_router(ips_e_cll_router)
+router.include_router(icc_pmf_diagnostic_criteria_router)
+router.include_router(icc_systemic_mastocytosis_diagnostic_criteria_router)
+router.include_router(isth_dic_criteria_router)
+router.include_router(isth_scc_bleeding_assessment_tool_router)
+router.include_router(malt_lymphoma_prognostic_index_router)
+router.include_router(mantle_cell_lymphoma_international_prognostic_index_router)
+router.include_router(mascc_risk_index_febrile_neutropenia_router)
+router.include_router(maternal_fetal_hemorrhage_rhd_immune_globulin_dosage_router)
+router.include_router(maximum_allowable_blood_loss_without_transfusion_router)
+router.include_router(mayo_alliance_prognostic_system_maps_score_router)
+router.include_router(mentzer_index_router)
+router.include_router(michigan_picc_risk_router)
+router.include_router(multiple_myeloma_diagnostic_criteria_router)
+router.include_router(multiple_myeloma_iss_router)
+router.include_router(multiple_myeloma_response_criteria_router)
+router.include_router(mipss70_router)
+router.include_router(mysec_pm_router)
+router.include_router(villalta_score_router)
+router.include_router(vte_bleed_score_router)
+router.include_router(who_polycythemia_vera_criteria_router)
+router.include_router(who_systemic_mastocytosis_criteria_router)
+router.include_router(wpss_mds_router)

@@ -1,0 +1,155 @@
+{
+  "id": "hscore",
+  "title": "HScore for Reactive Hemophagocytic Syndrome",
+  "description": "Estimates the risk of having reactive hemophagocytic syndrome (RHS) based on clinical, laboratory, and histologic findings. Uses nine variables to provide a probability score ranging from <1% to >99% for RHS diagnosis.",
+  "category": "hematology",
+  "version": "2014",
+  "parameters": [
+    {
+      "name": "known_immunosuppression",
+      "type": "string",
+      "required": true,
+      "description": "Patient with known underlying immunosuppression",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "temperature",
+      "type": "string",
+      "required": true,
+      "description": "Temperature category",
+      "options": ["less_than_38.4", "38.4_to_39.4", "greater_than_39.4"],
+      "validation": {
+        "enum": ["less_than_38.4", "38.4_to_39.4", "greater_than_39.4"]
+      }
+    },
+    {
+      "name": "organomegaly",
+      "type": "string",
+      "required": true,
+      "description": "Organomegaly (hepatomegaly or splenomegaly)",
+      "options": ["none", "hepatomegaly_or_splenomegaly", "hepatomegaly_and_splenomegaly"],
+      "validation": {
+        "enum": ["none", "hepatomegaly_or_splenomegaly", "hepatomegaly_and_splenomegaly"]
+      }
+    },
+    {
+      "name": "cytopenias",
+      "type": "string",
+      "required": true,
+      "description": "Number of cytopenias",
+      "options": ["one_lineage", "two_lineages", "three_lineages"],
+      "validation": {
+        "enum": ["one_lineage", "two_lineages", "three_lineages"]
+      }
+    },
+    {
+      "name": "triglycerides",
+      "type": "string",
+      "required": true,
+      "description": "Triglyceride level",
+      "options": ["less_than_132.7", "132.7_to_354", "354_to_442.8", "greater_than_442.8"],
+      "validation": {
+        "enum": ["less_than_132.7", "132.7_to_354", "354_to_442.8", "greater_than_442.8"]
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "fibrinogen",
+      "type": "string",
+      "required": true,
+      "description": "Fibrinogen level",
+      "options": ["greater_than_250", "less_than_or_equal_250"],
+      "validation": {
+        "enum": ["greater_than_250", "less_than_or_equal_250"]
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "ferritin",
+      "type": "string",
+      "required": true,
+      "description": "Ferritin level",
+      "options": ["less_than_2000", "2000_to_6000", "greater_than_6000"],
+      "validation": {
+        "enum": ["less_than_2000", "2000_to_6000", "greater_than_6000"]
+      },
+      "unit": "ng/mL"
+    },
+    {
+      "name": "ast_sgot",
+      "type": "string",
+      "required": true,
+      "description": "AST/SGOT level",
+      "options": ["less_than_30", "greater_than_or_equal_30"],
+      "validation": {
+        "enum": ["less_than_30", "greater_than_or_equal_30"]
+      },
+      "unit": "IU/L"
+    },
+    {
+      "name": "hemophagocytosis",
+      "type": "string",
+      "required": true,
+      "description": "Hemophagocytosis features on bone marrow aspirate",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "hscore",
+    "type": "integer",
+    "unit": "points",
+    "description": "HScore points for reactive hemophagocytic syndrome risk"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 90,
+        "stage": "Very Low Risk",
+        "description": "HScore ≤90",
+        "interpretation": "Probability of reactive hemophagocytic syndrome <1%. Diagnosis very unlikely based on current clinical and laboratory findings."
+      },
+      {
+        "min": 91,
+        "max": 168,
+        "stage": "Low Risk",
+        "description": "HScore 91-168",
+        "interpretation": "Low probability of reactive hemophagocytic syndrome (1-25%). Consider alternative diagnoses and monitor clinical evolution."
+      },
+      {
+        "min": 169,
+        "max": 250,
+        "stage": "Intermediate Risk", 
+        "description": "HScore 169-250",
+        "interpretation": "Intermediate probability of reactive hemophagocytic syndrome (25-99%). Further evaluation and specialist consultation recommended."
+      },
+      {
+        "min": 251,
+        "max": 337,
+        "stage": "High Risk",
+        "description": "HScore >250",
+        "interpretation": "High probability of reactive hemophagocytic syndrome >99%. Diagnosis highly likely. Immediate hematology consultation and treatment initiation recommended."
+      }
+    ]
+  },
+  "references": [
+    "Fardet L, Galicier L, Lambotte O, Marzac C, Aumont C, Chahwan D, Coppo P, Hie M. Development and validation of the HScore, a score for the diagnosis of reactive hemophagocytic syndrome. Arthritis Rheumatol. 2014 Sep;66(9):2613-20.",
+    "Debaugnies F, Mahadeb B, Ferster A, Meuleman N, Rozen L, Demulder A, Corazza F. Performances of the HScore in the diagnosis of hemophagocytic lymphohistiocytosis: a multicenter study. J Clin Med. 2021 May 17;10(10):2143."
+  ],
+  "formula": "HScore = sum of weighted points from 9 variables: immunosuppression (0-18), temperature (0-49), organomegaly (0-38), cytopenias (0-34), triglycerides (0-64), fibrinogen (0-30), ferritin (0-50), AST (0-19), hemophagocytosis (0-35)",
+  "notes": [
+    "Developed from multicenter retrospective cohort of 312 patients",
+    "Validates across adult and pediatric populations",
+    "Does not replace clinical judgment or bone marrow biopsy when indicated",
+    "Should be used in conjunction with expert hematology consultation",
+    "Reactive hemophagocytic syndrome is a life-threatening condition requiring urgent treatment",
+    "Original online calculator available at http://saintantoine.aphp.fr/score/",
+    "Differential diagnosis includes sepsis and hematologic malignancies"
+  ]
+}

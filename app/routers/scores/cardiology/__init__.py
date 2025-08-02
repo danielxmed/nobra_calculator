@@ -5,6 +5,7 @@ Cardiology score router endpoints
 from fastapi import APIRouter
 
 from .cha2ds2_vasc import router as cha2ds2_vasc_router
+from .subtle_anterior_stemi_4_variable import router as subtle_anterior_stemi_4_variable_router
 from .gwtg_heart_failure_risk_score import router as gwtg_heart_failure_risk_score_router
 from .h2fpef_score import router as h2fpef_score_router
 from .acc_aha_hf_staging import router as acc_aha_hf_staging_router
@@ -45,11 +46,28 @@ from .grogan_staging_attr_cm import router as grogan_staging_attr_cm_router
 from .hcm_risk_scd import router as hcm_risk_scd_router
 from .heart_pathway import router as heart_pathway_router
 from .heart_score import router as heart_score_router
+from .ie_mortality_risk_score import router as ie_mortality_risk_score_router
+from .interchest_rule import router as interchest_rule_router
+from .jones_criteria_acute_rheumatic_fever import router as jones_criteria_acute_rheumatic_fever_router
+from .killip_classification import router as killip_classification_router
+from .ldl_calculated import router as ldl_calculated_router
+from .maggic_risk_calculator import router as maggic_risk_calculator_router
+from .marburg_heart_score import router as marburg_heart_score_router
+from .mean_arterial_pressure import router as mean_arterial_pressure_router
+from .mehran_score import router as mehran_score_router
+from .modified_sgarbossa_criteria import router as modified_sgarbossa_criteria_router
+from .score2 import router as score2_router
+from .score2_diabetes import router as score2_diabetes_router
+from .score2_op import router as score2_op_router
+from .troponin_only_macs import router as troponin_only_macs_router
+from .us_medped_fh_criteria import router as us_medped_fh_criteria_router
+from .virsta_score import router as virsta_score_router
 
 # Create main specialty router
 router = APIRouter()
 
 router.include_router(cha2ds2_vasc_router)
+router.include_router(subtle_anterior_stemi_4_variable_router)
 router.include_router(gwtg_heart_failure_risk_score_router)
 router.include_router(h2fpef_score_router)
 router.include_router(acc_aha_hf_staging_router)
@@ -90,3 +108,19 @@ router.include_router(grogan_staging_attr_cm_router)
 router.include_router(hcm_risk_scd_router)
 router.include_router(heart_pathway_router)
 router.include_router(heart_score_router)
+router.include_router(ie_mortality_risk_score_router)
+router.include_router(interchest_rule_router)
+router.include_router(jones_criteria_acute_rheumatic_fever_router)
+router.include_router(killip_classification_router)
+router.include_router(ldl_calculated_router)
+router.include_router(maggic_risk_calculator_router)
+router.include_router(marburg_heart_score_router)
+router.include_router(mean_arterial_pressure_router)
+router.include_router(mehran_score_router)
+router.include_router(modified_sgarbossa_criteria_router)
+router.include_router(score2_router)
+router.include_router(score2_diabetes_router)
+router.include_router(score2_op_router)
+router.include_router(troponin_only_macs_router)
+router.include_router(us_medped_fh_criteria_router)
+router.include_router(virsta_score_router)

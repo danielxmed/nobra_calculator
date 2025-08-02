@@ -1,0 +1,85 @@
+{
+  "id": "years_algorithm_pe",
+  "title": "YEARS Algorithm for Pulmonary Embolism (PE)",
+  "description": "Simplified diagnostic algorithm to rule out pulmonary embolism in hemodynamically stable patients ≥18 years old by using variable D-dimer thresholds based on clinical criteria. The YEARS Algorithm reduces unnecessary CT pulmonary angiography by 14% compared to standard algorithms while maintaining safety.",
+  "category": "emergency",
+  "version": "2017",
+  "parameters": [
+    {
+      "name": "clinical_signs_dvt",
+      "type": "string",
+      "required": true,
+      "description": "Clinical signs of deep vein thrombosis (unilateral leg swelling, palpable deep venous thrombosis)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hemoptysis",
+      "type": "string", 
+      "required": true,
+      "description": "Hemoptysis (coughing up blood)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "pe_most_likely",
+      "type": "string",
+      "required": true,
+      "description": "PE is the most likely diagnosis (clinical judgment that alternative diagnoses are less likely than PE)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "d_dimer",
+      "type": "float",
+      "required": true,
+      "description": "D-dimer level in ng/mL FEU (fibrinogen equivalent units)",
+      "validation": {
+        "min": 0,
+        "max": 50000
+      },
+      "unit": "ng/mL FEU"
+    }
+  ],
+  "result": {
+    "name": "recommendation",
+    "type": "string",
+    "unit": "categorical",
+    "description": "Diagnostic recommendation based on YEARS criteria and D-dimer threshold"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "stage": "PE Excluded",
+        "description": "Pulmonary embolism excluded",
+        "interpretation": "No further imaging required. PE ruled out based on YEARS criteria and D-dimer threshold. 3-month VTE incidence of 0.43% for patients not undergoing CTPA."
+      },
+      {
+        "stage": "CTPA Required", 
+        "description": "CT pulmonary angiography indicated",
+        "interpretation": "CTPA (CT pulmonary angiography) is required to exclude pulmonary embolism. D-dimer exceeds the variable threshold based on YEARS criteria."
+      }
+    ]
+  },
+  "references": [
+    "van der Hulle T, Cheung WY, Kooij S, et al. Simplified diagnostic management of suspected pulmonary embolism (the YEARS study): a prospective, multicentre, cohort study. Lancet. 2017;390(10091):289-297. doi: 10.1016/S0140-6736(17)30885-1",
+    "Freund Y, Drogrey M, Miró Ò, et al. Association between pulmonary embolism response team activation and clinical outcomes. Am J Respir Crit Care Med. 2019;200(9):1167-1175.",
+    "van der Pol LM, Tromeur C, Bistervels IM, et al. Pregnancy-Adapted YEARS Algorithm for Diagnosis of Suspected Pulmonary Embolism. N Engl J Med. 2019;380(12):1139-1149. doi: 10.1056/NEJMoa1813865"
+  ],
+  "formula": "YEARS items assessed: (1) Clinical signs of DVT, (2) Hemoptysis, (3) PE most likely diagnosis. Variable D-dimer threshold: 0 items = 1000 ng/mL, ≥1 items = 500 ng/mL",
+  "notes": [
+    "For use in hemodynamically stable patients ≥18 years old with suspected PE",
+    "Not validated in patients on therapeutic anticoagulation",
+    "Not for use in patients with life expectancy <3 months",
+    "Pregnancy requires a modified algorithm (Pregnancy-Adapted YEARS)",
+    "The algorithm reduces CTPA by 14% compared to standard diagnostic algorithms",
+    "3-month VTE incidence of 0.43% for patients not undergoing CTPA",
+    "D-dimer must be measured in ng/mL FEU (fibrinogen equivalent units)"
+  ]
+}

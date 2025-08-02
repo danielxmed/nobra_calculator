@@ -1,0 +1,352 @@
+{
+  "id": "vacs_cci",
+  "title": "Veterans Aging Cohort Study-Charlson Comorbidity Index (VACS-CCI)",
+  "description": "Combines the Veterans Aging Cohort Study (VACS) Index with the Charlson Comorbidity Index to provide enhanced mortality risk prediction for patients with HIV. This integrated score incorporates HIV-specific biomarkers, general health indicators, and comprehensive comorbidity assessment to estimate 5-year all-cause mortality risk.",
+  "category": "infectious_disease",
+  "version": "2013",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 100
+      },
+      "unit": "years"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient sex for accurate eGFR calculation",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "race",
+      "type": "string",
+      "required": true,
+      "description": "Patient race for eGFR calculation (black race adjustment applied)",
+      "options": ["black", "non_black"],
+      "validation": {
+        "enum": ["black", "non_black"]
+      }
+    },
+    {
+      "name": "cd4_count",
+      "type": "integer",
+      "required": true,
+      "description": "CD4 T-cell count in cells/μL, primary marker of HIV-related immunodeficiency",
+      "validation": {
+        "min": 0,
+        "max": 2000
+      },
+      "unit": "cells/μL"
+    },
+    {
+      "name": "hiv_rna_log",
+      "type": "float",
+      "required": true,
+      "description": "HIV-1 RNA viral load in log10 copies/mL, measures viral replication and treatment effectiveness",
+      "validation": {
+        "min": 0.0,
+        "max": 7.0
+      },
+      "unit": "log10 copies/mL"
+    },
+    {
+      "name": "hemoglobin",
+      "type": "float",
+      "required": true,
+      "description": "Hemoglobin level in g/dL, marker of anemia and overall health status",
+      "validation": {
+        "min": 5.0,
+        "max": 20.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "platelets",
+      "type": "integer",
+      "required": true,
+      "description": "Platelet count in ×10³/μL, used in FIB-4 calculation for liver fibrosis assessment",
+      "validation": {
+        "min": 10,
+        "max": 1000
+      },
+      "unit": "×10³/μL"
+    },
+    {
+      "name": "ast",
+      "type": "integer",
+      "required": true,
+      "description": "Aspartate aminotransferase in U/L, liver enzyme used in FIB-4 calculation",
+      "validation": {
+        "min": 10,
+        "max": 500
+      },
+      "unit": "U/L"
+    },
+    {
+      "name": "alt",
+      "type": "integer",
+      "required": true,
+      "description": "Alanine aminotransferase in U/L, liver-specific enzyme used in FIB-4 calculation",
+      "validation": {
+        "min": 10,
+        "max": 500
+      },
+      "unit": "U/L"
+    },
+    {
+      "name": "creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Serum creatinine in mg/dL, kidney function marker used for eGFR calculation",
+      "validation": {
+        "min": 0.5,
+        "max": 10.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "hepatitis_c",
+      "type": "string",
+      "required": true,
+      "description": "Hepatitis C virus co-infection status",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "myocardial_infarction",
+      "type": "string",
+      "required": true,
+      "description": "History of myocardial infarction (Charlson Comorbidity Index component)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "congestive_heart_failure",
+      "type": "string",
+      "required": true,
+      "description": "History of congestive heart failure (Charlson Comorbidity Index component)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "peripheral_vascular_disease",
+      "type": "string",
+      "required": true,
+      "description": "History of peripheral vascular disease (Charlson Comorbidity Index component)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "cerebrovascular_disease",
+      "type": "string",
+      "required": true,
+      "description": "History of cerebrovascular disease/stroke (Charlson Comorbidity Index component)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "dementia",
+      "type": "string",
+      "required": true,
+      "description": "History of dementia (Charlson Comorbidity Index component)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "chronic_pulmonary_disease",
+      "type": "string",
+      "required": true,
+      "description": "History of chronic pulmonary disease (Charlson Comorbidity Index component)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "rheumatic_disease",
+      "type": "string",
+      "required": true,
+      "description": "History of rheumatic disease (Charlson Comorbidity Index component)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "peptic_ulcer_disease",
+      "type": "string",
+      "required": true,
+      "description": "History of peptic ulcer disease (Charlson Comorbidity Index component)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "mild_liver_disease",
+      "type": "string",
+      "required": true,
+      "description": "History of mild liver disease (Charlson Comorbidity Index component)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "diabetes",
+      "type": "string",
+      "required": true,
+      "description": "History of diabetes without complications (Charlson Comorbidity Index component)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "diabetes_complications",
+      "type": "string",
+      "required": true,
+      "description": "History of diabetes with complications (Charlson Comorbidity Index component)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hemiplegia",
+      "type": "string",
+      "required": true,
+      "description": "History of hemiplegia or paraplegia (Charlson Comorbidity Index component)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "renal_disease",
+      "type": "string",
+      "required": true,
+      "description": "History of moderate to severe renal disease (Charlson Comorbidity Index component)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "any_malignancy",
+      "type": "string",
+      "required": true,
+      "description": "History of any malignancy including leukemia and lymphoma (Charlson Comorbidity Index component)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "moderate_severe_liver_disease",
+      "type": "string",
+      "required": true,
+      "description": "History of moderate to severe liver disease (Charlson Comorbidity Index component)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "metastatic_solid_tumor",
+      "type": "string",
+      "required": true,
+      "description": "History of metastatic solid tumor (Charlson Comorbidity Index component)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "aids",
+      "type": "string",
+      "required": true,
+      "description": "AIDS diagnosis (Charlson Comorbidity Index component)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "vacs_cci_score",
+    "type": "float",
+    "unit": "percentage",
+    "description": "VACS-CCI mortality risk score as percentage (0-100%)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 25,
+        "stage": "Low Risk",
+        "description": "Low mortality risk",
+        "interpretation": "Low 5-year mortality risk. Routine HIV care and standard preventive measures appropriate. Regular monitoring and optimization of antiretroviral therapy recommended."
+      },
+      {
+        "min": 26,
+        "max": 50,
+        "stage": "Moderate Risk",
+        "description": "Moderate mortality risk",
+        "interpretation": "Moderate 5-year mortality risk. Enhanced monitoring and proactive management of comorbidities recommended. Consider intensified preventive interventions and specialist consultations."
+      },
+      {
+        "min": 51,
+        "max": 75,
+        "stage": "High Risk",
+        "description": "High mortality risk",
+        "interpretation": "High 5-year mortality risk. Intensive management required with multidisciplinary care approach. Aggressive treatment of all modifiable risk factors and frequent monitoring indicated."
+      },
+      {
+        "min": 76,
+        "max": 100,
+        "stage": "Very High Risk",
+        "description": "Very high mortality risk",
+        "interpretation": "Very high 5-year mortality risk. Maximum therapeutic interventions and comprehensive care coordination essential. Consider palliative care consultation and advance care planning discussions."
+      }
+    ]
+  },
+  "references": [
+    "Justice AC, Lasky E, McGinnis KA, Skanderson M, Conigliaro J, Fultz SL, et al. Medical disease and alcohol use among veterans with human immunodeficiency infection: A comparison of disease measurement strategies. Med Care. 2006 Apr;44(4):S52-60. doi: 10.1097/01.mlr.0000208140.93199.44.",
+    "McGinnis KA, Fultz SL, Skanderson M, Conigliaro J, Bryant K, Justice AC. Hepatocellular carcinoma and non-Hodgkin's lymphoma: the roles of HIV, hepatitis C infection, and alcohol abuse. J Clin Oncol. 2006 Nov 20;24(33):5005-9. doi: 10.1200/JCO.2006.05.7984.",
+    "Tate JP, Justice AC, Hughes MD, Bonnet F, Reiss P, Mocroft A, et al. An internationally generalizable risk index for mortality after one year of antiretroviral therapy. AIDS. 2013 Feb 20;27(4):563-72. doi: 10.1097/QAD.0b013e32835c5b67.",
+    "Charlson ME, Pompei P, Ales KL, MacKenzie CR. A new method of classifying prognostic comorbidity in longitudinal studies: development and validation. J Chronic Dis. 1987;40(5):373-83. doi: 10.1016/0021-9681(87)90171-8."
+  ],
+  "formula": "VACS-CCI = [(Linear Predictor + 2.5390222) / 10.6663937] × 100, where Linear Predictor combines VACS Index components (age, CD4, HIV RNA, hemoglobin, FIB-4, eGFR, HCV) with Charlson Comorbidity Index weighted scores",
+  "notes": [
+    "Combines Veterans Aging Cohort Study Index with Charlson Comorbidity Index for enhanced mortality prediction",
+    "Incorporates both HIV-specific biomarkers and comprehensive comorbidity assessment",
+    "FIB-4 calculated as (Age × AST) / (Platelets × √ALT) for liver fibrosis assessment",
+    "eGFR calculated using CKD-EPI equation incorporating creatinine, age, sex, and race",
+    "Charlson comorbidities are weighted according to their impact on mortality risk",
+    "Score should be recalculated with updated laboratory values and clinical status",
+    "Developed and validated in HIV-infected veteran populations",
+    "Use in conjunction with clinical judgment for comprehensive patient assessment"
+  ]
+}

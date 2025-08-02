@@ -1,0 +1,178 @@
+{
+  "id": "modified_nih_stroke_scale",
+  "title": "Modified NIH Stroke Scale/Score (mNIHSS)",
+  "description": "Shortened, validated version of NIH Stroke Scale for quantifying stroke severity with improved interrater reliability",
+  "category": "neurology",
+  "version": "Modified (Meyer 2002)",
+  "parameters": [
+    {
+      "name": "orientation_questions",
+      "type": "string",
+      "required": true,
+      "description": "Level of consciousness - orientation questions (month and age)",
+      "options": ["both_correct", "one_correct", "zero_correct"],
+      "validation": {
+        "enum": ["both_correct", "one_correct", "zero_correct"]
+      }
+    },
+    {
+      "name": "commands",
+      "type": "string",
+      "required": true,
+      "description": "Level of consciousness - commands (open/close eyes and grip/release hand)",
+      "options": ["both_correct", "one_correct", "zero_correct"],
+      "validation": {
+        "enum": ["both_correct", "one_correct", "zero_correct"]
+      }
+    },
+    {
+      "name": "horizontal_eye_movements",
+      "type": "string",
+      "required": true,
+      "description": "Horizontal extraocular movements",
+      "options": ["normal", "partial_gaze_palsy", "total_gaze_palsy"],
+      "validation": {
+        "enum": ["normal", "partial_gaze_palsy", "total_gaze_palsy"]
+      }
+    },
+    {
+      "name": "visual_fields",
+      "type": "string",
+      "required": true,
+      "description": "Visual field testing",
+      "options": ["no_visual_loss", "partial_hemianopia", "complete_hemianopia", "bilateral_hemianopia"],
+      "validation": {
+        "enum": ["no_visual_loss", "partial_hemianopia", "complete_hemianopia", "bilateral_hemianopia"]
+      }
+    },
+    {
+      "name": "left_arm_motor",
+      "type": "string",
+      "required": true,
+      "description": "Left arm motor drift assessment",
+      "options": ["no_drift", "drift_before_10_seconds", "falls_before_10_seconds", "no_effort_against_gravity", "no_movement"],
+      "validation": {
+        "enum": ["no_drift", "drift_before_10_seconds", "falls_before_10_seconds", "no_effort_against_gravity", "no_movement"]
+      }
+    },
+    {
+      "name": "right_arm_motor",
+      "type": "string",
+      "required": true,
+      "description": "Right arm motor drift assessment",
+      "options": ["no_drift", "drift_before_10_seconds", "falls_before_10_seconds", "no_effort_against_gravity", "no_movement"],
+      "validation": {
+        "enum": ["no_drift", "drift_before_10_seconds", "falls_before_10_seconds", "no_effort_against_gravity", "no_movement"]
+      }
+    },
+    {
+      "name": "left_leg_motor",
+      "type": "string",
+      "required": true,
+      "description": "Left leg motor drift assessment",
+      "options": ["no_drift", "drift_before_10_seconds", "falls_before_10_seconds", "no_effort_against_gravity", "no_movement"],
+      "validation": {
+        "enum": ["no_drift", "drift_before_10_seconds", "falls_before_10_seconds", "no_effort_against_gravity", "no_movement"]
+      }
+    },
+    {
+      "name": "right_leg_motor",
+      "type": "string",
+      "required": true,
+      "description": "Right leg motor drift assessment",
+      "options": ["no_drift", "drift_before_10_seconds", "falls_before_10_seconds", "no_effort_against_gravity", "no_movement"],
+      "validation": {
+        "enum": ["no_drift", "drift_before_10_seconds", "falls_before_10_seconds", "no_effort_against_gravity", "no_movement"]
+      }
+    },
+    {
+      "name": "sensation",
+      "type": "string",
+      "required": true,
+      "description": "Sensory function assessment",
+      "options": ["normal_no_sensory_loss", "abnormal_sensory_loss"],
+      "validation": {
+        "enum": ["normal_no_sensory_loss", "abnormal_sensory_loss"]
+      }
+    },
+    {
+      "name": "language_aphasia",
+      "type": "string",
+      "required": true,
+      "description": "Language and aphasia assessment",
+      "options": ["normal_no_aphasia", "mild_aphasia", "severe_aphasia", "mute_global_aphasia"],
+      "validation": {
+        "enum": ["normal_no_aphasia", "mild_aphasia", "severe_aphasia", "mute_global_aphasia"]
+      }
+    },
+    {
+      "name": "extinction_neglect",
+      "type": "string",
+      "required": true,
+      "description": "Extinction, inattention, or neglect",
+      "options": ["normal", "mild", "severe"],
+      "validation": {
+        "enum": ["normal", "mild", "severe"]
+      }
+    }
+  ],
+  "result": {
+    "name": "mnihss_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Modified NIH Stroke Scale score for stroke severity assessment"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 4,
+        "stage": "Minor Stroke",
+        "description": "Minimal neurological deficit",
+        "interpretation": "Minor stroke with minimal neurological impairment. Good functional outcome likely."
+      },
+      {
+        "min": 5,
+        "max": 15,
+        "stage": "Moderate Stroke",
+        "description": "Moderate neurological deficit",
+        "interpretation": "Moderate stroke severity. Variable functional outcomes depending on specific deficits and rehabilitation."
+      },
+      {
+        "min": 16,
+        "max": 20,
+        "stage": "Moderate-Severe Stroke",
+        "description": "Moderate to severe neurological deficit",
+        "interpretation": "Moderate to severe stroke with significant neurological impairment. Substantial rehabilitation likely needed."
+      },
+      {
+        "min": 21,
+        "max": 31,
+        "stage": "Severe Stroke",
+        "description": "Severe neurological deficit",
+        "interpretation": "Severe stroke with major neurological deficits. Poor functional outcome likely without intensive intervention."
+      }
+    ]
+  },
+  "references": [
+    "Meyer BC, Hemmen TM, Jackson CM, Lyden PD. Modified National Institutes of Health Stroke Scale for use in stroke clinical trials: preliminary reliability and validity. Stroke. 2002 Feb;33(2):328-33. doi: 10.1161/hs0202.102318.",
+    "Meyer BC, Lyden PD. The modified National Institutes of Health Stroke Scale: its time has come. Int J Stroke. 2009 Aug;4(4):267-73. doi: 10.1111/j.1747-4949.2009.00294.x.",
+    "Lyden P, Brott T, Tilley B, Welch KM, Mascha EJ, Levine S, Haley EC, Grotta J, Marler J. Improved reliability of the NIH Stroke Scale using video training. NINDS TPA Stroke Study Group. Stroke. 1994 Nov;25(11):2220-6. doi: 10.1161/01.str.25.11.2220.",
+    "Bruno A, Shah N, Lin C, Close B, Hess DC, Davis K, Baute V, Switzer JA, Waller JL, Nichols FT. Improving modified Rankin Scale assessment with a simplified questionnaire. Stroke. 2010 May;41(5):1048-50. doi: 10.1161/STROKEAHA.109.571562."
+  ],
+  "formula": "Sum of points from 11 parameters: Orientation (0-2), Commands (0-2), Eye Movements (0-2), Visual Fields (0-3), Left/Right Arm Motor (0-4 each), Left/Right Leg Motor (0-4 each), Sensation (0-1), Language (0-3), Extinction/Neglect (0-2). Range: 0-31 points.",
+  "notes": [
+    "Shortened version of original NIHSS with improved interrater reliability",
+    "Removes redundant items and poorly reliable components from original NIHSS",
+    "Maximum score 31 points (vs 42 for original NIHSS)",
+    "Takes approximately 6 minutes to complete (vs 7-10 minutes for NIHSS)",
+    "Better reliability when used via telemedicine or abstracted from records",
+    "Items removed: Level of consciousness alertness (1A), ataxia (7), and dysarthria (10)",
+    "Facial weakness combined with other motor assessments for efficiency",
+    "Lower scores indicate better neurological function and outcomes",
+    "Validated for use in clinical trials and acute stroke assessment",
+    "Can predict functional outcomes and mortality after stroke",
+    "Useful for monitoring neurological changes over time",
+    "Helps guide treatment decisions including tPA administration"
+  ]
+}

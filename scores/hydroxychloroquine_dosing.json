@@ -1,0 +1,102 @@
+{
+  "id": "hydroxychloroquine_dosing",
+  "title": "Hydroxychloroquine (Plaquenil) Dosing Calculator",
+  "description": "Calculates maximum daily hydroxychloroquine dose to reduce retinopathy risk. Uses actual body weight to determine safe dosing limits based on 2016 American Academy of Ophthalmology guidelines recommending ≤5 mg/kg/day to minimize retinal toxicity.",
+  "category": "rheumatology",
+  "version": "2016",
+  "parameters": [
+    {
+      "name": "weight_kg",
+      "type": "float",
+      "required": true,
+      "description": "Patient's actual body weight in kilograms",
+      "unit": "kg",
+      "validation": {
+        "min": 20,
+        "max": 300
+      }
+    },
+    {
+      "name": "indication",
+      "type": "string",
+      "required": true,
+      "description": "Clinical indication for hydroxychloroquine therapy",
+      "options": [
+        "rheumatoid_arthritis",
+        "systemic_lupus_erythematosus",
+        "malaria_prophylaxis",
+        "malaria_treatment",
+        "other_autoimmune"
+      ],
+      "validation": {
+        "enum": [
+          "rheumatoid_arthritis",
+          "systemic_lupus_erythematosus", 
+          "malaria_prophylaxis",
+          "malaria_treatment",
+          "other_autoimmune"
+        ]
+      }
+    },
+    {
+      "name": "risk_factors",
+      "type": "string",
+      "required": true,
+      "description": "Presence of risk factors for retinopathy (age >65, renal disease, liver disease, previous retinal disease)",
+      "options": ["none", "one_or_more"],
+      "validation": {
+        "enum": ["none", "one_or_more"]
+      }
+    }
+  ],
+  "result": {
+    "name": "max_daily_dose",
+    "type": "float",
+    "unit": "mg",
+    "description": "Maximum recommended daily dose of hydroxychloroquine"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 200,
+        "stage": "Low Dose",
+        "description": "≤200 mg daily",
+        "interpretation": "Very low risk of retinopathy. Suitable for patients with multiple risk factors or lower weight. Regular ophthalmologic screening still recommended per guidelines."
+      },
+      {
+        "min": 201,
+        "max": 400,
+        "stage": "Standard Dose",
+        "description": "201-400 mg daily",
+        "interpretation": "Standard therapeutic dose with low retinopathy risk when ≤5 mg/kg actual weight. Appropriate for most patients with rheumatoid arthritis or lupus. Annual eye exams recommended after 5 years of use."
+      },
+      {
+        "min": 401,
+        "max": 600,
+        "stage": "High Dose",
+        "description": ">400 mg daily",
+        "interpretation": "Higher dose requiring careful monitoring. Ensure dose remains ≤5 mg/kg actual weight. Consider dose reduction if possible while maintaining therapeutic efficacy. More frequent ophthalmologic monitoring may be indicated."
+      }
+    ]
+  },  
+  "references": [
+    "Marmor MF, Kellner U, Lai TY, Melles RB, Mieler WF. Recommendations on Screening for Chloroquine and Hydroxychloroquine Retinopathy (2016 Revision). Ophthalmology. 2016 Jun;123(6):1386-94.",
+    "Melles RB, Marmor MF. The risk of toxic retinopathy in patients on long-term hydroxychloroquine therapy. JAMA Ophthalmol. 2014 Dec;132(12):1453-60.",
+    "Jorge AM, Melles RB, Zhang Y, Lu N, Rai SK, Young LH, Choi HK. Hydroxychloroquine retinopathy--implications of research advances for rheumatology care. Nat Rev Rheumatol. 2018 Dec;14(12):693-703."
+  ],
+  "formula": "Maximum daily dose (mg) = actual body weight (kg) × 5 mg/kg. Consider dose reduction if risk factors present or for long-term use (>5 years).",
+  "notes": [
+    "2016 AAO guidelines reduced maximum dose from 6.5 mg/kg to 5 mg/kg based on retinopathy evidence",
+    "Actual body weight preferred over ideal body weight for dose calculation",
+    "Doses >5 mg/kg actual weight significantly increase retinopathy risk",
+    "10-year retinopathy risk: 2% (≤5 mg/kg) vs 10% (>5 mg/kg)",
+    "20-year retinopathy risk: 20% (≤5 mg/kg) vs 40% (>5 mg/kg)",
+    "Risk factors: age >65, renal disease, liver disease, previous retinal disease",
+    "Baseline ophthalmologic exam recommended before starting therapy",
+    "Annual screening recommended after 5 years of use (earlier if risk factors)",
+    "Consider dose reduction for patients with risk factors even if within weight limits",
+    "Cumulative dose and duration of therapy also contribute to retinopathy risk",
+    "Retinopathy may progress even after drug discontinuation"
+  ]
+}

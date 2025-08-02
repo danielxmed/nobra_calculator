@@ -1,0 +1,75 @@
+{
+  "id": "local_anesthetic_dosing_calculator",
+  "title": "Local Anesthetic Dosing Calculator",
+  "description": "Doses local anesthetics to help avoid toxic doses and prevent Local Anesthetic Systemic Toxicity (LAST)",
+  "category": "emergency",
+  "version": "2020",
+  "parameters": [
+    {
+      "name": "drug_type",
+      "type": "string",
+      "required": true,
+      "description": "Type of local anesthetic drug",
+      "options": ["bupivacaine", "lidocaine", "mepivacaine", "ropivacaine"],
+      "validation": {
+        "enum": ["bupivacaine", "lidocaine", "mepivacaine", "ropivacaine"]
+      },
+      "unit": ""
+    },
+    {
+      "name": "patient_weight",
+      "type": "float",
+      "required": true,
+      "description": "Patient weight in kg (use ideal body weight for most adults: 60-75 kg depending on height and sex)",
+      "validation": {
+        "min": 1.0,
+        "max": 200.0
+      },
+      "unit": "kg"
+    },
+    {
+      "name": "concentration_percentage",
+      "type": "float",
+      "required": true,
+      "description": "Concentration of local anesthetic as percentage (e.g., 1.0 for 1% solution = 10 mg/mL)",
+      "validation": {
+        "min": 0.1,
+        "max": 5.0
+      },
+      "unit": "%"
+    }
+  ],
+  "result": {
+    "name": "maximum_dose",
+    "type": "object",
+    "unit": "mg and mL",
+    "description": "Maximum safe dose in both mg and mL to prevent LAST"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0.0,
+        "max": 1000.0,
+        "stage": "Safe Dosing Range",
+        "description": "Maximum safe dose calculated",
+        "interpretation": "The calculated dose is within safe limits to prevent Local Anesthetic Systemic Toxicity (LAST). Always consider patient-specific factors including age, hepatic function, cardiac status, and injection site."
+      }
+    ]
+  },
+  "references": [
+    "Neal JM, Woodward CM, Harrison TK. The American Society of Regional Anesthesia and Pain Medicine Checklist for Managing Local Anesthetic Systemic Toxicity: 2017 Version. Reg Anesth Pain Med. 2018 Feb;43(2):150-153. doi: 10.1097/AAP.0000000000000726.",
+    "El-Boghdadly K, Pawa A, Chin KJ. Local anesthetic systemic toxicity: current perspectives. Local Reg Anesth. 2018 Aug 8;11:35-44. doi: 10.2147/LRA.S154512.",
+    "Berde CB, Strichartz GR. Local anesthetics. In: Miller RD, ed. Miller's Anesthesia. 6th ed. Philadelphia, PA: Elsevier Churchill Livingstone; 2005:573-603."
+  ],
+  "formula": "Maximum allowable subcutaneous dose (mg) = Maximum dose per kg × Patient weight (kg). Volume (mL) = Maximum dose (mg) / Concentration (mg/mL), where Concentration (mg/mL) = Percentage × 10.",
+  "notes": [
+    "Maximum doses per drug: Bupivacaine 2 mg/kg, Lidocaine 4.5 mg/kg, Mepivacaine 4.4 mg/kg, Ropivacaine 3 mg/kg",
+    "Use ideal body weight for most adults (60-75 kg depending on height and sex)",
+    "These doses are for subcutaneous infiltration and nerve blocks",
+    "Multiple variables may influence patient's risk of developing LAST including age, cardiac status, hepatic function",
+    "Always double-check dosage calculations before administration",
+    "Consider lower doses in elderly patients, those with cardiac disease, or hepatic impairment",
+    "Concentration conversion: 1% = 10 mg/mL, 0.5% = 5 mg/mL, 0.25% = 2.5 mg/mL",
+    "Signs of LAST include CNS symptoms (seizures, altered mental status) and cardiovascular symptoms (arrhythmias, cardiac arrest)"
+  ]
+}

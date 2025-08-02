@@ -1,0 +1,265 @@
+{
+  "id": "mrc_icu_score",
+  "title": "Medication Regimen Complexity-Intensive Care Unit (MRC-ICU) Score",
+  "description": "Predicts patient outcomes (mortality, length of stay), ICU complications (fluid overload), and pharmacist workload (amount and intensity of intervention) in the ICU. The MRC-ICU is an objective, quantitative scoring tool that describes the relative complexity of medication regimens in critically ill patients.",
+  "category": "emergency",
+  "version": "2019",
+  "parameters": [
+    {
+      "name": "aminoglycosides",
+      "type": "integer",
+      "required": true,
+      "description": "Number of aminoglycosides (e.g., gentamicin, tobramycin, amikacin). Multiply by 3 points each.",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "unit": "medications"
+    },
+    {
+      "name": "amphotericin_b",
+      "type": "string",
+      "required": true,
+      "description": "Presence of amphotericin B",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "antiarrhythmics",
+      "type": "integer",
+      "required": true,
+      "description": "Number of antiarrhythmic medications. Multiply by 1 point each.",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "unit": "medications"
+    },
+    {
+      "name": "anticoagulants",
+      "type": "integer",
+      "required": true,
+      "description": "Number of anticoagulant medications. Multiply by 1 point each.",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "unit": "medications"
+    },
+    {
+      "name": "anticonvulsants",
+      "type": "integer",
+      "required": true,
+      "description": "Number of anticonvulsant medications. Multiply by 3 points each.",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "unit": "medications"
+    },
+    {
+      "name": "argatroban",
+      "type": "string",
+      "required": true,
+      "description": "Presence of argatroban",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "azole_antifungals",
+      "type": "integer",
+      "required": true,
+      "description": "Number of azole antifungal medications. Multiply by 2 points each.",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "unit": "medications"
+    },
+    {
+      "name": "blood_products",
+      "type": "integer",
+      "required": true,
+      "description": "Number of blood products. Multiply by 2 points each.",
+      "validation": {
+        "min": 0,
+        "max": 10
+      },
+      "unit": "products"
+    },
+    {
+      "name": "chemotherapy",
+      "type": "integer",
+      "required": true,
+      "description": "Number of chemotherapy agents. Multiply by 3 points each.",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "unit": "medications"
+    },
+    {
+      "name": "clozapine",
+      "type": "string",
+      "required": true,
+      "description": "Presence of clozapine",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "digoxin",
+      "type": "string",
+      "required": true,
+      "description": "Presence of digoxin",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "vancomycin",
+      "type": "string",
+      "required": true,
+      "description": "Presence of vancomycin",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "continuous_infusion_crystalloids",
+      "type": "string",
+      "required": true,
+      "description": "Continuous infusion of crystalloid fluids",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "vasopressors_inotropes",
+      "type": "integer",
+      "required": true,
+      "description": "Number of vasopressor/inotrope infusions (e.g., norepinephrine, epinephrine, dopamine). Multiply by 1 point each.",
+      "validation": {
+        "min": 0,
+        "max": 5
+      },
+      "unit": "infusions"
+    },
+    {
+      "name": "continuous_opioid_infusions",
+      "type": "integer",
+      "required": true,
+      "description": "Number of continuous opioid infusions (e.g., fentanyl, morphine). Multiply by 2 points each.",
+      "validation": {
+        "min": 0,
+        "max": 3
+      },
+      "unit": "infusions"
+    },
+    {
+      "name": "continuous_sedative_infusions",
+      "type": "integer",
+      "required": true,
+      "description": "Number of continuous sedative infusions (e.g., propofol, midazolam, dexmedetomidine). Multiply by 2 points each.",
+      "validation": {
+        "min": 0,
+        "max": 3
+      },
+      "unit": "infusions"
+    },
+    {
+      "name": "parenteral_nutrition",
+      "type": "string",
+      "required": true,
+      "description": "Presence of parenteral nutrition (TPN)",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "insulin_infusion",
+      "type": "string",
+      "required": true,
+      "description": "Continuous insulin infusion",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "prn_opioids",
+      "type": "string",
+      "required": true,
+      "description": "As-needed (PRN) opioid medications",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "other_high_complexity_meds",
+      "type": "integer",
+      "required": true,
+      "description": "Number of other high-complexity medications not listed above (estimate)",
+      "validation": {
+        "min": 0,
+        "max": 20
+      },
+      "unit": "medications"
+    }
+  ],
+  "result": {
+    "name": "mrc_icu_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total MRC-ICU score indicating medication regimen complexity"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 9,
+        "stage": "Low Complexity",
+        "description": "Low medication regimen complexity",
+        "interpretation": "Lower MRC-ICU score suggests relatively simple medication regimen with lower anticipated pharmacist workload. Associated with lower mortality risk and shorter ICU length of stay."
+      },
+      {
+        "min": 10,
+        "max": 19,
+        "stage": "Moderate Complexity",
+        "description": "Moderate medication regimen complexity",
+        "interpretation": "Moderate MRC-ICU score indicates intermediate medication regimen complexity. Mean score in validation studies was approximately 10.3. Each 1-point increase is associated with 7% increased odds of mortality and 0.25 day increase in ICU LOS."
+      },
+      {
+        "min": 20,
+        "max": 999,
+        "stage": "High Complexity",
+        "description": "High medication regimen complexity",
+        "interpretation": "High MRC-ICU score indicates complex medication regimen requiring intensive pharmacist monitoring and intervention. Associated with significantly increased mortality risk, longer ICU stay, and need for extensive pharmacist workload."
+      }
+    ]
+  },
+  "references": [
+    "Gwynn ME, Poisson MO, Hatton KM, Donihi AC, Campbell MJ, Al-Mamun MA, et al. Development and validation of a medication regimen complexity scoring tool for critically ill patients. Am J Health Syst Pharm. 2019 May 17;76(Supplement_2):S34-S40. doi: 10.1093/ajhp/zxy054.",
+    "Sikora A, Ayyala D, Rech MA, Donihi AC, Campbell M, Al-Mamun MA. Impact of Pharmacists to Improve Patient Care in the Critically Ill: A Large Multicenter Analysis Using Meaningful Metrics With the Medication Regimen Complexity-ICU (MRC-ICU) Score. Crit Care Med. 2022 Sep 1;50(9):1318-1328. doi: 10.1097/CCM.0000000000005585.",
+    "Olney K, Rech M, Campbell M, Prunty J, Mancuso S, Al-Mamun MA, et al. Development of Machine Learning Models to Validate a Medication Regimen Complexity Scoring Tool for Critically Ill Patients. Ann Pharmacother. 2021 Apr;55(4):421-429. doi: 10.1177/1060028020959042."
+  ],
+  "formula": "MRC-ICU = Sum of all weighted medication scores. Each medication category has specific point values (1-3 points), with some categories multiplied by the number of medications in that category.",
+  "notes": [
+    "The complete MRC-ICU tool consists of 39 discrete medication items.",
+    "Score should be calculated at 24-hour intervals during ICU stay.",
+    "Higher scores correlate with increased mortality, longer ICU length of stay, and greater pharmacist workload.",
+    "Every 1-point increase in MRC-ICU score is associated with 7% increased odds of mortality.",
+    "This simplified version includes the most commonly used high-impact medications.",
+    "For complete scoring, refer to the full 39-item validated tool."
+  ]
+}

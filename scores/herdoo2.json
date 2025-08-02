@@ -1,0 +1,84 @@
+{
+  "id": "herdoo2",
+  "title": "HERDOO2 Rule for Discontinuing Anticoagulation in Unprovoked VTE",
+  "description": "Identifies low-risk women who can safely discontinue anticoagulation after completing treatment for unprovoked venous thromboembolism (VTE). The rule helps clinicians decide which patients can stop anticoagulation therapy after the initial treatment period.",
+  "category": "hematology",
+  "version": "2008",
+  "parameters": [
+    {
+      "name": "post_thrombotic_signs",
+      "type": "string",
+      "required": true,
+      "description": "Hyperpigmentation, edema, or redness in either leg",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "d_dimer_level",
+      "type": "string",
+      "required": true,
+      "description": "D-dimer level measured while on anticoagulation",
+      "options": ["normal", "elevated"],
+      "validation": {
+        "enum": ["normal", "elevated"]
+      }
+    },
+    {
+      "name": "bmi",
+      "type": "string",
+      "required": true,
+      "description": "Body Mass Index",
+      "options": ["under_30", "30_or_over"],
+      "validation": {
+        "enum": ["under_30", "30_or_over"]
+      }
+    },
+    {
+      "name": "age",
+      "type": "string",
+      "required": true,
+      "description": "Patient age",
+      "options": ["under_65", "65_or_over"],
+      "validation": {
+        "enum": ["under_65", "65_or_over"]
+      }
+    }
+  ],
+  "result": {
+    "name": "herdoo2_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "HERDOO2 score to determine risk of VTE recurrence"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 1,
+        "stage": "Low Risk",
+        "description": "Can discontinue anticoagulation",
+        "interpretation": "Low risk of VTE recurrence (3.0% annual risk). Anticoagulation can be safely discontinued after completing initial treatment period."
+      },
+      {
+        "min": 2,
+        "max": 4,
+        "stage": "Not Low Risk",
+        "description": "Continue anticoagulation",
+        "interpretation": "Not low risk for VTE recurrence (7.4% annual risk). Continued anticoagulation is recommended as the risk of recurrence outweighs the bleeding risk."
+      }
+    ]
+  },
+  "references": [
+    "Rodger MA, Kahn SR, Wells PS, Anderson DA, Chagnon I, Le Gal G, et al. Identifying unprovoked thromboembolism patients at low risk for recurrence who can discontinue anticoagulant therapy. CMAJ. 2008 Aug 26;179(5):417-26.",
+    "Rodger MA, Le Gal G, Anderson DR, Schmidt J, Pernod G, Kahn SR, et al.; REVERSE II Study Investigators. Validating the HERDOO2 rule to guide treatment duration for women with unprovoked venous thrombosis: multinational prospective cohort management study. BMJ. 2017 Mar 17;356:j1065."
+  ],
+  "formula": "Score = Post-thrombotic signs (1 point) + D-dimer ≥250 μg/L (1 point) + BMI ≥30 kg/m² (1 point) + Age ≥65 years (1 point)",
+  "notes": [
+    "Only applicable to women with first unprovoked VTE who have completed 5-12 months of anticoagulation",
+    "D-dimer should be measured while patient is still on anticoagulation",
+    "Not applicable to men or women with provoked VTE",
+    "Post-thrombotic signs include hyperpigmentation, edema, or redness in either leg"
+  ]
+}

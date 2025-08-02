@@ -1,0 +1,125 @@
+{
+  "id": "mantle_cell_lymphoma_international_prognostic_index",
+  "title": "Mantle Cell Lymphoma International Prognostic Index (MIPI)",
+  "description": "Predicts survival in mantle cell lymphoma patients using age, performance status, lactate dehydrogenase level, and white blood cell count. More specific to mantle cell lymphoma than the International Prognostic Index (IPI). Stratifies patients into low, intermediate, and high risk categories for prognostic planning and treatment decisions.",
+  "category": "hematology",
+  "version": "2008",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years. Age is a continuous variable in the MIPI formula and significantly impacts prognosis",
+      "validation": {
+        "min": 18,
+        "max": 100
+      },
+      "unit": "years"
+    },
+    {
+      "name": "ecog_performance_status",
+      "type": "string",
+      "required": true,
+      "description": "ECOG Performance Status scale measuring patient's functional status and ability to perform daily activities",
+      "validation": {
+        "enum": ["0_to_1", "2_to_4"]
+      },
+      "options": ["0_to_1", "2_to_4"]
+    },
+    {
+      "name": "serum_ldh",
+      "type": "float",
+      "required": true,
+      "description": "Serum lactate dehydrogenase level in U/L. Elevated LDH indicates tissue damage, cellular turnover, or disease burden",
+      "validation": {
+        "min": 50,
+        "max": 10000
+      },
+      "unit": "U/L"
+    },
+    {
+      "name": "ldh_upper_limit_normal",
+      "type": "float",
+      "required": true,
+      "description": "Laboratory's upper limit of normal for serum LDH in U/L. Typically ranges from 200-250 U/L depending on laboratory and methodology",
+      "validation": {
+        "min": 150,
+        "max": 400
+      },
+      "unit": "U/L"
+    },
+    {
+      "name": "white_blood_cell_count",
+      "type": "float",
+      "required": true,
+      "description": "White blood cell count in cells per microliter (×10³/μL). Elevated WBC may indicate disease burden or bone marrow involvement",
+      "validation": {
+        "min": 1.0,
+        "max": 500.0
+      },
+      "unit": "×10³/μL"
+    },
+    {
+      "name": "ki67_index",
+      "type": "float",
+      "required": false,
+      "description": "Ki-67 proliferation index as percentage (0-100%). Optional parameter for calculating biological MIPI (MIPIb). Higher Ki-67 indicates more aggressive disease",
+      "validation": {
+        "min": 0,
+        "max": 100
+      },
+      "unit": "%"
+    }
+  ],
+  "result": {
+    "name": "mipi_score",
+    "type": "float",
+    "unit": "points",
+    "description": "MIPI score value used for risk stratification. Score <5.7 indicates low risk, 5.7-6.2 intermediate risk, ≥6.2 high risk"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 5.7,
+        "stage": "Low Risk",
+        "description": "Low risk for poor prognosis",
+        "interpretation": "Low risk group with 5-year overall survival rate of approximately 60%. Median survival not reached in original studies. These patients may be candidates for less intensive treatment approaches or observation in selected cases. Consider standard chemotherapy regimens such as R-CHOP or R-bendamustine."
+      },
+      {
+        "min": 5.7,
+        "max": 6.2,
+        "stage": "Intermediate Risk",
+        "description": "Intermediate risk for poor prognosis",
+        "interpretation": "Intermediate risk group with median survival of approximately 51 months. These patients typically require systemic treatment at diagnosis. Consider intensive chemotherapy regimens such as R-CHOP, R-bendamustine, or clinical trial participation. May benefit from consolidation with autologous stem cell transplantation in first remission."
+      },
+      {
+        "min": 6.2,
+        "max": 20,
+        "stage": "High Risk",
+        "description": "High risk for poor prognosis",
+        "interpretation": "High risk group with median survival of approximately 29 months. These patients require immediate intensive treatment. Consider aggressive chemotherapy regimens, clinical trial participation, or novel targeted therapies. Strong consideration for consolidation with autologous stem cell transplantation in first remission. May benefit from maintenance therapy or experimental approaches."
+      }
+    ]
+  },
+  "references": [
+    "Hoster E, Dreyling M, Klapper W, Gisselbrecht C, van Hoof A, Kluin-Nelemans HC, et al. A new prognostic index (MIPI) for patients with advanced-stage mantle cell lymphoma. Blood. 2008 Jan 15;111(2):558-65. doi: 10.1182/blood-2007-06-095331.",
+    "Hoster E, Klapper W, Hermine O, Kluin-Nelemans HC, Walewski J, Trneny M, et al. Confirmation of the mantle-cell lymphoma International Prognostic Index in randomized trials of the European Mantle-Cell Lymphoma Network. J Clin Oncol. 2014 May 1;32(13):1338-46. doi: 10.1200/JCO.2013.52.2466.",
+    "Geisler CH, Kolstad A, Laurell A, Andersen NS, Pedersen LB, Jerkeman M, et al. Long-term progression-free survival of mantle cell lymphoma after intensive front-line immunochemotherapy with in vivo-purged stem cell rescue: a nonrandomized phase 2 multicenter study by the Nordic Lymphoma Group. Blood. 2008 Oct 1;112(7):2687-93. doi: 10.1182/blood-2008-03-147025."
+  ],
+  "formula": "MIPI = (0.03535 × age in years) + 0.6978 (if ECOG PS 2-4) + [1.367 × log10(LDH/ULN)] + [0.9393 × log10(WBC in ×10³/μL)]. MIPIb (biological MIPI) = MIPI + (0.02142 × Ki-67 index %) when Ki-67 is available.",
+  "notes": [
+    "Developed specifically for mantle cell lymphoma, more specific than the International Prognostic Index (IPI)",
+    "Based on 455 advanced stage MCL patients treated in European clinical trials",
+    "Approximately 18% of original cohort received high-dose therapy with stem cell transplantation",
+    "Ki-67 proliferation index provides additional prognostic information when available (MIPIb)",
+    "Most mantle cell lymphoma patients require treatment at diagnosis regardless of risk group",
+    "May help guide treatment intensity and consideration for stem cell transplantation",
+    "Should be used in conjunction with other clinical factors and patient preferences",
+    "Performance status significantly impacts prognosis independent of other factors",
+    "LDH and WBC reflect disease burden and biological activity",
+    "Age remains an important prognostic factor even in the era of modern therapy",
+    "Risk stratification may influence clinical trial eligibility and treatment selection",
+    "Regular reassessment during treatment course is important for treatment modifications"
+  ]
+}

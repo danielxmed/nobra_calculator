@@ -1,0 +1,77 @@
+{
+  "id": "hints",
+  "title": "HINTS for Stroke in Acute Vestibular Syndrome",
+  "description": "Helps differentiate between peripheral and central causes of acute vestibular syndrome, primarily to identify strokes affecting the posterior circulation. Uses three bedside examination components: Head Impulse test, Nystagmus evaluation, and Test of Skew.",
+  "category": "neurology",
+  "version": "2009",
+  "parameters": [
+    {
+      "name": "head_impulse_test",
+      "type": "string",
+      "required": true,
+      "description": "Head Impulse Test (h-HIT) result - evaluates vestibulo-ocular reflex",
+      "options": ["normal", "abnormal", "not_testable"],
+      "validation": {
+        "enum": ["normal", "abnormal", "not_testable"]
+      }
+    },
+    {
+      "name": "nystagmus",
+      "type": "string",
+      "required": true,
+      "description": "Nystagmus observation pattern",
+      "options": ["direction_fixed", "direction_changing", "not_testable"],
+      "validation": {
+        "enum": ["direction_fixed", "direction_changing", "not_testable"]
+      }
+    },
+    {
+      "name": "test_of_skew",
+      "type": "string",
+      "required": true,
+      "description": "Test of Skew - presence of vertical ocular misalignment",
+      "options": ["absent", "present", "not_testable"],
+      "validation": {
+        "enum": ["absent", "present", "not_testable"]
+      }
+    }
+  ],
+  "result": {
+    "name": "hints_result",
+    "type": "string",
+    "description": "HINTS exam interpretation"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0,
+        "stage": "Benign HINTS",
+        "description": "Suggests peripheral cause",
+        "interpretation": "Pattern consistent with peripheral vestibular disorder. All three findings point to peripheral etiology: abnormal head impulse test, direction-fixed horizontal nystagmus, and absent skew deviation. Consider vestibular neuritis or labyrinthitis."
+      },
+      {
+        "min": 1,
+        "max": 1,
+        "stage": "Dangerous HINTS",
+        "description": "Suggests central cause",
+        "interpretation": "Pattern concerning for central pathology, particularly posterior circulation stroke. One or more findings suggest central etiology. Strongly consider neuroimaging and stroke workup. Note that early MRI (<48 hours) may be falsely negative for posterior circulation strokes."
+      }
+    ]
+  },
+  "references": [
+    "Kattah JC, Talkad AV, Wang DZ, Hsieh YH, Newman-Toker DE. HINTS to diagnose stroke in the acute vestibular syndrome: three-step bedside oculomotor examination more sensitive than early MRI diffusion-weighted imaging. Stroke. 2009 Nov;40(11):3504-10.",
+    "Newman-Toker DE, Kerber KA, Hsieh YH, Pula JH, Omron R, Saber Tehrani AS, et al. HINTS outperforms ABCD2 to screen for stroke in acute continuous vertigo and dizziness. Acad Emerg Med. 2013 Oct;20(10):986-96.",
+    "Kerber KA, Burke JF, Brown DL, Meurer WJ, Smith MA, Lisabeth LD, et al. Stroke risk stratification in acute dizziness presentations: A prospective imaging-based study. Neurology. 2015 Nov 24;85(21):1869-78."
+  ],
+  "formula": "Benign HINTS = Abnormal h-HIT + Direction-fixed nystagmus + Absent skew; Dangerous HINTS = Any central finding present",
+  "notes": [
+    "Only use in patients with continuous vertigo lasting >24 hours",
+    "Not applicable for episodic vertigo or dizziness",
+    "Sensitivity is reduced when performed by non-specialists",
+    "Cannot be used if patient cannot cooperate with examination",
+    "Early MRI (<48 hours) may be falsely negative for posterior circulation stroke",
+    "Consider patient's vascular risk factors in interpretation",
+    "Any 'not testable' finding should be considered concerning for central cause"
+  ]
+}

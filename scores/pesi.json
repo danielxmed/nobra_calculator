@@ -1,0 +1,189 @@
+{
+  "id": "pesi",
+  "title": "Pulmonary Embolism Severity Index (PESI)",
+  "description": "Predicts 30-day outcome of patients with pulmonary embolism using 11 clinical criteria. This validated prognostic tool stratifies mortality risk into five severity classes to guide treatment decisions and disposition planning, particularly identifying low-risk patients suitable for outpatient management.",
+  "category": "emergency",
+  "version": "2005",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years (contributes absolute value as points)",
+      "validation": {
+        "min": 18,
+        "max": 120
+      },
+      "unit": "years"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient sex",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "cancer_history",
+      "type": "string",
+      "required": true,
+      "description": "History of cancer (active cancer or cancer treatment within 6 months)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "heart_failure_history",
+      "type": "string",
+      "required": true,
+      "description": "History of heart failure",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "chronic_lung_disease_history",
+      "type": "string",
+      "required": true,
+      "description": "History of chronic lung disease (COPD, interstitial lung disease, etc.)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "heart_rate_110_or_higher",
+      "type": "string",
+      "required": true,
+      "description": "Heart rate 110 beats per minute or higher",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "systolic_bp_less_than_100",
+      "type": "string",
+      "required": true,
+      "description": "Systolic blood pressure less than 100 mmHg",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "respiratory_rate_30_or_higher",
+      "type": "string",
+      "required": true,
+      "description": "Respiratory rate 30 breaths per minute or higher",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "temperature_less_than_36",
+      "type": "string",
+      "required": true,
+      "description": "Temperature less than 36°C (96.8°F)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "altered_mental_status",
+      "type": "string",
+      "required": true,
+      "description": "Altered mental status (confusion, disorientation, somnolence, coma)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "oxygen_saturation_less_than_90",
+      "type": "string",
+      "required": true,
+      "description": "Oxygen saturation less than 90% on room air",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "pesi_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "PESI score determining pulmonary embolism severity and mortality risk class"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 65,
+        "stage": "Class I (Very Low Risk)",
+        "description": "Very low 30-day mortality risk",
+        "interpretation": "Very low risk for mortality (0.0-1.6%). Patient may be suitable for outpatient treatment with proper anticoagulation and close follow-up. Consider discharge with oral anticoagulation if no other contraindications."
+      },
+      {
+        "min": 66,
+        "max": 85,
+        "stage": "Class II (Low Risk)",
+        "description": "Low 30-day mortality risk",
+        "interpretation": "Low risk for mortality (1.7-3.5%). Patient may be suitable for outpatient treatment or brief observation. Consider discharge with appropriate anticoagulation therapy and close outpatient follow-up."
+      },
+      {
+        "min": 86,
+        "max": 105,
+        "stage": "Class III (Intermediate Risk)",
+        "description": "Intermediate 30-day mortality risk",
+        "interpretation": "Intermediate risk for mortality (3.2-7.1%). Consider inpatient management with standard monitoring and anticoagulation therapy. Requires careful evaluation for outpatient management eligibility."
+      },
+      {
+        "min": 106,
+        "max": 125,
+        "stage": "Class IV (High Risk)",
+        "description": "High 30-day mortality risk",
+        "interpretation": "High risk for mortality (4.0-11.4%). Requires inpatient management with close monitoring and aggressive anticoagulation. Consider advanced therapies if clinically appropriate and monitor for complications."
+      },
+      {
+        "min": 126,
+        "max": 999,
+        "stage": "Class V (Very High Risk)",
+        "description": "Very high 30-day mortality risk",
+        "interpretation": "Very high risk for mortality (10.0-24.5%). Requires immediate inpatient management with intensive monitoring. Consider ICU care, advanced therapies (thrombolysis, embolectomy), and aggressive supportive measures."
+      }
+    ]
+  },
+  "references": [
+    "Aujesky D, Obrosky DS, Stone RA, Auble TE, Perrier A, Cornuz J, et al. Derivation and validation of a prognostic model for pulmonary embolism. Am J Respir Crit Care Med. 2005;172(8):1041-6. doi: 10.1164/rccm.200506-862OC.",
+    "Aujesky D, Roy PM, Verschuren F, Righini M, Osterwalder J, Egloff M, et al. Outpatient versus inpatient treatment for patients with acute pulmonary embolism: an international, open-label, randomised, non-inferiority trial. Lancet. 2011;378(9785):41-8. doi: 10.1016/S0140-6736(11)60824-6.",
+    "Jiménez D, Aujesky D, Moores L, Gómez V, Lobo JL, Uresandi F, et al. Simplification of the pulmonary embolism severity index for prognostication in patients with acute symptomatic pulmonary embolism. Arch Intern Med. 2010;170(15):1383-9. doi: 10.1001/archinternmed.2010.199.",
+    "Kearon C, Akl EA, Ornelas J, Blaivas A, Jimenez D, Bounameaux H, et al. Antithrombotic Therapy for VTE Disease: CHEST Guideline and Expert Panel Report. Chest. 2016;149(2):315-352. doi: 10.1016/j.chest.2015.11.026."
+  ],
+  "formula": "PESI Score = Age + 10×(if male) + 30×(if cancer) + 10×(if heart failure) + 10×(if chronic lung disease) + 20×(if HR≥110) + 30×(if SBP<100) + 20×(if RR≥30) + 20×(if temp<36°C) + 60×(if altered mental status) + 20×(if O2 sat<90%)",
+  "notes": [
+    "Extensively validated prognostic tool with strong evidence base",
+    "Age contributes absolute value as points (e.g., 65-year-old gets 65 points for age)",
+    "Male sex adds 10 points due to higher mortality risk",
+    "Classes I and II (≤85 points) may be candidates for outpatient management",
+    "Clinical judgment should always supplement PESI score",
+    "Does not replace clinical assessment for other contraindications to outpatient treatment",
+    "Simplified PESI (sPESI) is also available with 6 criteria instead of 11",
+    "Strong evidence supports use for identifying patients appropriate for outpatient management",
+    "Area under ROC curve (c-index) of 0.78 in derivation study",
+    "Validated in over 15,000 patients across multiple studies",
+    "Recommended by multiple clinical guidelines for PE risk stratification",
+    "Should be used in conjunction with bleeding risk assessment",
+    "Does not predict recurrence risk or guide duration of anticoagulation",
+    "Consider social factors and support systems when making disposition decisions",
+    "Re-evaluate if clinical condition changes significantly during treatment"
+  ]
+}

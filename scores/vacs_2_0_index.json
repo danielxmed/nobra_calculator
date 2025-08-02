@@ -1,0 +1,217 @@
+{
+  "id": "vacs_2_0_index",
+  "title": "Veterans Aging Cohort Study (VACS) 2.0 Index",
+  "description": "Estimates 5-year all-cause mortality risk in patients with HIV using age, HIV-specific biomarkers, and general health indicators. An improved version of the original VACS Index with enhanced discrimination.",
+  "category": "infectious_disease",
+  "version": "2.0",
+  "parameters": [
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Patient age in years",
+      "validation": {
+        "min": 18,
+        "max": 100
+      },
+      "unit": "years"
+    },
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient sex for eGFR calculation",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "race",
+      "type": "string",
+      "required": true,
+      "description": "Patient race for eGFR calculation",
+      "options": ["black", "non_black"],
+      "validation": {
+        "enum": ["black", "non_black"]
+      }
+    },
+    {
+      "name": "cd4_count",
+      "type": "integer",
+      "required": true,
+      "description": "CD4 T-cell count (cells/μL)",
+      "validation": {
+        "min": 0,
+        "max": 2000
+      },
+      "unit": "cells/μL"
+    },
+    {
+      "name": "hiv_rna_log",
+      "type": "float",
+      "required": true,
+      "description": "HIV-1 RNA viral load (log10 copies/mL)",
+      "validation": {
+        "min": 0.0,
+        "max": 7.0
+      },
+      "unit": "log10 copies/mL"
+    },
+    {
+      "name": "hemoglobin",
+      "type": "float",
+      "required": true,
+      "description": "Hemoglobin level (g/dL)",
+      "validation": {
+        "min": 5.0,
+        "max": 20.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "platelets",
+      "type": "integer",
+      "required": true,
+      "description": "Platelet count (×10³/μL)",
+      "validation": {
+        "min": 10,
+        "max": 1000
+      },
+      "unit": "×10³/μL"
+    },
+    {
+      "name": "ast",
+      "type": "integer",
+      "required": true,
+      "description": "Aspartate aminotransferase (U/L)",
+      "validation": {
+        "min": 10,
+        "max": 500
+      },
+      "unit": "U/L"
+    },
+    {
+      "name": "alt",
+      "type": "integer",
+      "required": true,
+      "description": "Alanine aminotransferase (U/L)",
+      "validation": {
+        "min": 10,
+        "max": 500
+      },
+      "unit": "U/L"
+    },
+    {
+      "name": "creatinine",
+      "type": "float",
+      "required": true,
+      "description": "Serum creatinine (mg/dL)",
+      "validation": {
+        "min": 0.5,
+        "max": 10.0
+      },
+      "unit": "mg/dL"
+    },
+    {
+      "name": "albumin",
+      "type": "float",
+      "required": true,
+      "description": "Serum albumin (g/dL)",
+      "validation": {
+        "min": 1.0,
+        "max": 6.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "wbc_count",
+      "type": "float",
+      "required": true,
+      "description": "White blood cell count (×10³/μL)",
+      "validation": {
+        "min": 1.0,
+        "max": 50.0
+      },
+      "unit": "×10³/μL"
+    },
+    {
+      "name": "bmi",
+      "type": "float",
+      "required": true,
+      "description": "Body mass index (kg/m²)",
+      "validation": {
+        "min": 10.0,
+        "max": 50.0
+      },
+      "unit": "kg/m²"
+    },
+    {
+      "name": "hepatitis_c",
+      "type": "string",
+      "required": true,
+      "description": "Hepatitis C virus co-infection status",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "vacs_2_0_score",
+    "type": "float",
+    "unit": "points",
+    "description": "VACS 2.0 Index score with 5-year mortality risk estimation"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 25,
+        "stage": "Low Risk",
+        "description": "Low 5-year mortality risk",
+        "interpretation": "Score indicates low disease burden and mortality risk. Continue routine HIV care and monitoring."
+      },
+      {
+        "min": 26,
+        "max": 50,
+        "stage": "Moderate Risk",
+        "description": "Moderate 5-year mortality risk",
+        "interpretation": "Score indicates moderate disease burden. Consider enhanced monitoring and preventive interventions."
+      },
+      {
+        "min": 51,
+        "max": 75,
+        "stage": "High Risk",
+        "description": "High 5-year mortality risk",
+        "interpretation": "Score indicates high disease burden. Intensify monitoring, optimize HIV therapy, and address comorbidities."
+      },
+      {
+        "min": 76,
+        "max": 164,
+        "stage": "Very High Risk",
+        "description": "Very high 5-year mortality risk",
+        "interpretation": "Score indicates very high disease burden. Consider aggressive intervention strategies and end-of-life planning discussions."
+      }
+    ]
+  },
+  "references": [
+    "Justice AC, Lasky E, McGinnis KA, et al. Medical disease and alcohol use among veterans with human immunodeficiency virus infection: A comparison of disease measurement strategies. Med Care. 2006;44(8 Suppl 2):S52-60.",
+    "Justice AC, McGinnis KA, Skanderson M, et al. Towards a combined prognostic index for survival in HIV infection: the role of 'non-HIV' biomarkers. HIV Med. 2010;11(2):143-51.",
+    "Tate JP, Justice AC, Hughes MD, et al. An internationally generalizable risk index for mortality after one year of antiretroviral therapy. AIDS. 2013;27(4):563-72.",
+    "Justice AC, Erlandson KM, Hunt PW, et al. Development and validation of a prognostic index for 1-year mortality in HIV-infected adults. Med Care. 2013;51(12):1054-64.",
+    "Rodriguez-Barradas MC, Tate JP, Justice AC, et al. Albumin, white blood cell count, and body mass index improve discrimination of mortality in HIV-positive individuals. AIDS. 2019;33(6):903-912."
+  ],
+  "formula": "VACS 2.0 = f(Age, CD4, HIV RNA, Hemoglobin, FIB-4, eGFR, Albumin, WBC, BMI, HCV) where FIB-4 = (Age × AST) / (Platelets × √ALT) and eGFR calculated using CKD-EPI equation",
+  "notes": [
+    "An update to the original VACS Index with improved discrimination",
+    "Incorporates albumin, WBC count, and BMI for enhanced prognostic accuracy",
+    "Validated in multiple international cohorts of HIV-positive individuals",
+    "Higher scores indicate greater disease burden and mortality risk",
+    "Useful for clinical decision-making and patient counseling",
+    "Score ranges from 0-164 points, with 80% of patients scoring 0-50 points",
+    "Mortality risk approximately doubles for every 10-unit increase in score",
+    "Should be used in conjunction with clinical judgment and other prognostic factors",
+    "Particularly useful for determining benefit of preventative screening and interventions"
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "id": "hour_specific_neonatal_hyperbilirubinemia",
+  "title": "Hour-Specific Risk for Neonatal Hyperbilirubinemia",
+  "description": "Predicts risk of hyperbilirubinemia in neonates based on total serum bilirubin measurement using the Bhutani nomogram. Identifies infants at risk for subsequent significant hyperbilirubinemia.",
+  "category": "pediatrics",
+  "version": "1999",
+  "parameters": [
+    {
+      "name": "age_hours",
+      "type": "integer",
+      "required": true,
+      "description": "Age of neonate in hours (from birth)",
+      "unit": "hours",
+      "validation": {
+        "min": 12,
+        "max": 168
+      }
+    },
+    {
+      "name": "total_bilirubin",
+      "type": "float",
+      "required": true,
+      "description": "Total serum bilirubin level",
+      "unit": "mg/dL",
+      "validation": {
+        "min": 0.1,
+        "max": 30
+      }
+    }
+  ],
+  "result": {
+    "name": "risk_zone",
+    "type": "string",
+    "unit": "zone",
+    "description": "Risk zone classification based on Bhutani nomogram percentiles"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 39,
+        "stage": "Low Risk",
+        "description": "<40th percentile",
+        "interpretation": "Low risk zone. No measurable risk for subsequent significant hyperbilirubinemia (0% probability). Routine follow-up as per discharge timing guidelines."
+      },
+      {
+        "min": 40,
+        "max": 75,
+        "stage": "Low-Intermediate Risk",
+        "description": "40th-75th percentile",
+        "interpretation": "Low-intermediate risk zone. Small risk of subsequent hyperbilirubinemia (2.2% probability). Follow-up within 48-72 hours recommended based on clinical factors."
+      },
+      {
+        "min": 76,
+        "max": 94,
+        "stage": "High-Intermediate Risk",
+        "description": "76th-94th percentile",
+        "interpretation": "High-intermediate risk zone. Moderate risk of subsequent hyperbilirubinemia (12.9% probability). Closer follow-up within 24-48 hours recommended."
+      },
+      {
+        "min": 95,
+        "max": 100,
+        "stage": "High Risk",
+        "description": "≥95th percentile",
+        "interpretation": "High risk zone. Significant risk of subsequent hyperbilirubinemia (39.5% probability). Consider extended hospitalization or close follow-up within 24 hours. May require early intervention."
+      }
+    ]
+  },
+  "references": [
+    "Bhutani VK, Johnson L, Sivieri EM. Predictive ability of a predischarge hour-specific serum bilirubin for subsequent significant hyperbilirubinemia in healthy term and near-term newborns. Pediatrics. 1999 Jan;103(1):6-14.",
+    "American Academy of Pediatrics Subcommittee on Hyperbilirubinemia. Management of hyperbilirubinemia in the newborn infant 35 or more weeks of gestation. Pediatrics. 2004 Jul;114(1):297-316."
+  ],
+  "formula": "Risk zone based on hour-specific bilirubin percentiles from Bhutani nomogram",
+  "notes": [
+    "Only for neonates ≥35 weeks gestational age",
+    "Not for neonates with positive direct Coombs test",
+    "Not for neonates who received phototherapy before 60 hours of age",
+    "Not for determining need for exchange transfusion",
+    "Risk refers to the risk of a subsequent bilirubin level >95th percentile",
+    "Recommended follow-up timing: Discharged <24 hrs see by 72 hrs, 24-48 hrs see by 96 hrs, 48-72 hrs see by 120 hrs",
+    "Consider clinical risk factors including: exclusive breastfeeding, East Asian race, cephalhematoma, significant bruising, sibling with jaundice",
+    "Based on data from 2,840 healthy term and near-term newborns"
+  ]
+}

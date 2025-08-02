@@ -1,0 +1,125 @@
+{
+  "id": "sudbury_vertigo_risk_score",
+  "title": "Sudbury Vertigo Risk Score",
+  "description": "Identifies vertigo patients at higher risk for serious central diagnosis including stroke, TIA, vertebral artery dissection, or brain tumor in the emergency department setting.",
+  "category": "neurology",
+  "version": "2024",
+  "parameters": [
+    {
+      "name": "male_sex",
+      "type": "string",
+      "required": true,
+      "description": "Patient is male",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "age_over_65",
+      "type": "string",
+      "required": true,
+      "description": "Patient age is over 65 years",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "hypertension",
+      "type": "string",
+      "required": true,
+      "description": "History of hypertension",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "diabetes",
+      "type": "string",
+      "required": true,
+      "description": "History of diabetes mellitus",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "motor_sensory_deficits",
+      "type": "string",
+      "required": true,
+      "description": "Motor or sensory deficits on examination",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "cerebellar_signs",
+      "type": "string",
+      "required": true,
+      "description": "Cerebellar signs/symptoms (diplopia, dysarthria, dysphagia, dysmetria, ataxia)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    },
+    {
+      "name": "bppv_diagnosis",
+      "type": "string",
+      "required": true,
+      "description": "Clinical diagnosis of benign paroxysmal positional vertigo (BPPV)",
+      "options": ["yes", "no"],
+      "validation": {
+        "enum": ["yes", "no"]
+      }
+    }
+  ],
+  "result": {
+    "name": "sudbury_score",
+    "type": "integer",
+    "unit": "points",
+    "description": "Total Sudbury Vertigo Risk Score"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": -4,
+        "max": 4,
+        "stage": "Low Risk",
+        "description": "0% risk of serious diagnosis",
+        "interpretation": "Score <5 has 100% sensitivity for ruling out serious causes of vertigo. Consider outpatient management without imaging if no other concerning features. Consider BPPV or vestibular neuritis as likely diagnoses."
+      },
+      {
+        "min": 5,
+        "max": 8,
+        "stage": "Moderate Risk",
+        "description": "2.1% risk of serious diagnosis",
+        "interpretation": "Low but non-zero risk of serious cause. Consider further clinical assessment, observation, or targeted imaging based on clinical judgment and specific symptoms."
+      },
+      {
+        "min": 9,
+        "max": 17,
+        "stage": "High Risk",
+        "description": "41% risk of serious diagnosis",
+        "interpretation": "High risk for serious central cause including stroke, TIA, vertebral artery dissection, or brain tumor. Strongly consider urgent neuroimaging (CT/MRI) and neurological consultation."
+      }
+    ]
+  },
+  "references": [
+    "Lelli D, Dinh J, Ahuja N, et al. Development of a Clinical Risk Score to Risk Stratify for a Serious Cause of Vertigo in Patients Presenting to the Emergency Department. Ann Emerg Med. 2024 Nov;84(5):500-511. doi: 10.1016/j.annemergmed.2024.06.003.",
+    "de Guise C, Chagnon M, Boudier-Revéret M, et al. Validation of the Sudbury Vertigo Risk Score to risk stratify for a serious cause of vertigo. Acad Emerg Med. 2024 Dec;31(12):1218-1227. doi: 10.1111/acem.14950.",
+    "Newman-Toker DE, Edlow JA. TiTrATE: A Novel, Evidence-Based Approach to Diagnosing Acute Dizziness and Vertigo. Neurol Clin. 2015 Aug;33(3):577-99. doi: 10.1016/j.ncl.2015.04.011."
+  ],
+  "formula": "Score = Sum of points for: Male sex + Age >65 + Hypertension + Diabetes + Motor/sensory deficits + Cerebellar signs - BPPV diagnosis. Range: -4 to 17 points.",
+  "notes": [
+    "This score is designed for emergency department patients presenting with vertigo",
+    "External validation showed 100% sensitivity and 69.2% specificity for score <5",
+    "Cerebellar signs include: diplopia, dysarthria, dysphagia, dysmetria, ataxia",
+    "BPPV diagnosis is negatively associated with serious causes",
+    "Not applicable for patients with episodic vertigo lasting <24 hours",
+    "Consider vascular risk factors and clinical judgment in borderline cases",
+    "Score requires external validation before widespread clinical use"
+  ]
+}

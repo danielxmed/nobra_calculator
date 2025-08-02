@@ -1,0 +1,132 @@
+{
+  "id": "score2_op",
+  "title": "Systematic Coronary Risk Evaluation 2-Older Persons (SCORE2-OP)",
+  "description": "Predicts 5-year and 10-year cardiovascular disease (fatal and non-fatal myocardial infarction and stroke) risk in individuals aged 70 years and older without prior cardiovascular disease, accounting for competing risks.",
+  "category": "cardiology",
+  "version": "2021",
+  "parameters": [
+    {
+      "name": "sex",
+      "type": "string",
+      "required": true,
+      "description": "Biological sex",
+      "options": ["male", "female"]
+    },
+    {
+      "name": "age",
+      "type": "integer",
+      "required": true,
+      "description": "Age in years",
+      "validation": {
+        "min": 70,
+        "max": 89
+      },
+      "unit": "years"
+    },
+    {
+      "name": "diabetes",
+      "type": "string",
+      "required": true,
+      "description": "Diabetes status",
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "smoking",
+      "type": "string",
+      "required": true,
+      "description": "Current smoking status",
+      "options": ["current", "other"]
+    },
+    {
+      "name": "systolic_bp",
+      "type": "integer",
+      "required": true,
+      "description": "Systolic blood pressure",
+      "validation": {
+        "min": 80,
+        "max": 250
+      },
+      "unit": "mmHg"
+    },
+    {
+      "name": "total_cholesterol",
+      "type": "float",
+      "required": true,
+      "description": "Total cholesterol",
+      "validation": {
+        "min": 2.0,
+        "max": 12.0
+      },
+      "unit": "mmol/L"
+    },
+    {
+      "name": "hdl_cholesterol",
+      "type": "float",
+      "required": true,
+      "description": "HDL cholesterol",
+      "validation": {
+        "min": 0.5,
+        "max": 3.5
+      },
+      "unit": "mmol/L"
+    },
+    {
+      "name": "risk_region",
+      "type": "string",
+      "required": true,
+      "description": "Cardiovascular risk region based on country",
+      "options": ["low", "moderate", "high", "very_high"]
+    },
+    {
+      "name": "time_horizon",
+      "type": "string",
+      "required": true,
+      "description": "Risk prediction time horizon",
+      "options": ["5_year", "10_year"]
+    }
+  ],
+  "result": {
+    "name": "cvd_risk",
+    "type": "float",
+    "unit": "%",
+    "description": "Cardiovascular disease risk percentage at specified time horizon"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 7.5,
+        "stage": "Low to Moderate Risk",
+        "description": "Low to moderate cardiovascular risk (<7.5%)",
+        "interpretation": "Generally no treatment benefit. Focus on lifestyle interventions. Consider individual patient characteristics and preferences in shared decision-making."
+      },
+      {
+        "min": 7.5,
+        "max": 15,
+        "stage": "High Risk",
+        "description": "High cardiovascular risk (7.5-15%)",
+        "interpretation": "Treatment may be considered. Discuss benefits and risks with patient. Consider statin therapy and blood pressure management based on individual assessment and patient preferences."
+      },
+      {
+        "min": 15,
+        "max": 100,
+        "stage": "Very High Risk",
+        "description": "Very high cardiovascular risk (≥15%)",
+        "interpretation": "Treatment generally recommended. Consider statin therapy and blood pressure management. Individualize treatment intensity based on life expectancy, frailty, and patient preferences."
+      }
+    ]
+  },
+  "references": [
+    "SCORE2-OP working group and ESC Cardiovascular risk collaboration. SCORE2-OP risk prediction algorithms: estimating incident cardiovascular event risk in older persons in four geographical risk regions. Eur Heart J. 2021 Jul 1;42(25):2455-2467. doi: 10.1093/eurheartj/ehab312.",
+    "de Vries TI, Cooney MT, Selmer RM, Hageman SHJ, Pennells L, Wood A, et al. SCORE2-OP risk prediction algorithms: estimating incident cardiovascular event risk in older persons in four geographical risk regions. Eur Heart J. 2021 Jul 1;42(25):2455-2467.",
+    "Visseren FLJ, Mach F, Smulders YM, Carballo D, Koskinas KC, Bäck M, et al. 2021 ESC Guidelines on cardiovascular disease prevention in clinical practice. Eur Heart J. 2021 Sep 7;42(34):3227-3337. doi: 10.1093/eurheartj/ehab484."
+  ],
+  "formula": "Competing risk-adjusted model accounting for non-CVD mortality, with age interactions and attenuation of risk factor gradients in older persons",
+  "notes": [
+    "For individuals aged 70-89 years without previous cardiovascular disease",
+    "Accounts for competing risk of non-cardiovascular mortality",
+    "Risk factor gradients attenuate with age",
+    "Consider frailty, cognitive function, and patient preferences in treatment decisions",
+    "Treatment benefit-risk balance changes with age and life expectancy"
+  ]
+}

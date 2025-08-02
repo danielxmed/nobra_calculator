@@ -28,6 +28,29 @@ from .gcs_pupils_score import router as gcs_pupils_score_router
 from .glasgow_coma_scale import router as glasgow_coma_scale_router
 from .func_score import router as func_score_router
 from .hat_score import router as hat_score_router
+from .hints import router as hints_router
+from .hunt_hess_classification import router as hunt_hess_classification_router
+from .impact_score import router as impact_score_router
+from .iwg2_alzheimer_criteria import router as iwg2_alzheimer_criteria_router
+from .ich_score import router as ich_score_router
+from .los_angeles_motor_scale import router as los_angeles_motor_scale_router
+from .mcdonald_criteria_multiple_sclerosis_2017_revision import router as mcdonald_criteria_multiple_sclerosis_2017_revision_router
+from .midas import router as midas_router
+from .mtoq_4 import router as mtoq_4_router
+from .modified_fatigue_impact_scale import router as modified_fatigue_impact_scale_router
+from .modified_fisher_grading_scale import router as modified_fisher_grading_scale_router
+from .modified_hoehn_and_yahr_scale import router as modified_hoehn_and_yahr_scale_router
+from .modified_nih_stroke_scale import router as modified_nih_stroke_scale_router
+from .modified_rankin_scale import router as modified_rankin_scale_router
+from .modified_rankin_score_9q import router as modified_rankin_score_9q_router
+from .modified_soar_score import router as modified_soar_score_router
+from .moca import router as moca_router
+from .mg_adl import router as mg_adl_router
+from .nihss import router as nihss_router
+from .onls import router as onls_router
+from .sudbury_vertigo_risk_score import router as sudbury_vertigo_risk_score_router
+from .tpa_contraindications import router as tpa_contraindications_router
+from .trunk_impairment_scale import router as trunk_impairment_scale_router
 
 # Create main specialty router
 router = APIRouter()
@@ -56,3 +79,26 @@ router.include_router(gcs_pupils_score_router)
 router.include_router(glasgow_coma_scale_router)
 router.include_router(func_score_router)
 router.include_router(hat_score_router)
+router.include_router(hints_router)
+router.include_router(hunt_hess_classification_router)
+router.include_router(impact_score_router)
+router.include_router(iwg2_alzheimer_criteria_router)
+router.include_router(ich_score_router)
+router.include_router(los_angeles_motor_scale_router)
+router.include_router(mcdonald_criteria_multiple_sclerosis_2017_revision_router)
+router.include_router(midas_router)
+router.include_router(mtoq_4_router)
+router.include_router(modified_fatigue_impact_scale_router)
+router.include_router(modified_fisher_grading_scale_router)
+router.include_router(modified_hoehn_and_yahr_scale_router)
+router.include_router(modified_nih_stroke_scale_router)
+router.include_router(modified_rankin_scale_router)
+router.include_router(modified_rankin_score_9q_router)
+router.include_router(modified_soar_score_router)
+router.include_router(moca_router)
+router.include_router(mg_adl_router)
+router.include_router(nihss_router)
+router.include_router(onls_router)
+router.include_router(sudbury_vertigo_risk_score_router)
+router.include_router(tpa_contraindications_router)
+router.include_router(trunk_impairment_scale_router)

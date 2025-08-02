@@ -1,0 +1,123 @@
+{
+  "id": "who_polycythemia_vera_criteria",
+  "title": "WHO Diagnostic Criteria for Polycythemia Vera (2016)",
+  "description": "World Health Organization 2016 diagnostic criteria for polycythemia vera. Requires 3 major criteria OR 2 major criteria + 1 minor criterion for diagnosis. Designed to detect masked polycythemia vera cases missed by previous 2008 criteria.",
+  "category": "hematology",
+  "version": "2016",
+  "parameters": [
+    {
+      "name": "gender",
+      "type": "string",
+      "required": true,
+      "description": "Patient gender (affects hemoglobin and hematocrit thresholds)",
+      "options": ["male", "female"],
+      "validation": {
+        "enum": ["male", "female"]
+      }
+    },
+    {
+      "name": "hemoglobin",
+      "type": "float",
+      "required": true,
+      "description": "Hemoglobin level in g/dL",
+      "validation": {
+        "min": 5.0,
+        "max": 25.0
+      },
+      "unit": "g/dL"
+    },
+    {
+      "name": "hematocrit",
+      "type": "float",
+      "required": true,
+      "description": "Hematocrit percentage",
+      "validation": {
+        "min": 10.0,
+        "max": 80.0
+      },
+      "unit": "%"
+    },
+    {
+      "name": "red_cell_mass_elevated",
+      "type": "string",
+      "required": true,
+      "description": "Red cell mass >25% above mean normal predicted value (alternative to Hgb/Hct criteria)",
+      "options": ["yes", "no", "not_measured"],
+      "validation": {
+        "enum": ["yes", "no", "not_measured"]
+      }
+    },
+    {
+      "name": "bone_marrow_hypercellular",
+      "type": "string",
+      "required": true,
+      "description": "Bone marrow biopsy showing hypercellularity for age with trilineage growth including prominent erythroid, granulocytic, and megakaryocytic proliferation with pleomorphic, mature megakaryocytes",
+      "options": ["yes", "no", "not_performed"],
+      "validation": {
+        "enum": ["yes", "no", "not_performed"]
+      }
+    },
+    {
+      "name": "jak2_mutation",
+      "type": "string",
+      "required": true,
+      "description": "Presence of JAK2V617F or JAK2 exon 12 mutation",
+      "options": ["jak2v617f_positive", "jak2_exon12_positive", "negative", "not_tested"],
+      "validation": {
+        "enum": ["jak2v617f_positive", "jak2_exon12_positive", "negative", "not_tested"]
+      }
+    },
+    {
+      "name": "erythropoietin_level",
+      "type": "string",
+      "required": true,
+      "description": "Serum erythropoietin (EPO) level status",
+      "options": ["subnormal", "normal", "elevated", "not_measured"],
+      "validation": {
+        "enum": ["subnormal", "normal", "elevated", "not_measured"]
+      }
+    }
+  ],
+  "result": {
+    "name": "diagnosis_status",
+    "type": "string",
+    "unit": "categorical",
+    "description": "Diagnostic result based on WHO 2016 criteria"
+  },
+  "interpretation": {
+    "categories": [
+      {
+        "value": "diagnosis_met",
+        "description": "WHO criteria for polycythemia vera diagnosis are met",
+        "interpretation": "Patient meets WHO 2016 diagnostic criteria for polycythemia vera. Diagnosis confirmed."
+      },
+      {
+        "value": "probable_pv",
+        "description": "Some criteria met but diagnosis incomplete",
+        "interpretation": "Some WHO criteria met but additional testing or criteria fulfillment needed to confirm polycythemia vera diagnosis."
+      },
+      {
+        "value": "criteria_not_met",
+        "description": "WHO criteria for polycythemia vera diagnosis are not met",
+        "interpretation": "Current findings do not meet WHO 2016 diagnostic criteria for polycythemia vera. Consider alternative diagnoses or additional testing."
+      }
+    ]
+  },
+  "references": [
+    "Arber DA, Orazi A, Hasserjian R, et al. The 2016 revision to the World Health Organization classification of myeloid neoplasms and acute leukemia. Blood. 2016;127(20):2391-2405. doi: 10.1182/blood-2016-03-643544",
+    "Barbui T, Thiele J, Gisslinger H, et al. The 2016 WHO classification and diagnostic criteria for myeloproliferative neoplasms: document summary and in-depth discussion. Blood Cancer J. 2018;8(2):15. doi: 10.1038/s41408-018-0054-y",
+    "Tefferi A, Barbui T. Polycythemia vera and essential thrombocythemia: 2021 update on diagnosis, risk-stratification and management. Am J Hematol. 2020;95(12):1599-1613. doi: 10.1002/ajh.26008",
+    "Alvarez-Larrán A, Kerguelen A, Hernández-Boluda JC, et al. Frequency and prognostic value of resistance/intolerance to hydroxycarbamide in 890 patients with polycythaemia vera. Br J Haematol. 2016;172(5):786-793. doi: 10.1111/bjh.13884"
+  ],
+  "formula": "Diagnosis requires meeting 3 major criteria OR 2 major criteria + 1 minor criterion. Major criteria: (1) Hemoglobin >16.5 g/dL (men) or >16.0 g/dL (women) OR Hematocrit >49% (men) or >48% (women) OR elevated red cell mass >25% above normal; (2) Bone marrow hypercellularity with trilineage growth; (3) JAK2V617F or JAK2 exon 12 mutation. Minor criterion: Subnormal serum erythropoietin level.",
+  "notes": [
+    "The 2016 WHO criteria lowered hemoglobin thresholds from the 2008 criteria to detect masked polycythemia vera cases",
+    "Hematocrit thresholds were newly introduced in 2016 as alternative to hemoglobin levels",
+    "Bone marrow morphology was elevated from minor to major criterion in 2016",
+    "JAK2V617F mutation is found in ~95% of PV patients; JAK2 exon 12 mutations in ~3% of cases",
+    "Subnormal EPO level helps distinguish PV from secondary polycythemia",
+    "These criteria are specifically for polycythemia vera and not other myeloproliferative neoplasms",
+    "Bone marrow biopsy is essential for diagnosis and should show age-adjusted hypercellularity",
+    "Alternative erythroid mass measurement may be used when Hgb/Hct are borderline"
+  ]
+}

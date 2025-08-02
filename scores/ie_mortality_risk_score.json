@@ -1,0 +1,208 @@
+{
+  "id": "ie_mortality_risk_score",
+  "title": "Infective Endocarditis (IE) Mortality Risk Score",
+  "description": "Predicts 6-month mortality in patients with infective endocarditis using validated clinical parameters. This risk stratification tool was developed from the International Collaboration on Endocarditis (ICE) Prospective Cohort Study and helps clinicians assess prognosis and guide treatment decisions in patients with definite infective endocarditis. The score incorporates host factors, IE characteristics, and complications to provide mortality risk prediction.",
+  "category": "cardiology",
+  "version": "2016 Gunes",
+  "parameters": [
+    {
+      "name": "age_category",
+      "type": "string",
+      "required": true,
+      "description": "Patient age category. Older age associated with increased mortality risk",
+      "options": ["45_or_under", "46_to_60", "61_to_70", "over_70"],
+      "validation": {
+        "enum": ["45_or_under", "46_to_60", "61_to_70", "over_70"]
+      }
+    },
+    {
+      "name": "history_of_dialysis",
+      "type": "string",
+      "required": true,
+      "description": "History of chronic dialysis treatment. Dialysis patients have higher mortality risk",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "nosocomial_ie",
+      "type": "string",
+      "required": true,
+      "description": "Healthcare-associated infective endocarditis. Associated with worse outcomes",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "prosthetic_ie",
+      "type": "string",
+      "required": true,
+      "description": "Prosthetic valve infective endocarditis. Associated with higher mortality",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]  
+      }
+    },
+    {
+      "name": "symptoms_over_1_month",
+      "type": "string",
+      "required": true,
+      "description": "Symptoms present for more than 1 month before admission. Longer symptom duration may indicate lower acuity",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "staphylococcus_aureus",
+      "type": "string",
+      "required": true,
+      "description": "Staphylococcus aureus as causative pathogen. Associated with more aggressive disease",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "viridans_group_streptococci",
+      "type": "string",
+      "required": true,
+      "description": "Viridans group streptococci as causative pathogen. Generally associated with better prognosis",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "aortic_vegetation",
+      "type": "string",
+      "required": true,
+      "description": "Presence of aortic valve vegetation on echocardiography",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "mitral_vegetation",
+      "type": "string",
+      "required": true,
+      "description": "Presence of mitral valve vegetation on echocardiography",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "nyha_class_3_or_4_hf",
+      "type": "string",
+      "required": true,
+      "description": "NYHA Class 3 or 4 heart failure. Severe heart failure associated with poor prognosis",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "stroke",
+      "type": "string",
+      "required": true,
+      "description": "Stroke complication during IE episode. Major embolic complication",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "paravalvular_complication",
+      "type": "string",
+      "required": true,
+      "description": "Paravalvular complications (abscess, fistula, pseudoaneurysm). Indicates severe local tissue destruction",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "persistent_bacteremia",
+      "type": "string",
+      "required": true,
+      "description": "Persistent bacteremia despite appropriate antibiotic treatment. Indicates treatment failure",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    },
+    {
+      "name": "surgical_treatment",
+      "type": "string",
+      "required": true,
+      "description": "Surgical treatment performed during index hospitalization. Associated with improved survival when appropriately selected",
+      "options": ["no", "yes"],
+      "validation": {
+        "enum": ["no", "yes"]
+      }
+    }
+  ],
+  "result": {
+    "name": "mortality_probability",
+    "type": "float",
+    "unit": "%",
+    "description": "Predicted 6-month mortality probability percentage"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 10,
+        "stage": "Low Risk",
+        "description": "Mortality probability ≤10%",
+        "interpretation": "Low risk of 6-month mortality. Consider standard medical management with close monitoring."
+      },
+      {
+        "min": 10,
+        "max": 25,
+        "stage": "Moderate Risk", 
+        "description": "Mortality probability 10-25%",
+        "interpretation": "Moderate risk of 6-month mortality. Consider intensive medical management and evaluation for surgical intervention if indicated."
+      },
+      {
+        "min": 25,
+        "max": 50,
+        "stage": "High Risk",
+        "description": "Mortality probability 25-50%",
+        "interpretation": "High risk of 6-month mortality. Consider aggressive treatment including surgical evaluation if appropriate. Discuss prognosis with patient and family."
+      },
+      {
+        "min": 50,
+        "max": 100,
+        "stage": "Very High Risk",
+        "description": "Mortality probability >50%",
+        "interpretation": "Very high risk of 6-month mortality. Consider palliative care consultation and goals of care discussion. Surgical intervention may be considered only in highly selected cases."
+      }
+    ]
+  },
+  "references": [
+    "Gunes M, Gecmen C, Beker Evans M, et al. Validated Risk Score for Predicting 6-Month Mortality in Infective Endocarditis. J Am Heart Assoc. 2017 Apr 7;6(4):e003016. doi: 10.1161/JAHA.115.003016.",
+    "Murdoch DR, Corey GR, Hoen B, et al. Clinical presentation, etiology, and outcome of infective endocarditis in the 21st century: the International Collaboration on Endocarditis-Prospective Cohort Study. Arch Intern Med. 2009 Mar 9;169(5):463-73. doi: 10.1001/archinternmed.2008.603.",
+    "Cahill TJ, Baddour LM, Habib G, et al. Challenges in Infective Endocarditis. J Am Coll Cardiol. 2017 Jul 25;70(3):325-335. doi: 10.1016/j.jacc.2017.06.007."
+  ],
+  "formula": "Score = sum of all parameter points; Probability of 6-month mortality (%) = 100 × [1 / (1 + exp(-(2.416×score + 0.109×score² - 4.849)))]",
+  "notes": [
+    "Developed from the International Collaboration on Endocarditis (ICE) Prospective Cohort Study (2000-2006, n=4049)",
+    "Validated in external cohort with good discrimination (R² = 0.91-0.97)",
+    "Score ≥8 has sensitivity 86.7%, specificity 50.8%, NPV 86% for 6-month mortality",
+    "Surgery is associated with lower mortality but performed less frequently in highest risk patients",
+    "Six-month mortality after IE is approximately 25% overall",
+    "Should be used in conjunction with clinical judgment and multidisciplinary team assessment",
+    "Does not replace individual clinical decision-making regarding surgical timing",
+    "Score incorporates host factors, IE characteristics, and complications",
+    "Negative points for longer symptom duration and viridans group strep (better prognosis)",
+    "Positive points for advanced age, dialysis, nosocomial IE, and complications",
+    "Persistent bacteremia defined as continued positive blood cultures despite appropriate antibiotics",
+    "Paravalvular complications include abscess, fistula, or pseudoaneurysm formation",
+    "NYHA Class 3-4 heart failure indicates severe cardiac compromise"
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "id": "troponin_only_macs",
+  "title": "Troponin-only Manchester Acute Coronary Syndromes (T-MACS) Decision Aid",
+  "description": "Rules out acute coronary syndrome using high-sensitivity cardiac troponin T and clinical factors. Provides risk stratification for patients presenting with chest pain to the emergency department.",
+  "category": "cardiology",
+  "version": "2017",
+  "parameters": [
+    {
+      "name": "hs_ctnt_ng_l",
+      "type": "float",
+      "required": true,
+      "description": "High-sensitivity cardiac troponin T concentration on arrival",
+      "validation": {
+        "min": 0,
+        "max": 10000
+      },
+      "unit": "ng/L"
+    },
+    {
+      "name": "ekg_ischemia",
+      "type": "string",
+      "required": true,
+      "description": "Presence of ischemic changes on EKG",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "crescendo_angina",
+      "type": "string",
+      "required": true,
+      "description": "Worsening or crescendo angina pattern",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "pain_right_arm",
+      "type": "string",
+      "required": true,
+      "description": "Pain radiating to right arm or shoulder",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "vomiting",
+      "type": "string",
+      "required": true,
+      "description": "Pain associated with vomiting",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "sweating",
+      "type": "string",
+      "required": true,
+      "description": "Sweating observed",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    },
+    {
+      "name": "hypotension",
+      "type": "string",
+      "required": true,
+      "description": "Hypotension (systolic BP <100 mmHg)",
+      "validation": {
+        "enum": ["yes", "no"]
+      },
+      "options": ["yes", "no"]
+    }
+  ],
+  "result": {
+    "name": "acs_probability",
+    "type": "float",
+    "unit": "probability",
+    "description": "Probability of acute coronary syndrome"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0,
+        "max": 0.02,
+        "stage": "Very Low Risk",
+        "description": "ACS ruled out",
+        "interpretation": "Very low risk (<2% probability) of acute coronary syndrome. ACS can be ruled out. Consider discharge with appropriate safety netting and outpatient follow-up if clinically appropriate."
+      },
+      {
+        "min": 0.02,
+        "max": 0.05,
+        "stage": "Low Risk",
+        "description": "Low risk",
+        "interpretation": "Low risk (2-5% probability) of acute coronary syndrome. Consider serial troponin measurement in the emergency department or observation unit to further stratify risk."
+      },
+      {
+        "min": 0.05,
+        "max": 0.95,
+        "stage": "Moderate Risk",
+        "description": "Intermediate risk",
+        "interpretation": "Moderate risk (5-95% probability) of acute coronary syndrome. Requires further evaluation with serial troponin measurements. Consider stress testing or CT coronary angiography for risk stratification."
+      },
+      {
+        "min": 0.95,
+        "max": 1.0,
+        "stage": "High Risk",
+        "description": "ACS ruled in",
+        "interpretation": "High risk (≥95% probability) of acute coronary syndrome. ACS is ruled in. Refer to cardiology immediately and initiate appropriate ACS treatment protocols."
+      }
+    ]
+  },
+  "references": [
+    "Body R, Carlton E, Sperrin M, et al. Troponin-only Manchester Acute Coronary Syndromes (T-MACS) decision aid: single biomarker re-derivation and external validation in three cohorts. Emerg Med J. 2017;34(6):349-356.",
+    "Greenslade JH, Carlton EW, Van Hise C, et al. Diagnostic accuracy of the Troponin-only Manchester Acute Coronary Syndromes (T-MACS) decision aid with a point-of-care cardiac troponin assay. Acad Emerg Med. 2020;27(6):459-466."
+  ],
+  "formula": "Probabilistic model using logistic regression incorporating high-sensitivity cardiac troponin T concentration and clinical risk factors",
+  "notes": [
+    "Designed for use in emergency department patients presenting with chest pain suspicious for ACS",
+    "Uses only high-sensitivity cardiac troponin T (hs-cTnT) as biomarker, not serial measurements",
+    "Approximately 40% of patients can be classified as very low risk with <1% probability of ACS",
+    "Validated for use with point-of-care cardiac troponin assays",
+    "Should be used in conjunction with clinical judgment and appropriate safety netting",
+    "Not applicable to patients with STEMI or obvious ACS on presentation",
+    "Requires troponin measurement on arrival, not serial measurements",
+    "Clinical factors include EKG changes, symptom characteristics, and hemodynamic status",
+    "Implementation has shown reduction in unnecessary hospital admissions",
+    "Superior performance compared to NICE guidelines for chest pain evaluation"
+  ]
+}
