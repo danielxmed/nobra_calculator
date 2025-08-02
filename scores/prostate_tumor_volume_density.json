@@ -53,6 +53,7 @@
   "result": {
     "name": "prostate_calculations",
     "type": "object",
+    "unit": "",
     "description": "Calculated prostate volume and PSA density with clinical interpretation"
   },
   "interpretation": {

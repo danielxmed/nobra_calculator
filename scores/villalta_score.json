@@ -151,6 +151,7 @@
   "result": {
     "name": "villalta_score",
     "type": "integer",
+    "unit": "points",
     "description": "Villalta Score with PTS severity classification"
   },
   "interpretation": {

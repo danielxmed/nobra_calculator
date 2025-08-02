@@ -85,6 +85,7 @@
   "result": {
     "name": "vacs_score",
     "type": "integer",
+    "unit": "points",
     "description": "VACS 1.0 Index score with 5-year mortality risk estimate"
   },
   "interpretation": {

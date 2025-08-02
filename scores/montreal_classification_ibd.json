@@ -80,6 +80,7 @@
   "result": {
     "name": "montreal_classification",
     "type": "string",
+    "unit": "",
     "description": "Complete Montreal Classification code and interpretation"
   },
   "interpretation": {

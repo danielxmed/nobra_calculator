@@ -39,6 +39,7 @@
   "result": {
     "name": "hints_result",
     "type": "string",
+    "unit": "",
     "description": "HINTS exam interpretation"
   },
   "interpretation": {

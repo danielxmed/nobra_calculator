@@ -41,6 +41,7 @@
   "result": {
     "name": "medped_diagnosis",
     "type": "string",
+    "unit": "",
     "description": "US MEDPED diagnostic result for familial hypercholesterolemia"
   },
   "interpretation": {

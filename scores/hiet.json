@@ -30,6 +30,7 @@
   "result": {
     "name": "hiet_protocol",
     "type": "object",
+    "unit": "",
     "description": "Complete HIET dosing protocol"
   },
   "interpretation": {

@@ -117,6 +117,7 @@
   "result": {
     "name": "diagnosis",
     "type": "string",
+    "unit": "",
     "description": "Acute rheumatic fever diagnosis based on Jones criteria"
   },
   "references": [

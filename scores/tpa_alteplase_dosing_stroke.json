@@ -20,6 +20,7 @@
   "result": {
     "name": "dosing_regimen",
     "type": "object",
+    "unit": "mg",
     "description": "Complete tPA dosing regimen with total dose, bolus, and infusion amounts"
   },
   "interpretation": {
