@@ -97,11 +97,17 @@ app = FastAPI(
 )
 
 # CORS configuration to allow frontend access
+# Get CORS origins from environment variables, fallback to localhost for development
+cors_origins_str = os.getenv("CORS_ORIGINS", "http://localhost:3000,http://localhost:3001,http://127.0.0.1:3000,http://127.0.0.1:3001")
+cors_origins = [origin.strip() for origin in cors_origins_str.split(",") if origin.strip()]
+
+# In production, you can set CORS_ORIGINS environment variable with specific domains
+# Example: CORS_ORIGINS="https://nobra-calculator.com,https://www.nobra-calculator.com"
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, specify specific domains
+    allow_origins=cors_origins,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
 
@@ -111,6 +117,9 @@ redis_password = os.getenv("REDIS_PASSWORD")
 
 # Initialize Redis client
 redis_client = create_redis_client(redis_url, redis_password)
+
+# Log CORS configuration
+print(f"🌐 CORS enabled for origins: {', '.join(cors_origins)}")
 
 if redis_client:
     # Add rate limiting middleware (both req_per_sec and whitelist will be read from env)
