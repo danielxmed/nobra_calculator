@@ -2451,7 +2451,7 @@ class AlertnessType(str, Enum):
 class AttentionMonthsType(str, Enum):
     """Enum for attention test with months"""
     SEVEN_OR_MORE = "7_or_more"
-    STARTS_LESS_THAN_7 = "starts_less_than_7"
+    STARTS_BUT_LESS_7 = "starts_but_less_7"
     REFUSES_UNTESTABLE = "refuses_untestable"
 
 

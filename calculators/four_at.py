@@ -20,7 +20,7 @@ class FourAtCalculator:
             alertness: Alertness level ("normal", "altered")
             amt4_errors: Number of errors in AMT4 (0-4)
             attention_months: Performance on attention test 
-                            ("7_or_more", "starts_less_than_7", "refuses_untestable")
+                            ("7_or_more", "starts_but_less_7", "refuses_untestable")
             acute_change: Acute change or fluctuating course ("absent", "present")
             
         Returns:
@@ -61,7 +61,7 @@ class FourAtCalculator:
         if not isinstance(amt4_errors, int) or amt4_errors < 0 or amt4_errors > 4:
             raise ValueError("AMT4 errors must be an integer between 0 and 4")
         
-        valid_attention = ["7_or_more", "starts_less_than_7", "refuses_untestable"]
+        valid_attention = ["7_or_more", "starts_but_less_7", "refuses_untestable"]
         if attention_months not in valid_attention:
             raise ValueError(f"Attention must be: {', '.join(valid_attention)}")
         
@@ -89,7 +89,7 @@ class FourAtCalculator:
         """Scores attention test (months in reverse order)"""
         if attention_months == "7_or_more":
             return 0
-        elif attention_months == "starts_less_than_7":
+        elif attention_months == "starts_but_less_7":
             return 1
         elif attention_months == "refuses_untestable":
             return 2

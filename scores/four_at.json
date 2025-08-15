@@ -31,9 +31,9 @@
       "type": "string",
       "required": true,
       "description": "Performance on attention test (months in reverse order)",
-      "options": ["7_or_more", "starts_less_than_7", "refuses_untestable"],
+      "options": ["7_or_more", "starts_but_less_7", "refuses_untestable"],
       "validation": {
-        "enum": ["7_or_more", "starts_less_than_7", "refuses_untestable"]
+        "enum": ["7_or_more", "starts_but_less_7", "refuses_untestable"]
       }
     },
     {
