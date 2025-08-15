@@ -50,12 +50,66 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-4. Run the API:
+4. (Optional) Configure environment variables:
+```bash
+cp .env.example .env
+# Edit .env file with your specific configuration
+```
+
+5. Run the API:
 ```bash
 python main.py
 ```
 
 The API will be available at `http://localhost:8000`
+
+## ⚙️ Configuration
+
+### Environment Variables
+
+The API can be configured using environment variables. Copy `.env.example` to `.env` and adjust the values:
+
+#### CORS Configuration
+```bash
+# Comma-separated list of allowed origins for CORS
+# For development (default):
+CORS_ORIGINS=http://localhost:3000,http://localhost:3001,http://127.0.0.1:3000,http://127.0.0.1:3001
+
+# For production, specify your actual domain(s):
+CORS_ORIGINS=https://yourdomain.com,https://www.yourdomain.com
+```
+
+#### Rate Limiting (Optional)
+```bash
+REDIS_URL=redis://localhost:6379
+REDIS_PASSWORD=your-redis-password
+REQ_PER_SEC=10
+WHITE_LIST=["192.168.1.1","10.0.0.1"]
+```
+
+#### Server Configuration
+```bash
+PORT=8000
+```
+
+### Frontend Integration
+
+The API is configured to work with frontend applications. Make sure to:
+
+1. Set the correct CORS origins in your environment variables
+2. Use the appropriate API endpoints in your frontend code
+3. Handle CORS preflight requests properly
+
+Example frontend fetch:
+```javascript
+// Make sure your frontend domain is included in CORS_ORIGINS
+const response = await fetch('http://localhost:8000/api/scores', {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+```
 
 ## 📖 Documentation
 
