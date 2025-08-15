@@ -59,8 +59,10 @@ async def calculate_asa_physical_status(request: AsaPhysicalStatusRequest):
     try:
         result = calculator_service.calculate_score(
             "asa_physical_status",
-            physical_status=request.physical_status,
-            emergency_surgery=request.emergency_surgery
+            {
+                "physical_status": request.physical_status,
+                "emergency_surgery": request.emergency_surgery
+            }
         )
         
         return AsaPhysicalStatusResponse(**result)
