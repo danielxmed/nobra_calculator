@@ -27,6 +27,7 @@ from .manchester_score_prognosis_sclc import ManchesterScorePrognosisSclcRequest
 from .mmrc_dyspnea_scale import MmrcDyspneaScaleRequest, MmrcDyspneaScaleResponse
 from .mulbsta_score import MulbstaScoreRequest, MulbstaScoreResponse
 from .murray_score import MurrayScoreRequest, MurrayScoreResponse
+from .wells_criteria_pe import WellsCriteriaPeRequest, WellsCriteriaPeResponse
 
 __all__ = [
     "Curb65Request",
@@ -79,4 +80,6 @@ __all__ = [
     "MulbstaScoreResponse",
     "MurrayScoreRequest",
     "MurrayScoreResponse",
+    "WellsCriteriaPeRequest",
+    "WellsCriteriaPeResponse",
 ]

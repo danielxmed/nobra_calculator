@@ -29,6 +29,7 @@ from .manchester_score_prognosis_sclc import router as manchester_score_prognosi
 from .mmrc_dyspnea_scale import router as mmrc_dyspnea_scale_router
 from .mulbsta_score import router as mulbsta_score_router
 from .murray_score import router as murray_score_router
+from .wells_criteria_pe import router as wells_criteria_pe_router
 
 # Create main specialty router
 router = APIRouter()
@@ -58,3 +59,4 @@ router.include_router(manchester_score_prognosis_sclc_router)
 router.include_router(mmrc_dyspnea_scale_router)
 router.include_router(mulbsta_score_router)
 router.include_router(murray_score_router)
+router.include_router(wells_criteria_pe_router)

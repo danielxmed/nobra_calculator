@@ -1,0 +1,110 @@
+{
+  "id": "wells_criteria_pe",
+  "title": "Wells' Criteria for Pulmonary Embolism",
+  "description": "Clinical pretest probability score for pulmonary embolism based on seven bedside criteria; supports both 3-tier (low/intermediate/high) and 2-tier (PE unlikely/likely) interpretations to guide D-dimer testing and imaging decisions",
+  "category": "pulmonology",
+  "version": "2001",
+  "parameters": [
+    {
+      "name": "clinical_signs_dvt",
+      "type": "string",
+      "required": true,
+      "description": "Clinical signs and symptoms of deep vein thrombosis (e.g., unilateral leg swelling and pain with palpation of the deep veins)",
+      "options": ["yes", "no"],
+      "validation": { "enum": ["yes", "no"] }
+    },
+    {
+      "name": "pe_most_likely",
+      "type": "string",
+      "required": true,
+      "description": "Pulmonary embolism is the most likely diagnosis (alternative diagnosis less likely than PE)",
+      "options": ["yes", "no"],
+      "validation": { "enum": ["yes", "no"] }
+    },
+    {
+      "name": "heart_rate_over_100",
+      "type": "string",
+      "required": true,
+      "description": "Heart rate greater than 100 beats per minute",
+      "options": ["yes", "no"],
+      "validation": { "enum": ["yes", "no"] }
+    },
+    {
+      "name": "immobilization_surgery_recent",
+      "type": "string",
+      "required": true,
+      "description": "Immobilization for ≥3 days or surgery within the previous 4 weeks",
+      "options": ["yes", "no"],
+      "validation": { "enum": ["yes", "no"] }
+    },
+    {
+      "name": "previous_dvt_pe",
+      "type": "string",
+      "required": true,
+      "description": "Previous history of deep vein thrombosis or pulmonary embolism",
+      "options": ["yes", "no"],
+      "validation": { "enum": ["yes", "no"] }
+    },
+    {
+      "name": "hemoptysis",
+      "type": "string",
+      "required": true,
+      "description": "Hemoptysis (coughing up blood)",
+      "options": ["yes", "no"],
+      "validation": { "enum": ["yes", "no"] }
+    },
+    {
+      "name": "active_malignancy",
+      "type": "string",
+      "required": true,
+      "description": "Active cancer (treatment ongoing, within 6 months, or palliative)",
+      "options": ["yes", "no"],
+      "validation": { "enum": ["yes", "no"] }
+    }
+  ],
+  "result": {
+    "name": "wells_pe_score",
+    "type": "float",
+    "unit": "points",
+    "description": "Wells' PE score (0-12.5 points)"
+  },
+  "interpretation": {
+    "ranges": [
+      {
+        "min": 0.0,
+        "max": 1.0,
+        "stage": "Low Risk",
+        "description": "Low clinical probability of PE",
+        "interpretation": "Low pretest probability. Recommend D-dimer testing; if negative, PE is effectively ruled out; if positive, proceed to imaging (CT pulmonary angiography)."
+      },
+      {
+        "min": 2.0,
+        "max": 6.0,
+        "stage": "Intermediate Risk",
+        "description": "Intermediate clinical probability of PE",
+        "interpretation": "Intermediate pretest probability. D-dimer testing recommended; if negative, PE unlikely; if positive, CT pulmonary angiography recommended. Consider clinical context."
+      },
+      {
+        "min": 6.5,
+        "max": 12.5,
+        "stage": "High Risk",
+        "description": "High clinical probability of PE",
+        "interpretation": "High pretest probability. Proceed directly to imaging (CT pulmonary angiography). D-dimer testing is not necessary. Consider empiric anticoagulation if bleeding risk is low while awaiting imaging."
+      }
+    ]
+  },
+  "references": [
+    "Wells PS, Anderson DR, Rodger M, et al. Excluding pulmonary embolism at the bedside without diagnostic imaging: management of patients with suspected pulmonary embolism presenting to the emergency department by using a simple clinical model and D-dimer. Ann Intern Med. 2001;135(2):98-107.",
+    "van Belle A, Büller HR, Huisman MV, et al. Effectiveness of managing suspected pulmonary embolism using an algorithm combining clinical probability, D-dimer testing, and computed tomography. JAMA. 2006;295(2):172-179.",
+    "Konstantinides SV, Meyer G, Becattini C, et al. 2019 ESC Guidelines for the diagnosis and management of acute pulmonary embolism. Eur Heart J. 2020;41(4):543-603."
+  ],
+  "formula": "Score = Clinical signs of DVT (3.0) + PE most likely diagnosis (3.0) + Heart rate >100 bpm (1.5) + Immobilization ≥3 days or surgery within 4 weeks (1.5) + Previous DVT/PE (1.5) + Hemoptysis (1.0) + Active malignancy (1.0)",
+  "notes": [
+    "Two validated interpretations exist: 3-tier (low 0-1; intermediate 2-6; high ≥6.5) and 2-tier (PE unlikely ≤4; PE likely >4).",
+    "The 'PE most likely' item is subjective and may reduce inter-observer reliability; consider using Geneva score for a fully objective alternative.",
+    "Intended for hemodynamically stable outpatients and ED settings; not validated in pregnancy or inpatients.",
+    "Use D-dimer to safely exclude PE in low or intermediate probability patients; proceed directly to imaging in high probability patients.",
+    "Consider age-adjusted D-dimer thresholds in patients >50 years."
+  ]
+}
+
